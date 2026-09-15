@@ -391,45 +391,45 @@ $$|y(t_k) - y(t_{k-1})| > \Delta_{\text{threshold}}$$
 
 ```mermaid
 flowchart TD
-    subgraph Level1["Рівень Edge (Апаратний рівень верстата)"]
-        S_Vib["3-осьовий акселерометр (6,4 кГц)"]
-        S_Pwr["Аналізатор мережі (Modbus, 1 Гц)"]
-        S_Temp["Термодатчики PT100 (1 Гц)"]
-        MCU["Edge Controller (STM32H7 / ESP32)"]
-        Relay["Швидке реле аварійного E-Stop"]
-        
+    subgraph Level1["Рівень Edge (Апаратний<br/>рівень верстата)"]
+        S_Vib["3-осьовий акселерометр<br/>(6,4 кГц)"]
+        S_Pwr["Аналізатор мережі<br/>(Modbus, 1 Гц)"]
+        S_Temp["Термодатчики PT100 (1<br/>Гц)"]
+        MCU["Edge Controller (STM32H7<br/>/ ESP32)"]
+        Relay["Швидке реле аварійного<br/>E-Stop"]
+
         S_Vib -->|"SPI DMA"| MCU
         S_Pwr -->|"RS-485"| MCU
         S_Temp -->|"ADC / AFE"| MCU
-        MCU -->|"Direct GPIO < 2 мс"| Relay
+        MCU -->|"Direct GPIO &lt; 2 мс"| Relay
     end
 
-    subgraph Level2["Рівень Fog (Цеховий сервер / Промисловий ПК)"]
-        FogNode["Промисловий сервер (EdgeX Foundry / Docker)"]
-        LocalDB[("Часовий ряд (InfluxDB Local)")]
-        FFT_Engine["Спектральний аналіз (FFT 1024)"]
-        CEP["Рушій складних подій (CEP Drools)"]
-        
+    subgraph Level2["Рівень Fog (Цеховий<br/>сервер / Промисловий ПК)"]
+        FogNode["Промисловий сервер<br/>(EdgeX Foundry / Docker)"]
+        LocalDB[("Часовий ряд<br/>(InfluxDB Local)")]
+        FFT_Engine["Спектральний аналіз (FFT<br/>1024)"]
+        CEP["Рушій складних подій<br/>(CEP Drools)"]
+
         FogNode --> FFT_Engine
         FFT_Engine --> CEP
         CEP --> LocalDB
         FogNode <--> LocalDB
     end
 
-    subgraph Level3["Рівень Cloud (Корпоративний дата-центр)"]
-        CloudBroker["Хмарний брокер повідомлень (Kafka)"]
-        DataLake[("Озеро даних (Hadoop HDFS)")]
-        PredictiveML["Модель предикторного аналізу (RUL)"]
-        ERP["Корпоративна система управління (ERP / EAM)"]
-        
+    subgraph Level3["Рівень Cloud<br/>(Корпоративний<br/>дата-центр)"]
+        CloudBroker["Хмарний брокер<br/>повідомлень (Kafka)"]
+        DataLake[("Озеро даних<br/>(Hadoop HDFS)")]
+        PredictiveML["Модель предикторного<br/>аналізу (RUL)"]
+        ERP["Корпоративна система<br/>управління (ERP / EAM)"]
+
         CloudBroker --> DataLake
         DataLake --> PredictiveML
         PredictiveML --> ERP
     end
 
-    %% Міжрівневі зв'язки (винесені назовні)
+    %% Міжрівневі зв'язки
     MCU -->|"Modbus TCP / MQTT"| FogNode
-    FogNode -->|"WAN: MQTT over TLS (1 раз на 5 с)"| CloudBroker
+    FogNode -->|"WAN: MQTT over TLS (1<br/>раз на 5 с)"| CloudBroker
 ```
 *Рисунок 3.1 — Схема багаторівневого розподілу потоків даних та контурів управління цеху*
 
