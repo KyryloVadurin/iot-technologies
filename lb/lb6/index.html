@@ -1,0 +1,2898 @@
+
+<!doctype html>
+<html lang="uk" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Навчальний портал з дисципліни "Технології ІоТ"">
+      
+      
+      
+      
+        <link rel="prev" href="../lb5/">
+      
+      
+        <link rel="next" href="../lb7/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>ЛБ 6. Декларативне програмування ESP32 (ESPHome) - Технології Інтернету речей</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#no-6-esp32-esphome-mqtt" class="md-skip">
+          Перейти до змісту
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Хедер">
+    <a href="../.." title="Технології Інтернету речей" class="md-header__button md-logo" aria-label="Технології Інтернету речей" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Технології Інтернету речей
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              ЛБ 6. Декларативне програмування ESP32 (ESPHome)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan"  aria-label="Переключити на темну тему"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Переключити на темну тему" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="cyan"  aria-label="Переключити на світлу тему"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Переключити на світлу тему" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Пошук" placeholder="Пошук" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Шукати">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Очистити" aria-label="Очистити" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Пошук розпочато
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Вкладки" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Робоча програма
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../lk/lk1/" class="md-tabs__link">
+          
+  
+  
+  Лекції
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../lb1/" class="md-tabs__link">
+          
+  
+  
+  Лабораторні роботи
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../pz/pz1/" class="md-tabs__link">
+          
+  
+  
+  Практичні заняття
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../kp/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Курсовий проєкт
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../sr/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Самостійна робота
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../sr/quest/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Контрольні завдання (Іспит)
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Навігація" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Технології Інтернету речей" class="md-nav__button md-logo" aria-label="Технології Інтернету речей" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Технології Інтернету речей
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Робоча програма
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Лекції
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Лекції
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lk/lk1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 1. Екосистема та архітектура IoT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lk/lk2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 2. Технології WPAN та WLAN у IoT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lk/lk3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 3. LPWAN технології
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lk/lk4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 4. Прикладні протоколи ІоТ (MQTT, CoAP)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lk/lk5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 5. Туманні (Fog) та граничні (Edge) обчислення
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lk/lk6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 6. Мікроконтролерні платформи (ESP32)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lk/lk7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 7. Інтелектуальні сенсори
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lk/lk8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 8. Виконавчі пристрої
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lk/lk9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 9. Віртуалізація та контейнеризація IoT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lk/lk10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 10. IoT платформи та Middleware
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lk/lk11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 11. Розумний будинок (Home Assistant)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lk/lk12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 12. Промисловий ІоТ (IIoT)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lk/lk13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 13. Big Data в ІоТ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lk/lk14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 14. Machine Learning на межі мережі
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lk/lk15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 15. Кібербезпека в системах ІоТ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Лабораторні роботи
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Лабораторні роботи
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lb1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 1. Моделювання топологій IoT-мереж
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lb2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 2. Симуляція підсистем Розумного будинку
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lb3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 3. Дослідження локального MQTT-брокера
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lb4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 4. Схемотехнічне моделювання вузла збору
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lb5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 5. Прошивка ESP32 для передавання телеметрії MQTT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 6. Декларативне програмування ESP32 (ESPHome)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 6. Декларативне програмування ESP32 (ESPHome)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Зміст">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Зміст
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1 Теоретичні відомості
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-0" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2 Підготовка середовища та розгортання проєкту (Крок 0)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3 Порядок виконання роботи
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3 Порядок виконання роботи">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Індивідуальні завдання
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Покроковий алгоритм та розв'язок еталонного прикладу
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2 Покроковий алгоритм та розв&#39;язок еталонного прикладу">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-esp32_nodeyaml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 1. Створення конфігураційного файлу esp32_node.yaml
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 2. Перевірка та валідація синтаксису конфігурації
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-c" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 3. Компіляція вихідного коду C++ та генерація бінарного образу
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Запуск, тестування та перевірка результатів
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3 Запуск, тестування та перевірка результатів">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#esphome-logs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Еталонний протокол системного журналу утиліти esphome logs:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mosquitto_sub" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Еталонний вивід термінала підписника (mosquitto_sub):
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4 Вимоги до змісту звіту
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5 Контрольні запитання для захисту роботи
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lb7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 7. Серверне середовище Linux для IoT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lb8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 8. Контейнеризація в ІоТ (Docker Compose)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lb9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 9. Middleware ІоТ (Node-RED)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lb10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 10. Сервіс REST API для агрегації даних
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lb11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 11. Платформи розумного будинку (Home Assistant)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lb12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 12. Сценарії автоматизації Home Assistant
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lb13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 13. Обробка телеметрії мовою Python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lb14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 14. HMI Dashboard для диспетчеризації
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lb15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 15. Комплексне наскрізне тестування IoT-системи
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практичні заняття
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Практичні заняття
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 1. Розрахунок пропускної здатності та живлення
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 2. Проєктування ієрархії топіків MQTT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 3. Правила фільтрації на Edge-шлюзах
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 4. Моделювання АЦП для сенсорів
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 5. Оптимізація енергетичного профілю
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 6. Проєктування конфігурації Docker Compose
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 7. Логічні схеми в Node-RED
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 8. Сценарії Trigger-Condition-Action
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 9. Конвеєр обробки даних (ETL)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 10. Моделювання загроз безпеки (STRIDE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Курсовий проєкт
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Самостійна робота
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sr/quest/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Контрольні завдання (Іспит)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Зміст">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Зміст
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1 Теоретичні відомості
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-0" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2 Підготовка середовища та розгортання проєкту (Крок 0)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3 Порядок виконання роботи
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3 Порядок виконання роботи">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Індивідуальні завдання
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Покроковий алгоритм та розв'язок еталонного прикладу
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2 Покроковий алгоритм та розв&#39;язок еталонного прикладу">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-esp32_nodeyaml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 1. Створення конфігураційного файлу esp32_node.yaml
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 2. Перевірка та валідація синтаксису конфігурації
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-c" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 3. Компіляція вихідного коду C++ та генерація бінарного образу
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Запуск, тестування та перевірка результатів
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3 Запуск, тестування та перевірка результатів">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#esphome-logs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Еталонний протокол системного журналу утиліти esphome logs:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mosquitto_sub" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Еталонний вивід термінала підписника (mosquitto_sub):
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4 Вимоги до змісту звіту
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5 Контрольні запитання для захисту роботи
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="no-6-esp32-esphome-mqtt">Лабораторна робота № 6. Декларативне програмування мікроконтролерів ESP32 за допомогою фреймворку ESPHome та інтеграція з протоколом MQTT</h1>
+<p><strong>Мета:</strong> Дослідити концепцію декларативного опису апаратної конфігурації та алгоритмів функціонування вузлів Інтернету речей, опанувати роботу з відкритим фреймворком ESPHome та мовою розмітки YAML, вивчити механізми автоматичної кодогенерації вбудованого програмного забезпечення на базі C++ та операційної системи реального часу FreeRTOS для мікроконтролера ESP32, реалізувати зчитування дискретних сигналів сенсорів і кнопок із програмним придушенням брязкоту контактів, налаштувати локальну автоматизацію на межі мережі (Edge Automation), а також забезпечити двосторонній обмін телеметрією та командами керування за протоколом MQTT безпосередньо з брокером.</p>
+<p><strong>Стек технологій та інструменти:</strong></p>
+<ul>
+<li>
+<p><strong>Мова програмування / Середовище:</strong> Мова розмітки структурованих даних YAML, командний інтерпретатор Bash / PowerShell, середовище віртуального оточення Python <code>venv</code>.</p>
+</li>
+<li>
+<p><strong>Платформа / Бібліотеки / Модулі:</strong> Фреймворк автоматичної збірки прошивок ESPHome (версія 2024.x або вище), інструментальний ланцюг PlatformIO Core, мікроконтролер ESP32-WROOM-32 (NodeMCU-32S), протокол бездротового зв'язку IEEE 802.11 Wi-Fi, локальний або хмарний брокер Eclipse Mosquitto.</p>
+</li>
+<li>
+<p><strong>Інструменти розробки:</strong> Консольна утиліта <code>esphome</code>, вбудований монітор діагностичних повідомлень ESPHome Logger, консольні клієнти <code>mosquitto_sub</code> та <code>mosquitto_pub</code>, текстовий редактор Visual Studio Code.</p>
+</li>
+</ul>
+<hr />
+<h2 id="1">1 Теоретичні відомості</h2>
+<p>Традиційне програмування мікроконтролерних систем базується на імперативному підході (Imperative Programming), за якого інженер власноруч описує покроковий процедурний алгоритм ініціалізації регістрів, налаштування переривань, керування пам'яттю, реалізації мережевих стеків та обробки таймерів мовами C або C++. На відміну від цього, фреймворк ESPHome використовує декларативний підхід (Declarative Programming), де розробник у структурованому текстовому файлі формату YAML визначає цільовий стан системи: перелік використовуваних апаратних інтерфейсів, пінів підключення, сенсорних компонентів, виконавчих механізмів, мережевих протоколів та логічних правил реагування на події.</p>
+<p>Внутрішня архітектура ESPHome здійснює синтаксичний аналіз YAML-файлу, транслює задекларовані сутності у високоефективний об'єктно-орієнтований код мовою C++ на базі фреймворків Arduino Core for ESP32 або ESP-IDF, компілює бінарний образ прошивки за допомогою PlatformIO та завантажує його в пам'ять мікроконтролера через послідовний порт UART або бездротовим шляхом за технологією оновлення «по повітрю» (Over-The-Air, OTA).</p>
+<p><pre class="mermaid"><code>graph TD
+    subgraph Declarative_Layer [Декларативний рівень розробника]
+        YAML_File[Конфігураційний файл YAML&lt;br/&gt;WiFi, MQTT, GPIO, Sensors, Automations]
+    end
+
+    subgraph ESPHome_Engine [Транслятор та генератор ESPHome]
+        Parser[YAML Parser &amp; Schema Validator]
+        Code_Gen[C++ Source Code Generator&lt;br/&gt;FreeRTOS Tasks &amp; Component Registry]
+        PlatformIO[PlatformIO Build System&lt;br/&gt;Компілятор Xtensa GCC]
+    end
+
+    subgraph Hardware_Target [Мікроконтролер ESP32]
+        Flash_Memory[Flash пам'ять: Bootloader, NVS, OTA App]
+        Runtime_Core[Ядро FreeRTOS: AsyncTCP, WiFi, Local Logic]
+        IO_Pins[Фізичні виводи GPIO: Sensors &amp; Actuators]
+    end
+
+    YAML_File --&gt; Parser
+    Parser --&gt; Code_Gen
+    Code_Gen --&gt; PlatformIO
+    PlatformIO ===|USB UART або Wi-Fi OTA| Flash_Memory
+    Flash_Memory --&gt; Runtime_Core
+    Runtime_Core &lt;===&gt; IO_Pins
+
+    style Declarative_Layer fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px
+    style ESPHome_Engine fill:#e1f5fe,stroke:#0288d1,stroke-width:2px
+    style Hardware_Target fill:#fff3e0,stroke:#e65100,stroke-width:2px</code></pre>
+<em>Рисунок 1 — Структурна схема конвеєра компіляції та виконання прошивки у середовищі ESPHome</em></p>
+<p>Архітектурний підхід, наведений на рисунку 1, забезпечує високу надійність роботи кінцевого вузла. Прошивка містить повністю автономний шар виконання, завдяки чому локальні автоматизації (наприклад, перемикання реле при натисканні фізичної кнопки) продовжують безвідмовно працювати навіть у разі повної втрати зв'язку з Wi-Fi мережею або центральним MQTT-брокером.</p>
+<p>При підключенні механічних комутаційних елементів (кнопок, тумблерів, герконових датчиків) виникає явище брязкоту контактів (Contact Bounce), зумовлене пружною деформацією металевих пластин під час замикання та розмикання. Внаслідок цього протягом часу <span class="arithmatex">\(t_{\text{bounce}}\)</span> формується хаотична серія електричних імпульсів, яка може сприйматися обчислювальним ядром як багаторазове натискання.</p>
+<p><pre class="mermaid"><code>sequenceDiagram
+    autonumber
+    participant Button as Фізична кнопка (GPIO)
+    participant Debounce as Цифровий фільтр ESPHome
+    participant Relay as Реле / Світлодіод
+    participant Broker as MQTT Брокер
+
+    Button-&gt;&gt;Debounce: Брязкіт контактів (Серія імпульсів 0-1-0-1)
+    Note over Debounce: Фільтр delayed_on (Таймаут 50 мс)
+    Note over Debounce: Сигнал стабілізувався у стані 0 (LOW)
+    Debounce-&gt;&gt;Relay: Локальний тригер on_press -&gt; Toggle State
+    Note over Relay: Стан актуатора змінено на протилежний
+    Debounce-&gt;&gt;Broker: MQTT PUBLISH: home/button/state = ON
+    Relay-&gt;&gt;Broker: MQTT PUBLISH: home/relay/state = ON</code></pre>
+<em>Рисунок 2 — Діаграма послідовності локальної обробки та фільтрації сигналу кнопки з подальшою публікацією у MQTT</em></p>
+<p>Для математичного моделювання перехідних процесів у вхідному колі з підтягувальним резистором <span class="arithmatex">\(R_{\text{pullup}}\)</span> та паразитною ємністю монтажу <span class="arithmatex">\(C_{\text{parasitic}}\)</span> час наростання напруги до порогу перемикання цифрового логічного елемента <span class="arithmatex">\(V_{\text{th}}\)</span> описується класичним диференціальним рівнянням заряду ємності:</p>
+<div class="arithmatex">\[V_{\text{in}}(t) = V_{\text{cc}} \cdot \left(1 - e^{-\frac{t}{\tau}}\right)\]</div>
+<p>де <span class="arithmatex">\(V_{\text{in}}(t)\)</span> — миттєва напруга на вході мікроконтролера (В);
+<span class="arithmatex">\(V_{\text{cc}}\)</span> — напруга живлення логічного ядра (для ESP32 <span class="arithmatex">\(V_{\text{cc}} = 3{,}3\text{ В}\)</span>);
+<span class="arithmatex">\(\tau = R_{\text{pullup}} \cdot C_{\text{parasitic}}\)</span> — часова стала вхідного RC-кола (с);
+<span class="arithmatex">\(t\)</span> — час з моменту розмикання контакту (с).</p>
+<p>Для усунення хибних перемикань цифровий фільтр дебаунсингу у прошивці ESPHome фіксує зміну логічного стану лише тоді, коли новий стан залишається стабільним протягом часу <span class="arithmatex">\(T_{\text{debounce}}\)</span>, що перевищує максимальну тривалість механічних перехідних процесів:</p>
+<div class="arithmatex">\[T_{\text{debounce}} \ge t_{\text{settle}} = -\tau \cdot \ln\left(1 - \frac{V_{\text{th}}}{V_{\text{cc}}}\right) + t_{\text{bounce\_max}}\]</div>
+<p>де <span class="arithmatex">\(T_{\text{debounce}}\)</span> — програмний інтервал фільтрації (зазвичай обирається в межах <span class="arithmatex">\(30\dots 80\text{ мс}\)</span>);
+<span class="arithmatex">\(V_{\text{th}}\)</span> — порогова напруга спрацьовування вхідного тригера Шмітта (В);
+<span class="arithmatex">\(t_{\text{bounce\_max}}\)</span> — максимальна тривалість механічного брязкоту контактів (с).</p>
+<p>Особливістю архітектури пам'яті мікроконтролера ESP32 при роботі з фреймворком ESPHome є використання таблиці розділів із підтримкою двох незалежних слотів для прошивки (<code>ota_0</code> та <code>ota_1</code>), що забезпечує безпечне оновлення коду через бездротовий канал без ризику виходу системи з ладу (Anti-Bricking Protection). Баланс розподілу енергонезалежної Flash-пам'яті обсягом <span class="arithmatex">\(S_{\text{Flash}}\)</span> описується формулою:</p>
+<div class="arithmatex">\[S_{\text{Flash}} \ge S_{\text{Boot}} + S_{\text{NVS}} + S_{\text{OTADATA}} + 2 \cdot S_{\text{App\_OTA}} + S_{\text{FS}}\]</div>
+<p>де <span class="arithmatex">\(S_{\text{Boot}}\)</span> — розмір завантажувача другого ступеня (Bootloader, близько <span class="arithmatex">\(32\text{ КБ}\)</span>);
+<span class="arithmatex">\(S_{\text{NVS}}\)</span> — енергонезалежне сховище налаштувань Wi-Fi та калібрувань (Non-Volatile Storage, <span class="arithmatex">\(16\dots 24\text{ КБ}\)</span>);
+<span class="arithmatex">\(S_{\text{OTADATA}}\)</span> — таблиця вибору активного слота завантаження (<span class="arithmatex">\(8\text{ КБ}\)</span>);
+<span class="arithmatex">\(S_{\text{App\_OTA}}\)</span> — максимальний обсяг пам'яті, виділений під один бінарний образ виконуваної програми (<span class="arithmatex">\(1{,}8\dots 2{,}0\text{ МБ}\)</span>);
+<span class="arithmatex">\(S_{\text{FS}}\)</span> — розмір файлової системи LittleFS / SPIFFS для локальних ресурсів (<span class="arithmatex">\(256\dots 512\text{ КБ}\)</span>).</p>
+<hr />
+<h2 id="2-0">2 Підготовка середовища та розгортання проєкту (Крок 0)</h2>
+<p>Для підготовки інструментарію використовується ізольоване віртуальне середовище Python, що виключає конфлікти версій системних пакетів.</p>
+<ol>
+<li>Запустіть емулятор термінала операційної системи та створіть віртуальне оточення Python для встановлення ESPHome:</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Перевірка версії встановленого інтерпретатора Python</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>python3<span class="w"> </span>--version
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># Створення ізольованого середовища venv</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>~/esphome_venv
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c1"># Активація віртуального оточення</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="nb">source</span><span class="w"> </span>~/esphome_venv/bin/activate
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="c1"># Оновлення базового менеджера пакетів та інсталяція ESPHome</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>pip
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>pip<span class="w"> </span>install<span class="w"> </span>esphome
+</span></code></pre></div>
+<ol>
+<li>Перевірте працездатність встановленого фреймворку та наявність необхідних утиліт компіляції:</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Перевірка встановленої версії фреймворку ESPHome</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>esphome<span class="w"> </span>version
+</span></code></pre></div>
+<ol>
+<li>Створіть робочу структуру папок проєкту:</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Створення робочих каталогів для конфігурацій та артефактів збірки</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>~/IoT_Labs/Lab6_ESPHome/<span class="o">{</span>config,build,docs<span class="o">}</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nb">cd</span><span class="w"> </span>~/IoT_Labs/Lab6_ESPHome
+</span></code></pre></div>
+<p>Файлова структура проєкту повинна мати такий вигляд:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>IoT_Labs/
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>└── Lab6_ESPHome/
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    ├── config/
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>    │   ├── secrets.yaml          # Файл конфіденційних даних (паролі Wi-Fi, MQTT)
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    │   └── esp32_node.yaml       # Головний декларативний конфігураційний файл
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>    ├── build/                    # Каталог проміжних об'єктних файлів PlatformIO
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>    └── docs/
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>        └── compile_log.txt       # Журнал успішної компіляції та заливки
+</span></code></pre></div>
+<ol>
+<li>Створіть допоміжний файл <code>~/IoT_Labs/Lab6_ESPHome/config/secrets.yaml</code>, який використовується для безпечного збереження паролів окремо від основної конфігурації:</li>
+</ol>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Файл збереження конфіденційних параметрів доступу</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nt">wifi_ssid</span><span class="p">:</span><span class="w"> </span><span class="s">"Wokwi-GUEST"</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="nt">wifi_password</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="nt">mqtt_broker</span><span class="p">:</span><span class="w"> </span><span class="s">"broker.emqx.io"</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="nt">mqtt_port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1883</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="nt">mqtt_username</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="nt">mqtt_password</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="nt">ota_password</span><span class="p">:</span><span class="w"> </span><span class="s">"AdminOTAPassword2026!"</span>
+</span></code></pre></div>
+<hr />
+<h2 id="3">3 Порядок виконання роботи</h2>
+<h3 id="31">3.1 Індивідуальні завдання</h3>
+<p>Кожен здобувач вищої освіти розробляє декларативний YAML-файл для мікроконтролера ESP32 згідно з індивідуальними параметрами вхідних датчиків, актуаторів та структури топіків MQTT.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Варіант</th>
+<th style="text-align: left;">Назва пристрою / Призначення</th>
+<th style="text-align: left;">Дискретні входи (Binary Sensors)</th>
+<th style="text-align: left;">Вихідні актуатори (Switches/Outputs)</th>
+<th style="text-align: left;">Логіка автоматизації на рівні Edge</th>
+<th style="text-align: left;">Структура MQTT топіків</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>1</strong></td>
+<td style="text-align: left;">Смарт-контролер освітлення кабінету</td>
+<td style="text-align: left;">Тактова кнопка (GPIO0) з фільтром 50 мс</td>
+<td style="text-align: left;">Світлодіод / Реле лампи (GPIO2)</td>
+<td style="text-align: left;">Натискання кнопки інвертує стан реле; публікувати стан у MQTT</td>
+<td style="text-align: left;"><code>office/switch/state</code><br/><code>office/light/set</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>2</strong></td>
+<td style="text-align: left;">Монітор безпеки дверей складу</td>
+<td style="text-align: left;">Герконовий датчик (GPIO14)</td>
+<td style="text-align: left;">Сигнальний маяк (GPIO16)</td>
+<td style="text-align: left;">При розмиканні геркона увімкнути маяк та надіслати тривогу</td>
+<td style="text-align: left;"><code>warehouse/door/sensor</code><br/><code>warehouse/beacon/state</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>3</strong></td>
+<td style="text-align: left;">Детектор затоплення серверної</td>
+<td style="text-align: left;">Сенсор витоку води (GPIO27)</td>
+<td style="text-align: left;">Відсічний електроклапан (GPIO18)</td>
+<td style="text-align: left;">При фіксації вологи негайно закрити клапан та передати аварійний статус</td>
+<td style="text-align: left;"><code>server/water/leak</code><br/><code>server/valve/control</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>4</strong></td>
+<td style="text-align: left;">Автоматика вентиляції гаража</td>
+<td style="text-align: left;">Датчик руху PIR (GPIO13)</td>
+<td style="text-align: left;">Витяжний вентилятор (GPIO19)</td>
+<td style="text-align: left;">Увімкнути вентилятор при виявленні руху та вимкнути через 60 с після зупинки</td>
+<td style="text-align: left;"><code>garage/motion/state</code><br/><code>garage/fan/power</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>5</strong></td>
+<td style="text-align: left;">Система контролю доступу лабораторії</td>
+<td style="text-align: left;">Кнопка аварійного відкриття (GPIO32)</td>
+<td style="text-align: left;">Електромагнітний замок (GPIO4)</td>
+<td style="text-align: left;">Натискання кнопки знімає блокування замка на 10 секунд</td>
+<td style="text-align: left;"><code>lab/door/emergency</code><br/><code>lab/lock/state</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>6</strong></td>
+<td style="text-align: left;">Смарт-терморегулятор інкубатора</td>
+<td style="text-align: left;">Сенсор перегріву термостата (GPIO25)</td>
+<td style="text-align: left;">Нагрівальний елемент ТЕН (GPIO5)</td>
+<td style="text-align: left;">При спрацюванні сенсора перегріву примусово знеструмити ТЕН</td>
+<td style="text-align: left;"><code>incubator/temp/alert</code><br/><code>incubator/heater/cmd</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>7</strong></td>
+<td style="text-align: left;">Контролер компресора високого тиску</td>
+<td style="text-align: left;">Реле тиску магістралі (GPIO26)</td>
+<td style="text-align: left;">Пускач двигуна компресора (GPIO21)</td>
+<td style="text-align: left;">Якщо тиск нижче норми, запустити компресор; передавати статус роботи</td>
+<td style="text-align: left;"><code>plant/pressure/sensor</code><br/><code>plant/motor/state</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>8</strong></td>
+<td style="text-align: left;">Охоронний контур периметра</td>
+<td style="text-align: left;">Оптичний бар'єр (GPIO33)</td>
+<td style="text-align: left;">Прожектор тривоги (GPIO22)</td>
+<td style="text-align: left;">Перетин бар'єра активує прожектор у режимі стробоскопа</td>
+<td style="text-align: left;"><code>perimeter/beam/status</code><br/><code>perimeter/light/set</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>9</strong></td>
+<td style="text-align: left;">Смарт-годівниця тваринницького комплексу</td>
+<td style="text-align: left;">Кінцевий вимикач рівня бункера (GPIO15)</td>
+<td style="text-align: left;">Сервопривід дозатора корму (GPIO23)</td>
+<td style="text-align: left;">При спустошенні бункера подати звуковий сигнал і заблокувати дозатор</td>
+<td style="text-align: left;"><code>farm/hopper/empty</code><br/><code>farm/feeder/run</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>10</strong></td>
+<td style="text-align: left;">Вузол контролю конвеєрної стрічки</td>
+<td style="text-align: left;">Індуктивний датчик заклинювання (GPIO34)</td>
+<td style="text-align: left;">Головне контакторне реле (GPIO12)</td>
+<td style="text-align: left;">При зупинці обертання негайно вимкнути головний контактор лінії</td>
+<td style="text-align: left;"><code>conveyor/jam/detect</code><br/><code>conveyor/power/switch</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>11</strong></td>
+<td style="text-align: left;">Автоматизовані ролети оранжереї</td>
+<td style="text-align: left;">Фоторезистивний пороговий тригер (GPIO35)</td>
+<td style="text-align: left;">Привід підйому/опускання ролет (GPIO17)</td>
+<td style="text-align: left;">При падінні рівня світла нижче порогу опустити захисні ролети</td>
+<td style="text-align: left;"><code>greenhouse/light/lvl</code><br/><code>greenhouse/shutter/cmd</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>12</strong></td>
+<td style="text-align: left;">Контролер відкачування дренажу</td>
+<td style="text-align: left;">Поплавковий датчик верхнього рівня (GPIO36)</td>
+<td style="text-align: left;">Занурювальний насос (GPIO2)</td>
+<td style="text-align: left;">Досягнення верхнього рівня вмикає насос до повного осушення</td>
+<td style="text-align: left;"><code>drainage/float/high</code><br/><code>drainage/pump/state</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>13</strong></td>
+<td style="text-align: left;">Смарт-система тестування плат</td>
+<td style="text-align: left;">Кнопка старту циклу випробувань (GPIO0)</td>
+<td style="text-align: left;">Пневмопритискач контактів (GPIO18)</td>
+<td style="text-align: left;">Натискання кнопки активує притискач на 5 секунд та передає телеметрію</td>
+<td style="text-align: left;"><code>testing/bench/start</code><br/><code>testing/clamp/state</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>14</strong></td>
+<td style="text-align: left;">Блокування захисного кожуха верстата</td>
+<td style="text-align: left;">Геркон захисного екрана (GPIO14)</td>
+<td style="text-align: left;">Силове реле шпинделя (GPIO16)</td>
+<td style="text-align: left;">Заборонено вмикати реле шпинделя, якщо геркон екрана розімкнений</td>
+<td style="text-align: left;"><code>lathe/guard/closed</code><br/><code>lathe/spindle/power</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>15</strong></td>
+<td style="text-align: left;">Клімат-контроль сушильної камери</td>
+<td style="text-align: left;">Датчик вологості граничний (GPIO27)</td>
+<td style="text-align: left;">Витяжна заслінка (GPIO19)</td>
+<td style="text-align: left;">Якщо вологість висока, відкрити заслінку та передати стан у MQTT</td>
+<td style="text-align: left;"><code>dryer/humidity/high</code><br/><code>dryer/damper/set</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>16</strong></td>
+<td style="text-align: left;">Розумний паркувальний бар'єр</td>
+<td style="text-align: left;">Ультразвуковий дискретний сенсор (GPIO13)</td>
+<td style="text-align: left;">Електромеханічний блокіратор (GPIO4)</td>
+<td style="text-align: left;">При наближенні автомобіля опустити блокіратор за умови дозволу з MQTT</td>
+<td style="text-align: left;"><code>parking/car/present</code><br/><code>parking/barrier/ctrl</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>17</strong></td>
+<td style="text-align: left;">Сигналізація виходу людей на колію</td>
+<td style="text-align: left;">Радар присутності (GPIO25)</td>
+<td style="text-align: left;">Світлодіодний семафор (GPIO5)</td>
+<td style="text-align: left;">Фіксація руху в небезпечній зоні вмикає червоний сигнал семафора</td>
+<td style="text-align: left;"><code>rail/danger/motion</code><br/><code>rail/signal/state</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>18</strong></td>
+<td style="text-align: left;">Контроль тиску в системі пожежогасіння</td>
+<td style="text-align: left;">Електроконтактний манометр (GPIO26)</td>
+<td style="text-align: left;">Допоміжний насос підкачки (GPIO21)</td>
+<td style="text-align: left;">Падіння тиску нижче 4 бар вмикає підкачку та надсилає сповіщення</td>
+<td style="text-align: left;"><code>fire/pipe/pressure</code><br/><code>fire/booster/pump</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>19</strong></td>
+<td style="text-align: left;">Автоматика освітлення сходів</td>
+<td style="text-align: left;">Нижній датчик перетину сходинки (GPIO32)</td>
+<td style="text-align: left;">Світлодіодна лінія підсвітки (GPIO22)</td>
+<td style="text-align: left;">Перетин лінії вмикає підсвітку сходів на 20 секунд</td>
+<td style="text-align: left;"><code>stairs/step1/trigger</code><br/><code>stairs/led/power</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>20</strong></td>
+<td style="text-align: left;">Аварійна кнопка зупинки газопроводу</td>
+<td style="text-align: left;">Грибоподібна кнопка аварії E-Stop (GPIO33)</td>
+<td style="text-align: left;">Електромагнітна відсічна засувка (GPIO23)</td>
+<td style="text-align: left;">Натискання кнопки аварії миттєво знеструмлює та перекриває засувку</td>
+<td style="text-align: left;"><code>gas/estop/pressed</code><br/><code>gas/main_valve/state</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="32">3.2 Покроковий алгоритм та розв'язок еталонного прикладу</h3>
+<p>У ролі еталонного прикладу розглядається <strong>«Смарт-вузол освітлення та сигналізації кабінету (Smart Office Node) на базі ESP32 з декларативною автоматизацією та інтеграцією з MQTT»</strong>.</p>
+<p>Параметри еталонної системи:</p>
+<ul>
+<li>
+<p>Назва вузла в мережі: <code>office-smart-node</code></p>
+</li>
+<li>
+<p>Мікроконтролер: <code>esp32dev</code> (SoC ESP32)</p>
+</li>
+<li>
+<p>Дискретний вхід: Фізична тактова кнопка на виводі <code>GPIO0</code> із внутрішньою підтяжкою <code>PULLUP</code> та часом дебаунсингу <span class="arithmatex">\(50\text{ мс}\)</span>.</p>
+</li>
+<li>
+<p>Виконавчий пристрій: Світлодіод / Актуатор реле на виводі <code>GPIO2</code>.</p>
+</li>
+<li>
+<p>Логіка роботи: </p>
+</li>
+<li>
+<p>Натискання фізичної кнопки локально інвертує стан актуатора (Toggle) без затримок.</p>
+</li>
+<li>
+<p>Поточний стан кнопки транслюється в топік <code>office/button/state</code>.</p>
+</li>
+<li>
+<p>Поточний стан актуатора транслюється в топік <code>office/light/state</code>.</p>
+</li>
+<li>
+<p>Брокер може дистанційно керувати реле за допомогою команд у топіку <code>office/light/set</code>.</p>
+</li>
+</ul>
+<h4 id="1-esp32_nodeyaml">Крок 1. Створення конфігураційного файлу <code>esp32_node.yaml</code></h4>
+<p>Створіть файл <code>~/IoT_Labs/Lab6_ESPHome/config/esp32_node.yaml</code> та введіть повний декларативний код без скорочень:</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># =====================================================================</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="c1"># ДЕКЛАРАТИВНА КОНФІГУРАЦІЯ ESPHOME ДЛЯ МІКРОКОНТРОЛЕРА ESP32</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="c1"># =====================================================================</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="nt">esphome</span><span class="p">:</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">office-smart-node</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">  </span><span class="nt">friendly_name</span><span class="p">:</span><span class="w"> </span><span class="s">"Smart</span><span class="nv"> </span><span class="s">Office</span><span class="nv"> </span><span class="s">Controller"</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">  </span><span class="nt">comment</span><span class="p">:</span><span class="w"> </span><span class="s">"Лабораторна</span><span class="nv"> </span><span class="s">робота</span><span class="nv"> </span><span class="s">№6</span><span class="nv"> </span><span class="s">-</span><span class="nv"> </span><span class="s">Декларативне</span><span class="nv"> </span><span class="s">програмування</span><span class="nv"> </span><span class="s">ESP32"</span>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="c1"># Визначення цільової апаратної платформи</span>
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="nt">esp32</span><span class="p">:</span>
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">  </span><span class="nt">board</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">esp32dev</span>
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">  </span><span class="nt">framework</span><span class="p">:</span>
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">arduino</span>
+</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>
+</span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="c1"># Підключення зовнішнього файлу секретних даних</span>
+</span><span id="__span-5-17"><a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="nt">secrets</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">secrets.yaml</span>
+</span><span id="__span-5-18"><a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a>
+</span><span id="__span-5-19"><a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="c1"># =====================================================================</span>
+</span><span id="__span-5-20"><a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="c1"># НАЛАШТУВАННЯ БЕЗДРОТОВОГО ЗВ'ЯЗКУ WI-FI ТА СИСТЕМИ ДІАГНОСТИКИ</span>
+</span><span id="__span-5-21"><a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="c1"># =====================================================================</span>
+</span><span id="__span-5-22"><a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a><span class="nt">wifi</span><span class="p">:</span>
+</span><span id="__span-5-23"><a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a><span class="w">  </span><span class="nt">ssid</span><span class="p">:</span><span class="w"> </span><span class="kt">!secret</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wifi_ssid</span>
+</span><span id="__span-5-24"><a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a><span class="w">  </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="kt">!secret</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wifi_password</span>
+</span><span id="__span-5-25"><a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a>
+</span><span id="__span-5-26"><a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a><span class="w">  </span><span class="c1"># Резервна точка доступу у разі втрати зв'язку з основним маршрутизатором</span>
+</span><span id="__span-5-27"><a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a><span class="w">  </span><span class="nt">ap</span><span class="p">:</span>
+</span><span id="__span-5-28"><a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a><span class="w">    </span><span class="nt">ssid</span><span class="p">:</span><span class="w"> </span><span class="s">"Office-Node-Fallback"</span>
+</span><span id="__span-5-29"><a id="__codelineno-5-29" name="__codelineno-5-29" href="#__codelineno-5-29"></a><span class="w">    </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="s">"FallbackPassword2026"</span>
+</span><span id="__span-5-30"><a id="__codelineno-5-30" name="__codelineno-5-30" href="#__codelineno-5-30"></a>
+</span><span id="__span-5-31"><a id="__codelineno-5-31" name="__codelineno-5-31" href="#__codelineno-5-31"></a><span class="c1"># Вебпортал аварійного налаштування Wi-Fi при першому запуску</span>
+</span><span id="__span-5-32"><a id="__codelineno-5-32" name="__codelineno-5-32" href="#__codelineno-5-32"></a><span class="nt">captive_portal</span><span class="p">:</span>
+</span><span id="__span-5-33"><a id="__codelineno-5-33" name="__codelineno-5-33" href="#__codelineno-5-33"></a>
+</span><span id="__span-5-34"><a id="__codelineno-5-34" name="__codelineno-5-34" href="#__codelineno-5-34"></a><span class="c1"># Налаштування виведення діагностичних повідомлень у послідовний порт UART</span>
+</span><span id="__span-5-35"><a id="__codelineno-5-35" name="__codelineno-5-35" href="#__codelineno-5-35"></a><span class="nt">logger</span><span class="p">:</span>
+</span><span id="__span-5-36"><a id="__codelineno-5-36" name="__codelineno-5-36" href="#__codelineno-5-36"></a><span class="w">  </span><span class="nt">level</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DEBUG</span>
+</span><span id="__span-5-37"><a id="__codelineno-5-37" name="__codelineno-5-37" href="#__codelineno-5-37"></a><span class="w">  </span><span class="nt">baud_rate</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">115200</span>
+</span><span id="__span-5-38"><a id="__codelineno-5-38" name="__codelineno-5-38" href="#__codelineno-5-38"></a>
+</span><span id="__span-5-39"><a id="__codelineno-5-39" name="__codelineno-5-39" href="#__codelineno-5-39"></a><span class="c1"># Служба безпечного оновлення прошивки по повітрю (Over-The-Air)</span>
+</span><span id="__span-5-40"><a id="__codelineno-5-40" name="__codelineno-5-40" href="#__codelineno-5-40"></a><span class="nt">ota</span><span class="p">:</span>
+</span><span id="__span-5-41"><a id="__codelineno-5-41" name="__codelineno-5-41" href="#__codelineno-5-41"></a><span class="w">  </span><span class="nt">platform</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">esphome</span>
+</span><span id="__span-5-42"><a id="__codelineno-5-42" name="__codelineno-5-42" href="#__codelineno-5-42"></a><span class="w">  </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="kt">!secret</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ota_password</span>
+</span><span id="__span-5-43"><a id="__codelineno-5-43" name="__codelineno-5-43" href="#__codelineno-5-43"></a>
+</span><span id="__span-5-44"><a id="__codelineno-5-44" name="__codelineno-5-44" href="#__codelineno-5-44"></a><span class="c1"># =====================================================================</span>
+</span><span id="__span-5-45"><a id="__codelineno-5-45" name="__codelineno-5-45" href="#__codelineno-5-45"></a><span class="c1"># ІНТЕГРАЦІЯ З БРОКЕРОМ ПОВІДОМЛЕНЬ MQTT</span>
+</span><span id="__span-5-46"><a id="__codelineno-5-46" name="__codelineno-5-46" href="#__codelineno-5-46"></a><span class="c1"># =====================================================================</span>
+</span><span id="__span-5-47"><a id="__codelineno-5-47" name="__codelineno-5-47" href="#__codelineno-5-47"></a><span class="nt">mqtt</span><span class="p">:</span>
+</span><span id="__span-5-48"><a id="__codelineno-5-48" name="__codelineno-5-48" href="#__codelineno-5-48"></a><span class="w">  </span><span class="nt">broker</span><span class="p">:</span><span class="w"> </span><span class="kt">!secret</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mqtt_broker</span>
+</span><span id="__span-5-49"><a id="__codelineno-5-49" name="__codelineno-5-49" href="#__codelineno-5-49"></a><span class="w">  </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="kt">!secret</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mqtt_port</span>
+</span><span id="__span-5-50"><a id="__codelineno-5-50" name="__codelineno-5-50" href="#__codelineno-5-50"></a><span class="w">  </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="kt">!secret</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mqtt_username</span>
+</span><span id="__span-5-51"><a id="__codelineno-5-51" name="__codelineno-5-51" href="#__codelineno-5-51"></a><span class="w">  </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="kt">!secret</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mqtt_password</span>
+</span><span id="__span-5-52"><a id="__codelineno-5-52" name="__codelineno-5-52" href="#__codelineno-5-52"></a><span class="w">  </span><span class="nt">client_id</span><span class="p">:</span><span class="w"> </span><span class="s">"Office_Node_ESP32"</span>
+</span><span id="__span-5-53"><a id="__codelineno-5-53" name="__codelineno-5-53" href="#__codelineno-5-53"></a>
+</span><span id="__span-5-54"><a id="__codelineno-5-54" name="__codelineno-5-54" href="#__codelineno-5-54"></a><span class="w">  </span><span class="c1"># Базовий топік для публікації статусу доступності пристрою</span>
+</span><span id="__span-5-55"><a id="__codelineno-5-55" name="__codelineno-5-55" href="#__codelineno-5-55"></a><span class="w">  </span><span class="nt">topic_prefix</span><span class="p">:</span><span class="w"> </span><span class="s">"office"</span>
+</span><span id="__span-5-56"><a id="__codelineno-5-56" name="__codelineno-5-56" href="#__codelineno-5-56"></a>
+</span><span id="__span-5-57"><a id="__codelineno-5-57" name="__codelineno-5-57" href="#__codelineno-5-57"></a><span class="w">  </span><span class="c1"># Аварійний заповіт (LWT)</span>
+</span><span id="__span-5-58"><a id="__codelineno-5-58" name="__codelineno-5-58" href="#__codelineno-5-58"></a><span class="w">  </span><span class="nt">birth_message</span><span class="p">:</span>
+</span><span id="__span-5-59"><a id="__codelineno-5-59" name="__codelineno-5-59" href="#__codelineno-5-59"></a><span class="w">    </span><span class="nt">topic</span><span class="p">:</span><span class="w"> </span><span class="s">"office/status"</span>
+</span><span id="__span-5-60"><a id="__codelineno-5-60" name="__codelineno-5-60" href="#__codelineno-5-60"></a><span class="w">    </span><span class="nt">payload</span><span class="p">:</span><span class="w"> </span><span class="s">"online"</span>
+</span><span id="__span-5-61"><a id="__codelineno-5-61" name="__codelineno-5-61" href="#__codelineno-5-61"></a><span class="w">    </span><span class="nt">qos</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+</span><span id="__span-5-62"><a id="__codelineno-5-62" name="__codelineno-5-62" href="#__codelineno-5-62"></a><span class="w">    </span><span class="nt">retain</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span><span id="__span-5-63"><a id="__codelineno-5-63" name="__codelineno-5-63" href="#__codelineno-5-63"></a><span class="w">  </span><span class="nt">will_message</span><span class="p">:</span>
+</span><span id="__span-5-64"><a id="__codelineno-5-64" name="__codelineno-5-64" href="#__codelineno-5-64"></a><span class="w">    </span><span class="nt">topic</span><span class="p">:</span><span class="w"> </span><span class="s">"office/status"</span>
+</span><span id="__span-5-65"><a id="__codelineno-5-65" name="__codelineno-5-65" href="#__codelineno-5-65"></a><span class="w">    </span><span class="nt">payload</span><span class="p">:</span><span class="w"> </span><span class="s">"offline"</span>
+</span><span id="__span-5-66"><a id="__codelineno-5-66" name="__codelineno-5-66" href="#__codelineno-5-66"></a><span class="w">    </span><span class="nt">qos</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+</span><span id="__span-5-67"><a id="__codelineno-5-67" name="__codelineno-5-67" href="#__codelineno-5-67"></a><span class="w">    </span><span class="nt">retain</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span><span id="__span-5-68"><a id="__codelineno-5-68" name="__codelineno-5-68" href="#__codelineno-5-68"></a>
+</span><span id="__span-5-69"><a id="__codelineno-5-69" name="__codelineno-5-69" href="#__codelineno-5-69"></a><span class="c1"># =====================================================================</span>
+</span><span id="__span-5-70"><a id="__codelineno-5-70" name="__codelineno-5-70" href="#__codelineno-5-70"></a><span class="c1"># ДЕКЛАРАЦІЯ АПАРАТНИХ ВИХОДІВ (АКТУАТОРІВ)</span>
+</span><span id="__span-5-71"><a id="__codelineno-5-71" name="__codelineno-5-71" href="#__codelineno-5-71"></a><span class="c1"># =====================================================================</span>
+</span><span id="__span-5-72"><a id="__codelineno-5-72" name="__codelineno-5-72" href="#__codelineno-5-72"></a><span class="nt">output</span><span class="p">:</span>
+</span><span id="__span-5-73"><a id="__codelineno-5-73" name="__codelineno-5-73" href="#__codelineno-5-73"></a>
+</span><span id="__span-5-74"><a id="__codelineno-5-74" name="__codelineno-5-74" href="#__codelineno-5-74"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">platform</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gpio</span>
+</span><span id="__span-5-75"><a id="__codelineno-5-75" name="__codelineno-5-75" href="#__codelineno-5-75"></a><span class="w">    </span><span class="nt">pin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GPIO2</span>
+</span><span id="__span-5-76"><a id="__codelineno-5-76" name="__codelineno-5-76" href="#__codelineno-5-76"></a><span class="w">    </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">relay_gpio_pin</span>
+</span><span id="__span-5-77"><a id="__codelineno-5-77" name="__codelineno-5-77" href="#__codelineno-5-77"></a>
+</span><span id="__span-5-78"><a id="__codelineno-5-78" name="__codelineno-5-78" href="#__codelineno-5-78"></a><span class="c1"># Логічний перемикач освітлення, прив'язаний до виходу GPIO2</span>
+</span><span id="__span-5-79"><a id="__codelineno-5-79" name="__codelineno-5-79" href="#__codelineno-5-79"></a><span class="nt">switch</span><span class="p">:</span>
+</span><span id="__span-5-80"><a id="__codelineno-5-80" name="__codelineno-5-80" href="#__codelineno-5-80"></a>
+</span><span id="__span-5-81"><a id="__codelineno-5-81" name="__codelineno-5-81" href="#__codelineno-5-81"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">platform</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">output</span>
+</span><span id="__span-5-82"><a id="__codelineno-5-82" name="__codelineno-5-82" href="#__codelineno-5-82"></a><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">"Office</span><span class="nv"> </span><span class="s">Main</span><span class="nv"> </span><span class="s">Light"</span>
+</span><span id="__span-5-83"><a id="__codelineno-5-83" name="__codelineno-5-83" href="#__codelineno-5-83"></a><span class="w">    </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">office_light_relay</span>
+</span><span id="__span-5-84"><a id="__codelineno-5-84" name="__codelineno-5-84" href="#__codelineno-5-84"></a><span class="w">    </span><span class="nt">output</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">relay_gpio_pin</span>
+</span><span id="__span-5-85"><a id="__codelineno-5-85" name="__codelineno-5-85" href="#__codelineno-5-85"></a><span class="w">    </span><span class="nt">icon</span><span class="p">:</span><span class="w"> </span><span class="s">"mdi:lightbulb"</span>
+</span><span id="__span-5-86"><a id="__codelineno-5-86" name="__codelineno-5-86" href="#__codelineno-5-86"></a>
+</span><span id="__span-5-87"><a id="__codelineno-5-87" name="__codelineno-5-87" href="#__codelineno-5-87"></a><span class="w">    </span><span class="c1"># Специфікація MQTT топіків для дистанційного керування</span>
+</span><span id="__span-5-88"><a id="__codelineno-5-88" name="__codelineno-5-88" href="#__codelineno-5-88"></a><span class="w">    </span><span class="nt">state_topic</span><span class="p">:</span><span class="w"> </span><span class="s">"office/light/state"</span>
+</span><span id="__span-5-89"><a id="__codelineno-5-89" name="__codelineno-5-89" href="#__codelineno-5-89"></a><span class="w">    </span><span class="nt">command_topic</span><span class="p">:</span><span class="w"> </span><span class="s">"office/light/set"</span>
+</span><span id="__span-5-90"><a id="__codelineno-5-90" name="__codelineno-5-90" href="#__codelineno-5-90"></a><span class="w">    </span><span class="nt">on_turn_on</span><span class="p">:</span>
+</span><span id="__span-5-91"><a id="__codelineno-5-91" name="__codelineno-5-91" href="#__codelineno-5-91"></a>
+</span><span id="__span-5-92"><a id="__codelineno-5-92" name="__codelineno-5-92" href="#__codelineno-5-92"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">logger.log</span><span class="p">:</span><span class="w"> </span><span class="s">"[АКТУАТОР]:</span><span class="nv"> </span><span class="s">Стан</span><span class="nv"> </span><span class="s">реле</span><span class="nv"> </span><span class="s">переведено</span><span class="nv"> </span><span class="s">в</span><span class="nv"> </span><span class="s">ON"</span>
+</span><span id="__span-5-93"><a id="__codelineno-5-93" name="__codelineno-5-93" href="#__codelineno-5-93"></a><span class="w">    </span><span class="nt">on_turn_off</span><span class="p">:</span>
+</span><span id="__span-5-94"><a id="__codelineno-5-94" name="__codelineno-5-94" href="#__codelineno-5-94"></a>
+</span><span id="__span-5-95"><a id="__codelineno-5-95" name="__codelineno-5-95" href="#__codelineno-5-95"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">logger.log</span><span class="p">:</span><span class="w"> </span><span class="s">"[АКТУАТОР]:</span><span class="nv"> </span><span class="s">Стан</span><span class="nv"> </span><span class="s">реле</span><span class="nv"> </span><span class="s">переведено</span><span class="nv"> </span><span class="s">в</span><span class="nv"> </span><span class="s">OFF"</span>
+</span><span id="__span-5-96"><a id="__codelineno-5-96" name="__codelineno-5-96" href="#__codelineno-5-96"></a>
+</span><span id="__span-5-97"><a id="__codelineno-5-97" name="__codelineno-5-97" href="#__codelineno-5-97"></a><span class="c1"># =====================================================================</span>
+</span><span id="__span-5-98"><a id="__codelineno-5-98" name="__codelineno-5-98" href="#__codelineno-5-98"></a><span class="c1"># ДЕКЛАРАЦІЯ ДИСКРЕТНИХ ВХОДІВ ТА ЛОКАЛЬНОЇ АВТОМАТИЗАЦІЇ</span>
+</span><span id="__span-5-99"><a id="__codelineno-5-99" name="__codelineno-5-99" href="#__codelineno-5-99"></a><span class="c1"># =====================================================================</span>
+</span><span id="__span-5-100"><a id="__codelineno-5-100" name="__codelineno-5-100" href="#__codelineno-5-100"></a><span class="nt">binary_sensor</span><span class="p">:</span>
+</span><span id="__span-5-101"><a id="__codelineno-5-101" name="__codelineno-5-101" href="#__codelineno-5-101"></a>
+</span><span id="__span-5-102"><a id="__codelineno-5-102" name="__codelineno-5-102" href="#__codelineno-5-102"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">platform</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gpio</span>
+</span><span id="__span-5-103"><a id="__codelineno-5-103" name="__codelineno-5-103" href="#__codelineno-5-103"></a><span class="w">    </span><span class="nt">pin</span><span class="p">:</span>
+</span><span id="__span-5-104"><a id="__codelineno-5-104" name="__codelineno-5-104" href="#__codelineno-5-104"></a><span class="w">      </span><span class="nt">number</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GPIO0</span>
+</span><span id="__span-5-105"><a id="__codelineno-5-105" name="__codelineno-5-105" href="#__codelineno-5-105"></a><span class="w">      </span><span class="nt">mode</span><span class="p">:</span>
+</span><span id="__span-5-106"><a id="__codelineno-5-106" name="__codelineno-5-106" href="#__codelineno-5-106"></a><span class="w">        </span><span class="nt">input</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span><span id="__span-5-107"><a id="__codelineno-5-107" name="__codelineno-5-107" href="#__codelineno-5-107"></a><span class="w">        </span><span class="nt">pullup</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span><span id="__span-5-108"><a id="__codelineno-5-108" name="__codelineno-5-108" href="#__codelineno-5-108"></a><span class="w">      </span><span class="nt">inverted</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span><span id="__span-5-109"><a id="__codelineno-5-109" name="__codelineno-5-109" href="#__codelineno-5-109"></a><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">"Office</span><span class="nv"> </span><span class="s">Wall</span><span class="nv"> </span><span class="s">Button"</span>
+</span><span id="__span-5-110"><a id="__codelineno-5-110" name="__codelineno-5-110" href="#__codelineno-5-110"></a><span class="w">    </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wall_push_button</span>
+</span><span id="__span-5-111"><a id="__codelineno-5-111" name="__codelineno-5-111" href="#__codelineno-5-111"></a>
+</span><span id="__span-5-112"><a id="__codelineno-5-112" name="__codelineno-5-112" href="#__codelineno-5-112"></a><span class="w">    </span><span class="c1"># Фільтрація брязкоту контактів (Debounce Filter)</span>
+</span><span id="__span-5-113"><a id="__codelineno-5-113" name="__codelineno-5-113" href="#__codelineno-5-113"></a><span class="w">    </span><span class="nt">filters</span><span class="p">:</span>
+</span><span id="__span-5-114"><a id="__codelineno-5-114" name="__codelineno-5-114" href="#__codelineno-5-114"></a>
+</span><span id="__span-5-115"><a id="__codelineno-5-115" name="__codelineno-5-115" href="#__codelineno-5-115"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">delayed_on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">50ms</span>
+</span><span id="__span-5-116"><a id="__codelineno-5-116" name="__codelineno-5-116" href="#__codelineno-5-116"></a>
+</span><span id="__span-5-117"><a id="__codelineno-5-117" name="__codelineno-5-117" href="#__codelineno-5-117"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">delayed_off</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">50ms</span>
+</span><span id="__span-5-118"><a id="__codelineno-5-118" name="__codelineno-5-118" href="#__codelineno-5-118"></a>
+</span><span id="__span-5-119"><a id="__codelineno-5-119" name="__codelineno-5-119" href="#__codelineno-5-119"></a><span class="w">    </span><span class="c1"># Специфікація топіка публікації стану кнопки в MQTT</span>
+</span><span id="__span-5-120"><a id="__codelineno-5-120" name="__codelineno-5-120" href="#__codelineno-5-120"></a><span class="w">    </span><span class="nt">state_topic</span><span class="p">:</span><span class="w"> </span><span class="s">"office/button/state"</span>
+</span><span id="__span-5-121"><a id="__codelineno-5-121" name="__codelineno-5-121" href="#__codelineno-5-121"></a>
+</span><span id="__span-5-122"><a id="__codelineno-5-122" name="__codelineno-5-122" href="#__codelineno-5-122"></a><span class="w">    </span><span class="c1"># Локальна автоматизація на межі мережі (Edge Action)</span>
+</span><span id="__span-5-123"><a id="__codelineno-5-123" name="__codelineno-5-123" href="#__codelineno-5-123"></a><span class="w">    </span><span class="nt">on_press</span><span class="p">:</span>
+</span><span id="__span-5-124"><a id="__codelineno-5-124" name="__codelineno-5-124" href="#__codelineno-5-124"></a>
+</span><span id="__span-5-125"><a id="__codelineno-5-125" name="__codelineno-5-125" href="#__codelineno-5-125"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">logger.log</span><span class="p">:</span><span class="w"> </span><span class="s">"[КНОПКА]:</span><span class="nv"> </span><span class="s">Фізичне</span><span class="nv"> </span><span class="s">натискання</span><span class="nv"> </span><span class="s">кнопки</span><span class="nv"> </span><span class="s">зафіксовано!"</span>
+</span><span id="__span-5-126"><a id="__codelineno-5-126" name="__codelineno-5-126" href="#__codelineno-5-126"></a>
+</span><span id="__span-5-127"><a id="__codelineno-5-127" name="__codelineno-5-127" href="#__codelineno-5-127"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">switch.toggle</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">office_light_relay</span>
+</span></code></pre></div>
+<h4 id="2">Крок 2. Перевірка та валідація синтаксису конфігурації</h4>
+<p>Перед початком процесу генерації коду необхідно переконатися у відсутності синтаксичних помилок та відповідності схеми конфігурації:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Перехід у робочу директорію проєкту</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nb">cd</span><span class="w"> </span>~/IoT_Labs/Lab6_ESPHome
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="c1"># Запуск валідатора конфігураційного файлу</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>esphome<span class="w"> </span>config<span class="w"> </span>config/esp32_node.yaml
+</span></code></pre></div>
+<p>У разі успішної валідації термінал виведе повідомлення <code>INFO Configuration is valid!</code>.</p>
+<h4 id="3-c">Крок 3. Компіляція вихідного коду C++ та генерація бінарного образу</h4>
+<p>Запустіть процес компіляції прошивки:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># Запуск генератора C++ коду та компілятора PlatformIO</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>esphome<span class="w"> </span>compile<span class="w"> </span>config/esp32_node.yaml
+</span></code></pre></div>
+<p>Фреймворк автоматично завантажить необхідні інструментальні ланцюги <code>toolchain-xtensa-esp32</code>, згенерує файли <code>src/main.cpp</code>, скомпілює всі бібліотеки зв'язку та створить виконуваний файл прошивки <code>.pioenvs/office-smart-node/firmware.bin</code>.</p>
+<hr />
+<h3 id="33">3.3 Запуск, тестування та перевірка результатів</h3>
+<ol>
+<li>Якщо використовується фізична плата ESP32, підключіть її через USB-кабель до комп'ютера та виконайте прошивку і запуск моніторингу:</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># Компіляція, прошивка через послідовний порт та відкриття логів</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>esphome<span class="w"> </span>run<span class="w"> </span>config/esp32_node.yaml
+</span></code></pre></div>
+<ol>
+<li>
+<p>Якщо тестування виконується у симуляторі Wokwi:</p>
+</li>
+<li>
+<p>Знайдіть скомпільований файл <code>firmware.bin</code> у каталозі <code>.esphome/build/office-smart-node/</code>;</p>
+</li>
+<li>
+<p>Завантажте бінарний образ у симулятор Wokwi через контекстне меню завантаження прошивки;</p>
+</li>
+<li>
+<p>Натисніть кнопку <strong>Start Simulation</strong>.</p>
+</li>
+<li>
+<p>Відкрийте <strong>Термінал №1</strong> на робочій станції та підпишіться на всі топіки вузла:</p>
+</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># Підписка на потоки стану кнопки, світлодіода та системного заповіту</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>mosquitto_sub<span class="w"> </span>-h<span class="w"> </span>broker.emqx.io<span class="w"> </span>-p<span class="w"> </span><span class="m">1883</span><span class="w"> </span>-t<span class="w"> </span><span class="s2">"office/#"</span><span class="w"> </span>-v
+</span></code></pre></div>
+<ol>
+<li>
+<p>Проведіть тестування локальної автоматизації:</p>
+</li>
+<li>
+<p>Натисніть фізичну тактову кнопку на платі ESP32 (кнопка <code>BOOT</code> на піні <code>GPIO0</code>);</p>
+</li>
+<li>
+<p>Переконайтеся, що світлодіод на піні <code>GPIO2</code> миттєво змінює стан на протилежний, а в терміналі з'являється лог натискання.</p>
+</li>
+<li>
+<p>Відкрийте <strong>Термінал №2</strong> та надішліть команду дистанційного керування через MQTT:</p>
+</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># Дистанційне увімкнення світла через команду брокеру</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>mosquitto_pub<span class="w"> </span>-h<span class="w"> </span>broker.emqx.io<span class="w"> </span>-p<span class="w"> </span><span class="m">1883</span><span class="w"> </span>-t<span class="w"> </span><span class="s2">"office/light/set"</span><span class="w"> </span>-m<span class="w"> </span><span class="s2">"ON"</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="c1"># Дистанційне вимкнення світла</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>mosquitto_pub<span class="w"> </span>-h<span class="w"> </span>broker.emqx.io<span class="w"> </span>-p<span class="w"> </span><span class="m">1883</span><span class="w"> </span>-t<span class="w"> </span><span class="s2">"office/light/set"</span><span class="w"> </span>-m<span class="w"> </span><span class="s2">"OFF"</span>
+</span></code></pre></div>
+<h4 id="esphome-logs">Еталонний протокол системного журналу утиліти <code>esphome logs</code>:</h4>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>[15:30:00][I][app:029]: Initializing Node 'office-smart-node'...
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>[15:30:00][I][wifi:598]: Connecting to 'Wokwi-GUEST'...
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>[15:30:04][I][wifi:415]: WiFi Connected! IP: 10.0.1.18, RSSI: -48 dB
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>[15:30:04][I][mqtt:156]: Connecting to MQTT Broker broker.emqx.io:1883...
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>[15:30:05][I][mqtt:212]: MQTT Connected! ClientID: 'Office_Node_ESP32'
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>[15:30:05][D][mqtt:375]: Publish(topic='office/status' payload='online' qos=1 retain=1)
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>[15:30:05][D][mqtt:375]: Publish(topic='office/light/state' payload='OFF' qos=0 retain=0)
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>[15:30:05][D][mqtt:375]: Publish(topic='office/button/state' payload='OFF' qos=0 retain=0)
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>[15:30:05][I][mqtt:230]: Subscribed to 'office/light/set'
+</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>[15:30:12][D][binary_sensor:036]: 'Office Wall Button': State change -&gt; ON
+</span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>[15:30:12][D][main:089]: [КНОПКА]: Фізичне натискання кнопки зафіксовано!
+</span><span id="__span-11-12"><a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a>[15:30:12][D][switch:013]: 'Office Main Light' Turning ON.
+</span><span id="__span-11-13"><a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a>[15:30:12][D][main:065]: [АКТУАТОР]: Стан реле переведено в ON
+</span><span id="__span-11-14"><a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a>[15:30:12][D][mqtt:375]: Publish(topic='office/button/state' payload='ON' qos=0 retain=0)
+</span><span id="__span-11-15"><a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a>[15:30:12][D][mqtt:375]: Publish(topic='office/light/state' payload='ON' qos=0 retain=0)
+</span><span id="__span-11-16"><a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a>[15:30:12][D][binary_sensor:036]: 'Office Wall Button': State change -&gt; OFF
+</span><span id="__span-11-17"><a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a>[15:30:12][D][mqtt:375]: Publish(topic='office/button/state' payload='OFF' qos=0 retain=0)
+</span><span id="__span-11-18"><a id="__codelineno-11-18" name="__codelineno-11-18" href="#__codelineno-11-18"></a>[15:30:25][D][mqtt:390]: Message arrived on 'office/light/set': 'OFF'
+</span><span id="__span-11-19"><a id="__codelineno-11-19" name="__codelineno-11-19" href="#__codelineno-11-19"></a>[15:30:25][D][switch:017]: 'Office Main Light' Turning OFF.
+</span><span id="__span-11-20"><a id="__codelineno-11-20" name="__codelineno-11-20" href="#__codelineno-11-20"></a>[15:30:25][D][main:068]: [АКТУАТОР]: Стан реле переведено в OFF
+</span><span id="__span-11-21"><a id="__codelineno-11-21" name="__codelineno-11-21" href="#__codelineno-11-21"></a>[15:30:25][D][mqtt:375]: Publish(topic='office/light/state' payload='OFF' qos=0 retain=0)
+</span></code></pre></div>
+<h4 id="mosquitto_sub">Еталонний вивід термінала підписника (<code>mosquitto_sub</code>):</h4>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>office/status online
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>office/light/state OFF
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>office/button/state OFF
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>office/button/state ON
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>office/light/state ON
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>office/button/state OFF
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>office/light/state OFF
+</span></code></pre></div>
+<hr />
+<h2 id="4">4 Вимоги до змісту звіту</h2>
+<p>Звіт оформлюється українською мовою згідно з вимогами стандарту ДСТУ 3008:2015 і повинен містити такі обов'язкові компоненти:</p>
+<ol>
+<li>
+<p><strong>Титульна сторінка</strong> із зазначенням навчального закладу, кафедри, навчальної дисципліни, номера лабораторної роботи, номера індивідуального варіанта, прізвища та ініціалів здобувача й викладача.</p>
+</li>
+<li>
+<p><strong>Мета роботи</strong> та теоретичні положення щодо переваг декларативного опису вбудованих систем порівняно з процедурним кодуванням.</p>
+</li>
+<li>
+<p><strong>Постановка індивідуального завдання</strong> для закріпленого варіанта з детальним описом обраних пінів GPIO, налаштувань фільтрів дебаунсингу та структури топіків MQTT.</p>
+</li>
+<li>
+<p><strong>Розрахункова частина:</strong> теоретичний розрахунок часової сталої вхідного RC-кола <span class="arithmatex">\(\tau\)</span> та мінімального часу програмної затримки <span class="arithmatex">\(T_{\text{debounce}}\)</span> для кнопки вашого варіанта згідно з математичною моделлю розділу 1.</p>
+</li>
+<li>
+<p><strong>Повний вихідний текст конфігураційних файлів</strong> <code>esp32_node.yaml</code> та <code>secrets.yaml</code> без скорочень із детальним коментуванням кожного функціонального блоку.</p>
+</li>
+<li>
+<p><strong>Результати тестування:</strong> скріншоти консолі під час компіляції прошивки утилітою <code>esphome compile</code>, логи моніторингу <code>esphome logs</code> та скріншоти відправки й отримання повідомлень у терміналах <code>mosquitto_sub</code>/<code>mosquitto_pub</code> або в інтерфейсі <code>MQTT Explorer</code>.</p>
+</li>
+<li>
+<p><strong>Аналітичні висновки</strong>, у яких оцінено автономність функціонування вузла при втраті зв'язку з брокером, проаналізовано обсяг згенерованого бінарного коду та сформульовано рекомендації щодо використання декларативного підходу у промислових проектах Інтернету речей.</p>
+</li>
+</ol>
+<hr />
+<h2 id="5">5 Контрольні запитання для захисту роботи</h2>
+<ol>
+<li>
+<p><strong>У чому полягає принципова різниця між декларативним підходом фреймворку ESPHome та класичним імперативним програмуванням мікроконтролерів мовою C++ у середовищі Arduino IDE?</strong></p>
+</li>
+<li>
+<p><strong>Яким чином цифровий фільтр <code>delayed_on</code> / <code>delayed_off</code> у блоці <code>filters</code> компонента <code>binary_sensor</code> забезпечує захист від брязкоту контактів?</strong> Як вибір занадто великого часу дебаунсингу впливає на чутливість системи до короткочасних натискань?</p>
+</li>
+<li>
+<p><strong>Поясніть механізм захисту від збоїв прошивки за технологією OTA (Dual Partitioning) у мікроконтролері ESP32.</strong> Чому для реалізації OTA обсяг пам'яті програми подвоюється у схемі розмітки Flash-пам'яті?</p>
+</li>
+<li>
+<p><strong>Яке призначення має компонент <code>captive_portal</code> у конфігурації ESPHome?</strong> За яких умов мікроконтролер активує власну аварійну точку доступу (Fallback AP)?</p>
+</li>
+<li>
+<p><strong>Яким чином у конфігурації ESPHome реалізується локальна автоматизація без участі зовнішнього сервера за допомогою тригерів <code>on_press</code>, <code>on_turn_on</code> та дій <code>switch.toggle</code>?</strong></p>
+</li>
+<li>
+<p><strong>Як працює механізм автоматичного виявлення пристроїв (MQTT Discovery / Native API) при інтеграції вузлів ESPHome із центральними платформами автоматизації (наприклад, Home Assistant)?</strong></p>
+</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Повернутись нагору
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Kyrylo Vadurin &bull; <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.top", "navigation.tracking", "header.autohide", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u0421\u043a\u043e\u043f\u0456\u0439\u043e\u0432\u0430\u043d\u043e \u0432 \u0431\u0443\u0444\u0435\u0440", "clipboard.copy": "\u0421\u043a\u043e\u043f\u0456\u044e\u0432\u0430\u0442\u0438 \u0432 \u0431\u0443\u0444\u0435\u0440", "search.result.more.one": "\u0429\u0435 1 \u0437\u0431\u0456\u0433 \u043d\u0430 \u0446\u0456\u0439 \u0441\u0442\u043e\u0440\u0456\u043d\u0446\u0456", "search.result.more.other": "\u0429\u0435 # \u0437\u0431\u0456\u0433\u0456\u0432 \u043d\u0430 \u0446\u0456\u0439 \u0441\u0442\u043e\u0440\u0456\u043d\u0446\u0456", "search.result.none": "\u0417\u0431\u0456\u0433\u0456\u0432 \u043d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u043e", "search.result.one": "\u0417\u043d\u0430\u0439\u0434\u0435\u043d\u043e 1 \u0437\u0431\u0456\u0433", "search.result.other": "\u0417\u043d\u0430\u0439\u0434\u0435\u043d\u043e # \u0437\u0431\u0456\u0433\u0456\u0432", "search.result.placeholder": "\u0420\u043e\u0437\u043f\u043e\u0447\u043d\u0456\u0442\u044c \u043f\u0438\u0441\u0430\u0442\u0438 \u0434\u043b\u044f \u043f\u043e\u0448\u0443\u043a\u0443", "search.result.term.missing": "\u041d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u043e \u0437\u0430\u043f\u0438\u0442\u0443", "select.version": "\u041e\u0431\u0440\u0430\u0442\u0438 \u0432\u0435\u0440\u0441\u0456\u044e"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

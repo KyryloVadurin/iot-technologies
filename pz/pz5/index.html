@@ -1,0 +1,3027 @@
+
+<!doctype html>
+<html lang="uk" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Навчальний портал з дисципліни "Технології ІоТ"">
+      
+      
+      
+      
+        <link rel="prev" href="../pz4/">
+      
+      
+        <link rel="next" href="../pz6/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>ПЗ 5. Оптимізація енергетичного профілю - Технології Інтернету речей</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#no-5-iot-" class="md-skip">
+          Перейти до змісту
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Хедер">
+    <a href="../.." title="Технології Інтернету речей" class="md-header__button md-logo" aria-label="Технології Інтернету речей" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Технології Інтернету речей
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              ПЗ 5. Оптимізація енергетичного профілю
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan"  aria-label="Переключити на темну тему"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Переключити на темну тему" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="cyan"  aria-label="Переключити на світлу тему"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Переключити на світлу тему" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Пошук" placeholder="Пошук" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Шукати">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Очистити" aria-label="Очистити" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Пошук розпочато
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Вкладки" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Робоча програма
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../lk/lk1/" class="md-tabs__link">
+          
+  
+  
+  Лекції
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../lb/lb1/" class="md-tabs__link">
+          
+  
+  
+  Лабораторні роботи
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../pz1/" class="md-tabs__link">
+          
+  
+  
+  Практичні заняття
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../kp/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Курсовий проєкт
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../sr/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Самостійна робота
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../sr/quest/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Контрольні завдання (Іспит)
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Навігація" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Технології Інтернету речей" class="md-nav__button md-logo" aria-label="Технології Інтернету речей" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Технології Інтернету речей
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Робоча програма
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Лекції
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Лекції
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lk/lk1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 1. Екосистема та архітектура IoT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lk/lk2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 2. Технології WPAN та WLAN у IoT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lk/lk3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 3. LPWAN технології
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lk/lk4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 4. Прикладні протоколи ІоТ (MQTT, CoAP)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lk/lk5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 5. Туманні (Fog) та граничні (Edge) обчислення
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lk/lk6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 6. Мікроконтролерні платформи (ESP32)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lk/lk7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 7. Інтелектуальні сенсори
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lk/lk8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 8. Виконавчі пристрої
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lk/lk9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 9. Віртуалізація та контейнеризація IoT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lk/lk10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 10. IoT платформи та Middleware
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lk/lk11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 11. Розумний будинок (Home Assistant)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lk/lk12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 12. Промисловий ІоТ (IIoT)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lk/lk13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 13. Big Data в ІоТ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lk/lk14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 14. Machine Learning на межі мережі
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lk/lk15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 15. Кібербезпека в системах ІоТ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Лабораторні роботи
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Лабораторні роботи
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 1. Моделювання топологій IoT-мереж
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 2. Симуляція підсистем Розумного будинку
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 3. Дослідження локального MQTT-брокера
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 4. Схемотехнічне моделювання вузла збору
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 5. Прошивка ESP32 для передавання телеметрії MQTT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 6. Декларативне програмування ESP32 (ESPHome)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 7. Серверне середовище Linux для IoT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 8. Контейнеризація в ІоТ (Docker Compose)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 9. Middleware ІоТ (Node-RED)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 10. Сервіс REST API для агрегації даних
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 11. Платформи розумного будинку (Home Assistant)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 12. Сценарії автоматизації Home Assistant
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 13. Обробка телеметрії мовою Python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 14. HMI Dashboard для диспетчеризації
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 15. Комплексне наскрізне тестування IoT-системи
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практичні заняття
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Практичні заняття
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pz1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 1. Розрахунок пропускної здатності та живлення
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pz2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 2. Проєктування ієрархії топіків MQTT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pz3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 3. Правила фільтрації на Edge-шлюзах
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pz4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 4. Моделювання АЦП для сенсорів
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 5. Оптимізація енергетичного профілю
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 5. Оптимізація енергетичного профілю
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Зміст">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Зміст
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1 Теоретичні відомості
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-0" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2 Підготовка середовища та розгортання проєкту (Крок 0)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3 Порядок виконання роботи
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3 Порядок виконання роботи">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Індивідуальні завдання
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Покроковий алгоритм та розв'язок еталонного прикладу
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2 Покроковий алгоритм та розв&#39;язок еталонного прикладу">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-dhcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 1. Розрахунок витрат заряду та енергії для базового режиму (DHCP)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-fast-wi-fi-connect" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 2. Розрахунок показників після оптимізації (Fast Wi-Fi Connect)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#python" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Програмна реалізація модуля профілювання та побудови графіків (Python)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Запуск, тестування та перевірка результатів
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4 Вимоги до змісту звіту
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5 Контрольні запитання для захисту роботи
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pz6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 6. Проєктування конфігурації Docker Compose
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pz7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 7. Логічні схеми в Node-RED
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pz8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 8. Сценарії Trigger-Condition-Action
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pz9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 9. Конвеєр обробки даних (ETL)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pz10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 10. Моделювання загроз безпеки (STRIDE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Курсовий проєкт
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Самостійна робота
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sr/quest/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Контрольні завдання (Іспит)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Зміст">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Зміст
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1 Теоретичні відомості
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-0" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2 Підготовка середовища та розгортання проєкту (Крок 0)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3 Порядок виконання роботи
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3 Порядок виконання роботи">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Індивідуальні завдання
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Покроковий алгоритм та розв'язок еталонного прикладу
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2 Покроковий алгоритм та розв&#39;язок еталонного прикладу">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-dhcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 1. Розрахунок витрат заряду та енергії для базового режиму (DHCP)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-fast-wi-fi-connect" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 2. Розрахунок показників після оптимізації (Fast Wi-Fi Connect)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#python" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Програмна реалізація модуля профілювання та побудови графіків (Python)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Запуск, тестування та перевірка результатів
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4 Вимоги до змісту звіту
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5 Контрольні запитання для захисту роботи
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="no-5-iot-">Практичне заняття № 5. Складання та оптимізація енергетичного профілю функціонування акумуляторного IoT-вузла</h1>
+<p><strong>Мета:</strong> Дослідити динаміку енергоспоживання автономних мікроконтролерних модулів на різних фазах їхнього робочого циклу, опанувати методику побудови деталізованих часових діаграм (таймінг-діаграм) зміни струму навантаження, навчитися аналітично визначати найбільш енергозатратні етапи функціонування вузла та розробляти інженерні рішення щодо їхньої оптимізації для подовження ресурсу автономного живлення.</p>
+<p><strong>Стек технологій та інструменти:</strong></p>
+<ul>
+<li>
+<p><strong>Мова програмування / Середовище:</strong> Python 3.10+ (модулі <code>matplotlib</code>, <code>numpy</code>, <code>tabulate</code> для точного числового моделювання енергетичного профілю та візуалізації ступінчастих таймінг-діаграм), середовище побудови інженерних схем (Draw.io / Microsoft Visio).</p>
+</li>
+<li>
+<p><strong>Платформа / Бібліотеки / Модулі:</strong> Бібліотека <code>matplotlib.pyplot</code> для побудови графіків струмів <span class="arithmatex">\(I(t)\)</span> та кругових діаграм питомого розподілу енергії.</p>
+</li>
+<li>
+<p><strong>Інструменти розробки:</strong> Текстовий редактор Visual Studio Code, термінал командного рядка (CLI).</p>
+</li>
+</ul>
+<hr />
+<h2 id="1">1 Теоретичні відомості</h2>
+<p>Автономні вузли бездротових сенсорних мереж, які функціонують на базі мікроконтролерів із вбудованими радіоінтерфейсами Wi-Fi (зокрема, сімейства ESP32 або ESP8266), мають дискретно-змінний профіль струму споживання. Амплітуда струму змінюється від одиниць мікроамперів у стані глибокого сну до кількох сотень міліамперів під час активного випромінювання електромагнітної енергії в ефір.</p>
+<p>Повний період функціонування типового вимірювального вузла (<span class="arithmatex">\(T_{\text{cycle}}\)</span>) складається з п'яти послідовних фаз, кожна з яких характеризується власною тривалістю (<span class="arithmatex">\(t_k\)</span>) та середнім струмом споживання (<span class="arithmatex">\(I_k\)</span>):</p>
+<ol>
+<li>
+<p><strong>Фаза ініціалізації та пробудження ядра (<span class="arithmatex">\(t_1, I_1\)</span>):</strong> мікроконтролер виходить зі стану сну, стабілізує роботу кварцового генератора, ініціалізує системні шини та завантажує первинний код із Flash-пам'яті;</p>
+</li>
+<li>
+<p><strong>Фаза опитування сенсора та АЦП-перетворення (<span class="arithmatex">\(t_2, I_2\)</span>):</strong> мікроконтролер подає живлення на датчик, виконує обмін даними цифровими шинами I2C/SPI або зчитує аналоговий сигнал за допомогою АЦП і проводить первинну обробку масиву;</p>
+</li>
+<li>
+<p><strong>Фаза встановлення радіозв'язку Wi-Fi (<span class="arithmatex">\(t_3, I_3\)</span>):</strong> радіочастотний тракт виконує сканування радіоефіру, здійснює процедуру асоціації з точкою доступу за протоколом IEEE 802.11, виконує 4-етапне рукостискання WPA2/WPA3 та отримує мережеві параметри від сервера DHCP;</p>
+</li>
+<li>
+<p><strong>Фаза мережевого обміну та публікації MQTT (<span class="arithmatex">\(t_4, I_4\)</span>):</strong> пристрій встановлює TCP-з'єднання з брокером повідомлень на порту 1883, передає пакет авторизації <code>CONNECT</code>, надсилає пакет <code>PUBLISH</code> із корисним навантаженням телеметрії, очікує квитанцію <code>PUBACK</code> (для рівня QoS 1) та коректно розриває з'єднання командою <code>DISCONNECT</code>;</p>
+</li>
+<li>
+<p><strong>Фаза ультранизького енергоспоживання / Deep Sleep (<span class="arithmatex">\(t_5, I_5\)</span>):</strong> обчислювальні ядра, радіотрансивер та основна оперативна пам'ять знеструмлюються, а активними залишаються лише таймер реального часу RTC та схема виявлення зовнішніх переривань.</p>
+</li>
+</ol>
+<p><pre class="mermaid"><code>gantt
+    title Послідовність та тривалість фаз робочого циклу IoT-вузла
+    dateFormat X
+    axisFormat %s с
+
+    section Пробудження
+    Ініціалізація ядра (t1=0.12 c)        :active, 0, 120
+
+    section Вимірювання
+    Опитування сенсора (t2=0.08 c)        :crit, 120, 200
+
+    section Мережа
+    Асоціація Wi-Fi та DHCP (t3=2.20 c)  :done, 200, 2400
+    Публікація MQTT (t4=0.25 c)          :active, 2400, 2650
+
+    section Сон
+    Режим Deep Sleep (t5=597.35 c)       : 2650, 600000</code></pre>
+<em>Рисунок 1 — Часова діаграма послідовності виконання фаз одного робочого циклу</em></p>
+<p>Діаграма на рисунку 1 наочно демонструє часові пропорції між окремими фазами. Незважаючи на те, що активна робота триває менше <span class="arithmatex">\(3\)</span> секунд, саме вона формує основне навантаження на джерело енергії.</p>
+<p><pre class="mermaid"><code>graph TD
+    subgraph Traditional_Boot [Традиційний запуск із динамічним DHCP]
+        A1[Пробудження ядра] --&gt; A2[Опитування сенсора]
+        A2 --&gt; A3[Повне сканування каналів Wi-Fi 1..13]
+        A3 --&gt; A4[Асоціація та очікування DHCP: 2.0 - 4.0 с]
+        A4 --&gt; A5[Публікація MQTT]
+        A5 --&gt; A6[Перехід у Deep Sleep]
+    end
+
+    subgraph Optimized_FastBoot [Оптимізований запуск із збереженням стану в RTC]
+        B1[Пробудження ядра] --&gt; B2[Опитування сенсора]
+        B2 --&gt; B3[Зчитування BSSID, каналу та статичного IP з пам'яті RTC]
+        B3 --&gt; B4[Миттєве підключення до фіксованого каналу: 0.2 - 0.3 с]
+        B4 --&gt; B5[Публікація MQTT]
+        B5 --&gt; B6[Збереження параметрів та перехід у Deep Sleep]
+    end
+
+    style A4 fill:#ff7675,stroke:#d63031,stroke-width:2px,color:#fff
+    style B4 fill:#55efc4,stroke:#00b894,stroke-width:2px,color:#000</code></pre>
+<em>Рисунок 2 — Порівняння алгоритмів стандартного та оптимізованого підключення до мережі Wi-Fi</em></p>
+<p>Алгоритмічна схема на рисунку 2 ілюструє ключовий напрямок енергетичної оптимізації. Використання енергонезалежної пам'яті RTC для кешування параметрів радіоканалу та налаштування статичної IP-адреси дозволяє уникнути процедури широкомовного узгодження DHCP, скорочуючи час найважчої фази у <span class="arithmatex">\(8 \dots 10\)</span> разів.</p>
+<p>Математична оцінка електричного заряду (<span class="arithmatex">\(Q_k\)</span>), який витрачається пристроєм на <span class="arithmatex">\(k\)</span>-й фазі робочого циклу, визначається добутком струму на відповідний інтервал часу:</p>
+<div class="arithmatex">\[Q_k = I_k \cdot t_k\]</div>
+<p>У цьому виразі <span class="arithmatex">\(Q_k\)</span> вимірюється в міліампер-секундах (<span class="arithmatex">\(\text{мА}\cdot\text{с}\)</span>), змінна <span class="arithmatex">\(I_k\)</span> позначає середній струм споживання на <span class="arithmatex">\(k\)</span>-й фазі в міліамперах (<span class="arithmatex">\(\text{мА}\)</span>), а <span class="arithmatex">\(t_k\)</span> є тривалістю цієї фази в секундах (<span class="arithmatex">\(\text{с}\)</span>).</p>
+<p>Сумарний електричний заряд (<span class="arithmatex">\(Q_{\text{total}}\)</span>), витрачений за один повний робочий цикл, дорівнює сумі зарядів усіх п'яти послідовних станів:</p>
+<div class="arithmatex">\[Q_{\text{total}} = \sum_{k=1}^{5} Q_k = Q_1 + Q_2 + Q_3 + Q_4 + Q_5\]</div>
+<p>де <span class="arithmatex">\(Q_{\text{total}}\)</span> виражається в міліампер-секундах (<span class="arithmatex">\(\text{мА}\cdot\text{с}\)</span>).</p>
+<p>Електрична енергія (<span class="arithmatex">\(E_k\)</span>), що споживається схемою протягом кожної окремої фази, розраховується з урахуванням номінальної напруги живлення:</p>
+<div class="arithmatex">\[E_k = U \cdot Q_k = U \cdot I_k \cdot t_k\]</div>
+<p>У цьому рівнянні змінна <span class="arithmatex">\(E_k\)</span> позначає енерговитрати у міліджоулях (<span class="arithmatex">\(\text{мДж}\)</span>), а <span class="arithmatex">\(U\)</span> представляє вихідну напругу стабілізатора або акумулятора у вольтах (<span class="arithmatex">\(\text{В}\)</span>).</p>
+<p>Питома вагомість (частка) енерговитрат кожної фази у загальному балансі (<span class="arithmatex">\(\gamma_k\)</span>) обчислюється у відсотках за формулою:</p>
+<div class="arithmatex">\[\gamma_k = \frac{E_k}{E_{\text{total}}} \cdot 100\% = \frac{Q_k}{Q_{\text{total}}} \cdot 100\%\]</div>
+<p>де <span class="arithmatex">\(\gamma_k\)</span> є безрозмірним відсотковим коефіцієнтом (<span class="arithmatex">\(\%\)</span>), що дозволяє точно локалізувати енергетичні втрати системи.</p>
+<p>Середній інтегральний струм навантаження (<span class="arithmatex">\(I_{\text{avg}}\)</span>) за весь період моніторингу становить:</p>
+<div class="arithmatex">\[I_{\text{avg}} = \frac{Q_{\text{total}}}{T_{\text{cycle}}}\]</div>
+<p>де <span class="arithmatex">\(T_{\text{cycle}} = \sum_{k=1}^5 t_k\)</span> позначає повний період опитування у секундах (<span class="arithmatex">\(\text{с}\)</span>), а <span class="arithmatex">\(I_{\text{avg}}\)</span> виражається в міліамперах (<span class="arithmatex">\(\text{мА}\)</span>).</p>
+<p>Оцінка розрахункового терміну функціонування вузла (<span class="arithmatex">\(T_{\text{life}}\)</span>) у роках із урахуванням корисної ємності батареї (<span class="arithmatex">\(C_{\text{nom}}\)</span>), коефіцієнта глибини розряду (<span class="arithmatex">\(\eta_{\text{bat}}\)</span>) та річного струму саморозряду (<span class="arithmatex">\(I_{\text{self}}\)</span>) визначається виразом:</p>
+<div class="arithmatex">\[T_{\text{life}} = \frac{C_{\text{nom}} \cdot \eta_{\text{bat}}}{\left( I_{\text{avg}} + \frac{C_{\text{nom}} \cdot \sigma_{\text{self}}}{8760 \cdot 100\%} \right) \cdot 8760}\]</div>
+<p>де <span class="arithmatex">\(T_{\text{life}}\)</span> вимірюється в роках (<span class="arithmatex">\(\text{роки}\)</span>), <span class="arithmatex">\(C_{\text{nom}}\)</span> — номінальна ємність батареї в міліампер-годинах (<span class="arithmatex">\(\text{мА}\cdot\text{год}\)</span>), <span class="arithmatex">\(\eta_{\text{bat}}\)</span> — коефіцієнт віддачі ємності (приймається <span class="arithmatex">\(\eta_{\text{bat}} = 0{,}85\)</span>), <span class="arithmatex">\(\sigma_{\text{self}}\)</span> — річний відсоток саморозряду (<span class="arithmatex">\(\%/\text{рік}\)</span>), а константа 8760 позначає кількість годин у році.</p>
+<hr />
+<h2 id="2-0">2 Підготовка середовища та розгортання проєкту (Крок 0)</h2>
+<p>Для виконання практичних розрахунків, моделювання профілів струму та графічної побудови таймінг-діаграм використовується мова програмування Python версії 3.10 або вище.</p>
+<ol>
+<li>Запустіть емулятор термінала операційної системи та перевірте наявність інстальованого інтерпретатора Python:</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Перевірка версії інтерпретатора Python</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>python3<span class="w"> </span>--version
+</span></code></pre></div>
+<ol>
+<li>Створіть структуру папок проєкту для розміщення вихідних скриптів, таблиць та побудованих графіків:</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Створення робочих каталогів практичного заняття</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>~/IoT_Energy_Profiling/<span class="o">{</span>scripts,plots,diagrams,reports<span class="o">}</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nb">cd</span><span class="w"> </span>~/IoT_Energy_Profiling
+</span></code></pre></div>
+<ol>
+<li>Створіть та активуйте віртуальне середовище:</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Створення віртуального середовища</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>venv_profiling
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1"># Активація середовища в Linux / macOS</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="nb">source</span><span class="w"> </span>venv_profiling/bin/activate
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="c1"># Активація середовища в Windows PowerShell</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>.<span class="se">\v</span>env_profiling<span class="se">\S</span>cripts<span class="se">\A</span>ctivate.ps1
+</span></code></pre></div>
+<ol>
+<li>Встановіть необхідні модулі для графічної побудови часових діаграм та розрахунку балансу:</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Встановлення необхідних бібліотек через pip</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>pip<span class="w"> </span>install<span class="w"> </span>matplotlib<span class="w"> </span>numpy<span class="w"> </span>tabulate<span class="w"> </span>pandas
+</span></code></pre></div>
+<p>Структура каталогу проєкту має такий вигляд:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>IoT_Energy_Profiling/
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>├── diagrams/
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>│   └── timing_profile.drawio     # Векторна часова діаграма станів пристрою (Draw.io)
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>├── plots/
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>│   ├── current_timing_plot.png   # Побудований графік функції струму I(t)
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>│   └── energy_pie_chart.png      # Кругова діаграма питомого розподілу енергії за фазами
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>├── scripts/
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>│   └── profile_optimizer.py      # Головний розрахунковий модуль та генератор графіків
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>└── reports/
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>    └── profiling_summary.txt     # Протокол чисельних розрахунків та аналізу оптимізації
+</span></code></pre></div>
+<hr />
+<h2 id="3">3 Порядок виконання роботи</h2>
+<h3 id="31">3.1 Індивідуальні завдання</h3>
+<p>Кожен здобувач вищої освіти здійснює розрахунок енергетичного профілю функціонування вузла, будує графічну таймінг-діаграму зміни струму <span class="arithmatex">\(I(t)\)</span>, визначає критичну фазу максимальних енерговитрат та розраховує ефект від впровадження інженерної оптимізації відповідно до закріпленого варіанта з таблиці 1.</p>
+<p><em>Таблиця 1 — Індивідуальні варіанти параметрів робочого циклу IoT-вузла</em></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Варіант</th>
+<th style="text-align: left;">Склад мікроконтролера та сенсора</th>
+<th style="text-align: center;">Номінал АКБ <span class="arithmatex">\(C_{\text{nom}}\)</span> (мА·год) / <span class="arithmatex">\(U\)</span> (В)</th>
+<th style="text-align: center;">Фаза 1: <span class="arithmatex">\(I_1\)</span> (мА) / <span class="arithmatex">\(t_1\)</span> (мс)</th>
+<th style="text-align: center;">Фаза 2: <span class="arithmatex">\(I_2\)</span> (мА) / <span class="arithmatex">\(t_2\)</span> (мс)</th>
+<th style="text-align: center;">Фаза 3: <span class="arithmatex">\(I_3\)</span> (мА) / <span class="arithmatex">\(t_3\)</span> (мс)</th>
+<th style="text-align: center;">Фаза 4: <span class="arithmatex">\(I_4\)</span> (мА) / <span class="arithmatex">\(t_4\)</span> (мс)</th>
+<th style="text-align: center;">Фаза 5: <span class="arithmatex">\(I_5\)</span> (мкА)</th>
+<th style="text-align: center;">Інтервал <span class="arithmatex">\(T_{\text{cycle}}\)</span> (хв)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>1</strong></td>
+<td style="text-align: left;">ESP32 + BME280 (Тиск/Вологість)</td>
+<td style="text-align: center;">2600 / 3.3</td>
+<td style="text-align: center;">45 / 120</td>
+<td style="text-align: center;">18 / 80</td>
+<td style="text-align: center;">110 / 2200</td>
+<td style="text-align: center;">140 / 250</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">10</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>2</strong></td>
+<td style="text-align: left;">ESP8266 + DHT22 (Клімат)</td>
+<td style="text-align: center;">1800 / 3.3</td>
+<td style="text-align: center;">35 / 150</td>
+<td style="text-align: center;">12 / 250</td>
+<td style="text-align: center;">95 / 2800</td>
+<td style="text-align: center;">125 / 300</td>
+<td style="text-align: center;">20</td>
+<td style="text-align: center;">5</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>3</strong></td>
+<td style="text-align: left;">STM32 + ESP-01 + DS18B20</td>
+<td style="text-align: center;">1200 / 3.0</td>
+<td style="text-align: center;">25 / 100</td>
+<td style="text-align: center;">8 / 750</td>
+<td style="text-align: center;">80 / 2100</td>
+<td style="text-align: center;">110 / 200</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">15</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>4</strong></td>
+<td style="text-align: left;">ESP32-S3 + MPU6050 (Акселерометр)</td>
+<td style="text-align: center;">3000 / 3.3</td>
+<td style="text-align: center;">55 / 110</td>
+<td style="text-align: center;">22 / 60</td>
+<td style="text-align: center;">120 / 1900</td>
+<td style="text-align: center;">150 / 350</td>
+<td style="text-align: center;">12</td>
+<td style="text-align: center;">2</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>5</strong></td>
+<td style="text-align: left;">ESP32 + Оптичний датчик пилу</td>
+<td style="text-align: center;">2200 / 3.3</td>
+<td style="text-align: center;">45 / 130</td>
+<td style="text-align: center;">30 / 120</td>
+<td style="text-align: center;">115 / 2400</td>
+<td style="text-align: center;">145 / 280</td>
+<td style="text-align: center;">15</td>
+<td style="text-align: center;">8</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>6</strong></td>
+<td style="text-align: left;">ESP32-C3 + SHT30 (I2C)</td>
+<td style="text-align: center;">1500 / 3.3</td>
+<td style="text-align: center;">30 / 90</td>
+<td style="text-align: center;">10 / 40</td>
+<td style="text-align: center;">85 / 1600</td>
+<td style="text-align: center;">110 / 180</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">5</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>7</strong></td>
+<td style="text-align: left;">ESP8266 + Аналоговий датчик газу MQ-2</td>
+<td style="text-align: center;">3200 / 3.3</td>
+<td style="text-align: center;">40 / 160</td>
+<td style="text-align: center;">150 / 500</td>
+<td style="text-align: center;">100 / 3100</td>
+<td style="text-align: center;">130 / 320</td>
+<td style="text-align: center;">25</td>
+<td style="text-align: center;">30</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>8</strong></td>
+<td style="text-align: left;">ESP32 + Ультразвуковий HC-SR04</td>
+<td style="text-align: center;">2000 / 3.3</td>
+<td style="text-align: center;">45 / 120</td>
+<td style="text-align: center;">25 / 100</td>
+<td style="text-align: center;">110 / 2050</td>
+<td style="text-align: center;">140 / 240</td>
+<td style="text-align: center;">11</td>
+<td style="text-align: center;">6</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>9</strong></td>
+<td style="text-align: left;">nRF52840 + Wi-Fi копроцесор</td>
+<td style="text-align: center;">1000 / 3.0</td>
+<td style="text-align: center;">18 / 60</td>
+<td style="text-align: center;">6 / 50</td>
+<td style="text-align: center;">75 / 1500</td>
+<td style="text-align: center;">95 / 150</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">12</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>10</strong></td>
+<td style="text-align: left;">ESP32 + Датчик освітленості BH1750</td>
+<td style="text-align: center;">2400 / 3.3</td>
+<td style="text-align: center;">45 / 110</td>
+<td style="text-align: center;">9 / 180</td>
+<td style="text-align: center;">110 / 2300</td>
+<td style="text-align: center;">140 / 260</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">10</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>11</strong></td>
+<td style="text-align: left;">ESP8266 + Тензодатчик HX711</td>
+<td style="text-align: center;">2500 / 3.3</td>
+<td style="text-align: center;">38 / 140</td>
+<td style="text-align: center;">16 / 400</td>
+<td style="text-align: center;">98 / 2600</td>
+<td style="text-align: center;">128 / 290</td>
+<td style="text-align: center;">18</td>
+<td style="text-align: center;">15</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>12</strong></td>
+<td style="text-align: left;">ESP32-S2 + Датчик вологості грунту</td>
+<td style="text-align: center;">1900 / 3.3</td>
+<td style="text-align: center;">42 / 100</td>
+<td style="text-align: center;">14 / 70</td>
+<td style="text-align: center;">105 / 1850</td>
+<td style="text-align: center;">135 / 220</td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">20</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>13</strong></td>
+<td style="text-align: left;">ESP32 + Інфрачервоний датчик полум'я</td>
+<td style="text-align: center;">2800 / 3.3</td>
+<td style="text-align: center;">45 / 120</td>
+<td style="text-align: center;">15 / 50</td>
+<td style="text-align: center;">110 / 2150</td>
+<td style="text-align: center;">140 / 250</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">4</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>14</strong></td>
+<td style="text-align: left;">ESP8266 + Датчик шуму (мікрофон)</td>
+<td style="text-align: center;">1600 / 3.3</td>
+<td style="text-align: center;">36 / 150</td>
+<td style="text-align: center;">20 / 300</td>
+<td style="text-align: center;">96 / 2900</td>
+<td style="text-align: center;">126 / 310</td>
+<td style="text-align: center;">22</td>
+<td style="text-align: center;">10</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>15</strong></td>
+<td style="text-align: left;">ESP32 + Магнітометр HMC5883L</td>
+<td style="text-align: center;">2100 / 3.3</td>
+<td style="text-align: center;">45 / 115</td>
+<td style="text-align: center;">12 / 90</td>
+<td style="text-align: center;">110 / 2100</td>
+<td style="text-align: center;">140 / 230</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">15</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>16</strong></td>
+<td style="text-align: left;">ESP32-C3 + Термопара MAX6675</td>
+<td style="text-align: center;">1700 / 3.3</td>
+<td style="text-align: center;">32 / 95</td>
+<td style="text-align: center;">15 / 110</td>
+<td style="text-align: center;">88 / 1700</td>
+<td style="text-align: center;">115 / 190</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">8</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>17</strong></td>
+<td style="text-align: left;">ESP32 + Водолічильник з імпульсним виходом</td>
+<td style="text-align: center;">3500 / 3.3</td>
+<td style="text-align: center;">45 / 120</td>
+<td style="text-align: center;">5 / 30</td>
+<td style="text-align: center;">110 / 2000</td>
+<td style="text-align: center;">140 / 220</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">60</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>18</strong></td>
+<td style="text-align: left;">ESP8266 + Датчик тиску BMP180</td>
+<td style="text-align: center;">1400 / 3.3</td>
+<td style="text-align: center;">35 / 145</td>
+<td style="text-align: center;">11 / 85</td>
+<td style="text-align: center;">95 / 2750</td>
+<td style="text-align: center;">125 / 270</td>
+<td style="text-align: center;">19</td>
+<td style="text-align: center;">10</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>19</strong></td>
+<td style="text-align: left;">ESP32 + Датчик струму ACS712</td>
+<td style="text-align: center;">2600 / 3.3</td>
+<td style="text-align: center;">48 / 130</td>
+<td style="text-align: center;">28 / 150</td>
+<td style="text-align: center;">112 / 2250</td>
+<td style="text-align: center;">142 / 260</td>
+<td style="text-align: center;">12</td>
+<td style="text-align: center;">5</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>20</strong></td>
+<td style="text-align: left;">ESP32 + Датчик CO2 MH-Z19B</td>
+<td style="text-align: center;">3000 / 3.3</td>
+<td style="text-align: center;">45 / 120</td>
+<td style="text-align: center;">60 / 1200</td>
+<td style="text-align: center;">110 / 2200</td>
+<td style="text-align: center;">140 / 250</td>
+<td style="text-align: center;">14</td>
+<td style="text-align: center;">30</td>
+</tr>
+</tbody>
+</table>
+<p><em>Примітка:</em> Для всіх варіантів річний саморозряд батареї прийняти <span class="arithmatex">\(\sigma_{\text{self}} = 2\%/\text{рік}\)</span>, а коефіцієнт глибини розряду <span class="arithmatex">\(\eta_{\text{bat}} = 0{,}85\)</span>. При моделюванні оптимізованого режиму час фази Wi-Fi (<span class="arithmatex">\(t_3\)</span>) скорочується до <span class="arithmatex">\(250\text{ мс}\)</span> за рахунок використання статичної IP-адреси та BSSID-кешування.</p>
+<hr />
+<h3 id="32">3.2 Покроковий алгоритм та розв'язок еталонного прикладу</h3>
+<p>Як еталонний приклад виконаємо повний інженерний розрахунок енергетичного балансу, складемо пофазний розподіл та розрахуємо подовження життєвого циклу в результаті оптимізації для <strong>«Бездротового сенсорного вузла моніторингу температури та вологості на базі ESP32 і датчика BME280»</strong>.</p>
+<p>Вихідні параметри еталонного вузла:</p>
+<ul>
+<li>
+<p>Номінальна напруга живлення схеми: <span class="arithmatex">\(U = 3{,}3\text{ В}\)</span>;</p>
+</li>
+<li>
+<p>Номінальна ємність літій-іонного акумулятора: <span class="arithmatex">\(C_{\text{nom}} = 2500\text{ мА}\cdot\text{год}\)</span>;</p>
+</li>
+<li>
+<p>Загальний період повторення циклу: <span class="arithmatex">\(T_{\text{cycle}} = 10\text{ хв} = 600\text{ с}\)</span>;</p>
+</li>
+<li>
+<p>Параметри фази 1 (Пробудження та завантаження ядра): <span class="arithmatex">\(I_1 = 45\text{ мА}\)</span>, <span class="arithmatex">\(t_1 = 120\text{ мс} = 0{,}12\text{ с}\)</span>;</p>
+</li>
+<li>
+<p>Параметри фази 2 (Опитування сенсора BME280 по I2C): <span class="arithmatex">\(I_2 = 18\text{ мА}\)</span>, <span class="arithmatex">\(t_2 = 80\text{ мс} = 0{,}08\text{ с}\)</span>;</p>
+</li>
+<li>
+<p>Параметри фази 3 (Асоціація Wi-Fi та отримання IP через DHCP): <span class="arithmatex">\(I_3 = 110\text{ мА}\)</span>, <span class="arithmatex">\(t_3 = 2200\text{ мс} = 2{,}20\text{ с}\)</span>;</p>
+</li>
+<li>
+<p>Параметри фази 4 (Встановлення TCP та публікація MQTT): <span class="arithmatex">\(I_4 = 140\text{ мА}\)</span>, <span class="arithmatex">\(t_4 = 250\text{ мс} = 0{,}25\text{ с}\)</span>;</p>
+</li>
+<li>
+<p>Параметри фази 5 (Режим Deep Sleep): <span class="arithmatex">\(I_5 = 10\text{ мкА} = 0{,}010\text{ мА}\)</span>;</p>
+</li>
+<li>
+<p>Параметри оптимізованої фази 3 (Fast Wi-Fi Connect зі статичним IP): <span class="arithmatex">\(I_{3\text{\_opt}} = 110\text{ мА}\)</span>, <span class="arithmatex">\(t_{3\text{\_opt}} = 250\text{ мс} = 0{,}25\text{ с}\)</span>.</p>
+</li>
+</ul>
+<h4 id="1-dhcp">Крок 1. Розрахунок витрат заряду та енергії для базового режиму (DHCP)</h4>
+<ol>
+<li>Обчислюємо тривалість активного стану пристрою (<span class="arithmatex">\(t_{\text{active}}\)</span>):</li>
+</ol>
+<div class="arithmatex">\[t_{\text{active}} = t_1 + t_2 + t_3 + t_4 = 0{,}12 + 0{,}08 + 2{,}20 + 0{,}25 = 2{,}65\text{ с}\]</div>
+<ol>
+<li>Розраховуємо тривалість перебування у режимі сну (<span class="arithmatex">\(t_5\)</span>):</li>
+</ol>
+<div class="arithmatex">\[t_5 = T_{\text{cycle}} - t_{\text{active}} = 600 - 2{,}65 = 597{,}35\text{ с}\]</div>
+<ol>
+<li>Обчислюємо електричний заряд, витрачений на кожній окремій фазі циклу:</li>
+</ol>
+<div class="arithmatex">\[Q_1 = I_1 \cdot t_1 = 45\text{ мА} \cdot 0{,}12\text{ с} = 5{,}400\text{ мА}\cdot\text{с}\]</div>
+<div class="arithmatex">\[Q_2 = I_2 \cdot t_2 = 18\text{ мА} \cdot 0{,}08\text{ с} = 1{,}440\text{ мА}\cdot\text{с}\]</div>
+<div class="arithmatex">\[Q_3 = I_3 \cdot t_3 = 110\text{ мА} \cdot 2{,}20\text{ с} = 242{,}000\text{ мА}\cdot\text{с}\]</div>
+<div class="arithmatex">\[Q_4 = I_4 \cdot t_4 = 140\text{ мА} \cdot 0{,}25\text{ с} = 35{,}000\text{ мА}\cdot\text{с}\]</div>
+<div class="arithmatex">\[Q_5 = I_5 \cdot t_5 = 0{,}010\text{ мА} \cdot 597{,}35\text{ с} = 5{,}9735\text{ мА}\cdot\text{с}\]</div>
+<ol>
+<li>Знаходимо повний сумарний заряд одного циклу (<span class="arithmatex">\(Q_{\text{total}}\)</span>):</li>
+</ol>
+<div class="arithmatex">\[Q_{\text{total}} = 5{,}400 + 1{,}440 + 242{,}000 + 35{,}000 + 5{,}9735 = 289{,}8135\text{ мА}\cdot\text{с}\]</div>
+<ol>
+<li>Визначаємо питому частку енерговитрат кожної фази (<span class="arithmatex">\(\gamma_k\)</span>):</li>
+</ol>
+<div class="arithmatex">\[\gamma_1 = \frac{5{,}400}{289{,}8135} \cdot 100\% \approx 1{,}86\%\]</div>
+<div class="arithmatex">\[\gamma_2 = \frac{1{,}440}{289{,}8135} \cdot 100\% \approx 0{,}50\%\]</div>
+<div class="arithmatex">\[\gamma_3 = \frac{242{,}000}{289{,}8135} \cdot 100\% \approx \mathbf{83{,}50\%} \quad (\text{Головне вузьке місце системи!})\]</div>
+<div class="arithmatex">\[\gamma_4 = \frac{35{,}000}{289{,}8135} \cdot 100\% \approx 12{,}08\%\]</div>
+<div class="arithmatex">\[\gamma_5 = \frac{5{,}9735}{289{,}8135} \cdot 100\% \approx 2{,}06\%\]</div>
+<p>Аналіз питомих часток свідчить про те, що процедура встановлення з'єднання Wi-Fi та отримання динамічної адреси через DHCP (фаза 3) поглинає <span class="arithmatex">\(83{,}50\%\)</span> усього енергетичного бюджету батареї.</p>
+<ol>
+<li>Розраховуємо середній струм споживання (<span class="arithmatex">\(I_{\text{avg}}\)</span>) та ресурс акумулятора у базовому режимі:</li>
+</ol>
+<div class="arithmatex">\[I_{\text{avg}} = \frac{Q_{\text{total}}}{T_{\text{cycle}}} = \frac{289{,}8135\text{ мА}\cdot\text{с}}{600\text{ с}} \approx 0{,}48302\text{ мА} = 483{,}02\text{ мкА}\]</div>
+<p>Струм внутрішнього саморозряду акумулятора становить:</p>
+<div class="arithmatex">\[I_{\text{self}} = \frac{2500\text{ мА}\cdot\text{год} \cdot 2\%}{8760\text{ год} \cdot 100\%} \approx 0{,}00571\text{ мА} = 5{,}71\text{ мкА}\]</div>
+<p>Сумарний середній струм розряду:</p>
+<div class="arithmatex">\[I_{\text{sum}} = I_{\text{avg}} + I_{\text{self}} = 0{,}48302 + 0{,}00571 = 0{,}48873\text{ мА}\]</div>
+<p>Корисна розрахункова ємність акумулятора дорівнює:</p>
+<div class="arithmatex">\[C_{\text{eff}} = C_{\text{nom}} \cdot \eta_{\text{bat}} = 2500 \cdot 0{,}85 = 2125\text{ мА}\cdot\text{год}\]</div>
+<p>Термін автономної роботи у базовому режимі складає:</p>
+<div class="arithmatex">\[T_{\text{life\_base}} = \frac{C_{\text{eff}}}{I_{\text{sum}} \cdot 8760} = \frac{2125}{0{,}48873 \cdot 8760} \approx 0{,}496\text{ року} \approx \mathbf{5{,}95\text{ місяців}}\]</div>
+<h4 id="2-fast-wi-fi-connect">Крок 2. Розрахунок показників після оптимізації (Fast Wi-Fi Connect)</h4>
+<p>При впровадженні збереження параметрів каналу Wi-Fi та BSSID у енергонезалежній пам'яті RTC мікроконтролера та застосуванні статичної IP-адреси тривалість фази 3 скорочується до <span class="arithmatex">\(t_{3\text{\_opt}} = 0{,}25\text{ с}\)</span>.</p>
+<ol>
+<li>Обчислюємо новий заряд фази 3:</li>
+</ol>
+<div class="arithmatex">\[Q_{3\text{\_opt}} = I_3 \cdot t_{3\text{\_opt}} = 110\text{ мА} \cdot 0{,}25\text{ с} = 27{,}500\text{ мА}\cdot\text{с}\]</div>
+<ol>
+<li>Нова тривалість активного стану та сну:</li>
+</ol>
+<div class="arithmatex">\[t_{\text{active\_opt}} = 0{,}12 + 0{,}08 + 0{,}25 + 0{,}25 = 0{,}70\text{ с}\]</div>
+<div class="arithmatex">\[t_{5\text{\_opt}} = 600 - 0{,}70 = 599{,}30\text{ с}\]</div>
+<div class="arithmatex">\[Q_{5\text{\_opt}} = 0{,}010\text{ мА} \cdot 599{,}30\text{ с} = 5{,}9930\text{ мА}\cdot\text{с}\]</div>
+<ol>
+<li>Сумарний заряд оптимізованого циклу:</li>
+</ol>
+<div class="arithmatex">\[Q_{\text{total\_opt}} = 5{,}400 + 1{,}440 + 27{,}500 + 35{,}000 + 5{,}9930 = 75{,}333\text{ мА}\cdot\text{с}\]</div>
+<ol>
+<li>Новий середній струм навантаження:</li>
+</ol>
+<div class="arithmatex">\[I_{\text{avg\_opt}} = \frac{75{,}333\text{ мА}\cdot\text{с}}{600\text{ с}} \approx 0{,}12556\text{ мА} = 125{,}56\text{ мкА}\]</div>
+<ol>
+<li>Сумарний розрядний струм з урахуванням саморозряду:</li>
+</ol>
+<div class="arithmatex">\[I_{\text{sum\_opt}} = 0{,}12556 + 0{,}00571 = 0{,}13127\text{ мА}\]</div>
+<ol>
+<li>Термін автономної роботи після оптимізації:</li>
+</ol>
+<div class="arithmatex">\[T_{\text{life\_opt}} = \frac{2125}{0{,}13127 \cdot 8760} \approx 1{,}848\text{ року} \approx \mathbf{22{,}18\text{ місяців}}\]</div>
+<p>Коефіцієнт збільшення життєвого циклу батареї дорівнює:</p>
+<div class="arithmatex">\[K_{\text{boost}} = \frac{T_{\text{life\_opt}}}{T_{\text{life\_base}}} = \frac{1{,}848}{0{,}496} \approx \mathbf{3{,}73\text{ раза}}\]</div>
+<p>У результаті усунення тривалого очікування відповідей DHCP-сервера та фіксації параметрів радіоканалу термін служби акумулятора збільшується майже в чотири рази.</p>
+<h4 id="python">Програмна реалізація модуля профілювання та побудови графіків (Python)</h4>
+<p>Створіть файл <code>scripts/profile_optimizer.py</code> та збережіть повний виконуваний лістинг програми:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="sd">"""</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="sd">Програмний комплекс для побудови часових діаграм струму I(t),</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="sd">аналізу енергетичного балансу та оцінки інженерної оптимізації IoT-вузлів.</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="sd">Дисципліна: Технології інтернету речей.</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="sd">"""</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="kn">from</span><span class="w"> </span><span class="nn">tabulate</span><span class="w"> </span><span class="kn">import</span> <span class="n">tabulate</span>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="k">def</span><span class="w"> </span><span class="nf">analyze_energy_profile</span><span class="p">(</span>
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>    <span class="n">c_nom_mah</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>    <span class="n">u_volts</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>    <span class="n">i1_ma</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+</span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>    <span class="n">t1_ms</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+</span><span id="__span-5-17"><a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>    <span class="n">i2_ma</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+</span><span id="__span-5-18"><a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a>    <span class="n">t2_ms</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+</span><span id="__span-5-19"><a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a>    <span class="n">i3_ma</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+</span><span id="__span-5-20"><a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a>    <span class="n">t3_ms</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+</span><span id="__span-5-21"><a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a>    <span class="n">i4_ma</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+</span><span id="__span-5-22"><a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a>    <span class="n">t4_ms</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+</span><span id="__span-5-23"><a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a>    <span class="n">i5_ua</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+</span><span id="__span-5-24"><a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a>    <span class="n">t_cycle_min</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+</span><span id="__span-5-25"><a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a>    <span class="n">t3_opt_ms</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">250.0</span><span class="p">,</span>
+</span><span id="__span-5-26"><a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a>    <span class="n">sigma_self</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">2.0</span><span class="p">,</span>
+</span><span id="__span-5-27"><a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a>    <span class="n">eta_bat</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.85</span><span class="p">,</span>
+</span><span id="__span-5-28"><a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+</span><span id="__span-5-29"><a id="__codelineno-5-29" name="__codelineno-5-29" href="#__codelineno-5-29"></a><span class="w">    </span><span class="sd">"""</span>
+</span><span id="__span-5-30"><a id="__codelineno-5-30" name="__codelineno-5-30" href="#__codelineno-5-30"></a><span class="sd">    Виконує пофазний розрахунок заряду, середнього струму та життєвого циклу</span>
+</span><span id="__span-5-31"><a id="__codelineno-5-31" name="__codelineno-5-31" href="#__codelineno-5-31"></a><span class="sd">    для базового (DHCP) та оптимізованого (Fast Connect) сценаріїв.</span>
+</span><span id="__span-5-32"><a id="__codelineno-5-32" name="__codelineno-5-32" href="#__codelineno-5-32"></a><span class="sd">    """</span>
+</span><span id="__span-5-33"><a id="__codelineno-5-33" name="__codelineno-5-33" href="#__codelineno-5-33"></a>    <span class="c1"># Переведення часу в секунди</span>
+</span><span id="__span-5-34"><a id="__codelineno-5-34" name="__codelineno-5-34" href="#__codelineno-5-34"></a>    <span class="n">t1</span> <span class="o">=</span> <span class="n">t1_ms</span> <span class="o">/</span> <span class="mf">1000.0</span>
+</span><span id="__span-5-35"><a id="__codelineno-5-35" name="__codelineno-5-35" href="#__codelineno-5-35"></a>    <span class="n">t2</span> <span class="o">=</span> <span class="n">t2_ms</span> <span class="o">/</span> <span class="mf">1000.0</span>
+</span><span id="__span-5-36"><a id="__codelineno-5-36" name="__codelineno-5-36" href="#__codelineno-5-36"></a>    <span class="n">t3_base</span> <span class="o">=</span> <span class="n">t3_ms</span> <span class="o">/</span> <span class="mf">1000.0</span>
+</span><span id="__span-5-37"><a id="__codelineno-5-37" name="__codelineno-5-37" href="#__codelineno-5-37"></a>    <span class="n">t3_opt</span> <span class="o">=</span> <span class="n">t3_opt_ms</span> <span class="o">/</span> <span class="mf">1000.0</span>
+</span><span id="__span-5-38"><a id="__codelineno-5-38" name="__codelineno-5-38" href="#__codelineno-5-38"></a>    <span class="n">t4</span> <span class="o">=</span> <span class="n">t4_ms</span> <span class="o">/</span> <span class="mf">1000.0</span>
+</span><span id="__span-5-39"><a id="__codelineno-5-39" name="__codelineno-5-39" href="#__codelineno-5-39"></a>    <span class="n">t_cycle</span> <span class="o">=</span> <span class="n">t_cycle_min</span> <span class="o">*</span> <span class="mf">60.0</span>
+</span><span id="__span-5-40"><a id="__codelineno-5-40" name="__codelineno-5-40" href="#__codelineno-5-40"></a>
+</span><span id="__span-5-41"><a id="__codelineno-5-41" name="__codelineno-5-41" href="#__codelineno-5-41"></a>    <span class="n">i5_ma</span> <span class="o">=</span> <span class="n">i5_ua</span> <span class="o">/</span> <span class="mf">1000.0</span>
+</span><span id="__span-5-42"><a id="__codelineno-5-42" name="__codelineno-5-42" href="#__codelineno-5-42"></a>
+</span><span id="__span-5-43"><a id="__codelineno-5-43" name="__codelineno-5-43" href="#__codelineno-5-43"></a>    <span class="c1"># --- 1. Базовий розрахунок ---</span>
+</span><span id="__span-5-44"><a id="__codelineno-5-44" name="__codelineno-5-44" href="#__codelineno-5-44"></a>    <span class="n">t_act_base</span> <span class="o">=</span> <span class="n">t1</span> <span class="o">+</span> <span class="n">t2</span> <span class="o">+</span> <span class="n">t3_base</span> <span class="o">+</span> <span class="n">t4</span>
+</span><span id="__span-5-45"><a id="__codelineno-5-45" name="__codelineno-5-45" href="#__codelineno-5-45"></a>    <span class="n">t5_base</span> <span class="o">=</span> <span class="n">t_cycle</span> <span class="o">-</span> <span class="n">t_act_base</span>
+</span><span id="__span-5-46"><a id="__codelineno-5-46" name="__codelineno-5-46" href="#__codelineno-5-46"></a>
+</span><span id="__span-5-47"><a id="__codelineno-5-47" name="__codelineno-5-47" href="#__codelineno-5-47"></a>    <span class="n">q1</span> <span class="o">=</span> <span class="n">i1_ma</span> <span class="o">*</span> <span class="n">t1</span>
+</span><span id="__span-5-48"><a id="__codelineno-5-48" name="__codelineno-5-48" href="#__codelineno-5-48"></a>    <span class="n">q2</span> <span class="o">=</span> <span class="n">i2_ma</span> <span class="o">*</span> <span class="n">t2</span>
+</span><span id="__span-5-49"><a id="__codelineno-5-49" name="__codelineno-5-49" href="#__codelineno-5-49"></a>    <span class="n">q3_base</span> <span class="o">=</span> <span class="n">i3_ma</span> <span class="o">*</span> <span class="n">t3_base</span>
+</span><span id="__span-5-50"><a id="__codelineno-5-50" name="__codelineno-5-50" href="#__codelineno-5-50"></a>    <span class="n">q4</span> <span class="o">=</span> <span class="n">i4_ma</span> <span class="o">*</span> <span class="n">t4</span>
+</span><span id="__span-5-51"><a id="__codelineno-5-51" name="__codelineno-5-51" href="#__codelineno-5-51"></a>    <span class="n">q5_base</span> <span class="o">=</span> <span class="n">i5_ma</span> <span class="o">*</span> <span class="n">t5_base</span>
+</span><span id="__span-5-52"><a id="__codelineno-5-52" name="__codelineno-5-52" href="#__codelineno-5-52"></a>
+</span><span id="__span-5-53"><a id="__codelineno-5-53" name="__codelineno-5-53" href="#__codelineno-5-53"></a>    <span class="n">q_total_base</span> <span class="o">=</span> <span class="n">q1</span> <span class="o">+</span> <span class="n">q2</span> <span class="o">+</span> <span class="n">q3_base</span> <span class="o">+</span> <span class="n">q4</span> <span class="o">+</span> <span class="n">q5_base</span>
+</span><span id="__span-5-54"><a id="__codelineno-5-54" name="__codelineno-5-54" href="#__codelineno-5-54"></a>    <span class="n">i_avg_base</span> <span class="o">=</span> <span class="n">q_total_base</span> <span class="o">/</span> <span class="n">t_cycle</span>
+</span><span id="__span-5-55"><a id="__codelineno-5-55" name="__codelineno-5-55" href="#__codelineno-5-55"></a>
+</span><span id="__span-5-56"><a id="__codelineno-5-56" name="__codelineno-5-56" href="#__codelineno-5-56"></a>    <span class="c1"># Втрати на саморозряд</span>
+</span><span id="__span-5-57"><a id="__codelineno-5-57" name="__codelineno-5-57" href="#__codelineno-5-57"></a>    <span class="n">i_self_ma</span> <span class="o">=</span> <span class="p">(</span><span class="n">c_nom_mah</span> <span class="o">*</span> <span class="p">(</span><span class="n">sigma_self</span> <span class="o">/</span> <span class="mf">100.0</span><span class="p">))</span> <span class="o">/</span> <span class="mf">8760.0</span>
+</span><span id="__span-5-58"><a id="__codelineno-5-58" name="__codelineno-5-58" href="#__codelineno-5-58"></a>    <span class="n">i_sum_base</span> <span class="o">=</span> <span class="n">i_avg_base</span> <span class="o">+</span> <span class="n">i_self_ma</span>
+</span><span id="__span-5-59"><a id="__codelineno-5-59" name="__codelineno-5-59" href="#__codelineno-5-59"></a>
+</span><span id="__span-5-60"><a id="__codelineno-5-60" name="__codelineno-5-60" href="#__codelineno-5-60"></a>    <span class="n">c_eff</span> <span class="o">=</span> <span class="n">c_nom_mah</span> <span class="o">*</span> <span class="n">eta_bat</span>
+</span><span id="__span-5-61"><a id="__codelineno-5-61" name="__codelineno-5-61" href="#__codelineno-5-61"></a>    <span class="n">life_years_base</span> <span class="o">=</span> <span class="n">c_eff</span> <span class="o">/</span> <span class="p">(</span><span class="n">i_sum_base</span> <span class="o">*</span> <span class="mf">8760.0</span><span class="p">)</span>
+</span><span id="__span-5-62"><a id="__codelineno-5-62" name="__codelineno-5-62" href="#__codelineno-5-62"></a>
+</span><span id="__span-5-63"><a id="__codelineno-5-63" name="__codelineno-5-63" href="#__codelineno-5-63"></a>    <span class="c1"># Частотні частки фаз</span>
+</span><span id="__span-5-64"><a id="__codelineno-5-64" name="__codelineno-5-64" href="#__codelineno-5-64"></a>    <span class="n">gamma1</span> <span class="o">=</span> <span class="p">(</span><span class="n">q1</span> <span class="o">/</span> <span class="n">q_total_base</span><span class="p">)</span> <span class="o">*</span> <span class="mf">100.0</span>
+</span><span id="__span-5-65"><a id="__codelineno-5-65" name="__codelineno-5-65" href="#__codelineno-5-65"></a>    <span class="n">gamma2</span> <span class="o">=</span> <span class="p">(</span><span class="n">q2</span> <span class="o">/</span> <span class="n">q_total_base</span><span class="p">)</span> <span class="o">*</span> <span class="mf">100.0</span>
+</span><span id="__span-5-66"><a id="__codelineno-5-66" name="__codelineno-5-66" href="#__codelineno-5-66"></a>    <span class="n">gamma3_base</span> <span class="o">=</span> <span class="p">(</span><span class="n">q3_base</span> <span class="o">/</span> <span class="n">q_total_base</span><span class="p">)</span> <span class="o">*</span> <span class="mf">100.0</span>
+</span><span id="__span-5-67"><a id="__codelineno-5-67" name="__codelineno-5-67" href="#__codelineno-5-67"></a>    <span class="n">gamma4</span> <span class="o">=</span> <span class="p">(</span><span class="n">q4</span> <span class="o">/</span> <span class="n">q_total_base</span><span class="p">)</span> <span class="o">*</span> <span class="mf">100.0</span>
+</span><span id="__span-5-68"><a id="__codelineno-5-68" name="__codelineno-5-68" href="#__codelineno-5-68"></a>    <span class="n">gamma5_base</span> <span class="o">=</span> <span class="p">(</span><span class="n">q5_base</span> <span class="o">/</span> <span class="n">q_total_base</span><span class="p">)</span> <span class="o">*</span> <span class="mf">100.0</span>
+</span><span id="__span-5-69"><a id="__codelineno-5-69" name="__codelineno-5-69" href="#__codelineno-5-69"></a>
+</span><span id="__span-5-70"><a id="__codelineno-5-70" name="__codelineno-5-70" href="#__codelineno-5-70"></a>    <span class="c1"># --- 2. Оптимізований розрахунок ---</span>
+</span><span id="__span-5-71"><a id="__codelineno-5-71" name="__codelineno-5-71" href="#__codelineno-5-71"></a>    <span class="n">t_act_opt</span> <span class="o">=</span> <span class="n">t1</span> <span class="o">+</span> <span class="n">t2</span> <span class="o">+</span> <span class="n">t3_opt</span> <span class="o">+</span> <span class="n">t4</span>
+</span><span id="__span-5-72"><a id="__codelineno-5-72" name="__codelineno-5-72" href="#__codelineno-5-72"></a>    <span class="n">t5_opt</span> <span class="o">=</span> <span class="n">t_cycle</span> <span class="o">-</span> <span class="n">t_act_opt</span>
+</span><span id="__span-5-73"><a id="__codelineno-5-73" name="__codelineno-5-73" href="#__codelineno-5-73"></a>
+</span><span id="__span-5-74"><a id="__codelineno-5-74" name="__codelineno-5-74" href="#__codelineno-5-74"></a>    <span class="n">q3_opt</span> <span class="o">=</span> <span class="n">i3_ma</span> <span class="o">*</span> <span class="n">t3_opt</span>
+</span><span id="__span-5-75"><a id="__codelineno-5-75" name="__codelineno-5-75" href="#__codelineno-5-75"></a>    <span class="n">q5_opt</span> <span class="o">=</span> <span class="n">i5_ma</span> <span class="o">*</span> <span class="n">t5_opt</span>
+</span><span id="__span-5-76"><a id="__codelineno-5-76" name="__codelineno-5-76" href="#__codelineno-5-76"></a>
+</span><span id="__span-5-77"><a id="__codelineno-5-77" name="__codelineno-5-77" href="#__codelineno-5-77"></a>    <span class="n">q_total_opt</span> <span class="o">=</span> <span class="n">q1</span> <span class="o">+</span> <span class="n">q2</span> <span class="o">+</span> <span class="n">q3_opt</span> <span class="o">+</span> <span class="n">q4</span> <span class="o">+</span> <span class="n">q5_opt</span>
+</span><span id="__span-5-78"><a id="__codelineno-5-78" name="__codelineno-5-78" href="#__codelineno-5-78"></a>    <span class="n">i_avg_opt</span> <span class="o">=</span> <span class="n">q_total_opt</span> <span class="o">/</span> <span class="n">t_cycle</span>
+</span><span id="__span-5-79"><a id="__codelineno-5-79" name="__codelineno-5-79" href="#__codelineno-5-79"></a>    <span class="n">i_sum_opt</span> <span class="o">=</span> <span class="n">i_avg_opt</span> <span class="o">+</span> <span class="n">i_self_ma</span>
+</span><span id="__span-5-80"><a id="__codelineno-5-80" name="__codelineno-5-80" href="#__codelineno-5-80"></a>    <span class="n">life_years_opt</span> <span class="o">=</span> <span class="n">c_eff</span> <span class="o">/</span> <span class="p">(</span><span class="n">i_sum_opt</span> <span class="o">*</span> <span class="mf">8760.0</span><span class="p">)</span>
+</span><span id="__span-5-81"><a id="__codelineno-5-81" name="__codelineno-5-81" href="#__codelineno-5-81"></a>
+</span><span id="__span-5-82"><a id="__codelineno-5-82" name="__codelineno-5-82" href="#__codelineno-5-82"></a>    <span class="n">boost_factor</span> <span class="o">=</span> <span class="n">life_years_opt</span> <span class="o">/</span> <span class="n">life_years_base</span>
+</span><span id="__span-5-83"><a id="__codelineno-5-83" name="__codelineno-5-83" href="#__codelineno-5-83"></a>
+</span><span id="__span-5-84"><a id="__codelineno-5-84" name="__codelineno-5-84" href="#__codelineno-5-84"></a>    <span class="k">return</span> <span class="p">{</span>
+</span><span id="__span-5-85"><a id="__codelineno-5-85" name="__codelineno-5-85" href="#__codelineno-5-85"></a>        <span class="s2">"t_act_base"</span><span class="p">:</span> <span class="n">t_act_base</span><span class="p">,</span>
+</span><span id="__span-5-86"><a id="__codelineno-5-86" name="__codelineno-5-86" href="#__codelineno-5-86"></a>        <span class="s2">"t5_base"</span><span class="p">:</span> <span class="n">t5_base</span><span class="p">,</span>
+</span><span id="__span-5-87"><a id="__codelineno-5-87" name="__codelineno-5-87" href="#__codelineno-5-87"></a>        <span class="s2">"q_total_base"</span><span class="p">:</span> <span class="n">q_total_base</span><span class="p">,</span>
+</span><span id="__span-5-88"><a id="__codelineno-5-88" name="__codelineno-5-88" href="#__codelineno-5-88"></a>        <span class="s2">"q_phases_base"</span><span class="p">:</span> <span class="p">[</span><span class="n">q1</span><span class="p">,</span> <span class="n">q2</span><span class="p">,</span> <span class="n">q3_base</span><span class="p">,</span> <span class="n">q4</span><span class="p">,</span> <span class="n">q5_base</span><span class="p">],</span>
+</span><span id="__span-5-89"><a id="__codelineno-5-89" name="__codelineno-5-89" href="#__codelineno-5-89"></a>        <span class="s2">"gamma_base"</span><span class="p">:</span> <span class="p">[</span><span class="n">gamma1</span><span class="p">,</span> <span class="n">gamma2</span><span class="p">,</span> <span class="n">gamma3_base</span><span class="p">,</span> <span class="n">gamma4</span><span class="p">,</span> <span class="n">gamma5_base</span><span class="p">],</span>
+</span><span id="__span-5-90"><a id="__codelineno-5-90" name="__codelineno-5-90" href="#__codelineno-5-90"></a>        <span class="s2">"i_avg_base_ua"</span><span class="p">:</span> <span class="n">i_avg_base</span> <span class="o">*</span> <span class="mf">1000.0</span><span class="p">,</span>
+</span><span id="__span-5-91"><a id="__codelineno-5-91" name="__codelineno-5-91" href="#__codelineno-5-91"></a>        <span class="s2">"life_months_base"</span><span class="p">:</span> <span class="n">life_years_base</span> <span class="o">*</span> <span class="mf">12.0</span><span class="p">,</span>
+</span><span id="__span-5-92"><a id="__codelineno-5-92" name="__codelineno-5-92" href="#__codelineno-5-92"></a>        <span class="s2">"life_years_base"</span><span class="p">:</span> <span class="n">life_years_base</span><span class="p">,</span>
+</span><span id="__span-5-93"><a id="__codelineno-5-93" name="__codelineno-5-93" href="#__codelineno-5-93"></a>        <span class="s2">"t_act_opt"</span><span class="p">:</span> <span class="n">t_act_opt</span><span class="p">,</span>
+</span><span id="__span-5-94"><a id="__codelineno-5-94" name="__codelineno-5-94" href="#__codelineno-5-94"></a>        <span class="s2">"t5_opt"</span><span class="p">:</span> <span class="n">t5_opt</span><span class="p">,</span>
+</span><span id="__span-5-95"><a id="__codelineno-5-95" name="__codelineno-5-95" href="#__codelineno-5-95"></a>        <span class="s2">"q_total_opt"</span><span class="p">:</span> <span class="n">q_total_opt</span><span class="p">,</span>
+</span><span id="__span-5-96"><a id="__codelineno-5-96" name="__codelineno-5-96" href="#__codelineno-5-96"></a>        <span class="s2">"i_avg_opt_ua"</span><span class="p">:</span> <span class="n">i_avg_opt</span> <span class="o">*</span> <span class="mf">1000.0</span><span class="p">,</span>
+</span><span id="__span-5-97"><a id="__codelineno-5-97" name="__codelineno-5-97" href="#__codelineno-5-97"></a>        <span class="s2">"life_months_opt"</span><span class="p">:</span> <span class="n">life_years_opt</span> <span class="o">*</span> <span class="mf">12.0</span><span class="p">,</span>
+</span><span id="__span-5-98"><a id="__codelineno-5-98" name="__codelineno-5-98" href="#__codelineno-5-98"></a>        <span class="s2">"life_years_opt"</span><span class="p">:</span> <span class="n">life_years_opt</span><span class="p">,</span>
+</span><span id="__span-5-99"><a id="__codelineno-5-99" name="__codelineno-5-99" href="#__codelineno-5-99"></a>        <span class="s2">"boost_factor"</span><span class="p">:</span> <span class="n">boost_factor</span><span class="p">,</span>
+</span><span id="__span-5-100"><a id="__codelineno-5-100" name="__codelineno-5-100" href="#__codelineno-5-100"></a>        <span class="s2">"raw_timings"</span><span class="p">:</span> <span class="p">[</span><span class="n">t1</span><span class="p">,</span> <span class="n">t2</span><span class="p">,</span> <span class="n">t3_base</span><span class="p">,</span> <span class="n">t4</span><span class="p">,</span> <span class="n">t3_opt</span><span class="p">],</span>
+</span><span id="__span-5-101"><a id="__codelineno-5-101" name="__codelineno-5-101" href="#__codelineno-5-101"></a>        <span class="s2">"raw_currents"</span><span class="p">:</span> <span class="p">[</span><span class="n">i1_ma</span><span class="p">,</span> <span class="n">i2_ma</span><span class="p">,</span> <span class="n">i3_ma</span><span class="p">,</span> <span class="n">i4_ma</span><span class="p">,</span> <span class="n">i5_ma</span><span class="p">],</span>
+</span><span id="__span-5-102"><a id="__codelineno-5-102" name="__codelineno-5-102" href="#__codelineno-5-102"></a>    <span class="p">}</span>
+</span><span id="__span-5-103"><a id="__codelineno-5-103" name="__codelineno-5-103" href="#__codelineno-5-103"></a>
+</span><span id="__span-5-104"><a id="__codelineno-5-104" name="__codelineno-5-104" href="#__codelineno-5-104"></a>
+</span><span id="__span-5-105"><a id="__codelineno-5-105" name="__codelineno-5-105" href="#__codelineno-5-105"></a><span class="k">def</span><span class="w"> </span><span class="nf">generate_timing_plot</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+</span><span id="__span-5-106"><a id="__codelineno-5-106" name="__codelineno-5-106" href="#__codelineno-5-106"></a><span class="w">    </span><span class="sd">"""</span>
+</span><span id="__span-5-107"><a id="__codelineno-5-107" name="__codelineno-5-107" href="#__codelineno-5-107"></a><span class="sd">    Будує східчасту часову діаграму споживання струму I(t) для базового та оптимізованого режимів.</span>
+</span><span id="__span-5-108"><a id="__codelineno-5-108" name="__codelineno-5-108" href="#__codelineno-5-108"></a><span class="sd">    """</span>
+</span><span id="__span-5-109"><a id="__codelineno-5-109" name="__codelineno-5-109" href="#__codelineno-5-109"></a>    <span class="n">t1</span><span class="p">,</span> <span class="n">t2</span><span class="p">,</span> <span class="n">t3_base</span><span class="p">,</span> <span class="n">t4</span><span class="p">,</span> <span class="n">t3_opt</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">"raw_timings"</span><span class="p">]</span>
+</span><span id="__span-5-110"><a id="__codelineno-5-110" name="__codelineno-5-110" href="#__codelineno-5-110"></a>    <span class="n">i1</span><span class="p">,</span> <span class="n">i2</span><span class="p">,</span> <span class="n">i3</span><span class="p">,</span> <span class="n">i4</span><span class="p">,</span> <span class="n">i5</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">"raw_currents"</span><span class="p">]</span>
+</span><span id="__span-5-111"><a id="__codelineno-5-111" name="__codelineno-5-111" href="#__codelineno-5-111"></a>
+</span><span id="__span-5-112"><a id="__codelineno-5-112" name="__codelineno-5-112" href="#__codelineno-5-112"></a>    <span class="c1"># Формування часової сітки базового варіанта</span>
+</span><span id="__span-5-113"><a id="__codelineno-5-113" name="__codelineno-5-113" href="#__codelineno-5-113"></a>    <span class="n">time_points_base</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">t1</span><span class="p">,</span> <span class="n">t1</span><span class="p">,</span> <span class="n">t1</span> <span class="o">+</span> <span class="n">t2</span><span class="p">,</span> <span class="n">t1</span> <span class="o">+</span> <span class="n">t2</span><span class="p">,</span> <span class="n">t1</span> <span class="o">+</span> <span class="n">t2</span> <span class="o">+</span> <span class="n">t3_base</span><span class="p">,</span> <span class="n">t1</span> <span class="o">+</span> <span class="n">t2</span> <span class="o">+</span> <span class="n">t3_base</span><span class="p">,</span> <span class="n">t1</span> <span class="o">+</span> <span class="n">t2</span> <span class="o">+</span> <span class="n">t3_base</span> <span class="o">+</span> <span class="n">t4</span><span class="p">,</span> <span class="n">t1</span> <span class="o">+</span> <span class="n">t2</span> <span class="o">+</span> <span class="n">t3_base</span> <span class="o">+</span> <span class="n">t4</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">]</span>
+</span><span id="__span-5-114"><a id="__codelineno-5-114" name="__codelineno-5-114" href="#__codelineno-5-114"></a>    <span class="n">current_points_base</span> <span class="o">=</span> <span class="p">[</span><span class="n">i1</span><span class="p">,</span> <span class="n">i1</span><span class="p">,</span> <span class="n">i2</span><span class="p">,</span> <span class="n">i2</span><span class="p">,</span> <span class="n">i3</span><span class="p">,</span> <span class="n">i3</span><span class="p">,</span> <span class="n">i4</span><span class="p">,</span> <span class="n">i4</span><span class="p">,</span> <span class="n">i5</span><span class="p">,</span> <span class="n">i5</span><span class="p">]</span>
+</span><span id="__span-5-115"><a id="__codelineno-5-115" name="__codelineno-5-115" href="#__codelineno-5-115"></a>
+</span><span id="__span-5-116"><a id="__codelineno-5-116" name="__codelineno-5-116" href="#__codelineno-5-116"></a>    <span class="c1"># Формування часової сітки оптимізованого варіанта</span>
+</span><span id="__span-5-117"><a id="__codelineno-5-117" name="__codelineno-5-117" href="#__codelineno-5-117"></a>    <span class="n">time_points_opt</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">t1</span><span class="p">,</span> <span class="n">t1</span><span class="p">,</span> <span class="n">t1</span> <span class="o">+</span> <span class="n">t2</span><span class="p">,</span> <span class="n">t1</span> <span class="o">+</span> <span class="n">t2</span><span class="p">,</span> <span class="n">t1</span> <span class="o">+</span> <span class="n">t2</span> <span class="o">+</span> <span class="n">t3_opt</span><span class="p">,</span> <span class="n">t1</span> <span class="o">+</span> <span class="n">t2</span> <span class="o">+</span> <span class="n">t3_opt</span><span class="p">,</span> <span class="n">t1</span> <span class="o">+</span> <span class="n">t2</span> <span class="o">+</span> <span class="n">t3_opt</span> <span class="o">+</span> <span class="n">t4</span><span class="p">,</span> <span class="n">t1</span> <span class="o">+</span> <span class="n">t2</span> <span class="o">+</span> <span class="n">t3_opt</span> <span class="o">+</span> <span class="n">t4</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">]</span>
+</span><span id="__span-5-118"><a id="__codelineno-5-118" name="__codelineno-5-118" href="#__codelineno-5-118"></a>    <span class="n">current_points_opt</span> <span class="o">=</span> <span class="p">[</span><span class="n">i1</span><span class="p">,</span> <span class="n">i1</span><span class="p">,</span> <span class="n">i2</span><span class="p">,</span> <span class="n">i2</span><span class="p">,</span> <span class="n">i3</span><span class="p">,</span> <span class="n">i3</span><span class="p">,</span> <span class="n">i4</span><span class="p">,</span> <span class="n">i4</span><span class="p">,</span> <span class="n">i5</span><span class="p">,</span> <span class="n">i5</span><span class="p">]</span>
+</span><span id="__span-5-119"><a id="__codelineno-5-119" name="__codelineno-5-119" href="#__codelineno-5-119"></a>
+</span><span id="__span-5-120"><a id="__codelineno-5-120" name="__codelineno-5-120" href="#__codelineno-5-120"></a>    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mf">5.5</span><span class="p">))</span>
+</span><span id="__span-5-121"><a id="__codelineno-5-121" name="__codelineno-5-121" href="#__codelineno-5-121"></a>    <span class="n">plt</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">time_points_base</span><span class="p">,</span> <span class="n">current_points_base</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="s2">"post"</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"#d63031"</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"Базовий профіль (DHCP)"</span><span class="p">)</span>
+</span><span id="__span-5-122"><a id="__codelineno-5-122" name="__codelineno-5-122" href="#__codelineno-5-122"></a>    <span class="n">plt</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">time_points_opt</span><span class="p">,</span> <span class="n">current_points_opt</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="s2">"post"</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"#00b894"</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.2</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">"--"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"Оптимізований профіль (Fast Static IP)"</span><span class="p">)</span>
+</span><span id="__span-5-123"><a id="__codelineno-5-123" name="__codelineno-5-123" href="#__codelineno-5-123"></a>
+</span><span id="__span-5-124"><a id="__codelineno-5-124" name="__codelineno-5-124" href="#__codelineno-5-124"></a>    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Таймінг-діаграма активних фаз струму навантаження I(t)"</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>
+</span><span id="__span-5-125"><a id="__codelineno-5-125" name="__codelineno-5-125" href="#__codelineno-5-125"></a>    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"Час від моменту пробудження t, с"</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
+</span><span id="__span-5-126"><a id="__codelineno-5-126" name="__codelineno-5-126" href="#__codelineno-5-126"></a>    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Струм споживання I, мА"</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
+</span><span id="__span-5-127"><a id="__codelineno-5-127" name="__codelineno-5-127" href="#__codelineno-5-127"></a>    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">":"</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+</span><span id="__span-5-128"><a id="__codelineno-5-128" name="__codelineno-5-128" href="#__codelineno-5-128"></a>    <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">3.2</span><span class="p">)</span>
+</span><span id="__span-5-129"><a id="__codelineno-5-129" name="__codelineno-5-129" href="#__codelineno-5-129"></a>    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">160</span><span class="p">)</span>
+</span><span id="__span-5-130"><a id="__codelineno-5-130" name="__codelineno-5-130" href="#__codelineno-5-130"></a>
+</span><span id="__span-5-131"><a id="__codelineno-5-131" name="__codelineno-5-131" href="#__codelineno-5-131"></a>    <span class="c1"># Підписи фаз</span>
+</span><span id="__span-5-132"><a id="__codelineno-5-132" name="__codelineno-5-132" href="#__codelineno-5-132"></a>    <span class="n">plt</span><span class="o">.</span><span class="n">axvspan</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">t1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"#ffeaa7"</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"1. Boot"</span><span class="p">)</span>
+</span><span id="__span-5-133"><a id="__codelineno-5-133" name="__codelineno-5-133" href="#__codelineno-5-133"></a>    <span class="n">plt</span><span class="o">.</span><span class="n">axvspan</span><span class="p">(</span><span class="n">t1</span><span class="p">,</span> <span class="n">t1</span> <span class="o">+</span> <span class="n">t2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"#74b9ff"</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"2. Sensor Read"</span><span class="p">)</span>
+</span><span id="__span-5-134"><a id="__codelineno-5-134" name="__codelineno-5-134" href="#__codelineno-5-134"></a>    <span class="n">plt</span><span class="o">.</span><span class="n">axvspan</span><span class="p">(</span><span class="n">t1</span> <span class="o">+</span> <span class="n">t2</span><span class="p">,</span> <span class="n">t1</span> <span class="o">+</span> <span class="n">t2</span> <span class="o">+</span> <span class="n">t3_base</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"#ff7675"</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"3. Wi-Fi Connect"</span><span class="p">)</span>
+</span><span id="__span-5-135"><a id="__codelineno-5-135" name="__codelineno-5-135" href="#__codelineno-5-135"></a>    <span class="n">plt</span><span class="o">.</span><span class="n">axvspan</span><span class="p">(</span><span class="n">t1</span> <span class="o">+</span> <span class="n">t2</span> <span class="o">+</span> <span class="n">t3_base</span><span class="p">,</span> <span class="n">t1</span> <span class="o">+</span> <span class="n">t2</span> <span class="o">+</span> <span class="n">t3_base</span> <span class="o">+</span> <span class="n">t4</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"#a29bfe"</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"4. MQTT Pub"</span><span class="p">)</span>
+</span><span id="__span-5-136"><a id="__codelineno-5-136" name="__codelineno-5-136" href="#__codelineno-5-136"></a>
+</span><span id="__span-5-137"><a id="__codelineno-5-137" name="__codelineno-5-137" href="#__codelineno-5-137"></a>    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">"upper right"</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+</span><span id="__span-5-138"><a id="__codelineno-5-138" name="__codelineno-5-138" href="#__codelineno-5-138"></a>    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</span><span id="__span-5-139"><a id="__codelineno-5-139" name="__codelineno-5-139" href="#__codelineno-5-139"></a>    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">"plots/current_timing_plot.png"</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+</span><span id="__span-5-140"><a id="__codelineno-5-140" name="__codelineno-5-140" href="#__codelineno-5-140"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">[ВІЗУАЛІЗАЦІЯ]: Графік таймінг-діаграми збережено у 'plots/current_timing_plot.png'."</span><span class="p">)</span>
+</span><span id="__span-5-141"><a id="__codelineno-5-141" name="__codelineno-5-141" href="#__codelineno-5-141"></a>
+</span><span id="__span-5-142"><a id="__codelineno-5-142" name="__codelineno-5-142" href="#__codelineno-5-142"></a>
+</span><span id="__span-5-143"><a id="__codelineno-5-143" name="__codelineno-5-143" href="#__codelineno-5-143"></a><span class="k">def</span><span class="w"> </span><span class="nf">generate_pie_chart</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+</span><span id="__span-5-144"><a id="__codelineno-5-144" name="__codelineno-5-144" href="#__codelineno-5-144"></a><span class="w">    </span><span class="sd">"""</span>
+</span><span id="__span-5-145"><a id="__codelineno-5-145" name="__codelineno-5-145" href="#__codelineno-5-145"></a><span class="sd">    Будує кругову діаграму розподілу енергетичного бюджету за фазами.</span>
+</span><span id="__span-5-146"><a id="__codelineno-5-146" name="__codelineno-5-146" href="#__codelineno-5-146"></a><span class="sd">    """</span>
+</span><span id="__span-5-147"><a id="__codelineno-5-147" name="__codelineno-5-147" href="#__codelineno-5-147"></a>    <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"1. Boot"</span><span class="p">,</span> <span class="s2">"2. Sensor"</span><span class="p">,</span> <span class="s2">"3. Wi-Fi (DHCP)"</span><span class="p">,</span> <span class="s2">"4. MQTT"</span><span class="p">,</span> <span class="s2">"5. Deep Sleep"</span><span class="p">]</span>
+</span><span id="__span-5-148"><a id="__codelineno-5-148" name="__codelineno-5-148" href="#__codelineno-5-148"></a>    <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"#ffeaa7"</span><span class="p">,</span> <span class="s2">"#74b9ff"</span><span class="p">,</span> <span class="s2">"#ff7675"</span><span class="p">,</span> <span class="s2">"#a29bfe"</span><span class="p">,</span> <span class="s2">"#55efc4"</span><span class="p">]</span>
+</span><span id="__span-5-149"><a id="__codelineno-5-149" name="__codelineno-5-149" href="#__codelineno-5-149"></a>    <span class="n">explode</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</span><span id="__span-5-150"><a id="__codelineno-5-150" name="__codelineno-5-150" href="#__codelineno-5-150"></a>
+</span><span id="__span-5-151"><a id="__codelineno-5-151" name="__codelineno-5-151" href="#__codelineno-5-151"></a>    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+</span><span id="__span-5-152"><a id="__codelineno-5-152" name="__codelineno-5-152" href="#__codelineno-5-152"></a>    <span class="n">plt</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">"gamma_base"</span><span class="p">],</span> <span class="n">explode</span><span class="o">=</span><span class="n">explode</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">autopct</span><span class="o">=</span><span class="s2">"</span><span class="si">%1.2f%%</span><span class="s2">"</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span> <span class="n">startangle</span><span class="o">=</span><span class="mi">140</span><span class="p">,</span> <span class="n">shadow</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span id="__span-5-153"><a id="__codelineno-5-153" name="__codelineno-5-153" href="#__codelineno-5-153"></a>    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Питомий розподіл витраченого заряду за фазами циклу"</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+</span><span id="__span-5-154"><a id="__codelineno-5-154" name="__codelineno-5-154" href="#__codelineno-5-154"></a>    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</span><span id="__span-5-155"><a id="__codelineno-5-155" name="__codelineno-5-155" href="#__codelineno-5-155"></a>    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">"plots/energy_pie_chart.png"</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+</span><span id="__span-5-156"><a id="__codelineno-5-156" name="__codelineno-5-156" href="#__codelineno-5-156"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">"[ВІЗУАЛІЗАЦІЯ]: Кругову діаграму розподілу енергії збережено у 'plots/energy_pie_chart.png'."</span><span class="p">)</span>
+</span><span id="__span-5-157"><a id="__codelineno-5-157" name="__codelineno-5-157" href="#__codelineno-5-157"></a>
+</span><span id="__span-5-158"><a id="__codelineno-5-158" name="__codelineno-5-158" href="#__codelineno-5-158"></a>
+</span><span id="__span-5-159"><a id="__codelineno-5-159" name="__codelineno-5-159" href="#__codelineno-5-159"></a><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+</span><span id="__span-5-160"><a id="__codelineno-5-160" name="__codelineno-5-160" href="#__codelineno-5-160"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">"="</span> <span class="o">*</span> <span class="mi">80</span><span class="p">)</span>
+</span><span id="__span-5-161"><a id="__codelineno-5-161" name="__codelineno-5-161" href="#__codelineno-5-161"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">"    ПРОФІЛЮВАННЯ ТА ОПТИМІЗАЦІЯ ЕНЕРГОСПОЖИВАННЯ IOT-ВУЗЛА (ЕТАЛОН)    "</span><span class="p">)</span>
+</span><span id="__span-5-162"><a id="__codelineno-5-162" name="__codelineno-5-162" href="#__codelineno-5-162"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">"="</span> <span class="o">*</span> <span class="mi">80</span><span class="p">)</span>
+</span><span id="__span-5-163"><a id="__codelineno-5-163" name="__codelineno-5-163" href="#__codelineno-5-163"></a>
+</span><span id="__span-5-164"><a id="__codelineno-5-164" name="__codelineno-5-164" href="#__codelineno-5-164"></a>    <span class="c1"># Параметри еталонного пристрою</span>
+</span><span id="__span-5-165"><a id="__codelineno-5-165" name="__codelineno-5-165" href="#__codelineno-5-165"></a>    <span class="n">results</span> <span class="o">=</span> <span class="n">analyze_energy_profile</span><span class="p">(</span>
+</span><span id="__span-5-166"><a id="__codelineno-5-166" name="__codelineno-5-166" href="#__codelineno-5-166"></a>        <span class="n">c_nom_mah</span><span class="o">=</span><span class="mf">2500.0</span><span class="p">,</span>
+</span><span id="__span-5-167"><a id="__codelineno-5-167" name="__codelineno-5-167" href="#__codelineno-5-167"></a>        <span class="n">u_volts</span><span class="o">=</span><span class="mf">3.3</span><span class="p">,</span>
+</span><span id="__span-5-168"><a id="__codelineno-5-168" name="__codelineno-5-168" href="#__codelineno-5-168"></a>        <span class="n">i1_ma</span><span class="o">=</span><span class="mf">45.0</span><span class="p">,</span>
+</span><span id="__span-5-169"><a id="__codelineno-5-169" name="__codelineno-5-169" href="#__codelineno-5-169"></a>        <span class="n">t1_ms</span><span class="o">=</span><span class="mf">120.0</span><span class="p">,</span>
+</span><span id="__span-5-170"><a id="__codelineno-5-170" name="__codelineno-5-170" href="#__codelineno-5-170"></a>        <span class="n">i2_ma</span><span class="o">=</span><span class="mf">18.0</span><span class="p">,</span>
+</span><span id="__span-5-171"><a id="__codelineno-5-171" name="__codelineno-5-171" href="#__codelineno-5-171"></a>        <span class="n">t2_ms</span><span class="o">=</span><span class="mf">80.0</span><span class="p">,</span>
+</span><span id="__span-5-172"><a id="__codelineno-5-172" name="__codelineno-5-172" href="#__codelineno-5-172"></a>        <span class="n">i3_ma</span><span class="o">=</span><span class="mf">110.0</span><span class="p">,</span>
+</span><span id="__span-5-173"><a id="__codelineno-5-173" name="__codelineno-5-173" href="#__codelineno-5-173"></a>        <span class="n">t3_ms</span><span class="o">=</span><span class="mf">2200.0</span><span class="p">,</span>
+</span><span id="__span-5-174"><a id="__codelineno-5-174" name="__codelineno-5-174" href="#__codelineno-5-174"></a>        <span class="n">i4_ma</span><span class="o">=</span><span class="mf">140.0</span><span class="p">,</span>
+</span><span id="__span-5-175"><a id="__codelineno-5-175" name="__codelineno-5-175" href="#__codelineno-5-175"></a>        <span class="n">t4_ms</span><span class="o">=</span><span class="mf">250.0</span><span class="p">,</span>
+</span><span id="__span-5-176"><a id="__codelineno-5-176" name="__codelineno-5-176" href="#__codelineno-5-176"></a>        <span class="n">i5_ua</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span>
+</span><span id="__span-5-177"><a id="__codelineno-5-177" name="__codelineno-5-177" href="#__codelineno-5-177"></a>        <span class="n">t_cycle_min</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span>
+</span><span id="__span-5-178"><a id="__codelineno-5-178" name="__codelineno-5-178" href="#__codelineno-5-178"></a>        <span class="n">t3_opt_ms</span><span class="o">=</span><span class="mf">250.0</span><span class="p">,</span>
+</span><span id="__span-5-179"><a id="__codelineno-5-179" name="__codelineno-5-179" href="#__codelineno-5-179"></a>    <span class="p">)</span>
+</span><span id="__span-5-180"><a id="__codelineno-5-180" name="__codelineno-5-180" href="#__codelineno-5-180"></a>
+</span><span id="__span-5-181"><a id="__codelineno-5-181" name="__codelineno-5-181" href="#__codelineno-5-181"></a>    <span class="n">phases_table</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="__span-5-182"><a id="__codelineno-5-182" name="__codelineno-5-182" href="#__codelineno-5-182"></a>        <span class="p">[</span><span class="s2">"1. Ініціалізація (Boot)"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">results</span><span class="p">[</span><span class="s1">'raw_timings'</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="mi">1000</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> мс"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">results</span><span class="p">[</span><span class="s1">'raw_currents'</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> мА"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">results</span><span class="p">[</span><span class="s1">'q_phases_base'</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> мА·с"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">results</span><span class="p">[</span><span class="s1">'gamma_base'</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> %"</span><span class="p">],</span>
+</span><span id="__span-5-183"><a id="__codelineno-5-183" name="__codelineno-5-183" href="#__codelineno-5-183"></a>        <span class="p">[</span><span class="s2">"2. Опитування сенсора"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">results</span><span class="p">[</span><span class="s1">'raw_timings'</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="mi">1000</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> мс"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">results</span><span class="p">[</span><span class="s1">'raw_currents'</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> мА"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">results</span><span class="p">[</span><span class="s1">'q_phases_base'</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> мА·с"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">results</span><span class="p">[</span><span class="s1">'gamma_base'</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> %"</span><span class="p">],</span>
+</span><span id="__span-5-184"><a id="__codelineno-5-184" name="__codelineno-5-184" href="#__codelineno-5-184"></a>        <span class="p">[</span><span class="s2">"3. Асоціація Wi-Fi (DHCP)"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">results</span><span class="p">[</span><span class="s1">'raw_timings'</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="mi">1000</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> мс"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">results</span><span class="p">[</span><span class="s1">'raw_currents'</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> мА"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">results</span><span class="p">[</span><span class="s1">'q_phases_base'</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> мА·с"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">results</span><span class="p">[</span><span class="s1">'gamma_base'</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> % (КРИТИЧНА)"</span><span class="p">],</span>
+</span><span id="__span-5-185"><a id="__codelineno-5-185" name="__codelineno-5-185" href="#__codelineno-5-185"></a>        <span class="p">[</span><span class="s2">"4. Публікація MQTT"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">results</span><span class="p">[</span><span class="s1">'raw_timings'</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span><span class="o">*</span><span class="mi">1000</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> мс"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">results</span><span class="p">[</span><span class="s1">'raw_currents'</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> мА"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">results</span><span class="p">[</span><span class="s1">'q_phases_base'</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> мА·с"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">results</span><span class="p">[</span><span class="s1">'gamma_base'</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> %"</span><span class="p">],</span>
+</span><span id="__span-5-186"><a id="__codelineno-5-186" name="__codelineno-5-186" href="#__codelineno-5-186"></a>        <span class="p">[</span><span class="s2">"5. Режим Deep Sleep"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">results</span><span class="p">[</span><span class="s1">'t5_base'</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> с"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">results</span><span class="p">[</span><span class="s1">'raw_currents'</span><span class="p">][</span><span class="mi">4</span><span class="p">]</span><span class="o">*</span><span class="mi">1000</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> мкА"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">results</span><span class="p">[</span><span class="s1">'q_phases_base'</span><span class="p">][</span><span class="mi">4</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> мА·с"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">results</span><span class="p">[</span><span class="s1">'gamma_base'</span><span class="p">][</span><span class="mi">4</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> %"</span><span class="p">],</span>
+</span><span id="__span-5-187"><a id="__codelineno-5-187" name="__codelineno-5-187" href="#__codelineno-5-187"></a>    <span class="p">]</span>
+</span><span id="__span-5-188"><a id="__codelineno-5-188" name="__codelineno-5-188" href="#__codelineno-5-188"></a>
+</span><span id="__span-5-189"><a id="__codelineno-5-189" name="__codelineno-5-189" href="#__codelineno-5-189"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">--- 1. ПОФАЗНИЙ РОЗПОДІЛ ЕНЕРГОВИТРАТ ЗА ОДИН ЦИКЛ (БАЗОВИЙ) ---"</span><span class="p">)</span>
+</span><span id="__span-5-190"><a id="__codelineno-5-190" name="__codelineno-5-190" href="#__codelineno-5-190"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">tabulate</span><span class="p">(</span><span class="n">phases_table</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">[</span><span class="s2">"Робоча фаза пристрою"</span><span class="p">,</span> <span class="s2">"Тривалість"</span><span class="p">,</span> <span class="s2">"Струм"</span><span class="p">,</span> <span class="s2">"Заряд Q_k"</span><span class="p">,</span> <span class="s2">"Частка у балансі"</span><span class="p">],</span> <span class="n">tablefmt</span><span class="o">=</span><span class="s2">"grid"</span><span class="p">))</span>
+</span><span id="__span-5-191"><a id="__codelineno-5-191" name="__codelineno-5-191" href="#__codelineno-5-191"></a>
+</span><span id="__span-5-192"><a id="__codelineno-5-192" name="__codelineno-5-192" href="#__codelineno-5-192"></a>    <span class="n">comparison_table</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="__span-5-193"><a id="__codelineno-5-193" name="__codelineno-5-193" href="#__codelineno-5-193"></a>        <span class="p">[</span><span class="s2">"Тривалість активного стану (t_active)"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">results</span><span class="p">[</span><span class="s1">'t_act_base'</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> с"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">results</span><span class="p">[</span><span class="s1">'t_act_opt'</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> с"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"Скорочено на </span><span class="si">{</span><span class="n">results</span><span class="p">[</span><span class="s1">'t_act_base'</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">results</span><span class="p">[</span><span class="s1">'t_act_opt'</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> с"</span><span class="p">],</span>
+</span><span id="__span-5-194"><a id="__codelineno-5-194" name="__codelineno-5-194" href="#__codelineno-5-194"></a>        <span class="p">[</span><span class="s2">"Сумарний заряд циклу (Q_total)"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">results</span><span class="p">[</span><span class="s1">'q_total_base'</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> мА·с"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">results</span><span class="p">[</span><span class="s1">'q_total_opt'</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> мА·с"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"Зменшено на </span><span class="si">{</span><span class="p">((</span><span class="n">results</span><span class="p">[</span><span class="s1">'q_total_base'</span><span class="p">]</span><span class="o">-</span><span class="n">results</span><span class="p">[</span><span class="s1">'q_total_opt'</span><span class="p">])</span><span class="o">/</span><span class="n">results</span><span class="p">[</span><span class="s1">'q_total_base'</span><span class="p">])</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> %"</span><span class="p">],</span>
+</span><span id="__span-5-195"><a id="__codelineno-5-195" name="__codelineno-5-195" href="#__codelineno-5-195"></a>        <span class="p">[</span><span class="s2">"Середній струм споживання (I_avg)"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">results</span><span class="p">[</span><span class="s1">'i_avg_base_ua'</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> мкА"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">results</span><span class="p">[</span><span class="s1">'i_avg_opt_ua'</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> мкА"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"Знижено у </span><span class="si">{</span><span class="n">results</span><span class="p">[</span><span class="s1">'i_avg_base_ua'</span><span class="p">]</span><span class="o">/</span><span class="n">results</span><span class="p">[</span><span class="s1">'i_avg_opt_ua'</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> раза"</span><span class="p">],</span>
+</span><span id="__span-5-196"><a id="__codelineno-5-196" name="__codelineno-5-196" href="#__codelineno-5-196"></a>        <span class="p">[</span><span class="s2">"Розрахунковий ресурс роботи"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">results</span><span class="p">[</span><span class="s1">'life_months_base'</span><span class="p">]</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> міс (</span><span class="si">{</span><span class="n">results</span><span class="p">[</span><span class="s1">'life_years_base'</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> р)"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">results</span><span class="p">[</span><span class="s1">'life_months_opt'</span><span class="p">]</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> міс (</span><span class="si">{</span><span class="n">results</span><span class="p">[</span><span class="s1">'life_years_opt'</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> р)"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"Подовжено у </span><span class="si">{</span><span class="n">results</span><span class="p">[</span><span class="s1">'boost_factor'</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> раза"</span><span class="p">],</span>
+</span><span id="__span-5-197"><a id="__codelineno-5-197" name="__codelineno-5-197" href="#__codelineno-5-197"></a>    <span class="p">]</span>
+</span><span id="__span-5-198"><a id="__codelineno-5-198" name="__codelineno-5-198" href="#__codelineno-5-198"></a>
+</span><span id="__span-5-199"><a id="__codelineno-5-199" name="__codelineno-5-199" href="#__codelineno-5-199"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">--- 2. ПОРІВНЯЛЬНИЙ АНАЛІЗ ЕФЕКТИВНОСТІ ОПТИМІЗАЦІЇ ---"</span><span class="p">)</span>
+</span><span id="__span-5-200"><a id="__codelineno-5-200" name="__codelineno-5-200" href="#__codelineno-5-200"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">tabulate</span><span class="p">(</span><span class="n">comparison_table</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">[</span><span class="s2">"Параметр функціонування"</span><span class="p">,</span> <span class="s2">"Базовий режим (DHCP)"</span><span class="p">,</span> <span class="s2">"Оптимізований режим"</span><span class="p">,</span> <span class="s2">"Інженерний виграш"</span><span class="p">],</span> <span class="n">tablefmt</span><span class="o">=</span><span class="s2">"grid"</span><span class="p">))</span>
+</span><span id="__span-5-201"><a id="__codelineno-5-201" name="__codelineno-5-201" href="#__codelineno-5-201"></a>
+</span><span id="__span-5-202"><a id="__codelineno-5-202" name="__codelineno-5-202" href="#__codelineno-5-202"></a>    <span class="c1"># Генерація графічних матеріалів</span>
+</span><span id="__span-5-203"><a id="__codelineno-5-203" name="__codelineno-5-203" href="#__codelineno-5-203"></a>    <span class="n">generate_timing_plot</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+</span><span id="__span-5-204"><a id="__codelineno-5-204" name="__codelineno-5-204" href="#__codelineno-5-204"></a>    <span class="n">generate_pie_chart</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+</span><span id="__span-5-205"><a id="__codelineno-5-205" name="__codelineno-5-205" href="#__codelineno-5-205"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">"="</span> <span class="o">*</span> <span class="mi">80</span><span class="p">)</span>
+</span><span id="__span-5-206"><a id="__codelineno-5-206" name="__codelineno-5-206" href="#__codelineno-5-206"></a>
+</span><span id="__span-5-207"><a id="__codelineno-5-207" name="__codelineno-5-207" href="#__codelineno-5-207"></a>
+</span><span id="__span-5-208"><a id="__codelineno-5-208" name="__codelineno-5-208" href="#__codelineno-5-208"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+</span><span id="__span-5-209"><a id="__codelineno-5-209" name="__codelineno-5-209" href="#__codelineno-5-209"></a>    <span class="n">main</span><span class="p">()</span>
+</span></code></pre></div>
+<hr />
+<h3 id="33">3.3 Запуск, тестування та перевірка результатів</h3>
+<ol>
+<li>Запустіть модуль розрахунку енергетичного профілю через консоль терміналу:</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Запуск скрипта аналізу та візуалізації профілю струмів</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>python<span class="w"> </span>scripts/profile_optimizer.py
+</span></code></pre></div>
+<ol>
+<li>Звірте отримане консольне виведення з еталонними чисельними показниками:</li>
+</ol>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>================================================================================
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>    ПРОФІЛЮВАННЯ ТА ОПТИМІЗАЦІЯ ЕНЕРГОСПОЖИВАННЯ IOT-ВУЗЛА (ЕТАЛОН)    
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>================================================================================
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>--- 1. ПОФАЗНИЙ РОЗПОДІЛ ЕНЕРГОВИТРАТ ЗА ОДИН ЦИКЛ (БАЗОВИЙ) ---
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>+---------------------------+--------------+-----------+--------------+----------------------+
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>| Робоча фаза пристрою      | Тривалість   | Струм     | Заряд Q_k    | Частка у балансі     |
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>+===========================+==============+===========+==============+======================+
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>| 1. Ініціалізація (Boot)   | 120 мс       | 45.0 мА   | 5.400 мА·с   | 1.86 %               |
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>+---------------------------+--------------+-----------+--------------+----------------------+
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>| 2. Опитування сенсора     | 80 мс        | 18.0 мА   | 1.440 мА·с   | 0.50 %               |
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>+---------------------------+--------------+-----------+--------------+----------------------+
+</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>| 3. Асоціація Wi-Fi (DHCP) | 2200 мс      | 110.0 мА  | 242.000 мА·с | 83.50 % (КРИТИЧНА)   |
+</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>+---------------------------+--------------+-----------+--------------+----------------------+
+</span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a>| 4. Публікація MQTT        | 250 мс       | 140.0 мА  | 35.000 мА·с  | 12.08 %              |
+</span><span id="__span-7-16"><a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a>+---------------------------+--------------+-----------+--------------+----------------------+
+</span><span id="__span-7-17"><a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a>| 5. Режим Deep Sleep       | 597.35 с     | 10.0 мкА  | 5.974 мА·с   | 2.06 %               |
+</span><span id="__span-7-18"><a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a>+---------------------------+--------------+-----------+--------------+----------------------+
+</span><span id="__span-7-19"><a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a>
+</span><span id="__span-7-20"><a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a>--- 2. ПОРІВНЯЛЬНИЙ АНАЛІЗ ЕФЕКТИВНОСТІ ОПТИМІЗАЦІЇ ---
+</span><span id="__span-7-21"><a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a>+------------------------------------+------------------------+----------------------+--------------------+
+</span><span id="__span-7-22"><a id="__codelineno-7-22" name="__codelineno-7-22" href="#__codelineno-7-22"></a>| Параметр функціонування            | Базовий режим (DHCP)   | Оптимізований режим  | Інженерний виграш  |
+</span><span id="__span-7-23"><a id="__codelineno-7-23" name="__codelineno-7-23" href="#__codelineno-7-23"></a>+====================================+========================+======================+====================+
+</span><span id="__span-7-24"><a id="__codelineno-7-24" name="__codelineno-7-24" href="#__codelineno-7-24"></a>| Тривалість активного стану         | 2.65 с                 | 0.70 с               | Скорочено на 1.95 с|
+</span><span id="__span-7-25"><a id="__codelineno-7-25" name="__codelineno-7-25" href="#__codelineno-7-25"></a>+------------------------------------+------------------------+----------------------+--------------------+
+</span><span id="__span-7-26"><a id="__codelineno-7-26" name="__codelineno-7-26" href="#__codelineno-7-26"></a>| Сумарний заряд циклу (Q_total)     | 289.81 мА·с            | 75.33 мА·с           | Зменшено на 74.0 % |
+</span><span id="__span-7-27"><a id="__codelineno-7-27" name="__codelineno-7-27" href="#__codelineno-7-27"></a>+------------------------------------+------------------------+----------------------+--------------------+
+</span><span id="__span-7-28"><a id="__codelineno-7-28" name="__codelineno-7-28" href="#__codelineno-7-28"></a>| Середній струм споживання (I_avg)  | 483.02 мкА             | 125.56 мкА           | Знижено у 3.85 раза|
+</span><span id="__span-7-29"><a id="__codelineno-7-29" name="__codelineno-7-29" href="#__codelineno-7-29"></a>+------------------------------------+------------------------+----------------------+--------------------+
+</span><span id="__span-7-30"><a id="__codelineno-7-30" name="__codelineno-7-30" href="#__codelineno-7-30"></a>| Розрахунковий ресурс роботи        | 5.9 міс (0.50 р)       | 22.2 міс (1.85 р)    | Подовжено у 3.73 р |
+</span><span id="__span-7-31"><a id="__codelineno-7-31" name="__codelineno-7-31" href="#__codelineno-7-31"></a>+------------------------------------+------------------------+----------------------+--------------------+
+</span><span id="__span-7-32"><a id="__codelineno-7-32" name="__codelineno-7-32" href="#__codelineno-7-32"></a>
+</span><span id="__span-7-33"><a id="__codelineno-7-33" name="__codelineno-7-33" href="#__codelineno-7-33"></a>[ВІЗУАЛІЗАЦІЯ]: Графік таймінг-діаграми збережено у 'plots/current_timing_plot.png'.
+</span><span id="__span-7-34"><a id="__codelineno-7-34" name="__codelineno-7-34" href="#__codelineno-7-34"></a>[ВІЗУАЛІЗАЦІЯ]: Кругову діаграму розподілу енергії збережено у 'plots/energy_pie_chart.png'.
+</span><span id="__span-7-35"><a id="__codelineno-7-35" name="__codelineno-7-35" href="#__codelineno-7-35"></a>================================================================================
+</span></code></pre></div>
+<ol>
+<li>У векторному редакторі Draw.io створіть детальну графічну схему часових інтервалів відповідно до свого варіанта із зазначенням переходів між станами низького та високого енергоспоживання. Збережіть схему у каталозі <code>diagrams/timing_profile.png</code>.</li>
+</ol>
+<hr />
+<h2 id="4">4 Вимоги до змісту звіту</h2>
+<p>Звіт про виконання практичного заняття оформлюється відповідно до нормативного стандарту ДСТУ 3008:2015 і повинен містити такі обов'язкові структурні розділи:</p>
+<ol>
+<li>
+<p><strong>Титульна сторінка</strong> встановленого зразка із зазначенням назви Міністерства освіти і науки України, закладу вищої освіти, факультету, випускової кафедри, назви дисципліни, номера і теми практичного заняття, номера закріпленого варіанта, академічної групи та прізвища здобувача.</p>
+</li>
+<li>
+<p><strong>Мета заняття</strong> та розгорнутий вступ із теоретичним описом фаз функціонування мікроконтролерів у режимах ультранизького енергоспоживання.</p>
+</li>
+<li>
+<p><strong>Постановка індивідуального завдання</strong> для закріпленого варіанта з випискою всіх числових значень параметрів струмів та часових інтервалів.</p>
+</li>
+<li>
+<p><strong>Аналітично-розрахункова частина:</strong> покроковий розрахунок тривалості фази сну, споживаного заряду та енергії за кожною з п'яти фаз, визначення питомих часток <span class="arithmatex">\(\gamma_1 \dots \gamma_5\)</span>, розрахунок середнього інтегрального струму <span class="arithmatex">\(I_{\text{avg}}\)</span> та прогнозованого терміну функціонування батареї до та після оптимізації.</p>
+</li>
+<li>
+<p><strong>Графічні матеріали:</strong></p>
+</li>
+<li>
+<p>Ступінчаста таймінг-діаграма зміни струму <span class="arithmatex">\(I(t)\)</span> у часі для базового та оптимізованого режимів;</p>
+</li>
+<li>
+<p>Кругова діаграма пофазного розподілу спожитої енергії.</p>
+</li>
+<li>
+<p><strong>Повний вихідний лістинг власної програми</strong> мовою Python із детальними коментарями до кожного рядка коду.</p>
+</li>
+<li>
+<p><strong>Аналітичні висновки</strong>, де сформульовано аналіз отриманих результатів, вказано найбільш енергоємний процес у циклі, оцінено вплив тривалості сну <span class="arithmatex">\(t_5\)</span> на загальну автономність вузла та запропоновано додаткові апаратно-програмні заходи зі зниження енергоспоживання.</p>
+</li>
+</ol>
+<hr />
+<h2 id="5">5 Контрольні запитання для захисту роботи</h2>
+<ol>
+<li>
+<p><strong>Чому фаза встановлення бездротового з'єднання Wi-Fi за протоколом DHCP є найбільш критичною за рівнем енерговитрат у порівнянні з фазами зчитування датчиків та передачі корисного навантаження?</strong></p>
+</li>
+<li>
+<p><strong>Яким чином збереження інформації про попереднє з'єднання (BSSID точки доступу, робочий частотний канал, статичні IP-адреси вузла та шлюзу) в енергонезалежній RTC-пам'яті мікроконтролера дозволяє скоротити тривалість радіочастотного сеансу?</strong></p>
+</li>
+<li>
+<p><strong>Які апаратні модулі мікроконтролера ESP32 продовжують споживати струм під час перебування кристала у режимі Deep Sleep, і які заходи дозволяють знизити цей струм до мінімального рівня <span class="arithmatex">\(5 \dots 10\text{ мкА}\)</span>?</strong></p>
+</li>
+<li>
+<p><strong>У чому полягає фізичний ефект саморозряду хімічних джерел струму?</strong> За яких інтервалів періодичності виходу пристрою на зв'язок (наприклад, <span class="arithmatex">\(1\text{ раз на добу}\)</span>) струм саморозряду стає співмірним із середнім струмом функціонування схеми?</p>
+</li>
+<li>
+<p><strong>Як впливає вибір типу датчика та інтерфейсу сполучення (аналоговий вихід АЦП проти цифрової шини I2C) на загальну тривалість активної фази <span class="arithmatex">\(t_{\text{active}}\)</span> та сумарний розряд акумулятора?</strong></p>
+</li>
+<li>
+<p><strong>Запропонуйте схемотехнічне рішення для повного апаратного знеструмлення зовнішніх датчиків та дільників напруги під час перебування мікроконтролера в режимі глибокого сну.</strong></p>
+</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Повернутись нагору
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Kyrylo Vadurin &bull; <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.top", "navigation.tracking", "header.autohide", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u0421\u043a\u043e\u043f\u0456\u0439\u043e\u0432\u0430\u043d\u043e \u0432 \u0431\u0443\u0444\u0435\u0440", "clipboard.copy": "\u0421\u043a\u043e\u043f\u0456\u044e\u0432\u0430\u0442\u0438 \u0432 \u0431\u0443\u0444\u0435\u0440", "search.result.more.one": "\u0429\u0435 1 \u0437\u0431\u0456\u0433 \u043d\u0430 \u0446\u0456\u0439 \u0441\u0442\u043e\u0440\u0456\u043d\u0446\u0456", "search.result.more.other": "\u0429\u0435 # \u0437\u0431\u0456\u0433\u0456\u0432 \u043d\u0430 \u0446\u0456\u0439 \u0441\u0442\u043e\u0440\u0456\u043d\u0446\u0456", "search.result.none": "\u0417\u0431\u0456\u0433\u0456\u0432 \u043d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u043e", "search.result.one": "\u0417\u043d\u0430\u0439\u0434\u0435\u043d\u043e 1 \u0437\u0431\u0456\u0433", "search.result.other": "\u0417\u043d\u0430\u0439\u0434\u0435\u043d\u043e # \u0437\u0431\u0456\u0433\u0456\u0432", "search.result.placeholder": "\u0420\u043e\u0437\u043f\u043e\u0447\u043d\u0456\u0442\u044c \u043f\u0438\u0441\u0430\u0442\u0438 \u0434\u043b\u044f \u043f\u043e\u0448\u0443\u043a\u0443", "search.result.term.missing": "\u041d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u043e \u0437\u0430\u043f\u0438\u0442\u0443", "select.version": "\u041e\u0431\u0440\u0430\u0442\u0438 \u0432\u0435\u0440\u0441\u0456\u044e"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

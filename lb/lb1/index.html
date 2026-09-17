@@ -1,0 +1,3159 @@
+
+<!doctype html>
+<html lang="uk" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Навчальний портал з дисципліни "Технології ІоТ"">
+      
+      
+      
+      
+        <link rel="prev" href="../../lk/lk15/">
+      
+      
+        <link rel="next" href="../lb2/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>ЛБ 1. Моделювання топологій IoT-мереж - Технології Інтернету речей</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#no-1-iot-cisco-packet-tracer" class="md-skip">
+          Перейти до змісту
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Хедер">
+    <a href="../.." title="Технології Інтернету речей" class="md-header__button md-logo" aria-label="Технології Інтернету речей" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Технології Інтернету речей
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              ЛБ 1. Моделювання топологій IoT-мереж
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan"  aria-label="Переключити на темну тему"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Переключити на темну тему" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="cyan"  aria-label="Переключити на світлу тему"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Переключити на світлу тему" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Пошук" placeholder="Пошук" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Шукати">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Очистити" aria-label="Очистити" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Пошук розпочато
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Вкладки" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Робоча програма
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../lk/lk1/" class="md-tabs__link">
+          
+  
+  
+  Лекції
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+  Лабораторні роботи
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../pz/pz1/" class="md-tabs__link">
+          
+  
+  
+  Практичні заняття
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../kp/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Курсовий проєкт
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../sr/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Самостійна робота
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../sr/quest/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Контрольні завдання (Іспит)
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Навігація" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Технології Інтернету речей" class="md-nav__button md-logo" aria-label="Технології Інтернету речей" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Технології Інтернету речей
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Робоча програма
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Лекції
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Лекції
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lk/lk1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 1. Екосистема та архітектура IoT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lk/lk2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 2. Технології WPAN та WLAN у IoT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lk/lk3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 3. LPWAN технології
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lk/lk4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 4. Прикладні протоколи ІоТ (MQTT, CoAP)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lk/lk5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 5. Туманні (Fog) та граничні (Edge) обчислення
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lk/lk6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 6. Мікроконтролерні платформи (ESP32)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lk/lk7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 7. Інтелектуальні сенсори
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lk/lk8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 8. Виконавчі пристрої
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lk/lk9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 9. Віртуалізація та контейнеризація IoT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lk/lk10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 10. IoT платформи та Middleware
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lk/lk11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 11. Розумний будинок (Home Assistant)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lk/lk12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 12. Промисловий ІоТ (IIoT)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lk/lk13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 13. Big Data в ІоТ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lk/lk14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 14. Machine Learning на межі мережі
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lk/lk15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 15. Кібербезпека в системах ІоТ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Лабораторні роботи
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Лабораторні роботи
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 1. Моделювання топологій IoT-мереж
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 1. Моделювання топологій IoT-мереж
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Зміст">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Зміст
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1 Теоретичні відомості
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-0" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2 Підготовка середовища та розгортання проєкту (Крок 0)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3 Порядок виконання роботи
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3 Порядок виконання роботи">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Індивідуальні завдання
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Покроковий алгоритм та розв'язок еталонного прикладу
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2 Покроковий алгоритм та розв&#39;язок еталонного прикладу">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 1. Розміщення та комутація компонентів топології
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-home-gateway" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 2. Налаштування шлюзу Home Gateway
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-iot-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 3. Налаштування виділеного сервера реєстрації (IoT Server)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-iot-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 4. Додавання бездротових модулів до IoT-пристроїв
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 5. Створення облікового запису адміністратора та перевірка реєстрації
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 6. Програмування мікроконтролера та сценаріїв автоматизації
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Запуск, тестування та перевірка результатів
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3 Запуск, тестування та перевірка результатів">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sbc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Приклад виведення консольних логів SBC під час зміни режимів:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4 Вимоги до змісту звіту
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5 Контрольні запитання для захисту роботи
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lb2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 2. Симуляція підсистем Розумного будинку
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lb3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 3. Дослідження локального MQTT-брокера
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lb4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 4. Схемотехнічне моделювання вузла збору
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lb5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 5. Прошивка ESP32 для передавання телеметрії MQTT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lb6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 6. Декларативне програмування ESP32 (ESPHome)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lb7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 7. Серверне середовище Linux для IoT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lb8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 8. Контейнеризація в ІоТ (Docker Compose)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lb9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 9. Middleware ІоТ (Node-RED)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lb10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 10. Сервіс REST API для агрегації даних
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lb11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 11. Платформи розумного будинку (Home Assistant)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lb12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 12. Сценарії автоматизації Home Assistant
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lb13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 13. Обробка телеметрії мовою Python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lb14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 14. HMI Dashboard для диспетчеризації
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lb15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 15. Комплексне наскрізне тестування IoT-системи
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практичні заняття
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Практичні заняття
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 1. Розрахунок пропускної здатності та живлення
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 2. Проєктування ієрархії топіків MQTT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 3. Правила фільтрації на Edge-шлюзах
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 4. Моделювання АЦП для сенсорів
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 5. Оптимізація енергетичного профілю
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 6. Проєктування конфігурації Docker Compose
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 7. Логічні схеми в Node-RED
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 8. Сценарії Trigger-Condition-Action
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 9. Конвеєр обробки даних (ETL)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 10. Моделювання загроз безпеки (STRIDE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Курсовий проєкт
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Самостійна робота
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sr/quest/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Контрольні завдання (Іспит)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Зміст">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Зміст
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1 Теоретичні відомості
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-0" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2 Підготовка середовища та розгортання проєкту (Крок 0)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3 Порядок виконання роботи
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3 Порядок виконання роботи">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Індивідуальні завдання
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Покроковий алгоритм та розв'язок еталонного прикладу
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2 Покроковий алгоритм та розв&#39;язок еталонного прикладу">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 1. Розміщення та комутація компонентів топології
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-home-gateway" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 2. Налаштування шлюзу Home Gateway
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-iot-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 3. Налаштування виділеного сервера реєстрації (IoT Server)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-iot-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 4. Додавання бездротових модулів до IoT-пристроїв
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 5. Створення облікового запису адміністратора та перевірка реєстрації
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 6. Програмування мікроконтролера та сценаріїв автоматизації
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Запуск, тестування та перевірка результатів
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3 Запуск, тестування та перевірка результатів">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sbc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Приклад виведення консольних логів SBC під час зміни режимів:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4 Вимоги до змісту звіту
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5 Контрольні запитання для захисту роботи
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="no-1-iot-cisco-packet-tracer">Лабораторна робота № 1. Моделювання топологій IoT-мереж та серверів реєстрації у середовищі Cisco Packet Tracer</h1>
+<p><strong>Мета:</strong> Дослідити багаторівневу архітектуру Інтернету речей, вивчити принципи адресації, маршрутизації та реєстрації розумних речей, а також набути практичних навичок проєктування топологій локальних бездротових мереж, підключення датчиків та актуаторів до домашнього шлюзу (Home Gateway) і налаштування виділеного сервера реєстрації (IoT Registration Server) для централізованого моніторингу та керування у середовищі Cisco Packet Tracer.</p>
+<p><strong>Стек технологій та інструменти:</strong></p>
+<ul>
+<li>
+<p><strong>Мова програмування / Середовище:</strong> Середовище симуляції мереж Cisco Packet Tracer (версія 8.2 або вище), вбудований інтерпретатор Python / JavaScript для IoT-пристроїв.</p>
+</li>
+<li>
+<p><strong>Платформа / Бібліотеки / Модулі:</strong> Вбудований стек протоколів TCP/IP, сервіси DHCP, DNS, HTTP, IoT Registration Service, бібліотека роботи з GPIO у середовищі Packet Tracer (<code>gpio</code>).</p>
+</li>
+<li>
+<p><strong>Інструменти розробки:</strong> Робочий простір Cisco Packet Tracer Workspace, термінал командного рядка (CLI) мережевих пристроїв, інтегрований веббраузер для взаємодії з IoT-сервером.</p>
+</li>
+</ul>
+<hr />
+<h2 id="1">1 Теоретичні відомості</h2>
+<p>Сучасна концепція Інтернету речей (Internet of Things, IoT) базується на об'єднанні фізичних об'єктів («речей»), оснащених сенсорами, виконавчими механізмами (актуаторами) та обчислювальними модулями, у єдину глобальну інфраструктуру за допомогою стандартних мережевих протоколів. Відповідно до еталонних моделей Міжнародного союзу електрозв'язку (ITU-T Y.2060) та Всесвітнього форуму IoT (IoT World Forum), архітектура системи розподіляється на три фундаментальні рівні: фізичний рівень пристроїв (Edge/Perception Layer), мережевий рівень передачі даних (Network/Transmission Layer) та рівень сервісів і додатків (Application/Cloud Layer).</p>
+<p>На фізичному та граничному рівнях зосереджені датчики, які перетворюють неелектричні фізичні параметри навколишнього середовища (температуру, вологість, задимленість, освітленість) у цифрові або аналогові електричні сигнали. Поряд із ними функціонують актуатори, які виконують зворотну дію, трансформуючи керуючі електричні сигнали у фізичний рух, комутацію силових кіл або оптичну/акустичну сигналізацію.</p>
+<p>Для організації взаємодії між автономними низькопотужними пристроями та магістральними комп'ютерними мережами використовують проміжні пристрої — шлюзи (IoT Gateways / Home Gateways). Шлюз виконує трансляцію протоколів фізичного і канального рівнів (наприклад, з бездротових стандартів малого радіуса дії IEEE 802.11 Wi-Fi або IEEE 802.15.4 у стандартний Ethernet), забезпечує локальну маршрутизацію, призначення мережевих адрес через протокол DHCP та ізоляцію сенсорної підмережі від зовнішнього трафіку.</p>
+<p><pre class="mermaid"><code>graph TD
+    subgraph Physical_Edge [Рівень пристроїв: Сенсори та Актуатори]
+        S1[Датчик задимленості]
+        S2[Датчик руху]
+        A1[Сирена / Оповіщувач]
+        A2[Електромагнітний замок]
+    end
+
+    subgraph Network_Gateway [Мережевий рівень: Шлюз та Маршрутизація]
+        HG[IoT Home Gateway&lt;br/&gt;Wi-Fi AP / DHCP / Router]
+    end
+
+    subgraph Server_Application [Рівень сервісів та додатків]
+        Server[Виділений IoT Server&lt;br/&gt;HTTP Registration Service]
+        Client[Клієнтський термінал / ПК&lt;br/&gt;Web Dashboard]
+    end
+
+    S1 -.-&gt;|Wi-Fi / 2.4 GHz| HG
+    S2 -.-&gt;|Wi-Fi / 2.4 GHz| HG
+    A1 -.-&gt;|Wi-Fi / 2.4 GHz| HG
+    A2 -.-&gt;|FastEthernet| HG
+
+    HG ===|Ethernet / IP Network| Server
+    Client ===|HTTP / TCP Port 80| Server
+
+    style HG fill:#f9f,stroke:#333,stroke-width:2px
+    style Server fill:#bbf,stroke:#333,stroke-width:2px
+    style Physical_Edge fill:#dfd,stroke:#333,stroke-width:1px</code></pre>
+<em>Рисунок 1 — Структурна схема багаторівневої IoT-інфраструктури утилізації даних</em></p>
+<p>Архітектурний підхід, наведений на рисунку 1, демонструє поділ потоків даних. Сенсори та актуатори зв'язуються зі шлюзом через захищений бездротовий канал Wi-Fi (або дротовий Ethernet). Шлюз направляє пакети до виділеного сервера реєстрації (IoT Server). Виділений сервер бере на себе задачі централізованої автентифікації пристроїв, накопичення телеметричних даних та надання інтерфейсу користувача (Dashboard). Користувач за допомогою звичайного веббраузера на ПК або смартфоні підключається до сервера за протоколом HTTP (порт 80) або HTTPS (порт 443), отримуючи повний контроль над станом всієї системи.</p>
+<p>Процес реєстрації розумного пристрою на виділеному сервері відбувається через взаємодію клієнт-сервер за протоколом HTTP. Після отримання IP-адреси від DHCP-сервера пристрій надсилає запит на встановлення сесії до сервера реєстрації, передаючи власні ідентифікаційні дані (Device ID, типи входів/виходів та поточні значення параметрів).</p>
+<p><pre class="mermaid"><code>sequenceDiagram
+    autonumber
+    participant D as IoT Пристрій (ESP/Sensor)
+    participant GW as Home Gateway (DHCP)
+    participant S as Виділений IoT Server
+    participant PC as Робоча станція оператора
+
+    D-&gt;&gt;GW: DHCP Discover / Request
+    GW--&gt;&gt;D: DHCP Offer / ACK (IP, Mask, Gateway, DNS)
+    Note over D,GW: Пристрій отримує конфігурацію IP-мережі
+
+    D-&gt;&gt;S: TCP Handshake (Port 80)
+    D-&gt;&gt;S: HTTP POST / Реєстрація (Credentials, Device ID)
+    S--&gt;&gt;D: HTTP 200 OK (Device Registered)
+
+    loop Періодична телеметрія
+        D-&gt;&gt;S: HTTP POST / Push Telemetry (Status Data)
+        S--&gt;&gt;D: HTTP 200 OK
+    end
+
+    PC-&gt;&gt;S: HTTP GET / Початкова сторінка моніторингу
+    S--&gt;&gt;PC: Авторизація та відтворення Web Dashboard
+    PC-&gt;&gt;S: HTTP POST / Команда зміни стану актуатора
+    S-&gt;&gt;D: Направлення керуючого сигналу (Actuation)
+    D--&gt;&gt;S: Підтвердження виконання команди</code></pre>
+<em>Рисунок 2 — Діаграма послідовності інформаційного обміну під час реєстрації та моніторингу</em></p>
+<p>При розрахунку параметрів мережі передачі даних для систем Інтернету речей визначальним фактором є загальний час доставки телеметричного повідомлення від сенсора до сервера реєстрації (<span class="arithmatex">\(T_{\text{total}}\)</span>). Цей параметр складається з кількох ключових затримок і описується математичною моделлю:</p>
+<div class="arithmatex">\[T_{\text{total}} = T_{\text{trans}} + T_{\text{prop}} + T_{\text{proc}} + T_{\text{queue}}\]</div>
+<p>де <span class="arithmatex">\(T_{\text{trans}}\)</span> — затримка передавання пакету в канал зв'язку (с);
+<span class="arithmatex">\(T_{\text{prop}}\)</span> — затримка поширення сигналу фізичним середовищем (с);
+<span class="arithmatex">\(T_{\text{proc}}\)</span> — час апаратної обробки пакета маршрутизатором або шлюзом (с);
+<span class="arithmatex">\(T_{\text{queue}}\)</span> — затримка перебування пакета в черзі буфера інтерфейсу (с).</p>
+<p>Затримка передавання пакету визначається відношенням довжини сформованого мережевого кадру до фізичної пропускної здатності каналу зв'язку:</p>
+<div class="arithmatex">\[T_{\text{trans}} = \frac{L}{R}\]</div>
+<p>де <span class="arithmatex">\(L\)</span> — загальний розмір кадру разом зі службовими заголовками протоколів Ethernet/IP/TCP/HTTP (біт);
+<span class="arithmatex">\(R\)</span> — номінальна бітова швидкість передачі даних у каналі (біт/с).</p>
+<p>Для автономних датчиків важливим є розрахунок сумарного енергоспоживання вузла за один повний робочий цикл (<span class="arithmatex">\(E_{\text{cycle}}\)</span>), який складається з фази вимірювання, передавання даних та перебування в енергозберігаючому режимі сну:</p>
+<div class="arithmatex">\[E_{\text{cycle}} = U \cdot \left( I_{\text{active}} \cdot t_{\text{active}} + I_{\text{sleep}} \cdot t_{\text{sleep}} \right)\]</div>
+<p>де <span class="arithmatex">\(U\)</span> — робоча напруга живлення мікроконтролерного модуля (В);
+<span class="arithmatex">\(I_{\text{active}}\)</span> — струм, що споживається пристроєм у активному режимі передавання даних (А);
+<span class="arithmatex">\(t_{\text{active}}\)</span> — тривалість активного сеансу вимірювання та зв'язку (с);
+<span class="arithmatex">\(I_{\text{sleep}}\)</span> — струм споживання мікроконтролера в режимі глибокого сну (А);
+<span class="arithmatex">\(t_{\text{sleep}}\)</span> — тривалість пасивного інтервалу очікування (с).</p>
+<p>Загальний термін автономної експлуатації датчика від хімічного джерела живлення ємністю <span class="arithmatex">\(C_{\text{bat}}\)</span> (вираженої в ампер-годинах, <span class="arithmatex">\(\text{А}\cdot\text{год}\)</span>) розраховується з урахуванням періодичності надсилання телеметрії:</p>
+<div class="arithmatex">\[T_{\text{life}} = \frac{C_{\text{bat}}}{I_{\text{avg}}} = \frac{C_{\text{bat}} \cdot (t_{\text{active}} + t_{\text{sleep}})}{I_{\text{active}} \cdot t_{\text{active}} + I_{\text{sleep}} \cdot t_{\text{sleep}}}\]</div>
+<p>де <span class="arithmatex">\(I_{\text{avg}}\)</span> — середній еквівалентний струм споживання вузла протягом усього життєвого циклу (А).</p>
+<hr />
+<h2 id="2-0">2 Підготовка середовища та розгортання проєкту (Крок 0)</h2>
+<p>Для виконання лабораторної роботи використовується програмний комплекс Cisco Packet Tracer. Перевірка готовності системи до моделювання передбачає контроль версії встановленого програмного забезпечення та створення робочого каталогу на комп'ютері.</p>
+<ol>
+<li>Запустіть емулятор термінала операційної системи (Command Prompt у Windows або Terminal у Linux) та перевірте наявність інстальованого пакета Cisco Packet Tracer:</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Перевірка наявності виконуваного файлу Packet Tracer у Linux</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>which<span class="w"> </span>packettracer
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># Для Windows у PowerShell перевірте наявність каталогу інсталяції</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>Test-Path<span class="w"> </span><span class="s2">"C:\Program Files\Cisco Packet Tracer *\bin\PacketTracer.exe"</span>
+</span></code></pre></div>
+<ol>
+<li>Створіть структуру каталогів проєкту для збереження файлів симуляції, конфігурацій та знятих звітів:</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Створення робочих директорій для звітності</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>~/IoT_Projects/Lab1_Topology/<span class="o">{</span>configs,captures,scripts<span class="o">}</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nb">cd</span><span class="w"> </span>~/IoT_Projects/Lab1_Topology
+</span></code></pre></div>
+<p>Файлова структура виконаної лабораторної роботи повинна мати такий вигляд:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>IoT_Projects/
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>└── Lab1_Topology/
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    ├── Lab1_SmartSystem.pkt       # Основний файл симуляції топології Cisco Packet Tracer
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    ├── configs/
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    │   ├── gateway_config.txt     # Експортована конфігурація бездротової мережі та DHCP
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    │   └── server_iot.json        # Експортований маніфест облікових записів сервера
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>    ├── scripts/
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>    │   └── edge_controller.py     # Вихідний код скрипта управління актуаторами (SBC/MCU)
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    └── captures/
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>        └── registration_trace.pka # Логи інформаційного обміну та трасування пакетів
+</span></code></pre></div>
+<ol>
+<li>
+<p>Відкрийте Cisco Packet Tracer. Переконайтеся, що в нижній лівій панелі компонентів доступні розділи:</p>
+</li>
+<li>
+<p><strong>Network Devices</strong> <span class="arithmatex">\(\to\)</span> <strong>Wireless Devices</strong> (зокрема шлюз <code>Home Gateway</code>);</p>
+</li>
+<li>
+<p><strong>End Devices</strong> <span class="arithmatex">\(\to\)</span> <strong>End Devices</strong> (сервер <code>Server-PT</code>, комп'ютер <code>PC-PT</code>);</p>
+</li>
+<li>
+<p><strong>End Devices</strong> <span class="arithmatex">\(\to\)</span> <strong>Home / Smart Devices</strong> (датчики <code>Smoke Detector</code>, <code>Motion Detector</code>, актуатори <code>Siren</code>, <code>Door</code>, <code>Ceiling Fan</code>).</p>
+</li>
+</ol>
+<hr />
+<h2 id="3">3 Порядок виконання роботи</h2>
+<h3 id="31">3.1 Індивідуальні завдання</h3>
+<p>Кожен здобувач вищої освіти виконує моделювання унікальної інтегрованої системи відповідно до свого номера варіанта у списку академічної групи.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Варіант</th>
+<th style="text-align: left;">Назва системи / галузь застосування</th>
+<th style="text-align: left;">Вхідні параметри підмережі та безпеки</th>
+<th style="text-align: left;">Склад датчиків (Sensors)</th>
+<th style="text-align: left;">Склад актуаторів (Actuators)</th>
+<th style="text-align: left;">Керуюча логіка автоматизації</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>1</strong></td>
+<td style="text-align: left;">Моніторинг лабораторії мікроелектроніки</td>
+<td style="text-align: left;"><code>192.168.10.0/24</code>, SSID: <code>Lab_Micro_IoT</code>, Pass: <code>MicroPass2026!</code></td>
+<td style="text-align: left;">Датчик температури, Датчик диму</td>
+<td style="text-align: left;">Вентилятор витяжки, Аварійна сирена</td>
+<td style="text-align: left;">Якщо дим &gt; 0.2 або <span class="arithmatex">\(T &gt; 45^\circ\text{C}\)</span>, увімкнути вентилятор на максимум та сирену</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>2</strong></td>
+<td style="text-align: left;">Клімат-контроль серверного приміщення</td>
+<td style="text-align: left;"><code>192.168.20.0/24</code>, SSID: <code>Server_Room_Net</code>, Pass: <code>ServerSafe99#</code></td>
+<td style="text-align: left;">Датчик температури, Датчик вологості</td>
+<td style="text-align: left;">Промисловий кондиціонер, Оповіщувач</td>
+<td style="text-align: left;">Якщо <span class="arithmatex">\(T &gt; 28^\circ\text{C}\)</span>, увімкнути кондиціонер; якщо вологість &gt; 70%, активувати сигнал</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>3</strong></td>
+<td style="text-align: left;">Система безпеки архіву документів</td>
+<td style="text-align: left;"><code>192.168.30.0/24</code>, SSID: <code>Archive_Secure</code>, Pass: <code>ArchKeyPass88</code></td>
+<td style="text-align: left;">Датчик руху, Датчик відкриття дверей</td>
+<td style="text-align: left;">LED-прожектор, Електрозамок</td>
+<td style="text-align: left;">Якщо зафіксовано рух при закритому замку, увімкнути прожектор та заблокувати двері</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>4</strong></td>
+<td style="text-align: left;">Смарт-оранжерея з крапельним поливом</td>
+<td style="text-align: left;"><code>192.168.40.0/24</code>, SSID: <code>GreenHouse_Mesh</code>, Pass: <code>FloraPlant44$</code></td>
+<td style="text-align: left;">Датчик вологості грунту, Датчик рівня світла</td>
+<td style="text-align: left;">Електроклапан води, Лампа досвічування</td>
+<td style="text-align: left;">Якщо вологість грунту &lt; 30%, відкрити клапан; якщо світло &lt; 200 lx, увімкнути лампу</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>5</strong></td>
+<td style="text-align: left;">Автоматизація складського термінала</td>
+<td style="text-align: left;"><code>192.168.50.0/24</code>, SSID: <code>Logistics_Hub</code>, Pass: <code>CargoTrack123</code></td>
+<td style="text-align: left;">Оптичний датчик воріт, Датчик задимленості</td>
+<td style="text-align: left;">Ролетні ворота, Витяжна вентиляція</td>
+<td style="text-align: left;">При спрацюванні оптичного датчика відкрити ворота; при появі диму відкрити на 100%</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>6</strong></td>
+<td style="text-align: left;">Моніторинг хімічного складу цеху</td>
+<td style="text-align: left;"><code>192.168.60.0/24</code>, SSID: <code>Chem_Industry_5</code>, Pass: <code>SafetyFirst77@</code></td>
+<td style="text-align: left;">Датчик CO, Датчик витоку газу</td>
+<td style="text-align: left;">Припливна вентиляція, Звукова тривога</td>
+<td style="text-align: left;">Якщо витік газу = True або CO &gt; 50 ppm, запустити вентиляцію та сирену</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>7</strong></td>
+<td style="text-align: left;">Контроль доступу та освітлення паркінгу</td>
+<td style="text-align: left;"><code>192.168.70.0/24</code>, SSID: <code>AutoPark_Smart</code>, Pass: <code>ParkAccess2026</code></td>
+<td style="text-align: left;">Датчик присутності авто, Фоторезистор</td>
+<td style="text-align: left;">Світлофор, Шлагбаум</td>
+<td style="text-align: left;">Якщо авто виявлено та шлагбаум закритий, відкрити шлагбаум та ввімкнути зелений</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>8</strong></td>
+<td style="text-align: left;">Енергоефективне вуличне освітлення</td>
+<td style="text-align: left;"><code>192.168.80.0/24</code>, SSID: <code>City_Light_Net</code>, Pass: <code>SmartCityPass9</code></td>
+<td style="text-align: left;">Фоторезистор (Ambient Light), Датчик руху</td>
+<td style="text-align: left;">Вуличний LED ліхтар, Камера спостереження</td>
+<td style="text-align: left;">Якщо освітленість &lt; 15% та зафіксовано рух, яскравість ліхтаря 100% та увімкнути запис</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>9</strong></td>
+<td style="text-align: left;">Охоронний комплекс котеджу</td>
+<td style="text-align: left;"><code>192.168.90.0/24</code>, SSID: <code>Cottage_Guard</code>, Pass: <code>HomeSafeHome1</code></td>
+<td style="text-align: left;">Датчик вібрації вікна, Датчик руху</td>
+<td style="text-align: left;">Внутрішня сирена, Стробоскоп</td>
+<td style="text-align: left;">Якщо вібрація &gt; 0.6 при активованому режимі охорони, увімкнути сирену та стробоскоп</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>10</strong></td>
+<td style="text-align: left;">Автоматизована котельна станція</td>
+<td style="text-align: left;"><code>192.168.100.0/24</code>, SSID: <code>Boiler_Station</code>, Pass: <code>ThermoStat88*</code></td>
+<td style="text-align: left;">Датчик тиску теплоносія, Датчик температури</td>
+<td style="text-align: left;">Сервопривід газового клапана, Насос</td>
+<td style="text-align: left;">Якщо тиск &gt; 4 бар, перекрити газовий клапан; якщо <span class="arithmatex">\(T &lt; 40^\circ\text{C}\)</span>, збільшити потік насоса</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>11</strong></td>
+<td style="text-align: left;">Контроль мікроклімату птахоферми</td>
+<td style="text-align: left;"><code>192.168.110.0/24</code>, SSID: <code>Agro_Poultry_1</code>, Pass: <code>AgroFarmPass3</code></td>
+<td style="text-align: left;">Датчик аміаку (NH3), Датчик температури</td>
+<td style="text-align: left;">Потужна витяжка, Калорифер</td>
+<td style="text-align: left;">Якщо рівень аміаку &gt; 25 ppm, активувати витяжку; якщо <span class="arithmatex">\(T &lt; 18^\circ\text{C}\)</span>, увімкнути обігрів</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>12</strong></td>
+<td style="text-align: left;">Розумний навчальний кабінет</td>
+<td style="text-align: left;"><code>192.168.120.0/24</code>, SSID: <code>Uni_Auditory_10</code>, Pass: <code>Kremenchuk2026</code></td>
+<td style="text-align: left;">Датчик CO2, Датчик присутності людей</td>
+<td style="text-align: left;">Моторизоване вікно, Кондиціонер</td>
+<td style="text-align: left;">Якщо присутність = True та CO2 &gt; 800 ppm, відкрити вікно для провітрювання</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>13</strong></td>
+<td style="text-align: left;">Диспетчеризація водонапірної вежі</td>
+<td style="text-align: left;"><code>192.168.130.0/24</code>, SSID: <code>Water_Tower_Sys</code>, Pass: <code>AquaControl45</code></td>
+<td style="text-align: left;">Датчик рівня води, Датчик тиску магістралі</td>
+<td style="text-align: left;">Магістральний насос, Зливний клапан</td>
+<td style="text-align: left;">Якщо рівень води &lt; 15%, запустити насос; якщо рівень &gt; 95%, негайно зупинити насос</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>14</strong></td>
+<td style="text-align: left;">Протипожежний вузол деревообробки</td>
+<td style="text-align: left;"><code>192.168.140.0/24</code>, SSID: <code>Wood_Factory_Net</code>, Pass: <code>TimberSafe55!</code></td>
+<td style="text-align: left;">Датчик температури підшипників, Датчик пилу</td>
+<td style="text-align: left;">Спринклерна система (водяна), Сирена</td>
+<td style="text-align: left;">Якщо температура підшипника &gt; <span class="arithmatex">\(85^\circ\text{C}\)</span>, вимкнути лінію та активувати спринклер</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>15</strong></td>
+<td style="text-align: left;">Автоматизація лікарняної палати</td>
+<td style="text-align: left;"><code>192.168.150.0/24</code>, SSID: <code>Hospital_Ward_IoT</code>, Pass: <code>MedCareNet77</code></td>
+<td style="text-align: left;">Кнопка виклику медперсоналу, Пульсоксиметр</td>
+<td style="text-align: left;">Світлове табло чергового, Звуковий маяк</td>
+<td style="text-align: left;">При натисканні кнопки або падінні SpO2 &lt; 90% вивести сигнал тривоги черговому</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>16</strong></td>
+<td style="text-align: left;">Розумна система збору побутових відходів</td>
+<td style="text-align: left;"><code>192.168.160.0/24</code>, SSID: <code>Waste_Management</code>, Pass: <code>EcoCityRecycle</code></td>
+<td style="text-align: left;">Ультразвуковий датчик заповнення, Датчик диму</td>
+<td style="text-align: left;">Електромагнітне блокування люка, Сирена</td>
+<td style="text-align: left;">Якщо заповнення контейнера &gt; 90%, заблокувати прийомний люк та передати статус</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>17</strong></td>
+<td style="text-align: left;">Лабораторія лазерної оптики</td>
+<td style="text-align: left;"><code>192.168.170.0/24</code>, SSID: <code>Optics_Laser_Lab</code>, Pass: <code>PhotonBeam99$</code></td>
+<td style="text-align: left;">Датчик відкриття захисного кожуха, Датчик світла</td>
+<td style="text-align: left;">Блокування лазерного випромінювача, Лампа</td>
+<td style="text-align: left;">Якщо кожух відкрито під час генерації, зняти живлення з лазера та увімкнути червоне світло</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>18</strong></td>
+<td style="text-align: left;">Контроль доступу до шаф ЦОД</td>
+<td style="text-align: left;"><code>192.168.180.0/24</code>, SSID: <code>DataCenter_Rack</code>, Pass: <code>SecureServer11</code></td>
+<td style="text-align: left;">Герконовий датчик дверей шафи, Датчик удару</td>
+<td style="text-align: left;">Електронний ригельний замок, Камера</td>
+<td style="text-align: left;">Якщо замок відкрито без авторизації, зафіксувати подію в журналі та подати тривогу</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>19</strong></td>
+<td style="text-align: left;">Автономна метеостанція аеродрому</td>
+<td style="text-align: left;"><code>192.168.190.0/24</code>, SSID: <code>Aero_Meteo_Node</code>, Pass: <code>FlySafety2026</code></td>
+<td style="text-align: left;">Анемометр (швидкість вітру), Барометр</td>
+<td style="text-align: left;">Світловий маяк злітної смуги, Сигнальне табло</td>
+<td style="text-align: left;">Якщо швидкість вітру &gt; 18 м/с, увімкнути заборонний червоний сигнал для посадки</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>20</strong></td>
+<td style="text-align: left;">Система кондиціонування фармацевтичного складу</td>
+<td style="text-align: left;"><code>192.168.200.0/24</code>, SSID: <code>Pharma_Storage_1</code>, Pass: <code>VaccineSafe22#</code></td>
+<td style="text-align: left;">Датчик температури, Датчик вологості</td>
+<td style="text-align: left;">Осушувач повітря, Прецизійний охолоджувач</td>
+<td style="text-align: left;">Підтримувати вологість строго 40–50%; при відхиленні увімкнути відповідний актуатор</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="32">3.2 Покроковий алгоритм та розв'язок еталонного прикладу</h3>
+<p>Як еталонний приклад реалізується <strong>«Комплексна інтегрована система моніторингу та протипожежного захисту приміщення»</strong>, яка не дублює індивідуальні варіанти і містить повний наскрізний цикл: формування топології, конфігурацію серверних служб, бездротову та дротову інтеграцію пристроїв і написання коду автоматизації.</p>
+<p>Параметри еталонної системи:</p>
+<ul>
+<li>
+<p>Діапазон адрес локальної мережі: <code>192.168.1.0/24</code></p>
+</li>
+<li>
+<p>IP-адреса шлюзу (Home Gateway): <code>192.168.1.1</code></p>
+</li>
+<li>
+<p>IP-адреса виділеного сервера (IoT Server): <code>192.168.1.200</code></p>
+</li>
+<li>
+<p>Назва Wi-Fi мережі (SSID): <code>Fire_Safety_IoT</code></p>
+</li>
+<li>
+<p>Пароль автентифікації WPA2-PSK: <code>SafetyMaster2026</code></p>
+</li>
+<li>
+<p>Склад пристроїв: Датчик задимленості (<code>Smoke Detector</code>), Датчик руху (<code>Motion Sensor</code>), Витяжний стельовий вентилятор (<code>Ceiling Fan</code>), Охоронна сирена (<code>Siren</code>), Розумні двері (<code>Smart Door</code>), Сервер (<code>IoT Server</code>), Робоча станція адміністратора (<code>Admin PC</code>).</p>
+</li>
+</ul>
+<p><pre class="mermaid"><code>graph LR
+    subgraph Local_Subnet [Сегмент FastEthernet / Wi-Fi: 192.168.1.0/24]
+        HG[Home Gateway&lt;br/&gt;192.168.1.1]
+        Server[IoT Server&lt;br/&gt;192.168.1.200]
+        Admin[Admin PC&lt;br/&gt;DHCP Lease]
+
+        Smoke[Smoke Detector&lt;br/&gt;Wi-Fi Client]
+        Motion[Motion Detector&lt;br/&gt;Wi-Fi Client]
+        Fan[Ceiling Fan&lt;br/&gt;Wi-Fi Client]
+        Siren[Siren&lt;br/&gt;Wi-Fi Client]
+        Door[Smart Door&lt;br/&gt;FastEthernet]
+    end
+
+    Smoke -.-&gt;|802.11 b/g/n| HG
+    Motion -.-&gt;|802.11 b/g/n| HG
+    Fan -.-&gt;|802.11 b/g/n| HG
+    Siren -.-&gt;|802.11 b/g/n| HG
+    Door ===|Cat5e Cable| HG
+
+    HG ===|Cat5e Cable| Server
+    HG ===|Cat5e Cable| Admin
+
+    style HG fill:#ff9999,stroke:#333,stroke-width:2px
+    style Server fill:#99ccff,stroke:#333,stroke-width:2px</code></pre>
+<em>Рисунок 3 — Топологія еталонної системи пожежної безпеки в Cisco Packet Tracer</em></p>
+<h4 id="1_1">Крок 1. Розміщення та комутація компонентів топології</h4>
+<ol>
+<li>
+<p>Перетягніть на робоче поле такі вузли:</p>
+</li>
+<li>
+<p>Один шлюз <strong>Home Gateway</strong> (розділ <em>Network Devices</em> <span class="arithmatex">\(\to\)</span> <em>Wireless</em>);</p>
+</li>
+<li>
+<p>Один сервер <strong>Server-PT</strong> та один комп'ютер <strong>PC-PT</strong> (розділ <em>End Devices</em>);</p>
+</li>
+<li>
+<p>Датчики з розділу <em>End Devices</em> <span class="arithmatex">\(\to\)</span> <em>Home</em>: <strong>Smoke Detector</strong>, <strong>Motion Detector</strong>;</p>
+</li>
+<li>
+<p>Актуатори з розділу <em>End Devices</em> <span class="arithmatex">\(\to\)</span> <em>Home</em>: <strong>Siren</strong>, <strong>Ceiling Fan</strong>, <strong>Door</strong>.</p>
+</li>
+<li>
+<p>Здійсніть дротове підключення за допомогою кабелю типу «Мідний прямий» (Copper Straight-Through):</p>
+</li>
+<li>
+<p>Порт <code>FastEthernet0</code> сервера <code>IoT Server</code> підключіть до порту <code>Ethernet 1</code> шлюзу <code>Home Gateway</code>;</p>
+</li>
+<li>
+<p>Порт <code>FastEthernet0</code> комп'ютера <code>Admin PC</code> підключіть до порту <code>Ethernet 2</code> шлюзу <code>Home Gateway</code>;</p>
+</li>
+<li>
+<p>Порт <code>FastEthernet0</code> розумних дверей <code>Smart Door</code> підключіть до порту <code>Ethernet 3</code> шлюзу <code>Home Gateway</code>.</p>
+</li>
+</ol>
+<h4 id="2-home-gateway">Крок 2. Налаштування шлюзу Home Gateway</h4>
+<ol>
+<li>
+<p>Відкрийте вікно конфігурації <code>Home Gateway</code>, натиснувши на пристрій, та перейдіть на вкладку <strong>Config</strong>.</p>
+</li>
+<li>
+<p>В меню зліва оберіть пункт <strong>LAN</strong>:</p>
+</li>
+<li>
+<p>Встановіть поле <strong>IP Address</strong> у значення <code>192.168.1.1</code>;</p>
+</li>
+<li>
+<p>Встановіть поле <strong>Subnet Mask</strong> у значення <code>255.255.255.0</code>;</p>
+</li>
+<li>
+<p>Увімкніть <strong>DHCP Server</strong> (позначка <em>Enabled</em>);</p>
+</li>
+<li>
+<p>Вкажіть початкову адресу пулу <strong>Start IP Address</strong>: <code>192.168.1.100</code>;</p>
+</li>
+<li>
+<p>Вкажіть максимальну кількість користувачів <strong>Maximum Number of Users</strong>: <code>50</code>.</p>
+</li>
+<li>
+<p>В меню зліва оберіть пункт <strong>Wireless</strong>:</p>
+</li>
+<li>
+<p>Встановіть ідентифікатор мережі <strong>SSID</strong>: <code>Fire_Safety_IoT</code>;</p>
+</li>
+<li>
+<p>У блоці <strong>Authentication</strong> оберіть стандарт <strong>WPA2-PSK</strong>;</p>
+</li>
+<li>
+<p>Введіть ключ шифрування <strong>PSK Pass Phrase</strong>: <code>SafetyMaster2026</code>;</p>
+</li>
+<li>
+<p>Переконайтеся, що тип шифрування встановлено як <strong>AES</strong>.</p>
+</li>
+<li>
+<p>У блоці <strong>Internet</strong> встановіть конфігурацію отримання адреси як <strong>DHCP</strong> або залиште значення за замовчуванням, оскільки маршрутизація здійснюється всередині локальної мережі LAN.</p>
+</li>
+</ol>
+<h4 id="3-iot-server">Крок 3. Налаштування виділеного сервера реєстрації (IoT Server)</h4>
+<ol>
+<li>
+<p>Відкрийте <code>Server-PT</code>, перейдіть на вкладку <strong>Desktop</strong> <span class="arithmatex">\(\to\)</span> <strong>IP Configuration</strong>:</p>
+</li>
+<li>
+<p>Оберіть режим <strong>Static</strong>;</p>
+</li>
+<li>
+<p><strong>IP Address</strong>: <code>192.168.1.200</code>;</p>
+</li>
+<li>
+<p><strong>Subnet Mask</strong>: <code>255.255.255.0</code>;</p>
+</li>
+<li>
+<p><strong>Default Gateway</strong>: <code>192.168.1.1</code>;</p>
+</li>
+<li>
+<p><strong>DNS Server</strong>: <code>192.168.1.200</code>.</p>
+</li>
+<li>
+<p>Перейдіть на вкладку <strong>Services</strong>:</p>
+</li>
+<li>
+<p>Оберіть сервіс <strong>HTTP</strong>: переконайтеся, що перемикачі <strong>HTTP</strong> та <strong>HTTPS</strong> встановлені в положення <strong>On</strong>;</p>
+</li>
+<li>
+<p>Оберіть сервіс <strong>IoT</strong>: встановіть перемикач служб у положення <strong>On</strong> (це активує службу централізованої реєстрації та обробки телеметрії);</p>
+</li>
+<li>
+<p>Усі інші неактивні служби (DHCP, TFTP, DNS, SYSLOG) переведіть у стан <strong>Off</strong> для зменшення службового навантаження.</p>
+</li>
+</ol>
+<h4 id="4-iot-">Крок 4. Додавання бездротових модулів до IoT-пристроїв</h4>
+<p>За замовчуванням пристрої <code>Smoke Detector</code>, <code>Motion Detector</code>, <code>Ceiling Fan</code> та <code>Siren</code> оснащені дротовими портами Ethernet. Для їх бездротового підключення необхідно замінити мережевий адаптер:</p>
+<ol>
+<li>
+<p>Натисніть на пристрій <code>Smoke Detector</code>, перейдіть на вкладку <strong>Physical</strong>.</p>
+</li>
+<li>
+<p>Натисніть кнопку <strong>Advanced</strong> у правому нижньому кутку, після чого відкриється доступ до додаткових конфігураційних вкладок.</p>
+</li>
+<li>
+<p>Перейдіть на вкладку <strong>I/O Config</strong>:</p>
+</li>
+<li>
+<p>У полі <strong>Network Adapter</strong> змініть значення з порту за замовчуванням <code>1CFE</code> (дротовий FastEthernet) на модуль <code>1WFW</code> (бездротовий інтерфейс Wi-Fi 2.4GHz).</p>
+</li>
+<li>
+<p>Перейдіть на вкладку <strong>Config</strong> <span class="arithmatex">\(\to\)</span> меню <strong>Wireless0</strong>:</p>
+</li>
+<li>
+<p>Встановіть <strong>SSID</strong>: <code>Fire_Safety_IoT</code>;</p>
+</li>
+<li>
+<p>В блоці <strong>Authentication</strong> виберіть <strong>WPA2-PSK</strong>;</p>
+</li>
+<li>
+<p>Введіть <strong>PSK Pass Phrase</strong>: <code>SafetyMaster2026</code>.</p>
+</li>
+<li>
+<p>У розділі <strong>Config</strong> <span class="arithmatex">\(\to\)</span> <strong>Settings</strong>:</p>
+</li>
+<li>
+<p>Встановіть отримання адреси шлюзу та DNS через <strong>DHCP</strong>;</p>
+</li>
+<li>
+<p>У блоці <strong>IoT Server</strong> виберіть перемикач <strong>Remote Server</strong>;</p>
+</li>
+<li>
+<p>Вкажіть <strong>Server Address</strong>: <code>192.168.1.200</code>;</p>
+</li>
+<li>
+<p>Вкажіть <strong>User Name</strong>: <code>admin</code>;</p>
+</li>
+<li>
+<p>Вкажіть <strong>Password</strong>: <code>admin123</code>;</p>
+</li>
+<li>
+<p>Натисніть кнопку <strong>Connect</strong>.</p>
+</li>
+<li>
+<p>Повторіть ідентичну процедуру модифікації мережевого інтерфейсу та конфігурації для:</p>
+</li>
+<li>
+<p><code>Motion Detector</code> (Wi-Fi адаптер <code>1WFW</code>, автентифікація, сервер <code>192.168.1.200</code>);</p>
+</li>
+<li>
+<p><code>Ceiling Fan</code> (Wi-Fi адаптер <code>1WFW</code>, автентифікація, сервер <code>192.168.1.200</code>);</p>
+</li>
+<li>
+<p><code>Siren</code> (Wi-Fi адаптер <code>1WFW</code>, автентифікація, сервер <code>192.168.1.200</code>).</p>
+</li>
+<li>
+<p>Для пристрою <code>Smart Door</code>, який підключений дротом до шлюзу:</p>
+</li>
+<li>
+<p>Перейдіть на вкладку <strong>Config</strong> <span class="arithmatex">\(\to\)</span> <strong>Settings</strong>;</p>
+</li>
+<li>
+<p>У блоці <strong>IoT Server</strong> виберіть <strong>Remote Server</strong>;</p>
+</li>
+<li>
+<p>Введіть адресу <code>192.168.1.200</code>, логін <code>admin</code>, пароль <code>admin123</code> та натисніть <strong>Connect</strong>.</p>
+</li>
+</ol>
+<h4 id="5">Крок 5. Створення облікового запису адміністратора та перевірка реєстрації</h4>
+<ol>
+<li>
+<p>Відкрийте робочу станцію <code>Admin PC</code>, перейдіть на вкладку <strong>Desktop</strong> <span class="arithmatex">\(\to\)</span> <strong>IP Configuration</strong> та переконайтеся, що активовано режим <strong>DHCP</strong>, а комп'ютер отримав адресу з діапазону <code>192.168.1.100 - 192.168.1.150</code>.</p>
+</li>
+<li>
+<p>Перейдіть на вкладку <strong>Desktop</strong> <span class="arithmatex">\(\to\)</span> <strong>Web Browser</strong>.</p>
+</li>
+<li>
+<p>В адресному рядку введіть URL-адресу виділеного сервера: <code>http://192.168.1.200</code> та натисніть <strong>Go</strong>.</p>
+</li>
+<li>
+<p>На сторінці сервера IoT, що відкрилася, перейдіть за посиланням <strong>Sign up now</strong> для первинного створення облікового запису головного адміністратора:</p>
+</li>
+<li>
+<p><strong>Username</strong>: <code>admin</code></p>
+</li>
+<li>
+<p><strong>Password</strong>: <code>admin123</code></p>
+</li>
+<li>
+<p>Натисніть кнопку <strong>Create</strong>.</p>
+</li>
+<li>
+<p>Після авторизації відкриється панель моніторингу <strong>IoT Server - Devices</strong>, у якій автоматично з'являться зареєстровані пристрої:</p>
+</li>
+<li>
+<p><code>SmokeDetector</code> (значення концентрації диму від 0.0 до 1.0);</p>
+</li>
+<li>
+<p><code>MotionDetector</code> (логічний стан: True / False);</p>
+</li>
+<li>
+<p><code>CeilingFan</code> (режими роботи: 0 — Off, 1 — Low, 2 — High);</p>
+</li>
+<li>
+<p><code>Siren</code> (стан: On / Off);</p>
+</li>
+<li>
+<p><code>SmartDoor</code> (стан блокування ригеля: Locked / Unlocked).</p>
+</li>
+</ol>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>+---------------------------------------------------------------+
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>| Cisco Packet Tracer - IoT Server Dashboard (192.168.1.200)    |
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>+---------------------------------------------------------------+
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>| Device Name       | Status / Level          | Action          |
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>+-------------------+-------------------------+-----------------+
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>| SmokeDetector_1   | 0.00 (Normal)           | [Monitor Only]  |
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>| MotionDetector_1  | False (No Motion)       | [Monitor Only]  |
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>| CeilingFan_1      | 0 (Off)                 | ( )0  ( )1  (*)2|
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>| Siren_1           | Off                     | [ Turn ON ]     |
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>| SmartDoor_1       | Locked                  | [ Unlock ]      |
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>+---------------------------------------------------------------+
+</span></code></pre></div>
+<h4 id="6">Крок 6. Програмування мікроконтролера та сценаріїв автоматизації</h4>
+<p>Автоматизацію поведінки системи можна реалізувати двома способами: за допомогою внутрішнього механізму правил сервера реєстрації (<em>Server Conditions</em>) або за допомогою вбудованого контролера Single Board Computer (SBC-PT) мовою Python. Для забезпечення академічної повноти реалізуємо логіку на мікроконтролері SBC.</p>
+<p>Додайте на схему мікрокомп'ютер <strong>SBC-PT</strong> (розділ <em>Components</em> <span class="arithmatex">\(\to\)</span> <em>Boards</em>), підключіть його порт Ethernet до шлюзу, налаштуйте клієнт реєстрації та перейдіть на вкладку <strong>Programming</strong> <span class="arithmatex">\(\to\)</span> <strong>New Project</strong> (тип проекту — Python).</p>
+<p>Введіть повний робочий код управління системою без скорочень:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">urllib.request</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="kn">from</span><span class="w"> </span><span class="nn">gpio</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="c1"># =====================================================================</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="c1"># НАЛАШТУВАННЯ КОНСТАНТ ТА ПАРАМЕТРІВ ПІДКЛЮЧЕННЯ ДО СЕРВЕРА</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="c1"># =====================================================================</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="n">SERVER_IP</span> <span class="o">=</span> <span class="s2">"192.168.1.200"</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="n">AUTH_USER</span> <span class="o">=</span> <span class="s2">"admin"</span>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="n">AUTH_PASS</span> <span class="o">=</span> <span class="s2">"admin123"</span>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="n">POLL_INTERVAL_SECONDS</span> <span class="o">=</span> <span class="mf">1.0</span>  <span class="c1"># Період опитування сенсорів у секундах</span>
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="n">SMOKE_THRESHOLD</span> <span class="o">=</span> <span class="mf">0.25</span>       <span class="c1"># Критичний поріг концентрації диму</span>
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>
+</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="k">def</span><span class="w"> </span><span class="nf">get_server_device_data</span><span class="p">():</span>
+</span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="w">    </span><span class="sd">"""</span>
+</span><span id="__span-4-17"><a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="sd">    Функція надсилає HTTP GET запит до внутрішнього API сервера реєстрації</span>
+</span><span id="__span-4-18"><a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="sd">    для отримання поточного JSON-стану всіх зареєстрованих сенсорів.</span>
+</span><span id="__span-4-19"><a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="sd">    """</span>
+</span><span id="__span-4-20"><a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a>    <span class="n">url</span> <span class="o">=</span> <span class="s2">"http://"</span> <span class="o">+</span> <span class="n">SERVER_IP</span> <span class="o">+</span> <span class="s2">"/api/devices"</span>
+</span><span id="__span-4-21"><a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a>    <span class="c1"># Формування базового HTTP-запиту</span>
+</span><span id="__span-4-22"><a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a>    <span class="n">req</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+</span><span id="__span-4-23"><a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a>    <span class="k">try</span><span class="p">:</span>
+</span><span id="__span-4-24"><a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a>        <span class="n">response</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">req</span><span class="p">)</span>
+</span><span id="__span-4-25"><a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a>        <span class="n">raw_data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">'utf-8'</span><span class="p">)</span>
+</span><span id="__span-4-26"><a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a>        <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">raw_data</span><span class="p">)</span>
+</span><span id="__span-4-27"><a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a>    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">error_msg</span><span class="p">:</span>
+</span><span id="__span-4-28"><a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">"[ПОМИЛКА ЗВ'ЯЗКУ]: Не вдалося отримати дані з сервера -&gt;"</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">error_msg</span><span class="p">))</span>
+</span><span id="__span-4-29"><a id="__codelineno-4-29" name="__codelineno-4-29" href="#__codelineno-4-29"></a>        <span class="k">return</span> <span class="kc">None</span>
+</span><span id="__span-4-30"><a id="__codelineno-4-30" name="__codelineno-4-30" href="#__codelineno-4-30"></a>
+</span><span id="__span-4-31"><a id="__codelineno-4-31" name="__codelineno-4-31" href="#__codelineno-4-31"></a><span class="k">def</span><span class="w"> </span><span class="nf">send_actuator_command</span><span class="p">(</span><span class="n">device_name</span><span class="p">,</span> <span class="n">state_value</span><span class="p">):</span>
+</span><span id="__span-4-32"><a id="__codelineno-4-32" name="__codelineno-4-32" href="#__codelineno-4-32"></a><span class="w">    </span><span class="sd">"""</span>
+</span><span id="__span-4-33"><a id="__codelineno-4-33" name="__codelineno-4-33" href="#__codelineno-4-33"></a><span class="sd">    Функція надсилає HTTP POST запит для зміни стану відповідного актуатора.</span>
+</span><span id="__span-4-34"><a id="__codelineno-4-34" name="__codelineno-4-34" href="#__codelineno-4-34"></a><span class="sd">    Параметри:</span>
+</span><span id="__span-4-35"><a id="__codelineno-4-35" name="__codelineno-4-35" href="#__codelineno-4-35"></a><span class="sd">      device_name (str) - унікальне ім'я пристрою на сервері</span>
+</span><span id="__span-4-36"><a id="__codelineno-4-36" name="__codelineno-4-36" href="#__codelineno-4-36"></a><span class="sd">      state_value (int/str) - цільовий стан (наприклад, 2 для Fan, 1 для Siren)</span>
+</span><span id="__span-4-37"><a id="__codelineno-4-37" name="__codelineno-4-37" href="#__codelineno-4-37"></a><span class="sd">    """</span>
+</span><span id="__span-4-38"><a id="__codelineno-4-38" name="__codelineno-4-38" href="#__codelineno-4-38"></a>    <span class="n">url</span> <span class="o">=</span> <span class="s2">"http://"</span> <span class="o">+</span> <span class="n">SERVER_IP</span> <span class="o">+</span> <span class="s2">"/api/device/"</span> <span class="o">+</span> <span class="n">device_name</span>
+</span><span id="__span-4-39"><a id="__codelineno-4-39" name="__codelineno-4-39" href="#__codelineno-4-39"></a>    <span class="n">payload</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s2">"state"</span><span class="p">:</span> <span class="n">state_value</span><span class="p">})</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">'utf-8'</span><span class="p">)</span>
+</span><span id="__span-4-40"><a id="__codelineno-4-40" name="__codelineno-4-40" href="#__codelineno-4-40"></a>    <span class="n">req</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s1">'Content-Type'</span><span class="p">:</span> <span class="s1">'application/json'</span><span class="p">})</span>
+</span><span id="__span-4-41"><a id="__codelineno-4-41" name="__codelineno-4-41" href="#__codelineno-4-41"></a>    <span class="k">try</span><span class="p">:</span>
+</span><span id="__span-4-42"><a id="__codelineno-4-42" name="__codelineno-4-42" href="#__codelineno-4-42"></a>        <span class="k">with</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">req</span><span class="p">)</span> <span class="k">as</span> <span class="n">resp</span><span class="p">:</span>
+</span><span id="__span-4-43"><a id="__codelineno-4-43" name="__codelineno-4-43" href="#__codelineno-4-43"></a>            <span class="k">if</span> <span class="n">resp</span><span class="o">.</span><span class="n">status</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+</span><span id="__span-4-44"><a id="__codelineno-4-44" name="__codelineno-4-44" href="#__codelineno-4-44"></a>                <span class="nb">print</span><span class="p">(</span><span class="s2">"[УСПІХ]: Команду для "</span> <span class="o">+</span> <span class="n">device_name</span> <span class="o">+</span> <span class="s2">" встановлено у "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">state_value</span><span class="p">))</span>
+</span><span id="__span-4-45"><a id="__codelineno-4-45" name="__codelineno-4-45" href="#__codelineno-4-45"></a>    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">error_msg</span><span class="p">:</span>
+</span><span id="__span-4-46"><a id="__codelineno-4-46" name="__codelineno-4-46" href="#__codelineno-4-46"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">"[ПОМИЛКА УПРАВЛІННЯ]: Пристрій "</span> <span class="o">+</span> <span class="n">device_name</span> <span class="o">+</span> <span class="s2">" -&gt;"</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">error_msg</span><span class="p">))</span>
+</span><span id="__span-4-47"><a id="__codelineno-4-47" name="__codelineno-4-47" href="#__codelineno-4-47"></a>
+</span><span id="__span-4-48"><a id="__codelineno-4-48" name="__codelineno-4-48" href="#__codelineno-4-48"></a><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+</span><span id="__span-4-49"><a id="__codelineno-4-49" name="__codelineno-4-49" href="#__codelineno-4-49"></a><span class="w">    </span><span class="sd">"""</span>
+</span><span id="__span-4-50"><a id="__codelineno-4-50" name="__codelineno-4-50" href="#__codelineno-4-50"></a><span class="sd">    Головний цикл моніторингу та прийняття рішень на граничному рівні.</span>
+</span><span id="__span-4-51"><a id="__codelineno-4-51" name="__codelineno-4-51" href="#__codelineno-4-51"></a><span class="sd">    """</span>
+</span><span id="__span-4-52"><a id="__codelineno-4-52" name="__codelineno-4-52" href="#__codelineno-4-52"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">"[ІНІЦІАЛІЗАЦІЯ]: Станцію моніторингу IoT запущено успішно."</span><span class="p">)</span>
+</span><span id="__span-4-53"><a id="__codelineno-4-53" name="__codelineno-4-53" href="#__codelineno-4-53"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">"[МОНІТОРИНГ]: Очікування телеметричних пакетів..."</span><span class="p">)</span>
+</span><span id="__span-4-54"><a id="__codelineno-4-54" name="__codelineno-4-54" href="#__codelineno-4-54"></a>
+</span><span id="__span-4-55"><a id="__codelineno-4-55" name="__codelineno-4-55" href="#__codelineno-4-55"></a>    <span class="c1"># Початковий стан актуаторів (безпечний режим)</span>
+</span><span id="__span-4-56"><a id="__codelineno-4-56" name="__codelineno-4-56" href="#__codelineno-4-56"></a>    <span class="n">siren_active</span> <span class="o">=</span> <span class="kc">False</span>
+</span><span id="__span-4-57"><a id="__codelineno-4-57" name="__codelineno-4-57" href="#__codelineno-4-57"></a>    <span class="n">fan_speed</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span id="__span-4-58"><a id="__codelineno-4-58" name="__codelineno-4-58" href="#__codelineno-4-58"></a>    <span class="n">door_locked</span> <span class="o">=</span> <span class="kc">True</span>
+</span><span id="__span-4-59"><a id="__codelineno-4-59" name="__codelineno-4-59" href="#__codelineno-4-59"></a>
+</span><span id="__span-4-60"><a id="__codelineno-4-60" name="__codelineno-4-60" href="#__codelineno-4-60"></a>    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+</span><span id="__span-4-61"><a id="__codelineno-4-61" name="__codelineno-4-61" href="#__codelineno-4-61"></a>        <span class="c1"># 1. Зчитування локального фізичного порта (якщо датчик підключено до GPIO контролера)</span>
+</span><span id="__span-4-62"><a id="__codelineno-4-62" name="__codelineno-4-62" href="#__codelineno-4-62"></a>        <span class="n">local_analog_val</span> <span class="o">=</span> <span class="n">analogRead</span><span class="p">(</span><span class="n">A0</span><span class="p">)</span>
+</span><span id="__span-4-63"><a id="__codelineno-4-63" name="__codelineno-4-63" href="#__codelineno-4-63"></a>
+</span><span id="__span-4-64"><a id="__codelineno-4-64" name="__codelineno-4-64" href="#__codelineno-4-64"></a>        <span class="c1"># 2. Отримання глобальних телеметричних даних із сервера</span>
+</span><span id="__span-4-65"><a id="__codelineno-4-65" name="__codelineno-4-65" href="#__codelineno-4-65"></a>        <span class="n">telemetry</span> <span class="o">=</span> <span class="n">get_server_device_data</span><span class="p">()</span>
+</span><span id="__span-4-66"><a id="__codelineno-4-66" name="__codelineno-4-66" href="#__codelineno-4-66"></a>
+</span><span id="__span-4-67"><a id="__codelineno-4-67" name="__codelineno-4-67" href="#__codelineno-4-67"></a>        <span class="n">smoke_level</span> <span class="o">=</span> <span class="mf">0.0</span>
+</span><span id="__span-4-68"><a id="__codelineno-4-68" name="__codelineno-4-68" href="#__codelineno-4-68"></a>        <span class="n">motion_detected</span> <span class="o">=</span> <span class="kc">False</span>
+</span><span id="__span-4-69"><a id="__codelineno-4-69" name="__codelineno-4-69" href="#__codelineno-4-69"></a>
+</span><span id="__span-4-70"><a id="__codelineno-4-70" name="__codelineno-4-70" href="#__codelineno-4-70"></a>        <span class="k">if</span> <span class="n">telemetry</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-4-71"><a id="__codelineno-4-71" name="__codelineno-4-71" href="#__codelineno-4-71"></a>            <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">telemetry</span><span class="p">:</span>
+</span><span id="__span-4-72"><a id="__codelineno-4-72" name="__codelineno-4-72" href="#__codelineno-4-72"></a>                <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"name"</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"SmokeDetector_1"</span><span class="p">:</span>
+</span><span id="__span-4-73"><a id="__codelineno-4-73" name="__codelineno-4-73" href="#__codelineno-4-73"></a>                    <span class="n">smoke_level</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"value"</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">))</span>
+</span><span id="__span-4-74"><a id="__codelineno-4-74" name="__codelineno-4-74" href="#__codelineno-4-74"></a>                <span class="k">elif</span> <span class="n">item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"name"</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"MotionDetector_1"</span><span class="p">:</span>
+</span><span id="__span-4-75"><a id="__codelineno-4-75" name="__codelineno-4-75" href="#__codelineno-4-75"></a>                    <span class="n">motion_detected</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"value"</span><span class="p">,</span> <span class="kc">False</span><span class="p">))</span>
+</span><span id="__span-4-76"><a id="__codelineno-4-76" name="__codelineno-4-76" href="#__codelineno-4-76"></a>
+</span><span id="__span-4-77"><a id="__codelineno-4-77" name="__codelineno-4-77" href="#__codelineno-4-77"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"[ТЕЛЕМЕТРІЯ]: Рівень диму = </span><span class="si">{</span><span class="n">smoke_level</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> | Рух = </span><span class="si">{</span><span class="n">motion_detected</span><span class="si">}</span><span class="s2"> | A0 = </span><span class="si">{</span><span class="n">local_analog_val</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</span><span id="__span-4-78"><a id="__codelineno-4-78" name="__codelineno-4-78" href="#__codelineno-4-78"></a>
+</span><span id="__span-4-79"><a id="__codelineno-4-79" name="__codelineno-4-79" href="#__codelineno-4-79"></a>        <span class="c1"># 3. Логіка реагування на надзвичайну пожежну ситуацію</span>
+</span><span id="__span-4-80"><a id="__codelineno-4-80" name="__codelineno-4-80" href="#__codelineno-4-80"></a>        <span class="k">if</span> <span class="n">smoke_level</span> <span class="o">&gt;=</span> <span class="n">SMOKE_THRESHOLD</span><span class="p">:</span>
+</span><span id="__span-4-81"><a id="__codelineno-4-81" name="__codelineno-4-81" href="#__codelineno-4-81"></a>            <span class="nb">print</span><span class="p">(</span><span class="s2">"[КРИТИЧНИЙ СТАН]: Зафіксовано задимлення! Активація протоколу безпеки."</span><span class="p">)</span>
+</span><span id="__span-4-82"><a id="__codelineno-4-82" name="__codelineno-4-82" href="#__codelineno-4-82"></a>
+</span><span id="__span-4-83"><a id="__codelineno-4-83" name="__codelineno-4-83" href="#__codelineno-4-83"></a>            <span class="c1"># Якщо сирена вимкнена — вмикаємо</span>
+</span><span id="__span-4-84"><a id="__codelineno-4-84" name="__codelineno-4-84" href="#__codelineno-4-84"></a>            <span class="k">if</span> <span class="ow">not</span> <span class="n">siren_active</span><span class="p">:</span>
+</span><span id="__span-4-85"><a id="__codelineno-4-85" name="__codelineno-4-85" href="#__codelineno-4-85"></a>                <span class="n">send_actuator_command</span><span class="p">(</span><span class="s2">"Siren_1"</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</span><span id="__span-4-86"><a id="__codelineno-4-86" name="__codelineno-4-86" href="#__codelineno-4-86"></a>                <span class="n">siren_active</span> <span class="o">=</span> <span class="kc">True</span>
+</span><span id="__span-4-87"><a id="__codelineno-4-87" name="__codelineno-4-87" href="#__codelineno-4-87"></a>
+</span><span id="__span-4-88"><a id="__codelineno-4-88" name="__codelineno-4-88" href="#__codelineno-4-88"></a>            <span class="c1"># Вмикаємо вентилятор на максимальні оберти (рівень 2)</span>
+</span><span id="__span-4-89"><a id="__codelineno-4-89" name="__codelineno-4-89" href="#__codelineno-4-89"></a>            <span class="k">if</span> <span class="n">fan_speed</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
+</span><span id="__span-4-90"><a id="__codelineno-4-90" name="__codelineno-4-90" href="#__codelineno-4-90"></a>                <span class="n">send_actuator_command</span><span class="p">(</span><span class="s2">"CeilingFan_1"</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</span><span id="__span-4-91"><a id="__codelineno-4-91" name="__codelineno-4-91" href="#__codelineno-4-91"></a>                <span class="n">fan_speed</span> <span class="o">=</span> <span class="mi">2</span>
+</span><span id="__span-4-92"><a id="__codelineno-4-92" name="__codelineno-4-92" href="#__codelineno-4-92"></a>
+</span><span id="__span-4-93"><a id="__codelineno-4-93" name="__codelineno-4-93" href="#__codelineno-4-93"></a>            <span class="c1"># Розблокувати двері для безпечної евакуації</span>
+</span><span id="__span-4-94"><a id="__codelineno-4-94" name="__codelineno-4-94" href="#__codelineno-4-94"></a>            <span class="k">if</span> <span class="n">door_locked</span><span class="p">:</span>
+</span><span id="__span-4-95"><a id="__codelineno-4-95" name="__codelineno-4-95" href="#__codelineno-4-95"></a>                <span class="n">send_actuator_command</span><span class="p">(</span><span class="s2">"SmartDoor_1"</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1"># 0 - Unlocked</span>
+</span><span id="__span-4-96"><a id="__codelineno-4-96" name="__codelineno-4-96" href="#__codelineno-4-96"></a>                <span class="n">door_locked</span> <span class="o">=</span> <span class="kc">False</span>
+</span><span id="__span-4-97"><a id="__codelineno-4-97" name="__codelineno-4-97" href="#__codelineno-4-97"></a>
+</span><span id="__span-4-98"><a id="__codelineno-4-98" name="__codelineno-4-98" href="#__codelineno-4-98"></a>        <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-4-99"><a id="__codelineno-4-99" name="__codelineno-4-99" href="#__codelineno-4-99"></a>            <span class="c1"># 4. Штатний режим функціонування</span>
+</span><span id="__span-4-100"><a id="__codelineno-4-100" name="__codelineno-4-100" href="#__codelineno-4-100"></a>            <span class="k">if</span> <span class="n">siren_active</span><span class="p">:</span>
+</span><span id="__span-4-101"><a id="__codelineno-4-101" name="__codelineno-4-101" href="#__codelineno-4-101"></a>                <span class="nb">print</span><span class="p">(</span><span class="s2">"[НОРМАЛІЗАЦІЯ]: Задимлення ліквідовано. Вимкнення сирени."</span><span class="p">)</span>
+</span><span id="__span-4-102"><a id="__codelineno-4-102" name="__codelineno-4-102" href="#__codelineno-4-102"></a>                <span class="n">send_actuator_command</span><span class="p">(</span><span class="s2">"Siren_1"</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</span><span id="__span-4-103"><a id="__codelineno-4-103" name="__codelineno-4-103" href="#__codelineno-4-103"></a>                <span class="n">siren_active</span> <span class="o">=</span> <span class="kc">False</span>
+</span><span id="__span-4-104"><a id="__codelineno-4-104" name="__codelineno-4-104" href="#__codelineno-4-104"></a>
+</span><span id="__span-4-105"><a id="__codelineno-4-105" name="__codelineno-4-105" href="#__codelineno-4-105"></a>            <span class="k">if</span> <span class="ow">not</span> <span class="n">motion_detected</span> <span class="ow">and</span> <span class="n">fan_speed</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+</span><span id="__span-4-106"><a id="__codelineno-4-106" name="__codelineno-4-106" href="#__codelineno-4-106"></a>                <span class="c1"># Якщо людей немає і диму немає — вимикаємо вентилятор для економії енергії</span>
+</span><span id="__span-4-107"><a id="__codelineno-4-107" name="__codelineno-4-107" href="#__codelineno-4-107"></a>                <span class="nb">print</span><span class="p">(</span><span class="s2">"[ЕНЕРГОЗБЕРЕЖЕННЯ]: Приміщення вільне. Зупинка вентилятора."</span><span class="p">)</span>
+</span><span id="__span-4-108"><a id="__codelineno-4-108" name="__codelineno-4-108" href="#__codelineno-4-108"></a>                <span class="n">send_actuator_command</span><span class="p">(</span><span class="s2">"CeilingFan_1"</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</span><span id="__span-4-109"><a id="__codelineno-4-109" name="__codelineno-4-109" href="#__codelineno-4-109"></a>                <span class="n">fan_speed</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span id="__span-4-110"><a id="__codelineno-4-110" name="__codelineno-4-110" href="#__codelineno-4-110"></a>            <span class="k">elif</span> <span class="n">motion_detected</span> <span class="ow">and</span> <span class="n">smoke_level</span> <span class="o">&lt;</span> <span class="n">SMOKE_THRESHOLD</span> <span class="ow">and</span> <span class="n">fan_speed</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+</span><span id="__span-4-111"><a id="__codelineno-4-111" name="__codelineno-4-111" href="#__codelineno-4-111"></a>                <span class="c1"># Якщо зафіксовано присутність людей — підтримуємо комфортну вентиляцію (рівень 1)</span>
+</span><span id="__span-4-112"><a id="__codelineno-4-112" name="__codelineno-4-112" href="#__codelineno-4-112"></a>                <span class="nb">print</span><span class="p">(</span><span class="s2">"[КОМФОРТ]: Присутність персоналу. Вмикання помірного обдуву."</span><span class="p">)</span>
+</span><span id="__span-4-113"><a id="__codelineno-4-113" name="__codelineno-4-113" href="#__codelineno-4-113"></a>                <span class="n">send_actuator_command</span><span class="p">(</span><span class="s2">"CeilingFan_1"</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</span><span id="__span-4-114"><a id="__codelineno-4-114" name="__codelineno-4-114" href="#__codelineno-4-114"></a>                <span class="n">fan_speed</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span id="__span-4-115"><a id="__codelineno-4-115" name="__codelineno-4-115" href="#__codelineno-4-115"></a>
+</span><span id="__span-4-116"><a id="__codelineno-4-116" name="__codelineno-4-116" href="#__codelineno-4-116"></a>            <span class="k">if</span> <span class="ow">not</span> <span class="n">door_locked</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">motion_detected</span><span class="p">:</span>
+</span><span id="__span-4-117"><a id="__codelineno-4-117" name="__codelineno-4-117" href="#__codelineno-4-117"></a>                <span class="c1"># Блокування дверей у неробочий час</span>
+</span><span id="__span-4-118"><a id="__codelineno-4-118" name="__codelineno-4-118" href="#__codelineno-4-118"></a>                <span class="n">send_actuator_command</span><span class="p">(</span><span class="s2">"SmartDoor_1"</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># 1 - Locked</span>
+</span><span id="__span-4-119"><a id="__codelineno-4-119" name="__codelineno-4-119" href="#__codelineno-4-119"></a>                <span class="n">door_locked</span> <span class="o">=</span> <span class="kc">True</span>
+</span><span id="__span-4-120"><a id="__codelineno-4-120" name="__codelineno-4-120" href="#__codelineno-4-120"></a>
+</span><span id="__span-4-121"><a id="__codelineno-4-121" name="__codelineno-4-121" href="#__codelineno-4-121"></a>        <span class="c1"># Затримка між ітераціями циклу</span>
+</span><span id="__span-4-122"><a id="__codelineno-4-122" name="__codelineno-4-122" href="#__codelineno-4-122"></a>        <span class="n">sleep</span><span class="p">(</span><span class="n">POLL_INTERVAL_SECONDS</span><span class="p">)</span>
+</span><span id="__span-4-123"><a id="__codelineno-4-123" name="__codelineno-4-123" href="#__codelineno-4-123"></a>
+</span><span id="__span-4-124"><a id="__codelineno-4-124" name="__codelineno-4-124" href="#__codelineno-4-124"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+</span><span id="__span-4-125"><a id="__codelineno-4-125" name="__codelineno-4-125" href="#__codelineno-4-125"></a>    <span class="n">main</span><span class="p">()</span>
+</span></code></pre></div>
+<hr />
+<h3 id="33">3.3 Запуск, тестування та перевірка результатів</h3>
+<ol>
+<li>
+<p>Запустіть скрипт автоматизації на <code>SBC-PT</code>, натиснувши кнопку <strong>Run</strong> у вкладці <strong>Programming</strong>.</p>
+</li>
+<li>
+<p>Відкрийте вкладку <strong>Web Browser</strong> на <code>Admin PC</code>, введіть <code>192.168.1.200</code> та тримайте вікно відкритим поряд із робочим полем Packet Tracer.</p>
+</li>
+<li>
+<p>Проведіть тестові впливи на фізичні сенсори:</p>
+</li>
+<li>
+<p><strong>Генерація задимлення:</strong> Затисніть клавішу <code>Alt</code> і натисніть лівою кнопкою миші на пристрій <code>Smoke Detector</code>. Утримуйте курсор поряд із датчиком, щоб збільшити концентрацію аерозолю.</p>
+</li>
+<li>
+<p><strong>Фіксація руху:</strong> Наведіть курсор миші із затиснутою клавішею <code>Alt</code> на датчик <code>Motion Detector</code>.</p>
+</li>
+</ol>
+<h4 id="sbc">Приклад виведення консольних логів SBC під час зміни режимів:</h4>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>[ІНІЦІАЛІЗАЦІЯ]: Станцію моніторингу IoT запущено успішно.
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>[МОНІТОРИНГ]: Очікування телеметричних пакетів...
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>[ТЕЛЕМЕТРІЯ]: Рівень диму = 0.00 | Рух = False | A0 = 0
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>[ТЕЛЕМЕТРІЯ]: Рівень диму = 0.00 | Рух = False | A0 = 0
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>[ТЕЛЕМЕТРІЯ]: Рівень диму = 0.00 | Рух = True  | A0 = 12
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>[КОМФОРТ]: Присутність персоналу. Вмикання помірного обдуву.
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>[УСПІХ]: Команду для CeilingFan_1 встановлено у 1
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>[ТЕЛЕМЕТРІЯ]: Рівень диму = 0.12 | Рух = True  | A0 = 145
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>[ТЕЛЕМЕТРІЯ]: Рівень диму = 0.38 | Рух = True  | A0 = 490
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>[КРИТИЧНИЙ СТАН]: Зафіксовано задимлення! Активація протоколу безпеки.
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>[УСПІХ]: Команду для Siren_1 встановлено у 1
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>[УСПІХ]: Команду для CeilingFan_1 встановлено у 2
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>[УСПІХ]: Команду для SmartDoor_1 встановлено у 0
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>[ТЕЛЕМЕТРІЯ]: Рівень диму = 0.42 | Рух = True  | A0 = 512
+</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>[ТЕЛЕМЕТРІЯ]: Рівень диму = 0.18 | Рух = False | A0 = 210
+</span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>[НОРМАЛІЗАЦІЯ]: Задимлення ліквідовано. Вимкнення сирени.
+</span><span id="__span-5-17"><a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>[УСПІХ]: Команду для Siren_1 встановлено у 0
+</span><span id="__span-5-18"><a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a>[ЕНЕРГОЗБЕРЕЖЕННЯ]: Приміщення вільне. Зупинка вентилятора.
+</span><span id="__span-5-19"><a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a>[УСПІХ]: Команду для CeilingFan_1 встановлено у 0
+</span><span id="__span-5-20"><a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a>[УСПІХ]: Команду для SmartDoor_1 встановлено у 1
+</span></code></pre></div>
+<ol>
+<li>
+<p>Перевірте візуальні зміни в інтерфейсі Packet Tracer:</p>
+</li>
+<li>
+<p>При рівні диму <span class="arithmatex">\(\ge 0.25\)</span> лопаті вентилятора <code>Ceiling Fan</code> починають обертатися з максимальною швидкістю;</p>
+</li>
+<li>
+<p>На сирені <code>Siren</code> з'являється червона світлова індикація зі звуковою візуалізацією;</p>
+</li>
+<li>
+<p>Індикатор замка <code>Smart Door</code> змінює колір з червоного (заблоковано) на зелений (розблоковано).</p>
+</li>
+</ol>
+<hr />
+<h2 id="4">4 Вимоги до змісту звіту</h2>
+<p>Звіт оформлюється відповідно до вимог стандарту ДСТУ 3008:2015 і повинен містити такі обов'язкові структурні розділи:</p>
+<ol>
+<li>
+<p><strong>Титульна сторінка</strong> із зазначенням назви Міністерства, вищого навчального закладу, кафедри, назви дисципліни, номера і теми лабораторної роботи, номера варіанта, прізвища та ініціалів здобувача й викладача.</p>
+</li>
+<li>
+<p><strong>Мета роботи</strong> та стисла теоретична довідка з описом технологій адресації й реєстрації пристроїв у комп'ютерній мережі.</p>
+</li>
+<li>
+<p><strong>Постановка індивідуального завдання</strong> для закріпленого варіанта: топологічна схема, діапазони адрес, перелік використаних сенсорів, актуаторів та параметри безпеки бездротової мережі.</p>
+</li>
+<li>
+<p><strong>Скріншот загальної топології</strong> у середовищі Cisco Packet Tracer з відображенням підписаних IP-адрес кожного вузла.</p>
+</li>
+<li>
+<p><strong>Таблиця параметрів адресації мережі</strong> із зазначенням імен вузлів, типів фізичних інтерфейсів, IP-адрес, масок підмереж, шлюзів за замовчуванням та MAC-адрес.</p>
+</li>
+<li>
+<p><strong>Повний вихідний код програми/скрипту</strong> автоматизації (мовою Python або JavaScript) із детальними коментарями до кожного функціонального блоку.</p>
+</li>
+<li>
+<p><strong>Результати тестування:</strong> скріншоти вікна веббраузера з панеллю керування IoT Server Dashboard у нормальному та аварійному станах системи, а також логи роботи консолі.</p>
+</li>
+<li>
+<p><strong>Аналітичні висновки</strong>, у яких оцінено стабільність роботи спроєктованої топології, описано труднощі, що виникли під час адресації пристроїв та запропоновано шляхи оптимізації енергоефективності бездротових вузлів.</p>
+</li>
+</ol>
+<hr />
+<h2 id="5_1">5 Контрольні запитання для захисту роботи</h2>
+<ol>
+<li>
+<p><strong>Які принципові відмінності існують між еталонною моделлю IoT ITU-T Y.2060 та класичною моделлю взаємодії відкритих систем OSI?</strong> Поясніть, які рівні моделі OSI об'єднує в собі рівень пристроїв (Device Layer) моделі ITU-T.</p>
+</li>
+<li>
+<p><strong>Яку роль відіграє Home Gateway у трансляції та агрегації потоків даних від неоднорідних засобів вимірювання?</strong> Чому кінцеві сенсори не підключаються напряму до глобальних публічних хмарних сервісів?</p>
+</li>
+<li>
+<p><strong>Опишіть покроковий механізм встановлення сесії та реєстрації IoT-пристрою на сервері реєстрації за протоколом HTTP.</strong> Які заголовки та формати корисного навантаження (Payload) використовуються при передачі телеметрії?</p>
+</li>
+<li>
+<p><strong>Як впливає вибір протоколу бездротового доступу (Wi-Fi 802.11 b/g/n vs IEEE 802.15.4 / BLE) на часові затримки <span class="arithmatex">\(T_{\text{trans}}\)</span> та сумарний енергетичний бюджет автономного вузла <span class="arithmatex">\(E_{\text{cycle}}\)</span>?</strong></p>
+</li>
+<li>
+<p><strong>Яким чином у середовищі Cisco Packet Tracer забезпечується взаємозв'язок між аналоговим сигналом на порту GPIO мікроконтролера та числовим значенням у коді мовою Python?</strong></p>
+</li>
+<li>
+<p><strong>Які вектори кібератак виникають при використанні незахищеного протоколу HTTP для передавання телеметрії між шлюзом та Registration Server?</strong> Запропонуйте інженерні рішення для мінімізації ризиків несанкціонованого перехоплення керування актуаторами.</p>
+</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Повернутись нагору
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Kyrylo Vadurin &bull; <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.top", "navigation.tracking", "header.autohide", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u0421\u043a\u043e\u043f\u0456\u0439\u043e\u0432\u0430\u043d\u043e \u0432 \u0431\u0443\u0444\u0435\u0440", "clipboard.copy": "\u0421\u043a\u043e\u043f\u0456\u044e\u0432\u0430\u0442\u0438 \u0432 \u0431\u0443\u0444\u0435\u0440", "search.result.more.one": "\u0429\u0435 1 \u0437\u0431\u0456\u0433 \u043d\u0430 \u0446\u0456\u0439 \u0441\u0442\u043e\u0440\u0456\u043d\u0446\u0456", "search.result.more.other": "\u0429\u0435 # \u0437\u0431\u0456\u0433\u0456\u0432 \u043d\u0430 \u0446\u0456\u0439 \u0441\u0442\u043e\u0440\u0456\u043d\u0446\u0456", "search.result.none": "\u0417\u0431\u0456\u0433\u0456\u0432 \u043d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u043e", "search.result.one": "\u0417\u043d\u0430\u0439\u0434\u0435\u043d\u043e 1 \u0437\u0431\u0456\u0433", "search.result.other": "\u0417\u043d\u0430\u0439\u0434\u0435\u043d\u043e # \u0437\u0431\u0456\u0433\u0456\u0432", "search.result.placeholder": "\u0420\u043e\u0437\u043f\u043e\u0447\u043d\u0456\u0442\u044c \u043f\u0438\u0441\u0430\u0442\u0438 \u0434\u043b\u044f \u043f\u043e\u0448\u0443\u043a\u0443", "search.result.term.missing": "\u041d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u043e \u0437\u0430\u043f\u0438\u0442\u0443", "select.version": "\u041e\u0431\u0440\u0430\u0442\u0438 \u0432\u0435\u0440\u0441\u0456\u044e"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

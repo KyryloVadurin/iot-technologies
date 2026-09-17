@@ -1,0 +1,3584 @@
+
+<!doctype html>
+<html lang="uk" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Навчальний портал з дисципліни "Технології ІоТ"">
+      
+      
+      
+      
+        <link rel="prev" href="../lk4/">
+      
+      
+        <link rel="next" href="../lk6/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Тема 5. Туманні (Fog) та граничні (Edge) обчислення - Технології Інтернету речей</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#5" class="md-skip">
+          Перейти до змісту
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Хедер">
+    <a href="../.." title="Технології Інтернету речей" class="md-header__button md-logo" aria-label="Технології Інтернету речей" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Технології Інтернету речей
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Тема 5. Туманні (Fog) та граничні (Edge) обчислення
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan"  aria-label="Переключити на темну тему"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Переключити на темну тему" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="cyan"  aria-label="Переключити на світлу тему"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Переключити на світлу тему" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Пошук" placeholder="Пошук" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Шукати">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Очистити" aria-label="Очистити" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Пошук розпочато
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Вкладки" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Робоча програма
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../lk1/" class="md-tabs__link">
+          
+  
+  
+  Лекції
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../lb/lb1/" class="md-tabs__link">
+          
+  
+  
+  Лабораторні роботи
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../pz/pz1/" class="md-tabs__link">
+          
+  
+  
+  Практичні заняття
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../kp/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Курсовий проєкт
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../sr/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Самостійна робота
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../sr/quest/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Контрольні завдання (Іспит)
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Навігація" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Технології Інтернету речей" class="md-nav__button md-logo" aria-label="Технології Інтернету речей" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Технології Інтернету речей
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Робоча програма
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Лекції
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Лекції
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 1. Екосистема та архітектура IoT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 2. Технології WPAN та WLAN у IoT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 3. LPWAN технології
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 4. Прикладні протоколи ІоТ (MQTT, CoAP)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 5. Туманні (Fog) та граничні (Edge) обчислення
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 5. Туманні (Fog) та граничні (Edge) обчислення
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Зміст">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Зміст
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Мета лекції
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Очікувані результати навчання
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Детальний покроковий план лекції
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Детальний покроковий план лекції">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-openfog-ra" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Теоретико-концептуальний базис. Еволюція розподілених обчислень та еталонна модель OpenFog RA
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Методологія та аналіз граничних умов. Організація граничної аналітики та критичні бар'єри периферійних систем
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Практичний індустріальний / фаховий кейс. Інженерна реалізація гранично-туманного комплексу моніторингу та управління
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-openfog-ra_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Теоретико-концептуальний базис. Еволюція розподілених обчислень та еталонна модель OpenFog RA
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Теоретико-концептуальний базис. Еволюція розподілених обчислень та еталонна модель OpenFog RA">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1. Передумови виникнення розподіленої обробки даних, інформаційний вибух в екосистемах Інтернету речей та системні обмеження централізованих хмарних архітектур за латентністю, пропускною здатністю й автономністю
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-cloud-computing-fog-computing-edge-computing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2. Концептуальне розмежування та взаємозв'язок парадигм Cloud Computing, Fog Computing та Edge Computing уздовж континууму передачі інформації
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-openfog-reference-architecture-ieee-1934" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3. Архітектурний стандарт OpenFog Reference Architecture (IEEE 1934), багаторівневий функціональний стек платформи та характеристика восьми базових стовпів проектування туманних вузлів
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4. Ієрархічні рівні туманних обчислень та топології координації трафіку за напрямками «схід-захід» і «північ-південь»
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Вказівки для самостійного осмислення
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Методологія та аналіз граничних умов. Організація граничної аналітики та критичні бар'єри периферійних систем
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Методологія та аналіз граничних умов. Організація граничної аналітики та критичні бар&#39;єри периферійних систем">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-edge-ai-tinyml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1. Конвеєр граничної аналітики, методи цифрової обробки сигналів, квантування даних та впровадження алгоритмів машинного навчання на мікроконтролерах класу Edge AI і TinyML
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2. Застосування мікросервісної архітектури, технологій контейнеризації та систем оркестрації на інтелектуальних промислових шлюзах для забезпечення оперативного контуру керування
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3. Алгоритми нормалізації протоколів, виявлення аномалій у реальному часі та механізми обробки складних подій без збереження повного масиву первинної телеметрії
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4. Апаратні обмеження, дефіцит оперативної пам'яті, теплові режими, мережевий джиттер та критичні бар'єри забезпечення детермінованого часу відгуку в польових умовах експлуатації
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-hardware-root-of-trust" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5. Моделі кібербезпеки розподіленого периметра, організація апаратного кореня довіри (Hardware Root of Trust) та забезпечення захисту конфіденційних даних на локальних шлюзах
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-edgefog-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Практичний індустріальний / фаховий кейс. Промислове впровадження Edge/Fog-інфраструктури
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Практичний індустріальний / фаховий кейс. Промислове впровадження Edge/Fog-інфраструктури">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-edgex-foundry-mqtt-sn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1. Комплексний фаховий кейс. Розгортання багаторівневої туманно-граничної системи предиктивної вібродіагностики та екстреного захисту промислового прокатного стану з використанням EdgeX Foundry та протоколу MQTT-SN
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1. Комплексний фаховий кейс. Розгортання багаторівневої туманно-граничної системи предиктивної вібродіагностики та екстреного захисту промислового прокатного стану з використанням EdgeX Foundry та протоколу MQTT-SN">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Постановка задачі / ситуації
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Покроковий аналіз та розв'язок
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Покроковий аналіз та розв&#39;язок">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 1. Розрахунок дефіциту пропускної здатності централізованої моделі
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 2. Проектування конвеєра екстракції ознак на рівні граничних контролерів клітей
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 3. Верифікація часового бюджету контуру екстреного захисту
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-fog-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 4. Цехова агрегація та кореляційний аналіз на рівні Fog Node
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Інтерпретація результатів та альтернативні сценарії
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2. Зведена довідкова система лекції
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3. Контрольні питання та завдання
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3. Контрольні питання та завдання">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Прикладні тестові завдання
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Завдання для самостійної роботи
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Завдання для самостійної роботи">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Постановка задачі
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Завдання для виконання
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 6. Мікроконтролерні платформи (ESP32)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 7. Інтелектуальні сенсори
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 8. Виконавчі пристрої
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 9. Віртуалізація та контейнеризація IoT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 10. IoT платформи та Middleware
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 11. Розумний будинок (Home Assistant)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 12. Промисловий ІоТ (IIoT)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 13. Big Data в ІоТ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 14. Machine Learning на межі мережі
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 15. Кібербезпека в системах ІоТ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Лабораторні роботи
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Лабораторні роботи
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 1. Моделювання топологій IoT-мереж
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 2. Симуляція підсистем Розумного будинку
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 3. Дослідження локального MQTT-брокера
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 4. Схемотехнічне моделювання вузла збору
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 5. Прошивка ESP32 для передавання телеметрії MQTT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 6. Декларативне програмування ESP32 (ESPHome)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 7. Серверне середовище Linux для IoT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 8. Контейнеризація в ІоТ (Docker Compose)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 9. Middleware ІоТ (Node-RED)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 10. Сервіс REST API для агрегації даних
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 11. Платформи розумного будинку (Home Assistant)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 12. Сценарії автоматизації Home Assistant
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 13. Обробка телеметрії мовою Python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 14. HMI Dashboard для диспетчеризації
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 15. Комплексне наскрізне тестування IoT-системи
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практичні заняття
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Практичні заняття
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 1. Розрахунок пропускної здатності та живлення
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 2. Проєктування ієрархії топіків MQTT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 3. Правила фільтрації на Edge-шлюзах
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 4. Моделювання АЦП для сенсорів
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 5. Оптимізація енергетичного профілю
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 6. Проєктування конфігурації Docker Compose
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 7. Логічні схеми в Node-RED
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 8. Сценарії Trigger-Condition-Action
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 9. Конвеєр обробки даних (ETL)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 10. Моделювання загроз безпеки (STRIDE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Курсовий проєкт
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Самостійна робота
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sr/quest/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Контрольні завдання (Іспит)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Зміст">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Зміст
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Мета лекції
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Очікувані результати навчання
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Детальний покроковий план лекції
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Детальний покроковий план лекції">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-openfog-ra" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Теоретико-концептуальний базис. Еволюція розподілених обчислень та еталонна модель OpenFog RA
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Методологія та аналіз граничних умов. Організація граничної аналітики та критичні бар'єри периферійних систем
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Практичний індустріальний / фаховий кейс. Інженерна реалізація гранично-туманного комплексу моніторингу та управління
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-openfog-ra_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Теоретико-концептуальний базис. Еволюція розподілених обчислень та еталонна модель OpenFog RA
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Теоретико-концептуальний базис. Еволюція розподілених обчислень та еталонна модель OpenFog RA">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1. Передумови виникнення розподіленої обробки даних, інформаційний вибух в екосистемах Інтернету речей та системні обмеження централізованих хмарних архітектур за латентністю, пропускною здатністю й автономністю
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-cloud-computing-fog-computing-edge-computing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2. Концептуальне розмежування та взаємозв'язок парадигм Cloud Computing, Fog Computing та Edge Computing уздовж континууму передачі інформації
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-openfog-reference-architecture-ieee-1934" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3. Архітектурний стандарт OpenFog Reference Architecture (IEEE 1934), багаторівневий функціональний стек платформи та характеристика восьми базових стовпів проектування туманних вузлів
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4. Ієрархічні рівні туманних обчислень та топології координації трафіку за напрямками «схід-захід» і «північ-південь»
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Вказівки для самостійного осмислення
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Методологія та аналіз граничних умов. Організація граничної аналітики та критичні бар'єри периферійних систем
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Методологія та аналіз граничних умов. Організація граничної аналітики та критичні бар&#39;єри периферійних систем">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-edge-ai-tinyml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1. Конвеєр граничної аналітики, методи цифрової обробки сигналів, квантування даних та впровадження алгоритмів машинного навчання на мікроконтролерах класу Edge AI і TinyML
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2. Застосування мікросервісної архітектури, технологій контейнеризації та систем оркестрації на інтелектуальних промислових шлюзах для забезпечення оперативного контуру керування
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3. Алгоритми нормалізації протоколів, виявлення аномалій у реальному часі та механізми обробки складних подій без збереження повного масиву первинної телеметрії
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4. Апаратні обмеження, дефіцит оперативної пам'яті, теплові режими, мережевий джиттер та критичні бар'єри забезпечення детермінованого часу відгуку в польових умовах експлуатації
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-hardware-root-of-trust" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5. Моделі кібербезпеки розподіленого периметра, організація апаратного кореня довіри (Hardware Root of Trust) та забезпечення захисту конфіденційних даних на локальних шлюзах
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-edgefog-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Практичний індустріальний / фаховий кейс. Промислове впровадження Edge/Fog-інфраструктури
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Практичний індустріальний / фаховий кейс. Промислове впровадження Edge/Fog-інфраструктури">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-edgex-foundry-mqtt-sn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1. Комплексний фаховий кейс. Розгортання багаторівневої туманно-граничної системи предиктивної вібродіагностики та екстреного захисту промислового прокатного стану з використанням EdgeX Foundry та протоколу MQTT-SN
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1. Комплексний фаховий кейс. Розгортання багаторівневої туманно-граничної системи предиктивної вібродіагностики та екстреного захисту промислового прокатного стану з використанням EdgeX Foundry та протоколу MQTT-SN">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Постановка задачі / ситуації
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Покроковий аналіз та розв'язок
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Покроковий аналіз та розв&#39;язок">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 1. Розрахунок дефіциту пропускної здатності централізованої моделі
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 2. Проектування конвеєра екстракції ознак на рівні граничних контролерів клітей
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 3. Верифікація часового бюджету контуру екстреного захисту
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-fog-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 4. Цехова агрегація та кореляційний аналіз на рівні Fog Node
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Інтерпретація результатів та альтернативні сценарії
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2. Зведена довідкова система лекції
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3. Контрольні питання та завдання
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3. Контрольні питання та завдання">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Прикладні тестові завдання
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Завдання для самостійної роботи
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Завдання для самостійної роботи">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Постановка задачі
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Завдання для виконання
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="5">Тема 5. Туманні та граничні обчислення в системах Інтернету речей</h1>
+<h2 id="_1">Мета лекції</h2>
+<p>Метою лекції є формування у майбутніх інженерів комплексної системи фундаментальних теоретичних знань і практичних компетентностей щодо проектування, розгортання та оптимізації розподілених архітектур обробки даних на основі концепцій граничних (Edge) та туманних (Fog) обчислень. У межах навчальної дисципліни розглядаються фізичні, комунікаційні, обчислювальні та економічні передумови подолання обмежень класичних централізованих хмарних систем в екосистемах Інтернету речей, аналізується міжнародний стандарт OpenFog Reference Architecture (IEEE 1934), досліджуються алгоритми перенесення аналітичних функцій, механізмів обробки складних подій і моделей штучного інтелекту безпосередньо на периферію мережі, що дозволяє студентам здобути навички побудови високонадійних кіберфізичних систем із суворими обмеженнями затримки та енергоспоживання для сучасної автоматизованої промисловості, критичної інфраструктури й концепції розумного міста.</p>
+<h2 id="_2">Очікувані результати навчання</h2>
+<ol>
+<li>
+<p><strong>Знання та розуміння.</strong> Здобувачі вищої освіти опанують архітектурні принципи функціонування розподілених інфокомунікаційних систем, з'ясують фундаментальні відмінності між парадигмами Cloud, Fog та Edge обчислень, а також вивчать компонентний склад стандарту OpenFog Reference Architecture та критерії класифікації туманних вузлів.</p>
+</li>
+<li>
+<p><strong>Застосування.</strong> Студенти набудуть практичних умінь виконувати математичний розрахунок часового бюджету затримок у змішаних мережевих контурах і розраховувати показники зниження мережевого трафіку при впровадженні алгоритмів попередньої фільтрації та локальної аналітики на базі платформ віртуалізації та контейнеризації.</p>
+</li>
+<li>
+<p><strong>Аналіз.</strong> Слухачі зможуть здійснювати порівняльний аналіз багаторівневих топологій міжвузлової комунікації, оцінювати стійкість локальних кіберфізичних систем до розриву магістральних каналів зв'язку із глобальною мережею та виявляти критичні вузькі місця у контурах управління реального часу.</p>
+</li>
+<li>
+<p><strong>Оцінювання та синтез.</strong> Студенти сформують здатність комплексно оцінювати інженерні компроміси між обчислювальною потужністю периферійних вузлів, їхньою енергоефективністю, смугою пропускання каналів зв'язку та ризиками інформаційної безпеки, обґрунтовуючи оптимальну конфігурацію гібридної системи збирання, нормалізації та обробки телеметричних даних.</p>
+</li>
+</ol>
+<hr />
+<h2 id="_3">Детальний покроковий план лекції</h2>
+<h3 id="1-openfog-ra">1. Теоретико-концептуальний базис. Еволюція розподілених обчислень та еталонна модель OpenFog RA</h3>
+<ul>
+<li>
+<p>1.1. Передумови виникнення розподіленої обробки даних, інформаційний вибух в екосистемах Інтернету речей та системні обмеження централізованих хмарних архітектур за латентністю, пропускною здатністю й автономністю</p>
+</li>
+<li>
+<p>1.2. Концептуальне розмежування та взаємозв'язок парадигм Cloud Computing, Fog Computing та Edge Computing уздовж континууму передачі інформації</p>
+</li>
+<li>
+<p>1.3. Архітектурний стандарт OpenFog Reference Architecture (IEEE 1934), багаторівневий функціональний стек платформи та характеристика восьми базових стовпів проектування туманних вузлів</p>
+</li>
+<li>
+<p>1.4. Ієрархічні рівні туманних обчислень (Micro Fog, Mini Fog, Heavy Fog, Cloud) та топології координації трафіку за напрямками «схід-захід» і «північ-південь»</p>
+</li>
+</ul>
+<h3 id="2">2. Методологія та аналіз граничних умов. Організація граничної аналітики та критичні бар'єри периферійних систем</h3>
+<ul>
+<li>
+<p>2.1. Конвеєр граничної аналітики, методи цифрової обробки сигналів, квантування даних та впровадження алгоритмів машинного навчання на мікроконтролерах класу Edge AI і TinyML</p>
+</li>
+<li>
+<p>2.2. Застосування мікросервісної архітектури, технологій контейнеризації та систем оркестрації на інтелектуальних промислових шлюзах для забезпечення оперативного контуру керування</p>
+</li>
+<li>
+<p>2.3. Алгоритми нормалізації протоколів, виявлення аномалій у реальному часі та механізми обробки складних подій без збереження повного масиву первинної телеметрії</p>
+</li>
+<li>
+<p>2.4. Апаратні обмеження, дефіцит оперативної пам'яті, теплові режими, мережевий джиттер та критичні бар'єри забезпечення детермінованого часу відгуку в польових умовах експлуатації</p>
+</li>
+<li>
+<p>2.5. Моделі кібербезпеки розподіленого периметра, організація апаратного кореня довіри (Hardware Root of Trust) та забезпечення захисту конфіденційних даних на локальних шлюзах</p>
+</li>
+</ul>
+<h3 id="3-">3. Практичний індустріальний / фаховий кейс. Інженерна реалізація гранично-туманного комплексу моніторингу та управління</h3>
+<p><strong>Тема наскрізної задачі.</strong> «Проектування багаторівневої туманно-граничної системи предиктивної вібродіагностики та автоматичного аварійного захисту підшипникових вузлів прокатного стану металургійного підприємства на базі платформи EdgeX Foundry з використанням протоколу MQTT-SN»</p>
+<h2 id="1-openfog-ra_1">1. Теоретико-концептуальний базис. Еволюція розподілених обчислень та еталонна модель OpenFog RA</h2>
+<h3 id="11">1.1. Передумови виникнення розподіленої обробки даних, інформаційний вибух в екосистемах Інтернету речей та системні обмеження централізованих хмарних архітектур за латентністю, пропускною здатністю й автономністю</h3>
+<p>Історична еволюція обчислювальних систем розвивалася за спіральною траєкторією, чергуючи фази жорсткої централізації та розподіленої децентралізації. На початкових етапах розвитку інформаційних технологій домінувала модель мейнфреймів, де всі обчислювальні ресурси та пам'ять зосереджувалися на одному потужному вузлі, а взаємодія з користувачами здійснювалася через неінтелектуальні термінали введення-виведення. Подальша мініатюризація напівпровідникової елементної бази зумовила перехід до концепції персональних комп'ютерів і класичної клієнт-серверної архітектури, у якій частина логіки обробки та візуалізації делегувалася кінцевим робочим станціям. На межі двохтисячних років поява високошвидкісних глобальних каналів зв'язку, розвиток методів апаратної віртуалізації та прагнення до оптимізації капітальних витрат (CAPEX) у бік операційних витрат (OPEX) привели до формування концепції <strong>хмарних обчислень</strong> (Cloud Computing), що закріпилася як домінуюча платформа для розміщення корпоративних інформаційних систем.</p>
+<p>Парадигма централізованих хмарних обчислень довела свою беззаперечну ефективність під час обслуговування традиційних користувацьких веб-додатків, систем управління базами даних і транзакційних платформ, для яких генерація запитів ініціювалася переважно діями людини. Проте стрімке розгортання екосистем Інтернету речей принципово змінило фізичну природу та обсяги трафіку в інфокомунікаційних мережах. Фізичні об'єкти реального світу, оснащені мікроелектромеханічними сенсорами (MEMS), засобами радіочастотної ідентифікації (RFID), відеокамерами високої роздільної здатності та виконавчими механізмами, перетворилися на автономні джерела безперервного продукування цифрових сигналів. Виник феномен інформаційного вибуху («Data Deluge»), за якого швидкість генерації та сумарний обсяг польових даних почали перевищувати пропускну здатність магістральних каналів зв'язку, а вимоги до оперативності прийняття рішень увійшли у суперечність із затримками, притаманними віддаленим дата-центрам.</p>
+<p>Фундаментальним бар'єром під час використання виключно хмарної інфраструктури для потреб Інтернету речей є непереборна <strong>латентність мережі</strong> (Network Latency) та її недетермінована варіація, відома як джиттер. Фізична віддаленість континентальних центрів обробки даних від польових об'єктів на тисячі кілометрів зумовлює затримку поширення електромагнітної хвилі у фізичному середовищі, до якої додаються затримки пакетної комутації на численних проміжних маршрутизаторах, витрати часу на перепакування протоколів і черги буферизації. Для широкого класу кіберфізичних систем, таких як системи стабілізації безпілотних літальних апаратів, контури протиаварійного захисту в енергетиці чи роботизоване хірургічне обладнання, затримка керуючого сигналу понад кілька мілісекунд є неприпустимою, оскільки призводить до втрати стійкості об'єкта управління та техногенних аварій.</p>
+<p>Математична модель загальної кругової затримки передачі та аналізу інформації в суто хмарній архітектурі <span class="arithmatex">\(\tau_{\text{cloud}}\)</span> описується адитивною композицією часових параметрів проходження сигналу по тракту зв'язку:</p>
+<div class="arithmatex">\[\tau_{\text{cloud}} = 2 \cdot \left( \tau_{\text{prop}} + \tau_{\text{trans}} + \sum_{k=1}^{M} \tau_{\text{router}, k} \right) + \tau_{\text{queue}} + \tau_{\text{proc}}\]</div>
+<p>де <span class="arithmatex">\(\tau_{\text{prop}}\)</span> позначає час фізичного поширення сигналу оптичним або бездротовим каналом, що лінійно залежить від географічної відстані між датчиком і хмарою; <span class="arithmatex">\(\tau_{\text{trans}}\)</span> є затримкою серіалізації пакета під час його видачі в мережевий інтерфейс; <span class="arithmatex">\(\tau_{\text{router}, k}\)</span> позначає час комутації, перевірки контрольної суми та маршрутизації в <span class="arithmatex">\(k\)</span>-му проміжному мережевому вузлі на шляху довжиною <span class="arithmatex">\(M\)</span> транзитних переходів (хопів); <span class="arithmatex">\(\tau_{\text{queue}}\)</span> представляє час перебування пакета в чергах очікування сокетів, брокерів повідомлень та балансувальників навантаження; <span class="arithmatex">\(\tau_{\text{proc}}\)</span> визначає безпосередню тривалість виконання аналітичного алгоритму чи транзакції бази даних на віртуальних машинах хмарного кластера. Коефіцієнт <span class="arithmatex">\(2\)</span> враховує повний двосторонній цикл взаємодії, що складається з висхідного каналу передачі первинних даних та низхідного каналу повернення керуючої команди.</p>
+<p>Другим критичним обмеженням виступає вичерпання <strong>пропускної здатності каналів зв'язку</strong> (Bandwidth Saturation). Сумарне навантаження на магістральний канал зв'язку <span class="arithmatex">\(B_{\text{total}}\)</span> (біт/с), що генерується системою з <span class="arithmatex">\(N\)</span> сенсорних вузлів за умови передачі невідфільтрованого трафіку безпосередньо у хмару, визначається виразом:</p>
+<div class="arithmatex">\[B_{\text{total}} = \sum_{i=1}^{N} \left[ f_{s, i} \cdot D_{\text{sample}, i} \cdot \left( 1 + \frac{H_{\text{net}}}{P_{\text{data}, i}} \right) \right]\]</div>
+<p>де <span class="arithmatex">\(f_{s, i}\)</span> є частотою опитування або дискретизації <span class="arithmatex">\(i\)</span>-го сенсора (вимірюваною в герцах); <span class="arithmatex">\(D_{\text{sample}, i}\)</span> відображає розрядність одного виміру первинної фізичної величини (виражену в бітах); <span class="arithmatex">\(H_{\text{net}}\)</span> позначає сукупний обсяг службових заголовків усіх задіяних мережевих протоколів (включаючи кадри канального рівня IEEE 802.15.4 або Ethernet, пакети IPv6, дейтаграми UDP або сегменти TCP, а також криптографічні заголовки TLS/DTLS); <span class="arithmatex">\(P_{\text{data}, i}\)</span> позначає розмір корисного навантаження датчика, упакованого в одиничний пакет. У випадках надсилання високочастотних сигналів відношення <span class="arithmatex">\(H_{\text{net}} / P_{\text{data}, i}\)</span> набуває надмірних значень, зумовлюючи непропорційне перевантаження радіоефіру та значні фінансові витрати на оплату хмарного вхідного трафіку.</p>
+<blockquote>
+<p><strong>ПРАКТИЧНИЙ ЯКІР:</strong> Сучасний автономний автомобіль четвертого рівня автоматизації генерує за допомогою лідарів, радарів і масиву 4K-відеокамер до <span class="arithmatex">\(4\text{ терабайтів}\)</span> сирих даних за одну годину руху; передача такого суцільного потоку через стільникову мережу 4G/LTE чи 5G у хмарний центр не лише технічно паралізує радіоканал базової станції, а й коштуватиме оператору автопарку сотні доларів за кожну годину експлуатації одного транспортного засобу.</p>
+</blockquote>
+<p>Третім фактором є дефіцит <strong>автономності функціонування</strong> (Offline Autonomy) локальних об'єктів управління. Якщо система автоматизації повністю покладається на віддалений хмарний сервер для прийняття рішень, то будь-який обрив кабелю, аварія на лінії провайдера або зловмисна DoS-атака призводять до деградації керованості, унеможливлюючи базові технологічні операції. Додатково виникають суворі вимоги щодо <strong>конфіденційності та безпеки</strong> (Data Privacy): пряма трансляція чутливої інформації, наприклад, медичних показників пацієнтів чи параметрів технологічного процесу виготовлення оборонної продукції, через публічну мережу несе високі ризики несанкціонованого перехоплення або порушення регуляторних нормативів щодо захисту персональних даних.</p>
+<hr />
+<h3 id="12-cloud-computing-fog-computing-edge-computing">1.2. Концептуальне розмежування та взаємозв'язок парадигм Cloud Computing, Fog Computing та Edge Computing уздовж континууму передачі інформації</h3>
+<p>Для подолання вказаних диспропорцій у сучасній інженерії Інтернету речей сформувалася концепція обчислювального континууму («Edge-to-Cloud Continuum»), яка передбачає диференційований розподіл функцій зберігання, нормалізації, фільтрації та аналізу даних між різними ієрархічними рівнями мережі. У цьому континуумі виділяють три базові парадигми: <strong>хмарні обчислення</strong> (Cloud Computing), <strong>туманні обчислення</strong> (Fog Computing) та <strong>граничні обчислення</strong> (Edge Computing). Незважаючи на спільну мету, що полягає в оптимізації обробки даних, кожна з цих парадигм володіє унікальними властивостями, займає чітко визначене місце в топології мережі та оперує різними масштабами часу.</p>
+<p>Під <strong>граничними обчисленнями</strong> (Edge Computing) розуміють перенесення обчислювальних операцій безпосередньо на пристрої збору даних або на апаратно сполучені з ними вузли первинного доступу. Граничним пристроєм може виступати сам інтелектуальний датчик, мікроконтролер із підсистемою апаратного цифрового оброблення сигналів або компактний вбудований комп'ютер. Головною ознакою Edge Computing є робота з потоками даних у режимі жорсткого реального часу, де часовий бюджет вимірюється частками мікросекунд або одиницями мілісекунд. На цьому рівні дані розглядаються як «дані в русі» (Data in Motion): вони підлягають негайній дискретизації, видаленню високочастотних шумів, перевірці порогових значень і формуванню керуючих імпульсів на виконавчі актуатори, після чого сирі виміри можуть бути безповоротно знищені з оперативної пам'яті.</p>
+<p><strong>Туманні обчислення</strong> (Fog Computing) являють собою системну горизонтальну архітектуру, яка розгортається на рівні локальної чи міської мережі і пов'язує множину граничних пристроїв із віддаленою хмарою. Якщо граничні обчислення локалізовані на окремих пристроях, то туманні обчислення утворюють розподілене середовище з багатьох взаємопов'язаних вузлів: промислових контролерів, інтелектуальних маршрутизаторів, концентраторів і периферійних серверів. Туманні вузли функціонують у масштабі «майже реального часу» (Near Real-Time) із затримками від десяти до ста мілісекунд, забезпечуючи локальне накопичення інформації, агрегацію даних від просторово рознесених сенсорів, кореляцію подій і трансляцію гетерогенних польових протоколів у стандартизовані мережеві формати.</p>
+<blockquote>
+<p><strong>ТИПОВА ПОМИЛКА:</strong> Ототожнення понять Edge Computing та Fog Computing як повних синонімів. Насправді Edge зосереджується виключно на обчисленнях безпосередньо на крайньому фізичному пристрої (наприклад, усередині самого сенсора чи мікроконтролера) без створення складної мережевої платформи, тоді як Fog — це багаторівнева структурована інфраструктура з підтримкою міжвузлової взаємодії, кластеризації, балансування навантаження та управління життєвим циклом додатків між краєм і хмарою.</p>
+</blockquote>
+<p>Життєвий цикл переміщення та обробки телеметричних даних від моменту їх збудження у фізичному середовищі до фіксації в довготривалій аналітичній базі наочно відображається у вигляді переходів між станами обчислювального континууму.</p>
+<p><pre class="mermaid"><code>stateDiagram-v2
+    [*] --&gt; ЗбудженняСигналу: Фізична дія на сенсор
+
+    state "Рівень Edge (Час реакції: &lt; 5 мс)" as EdgeState {
+        ЗбудженняСигналу --&gt; Оцифрування: АЦП / Квантування
+        Оцифрування --&gt; ПервиннаФільтрація: Усунення завад та FFT
+        ПервиннаФільтрація --&gt; ЛокальнийІнференс: TinyML / Порівняння з уставкою
+
+        state c1 &lt;&lt;choice&gt;&gt;
+        ЛокальнийІнференс --&gt; c1: Перевірка критерію критичності
+        c1 --&gt; АварійнеСпрацювання: Критична загроза
+        c1 --&gt; ЕкстракціяОзнак: Нормальний процес
+
+        АварійнеСпрацювання --&gt; АктиваціяАктуатора: Формування ШІМ/сигналу
+        АктиваціяАктуатора --&gt; [*]
+    }
+
+    state "Рівень Fog (Час реакції: 10-100 мс)" as FogState {
+        ЕкстракціяОзнак --&gt; АгрегаціяПотоків: Публікація через MQTT-SN
+        АгрегаціяПотоків --&gt; ОбробкаСкладнихПодій: Виконання правил CEP
+        ОбробкаСкладнихПодій --&gt; ЛокальнеСховище: Кешування в оперативній пам'яті
+    }
+
+    state "Рівень Cloud (Час реакції: &gt; 200 мс)" as CloudState {
+        ЛокальнеСховище --&gt; ТрансляціяWAN: Пакетний експорт метаданих
+        ТрансляціяWAN --&gt; ОзероДаних: Збереження в HDFS / NoSQL
+        ОзероДаних --&gt; ГлобальнаАналітика: Машинне навчання / Big Data
+        ГлобальнаАналітика --&gt; ОновленняМоделей: Ретрейнінг ваг нейромереж
+    }
+
+    ОновленняМоделей --&gt; ЛокальнийІнференс: Оновлення прошивки OTA</code></pre>
+<em>Рисунок 1.1 — Стейт-машина життєвого циклу обробки інформації в трирівневому обчислювальному континуумі Інтернету речей</em></p>
+<p>Наведена стейт-машина демонструє, що впровадження туманно-граничного континууму не витісняє централізовану хмару, а перетворює її на платформу стратегічного призначення. Хмара звільняється від рутинного оброблення високочастотного шуму, фокусуючись на агрегованих історичних трендах, глобальній оптимізації процесів підприємства та навчанні важких математичних моделей, результати яких у вигляді компактних коефіцієнтів згодом повертаються на граничні пристрої.</p>
+<hr />
+<h3 id="13-openfog-reference-architecture-ieee-1934">1.3. Архітектурний стандарт OpenFog Reference Architecture (IEEE 1934), багаторівневий функціональний стек платформи та характеристика восьми базових стовпів проектування туманних вузлів</h3>
+<p>Прагнення провідних технологічних корпорацій уніфікувати підходи до проектування периферійних систем привело до створення у листопаді 2015 року консорціуму OpenFog. Результатом роботи цієї організації стала розробка еталонної архітектури <strong>OpenFog Reference Architecture (OpenFog RA)</strong>, яка у 2018 році була офіційно ратифікована Інститутом інженерів з електротехніки та електроніки як міжнародний стандарт <strong>IEEE 1934</strong>. Стандарт визначає відкриту, масштабовану, безпечну горизонтальну архітектуру, яка регламентує вимоги до створення туманних систем від апаратного забезпечення кремнієвих кристалів до прикладних сервісів бізнес-рівня.</p>
+<p>Методологічним ядром стандарту IEEE 1934 є вісім фундаментальних принципів проектування, які визначаються як <strong>стовпи OpenFog</strong> (OpenFog Pillars). Системне проектування будь-якого промислового туманного рішення вимагає обов'язкового врахування та технічної імплементації кожного з цих стовпів:</p>
+<p>Фундаментальний стовп <strong>безпеки</strong> (Security) передбачає багаторівневу модель захисту, яка починається з апаратного кореня довіри (Hardware Root of Trust), інтегрованого в кремнієву мікросхему туманного вузла. Довірене завантаження гарантує перевірку цифрових підписів завантажувача, ядра операційної системи та контейнерів додатків, що повністю виключає виконання шкідливого або несанкціонованого коду. Крім того, вузол туману забезпечує шифрування каналів зв'язку та локальний контроль доступу до конфіденційних даних до їхньої передачі у відкритий простір.</p>
+<p>Принцип <strong>масштабованості</strong> (Scalability) визначає спроможність системи гнучко адаптуватися до вибухового зростання кількості підключених польових сенсорів, потоків даних і аналітичних функцій. Архітектура підтримує як вертикальне масштабування окремого туманного вузла шляхом підключення додаткових апаратних блоків пам'яті чи процесорних плат, так і горизонтальне розширення системи за допомогою динамічного включення нових вузлів у єдиний обчислювальний кластер без необхідності переривання виробничих процесів.</p>
+<p>Властивість <strong>відкритості</strong> (Openness) гарантує використання загальнодоступних стандартів, модульних специфікацій та уніфікованих відкритих прикладних програмних інтерфейсів (API). Це унеможливлює технологічну монополізацію рішень одним комерційним вендором, забезпечує взаємозамінність компонентів різних виробників та дозволяє стороннім розробникам створювати нове програмне забезпечення для функціонуючих промислових комплексів.</p>
+<p>Стовп <strong>автономності</strong> (Autonomy) регламентує незалежність роботи локального туманного кластера від стану зовнішніх мережевих комунікацій. У разі аварійного відключення магістрального інтернет-каналу або глобальної хмарної інфраструктури туманний вузол самостійно забезпечує диспетчеризацію ресурсів, виконання алгоритмів зворотного зв'язку, тимчасове кешування вимірювань і виявлення локальних інцидентів, гарантуючи безперебійність технологічного процесу.</p>
+<p>Принцип <strong>програмованості</strong> (Programmability) базується на широкому застосуванні технологій контейнеризації та мікросервісів. Логіка роботи туманного вузла не є статично «зашитою» в апаратну частину: прикладні модулі, драйвери протоколів та інструменти фільтрації пакуються в легковажні ізольовані контейнери, які можуть автоматично розгортатися, переконфігуруватися чи переміщуватися між вузлами відповідно до команд централізованого оркестратора.</p>
+<p>Стовп <strong>надійності, доступності та обслуговуваності</strong> (Reliability, Availability, and Serviceability — <strong>RAS</strong>) є визначальним для впровадження систем на промислових об'єктах. Архітектурні рішення стандарту забезпечують механізми гарячого резервування вузлів, автоматичного відновлення після програмних збоїв, функціонування сторожових таймерів (Watchdog) і проведення самодіагностики апаратних підсистем без порушення цілісності мережі.</p>
+<p>Принцип <strong>маневреності</strong> (Agility) полягає в оптимізації шляху проходження інформації: обчислення переміщуються ближче до місця виникнення даних, що дозволяє майже миттєво перетворювати сирі сигнали на управлінські рішення та керуючі команди, істотно підвищуючи динамічну стійкість об'єкта автоматизації.</p>
+<p>Стовп <strong>ієрархічності</strong> (Hierarchy) структурує обчислювальні, комунікаційні та координаційні ресурси за вертикальними рівнями. Кожен рівень наділяється функціоналом відповідно до обмежень щодо допустимої затримки сигналу, пропускної здатності каналу та доступної апаратної потужності.</p>
+<p><pre class="mermaid"><code>flowchart TD
+    subgraph OpenFogModel["Функціональний стек OpenFog Reference Architecture (IEEE 1934)"]
+        direction TB
+        L7["Рівень 7: Прикладні служби та візуалізація бізнес-логіки"]
+        L6["Рівень 6: Підтримка додатків (Middleware, CEP-движки, локальні брокери)"]
+        L5["Рівень 5: Управління вузлом In-Band та Out-of-Band (Конфігурація, Відновлення)"]
+        L4["Рівень 4: Віртуалізація та контейнеризація (Hypervisors, Container Engine)"]
+
+        subgraph L3["Рівень 3: Апаратна інфраструктура платформи"]
+            CPU["Обчислювальні ядра (Multi-Core CPU)"]
+            ACC["Апаратні прискорювачі (GPU, NPU, FPGA)"]
+            MEM["Підсистема пам'яті та сховищ (RAM, NVMe SSD)"]
+            NET["Мережеві інтерфейси (TSN Ethernet, 5G, Wi-Fi)"]
+        end
+
+        L2["Рівень 2: Абстракція протоколів (Трансляція польових інтерфейсів у IP)"]
+        L1["Рівень 1: Сенсори, актуатори та фізичні об'єкти середовища"]
+    end
+
+    L7 &lt;--&gt; L6
+    L6 &lt;--&gt; L5
+    L5 &lt;--&gt; L4
+    L4 &lt;--&gt; L3
+    L3 &lt;--&gt; L2
+    L2 &lt;--&gt; L1
+
+    style L3 fill:#f0f4f8,stroke:#0969da,stroke-width:2px
+    style OpenFogModel fill:#ffffff,stroke:#333,stroke-width:1px</code></pre>
+<em>Рисунок 1.2 — Структурна декомпозиція рівнів функціонального стека еталонної архітектури OpenFog RA</em></p>
+<blockquote>
+<p><strong>ПРАКТИЧНИЙ ЯКІР:</strong> У промислових комплексах підводного нафтовидобутку компанії застосовують туманні вузли стандарту IEEE 1934 безпосередньо на глибоководних платформах, що дозволяє виконувати автономний моніторинг сейсмічної активності та цілісності свердловин за допомогою локальних моделей у режимі закритого контуру, оскільки супутниковий канал зв'язку з материком має затримку понад <span class="arithmatex">\(600\text{ мс}\)</span> і періодично блокується штормовими умовами.</p>
+</blockquote>
+<p>Надійність функціонування кластера туманних вузлів регламентується стовпом RAS. Розрахунок інтегрального коефіцієнта готовності туманного комплексу <span class="arithmatex">\(A_{\text{system}}\)</span>, складеного з <span class="arithmatex">\(M\)</span> взаємозамінних паралельних вузлів обробки, визначається співвідношенням:</p>
+<div class="arithmatex">\[A_{\text{system}} = 1 - \prod_{k=1}^{M} \left( 1 - A_{\text{node}, k} \right) = 1 - \prod_{k=1}^{M} \left( 1 - \frac{\text{MTTF}_k}{\text{MTTF}_k + \text{MTTR}_k} \right)\]</div>
+<p>де <span class="arithmatex">\(A_{\text{node}, k}\)</span> є коефіцієнтом готовності <span class="arithmatex">\(k\)</span>-го окремого апаратного вузла; <span class="arithmatex">\(\text{MTTF}_k\)</span> (Mean Time To Failure) позначає середній час безвідмовної роботи вузла у годинах; <span class="arithmatex">\(\text{MTTR}_k\)</span> (Mean Time To Repair) визначає середній час відновлення працездатності пристрою шляхом автоматичного перезапуску мікросервісу чи перемикання на резерв. Завдяки ієрархічному резервуванню сукупна готовність туманного сегмента наближається до абсолютних показників <span class="arithmatex">\(0{,}99999\)</span> («п'ять дев'яток»), що гарантує безперебійність процесів високої категорії небезпеки.</p>
+<hr />
+<h3 id="14-">1.4. Ієрархічні рівні туманних обчислень та топології координації трафіку за напрямками «схід-захід» і «північ-південь»</h3>
+<p>Стандарт OpenFog структурує обчислювальний простір за чотирма основними вертикальними рівнями, утворюючи піраміду обробки даних. На першому рівні розташовуються мікро-туманні вузли (<strong>Micro Fog</strong>), що являють собою прості вбудовані системи та мікроконтролери польового обладнання з обсягом оперативної пам'яті до <span class="arithmatex">\(1\dots 2\text{ Гбайт}\)</span>, орієнтовані на первинну фільтрацію сигналів та трансляцію фізичних протоколів. Другий рівень формують міні-туманні вузли (<strong>Mini Fog</strong>), представлені захищеними промисловими шлюзами та комп'ютерами на базі процесорів архітектури x86 або високопродуктивних ARM, що володіють <span class="arithmatex">\(8\dots 32\text{ Гбайт}\)</span> пам'яті і здатні виконувати складніші алгоритми виявлення аномалій та обробки подій у межах виробничого цеху. </p>
+<p>Третій рівень складають важкі туманні вузли (<strong>Heavy Fog</strong>), які конструктивно є локальними периферійними серверами або модульними мікро-ЦОД із багатоядерними процесорами, графічними прискорювачами та ємними сховищами даних, призначеними для координації підсистем усього підприємства. Верхівкою піраміди залишається глобальна хмара (<strong>Cloud</strong>), де концентруються ресурси зберігання історичних баз даних та масштабної аналітики Big Data.</p>
+<p>Координація інформаційних потоків між зазначеними рівнями здійснюється за двома просторовими напрямками. Трафік за напрямком <strong>«північ-південь»</strong> (North-South Traffic) представляє собою вертикальний ієрархічний обмін даними. Рух сигналу з півдня на північ передбачає передачу агрегованих метрик, виявлених інцидентів та узагальнених звітів від кінцевих сенсорів угору до важких вузлів і глобальної хмари. Зворотний рух із півночі на південь забезпечує транспортування команд глобального диспетчерського керування, політичних правил, оновлень мікропрограмного забезпечення (OTA Firmware Updates) та нових коефіцієнтів моделей машинного навчання.</p>
+<p>На противагу вертикальному обміну, взаємодія за напрямком <strong>«схід-захід»</strong> (East-West Traffic) забезпечує горизонтальний розподілений зв'язок між одноранговими вузлами, що знаходяться на одному рівні ієрархії. Горизонтальний обмін реалізує механізми взаємного резервування завдань при відмові одного з пристроїв, динамічне балансування обчислювального навантаження, синхронізацію спільних кеш-сховищ і реалізацію протоколів узгодження консенсусу. Наприклад, сусідні інтелектуальні камери вуличного спостереження можуть безпосередньо обмінюватися векторними дескрипторами транспортних засобів для наскрізного відстеження їхньої траєкторії без перенаправлення важких відеопотоків до віддаленого сервера.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Критерій порівняння</th>
+<th style="text-align: left;">Централізована Хмара (Cloud)</th>
+<th style="text-align: left;">Важкий туман (Heavy Fog)</th>
+<th style="text-align: left;">Міні/Мікро туман (Mini/Micro Fog)</th>
+<th style="text-align: left;">Граничні пристрої (Edge Nodes)</th>
+<th style="text-align: left;">Приклад з реальної практики</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Місце розташування обладнання</strong></td>
+<td style="text-align: left;">Віддалені гіпермасштабовані центри обробки даних</td>
+<td style="text-align: left;">Локальні серверні підприємств або базові станції зв'язку</td>
+<td style="text-align: left;">Промислові цехові шафи автоматизації, дорожні контролери</td>
+<td style="text-align: left;">Безпосередньо на фізичному об'єкті або в корпусі сенсора</td>
+<td style="text-align: left;">Автоматизована лінія штампування деталей кузова автомобіля</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Характерний час реакції (Latency)</strong></td>
+<td style="text-align: left;"><span class="arithmatex">\(200\text{ мс} \dots 2\text{ с}\)</span> (висока дисперсія)</td>
+<td style="text-align: left;"><span class="arithmatex">\(20\dots 100\text{ мс}\)</span> (стабільний канал)</td>
+<td style="text-align: left;"><span class="arithmatex">\(2\dots 20\text{ мс}\)</span> (квазідетермінований)</td>
+<td style="text-align: left;"><span class="arithmatex">\(0{,}1\dots 2\text{ мс}\)</span> (суворо детермінований)</td>
+<td style="text-align: left;">Екстрена зупинка гідравлічного преса при виявленні перешкоди</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Апаратне забезпечення</strong></td>
+<td style="text-align: left;">Тисячі блейд-серверів, еластичні віртуальні машини</td>
+<td style="text-align: left;">Сервери стандартної архітектури x86, масиви GPU</td>
+<td style="text-align: left;">Промислові ПК, інтелектуальні комутатори, шлюзи</td>
+<td style="text-align: left;">Мікроконтролери Cortex-M, DSP, кристали FPGA</td>
+<td style="text-align: left;">Промисловий шлюз Dell Edge Gateway 5000 у шафі цеху</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Типовий обсяг сховища даних</strong></td>
+<td style="text-align: left;">Ексабайти (необмежені сховища озер даних HDFS)</td>
+<td style="text-align: left;">Терабайти (локальні твердотільні RAID-масиви)</td>
+<td style="text-align: left;">Гігабайти (швидкодіючі вбудовані флеш-карти eMMC)</td>
+<td style="text-align: left;">Мегабайти або кілобайти (внутрішня SRAM/Flash)</td>
+<td style="text-align: left;">Буферизація віброграм за зміну в кільцевий буфер пам'яті</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Підтримувані мережеві протоколи</strong></td>
+<td style="text-align: left;">HTTP/HTTPS, REST, gRPC, AMQP, Kafka</td>
+<td style="text-align: left;">MQTT, CoAP, OPC UA, IPv6/RPL, Modbus TCP</td>
+<td style="text-align: left;">6LoWPAN, BLE, ZigBee, Modbus RTU, CAN</td>
+<td style="text-align: left;">Пропрієтарні шини SPI, I2C, UART, аналоговий струм 4-20 мА</td>
+<td style="text-align: left;">Зняття показів вібродатчика через інтерфейс SPI мікроконтролером</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Ступінь автономності від інтернету</strong></td>
+<td style="text-align: left;">Нульова (повна залежність від доступності WAN)</td>
+<td style="text-align: left;">Висока (збереження функцій протягом днів і тижнів)</td>
+<td style="text-align: left;">Повна автономність локального контуру управління</td>
+<td style="text-align: left;">Абсолютна незалежність фізичного автомата</td>
+<td style="text-align: left;">Автономне функціонування підсистеми захисту залізничного переїзду</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>КОНТРОЛЬНЕ ПИТАННЯ:</strong> Під час модернізації автоматизованої системи міського освітлення інженерна група запропонувала передавати всі дані з датчиків освітленості та руху безпосередньо до хмарної платформи через стільниковий зв'язок NB-IoT для централізованого вмикання світильників. Який системний ризик несе таке рішення і як його усунути на основі стандартів OpenFog RA?</p>
+<p><details markdown="1">
+<summary>Розгорнути аналіз / відповідь</summary></p>
+<p><strong>Правильний варіант: Запропоноване рішення несе критичні ризики високої латентності, нестабільності часу відгуку та втрати працездатності освітлення при збоях мобільної мережі, що необхідно усунути перенесенням логіки вмикання на туманні вузли рівня Mini Fog.</strong></p>
+<ol>
+<li>
+<p>Логічне та аналітичне обґрунтування:
+Стандарт стільникового зв'язку NB-IoT оптимізований для передачі спорадичних невеликих повідомлень і характеризується затримками від 1,5 до 10 секунд, що унеможливлює динамічне вмикання освітлення під час руху пішохода чи автомобіля в реальному часі. У разі втрати зв'язку зі стільниковим оператором вулиці залишаться без освітлення, створюючи аварійну небезпеку. Відповідно до стандартів OpenFog RA, датчики освітленості та радарні модулі мають підключатися за допомогою локальної бездротової сітки (наприклад, 6LoWPAN або ZigBee) до місцевого туманного вузла (районного контролера освітлення класу Mini Fog). Цей вузол автономно виконує бізнес-правила ввімкнення світильників із детермінованою затримкою менше 20 мс, а вгору до глобальної хмари надсилає виключно агреговані звіти про енергоспоживання та сигнали про несправність окремих ламп.</p>
+</li>
+<li>
+<p>Аналіз дистракторів:
+Спроба вирішити проблему лише збільшенням частоти опитування датчиків через NB-IoT є хибною, оскільки це призведе до швидкого вичерпання автономного заряду батарей датчиків та перевантаження каналу оператора. Використання виключно супутникового резервного каналу зв'язку з хмарою є економічно неприйнятним для розподіленої системи міського господарства. Делегування управління на рівень виключно одиничних світильників без туманного координатора унеможливить створення «світлової хвилі», коли група ліхтарів вмикається вздовж маршруту транспортного засобу заздалегідь на основі взаємодії за напрямком «схід-захід».</p>
+</li>
+</ol>
+</details>
+</blockquote>
+<hr />
+<h3 id="_4">Вказівки для самостійного осмислення</h3>
+<ol>
+<li>
+<p>Розрахуйте сумарний обсяг добового мережевого трафіку для цехової системи вібродіагностики з двадцяти верстатів за умови використання централізованої передачі сирих даних з частотою дискретизації <span class="arithmatex">\(25\text{ кГц}\)</span> (розрядність АЦП <span class="arithmatex">\(16\text{ біт}\)</span>) та зіставте отриманий результат з обсягом трафіку за умови розгортання туманного вузла, який виконує локальне швидке перетворення Фур'є і передає у хмару лише амплітуди перших десяти гармонік двічі на хвилину.</p>
+</li>
+<li>
+<p>Складіть аналітичну схему розподілу функціональних обов'язків для системи диспетчеризації швидкісного ліфта хмарочоса, визначивши, які операції контролю безпеки повинні суворо виконуватися на рівні граничного мікроконтролера кабіни ліфта, які функції координації групи ліфтів слід делегувати цеховому туманному контролеру, а які завдання оптимізації пасажиропотоків і предиктивного техобслуговування доцільно передати на хмарний рівень.</p>
+</li>
+<li>
+<p>Проаналізуйте потенційні загрози інформаційній безпеці, що виникають під час організації горизонтальної комунікації за напрямком «схід-захід» між туманними вузлами різних муніципальних служб у системі «Розумне місто», та запропонуйте комплекс заходів для забезпечення довіреної автентифікації вузлів без участі центрального хмарного сервера сертифікації.</p>
+</li>
+</ol>
+<h2 id="2_1">2. Методологія та аналіз граничних умов. Організація граничної аналітики та критичні бар'єри периферійних систем</h2>
+<h3 id="21-edge-ai-tinyml">2.1. Конвеєр граничної аналітики, методи цифрової обробки сигналів, квантування даних та впровадження алгоритмів машинного навчання на мікроконтролерах класу Edge AI і TinyML</h3>
+<p>Перенесення аналітичних процедур безпосередньо в точку генерації первинних даних вимагає кардинальної перебудови структури обчислювального процесу. Класичний підхід, за якого оцифрований масив вимірювань транслюється для пакетної обробки у віддалені сховища, замінюється концепцією потокового аналітичного конвеєра на межі мережі. У такій парадигмі первинний сигнал аналогового сенсора піддається багаторівневій фільтрації, нормалізації, екстракції спектральних або статистичних ознак і подальшій класифікації за допомогою оптимізованих математичних моделей. Це дозволяє приймати критичні керуючі рішення на рівні мікроконтролера за мілісекундні часові інтервали.</p>
+<p>Реалізація конвеєра починається з отримання вибірки фізичного процесу за допомогою вбудованого або зовнішнього аналого-цифрового перетворювача (АЦП). Забезпечення математичної коректності подальшої цифрової обробки вимагає суворого дотримання теореми Котельникова-Шеннона, згідно з якою частота дискретизації <span class="arithmatex">\(f_s\)</span> повинна щонайменше удвічі перевищувати найвищу значущу частотну гармоніку в спектрі вимірюваного сигналу <span class="arithmatex">\(f_{\max}\)</span>. На етапі попередньої обробки формуються вектори інформативних ознак: розраховуються середньоквадратичні значення (RMS), пік-фактори, коефіцієнти ексцесу (kurtosis), а також здійснюється перетворення сигналів із часової області у частотну за допомогою оптимізованого алгоритму швидкого перетворення Фур'є (FFT). Зазначені операції виконуються над фіксованими ковзними масивами даних із використанням апаратних блоків цифрової обробки сигналів (DSP), інтегрованих у сучасні мікроконтролери.</p>
+<p>Впровадження моделей глибокого машинного навчання на вбудованих платформах із жорстко обмеженими обчислювальними ресурсами та малим обсягом оперативної пам'яті вимагає застосування методології <strong>TinyML</strong>. Оскільки стандартні нейронні мережі навчаються з використанням 32-розрядних чисел із плаваючою комою одинарної точності (формат IEEE 754 Float32), їх пряме виконання на апаратному забезпеченні класу ARM Cortex-M0+ або Cortex-M4 призводить до катастрофічного дефіциту швидкодії та переповнення статичної пам'яті (SRAM). Для подолання цього бар'єра застосовується методика постренувального симетричного або асиметричного цілочисельного квантування (Quantization), за якої матриці вагових коефіцієнтів та активацій трансформуються у 8-розрядні цілі числа зі знаком (Int8).</p>
+<p>Формалізований процес лінійного афінного квантування матриць ваг нейронної мережі з простору дійсних чисел у цілочисельний простір виконується за алгоритмом, наведеним у наступному математичному виразі:</p>
+<div class="arithmatex">\[
+\begin{aligned}
+\text{Крок 1 (Визначення динамічного діапазону):} &amp; \quad [\alpha, \beta] = [\min(W), \max(W)] \\
+\text{Крок 2 (Обчислення масштабного коефіцієнта):} &amp; \quad S = \frac{\beta - \alpha}{2^b - 1} \\
+\text{Крок 3 (Розрахунок цілочисельного зсуву нуля):} &amp; \quad Z = \text{round}\left(-\frac{\alpha}{S}\right) - 2^{b-1} \\
+\text{Крок 4 (Квантування дійсного значення ваги):} &amp; \quad q = \text{clamp}\left(\text{round}\left(\frac{w}{S}\right) + Z, -2^{b-1}, 2^{b-1}-1\right)
+\end{aligned}
+\]</div>
+<p>де <span class="arithmatex">\(W\)</span> позначає вектор вагових коефіцієнтів вихідного тензора в дійсній точності Float32; <span class="arithmatex">\(\alpha\)</span> та <span class="arithmatex">\(\beta\)</span> визначають нижню та верхню межі значень коефіцієнтів; <span class="arithmatex">\(b\)</span> вказує цільову бітову розрядність квантування (для стандарту Int8 параметр <span class="arithmatex">\(b = 8\)</span>); <span class="arithmatex">\(S\)</span> є дійсним масштабним коефіцієнтом, який відображає одиницю цілочисельного кроку у фізичну шкалу; <span class="arithmatex">\(Z\)</span> позначає целочисельну точку нуля, яка гарантує точне представлення дійсного нуля у квантованій сітці; функція <span class="arithmatex">\(\text{clamp}(x, L, U)\)</span> виконує операцію насичення, обмежуючи значення змінної нижньою <span class="arithmatex">\(L\)</span> та верхньою <span class="arithmatex">\(U\)</span> межами відповідно; <span class="arithmatex">\(q\)</span> позначає результуючий квантований 8-розрядний цілочисельний коефіцієнт.</p>
+<p>Завдяки вказаній трансформації обсяг необхідної пам'яті для зберігання вагових коефіцієнтів зменшується рівно в чотири рази, а операції матричного множення з плаваючою комою замінюються високопродуктивними цілочисельними інструкціями векторного ядра, такими як SIMD у наборі команд ARM Cortex.</p>
+<blockquote>
+<p><strong>ВАЖЛИВО:</strong> Під час квантування моделей із високим динамічним діапазоном активацій нелінійне накопичення похибок округлення може спричинити деградацію точності класифікації до рівня статистичного шуму; тому критично важливим є проведення процедури калібрування діапазонів на репрезентативному наборі валідаційних даних перед компіляцією прошивки для польового мікроконтролера.</p>
+</blockquote>
+<hr />
+<h3 id="22">2.2. Застосування мікросервісної архітектури, технологій контейнеризації та систем оркестрації на інтелектуальних промислових шлюзах для забезпечення оперативного контуру керування</h3>
+<p>У міру переходу від простих мікроконтролерних модулів до інтелектуальних промислових шлюзів виникає необхідність забезпечення модульності та гнучкості програмного забезпечення. Традиційний монолітний підхід до побудови вбудованого мікропрограмного коду унеможливлює динамічне оновлення окремих аналітичних компонентів без перезапуску всього контролера, що суперечить вимогам безперервності технологічних циклів. Відповіддю на цей виклик стала адаптація мікросервісної архітектури до периферійних платформ за допомогою легковажних рушіїв контейнеризації, оптимізованих для вбудованих операційних систем класу Linux.</p>
+<p>Застосування контейнерних середовищ на промислових шлюзах дозволяє ізолювати функціональні задачі: драйвери польових шин функціонують у контейнерах доступу до обладнання, аналітичні алгоритми працюють у вигляді контейнерів обробки подій, а мережеві інтерфейси формують контейнери зв'язку з хмарою. Для координації виконання таких мікросервісів у гетерогенних туманних кластерах застосовуються спеціалізовані дистрибутиви платформ оркестрації, такі як K3s, що являє собою сертифіковану організацією CNCF полегшену версію Kubernetes, позбавлену надлишкових драйверів сховищ та оптимізовану для роботи в оперативній пам'яті обсягом від 512 Мбайт. </p>
+<p>Поділ архітектури шлюзу на швидкий детермінований контур локальної автоматизації та відкладений контур хмарної комунікації наочно відображається в часовій послідовності обміну повідомленнями між підсистемами.</p>
+<pre class="mermaid"><code>sequenceDiagram
+    autonumber
+    participant Sensor as Польовий датчик (АЦП / SPI)
+    participant EdgeService as Граничний мікросервіс (EdgeX Core)
+    participant CEP as CEP-рушій аналітики (Drools / Siddhi)
+    participant Actuator as Виконавчий механізм (Реле / ШІМ)
+    participant FogBroker as Локальний туманний брокер (MQTT-SN)
+    participant Cloud as Глобальна хмара (Big Data / ERP)
+
+    Note over Sensor,Actuator: Жорсткий локальний контур керування (Затримка &lt; 5 мс)
+    Sensor-&gt;&gt;EdgeService: Сирий відлік сигналу по польовій шині (10 кГц)
+    EdgeService-&gt;&gt;CEP: Попередньо оброблений вектор ознак (RMS, Peak)
+    CEP-&gt;&gt;CEP: Обчислення порогового критерію та предиктивної моделі
+    alt Виявлено передаварійний стан
+        CEP--&gt;&gt;Actuator: Команда негайного захисного відключення
+        Actuator--&gt;&gt;CEP: Підтвердження виконання апаратного захисту
+    end
+
+    Note over CEP,Cloud: Відкладений асинхронний контур телеметрії (Затримка 50-500 мс)
+    CEP-&gt;&gt;FogBroker: Публікація метаданих про інцидент (QoS 1)
+    FogBroker-&gt;&gt;FogBroker: Агрегація з суміжними цеховими подіями
+    FogBroker-&gt;&gt;Cloud: Пакетна трансляція узагальненого звіту через TLS-з'єднання
+    Cloud--&gt;&gt;FogBroker: Підтвердження синхронізації (ACK)</code></pre>
+<p>Як показано на наведеній діаграмі послідовності дій, система структурно розділяє критичний потік керування від вторинного потоку телеметрії. Якщо час циклу взаємодії датчик-сервіс-актуатор утримується в межах декількох мілісекунд завдяки виключенню транзитних мережевих протоколів, то ресурсоємні операції шифрування, буферизації та маршрутизації в бік хмарного сервера виконуються асинхронно, не блокуючи функціонування локального контуру автоматизації.</p>
+<hr />
+<h3 id="23">2.3. Алгоритми нормалізації протоколів, виявлення аномалій у реальному часі та механізми обробки складних подій без збереження повного масиву первинної телеметрії</h3>
+<p>Однією з головних методологічних задач гранично-туманних вузлів є подолання проблеми гетерогенності промислових комунікацій. На сучасному підприємстві одночасно функціонують датчики із послідовними інтерфейсами RS-485 під протоколом Modbus RTU, автомобільні та верстатні шини CANopen, мережі автоматизації будівель BACnet, а також сучасні сенсори бездротових персональних мереж стандарту IEEE 802.15.4 з протоколами 6LoWPAN та ZigBee. Програмний рівень абстракції протоколів (<strong>Protocol Abstraction Layer</strong>) на туманному вузлі здійснює десеріалізацію низькорівневих бітових полів, валідацію типів даних та їхню нормалізацію у єдину канонічну об'єктну модель, яка зазвичай кодується у форматі компактних бінарних структур CBOR або JSON.</p>
+<p>Після нормалізації дані потрапляють до підсистеми обробки складних подій (<strong>Complex Event Processing — CEP</strong>). Фундаментальна відмінність CEP-підходу від класичних реляційних баз даних полягає в інверсії логіки виконання запитів: у традиційній базі даних статичні дані перебувають у стані спокою на диску, а запити надходять динамічно; у системах CEP постійно зафіксовані аналітичні правила знаходяться в оперативній пам'яті, тоді як через них безперервно прокачується потік подій у реальному часі.</p>
+<p>Для забезпечення можливості аналізу часових залежностей без збереження повного масиву первинних даних застосовуються математичні моделі ковзних вікон. Розрізняють перевертні вікна (Tumbling Windows), які не перекриваються у часі і закриваються з фіксованим періодом, стрибкоподібні вікна (Hopping Windows), які мають взаємне перекриття, та ковзні вікна (Sliding Windows), зміщення яких ініціюється надходженням кожного нового значення.</p>
+<p>Алгоритм виявлення аномальних стрибків технологічного параметра на основі обчислення ковзного z-індексу в ковзному вікні розміром <span class="arithmatex">\(W\)</span> вибірок формалізується наступною системою розрахунків:</p>
+<div class="arithmatex">\[
+\begin{aligned}
+\text{Крок 1 (Оновлення суми вікна):} &amp; \quad \Sigma_{x}(t) = \Sigma_{x}(t-1) + x(t) - x(t-W) \\
+\text{Крок 2 (Оновлення квадратичної суми):} &amp; \quad \Sigma_{x^2}(t) = \Sigma_{x^2}(t-1) + x^2(t) - x^2(t-W) \\
+\text{Крок 3 (Оцінка ковзної дисперсії):} &amp; \quad \sigma^2(t) = \frac{1}{W} \Sigma_{x^2}(t) - \left( \frac{1}{W} \Sigma_{x}(t) \right)^2 \\
+\text{Крок 4 (Розрахунок критерію аномальності):} &amp; \quad Z_{\text{score}}(t) = \frac{|x(t) - \mu(t)|}{\sqrt{\sigma^2(t) + \epsilon}}
+\end{aligned}
+\]</div>
+<p>де <span class="arithmatex">\(x(t)\)</span> позначає поточне вимірювання параметра у момент часу <span class="arithmatex">\(t\)</span>; <span class="arithmatex">\(x(t-W)\)</span> є значенням, що виходить за межі ковзного вікна і видаляється з пам'яті кільцевого буфера; <span class="arithmatex">\(\mu(t) = \frac{1}{W} \Sigma_{x}(t)\)</span> представляє ковзне середнє значення параметра; <span class="arithmatex">\(\sigma^2(t)\)</span> позначає поточну дисперсію сигналу у вікні; <span class="arithmatex">\(\epsilon\)</span> є малою позитивною константою регуляризації для запобігання діленню на нуль у стаціонарному режимі; <span class="arithmatex">\(Z_{\text{score}}(t)\)</span> виступає безрозмірним індикатором аномалії. Якщо обчислене значення <span class="arithmatex">\(Z_{\text{score}}(t) &gt; \gamma_{\text{threshold}}\)</span>, система CEP миттєво генерує синтетичну подію аварійної тривоги, водночас очищаючи пам'ять від проміжних вимірів, які не перевищили поріг.</p>
+<blockquote>
+<p><strong>ПРАКТИЧНИЙ ЯКІР:</strong> У відкритій промисловій архітектурі EdgeX Foundry модуль обробки правил eKuiper використовує оптимізовані математичні вікна над потоками даних MQTT, обробляючи до <span class="arithmatex">\(30\,000\)</span> показань сенсорів на секунду на одноплатному комп'ютері Raspberry Pi 4 із завантаженням центрального процесора менше <span class="arithmatex">\(15\%\)</span>, що дозволяє фільтрувати понад <span class="arithmatex">\(98\%\)</span> фонового шуму виробничих ліній без звернення до зовнішнього сервера.</p>
+</blockquote>
+<hr />
+<h3 id="24">2.4. Апаратні обмеження, дефіцит оперативної пам'яті, теплові режими, мережевий джиттер та критичні бар'єри забезпечення детермінованого часу відгуку в польових умовах експлуатації</h3>
+<p>Розгортання передових аналітичних і контейнерних технологій на периферії стикається з фундаментальними граничними умовами, обумовленими фізичними обмеженнями промислового середовища та специфікою напівпровідникової апаратури. Проектувальник кіберфізичної системи повинен чітко ідентифікувати технічні межі застосовності обраних методологій, за межами яких аналітичні моделі втрачають адекватність, а підсистема реального часу зазнає відмов.</p>
+<p>Першим граничним бар'єром є <strong>жорсткий ліміт енергоспоживання та обсягу оперативної пам'яті</strong>. На відміну від серверних систем із терабайтами пам'яті, мікроконтролери польового рівня оперують статичною пам'яттю SRAM обсягом від 64 до 512 Кбайт. Спроба розгортання моделі або буфера вибірок, розмір якого перевищує фізичний простір SRAM, призводить до збою переповнення стека (Stack Overflow) або звернення до невирівняних адрес пам'яті (Hard Fault Exception). Крім того, робота багатьох сенсорних вузлів від хімічних джерел живлення (наприклад, літій-тіонілхлоридних елементів <span class="arithmatex">\(\text{Li-SOCl}_2\)</span>) накладає ліміт на піковий струм споживання: активація апаратного нейроприскорювача з піковим споживанням 50 мА може викликати миттєве просідання внутрішньої напруги батареї нижче допустимого порогу перезапуску мікроконтролера (Brownout Reset).</p>
+<p>Другим фактором є <strong>деградація швидкодії внаслідок теплового тротлінгу</strong> (Thermal Throttling). Промислові граничні шлюзи найчастіше виконуються в герметичних корпусах зі ступенем захисту IP66 або IP67 без примусового вентиляторного охолодження (Fanless Design) для запобігання потраплянню виробничого пилу та вологи. В умовах експлуатації в металургійних цехах або зовнішніх електротехнічних шафах, де температура навколишнього середовища сягає <span class="arithmatex">\(+60\dots +70\ ^\circ\text{C}\)</span>, тепловиділення багатоядерного процесора під час інтенсивного виконання інференсу нейронних мереж або спектрального аналізу призводить до нагрівання кристала вище критичної позначки <span class="arithmatex">\(+100\ ^\circ\text{C}\)</span>. Апаратна система теплового захисту автоматично знижує тактову частоту процесора (наприклад, з 1,6 ГГц до 400 МГц), що раптово збільшує тривалість аналітичного циклу в чотири рази, руйнуючи детермінований дедлайн управління та викликаючи аварійне зупинення керованого механізму.</p>
+<p>Третім критичним обмеженням виступає <strong>ресурсний знос незалежної пам'яті</strong> (Flash Wear-out). Периферійні мікроконтролери та шлюзи використовують накопичувачі на базі NOR- або NAND-флеш-пам'яті (включаючи eMMC). Кожна комірка такої пам'яті витримує від <span class="arithmatex">\(3\,000\)</span> до <span class="arithmatex">\(100\,000\)</span> циклів стирання/запису. Якщо інженер реалізує локальне збереження необробленої високочастотної телеметрії на внутрішній накопичувач шлюзу за відсутності мережевого підключення, ресурс пам'яті може бути повністю вичерпаний за кілька місяців безперервної експлуатації, викликаючи незворотний апаратний збій контролера.</p>
+<p>Четвертим бар'єром є <strong>недетермінізм бездротових польових мереж зв'язку</strong>. Застосування протоколів множинного доступу з контролем несучої (CSMA/CA), притаманних стандартам IEEE 802.15.4 та Wi-Fi, при високій щільності сенсорів призводить до ефекту колізійного колапсу: коли десятки вузлів одночасно фіксують небезпечну подію і намагаються надіслати аварійне повідомлення, мережа витрачає більше часу на випадкові затримки зворотного відліку (Exponential Backoff), ніж на корисну передачу інформації. В результаті час доставки екстреного повідомлення замість очікуваних 5 мс може перевищити 500 мс, роблячи реакцію виконавчого вузла запізнілою.</p>
+<hr />
+<h3 id="25-hardware-root-of-trust">2.5. Моделі кібербезпеки розподіленого периметра, організація апаратного кореня довіри (Hardware Root of Trust) та забезпечення захисту конфіденційних даних на локальних шлюзах</h3>
+<p>Розосередження обчислювальних потужностей по численних фізично доступних периферійних вузлах докорінно змінює модель загроз інформаційній безпеці. Якщо в класичній системі захист концентрується на периметрі корпоративного центру обробки даних, то в екосистемах Інтернету речей кожен граничний пристрій або промисловий шлюз, встановлений поза межами контрольованих приміщень (на трубопроводах, трансформаторних підстанціях або транспортних магістралях), може бути підданий безпосередній фізичній атаці.</p>
+<p>Методологія побудови довіреного граничного вузла спирається на створення апаратного кореня довіри (<strong>Hardware Root of Trust — RoT</strong>). Це досягається інтеграцією в плату пристрою спеціалізованих криптографічних інтегральних схем, таких як апаратні модулі безпеки (Hardware Security Module — HSM), чіпи довіреної платформи (Trusted Platform Module — TPM 2.0) або криптографічні автентифікатори. Апаратний корінь довіри містить незмінний закритий ключ, зашитий у захищену пам'ять на етапі фабричного виробництва мікросхеми, до якої заблоковано будь-який програмний доступ. </p>
+<p>Процес безпечного запуску пристрою (<strong>Secure Boot</strong>) являє собою нерозривний ланцюг перевірки цифрових підписів: мікропрограма постійного запам'ятовувального пристрою (Boot ROM) перевіряє криптографічний підпис первинного завантажувача; завантажувач верифікує цілісність ядра операційної системи; ядро контролює сертифікати контейнерних образів додатків. Якщо внаслідок фізичної модифікації флеш-пам'яті або шкідливої ін'єкції хеш-сума будь-якого компонента не збігається, завантаження процесора апаратно блокується.</p>
+<p>Для гарантування конфіденційності під час взаємодії вузлів у туманних кластерах застосовується концепція нульової довіри (Zero Trust Architecture) на основі взаємної автентифікації протоколу захисту транспортного рівня (Mutual TLS — mTLS). Кожен туманний вузол повинен підтвердити свою автентичність шляхом пред'явлення дійсного цифрового сертифіката стандарту X.509, завіреного локальним центром сертифікації підприємства, а все прикладне корисне навантаження шифрується симетричними алгоритмами AES-128-GCM або ChaCha20-Poly1305 з апаратною підтримкою інструкцій шифрування на кристалі.</p>
+<p>Зведена характеристика та аналіз обмежень ключових інженерних методологій організації обчислень на периферії подані в наступній матриці зіставлення:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Архітектурний підхід</th>
+<th style="text-align: left;">Обчислювальний стек</th>
+<th style="text-align: left;">Типовий час циклу</th>
+<th style="text-align: left;">Складність впровадження</th>
+<th style="text-align: left;">Критичні ризики / Обмеження</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Мікроконтролерний рівень (Bare-Metal TinyML)</strong></td>
+<td style="text-align: left;">C/C++, TensorFlow Lite for Microcontrollers, CMSIS-NN</td>
+<td style="text-align: left;">Від <span class="arithmatex">\(100\text{ мкс}\)</span> до <span class="arithmatex">\(5\text{ мс}\)</span></td>
+<td style="text-align: left;">Висока (ручна оптимізація пам'яті, низькорівнева реєстрація драйверів)</td>
+<td style="text-align: left;">Екстремальний дефіцит SRAM; неможливість динамічного оновлення архітектури нейромережі без перепрошивки</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Операційні системи реального часу (RTOS Edge)</strong></td>
+<td style="text-align: left;">FreeRTOS, Zephyr RTOS, вбудовані алгоритми DSP</td>
+<td style="text-align: left;">Від <span class="arithmatex">\(1\text{ мс}\)</span> до <span class="arithmatex">\(10\text{ мс}\)</span></td>
+<td style="text-align: left;">Середня (необхідність налаштування пріоритетів задач планувальника)</td>
+<td style="text-align: left;">Вразливість до блокування переривань; ризик взаємного блокування потоків (Deadlock) при складній логіці</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Контейнеризовані граничні шлюзи (Container Edge)</strong></td>
+<td style="text-align: left;">Embedded Linux, Docker, EdgeX Foundry, eKuiper</td>
+<td style="text-align: left;">Від <span class="arithmatex">\(10\text{ мс}\)</span> до <span class="arithmatex">\(50\text{ мс}\)</span></td>
+<td style="text-align: left;">Середня (використання готових образів мікросервісів та декларативних конфігурацій)</td>
+<td style="text-align: left;">Тепловий тротлінг процесора при високих температурах середовища; знос eMMC-пам'яті внаслідок надлишкового логування</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Периферійні сервери туманного кластера (Heavy Fog)</strong></td>
+<td style="text-align: left;">Linux, Kubernetes/K3s, OpenFog Stack, Kafka, Spark</td>
+<td style="text-align: left;">Від <span class="arithmatex">\(30\text{ мс}\)</span> до <span class="arithmatex">\(200\text{ мс}\)</span></td>
+<td style="text-align: left;">Дуже висока (потрібна кваліфікація в галузі розподілених систем, SDN і балансування)</td>
+<td style="text-align: left;">Висока вартість апаратного забезпечення; енергозалежність (потрібне безперебійне трифазне електроживлення)</td>
+</tr>
+</tbody>
+</table>
+<p>Зіставлення архітектурних підходів демонструє, що вибір оптимального методу організації периферійних обчислень є багатокритеріальною задачею оптимізації, у якій вимоги до швидкодії та детермінізму повинні врівноважуватися апаратними витратами, надійністю елементної бази та складністю підтримки життєвого циклу системи.</p>
+<hr />
+<blockquote>
+<p><strong>КОНТРОЛЬНЕ ПИТАННЯ:</strong> Промисловий робот-маніпулятор здійснює високошвидкісне лазерне зварювання автомобільних деталей. Для контролю якості шва встановлено пірометричний датчик температури ванни розплаву, що видає 16-розрядні дані з частотою 10 кГц по шині SPI. Інженерна група повинна реалізувати алгоритм виявлення прожогов металу і забезпечити відключення лазера за час, що не перевищує 2 мс від моменту виникнення дефекту. Розроблено два варіанти архітектури:
+Варіант А: Мікроконтролер шлюзу збирає вибірку в 1000 точок (100 мс), стискає її і відправляє по Wi-Fi у цеховий туманний сервер з CEP-рушієм.
+Варіант Б: Сенсорний модуль на базі мікроконтролера ARM Cortex-M4 самостійно обчислює ковзне середнє і дисперсію температури в апаратному кільцевому буфері розміром 20 відліків та формує сигнал переривання на лінію аварійного відключення лазера.
+Проведіть аналіз граничних умов і визначте, який варіант забезпечить виконання вимог безпеки.</p>
+<p><details markdown="1">
+<summary>Розгорнути аналіз / відповідь</summary></p>
+<p><strong>Правильний варіант: Варіант Б є єдино допустимим інженерним рішенням, оскільки Варіант А принципово порушує граничні умови детермінізму реального часу.</strong></p>
+<ol>
+<li>Логічне та аналітичне обґрунтування:
+Критичний часовий дедлайн безпеки становить <span class="arithmatex">\(T_{\text{deadline}} = 2\text{ мс}\)</span>. 
+У Варіанті А лише етап накопичення вибірки триває:</li>
+</ol>
+<div class="arithmatex">\[t_{\text{accum}} = \frac{1000\text{ відліків}}{10\,000\text{ Гц}} = 100\text{ мс}\]</div>
+<p>До цього часу необхідно додати затримку передачі по Wi-Fi (<span class="arithmatex">\(\approx 2\dots 15\text{ мс}\)</span>) та час виконання алгоритму на сервері. Сумарний час реакції становить понад <span class="arithmatex">\(105\text{ мс}\)</span>, що у <span class="arithmatex">\(50\)</span> разів перевищує допустиму межу. Протягом цього інтервалу лазерний промінь пропалить деталь, спричинивши невиправний брак або пожежу.</p>
+<p>У Варіанті Б обробка виконується на кожному кроці дискретизації за допомогою ковзного вікна розміром <span class="arithmatex">\(W = 20\)</span> відліків:</p>
+<div class="arithmatex">\[t_{\text{step}} = \frac{1}{f_s} = \frac{1}{10\,000} = 0{,}1\text{ мс} = 100\text{ мкс}\]</div>
+<p>Обчислення ковзного середнього і дисперсії на ядрі Cortex-M4 з інструкціями DSP займає не більше <span class="arithmatex">\(15\dots 20\text{ мікросекунд}\)</span>. Час передачі сигналу на апаратну лінію аварійної зупинки становить частки мікросекунди. Загальний час реакції системи від моменту фізичного виходу температури за допустиму межу становить <span class="arithmatex">\(t_{\text{react}} \le 0{,}2\text{ мс} &lt; 2\text{ мс}\)</span>, що повністю задовольняє вимогу жорсткого реального часу.</p>
+<ol>
+<li>Аналіз дистракторів:
+Варіант А не може бути виправданий навіть використанням надпотужних серверних процесорів у тумані, оскільки базове обмеження закладено в самій дискретності накопичення пачки даних (<span class="arithmatex">\(100\text{ мс}\)</span>). Будь-яка оптимізація алгоритму CEP на боці сервера не здатна компенсувати фізичний час очікування заповнення вхідного буфера сенсорного вузла.</li>
+</ol>
+</details>
+</blockquote>
+<h2 id="3-edgefog-">3. Практичний індустріальний / фаховий кейс. Промислове впровадження Edge/Fog-інфраструктури</h2>
+<h3 id="31-edgex-foundry-mqtt-sn">3.1. Комплексний фаховий кейс. Розгортання багаторівневої туманно-граничної системи предиктивної вібродіагностики та екстреного захисту промислового прокатного стану з використанням EdgeX Foundry та протоколу MQTT-SN</h3>
+<h4 id="_5">Постановка задачі / ситуації</h4>
+<p>На металургійному комбінаті експлуатується безперервний широкоштабовий стан гарячої прокатки, що містить дванадцять послідовних прокатних клітей. Кожна кліть приводиться в дію синхронним електродвигуном потужністю <span class="arithmatex">\(6{,}5\text{ МВт}\)</span> через масивні шестеренні кліті та редуктори. Найбільш уразливими елементами технологічної лінії є підшипники рідинного тертя та опорні конічні роликопідшипники валків. Руйнування або заклинювання підшипникового вузла під час руху металевої штаби зі швидкістю до <span class="arithmatex">\(25\text{ м/с}\)</span> призводить до зминання гарячого металу, поломки валків і простою прокатного стану, прямі збитки від якого становлять понад <span class="arithmatex">\(45\,000\text{ доларів США}\)</span> за кожну годину ліквідації аварії.</p>
+<p>Керівництво підприємства поставило технічне завдання на створення комплексної системи безперервного моніторингу вібраційного стану, ранньої предиктивної діагностики зародження тріщин і реалізації апаратного захисту з аварійним відключенням приводу кліті. Технологічне середовище цеху характеризується високим рівнем електромагнітних завад від тиристорних перетворювачів частоти, температурою повітря біля прокатних клітей до <span class="arithmatex">\(+65\ ^\circ\text{C}\)</span>, постійною вібрацією фундаментів та наявністю технологічної окалини й водяної пари від контурів гідрозбивання. Загальнозаводська мережа зв'язку має суворе обмеження щодо виділеної смуги пропускання для системи моніторингу, яка не повинна перевищувати <span class="arithmatex">\(5\text{ Мбіт/с}\)</span>, щоб не порушувати роботу основної системи АСУ ТП цеху.</p>
+<p>Для вирішення задачі на кожен із чотирьох підшипникових вузлів дванадцяти клітей встановлюються триосьові п'єзоелектричні акселерометри промислового класу та платинові термометри опору Pt100. Загальні технічні та експлуатаційні параметри розгортання наведені у наступній таблиці:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Параметр системи</th>
+<th style="text-align: left;">Одиниця виміру</th>
+<th style="text-align: left;">Числове значення</th>
+<th style="text-align: left;">Технічний коментар та умови експлуатації</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Кількість контрольованих клітей</strong></td>
+<td style="text-align: left;">шт.</td>
+<td style="text-align: left;"><span class="arithmatex">\(12\)</span></td>
+<td style="text-align: left;">Лінійна послідовність прокатної групи цеху</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Кількість підшипникових вузлів на кліть</strong></td>
+<td style="text-align: left;">шт.</td>
+<td style="text-align: left;"><span class="arithmatex">\(4\)</span></td>
+<td style="text-align: left;">Два вузли робочих валків, два вузли опорних валків</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Загальна кількість каналів вібрації (<span class="arithmatex">\(N_{\text{vib}}\)</span>)</strong></td>
+<td style="text-align: left;">од.</td>
+<td style="text-align: left;"><span class="arithmatex">\(144\)</span></td>
+<td style="text-align: left;">Триосьові датчики (<span class="arithmatex">\(12 \times 4 \times 3\)</span>) з виходом струму 4-20 мА</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Частота дискретизації вібрації (<span class="arithmatex">\(f_s\)</span>)</strong></td>
+<td style="text-align: left;">кГц</td>
+<td style="text-align: left;"><span class="arithmatex">\(25{,}6\)</span></td>
+<td style="text-align: left;">Забезпечує детектування дефектів до <span class="arithmatex">\(10\text{ кГц}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Розрядність АЦП вібродатчиків</strong></td>
+<td style="text-align: left;">біт</td>
+<td style="text-align: left;"><span class="arithmatex">\(16\)</span></td>
+<td style="text-align: left;">Формат цілого числа зі знаком (Int16)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Кількість каналів температури (<span class="arithmatex">\(N_{\text{temp}}\)</span>)</strong></td>
+<td style="text-align: left;">од.</td>
+<td style="text-align: left;"><span class="arithmatex">\(48\)</span></td>
+<td style="text-align: left;">Термоопір Pt100, опитування з частотою <span class="arithmatex">\(1\text{ Гц}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Критичний час реакції захисту (<span class="arithmatex">\(T_{\text{deadline}}\)</span>)</strong></td>
+<td style="text-align: left;">мс</td>
+<td style="text-align: left;"><span class="arithmatex">\(\le 10\)</span></td>
+<td style="text-align: left;">Максимальний інтервал до відключення головного приводу</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Ліміт смуги пропускання до глобальної мережі</strong></td>
+<td style="text-align: left;">Мбіт/с</td>
+<td style="text-align: left;"><span class="arithmatex">\(\le 5{,}0\)</span></td>
+<td style="text-align: left;">Квота трафіку в опорній корпоративній мережі</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Температура навколишнього середовища</strong></td>
+<td style="text-align: left;"><span class="arithmatex">\(^\circ\text{C}\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(-10\dots +65\)</span></td>
+<td style="text-align: left;">Вимагає безвентиляторного виконання шаф IP66</td>
+</tr>
+</tbody>
+</table>
+<p>Архітектура рішення базується на трирівневій туманно-граничній моделі відповідно до принципів OpenFog RA, де первинне детектування аварійних станів здійснюється на граничних контролерах клітей, цехова координація покладається на туманний вузол під управлінням платформи EdgeX Foundry, а довгостроковий прогноз залишкового ресурсу (RUL) делегується заводському хмарному кластеру.</p>
+<pre class="mermaid"><code>flowchart TD
+    subgraph StandLevel["Рівень 1: Граничні контролери клітей (12 вузлів Edge STM32H7)"]
+        Sensors["П'єзоакселерометри (144 канали) + Pt100"]
+        ADC["АЦП та апаратне ковзне вікно (DSP)"]
+        FastComp["TinyML детектор ударів та ексцесу (Int8)"]
+        Interlock["Сухий контакт аварійного відключення ПЛК кліті"]
+
+        Sensors --&gt; ADC
+        ADC --&gt; FastComp
+        FastComp --&gt;|Критичний стрибок: час реакції 4.8 мс| Interlock
+    end
+
+    subgraph ShopLevel["Рівень 2: Цеховий туманний шлюз (Fog Node - Dell Edge 5000)"]
+        EdgeXBroker["Локальний брокер MQTT-SN (Mosquitto-RS)"]
+        EdgeXCore["Платформа EdgeX Foundry (Core Data &amp; Metadata)"]
+        CEP["CEP-рушій правил eKuiper (Кореляція 12 клітей)"]
+        LocalCache["Локальне сховище NVMe (Циклічний буфер 72 години)"]
+
+        FastComp --&gt;|Вектор ознак 1 раз/с по RS-485 / MQTT-SN| EdgeXBroker
+        EdgeXBroker --&gt; EdgeXCore
+        EdgeXCore --&gt; CEP
+        CEP --&gt; LocalCache
+    end
+
+    subgraph EnterpriseLevel["Рівень 3: Заводська хмара / Центр Big Data"]
+        KafkaGateway["Корпоративний шлюз Kafka / REST"]
+        DataLake["Озеро даних Hadoop HDFS / Cassandra"]
+        RULModel["Нейромережева модель деградації підшипників"]
+
+        CEP --&gt;|Аномалії та узагальнені спектри по WAN TLS| KafkaGateway
+        KafkaGateway --&gt; DataLake
+        DataLake --&gt; RULModel
+    end
+
+    style StandLevel fill:#f6f8fa,stroke:#0969da,stroke-width:2px
+    style ShopLevel fill:#f0fff4,stroke:#1a7f37,stroke-width:2px
+    style EnterpriseLevel fill:#fff8c5,stroke:#9a6700,stroke-width:2px</code></pre>
+<hr />
+<h4 id="_6">Покроковий аналіз та розв'язок</h4>
+<h5 id="1">Крок 1. Розрахунок дефіциту пропускної здатності централізованої моделі</h5>
+<p>Для доведення непридатності прямої трансляції первинних вимірювань у хмарне середовище необхідно обчислити сумарний бітрейт сирого цифрового потоку <span class="arithmatex">\(B_{\text{raw}}\)</span>, що безперервно генерується датчиками вібрації всіх прокатних клітей:</p>
+<div class="arithmatex">\[B_{\text{raw}} = N_{\text{vib}} \cdot f_s \cdot D_{\text{sample}} = 144 \cdot 25\,600\text{ с}^{-1} \cdot 16\text{ біт} = 58\,982\,400\text{ біт/с} \approx 58{,}98\text{ Мбіт/с}\]</div>
+<p>Добовий обсяг накопиченої неструктурованої інформації <span class="arithmatex">\(V_{\text{day}}\)</span> за умови безперервної роботи агрегату розраховується через множення бітрейту на тривалість доби:</p>
+<div class="arithmatex">\[V_{\text{day}} = \frac{B_{\text{raw}} \cdot 86\,400\text{ с}}{8 \cdot 1024^3\text{ байт/Гбайт}} = \frac{58\,982\,400 \cdot 86\,400}{8\,589\,934\,592} \approx 593{,}2\text{ Гбайт/добу}\]</div>
+<p>Отримане значення бітрейту <span class="arithmatex">\(58{,}98\text{ Мбіт/с}\)</span> майже в дванадцять разів перевищує виділену підприємством квоту магістрального каналу <span class="arithmatex">\(5\text{ Мбіт/с}\)</span>. Спроба трансляції такого масиву гарантовано викличе переповнення мережевих черг комутаторів, неконтрольований джиттер та втрату критичних телеметричних пакетів.</p>
+<h5 id="2_2">Крок 2. Проектування конвеєра екстракції ознак на рівні граничних контролерів клітей</h5>
+<p>Для усунення надлишковості трафіку на кожній кліті встановлюється граничний контролер на базі двох ядер ARM Cortex-M7 (тактова частота <span class="arithmatex">\(480\text{ МГц}\)</span>), який здійснює локальну цифрову обробку сигналів. Потік дискретних відліків розбивається на часові блоки розміром <span class="arithmatex">\(N_{\text{FFT}} = 2048\)</span> точок. Тривалість одного часового вікна вимірювання <span class="arithmatex">\(t_{\text{win}}\)</span> становить:</p>
+<div class="arithmatex">\[t_{\text{win}} = \frac{N_{\text{FFT}}}{f_s} = \frac{2048}{25\,600\text{ Гц}} = 0{,}08\text{ с} = 80\text{ мс}\]</div>
+<p>У межах кожного вікна обчислювач ядра за допомогою бібліотеки CMSIS-DSP розраховує вісім компактних діагностичних параметрів для кожного каналу: середньоквадратичне значення віброшвидкості (<span class="arithmatex">\(V_{\text{RMS}}\)</span>), пікове віброприскорення (<span class="arithmatex">\(A_{\text{peak}}\)</span>), коефіцієнт ексцесу (<span class="arithmatex">\(Kurt\)</span>), пік-фактор, а також амплітуди перших чотирьох гармонік частоти обертання валка. Результати пакуються в бінарний фрейм формату CBOR обсягом <span class="arithmatex">\(64\text{ байти}\)</span> на підшипниковий вузол і передаються на цеховий рівень із періодичністю один раз на секунду.</p>
+<p>Сумарний інформаційний потік від усіх сорока восьми підшипникових вузлів <span class="arithmatex">\(B_{\text{edge}}\)</span>, що спрямовується до цехового туманного шлюзу, набуває значення:</p>
+<div class="arithmatex">\[B_{\text{edge}} = N_{\text{nodes}} \cdot S_{\text{frame}} \cdot f_{\text{rep}} \cdot 8 = 48 \cdot 64\text{ байти} \cdot 1\text{ с}^{-1} \cdot 8\text{ біт/байт} = 24\,576\text{ біт/с} \approx 24{,}58\text{ кбіт/с}\]</div>
+<p>де <span class="arithmatex">\(N_{\text{nodes}} = 48\)</span> позначає сумарну кількість підшипників; <span class="arithmatex">\(S_{\text{frame}} = 64\)</span> є розміром діагностичного фрейму; <span class="arithmatex">\(f_{\text{rep}} = 1\text{ Гц}\)</span> відображає частоту надсилання звітів. </p>
+<p>Коефіцієнт скорочення мережевого навантаження <span class="arithmatex">\(\eta_{\text{red}}\)</span> досягає показника:</p>
+<div class="arithmatex">\[\eta_{\text{red}} = \left( 1 - \frac{B_{\text{edge}}}{B_{\text{raw}}} \right) \cdot 100\% = \left( 1 - \frac{24\,576}{58\,982\,400} \right) \cdot 100\% \approx 99{,}958\%\]</div>
+<h5 id="3">Крок 3. Верифікація часового бюджету контуру екстреного захисту</h5>
+<p>Для виконання вимоги щодо аварійної зупинки приводу кліті за час <span class="arithmatex">\(T_{\text{deadline}} \le 10\text{ мс}\)</span> на першому ядрі контролера паралельно функціонує швидкий пороговий автомат захисту, що оперує мікровікнами ударних прискорень розміром <span class="arithmatex">\(M_{\text{micro}} = 64\)</span> відліки (<span class="arithmatex">\(t_{\text{micro}} = 64 / 25\,600 = 2{,}5\text{ мс}\)</span>). </p>
+<p>Загальний час спрацьовування контуру захисту <span class="arithmatex">\(\tau_{\text{prot}}\)</span> складається з наступних часових складових:</p>
+<div class="arithmatex">\[\tau_{\text{prot}} = t_{\text{micro}} + t_{\text{dma}} + t_{\text{tinyml}} + t_{\text{gpio}} + t_{\text{relay}}\]</div>
+<p>Підставляючи граничні часові параметри апаратних компонентів системи, отримуємо детерміновану оцінку тривалості захисної операції:</p>
+<div class="arithmatex">\[\tau_{\text{prot}} = 2{,}5\text{ мс} + 0{,}1\text{ мс} + 0{,}8\text{ мс} + 0{,}001\text{ мс} + 1{,}5\text{ мс} = 4{,}901\text{ мс}\]</div>
+<p>Оскільки розрахований сумарний час реакції <span class="arithmatex">\(\tau_{\text{prot}} = 4{,}901\text{ мс}\)</span> є строго меншим за встановлений інженерний ліміт <span class="arithmatex">\(T_{\text{deadline}} = 10\text{ мс}\)</span>, запропоноване граничне рішення повністю гарантує фізичний захист валків стану від руйнування при раптовому механічному заклинюванні підшипника.</p>
+<h5 id="4-fog-node">Крок 4. Цехова агрегація та кореляційний аналіз на рівні Fog Node</h5>
+<p>Цеховий туманний шлюз Dell Edge Gateway 5000 під керуванням ОС Ubuntu Core з контейнерним стеком EdgeX Foundry приймає потоки MQTT-SN від усіх дванадцяти клітей. Движок обробки правил eKuiper виконує ковзний кореляційний аналіз: зіставляє стрибок вібрації на кліті №4 зі зміною струму приводу кліті №3 та температурою оливи в централізованій системі змащення. </p>
+<p>Тільки у випадку виявлення синхронного відхилення, що свідчить про системну деградацію або порушення геометрії валків, шлюз формує оповіщення стандарту OPC UA для інтеграції в заводську SCADA та відправляє стиснутий звіт у хмарне сховище через захищений канал IPsec/TLS. Обсяг висхідного трафіку від цехового шлюзу до глобальної хмари становить не більше <span class="arithmatex">\(150\text{ кбіт/с}\)</span>, що повністю вкладається у встановлений норматив <span class="arithmatex">\(5\text{ Мбіт/с}\)</span>.</p>
+<hr />
+<h4 id="_7">Інтерпретація результатів та альтернативні сценарії</h4>
+<p>Впровадження гібридної гранично-туманної архітектури забезпечило скорочення обсягу первинного цехового трафіку на <span class="arithmatex">\(99{,}958\%\)</span>, ліквідувавши загрозу перевантаження заводської мережі передачі даних та зберігши детермінований час реакції протиаварійного захисту на рівні <span class="arithmatex">\(4{,}9\text{ мс}\)</span>. Це дозволило локалізувати прийняття критичних рішень безпосередньо в цеху прокатки.</p>
+<p>У разі зміни вихідних умов задачі інженерне рішення зазнало б наступних системних модифікацій:</p>
+<ol>
+<li>
+<p>Якщо допустимий час реакції аварійного захисту збільшився б до <span class="arithmatex">\(1\dots 2\text{ секунд}\)</span> (наприклад, у системах контролю повільного температурного нагріву підшипників допоміжних конвеєрів), необхідність у використанні спеціалізованих високошвидкісних мікроконтролерів із підтримкою TinyML на кожній кліті відпала б, а функцію захисту можна було б повністю консолідувати на цеховому туманному шлюзі класу Mini Fog.</p>
+</li>
+<li>
+<p>Якщо підприємство виділило б гарантований оптоволоконний канал зв'язку зі швидкістю <span class="arithmatex">\(10\text{ Гбіт/с}\)</span> без обмеження трафіку безпосередньо до приватного дата-центру заводу, централізація обчислень стала б частково припустимою для предиктивного аналізу деградації, проте контур екстреного відключення приводу все одно вимагав би збереження локального апаратного інтерлоку через ризик випадкового фізичного пошкодження оптичного кабелю в зоні гарячого прокату.</p>
+</li>
+<li>
+<p>У випадку експлуатації прокатного стану в середовищі з температурами понад <span class="arithmatex">\(+85\ ^\circ\text{C}\)</span> без можливості встановлення промислового шлюзу поблизу клітей через тепловий тротлінг кремнієвих елементів, архітектуру довелося б розділити з виносом туманного вузла в кондиційоване приміщення операторської пультової, організувавши зв'язок між граничними платами клітей та шлюзом через завадозахищену диференціальну шину RS-485 з гальванічною розв'язкою до <span class="arithmatex">\(2{,}5\text{ кВ}\)</span>.</p>
+</li>
+</ol>
+<hr />
+<h3 id="32">3.2. Зведена довідкова система лекції</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Термін / Концепція</th>
+<th style="text-align: left;">Формалізація / Сутність</th>
+<th style="text-align: left;">Реальний кейс застосування</th>
+<th style="text-align: left;">Основне обмеження / Ризик</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Граничні обчислення (Edge Computing)</strong></td>
+<td style="text-align: left;">Локалізація обробки даних безпосередньо на первинному пристрої в часових межах <span class="arithmatex">\(\tau \le 5\text{ мс}\)</span></td>
+<td style="text-align: left;">Бортовий блок розпізнавання перешкод безпілотного транспорту</td>
+<td style="text-align: left;">Жорсткий дефіцит оперативної пам'яті SRAM та ресурсів автономного живлення</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Туманні обчислення (Fog Computing)</strong></td>
+<td style="text-align: left;">Горизонтальна багаторівнева архітектура розподілу обчислень між краєм і хмарою (стандарт IEEE 1934)</td>
+<td style="text-align: left;">Цеховий шлюз координації промислових роботів-маніпуляторів</td>
+<td style="text-align: left;">Складність синхронізації та оркестрації гетерогенних вузлів кластера</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Хмарні обчислення (Cloud Computing)</strong></td>
+<td style="text-align: left;">Централізований пул масштабованих віртуалізованих ресурсів і довготривалих сховищ даних</td>
+<td style="text-align: left;">Навчання глобальних нейромережевих моделей у сервісах AWS / Azure</td>
+<td style="text-align: left;">Недетермінована затримка передачі даних (джиттер) і вразливість до обриву WAN-каналу</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>OpenFog RA (IEEE 1934)</strong></td>
+<td style="text-align: left;">Еталонна відкрита специфікація на базі восьми стовпів проектування туманних інфраструктур</td>
+<td style="text-align: left;">Стандартизація муніципальних систем розумного міста (Smart City)</td>
+<td style="text-align: left;">Високий поріг входження та вимоги до кваліфікації інженерного персоналу</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Концепція TinyML</strong></td>
+<td style="text-align: left;">Набір методів оптимізації та квантування нейромереж для мікроконтролерів (Int8, Pruning)</td>
+<td style="text-align: left;">Вбудоване розпізнавання голосових команд на автономних приладах</td>
+<td style="text-align: left;">Втрата точності класифікації при нелінійному звуженні розрядності ваг</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Обробка складних подій (CEP)</strong></td>
+<td style="text-align: left;">Аналіз потоку подій у пам'яті на відповідність шаблонам за допомогою ковзних вікон</td>
+<td style="text-align: left;">Моніторинг кардіостимуляторів для виявлення пароксизмальної тахікардії</td>
+<td style="text-align: left;">Ризик витоку пам'яті при некоректній конфігурації тривалості вікон аналізу</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Трафік «Північ-Південь» (North-South)</strong></td>
+<td style="text-align: left;">Вертикальний обмін: агреговані дані вгору до хмари, конфігурації та моделі вниз до вузлів</td>
+<td style="text-align: left;">Передача добових звітів енергоспоживання від підстанцій до диспетчерської</td>
+<td style="text-align: left;">Вузьке місце пропускної здатності при сплесках генерації подій на периферії</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Трафік «Схід-Захід» (East-West)</strong></td>
+<td style="text-align: left;">Горизонтальна однорангова міжвузлова комунікація для балансування та гарячого резервування</td>
+<td style="text-align: left;">Координація сусідніх світлофорів для створення зеленої хвилі без сервера</td>
+<td style="text-align: left;">Ризик лавинного широкомовного шторму при порушенні алгоритмів маршрутизації</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Апаратний корінь довіри (Root of Trust)</strong></td>
+<td style="text-align: left;">Незмінний криптографічний блок перевірки цілісності завантаження (Secure Boot на базі TPM/HSM)</td>
+<td style="text-align: left;">Захист контролерів енергетичних підстанцій Smart Grid від модифікації прошивки</td>
+<td style="text-align: left;">Неможливість аварійного відновлення при втраті майстер-ключів виробника</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Тепловий тротлінг (Thermal Throttling)</strong></td>
+<td style="text-align: left;">Автоматичне зниження тактової частоти ЦП при досягненні граничної температури кристала</td>
+<td style="text-align: left;">Захист безвентиляторних промислових ПК у гарячих металургійних цехах</td>
+<td style="text-align: left;">Раптове збільшення часу обробки та зрив дедлайнів реального часу</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="33">3.3. Контрольні питання та завдання</h3>
+<h4 id="_8">Прикладні тестові завдання</h4>
+<ol>
+<li>
+<p>На хімічному комбінаті система аварійного скидання тиску вимагає детермінованого часу спрацьовування електромагнітного клапана не більше <span class="arithmatex">\(15\text{ мс}\)</span> після виходу тиску за позначку <span class="arithmatex">\(20\text{ МПа}\)</span>. Інженер підключив датчик тиску до промислового LTE-модему з прямою відправкою дейтаграм на хмарний сервер AWS, де розгорнуто аналітичний скрипт. Яка основна причина призведе до аварії при такій реалізації?</p>
+</li>
+<li>
+<p>A. Відсутність підтримки протоколу IPv6 у мережах LTE промислового призначення.</p>
+</li>
+<li>
+<p>B. Недетермінований джиттер стільникової мережі та затримка передачі, що перевищує часовий дедлайн безпеки.</p>
+</li>
+<li>
+<p>C. Неможливість обробки показників тиску реляційними базами даних хмари у форматі SQL.</p>
+</li>
+<li>
+<p>D. Висока вартість передачі одиничних повідомлень через протокол TCP порівняно з протоколом UDP.</p>
+</li>
+</ol>
+<details class="note">
+<summary>Розгорнути аналіз / відповідь</summary>
+<p><strong>Правильний варіант: B.</strong></p>
+<ol>
+<li>
+<p>Повне логічне обґрунтування: Стандарт стільникового зв'язку LTE на канальному та мережевому рівнях забезпечує кругову затримку (RTT) у діапазоні від <span class="arithmatex">\(30\text{ мс}\)</span> до <span class="arithmatex">\(100\text{ мс}\)</span>, яка в моменти перевантаження базової станції або інтерференції може зростати до кількох секунд. Часовий дедлайн безпеки хімічного реактора становить <span class="arithmatex">\(15\text{ мс}\)</span>. Оскільки фізична затримка передачі сигналу через мобільну мережу перевищує критичний поріг у кілька разів, керуюча команда на відкриття клапана надійде із запізненням, що призведе до розриву трубопроводу під дією надлишкового тиску.</p>
+</li>
+<li>
+<p>Аналіз дистракторів:</p>
+</li>
+<li>
+<p>Варіант A є хибним, оскільки сучасні мережі LTE повністю підтримують протокол IPv6, і це не впливає на фізичну швидкість реакції системи.</p>
+</li>
+<li>
+<p>Варіант C є невірним, тому що хмарні сервіси мають широкий спектр рушіїв баз даних (як реляційних, так і NoSQL), здатних записувати числові значення тиску.</p>
+</li>
+<li>
+<p>Варіант D є дистрактором економічного характеру: хоча вартість трафіку має значення, вона не є безпосередньою технічною причиною руйнування технологічного обладнання в реальному часі.</p>
+</li>
+</ol>
+</details>
+<ol>
+<li>
+<p>Під час проектування автономного підводного робота-дослідника інженери застосували мікроконтролер для управління баластними цистернами. З метою економії пам'яті SRAM нейромережеву модель виявлення підводних перешкод квантували з Float32 до Int8. Проте під час перших випробувань робот почав стикатися з перешкодами через помилкову роботу алгоритму. Яка методологічна помилка була допущена при стисненні моделі?</p>
+</li>
+<li>
+<p>A. Відмова від використання операційної системи Linux на користь виконання коду на голому залізі (Bare-Metal).</p>
+</li>
+<li>
+<p>B. Непроведення калібрування діапазонів квантування на валідаційному наборі даних, що спричинило критичне зміщення нульової точки та перенасичення ваг.</p>
+</li>
+<li>
+<p>C. Перехід від протоколу зв'язку MQTT до протоколу MQTT-SN під час передачі даних на актуатори.</p>
+</li>
+<li>
+<p>D. Застосування апаратних інструкцій DSP мікроконтролера замість програмного обчислення операцій матричного множення.</p>
+</li>
+</ol>
+<details class="note">
+<summary>Розгорнути аналіз / відповідь</summary>
+<p><strong>Правильний варіант: B.</strong></p>
+<ol>
+<li>
+<p>Повне логічне обґрунтування: При лінійному афінному квантуванні вагових коефіцієнтів та карт активацій з Float32 в Int8 визначаються масштабний коефіцієнт <span class="arithmatex">\(S\)</span> та зсув нуля <span class="arithmatex">\(Z\)</span>. Якщо динамічний діапазон <span class="arithmatex">\([\alpha, \beta]\)</span> визначено некоректно (без попереднього калібрування на репрезентативних даних гідролокатора), виникає ефект кліпінгу (насичення), коли суттєві амплітудні сплески сигналу від перешкод обрізаються до максимального цілочисельного значення <span class="arithmatex">\(127\)</span>, а слабкі корисні сигнали перетворюються на нуль. Це спотворює роботу функції активації нейронів і призводить до хибної класифікації сцени.</p>
+</li>
+<li>
+<p>Аналіз дистракторів:</p>
+</li>
+<li>
+<p>Варіант A є хибним, тому що виконання коду на рівні Bare-Metal, навпаки, мінімізує накладні витрати часу і є рекомендованою практикою для систем TinyML.</p>
+</li>
+<li>
+<p>Варіант C є невірним, оскільки протокол передачі телеметрії не впливає на внутрішню точність математичних обчислень усередині нейромережевого блоку.</p>
+</li>
+<li>
+<p>Варіант D є хибним, оскільки використання апаратних векторних інструкцій DSP (наприклад, CMSIS-NN) є стандартним інженерним методом оптимізації і не вносить математичних спотворень в алгоритм порівняно з програмним аналогом.</p>
+</li>
+</ol>
+</details>
+<ol>
+<li>
+<p>Промисловий цеховий шлюз розміщено в герметичній металевій шафі зі ступенем захисту IP67 без примусової вентиляції. Влітку, в період пікового завантаження цеху, система почала періодично пропускати моменти спрацювання контуру контролю браку продукції на конвеєрі. Діагностика показала відсутність програмних збоїв та помилок пам'яті. Яке фізичне явище стало першопричиною деградації функціональності?</p>
+</li>
+<li>
+<p>A. Вичерпання ресурсу циклів запису комірок флеш-пам'яті eMMC шлюзу.</p>
+</li>
+<li>
+<p>B. Перехід центрального процесора шлюзу в режим теплового тротлінгу зі зниженням тактової частоти через перегрів кристала.</p>
+</li>
+<li>
+<p>C. Виникнення колізійного колапсу в мережевому інтерфейсі Ethernet внаслідок наведення електромагнітної завади.</p>
+</li>
+<li>
+<p>D. Блокування операційної системи внаслідок взаємного блокування задач планувальника FreeRTOS.</p>
+</li>
+</ol>
+<details class="note">
+<summary>Розгорнути аналіз / відповідь</summary>
+<p><strong>Правильний варіант: B.</strong></p>
+<ol>
+<li>
+<p>Повне логічне обґрунтування: У герметичному безвентиляторному корпусі за високої температури цеху пасивне розсіювання тепла конвекцією стає неефективним. Під час максимального завантаження шлюзу алгоритмами комп'ютерного зору температура напівпровідникового кристала процесора досягає критичної межі (<span class="arithmatex">\(+95\dots +105\ ^\circ\text{C}\)</span>). Апаратна система захисту кристала автоматично знижує робочу напругу та тактову частоту ядер (Thermal Throttling) для запобігання фізичному руйнуванню. Як наслідок, час обробки кожного відеокадру зростає, кадри конвеєра починають відкидатися у вхідній черзі через брак часу на обчислення, що призводить до пропуску дефектних деталей.</p>
+</li>
+<li>
+<p>Аналіз дистракторів:</p>
+</li>
+<li>
+<p>Варіант A є невірним, оскільки знос комірок пам'яті спричиняє помилки читання/запису файлової системи та аварійний перезапуск ядра ОС (Kernel Panic), що було спростовано результатами діагностики.</p>
+</li>
+<li>
+<p>Варіант C є помилковим, тому що стандарт Ethernet при повнодуплексному підключенні через комутатор не використовує механізм колізій CSMA/CD, притаманний застарілим коаксіальним сегментам.</p>
+</li>
+<li>
+<p>Варіант D є хибним, оскільки програмні взаємні блокування (Deadlock) повністю заморожують виконання задачі на невизначений термін до перезавантаження, а не викликають періодичне уповільнення обробки.</p>
+</li>
+</ol>
+</details>
+<ol>
+<li>
+<p>У системі моніторингу вітроелектростанції дев'яносто вітрогенераторів об'єднані в локальну мережу під керуванням двох туманних вузлів рівня Heavy Fog. Проектувальник обрав топологію, за якої кожен вузол здатен обробляти телеметрію від усіх генераторів, а між самими вузлами налаштовано протокол синхронізації стану. Який тип трафіку забезпечує перемикання функцій та балансування задач між цими двома вузлами у разі аварійного відключення одного з них?</p>
+</li>
+<li>
+<p>A. Вертикальний трафік за напрямком «Південь-Північ».</p>
+</li>
+<li>
+<p>B. Трафік локальних переривань апаратного таймера NVIC.</p>
+</li>
+<li>
+<p>C. Горизонтальний трафік за напрямком «Схід-Захід».</p>
+</li>
+<li>
+<p>D. Низхідний широкомовний трафік оновлення мікрокоду OTA.</p>
+</li>
+</ol>
+<details class="note">
+<summary>Розгорнути аналіз / відповідь</summary>
+<p><strong>Правильний варіант: C.</strong></p>
+<ol>
+<li>
+<p>Повне логічне обґрунтування: Відповідно до стандартів еталонної архітектури OpenFog (IEEE 1934), взаємодія між одноранговими вузлами, що знаходяться на одному ієрархічному рівні без посередництва вищих серверів чи хмари, класифікується як горизонтальний трафік «Схід-Захід» (East-West Traffic). Саме цим каналом передаються контрольні пакети підтвердження життєздатності (Heartbeat), реплікуються дані оперативного стану кешу та узгоджуються протоколи консенсусу при перерозподілі навантаження у відмовостійких кластерах.</p>
+</li>
+<li>
+<p>Аналіз дистракторів:</p>
+</li>
+<li>
+<p>Варіант A є невірним, оскільки трафік «Південь-Північ» забезпечує виключно вертикальну висхідну передачу даних від нижчих рівнів (сенсорів) до вищих (хмари).</p>
+</li>
+<li>
+<p>Варіант B описує внутрішньосхемну роботу контролера переривань одного окремого мікропроцесора і не є мережевим трафіком передачі даних між окремими пристроями.</p>
+</li>
+<li>
+<p>Варіант D описує процедуру завантаження нового програмного забезпечення зверху вниз (трафік «Північ-Південь») і не стосується оперативного резервування навантаження в реальному часі.</p>
+</li>
+</ol>
+</details>
+<hr />
+<h4 id="_9">Завдання для самостійної роботи</h4>
+<h5 id="_10">Постановка задачі</h5>
+<p>На компресорній станції магістрального газопроводу встановлено шість газоперекачувальних агрегатів із газотурбінним приводом. Необхідно розробити архітектуру периферійної системи моніторингу технічного стану підшипників турбін і автоматичного контролю температури вихлопних газів. </p>
+<p>Кожен агрегат оснащено вісьмома високотемпературними термопарами (інтерфейс зв'язку Modbus RTU, частота оновлення <span class="arithmatex">\(10\text{ Гц}\)</span>) та чотирма датчиками віброшвидкості (частота оцифрування <span class="arithmatex">\(20\text{ кГц}\)</span>, розрядність <span class="arithmatex">\(16\text{ біт}\)</span>). Зв'язок компресорної станції з центральним диспетчерським пунктом газотранспортної компанії здійснюється через геостаціонарний супутниковий канал із затримкою <span class="arithmatex">\(700\text{ мс}\)</span> та жорстким лімітом швидкості <span class="arithmatex">\(256\text{ кбіт/с}\)</span>. Часовий ліміт захисного аварійного відключення турбіни при перевищенні порогу вібрації становить <span class="arithmatex">\(20\text{ мс}\)</span>.</p>
+<h5 id="_11">Завдання для виконання</h5>
+<ol>
+<li>
+<p>Розрахуйте сумарний обсяг цифрових даних у бітах на секунду та гігабайтах на добу, який генеруватимуть первинні датчики всіх шести агрегатів за умови прямої передачі невідфільтрованого потоку вимірювань, і порівняйте отриманий результат із пропускною здатністю наявного супутникового каналу.</p>
+</li>
+<li>
+<p>Розробіть структурну схему розподілу обчислювальних функцій між граничними контролерами агрегатів, загальностанційним туманним сервером та центральною диспетчерською хмарою, оформивши її у вигляді графічної діаграми або деталізованої аналітичної таблиці.</p>
+</li>
+<li>
+<p>Обґрунтуйте математичний алгоритм попередньої локальної обробки вібраційного сигналу на рівні граничного контролера турбіни, визначивши параметри ковзного вікна швидкого перетворення Фур'є та перелік спектральних характеристик, які необхідно передавати на станційний туманний сервер замість сирих відліків.</p>
+</li>
+<li>
+<p>Опишіть технічні рішення щодо забезпечення відмовостійкості та безпеки системи, які гарантують виконання аварійного зупинення газового агрегату в межах встановленого часового дедлайну <span class="arithmatex">\(20\text{ мс}\)</span> у разі повного розриву зв'язку із супутниковою мережею та локального збою одного з контролерів.</p>
+</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Повернутись нагору
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Kyrylo Vadurin &bull; <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.top", "navigation.tracking", "header.autohide", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u0421\u043a\u043e\u043f\u0456\u0439\u043e\u0432\u0430\u043d\u043e \u0432 \u0431\u0443\u0444\u0435\u0440", "clipboard.copy": "\u0421\u043a\u043e\u043f\u0456\u044e\u0432\u0430\u0442\u0438 \u0432 \u0431\u0443\u0444\u0435\u0440", "search.result.more.one": "\u0429\u0435 1 \u0437\u0431\u0456\u0433 \u043d\u0430 \u0446\u0456\u0439 \u0441\u0442\u043e\u0440\u0456\u043d\u0446\u0456", "search.result.more.other": "\u0429\u0435 # \u0437\u0431\u0456\u0433\u0456\u0432 \u043d\u0430 \u0446\u0456\u0439 \u0441\u0442\u043e\u0440\u0456\u043d\u0446\u0456", "search.result.none": "\u0417\u0431\u0456\u0433\u0456\u0432 \u043d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u043e", "search.result.one": "\u0417\u043d\u0430\u0439\u0434\u0435\u043d\u043e 1 \u0437\u0431\u0456\u0433", "search.result.other": "\u0417\u043d\u0430\u0439\u0434\u0435\u043d\u043e # \u0437\u0431\u0456\u0433\u0456\u0432", "search.result.placeholder": "\u0420\u043e\u0437\u043f\u043e\u0447\u043d\u0456\u0442\u044c \u043f\u0438\u0441\u0430\u0442\u0438 \u0434\u043b\u044f \u043f\u043e\u0448\u0443\u043a\u0443", "search.result.term.missing": "\u041d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u043e \u0437\u0430\u043f\u0438\u0442\u0443", "select.version": "\u041e\u0431\u0440\u0430\u0442\u0438 \u0432\u0435\u0440\u0441\u0456\u044e"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

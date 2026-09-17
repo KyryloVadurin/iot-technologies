@@ -1,0 +1,3545 @@
+
+<!doctype html>
+<html lang="uk" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Навчальний портал з дисципліни "Технології ІоТ"">
+      
+      
+      
+      
+        <link rel="prev" href="../lk8/">
+      
+      
+        <link rel="next" href="../lk10/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Тема 9. Віртуалізація та контейнеризація IoT - Технології Інтернету речей</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#9-iot" class="md-skip">
+          Перейти до змісту
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Хедер">
+    <a href="../.." title="Технології Інтернету речей" class="md-header__button md-logo" aria-label="Технології Інтернету речей" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Технології Інтернету речей
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Тема 9. Віртуалізація та контейнеризація IoT
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan"  aria-label="Переключити на темну тему"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Переключити на темну тему" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="cyan"  aria-label="Переключити на світлу тему"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Переключити на світлу тему" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Пошук" placeholder="Пошук" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Шукати">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Очистити" aria-label="Очистити" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Пошук розпочато
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Вкладки" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Робоча програма
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../lk1/" class="md-tabs__link">
+          
+  
+  
+  Лекції
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../lb/lb1/" class="md-tabs__link">
+          
+  
+  
+  Лабораторні роботи
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../pz/pz1/" class="md-tabs__link">
+          
+  
+  
+  Практичні заняття
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../kp/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Курсовий проєкт
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../sr/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Самостійна робота
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../sr/quest/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Контрольні завдання (Іспит)
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Навігація" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Технології Інтернету речей" class="md-nav__button md-logo" aria-label="Технології Інтернету речей" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Технології Інтернету речей
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Робоча програма
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Лекції
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Лекції
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 1. Екосистема та архітектура IoT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 2. Технології WPAN та WLAN у IoT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 3. LPWAN технології
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 4. Прикладні протоколи ІоТ (MQTT, CoAP)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 5. Туманні (Fog) та граничні (Edge) обчислення
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 6. Мікроконтролерні платформи (ESP32)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 7. Інтелектуальні сенсори
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 8. Виконавчі пристрої
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 9. Віртуалізація та контейнеризація IoT
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 9. Віртуалізація та контейнеризація IoT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Зміст">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Зміст
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Мета лекції
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Очікувані результати навчання
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Детальний покроковий план лекції
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Детальний покроковий план лекції">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-edge-fog-iot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Теоретико-концептуальний базис. Архітектурні засади віртуалізації та контейнеризації на Edge і Fog рівнях IoT
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Методологія та аналіз граничних умов. Проєктування мікросервісного стеку та декларативна оркестрація шлюзів
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Практичний індустріальний / фаховий кейс. Розгортання відмовостійкого мікросервісного комплексу прикордонного шлюзу
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-edge-fog-iot_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Теоретико-концептуальний базис. Архітектурні засади віртуалізації та контейнеризації на Edge і Fog рівнях IoT
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Теоретико-концептуальний базис. Архітектурні засади віртуалізації та контейнеризації на Edge і Fog рівнях IoT">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-bare-metal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1. Еволюція підходів до розгортання програмного забезпечення від монолітних систем bare-metal до ізольованих компонентів у туманних обчислювальних вузлах
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2. Порівняльний аналіз гіпервізорів першого та другого типів із контейнерними рушіями за критеріями утилізації апаратних ресурсів центрального процесора і пам'яті
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3. Системні механізми ядра Linux для забезпечення ізоляції контейнерів на основі просторів імен, контрольних груп та багатошарових файлових систем
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4. Формалізовані математичні моделі щільності розміщення мікросервісів та оцінки системних накладних витрат пам'яті на прикордонних обчислювачах
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Вказівки для самостійного осмислення
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Методологія та аналіз граничних умов. Проєктування мікросервісного стеку та декларативна оркестрація шлюзів
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Методологія та аналіз граничних умов. Проєктування мікросервісного стеку та декларативна оркестрація шлюзів">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1. Принципи функціональної декомпозиції завдань інтернету речей на автономні мікросервіси прийому, аналітичної обробки, збереження та графічного відображення даних
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-docker-compose-yaml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2. Декларативний опис багатоконтейнерних розподілених конфігурацій за допомогою специфікацій Docker Compose та маніфестів мови розмітки YAML
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3. Методика створення ізольованих програмних мостових мереж і правила безпечного прокидання мережевих портів між хостом і внутрішніми службами
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4. Забезпечення збереженості стану баз даних часових рядів за допомогою іменованих томів та конфігурування політик автоматичного відновлення процесів
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-out-of-memory-killer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5. Апаратні обмеження вбудованих обчислювачів, критичні ризики аварійного завершення мікросервісів підсистемою Out-Of-Memory Killer та бар'єри вичерпання дискового ресурсу твердотільної пам'яті при інтенсивному журналюванні
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.5. Апаратні обмеження вбудованих обчислювачів, критичні ризики аварійного завершення мікросервісів підсистемою Out-Of-Memory Killer та бар&#39;єри вичерпання дискового ресурсу твердотільної пам&#39;яті при інтенсивному журналюванні">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Граничні умови функціонування та сценарії відмови
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Практичний індустріальний / фаховий кейс. Розгортання відмовостійкого мікросервісного комплексу прикордонного шлюзу
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Практичний індустріальний / фаховий кейс. Розгортання відмовостійкого мікросервісного комплексу прикордонного шлюзу">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-mosquitto-node-red-influxdb-home-assistant" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1. Комплексний фаховий кейс. Розгортання контейнеризованого шлюзу кліматичної телеметрії на базі стеку Mosquitto, Node-RED, InfluxDB та Home Assistant
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1. Комплексний фаховий кейс. Розгортання контейнеризованого шлюзу кліматичної телеметрії на базі стеку Mosquitto, Node-RED, InfluxDB та Home Assistant">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Постановка задачі / ситуації
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Покроковий аналіз та розв'язок
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Покроковий аналіз та розв&#39;язок">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 1. Розрахунок мережевого потоку та навантаження брокера повідомлень
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-cgroups-limits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 2. Формування балансу та квотування оперативної пам'яті (cgroups limits)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 3. Розрахунок процесорних квот планувальника ядра
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-flash-emmc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 4. Розрахунок деградації Flash-пам'яті накопичувача eMMC
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Інтерпретація результатів та альтернативні сценарії
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2. Зведена довідкова система лекції
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3. Контрольні питання та завдання
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3. Контрольні питання та завдання">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Прикладні тестові завдання
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Завдання для самостійної роботи
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Завдання для самостійної роботи">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Постановка задачі
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Завдання для виконання
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 10. IoT платформи та Middleware
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 11. Розумний будинок (Home Assistant)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 12. Промисловий ІоТ (IIoT)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 13. Big Data в ІоТ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 14. Machine Learning на межі мережі
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 15. Кібербезпека в системах ІоТ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Лабораторні роботи
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Лабораторні роботи
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 1. Моделювання топологій IoT-мереж
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 2. Симуляція підсистем Розумного будинку
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 3. Дослідження локального MQTT-брокера
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 4. Схемотехнічне моделювання вузла збору
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 5. Прошивка ESP32 для передавання телеметрії MQTT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 6. Декларативне програмування ESP32 (ESPHome)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 7. Серверне середовище Linux для IoT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 8. Контейнеризація в ІоТ (Docker Compose)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 9. Middleware ІоТ (Node-RED)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 10. Сервіс REST API для агрегації даних
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 11. Платформи розумного будинку (Home Assistant)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 12. Сценарії автоматизації Home Assistant
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 13. Обробка телеметрії мовою Python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 14. HMI Dashboard для диспетчеризації
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 15. Комплексне наскрізне тестування IoT-системи
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практичні заняття
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Практичні заняття
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 1. Розрахунок пропускної здатності та живлення
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 2. Проєктування ієрархії топіків MQTT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 3. Правила фільтрації на Edge-шлюзах
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 4. Моделювання АЦП для сенсорів
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 5. Оптимізація енергетичного профілю
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 6. Проєктування конфігурації Docker Compose
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 7. Логічні схеми в Node-RED
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 8. Сценарії Trigger-Condition-Action
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 9. Конвеєр обробки даних (ETL)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 10. Моделювання загроз безпеки (STRIDE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Курсовий проєкт
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Самостійна робота
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sr/quest/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Контрольні завдання (Іспит)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Зміст">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Зміст
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Мета лекції
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Очікувані результати навчання
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Детальний покроковий план лекції
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Детальний покроковий план лекції">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-edge-fog-iot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Теоретико-концептуальний базис. Архітектурні засади віртуалізації та контейнеризації на Edge і Fog рівнях IoT
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Методологія та аналіз граничних умов. Проєктування мікросервісного стеку та декларативна оркестрація шлюзів
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Практичний індустріальний / фаховий кейс. Розгортання відмовостійкого мікросервісного комплексу прикордонного шлюзу
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-edge-fog-iot_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Теоретико-концептуальний базис. Архітектурні засади віртуалізації та контейнеризації на Edge і Fog рівнях IoT
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Теоретико-концептуальний базис. Архітектурні засади віртуалізації та контейнеризації на Edge і Fog рівнях IoT">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-bare-metal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1. Еволюція підходів до розгортання програмного забезпечення від монолітних систем bare-metal до ізольованих компонентів у туманних обчислювальних вузлах
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2. Порівняльний аналіз гіпервізорів першого та другого типів із контейнерними рушіями за критеріями утилізації апаратних ресурсів центрального процесора і пам'яті
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3. Системні механізми ядра Linux для забезпечення ізоляції контейнерів на основі просторів імен, контрольних груп та багатошарових файлових систем
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4. Формалізовані математичні моделі щільності розміщення мікросервісів та оцінки системних накладних витрат пам'яті на прикордонних обчислювачах
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Вказівки для самостійного осмислення
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Методологія та аналіз граничних умов. Проєктування мікросервісного стеку та декларативна оркестрація шлюзів
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Методологія та аналіз граничних умов. Проєктування мікросервісного стеку та декларативна оркестрація шлюзів">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1. Принципи функціональної декомпозиції завдань інтернету речей на автономні мікросервіси прийому, аналітичної обробки, збереження та графічного відображення даних
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-docker-compose-yaml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2. Декларативний опис багатоконтейнерних розподілених конфігурацій за допомогою специфікацій Docker Compose та маніфестів мови розмітки YAML
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3. Методика створення ізольованих програмних мостових мереж і правила безпечного прокидання мережевих портів між хостом і внутрішніми службами
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4. Забезпечення збереженості стану баз даних часових рядів за допомогою іменованих томів та конфігурування політик автоматичного відновлення процесів
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-out-of-memory-killer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5. Апаратні обмеження вбудованих обчислювачів, критичні ризики аварійного завершення мікросервісів підсистемою Out-Of-Memory Killer та бар'єри вичерпання дискового ресурсу твердотільної пам'яті при інтенсивному журналюванні
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.5. Апаратні обмеження вбудованих обчислювачів, критичні ризики аварійного завершення мікросервісів підсистемою Out-Of-Memory Killer та бар&#39;єри вичерпання дискового ресурсу твердотільної пам&#39;яті при інтенсивному журналюванні">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Граничні умови функціонування та сценарії відмови
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Практичний індустріальний / фаховий кейс. Розгортання відмовостійкого мікросервісного комплексу прикордонного шлюзу
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Практичний індустріальний / фаховий кейс. Розгортання відмовостійкого мікросервісного комплексу прикордонного шлюзу">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-mosquitto-node-red-influxdb-home-assistant" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1. Комплексний фаховий кейс. Розгортання контейнеризованого шлюзу кліматичної телеметрії на базі стеку Mosquitto, Node-RED, InfluxDB та Home Assistant
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1. Комплексний фаховий кейс. Розгортання контейнеризованого шлюзу кліматичної телеметрії на базі стеку Mosquitto, Node-RED, InfluxDB та Home Assistant">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Постановка задачі / ситуації
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Покроковий аналіз та розв'язок
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Покроковий аналіз та розв&#39;язок">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 1. Розрахунок мережевого потоку та навантаження брокера повідомлень
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-cgroups-limits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 2. Формування балансу та квотування оперативної пам'яті (cgroups limits)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 3. Розрахунок процесорних квот планувальника ядра
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-flash-emmc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 4. Розрахунок деградації Flash-пам'яті накопичувача eMMC
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Інтерпретація результатів та альтернативні сценарії
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2. Зведена довідкова система лекції
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3. Контрольні питання та завдання
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3. Контрольні питання та завдання">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Прикладні тестові завдання
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Завдання для самостійної роботи
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Завдання для самостійної роботи">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Постановка задачі
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Завдання для виконання
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="9-iot">Тема 9. Віртуалізація та контейнеризація IoT інфраструктури</h1>
+<h2 id="_1">Мета лекції</h2>
+<p>Метою лекції є формування у майбутніх фахівців системних теоретичних знань та прикладних інженерних компетентностей щодо архітектурного проектування, ізоляції, автоматизованого розгортання та адміністрування віртуалізованих сервісів у розподілених середовищах Інтернету речей. Особливий наголос робиться на порівняльному аналізі апаратної віртуалізації на рівні гіпервізорів та легкої контейнеризації середовища Docker з урахуванням жорстких апаратних обмежень прикордонних і туманних обчислювальних вузлів. Опанування принципів мікросервісної декомпозиції та інструментів декларативної оркестрації дозволить студентам створювати відмовостійкі, масштабовані та кібербезпечні програмні комплекси шлюзів для збору, первинної аналітики, довготривалого збереження та маршрутизації телеметричних потоків даних.</p>
+<h2 id="_2">Очікувані результати навчання</h2>
+<ol>
+<li>
+<p><strong>Знання та розуміння.</strong> Здобувачі вищої освіти засвоять принципи функціонування моніторів віртуальних машин і системних механізмів просторів імен та контрольних груп ядра операційної системи, а також демонструватимуть розуміння архітектурної специфіки мікросервісного підходу в розподіленій інфраструктурі Інтернету речей.</p>
+</li>
+<li>
+<p><strong>Застосування.</strong> Студенти набудуть практичних навичок самостійно розробляти декларативні маніфести оркестрації Docker Compose для автоматизованого конфігурування, мережевої інтеграції та розгортання повного прикладного стеку служб обробки й візуалізації сенсорної інформації.</p>
+</li>
+<li>
+<p><strong>Аналіз.</strong> Слухачі навчаться критично порівнювати накладні витрати оперативної пам'яті, дискового простору та циклів центрального процесора при виборі між віртуальними машинами та контейнерами, виявляючи потенційні вузькі місця у пропускній здатності каналів міжсервісної взаємодії.</p>
+</li>
+<li>
+<p><strong>Оцінювання та синтез.</strong> Майбутні інженери зможуть комплексно оцінювати рівень відмовостійкості та інформаційної безпеки контейнеризованих систем, а також синтезувати раціональні схеми розподілу обчислювальних ресурсів граничних шлюзів в умовах пікових навантажень сенсорних мереж.</p>
+</li>
+</ol>
+<hr />
+<h2 id="_3">Детальний покроковий план лекції</h2>
+<h3 id="1-edge-fog-iot">1. Теоретико-концептуальний базис. Архітектурні засади віртуалізації та контейнеризації на Edge і Fog рівнях IoT</h3>
+<ul>
+<li>
+<p>1.1. Еволюція підходів до розгортання програмного забезпечення від монолітних середовищ bare-metal до ізольованих компонентів у туманних обчислювальних вузлах.</p>
+</li>
+<li>
+<p>1.2. Порівняльний аналіз гіпервізорів першого та другого типів із контейнерними рушіями за критеріями утилізації апаратних ресурсів центрального процесора і пам'яті.</p>
+</li>
+<li>
+<p>1.3. Системні механізми ядра Linux для забезпечення ізоляції контейнерів на основі просторів імен, контрольних груп та багатошарових файлових систем.</p>
+</li>
+<li>
+<p>1.4. Формалізовані математичні моделі щільності розміщення мікросервісів та оцінки системних накладних витрат пам'яті на прикордонних обчислювачах.</p>
+</li>
+</ul>
+<h3 id="2">2. Методологія та аналіз граничних умов. Проєктування мікросервісного стеку та декларативна оркестрація шлюзів</h3>
+<ul>
+<li>
+<p>2.1. Принципи функціональної декомпозиції завдань інтернету речей на автономні мікросервіси прийому, аналітичної обробки, збереження та графічного відображення даних.</p>
+</li>
+<li>
+<p>2.2. Декларативний опис багатоконтейнерних розподілених конфігурацій за допомогою специфікацій Docker Compose та маніфестів мови розмітки YAML.</p>
+</li>
+<li>
+<p>2.3. Методика створення ізольованих програмних мостових мереж і правила безпечного прокидання мережевих портів між хостом і внутрішніми службами.</p>
+</li>
+<li>
+<p>2.4. Забезпечення збереженості стану баз даних часових рядів за допомогою іменованих томів та конфігурування політик автоматичного відновлення процесів.</p>
+</li>
+<li>
+<p>2.5. Апаратні обмеження вбудованих обчислювачів, критичні ризики аварійного завершення мікросервісів підсистемою Out-Of-Memory Killer та бар'єри вичерпання дискового ресурсу твердотільної пам'яті при інтенсивному журналюванні.</p>
+</li>
+</ul>
+<h3 id="3">3. Практичний індустріальний / фаховий кейс. Розгортання відмовостійкого мікросервісного комплексу прикордонного шлюзу</h3>
+<p><strong>Тема наскрізної задачі.</strong> «Розгортання контейнеризованого шлюзу збору кліматичної телеметрії та виявлення аварійних ситуацій на базі стеку Eclipse Mosquitto, Node-RED, InfluxDB та Home Assistant із апаратним квотуванням ресурсів»</p>
+<h2 id="1-edge-fog-iot_1">1. Теоретико-концептуальний базис. Архітектурні засади віртуалізації та контейнеризації на Edge і Fog рівнях IoT</h2>
+<p>Сучасні концепції побудови інфраструктури Інтернету речей передбачають перехід від централізованих хмарних обчислень до багаторівневих ієрархічних моделей, що інтегрують ресурси безпосередньо на периферії мережі. Зростання потоків первинної телеметрії, жорсткі вимоги до детермінізму часу реакції у кіберфізичних системах та обмежена пропускна здатність висхідних каналів зв'язку зумовили формування парадигми граничних та туманних обчислень. У межах цієї архітектури прикордонні шлюзи виконують не лише функції ретрансляції та перепакування протоколів, а й повноцінні завдання попередньої фільтрації, локального аналізу, зберігання часових рядів і прийняття рішень у режимі реального часу. Реалізація такого широкого спектра обов'язків на обчислювачах із жорстко обмеженими апаратними можливостями вимагає застосування технологій логічної ізоляції процесів, гнучкого розподілу ресурсів та уніфікованого керування програмним забезпеченням.</p>
+<h3 id="11-bare-metal">1.1. Еволюція підходів до розгортання програмного забезпечення від монолітних систем bare-metal до ізольованих компонентів у туманних обчислювальних вузлах</h3>
+<p>Історичний розвиток програмного забезпечення для вбудованих систем та вузлів інтернету речей тривалий час спирався на монолітну парадигму розгортання безпосередньо на апаратному рівні, відому як підхід bare-metal. У таких архітектурах системне програмне забезпечення, мережевий стек, прикладні алгоритми збору телеметрії та низькорівневі драйвери компілювалися в єдиний монолітний образ або виконувалися як сукупність неізольованих процесів у межах єдиної інсталяції вбудованої операційної системи Linux. Подібний метод забезпечував максимальну швидкодію за рахунок відсутності проміжних рівнів абстракції, проте створював суттєві перешкоди під час масштабування та модифікації систем.</p>
+<p>Головним деструктивним фактором монолітного підходу стала взаємна залежність програмних компонентів від системних динамічних бібліотек та конфігураційних файлів. Оновлення інтерпретатора або бібліотеки шифрування задля підтримки нового типу датчика нерідко призводило до втрати працездатності брокера повідомлень або підсистеми управління локальними інтерфейсами введення-виведення. Крім того, відсутність міжпроцесорних бар'єрів ізоляції створювала системні ризики: вичерпання виділеної оперативної пам'яті через витік в одному допоміжному модулі неминуче спричиняло падіння всієї операційної системи шлюзу, перериваючи функціонування критично важливих контурів регулювання технологічних процесів.</p>
+<p>Необхідність забезпечення надійності та простоти супроводу стимулювала еволюцію моделей розгортання програмного забезпечення у напрямку ізоляції функціональних вузлів. Початкова спроба вирішення проблеми за допомогою апаратної віртуалізації дозволила розділити сервіси між незалежними віртуальними машинами, проте виявилася занадто ресурсомісткою для вбудованих обчислювачів. Логічним завершенням цієї еволюції стало впровадження технологій контейнеризації на рівні операційної системи, що дозволило поєднати сувору ізоляцію монолітів із нативною швидкодією bare-metal рішень.</p>
+<pre class="mermaid"><code>stateDiagram-v2
+    direction LR
+    [*] --&gt; МонолітнеРозгортання
+    МонолітнеРозгортання --&gt; АпаратнаВіртуалізація: Виникнення конфліктів залежностей
+    АпаратнаВіртуалізація --&gt; Контейнеризація: Дефіцит ресурсів CPU та RAM
+    Контейнеризація --&gt; ОркестрованийТуман: Потреба централізованого життєвого циклу
+    ОркестрованийТуман --&gt; [*]</code></pre>
+<p>На діаграмі відображено послідовні етапи переходу від неізольованих монолітних систем до сучасних контейнеризованих стеків, що динамічно оркеструються у вузлах туманних обчислень для забезпечення безперервного функціонування критичної інфраструктури.</p>
+<blockquote>
+<p><strong>ПРАКТИЧНИЙ ЯКІР:</strong> На морських вітрогенераторних установках застосування контейнеризованої структури дозволяє дистанційно оновлювати мікросервіс прогнозної вібраційної аналітики підшипників турбіни без зупинки базового контейнера безпеки, який відповідає за аварійну зміну кута атаки лопатей при штормових поривах вітру.</p>
+</blockquote>
+<h3 id="12">1.2. Порівняльний аналіз гіпервізорів першого та другого типів із контейнерними рушіями за критеріями утилізації апаратних ресурсів центрального процесора і пам'яті</h3>
+<p>Технології ізоляції середовищ виконання принципово поділяються на повну апаратну віртуалізацію під управлінням гіпервізорів та віртуалізацію на рівні операційної системи, представлену рушіями контейнеризації. Вибір між цими підходами на рівнях Edge та Fog безпосередньо визначає межі продуктивності, енергоспоживання та обчислювальної щільності кінцевого обладнання.</p>
+<p>Гіпервізори першого типу, які часто називають автономними або bare-metal гіпервізорами, завантажуються безпосередньо на фізичне обладнання сервера і беруть на себе функції управління процесорними сокетами, системною шиною та адресним простором оперативної пам'яті. Представниками цього класу є комерційні платформи корпоративного рівня та відкриті рішення на базі ядра із вбудованими модулями віртуалізації. Вони забезпечують найвищий рівень ізоляції та стабільний захист від взаємного впливу гостьових систем, проте вимагають значного обсягу апаратних ресурсів для власного функціонування. Гіпервізори другого типу функціонують як звичайні користувацькі процеси поверх існуючої хостової операційної системи, транслюючи апаратні виклики через системне ядро хоста, що спричиняє подвійні накладні витрати на диспетчеризацію та суттєво уповільнює обробку переривань від зовнішніх інтерфейсів введення-виведення.</p>
+<pre class="mermaid"><code>flowchart TD
+    subgraph AppVirt["Апаратна віртуалізація (Гіпервізор 1 типу)"]
+        HW1["Апаратний рівень (CPU, RAM, Storage, Network)"]
+        HYP1["Гіпервізор (Bare-Metal / Type 1)"]
+
+        subgraph VM1["Віртуальна машина 1"]
+            GOS1["Гостьова ОС (Повне ядро Linux)"]
+            LIB1["Системні бібліотеки (Bins / Libs)"]
+            APP1["IoT-додаток (MQTT Broker)"]
+            GOS1 --&gt; LIB1 --&gt; APP1
+        end
+
+        subgraph VM2["Віртуальна машина 2"]
+            GOS2["Гостьова ОС (Повне ядро Linux)"]
+            LIB2["Системні бібліотеки (Bins / Libs)"]
+            APP2["IoT-додаток (Node-RED)"]
+            GOS2 --&gt; LIB2 --&gt; APP2
+        end
+
+        HW1 --&gt; HYP1
+        HYP1 --&gt; VM1
+        HYP1 --&gt; VM2
+    end
+
+    subgraph ContVirt["Контейнеризація (OS-Level Virtualization)"]
+        HW2["Апаратний рівень (CPU, RAM, Storage, Network)"]
+        HOST_OS["Хостова операційна система (Єдине ядро Linux)"]
+        ENGINE["Контейнерний рушій (containerd / Docker Engine)"]
+
+        subgraph C1["Контейнер 1"]
+            CLIB1["Мінімальні бібліотеки"]
+            CAPP1["IoT-додаток (MQTT Broker)"]
+            CLIB1 --&gt; CAPP1
+        end
+
+        subgraph C2["Контейнер 2"]
+            CLIB2["Мінімальні бібліотеки"]
+            CAPP2["IoT-додаток (Node-RED)"]
+            CLIB2 --&gt; CAPP2
+        end
+
+        HW2 --&gt; HOST_OS --&gt; ENGINE
+        ENGINE --&gt; C1
+        ENGINE --&gt; C2
+    end</code></pre>
+<p>Принципова відмінність контейнеризації полягає у відмові від емуляції віртуального заліза та використанні єдиного екземпляра ядра операційної системи для всіх ізольованих середовищ. Завдяки цьому контейнери виключають необхідність запуску декількох паралельних копій планувальника завдань, підсистем керування віртуальною пам'яттю та стеків мережевих драйверів.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Парадигма розгортання</th>
+<th style="text-align: left;">Архітектурний рівень абстракції</th>
+<th style="text-align: left;">Накладні витрати ресурсів (CPU/RAM/IO)</th>
+<th style="text-align: left;">Рівень безпекової ізоляції</th>
+<th style="text-align: left;">Приклад з реальної практики</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Гіпервізори 1 типу (Type 1 Bare-Metal)</strong></td>
+<td style="text-align: left;">Апаратний шар абстракції (віртуалізація процесора, пам'яті, шин введення-виведення)</td>
+<td style="text-align: left;">Високі: вимагають фіксованого виділення RAM (від 512 Мбайт на VM) та циклів CPU на роботу ядра гостьової ОС</td>
+<td style="text-align: left;">Критично високий: апаратна ізоляція адресного простору на рівні кілець захисту процесора</td>
+<td style="text-align: left;">Багатопрофільні сервери SCADA систем та сервери хмарних ЦОД корпоративних мереж</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Гіпервізори 2 типу (Type 2 Hosted)</strong></td>
+<td style="text-align: left;">Прикладний шар поверх хостової ОС (емуляція заліза через системні виклики базової ОС)</td>
+<td style="text-align: left;">Надзвичайно високі: подвійна диспетчеризація команд процесора та переривань контролерів</td>
+<td style="text-align: left;">Помірний: безпека залежить від стабільності як хостової ОС, так і гіпервізора</td>
+<td style="text-align: left;">Стенди локального налагодження та емуляції гетерогенних мереж розробниками</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Контейнеризація (Docker, containerd)</strong></td>
+<td style="text-align: left;">Рівень простору користувача єдиного системного ядра операційної системи</td>
+<td style="text-align: left;">Мінімальні: практично нульові витрати CPU на трансляцію команд, RAM виділяється виключно під робочий процес</td>
+<td style="text-align: left;">Достатній для більшості задач: ізоляція системних викликів, спільне ядро для всіх сервісів</td>
+<td style="text-align: left;">Прикордонні шлюзи на базі промислових комп'ютерів серії Dell Edge Gateway або модулів Advantech</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>ТИПОВА ПОМИЛКА:</strong> Хибним є уявлення про те, що контейнер містить власне компактне ядро операційної системи, подібне до спрощеного ядра вбудованого Linux. Контейнер являє собою звичайний процес хостової операційної системи, ізольований за допомогою вбудованих низькорівневих примітивів ядра, тому він повністю розділяє ресурси та стан хостового ядра і не здатний виконувати драйвери пристроїв, скомпільовані під відмінні версії ядер.</p>
+</blockquote>
+<h3 id="13-linux">1.3. Системні механізми ядра Linux для забезпечення ізоляції контейнерів на основі просторів імен, контрольних груп та багатошарових файлових систем</h3>
+<p>Функціонування контейнерного середовища базується на поєднанні трьох незалежних фундаментальних підсистем ядра Linux, які разом створюють стійку ілюзію роботи програми на окремому комп'ютері:</p>
+<p>Простори імен (Linux Namespaces) забезпечують віртуалізацію системних ресурсів, обмежуючи видимість глобальних структур ядра для конкретного процесу. Ядро Linux реалізує кілька типів просторів імен:</p>
+<ol>
+<li>
+<p>Простір ідентифікаторів процесів (pid namespace) забезпечує ізоляцію нумерації процесів, завдяки чому головний процес всередині контейнера отримує ідентифікатор одиниці, що дозволяє йому здійснювати ініціалізацію та перехоплення сигналів, тоді як у глобальній таблиці хоста він має довільний старший номер.</p>
+</li>
+<li>
+<p>Мережевий простір імен (net namespace) надає контейнеру персональний віртуальний мережевий стек, що включає власну таблицю маршрутизації, правила фільтрації міжмережевого екрана, сокети та віртуальні мережеві інтерфейси, такі як пара віртуальних адаптерів типу veth.</p>
+</li>
+<li>
+<p>Простір точок монтування (mnt namespace) відокремлює ієрархію файлової системи контейнера від загального дерева файлів хостової машини.</p>
+</li>
+<li>
+<p>Простір міжпроцесорної взаємодії (ipc namespace) ізолює черги повідомлень, семафори та сегменти спільної пам'яті стандарту POSIX.</p>
+</li>
+<li>
+<p>Простір імен доменних імен та хоста (uts namespace) дозволяє кожному контейнеру встановлювати власні локальні мережеві імена.</p>
+</li>
+<li>
+<p>Простір ідентифікаторів користувачів (user namespace) транслює локальний обліковий запис адміністратора всередині контейнера на непривілейованого користувача на хостовому сервері, що суттєво підвищує загальний рівень кібербезпеки.</p>
+</li>
+</ol>
+<p>Контрольні групи (Control Groups, cgroups версій v1 та v2) вирішують завдання кількісного обмеження та пріоритезації утилізації фізичних ресурсів обчислювального вузла. Контрольні групи дозволяють виділяти ліміти процесорного часу через квоти планувальника повністю справедливого розподілу (Completely Fair Scheduler, CFS), встановлювати жорсткі межі споживання оперативної пам'яті для запобігання падінню системи через витоки, а також регулювати швидкість дискового введення-виведення для запобігання монополізації накопичувачів фоновими завданнями журналювання.</p>
+<p>Багатошарові файлові системи на основі драйвера Overlay2 реалізують оптимізацію роботи з довготривалою пам'яттю за допомогою механізму копіювання при записі (Copy-on-Write, CoW). Структура контейнерного образу формується з послідовності незмінних базових шарів, доступних виключно для читання, поверх яких під час запуску накладається тонкий шар змін конкретного контейнера. Якщо контейнеру необхідно модифікувати існуючий системний конфігураційний файл, драйвер зберігання копіює його з нижнього незмінного шару у верхній робочий каталог і виконує модифікацію, залишаючи базові шари цілісними для повторного використання іншими мікросервісами.</p>
+<blockquote>
+<p><strong>ПРАКТИЧНИЙ ЯКІР:</strong> У підсистемах автоматичного управління швидкісними електропоїздами критичний сервіс збору показників з температурних датчиків осей коліс ізольовано за допомогою контрольної групи cgroups із резервуванням фіксованої квоти процесорного часу, що повністю нівелює ризик затримки обробки аварійного сигналу навіть у моменти пікового навантаження мережевого стека зв'язку з диспетчерським центром.</p>
+</blockquote>
+<h3 id="14">1.4. Формалізовані математичні моделі щільності розміщення мікросервісів та оцінки системних накладних витрат пам'яті на прикордонних обчислювачах</h3>
+<p>Для математичного обґрунтування вибору архітектури розгортання в умовах дефіциту обчислювальних потужностей необхідно формалізувати баланс споживання системних ресурсів. Розглянемо фізичний прикордонний вузол, що володіє загальним обсягом оперативної пам'яті <span class="arithmatex">\(M_{\text{RAM}}\)</span>, на якому необхідно розгорнути <span class="arithmatex">\(N\)</span> функціональних мікросервісів обробки даних сенсорної мережі.</p>
+<p>Загальний обсяг пам'яті, що вимагається для підтримки інфраструктури на базі гіпервізора <span class="arithmatex">\(M_{\text{total\_hyp}}\)</span>, формується як сума витрат на базову операційну систему, сам монітор віртуальних машин та сукупність ресурсів, виділених для кожної гостьової віртуальної машини:</p>
+<div class="arithmatex">\[M_{\text{total\_hyp}} = M_{\text{host}} + M_{\text{hyp}} + \sum_{i=1}^{N} \left( M_{\text{guest\_os}, i} + M_{\text{kernel}, i} + M_{\text{runtime}, i} + M_{\text{app}, i} \right)\]</div>
+<p>У цьому рівнянні змінна <span class="arithmatex">\(M_{\text{host}}\)</span> визначає обсяг пам'яті, зайнятий первинною операційною системою шлюзу, виражений у мегабайтах; змінна <span class="arithmatex">\(M_{\text{hyp}}\)</span> описує накладні витрати коду самого гіпервізора на диспетчеризацію та управління апаратними ресурсами; параметр <span class="arithmatex">\(M_{\text{guest\_os}, i}\)</span> позначає системну пам'ять, необхідну для функціонування служб та демонів гостьової операційної системи всередині <span class="arithmatex">\(i\)</span>-ї віртуальної машини; змінна <span class="arithmatex">\(M_{\text{kernel}, i}\)</span> відповідає обсягу статичних структур виділеного ядра гостьової ОС; <span class="arithmatex">\(M_{\text{runtime}, i}\)</span> є обсягом пам'яті середовища виконання конкретного сервісу, такого як віртуальна машина Java або інтерпретатор Node.js; змінна <span class="arithmatex">\(M_{\text{app}, i}\)</span> позначає пам'ять, безпосередньо зайняту бізнес-кодом та динамічними даними телеметрії.</p>
+<p>Для контейнеризованої системи на базі рушія Docker або containerd загальні витрати пам'яті <span class="arithmatex">\(M_{\text{total\_cont}}\)</span> визначаються без необхідності дублювання ядер та гостьових систем:</p>
+<div class="arithmatex">\[M_{\text{total\_cont}} = M_{\text{host}} + M_{\text{daemon}} + \sum_{i=1}^{N} \left( M_{\text{runtime}, i} + M_{\text{app}, i} + \delta_{\text{cgroup}, i} \right)\]</div>
+<p>де змінна <span class="arithmatex">\(M_{\text{daemon}}\)</span> позначає обсяг пам'яті, що витрачається фоновою службою контейнерного рушія на управління контейнерами; величина <span class="arithmatex">\(\delta_{\text{cgroup}, i}\)</span> описує мінімальні накладні витрати структур ядра Linux, виділені для адміністрування контрольної групи та просторів імен <span class="arithmatex">\(i\)</span>-го екземпляра контейнера, що зазвичай вимірюється одиницями кілобайт.</p>
+<p>Спираючись на наведені балансові рівняння, теоретично граничну кількість одночасно виконуваних мікросервісів у межах доступного апаратного пулу оперативної пам'яті можна визначити за допомогою коефіцієнта обчислювальної щільності <span class="arithmatex">\(K_{\text{density}}\)</span>, припускаючи усереднені однакові вимоги до сервісів:</p>
+<div class="arithmatex">\[K_{\text{density}} = \frac{N_{\text{cont\_max}}}{N_{\text{hyp\_max}}} = \frac{\left\lfloor \frac{M_{\text{RAM}} - M_{\text{host}} - M_{\text{daemon}}}{M_{\text{runtime}} + M_{\text{app}} + \delta_{\text{cgroup}}} \right\rfloor}{\left\lfloor \frac{M_{\text{RAM}} - M_{\text{host}} - M_{\text{hyp}}}{M_{\text{guest\_os}} + M_{\text{kernel}} + M_{\text{runtime}} + M_{\text{app}}} \right\rfloor}\]</div>
+<p>де символи <span class="arithmatex">\(\lfloor \dots \rfloor\)</span> позначають математичну операцію взяття цілої частини числа, що відображає дискретність кількості розгорнутих інстанцій. З огляду на те, що типові значення <span class="arithmatex">\(M_{\text{guest\_os}} + M_{\text{kernel}}\)</span> становлять від 300 до 1024 Мбайт для мінімальних збірок Linux, тоді як <span class="arithmatex">\(\delta_{\text{cgroup}}\)</span> не перевищує десятків кілобайт, коефіцієнт <span class="arithmatex">\(K_{\text{density}}\)</span> для прикордонних шлюзів із загальним пулом пам'яті 2–4 Гбайт досягає значень від 6 до 12. Це аналітично доводить неможливість застосування класичних віртуальних машин для щільного розгортання десятків автономних мікросервісів на периферійних вузлах.</p>
+<p>Накладні часові витрати на виконання квантів обчислювальних операцій <span class="arithmatex">\(\tau_{\text{exec}}\)</span> у процесорному конвеєрі для обох підходів моделюються через тривалість контекстного перемикання та трансляцію системних викликів:</p>
+<div class="arithmatex">\[\tau_{\text{exec}} = \tau_{\text{app}} + \Delta \tau_{\text{switch}} \cdot \left( 1 + \alpha_{\text{vmm}} \right)\]</div>
+<p>де <span class="arithmatex">\(\tau_{\text{app}}\)</span> є чистим часом виконання алгоритму обробки телеметрії процесором безпосередньо в машинних інструкціях; <span class="arithmatex">\(\Delta \tau_{\text{switch}}\)</span> позначає тривалість стандартного апаратного перемикання контексту між процесами на рівні системного планувальника; параметр <span class="arithmatex">\(\alpha_{\text{vmm}}\)</span> є коефіцієнтом додаткового уповільнення, обумовленим втручанням монітора віртуальних машин або перехопленням привілейованих інструкцій через технології вкладених сторінкових таблиць (Extended Page Tables). Для контейнерів коефіцієнт <span class="arithmatex">\(\alpha_{\text{vmm}} = 0\)</span>, оскільки процес взаємодіє з ядром напряму через стандартний інтерфейс викликів posix, тоді як для апаратної віртуалізації <span class="arithmatex">\(\alpha_{\text{vmm}} &gt; 0\)</span>, що зумовлює деградацію часу відгуку при високій інтенсивності обробки апаратних переривань.</p>
+<blockquote>
+<p><strong>КОНТРОЛЬНЕ ПИТАННЯ:</strong> Яким чином механізм ядра Linux Out-Of-Memory Killer реагує на ситуацію перевищення фізичного ліміту пам'яті окремим контейнером, для якого у відповідній контрольній групі встановлено параметр обмеження <code>memory.max</code>, і чому за правильної конфігурації це не призводить до аварійної зупинки всієї операційної системи IoT-шлюзу?</p>
+</blockquote>
+<details class="note">
+<summary>Розгорнути аналіз / відповідь</summary>
+<p><strong>Правильний варіант: Аварійна зупинка виключно процесів усередині контрольної групи контейнера без порушення стабільності хостової ОС.</strong></p>
+<ol>
+<li>
+<p>Підсистема контрольних груп (cgroups v2) через параметр <code>memory.max</code> встановлює жорстку верхню межу пулу оперативної пам'яті разом зі сторінковим кешем для всіх процесів, закріплених за конкретним простором імен. Коли сумарне споживання пам'яті всередині контрольної групи перевищує задане значення, ядро Linux спочатку ініціює примусове скидання сторінкового кешу та механізми прямого вивільнення (direct reclaim). Якщо дефіцит пам'яті ліквідувати не вдається, механізм Out-Of-Memory Killer активується локально в межах цієї контрольної групи. На основі внутрішньої оцінки <code>oom_score</code> обирається та примусово завершується системним сигналом <code>SIGKILL</code> найбільш енергоємний процес саме всередині контейнера. Оскільки ресурси процесу повністю обмежені його власною контрольною групою, хостова операційна система та сусідні критичні контейнери (наприклад, брокер MQTT чи драйвер шини CAN) не відчувають браку ресурсів і продовжують виконуватися у штатному режимі.</p>
+</li>
+<li>
+<p>Аналіз дистракторів: гіпотеза про те, що аварія одного процесу викличе паніку всього ядра (kernel panic), є хибною, оскільки саме ізоляція cgroups усуває монополізацію пам'яті. Твердження про те, що надлишок пам'яті автоматично скидається на диск у розділ swap, є невірним у випадках, коли використання swap заборонено директивою конфігурації або фізично відключено на твердотільних вбудованих накопичувачах для захисту кристалів Flash-пам'яті від деградації через обмежений ресурс циклів перезапису.</p>
+</li>
+</ol>
+</details>
+<h3 id="_4">Вказівки для самостійного осмислення</h3>
+<ol>
+<li>
+<p>Зіставте вимоги до апаратної бази шлюзів Інтернету речей та розрахуйте теоретичну межу кількості мікросервісів обробки телеметрії, які можна одночасно розгорнути на платформі Raspberry Pi 4 із двома гігабайтами оперативної пам'яті, використовуючи наведену в підрозділі 1.4 математичну модель балансу пам'яті за умови середнього споживання одним сервісом вісімдесяти мегабайтів.</p>
+</li>
+<li>
+<p>Проаналізуйте наслідки використання дискових шарів Overlay2 для надійності промислових накопичувачів Flash-пам'яті та сформулюйте інженерні рекомендації щодо правильного винесення директорій інтенсивного збереження баз даних за межі файлової системи контейнера.</p>
+</li>
+<li>
+<p>Дослідіть архітектуру просторів імен ядра Linux та визначте, які потенційні загрози несанкціонованого підвищення привілеїв виникають у системі в разі запуску Docker-контейнера з прапорцем повного привілейованого доступу до апаратних пристроїв хоста.</p>
+</li>
+</ol>
+<h2 id="2_1">2. Методологія та аналіз граничних умов. Проєктування мікросервісного стеку та декларативна оркестрація шлюзів</h2>
+<p>Перехід від теоретичних концепцій контейнеризації до практичної реалізації розподілених вузлів Інтернету речей вимагає застосування суворої інженерної методології. Прикордонний шлюз класу Edge або Fog є компромісним обчислювальним середовищем, де одночасно діють жорсткі обмеження на споживання електроенергії, ліміти пропускної здатності каналів пам'яті та дефіцит ресурсу накопичувачів Flash. У таких умовах проектування програмного комплексу не може спиратися на надлишкові патерни хмарних центрів обробки даних. Інженер повинен володіти формалізованими методами декомпозиції функціональних завдань, розрахунку балансу ресурсів та конфігурування засобів оркестрації з урахуванням граничних умов експлуатації, за яких система наближається до стану відмови або аварійної деградації.</p>
+<h3 id="21">2.1. Принципи функціональної декомпозиції завдань інтернету речей на автономні мікросервіси прийому, аналітичної обробки, збереження та графічного відображення даних</h3>
+<p>Методологія мікросервісної декомпозиції для периферійних систем IoT базується на принципі розподілу відповідальності (Separation of Concerns) та концепції предметно-орієнтованого проектування (Domain-Driven Design). Замість створення єдиної програми, яка опитує датчики, зберігає дані на диск та генерує користувацький веб-інтерфейс, система розбивається на функціональні домени, кожен із яких функціонує в окремому процесному просторі з мінімально необхідним набором привілеїв.</p>
+<p>Першим рівнем декомпозиції є шар прийому телеметрії (Ingestion Layer). Основним завданням цього шару є забезпечення гарантованого підключення гетерогенних польових сенсорів та первинних контролерів через протоколи з низькими накладними витратами. Мікросервіс прийому повинен мати мінімальний розмір кодової бази та не містити складної бізнес-логіки, щоб запобігти блокуванню вхідних мережевих сокетів під час пікових навантажень.</p>
+<p>Другим рівнем виступає шар обробки подій та оркестрації бізнес-правил (Processing and Business Logic Layer). Цей компонент ізолюється від мережевого прийому, отримуючи інформаційні пакети виключно через локальний брокер повідомлень за підпискою на відповідні топіки. Тут реалізуються алгоритми фільтрації шумів, перевірка виходу параметрів за технологічні уставки, лінеаризація калібрувальних кривих та формування керуючих впливів для актуаторів зворотного зв'язку.</p>
+<p>Третім і четвертим рівнями є шар збереження часових рядів (Persistence Layer) та шар представлення інформації оператору (Presentation Layer). База даних часових рядів оптимізується виключно під операції потокового послідовного запису з автоматичним стисненням метрик та агрегацією за часовими вікнами. Сервіс графічної візуалізації HMI функціонує автономно, звертаючись до бази даних лише за фактом відкриття сесії користувачем, що виключає вплив рендерингу веб-інтерфейсів на обчислювальний процес критичних контурів управління.</p>
+<pre class="mermaid"><code>sequenceDiagram
+    autonumber
+    participant Sensor as Сенсорний вузол (ESP32)
+    participant Broker as Брокер (Mosquitto)
+    participant Engine as Логіка (Node-RED)
+    participant TSDB as База даних (InfluxDB)
+    participant Actuator as Виконавчий пристрій
+
+    Sensor-&gt;&gt;Broker: Опублікувати телеметрію (MQTT QoS 1)
+    Broker--&gt;&gt;Sensor: Підтвердження доставки (PUBACK)
+    Broker-&gt;&gt;Engine: Доставка повідомлення за підпискою
+    activate Engine
+    Engine-&gt;&gt;Engine: Фільтрація, аналіз порогових значень
+    alt Критичне перевищення уставки
+        Engine-&gt;&gt;Broker: Команда аварійної зупинки
+        Broker-&gt;&gt;Actuator: Сигнал спрацьовування захисту
+    end
+    Engine-&gt;&gt;TSDB: Асинхронний запис точки (HTTP Line Protocol)
+    deactivate Engine</code></pre>
+<p>Наведена діаграма послідовностей демонструє часовий розподіл потоків даних між ізольованими мікросервісами шлюзу під час фіксації аварійної події на об'єкті, підкреслюючи паралелізм та незалежність процесів обробки і збереження.</p>
+<blockquote>
+<p><strong>ВАЖЛИВО:</strong> Фундаментальним архітектурним правилом мікросервісної декомпозиції в IoT є повна заборона прямої синхронної взаємодії між сервісом прийому телеметрії та базою даних. Усі потоки повинні розв'язуватися через асинхронні буферизовані черги брокера повідомлень, що гарантує збереження цілісності з'єднань із сенсорами навіть під час тимчасового блокування дискового введення-виведення бази даних.</p>
+</blockquote>
+<h3 id="22-docker-compose-yaml">2.2. Декларативний опис багатоконтейнерних розподілених конфігурацій за допомогою специфікацій Docker Compose та маніфестів мови розмітки YAML</h3>
+<p>Декларативна методологія розгортання «Інфраструктура як код» (IaC) замінює ручне покрокове введення команд у терміналі на формалізований опис кінцевого цільового стану системи за допомогою файлу специфікації <code>docker-compose.yml</code>. Декларативний підхід забезпечує відтворюваність середовища на будь-якому екземплярі шлюзу, виключаючи людський фактор та невідповідності у версіях залежностей між етапами розробки, заводського тестування та промислової експлуатації.</p>
+<p>Маніфест мови YAML структурує опис багатокомпонентного середовища у вигляді дерева параметрів, що визначають джерела образів, механізми ізоляції та правила використання системних ресурсів. Під час проектування системного стеку для Edge-вузлів інженер зобов'язаний застосовувати комплексний підхід до вибору стратегій ізоляції та розгортання, зіставляючи функціональні переваги зі складністю супроводу та супутніми ризиками.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Стратегія організації середовища</th>
+<th style="text-align: left;">Архітектурний стек</th>
+<th style="text-align: left;">Складність впровадження</th>
+<th style="text-align: left;">Критичні ризики / Обмеження</th>
+<th style="text-align: left;">Приклад з реальної практики</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Монолітне виконання в хостовій ОС</strong></td>
+<td style="text-align: left;">Системні демони Linux (systemd, native C/Python)</td>
+<td style="text-align: left;">Низька: відсутність абстракцій, безпосередній запуск бінарних файлів</td>
+<td style="text-align: left;">Конфлікти версій бібліотек glibc, взаємне блокування пам'яті, аварійна зупинка всього шлюзу при збої одного процесу</td>
+<td style="text-align: left;">Прості цифрові лічильники електроенергії на базі мікроконтролерів без динамічних оновлень</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Повна ізоляція на гіпервізорах</strong></td>
+<td style="text-align: left;">Type 1 KVM / Xen, віртуальні машини Linux Yocto</td>
+<td style="text-align: left;">Висока: вимагає розробки образів гостьових ОС, налаштування віртуальних комутаторів</td>
+<td style="text-align: left;">Критичний оверхед RAM (від 512 Мбайт на службу), неможливість запуску на бюджетних ARM SoC із малим обсягом пам'яті</td>
+<td style="text-align: left;">Бортові обчислювальні комплекси авіаційних систем із сертифікацією розділення критичних доменів</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Мікросервісна контейнеризація</strong></td>
+<td style="text-align: left;">Docker Engine, containerd, специфікація OCI</td>
+<td style="text-align: left;">Помірна: проектування шаруватих образів, декларативних маніфестів YAML</td>
+<td style="text-align: left;">Спільне системне ядро створює вектор уразливості при атаках класу Privilege Escalation, навантаження на Flash при неправильному журналюванні</td>
+<td style="text-align: left;">Промислові шлюзи перекачувальних станцій на базі Advantech та Dell Edge Gateway 5000</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Гібридне безапаратне виконання (Unikernel)</strong></td>
+<td style="text-align: left;">Бібліотечні ОС (OSv, MirageOS) поверх апаратного рівня</td>
+<td style="text-align: left;">Критично висока: специфічні інструменти збирання, обмежена підтримка стандартних бібліотек</td>
+<td style="text-align: left;">Відсутність стандартних засобів налагодження на місці експлуатації, складність організації багатопотокового вводу-виводу</td>
+<td style="text-align: left;">Високошвидкісні шлюзи криптографічного шифрування телеметрії військового призначення</td>
+</tr>
+</tbody>
+</table>
+<p>Аналітичне порівняння демонструє, що мікросервісна контейнеризація за допомогою Docker Compose забезпечує найкращий компроміс між складністю інженерного супроводу та відмовостійкістю для промислових рішень автоматизації.</p>
+<h3 id="23">2.3. Методика створення ізольованих програмних мостових мереж і правила безпечного прокидання мережевих портів між хостом і внутрішніми службами</h3>
+<p>Мережева архітектура контейнеризованого вузла IoT повинна проектуватися відповідно до концепції нульової довіри (Zero Trust Architecture). За замовчуванням будь-який порт, відкритий для доступу ззовні шлюзу, розглядається як потенційний вектор проведення атак на відмову в обслуговуванні або несанкціонованого проникнення до внутрішніх шин керування.</p>
+<p>Методика створення безпечного мережевого середовища засобами Docker базується на створенні користувацьких програмних мостів (user-defined bridge networks). Коли рушій ініціалізує таку мережу, у просторі ядра Linux створюється новий віртуальний комутатор, до якого підключаються кінці пар віртуальних інтерфейсів типу <code>veth</code>, інша частина яких делегується у мережевий простір імен конкретного контейнера. Між процесами всередині одного моста автоматично активується механізм вирішення мережевих імен через вбудований DNS-сервер Docker, що дозволяє службам спілкуватися без фіксації статичних IP-адрес.</p>
+<p>Принципове значення має розмежування директив <code>ports</code> та <code>expose</code> у маніфестах конфігурації:</p>
+<ul>
+<li>
+<p>Директива <code>ports</code> здійснює фізичне зв'язування порту хостової системи з портом контейнера за допомогою генерації правил перенаправлення адрес (Destination NAT) у підсистемі <code>iptables</code> або <code>nftables</code>. Тільки ті сервіси, які безпосередньо взаємодіють із зовнішніми пристроями, повинні публікуватися через цю директиву.</p>
+</li>
+<li>
+<p>Директива <code>expose</code> лише декларує готовність контейнера приймати трафік на вказаному порту виключно від інших контейнерів, підключених до тієї самої внутрішньої віртуальної мережі. При цьому порт не публікується на фізичних інтерфейсах шлюзу (Ethernet, Wi-Fi або LTE).</p>
+</li>
+</ul>
+<p>У професійно спроектованому IoT-стеку порти баз даних часових рядів (наприклад, порт 8086 для InfluxDB) категорично заборонено публікувати на зовнішньому мережевому інтерфейсі. Доступ до накопичених метрик повинен надаватися виключно авторизованим внутрішнім мікросервісам аналітики та представлення через закритий сегмент віртуального моста.</p>
+<blockquote>
+<p><strong>ПРАКТИЧНИЙ ЯКІР:</strong> У 2020 році внаслідок некоректного прокидання порту бази даних безпосередньо у зовнішню мережу без обмеження мережевого інтерфейсу дослідниками безпеки було виявлено у відкритому доступі понад 15 000 незахищених промислових баз даних MQTT-телеметрії водоочисних споруд та систем освітлення, що створило загрозу віддаленого впровадження хибних уставок автоматики.</p>
+</blockquote>
+<h3 id="24">2.4. Забезпечення збереженості стану баз даних часових рядів за допомогою іменованих томів та конфігурування політик автоматичного відновлення процесів</h3>
+<p>Контейнери за своєю природою проектуються як ефемерні сутності (stateless), чия файлова система знищується під час кожного оновлення, перестворення або аварійного завершення образу. Однак такі ключові компоненти інфраструктури IoT, як бази даних часових рядів (Time-Series DBMS), сховища конфігурацій брокера та файли сценаріїв логіки є системами зі збереженням стану (stateful). Збереження їхніх даних вимагає винесення операцій запису за межі багатошарової файлової системи Overlay2.</p>
+<p>Для вирішення цього завдання застосовується підсистема томів даних (Volumes). Архітектурно іменований том являє собою виділену директорію у файловій системі хостової операційної системи, яка монтується безпосередньо в цільову точку монтування контейнера в обхід драйвера CoW. Це забезпечує повну швидкість введення-виведення на рівні фізичного накопичувача, усуває накладні витрати на копіювання файлів під час запису та гарантує збереження історичної телеметрії навіть при повному видаленні контейнера з бази даних.</p>
+<p>Методологія відмовостійкості на прикордонному шлюзі вимагає обов'язкового налаштування політик відновлення процесів (Restart Policies). У розподілених кіберфізичних системах неприпустима ситуація, за якої тимчасовий збій живлення або помилка в прикладній функції виводить сервіс із ладу до моменту фізичного візиту сервісного інженера. Конфігурація директиви <code>restart: unless-stopped</code> інструктує системний демон контейнеризації автоматично ініціювати перезапуск контейнера при аварійному виході з ненульовим кодом завершення, а також перезапускати весь стек служб під час холодного завантаження операційної системи шлюзу після відновлення живлення.</p>
+<h3 id="25-out-of-memory-killer">2.5. Апаратні обмеження вбудованих обчислювачів, критичні ризики аварійного завершення мікросервісів підсистемою Out-Of-Memory Killer та бар'єри вичерпання дискового ресурсу твердотільної пам'яті при інтенсивному журналюванні</h3>
+<p>Проектування мікросервісного стеку для вбудованих систем натрапляє на суворі бар'єри фізичного обладнання. Найбільш критичними деструктивними факторами є обмеженість обсягу оперативної пам'яті та кінцевий фізичний ресурс циклів перезапису мікросхем енергонезалежної Flash-пам'яті (eMMC, SD-карт або вбудованих чіпів NAND).</p>
+<p>Формалізований процес розрахунку надійності та розміщення служб для запобігання відмовам шлюзу описується наступною аналітичною послідовністю кроків:</p>
+<div class="arithmatex">\[
+\begin{aligned}
+\text{Крок 1 (Розрахунок ліміту RAM):} &amp; \quad \sum_{j=1}^{S} M_{\text{limit}, j} + M_{\text{reserve}} \le M_{\text{total}} \\
+\text{Крок 2 (Баланс процесорних квот):} &amp; \quad \sum_{j=1}^{S} \frac{C_{\text{quota}, j}}{C_{\text{period}}} \le N_{\text{cores}} \cdot (1 - \mu_{\text{sys}}) \\
+\text{Крок 3 (Оцінка деградації Flash):} &amp; \quad T_{\text{life}} = \frac{E_{\text{NAND}} \cdot C_{\text{PE}}}{W_{\text{daily}} \cdot \text{WAF}}
+\end{aligned}
+\]</div>
+<p>де у формулі Кроку 1 змінна <span class="arithmatex">\(M_{\text{limit}, j}\)</span> позначає встановлену в маніфесті верхню межу пам'яті для <span class="arithmatex">\(j\)</span>-го контейнера через механізм cgroups; параметр <span class="arithmatex">\(M_{\text{reserve}}\)</span> є обов'язковим буфером оперативної пам'яті (не менше <span class="arithmatex">\(25\%\)</span> від загального пулу), зарезервованим виключно під системні потреби ядра Linux, кешування та обслуговування мережевих черг сокетів; <span class="arithmatex">\(M_{\text{total}}\)</span> визначає фізичний обсяг пам'яті мікросхем RAM шлюзу.</p>
+<p>У моделі Кроку 2 параметр <span class="arithmatex">\(C_{\text{quota}, j}\)</span> визначає квант часу процесора у мікросекундах, що надається процесам контейнера протягом базового періоду <span class="arithmatex">\(C_{\text{period}}\)</span> (за замовчуванням <span class="arithmatex">\(100\,000\text{ мкс}\)</span>); величина <span class="arithmatex">\(N_{\text{cores}}\)</span> відповідає фізичній кількості процесорних ядер архітектури ARM або x86; коефіцієнт <span class="arithmatex">\(\mu_{\text{sys}}\)</span> встановлює частку продуктивності, яка обов'язково утримується для обробки апаратних переривань та контекстних переходів ядра.</p>
+<p>У моделі деградації накопичувача Кроку 3 змінна <span class="arithmatex">\(T_{\text{life}}\)</span> позначає прогнозований термін служби Flash-пам'яті у днях; <span class="arithmatex">\(E_{\text{NAND}}\)</span> є фізичною ємністю накопичувача у гігабайтах; <span class="arithmatex">\(C_{\text{PE}}\)</span> визначає паспортний ліміт циклів перезапису блоків пам'яті (Program/Erase Cycles, що для побутових карт типу TLC/QLC становить усього <span class="arithmatex">\(500 \dots 1500\)</span> циклів); <span class="arithmatex">\(W_{\text{daily}}\)</span> відповідає щоденному обсягу корисних даних, що записуються системою; величина <span class="arithmatex">\(\text{WAF}\)</span> позначає коефіцієнт посилення запису (Write Amplification Factor), який через специфіку блочного стирання у твердотільних накопичувачах може досягати значень від <span class="arithmatex">\(3\)</span> до <span class="arithmatex">\(10\)</span> при дрібноблоковому записі логів.</p>
+<h4 id="_5">Граничні умови функціонування та сценарії відмови</h4>
+<p>Наведена методологічна модель розрахунку втрачає адекватність і призводить до системного колапсу в низці граничних технічних ситуацій, які виникають під час практичної експлуатації:</p>
+<p>Перша гранична умова: тривалий обрив висхідного каналу передачі даних до хмари (Network Outage). Якщо під час аварії зовнішнього каналу зв'язку брокер повідомлень або мікросервіс логіки налаштовані на збереження черг повідомлень у пам'яті без фіксованого ліміту повідомлень, настає швидке вичерпання виділеного пулу <span class="arithmatex">\(M_{\text{limit}}\)</span>. Спроба виділити додаткову сторінку пам'яті викличе негайне спрацьовування механізму ядра Out-Of-Memory (OOM) Killer. Якщо параметри cgroups були налаштовані без жорсткого відокремлення сторінкового кешу, ядро знищить процес брокера, що спричинить лавиноподібне відключення всіх локальних сенсорів.</p>
+<p>Друга гранична умова: неконтрольований шторм повідомлень (Telemetry Flooding). У разі апаратного пошкодження сенсорного кола (наприклад, деренчання контактів або відмова компаратора АЦП) частота генерації повідомлень може зрости на три порядки. Якщо в контейнері логіки відсутній алгоритм обмеження частоти (Rate Limiting), процесорна квота вичерпується за лічені мілісекунди. Виникає ефект процесорного голодування (CPU Starvation) для сусідніх служб, за якого планувальник Linux не здатний вчасно виділити кванти часу критичним контурам регулювання, переводячи технологічний об'єкт у аварійний некерований стан.</p>
+<p>Третя гранична умова: виснаження ресурсу зберігання через неоптимальне журналювання. Якщо інженер залишає стандартні налаштування Docker із веденням текстових логів у форматі JSON без обмеження максимального розміру та ротації (<code>max-size</code> та <code>max-file</code>), мікросервіси, що функціонують у режимі налагодження (Debug Mode), здатні повністю заповнити вбудований накопичувач eMMC за кілька тижнів. При досягненні <span class="arithmatex">\(100\%\)</span> заповнення дискового простору база даних InfluxDB переходить у стан аварійного блокування транзакцій (Read-Only State), операційна система втрачає можливість створювати сокети міжпроцесорної взаємодії, а постійні дрібноблокові операції перезапису призводять до фізичної деградації комірок Flash-пам'яті та незворотної апаратної відмови шлюзу.</p>
+<blockquote>
+<p><strong>КОНТРОЛЬНЕ ПИТАННЯ:</strong> Під час розгортання промислового шлюзу з <span class="arithmatex">\(1\text{ Гбайт}\)</span> RAM на базі одноплатного комп'ютера під управлінням Linux інженер запустив стек із трьох контейнерів (Mosquitto, Node-RED, InfluxDB). Через 48 годин безперервної роботи шлюз раптово перестав передавати дані, доступ по протоколу SSH було заблоковано, а після примусового перезавантаження живленням виявилося, що база даних пошкоджена. Яка методологічна помилка при конфігуруванні ресурсних обмежень та томів призвела до такого каскадного колапсу системи, і як поетапно усунути цей дефект?</p>
+</blockquote>
+<details class="note">
+<summary>Розгорнути аналіз / відповідь</summary>
+<p><strong>Правильний варіант аналізу та послідовність дій з усунення аварійного стану:</strong></p>
+<p>Каскадний колапс спричинено сукупністю трьох критичних помилок конфігурації:</p>
+<ol>
+<li>
+<p>Відсутність параметрів <code>mem_limit</code> (або <code>deploy.resources.limits.memory</code>) у маніфесті Compose дозволила базі даних InfluxDB в умовах інтенсивного потоку метрик монополізувати всю доступну пам'ять хоста, що викликало глобальну активацію механізму ядра Linux OOM Killer. Оскільки пріоритет вибору жертви <code>oom_score_adj</code> не було налаштовано, ядро примусово завершило системний процес sshd та критичні потоки ядра, заблокувавши віддалене управління.</p>
+</li>
+<li>
+<p>База даних зберігала файли структури LSM-дерева у стандартній ефемерній файловій системі контейнера Overlay2 замість іменованого тому (Named Volume). Аварійне вимкнення живлення під час скидання сторінок пам'яті на диск призвело до пошкодження метаданих багатошарової файлової системи.</p>
+</li>
+<li>
+<p>Додатково, інтенсивне журналювання стандартного виводу Docker у форматі JSON без ротації заповнило залишок кореневого розділу накопичувача.</p>
+</li>
+</ol>
+<p>Поетапний алгоритм виправлення:</p>
+<ol>
+<li>
+<p>У маніфесті <code>docker-compose.yml</code> встановити для InfluxDB жорсткий ліміт пам'яті <span class="arithmatex">\(384\text{ Мбайт}\)</span> та для Node-RED <span class="arithmatex">\(256\text{ Мбайт}\)</span>, залишивши гарантований буфер не менше <span class="arithmatex">\(300\text{ Мбайт}\)</span> під системні процеси хоста.</p>
+</li>
+<li>
+<p>Перенести директорію даних <code>/var/lib/influxdb2</code> на іменований том із прямим монтуванням на розділ із журнальованою файловою системою ext4 з опцією монтування <code>data=ordered</code> для захисту від збоїв живлення.</p>
+</li>
+<li>
+<p>У глобальній конфігурації демона <code>/etc/docker/daemon.json</code> налаштувати драйвер логування <code>local</code> або обмежити розмір <code>json-file</code> параметрами <code>max-size: "10m"</code> та <code>max-file: "3"</code>.</p>
+</li>
+</ol>
+</details>
+<h2 id="3_1">3. Практичний індустріальний / фаховий кейс. Розгортання відмовостійкого мікросервісного комплексу прикордонного шлюзу</h2>
+<h3 id="31-mosquitto-node-red-influxdb-home-assistant">3.1. Комплексний фаховий кейс. Розгортання контейнеризованого шлюзу кліматичної телеметрії на базі стеку Mosquitto, Node-RED, InfluxDB та Home Assistant</h3>
+<h4 id="_6">Постановка задачі / ситуації</h4>
+<p>На сучасному фармацевтичному логістичному комплексі впроваджується автоматизована система моніторингу та предиктивного контролю мікроклімату в зоні зберігання термолабільних медичних препаратів. Відповідно до стандартів належної практики зберігання (Good Storage Practice, GSP), критичні відхилення температури за межі діапазону від <span class="arithmatex">\(+2^{\circ}\text{C}\)</span> до <span class="arithmatex">\(+8^{\circ}\text{C}\)</span> або перевищення відносної вологості понад <span class="arithmatex">\(60\%\)</span> протягом більше ніж п'яти хвилин призводять до вибракування партії продукції. </p>
+<p>Для збору даних розгорнуто сенсорну мережу із <span class="arithmatex">\(120\)</span> автономних вимірювальних вузлів на базі мікроконтролерів ESP32, які здійснюють опитування цифрових сенсорів температури, вологості та тиску. Обмін даними здійснюється за протоколом MQTT через бездротову інфраструктуру Wi-Fi. Центральним елементом збору, локальної обробки, тривалого архівування та відображення HMI-інтерфейсу виступає промисловий прикордонний шлюз на базі обчислювального модуля архітектури ARM.</p>
+<p>Перед інженером поставлено завдання: спроектувати та розгорнути стійкий мікросервісний стек у складі брокера Eclipse Mosquitto, середовища візуального програмування логіки Node-RED, бази даних часових рядів InfluxDB 2.x та веб-панелі Home Assistant. Система повинна забезпечувати безперервний збір метрик, миттєву генерацію аварійних сигналів для виконавчих вентиляційних установок, гарантувати збереженість даних при аварійному вимкненні електроживлення та запобігати деградації вбудованого накопичувача Flash-пам'яті.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Категорія параметрів</th>
+<th style="text-align: left;">Фізична назва параметра</th>
+<th style="text-align: left;">Позначення</th>
+<th style="text-align: left;">Значення та одиниці виміру</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Апаратна база шлюзу</strong></td>
+<td style="text-align: left;">Загальний обсяг оперативної пам'яті</td>
+<td style="text-align: left;"><span class="arithmatex">\(M_{\text{total}}\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(2048\text{ Мбайт}\)</span> (LPDDR4)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Апаратна база шлюзу</strong></td>
+<td style="text-align: left;">Кількість фізичних ядер процесора</td>
+<td style="text-align: left;"><span class="arithmatex">\(N_{\text{cores}}\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(4\)</span> ядра (ARM Cortex-A72, <span class="arithmatex">\(1{,}5\text{ ГГц}\)</span>)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Апаратна база шлюзу</strong></td>
+<td style="text-align: left;">Ємність вбудованого накопичувача</td>
+<td style="text-align: left;"><span class="arithmatex">\(E_{\text{NAND}}\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(16\text{ Гбайт}\)</span> (промислова eMMC 5.1)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Апаратна база шлюзу</strong></td>
+<td style="text-align: left;">Ресурс циклів перезапису накопичувача</td>
+<td style="text-align: left;"><span class="arithmatex">\(C_{\text{PE}}\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(3000\text{ циклів}\)</span> (pSLC-режим)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Сенсорна мережа</strong></td>
+<td style="text-align: left;">Загальна кількість кінцевих сенсорних вузлів</td>
+<td style="text-align: left;"><span class="arithmatex">\(N_{\text{nodes}}\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(120\text{ пристроїв}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Сенсорна мережа</strong></td>
+<td style="text-align: left;">Період відправки телеметрії одним вузлом</td>
+<td style="text-align: left;"><span class="arithmatex">\(T_{\text{poll}}\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(5\text{ секунд}\)</span> (частота <span class="arithmatex">\(f = 0{,}2\text{ Гц}\)</span>)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Сенсорна мережа</strong></td>
+<td style="text-align: left;">Розмір корисного навантаження JSON</td>
+<td style="text-align: left;"><span class="arithmatex">\(S_{\text{payload}}\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(128\text{ байт}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Надійність і резерв</strong></td>
+<td style="text-align: left;">Резерв оперативної пам'яті для хостової ОС</td>
+<td style="text-align: left;"><span class="arithmatex">\(M_{\text{reserve}}\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(512\text{ Мбайт}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Надійність і резерв</strong></td>
+<td style="text-align: left;">Коефіцієнт посилення запису накопичувача</td>
+<td style="text-align: left;"><span class="arithmatex">\(\text{WAF}\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(3{,}5\)</span> (дрібноблоковий запис)</td>
+</tr>
+</tbody>
+</table>
+<pre class="mermaid"><code>flowchart TD
+    subgraph Sensors["Сенсорне поле (120 вузлів ESP32)"]
+        S1["ESP32 Сенсор 1"]
+        S2["ESP32 Сенсор 2"]
+        SN["ESP32 Сенсор 120"]
+    end
+
+    subgraph Gateway["Промисловий IoT-шлюз (Docker Compose)"]
+        direction TB
+        subgraph NetBridge["Внутрішня міст-мережа (iot_internal)"]
+            MB["Eclipse Mosquitto (MQTT: 1883)"]
+            NR["Node-RED (Logic &amp; Alarms)"]
+            IDB["InfluxDB 2.x (TSDB: 8086)"]
+            HA["Home Assistant (UI: 8123)"]
+        end
+
+        subgraph Storage["Персистентні томи на NVMe/eMMC"]
+            V1["mosquitto_data"]
+            V2["nodered_data"]
+            V3["influxdb_data"]
+        end
+    end
+
+    subgraph Actuators["Виконавчі пристрої"]
+        ACT["Вентиляційні реле (RS-485 / Modbus)"]
+    end
+
+    S1 &amp; S2 &amp; SN --&gt;|WiFi / MQTT JSON| MB
+    MB &lt;--&gt;|Sub / Pub| NR
+    NR --&gt;|Line Protocol write| IDB
+    NR --&gt;|Modbus RTU command| ACT
+    IDB -.-&gt;|Query flux| HA
+    MB --- V1
+    NR --- V2
+    IDB --- V3</code></pre>
+<h4 id="_7">Покроковий аналіз та розв'язок</h4>
+<h5 id="1">Крок 1. Розрахунок мережевого потоку та навантаження брокера повідомлень</h5>
+<p>Для визначення вимог до мережевого стека та буферів черг обчислимо сумарну інтенсивність вхідного потоку повідомлень <span class="arithmatex">\(\lambda_{\text{total}}\)</span> та пропускну здатність вхідного каналу <span class="arithmatex">\(B_{\text{in}}\)</span>, що транслюється від сенсорного поля:</p>
+<div class="arithmatex">\[\lambda_{\text{total}} = \frac{N_{\text{nodes}}}{T_{\text{poll}}} = \frac{120}{5} = 24\text{ пакетів/с}\]</div>
+<p>Сумарний вхідний трафік корисного навантаження без урахування заголовків нижчих рівнів моделі OSI розраховується за співвідношенням:</p>
+<div class="arithmatex">\[B_{\text{in}} = \lambda_{\text{total}} \cdot S_{\text{payload}} = 24 \cdot 128 = 3072\text{ байт/с} \approx 3{,}0\text{ Кбайт/с}\]</div>
+<p>Оскільки протокол MQTT функціонує поверх транспортного протоколу TCP з механізмом гарантування доставки QoS 1, кожна транзакція вимагає відправки пакета <code>PUBLISH</code> та отримання відповіді <code>PUBACK</code>. Повний мережевий трафік на фізичному інтерфейсі шлюзу з урахуванням службових заголовків TCP/IP (<span class="arithmatex">\(40\text{ байт}\)</span>) становить:</p>
+<div class="arithmatex">\[B_{\text{wire}} = \lambda_{\text{total}} \cdot (S_{\text{payload}} + 40) + \lambda_{\text{total}} \cdot (S_{\text{ack}} + 40) = 24 \cdot 168 + 24 \cdot 44 = 4032 + 1056 = 5088\text{ байт/с} \approx 4{,}97\text{ Кбайт/с}\]</div>
+<p>Такий потік створює мінімальне навантаження на мережевий контролер, що дозволяє виділити під контейнер Mosquitto мінімальну процесорну квоту без ризику затримки прийому пакетів.</p>
+<h5 id="2-cgroups-limits">Крок 2. Формування балансу та квотування оперативної пам'яті (cgroups limits)</h5>
+<p>Доступний для мікросервісів обсяг пам'яті <span class="arithmatex">\(M_{\text{available}}\)</span> визначається шляхом віднімання гарантованого системного резерву хоста від загальної фізичної ємності:</p>
+<div class="arithmatex">\[M_{\text{available}} = M_{\text{total}} - M_{\text{reserve}} = 2048 - 512 = 1536\text{ Мбайт}\]</div>
+<p>Виконується інженерний розподіл лімітів пам'яті <span class="arithmatex">\(M_{\text{limit}, j}\)</span> для кожного компонента мікросервісного стека з урахуванням профілю навантаження:</p>
+<div class="arithmatex">\[
+\begin{aligned}
+\text{Крок 2.1 (Mosquitto):} &amp; \quad M_{\text{limit}, 1} = 128\text{ Мбайт (буфери черг клієнтів у RAM)} \\
+\text{Крок 2.2 (Node-RED):} &amp; \quad M_{\text{limit}, 2} = 384\text{ Мбайт (середовище Node.js, V8 heap limit)} \\
+\text{Крок 2.3 (InfluxDB):} &amp; \quad M_{\text{limit}, 3} = 640\text{ Мбайт (LSM-дерево, WAL, індекси в пам'яті)} \\
+\text{Крок 2.4 (Home Assistant):} &amp; \quad M_{\text{limit}, 4} = 384\text{ Мбайт (Python runtime, компоненти інтерфейсу)}
+\end{aligned}
+\]</div>
+<p>Перевірка виконання граничної умови балансу пам'яті підтверджує безпечність конфігурації:</p>
+<div class="arithmatex">\[\sum_{j=1}^{4} M_{\text{limit}, j} = 128 + 384 + 640 + 384 = 1536\text{ Мбайт} \le M_{\text{available}}\]</div>
+<p>Жоден із контейнерів не зможе спожити пам'ять понад встановлену межу завдяки конфігурації <code>deploy.resources.limits.memory</code>. У разі внутрішнього витоку пам'яті в середовищі Node-RED системний механізм ядра OOM Killer примусово завершить процес виключно всередині цього ізольованого контейнера, зберігши працездатність брокера, бази даних та операційної системи хоста.</p>
+<h5 id="3_2">Крок 3. Розрахунок процесорних квот планувальника ядра</h5>
+<p>Загальний обчислювальний ресурс чотириядерного процесора становить <span class="arithmatex">\(4{,}00\)</span> умовних процесорних еквівалентів. Зберігаючи системний резерв ядра Linux на рівні <span class="arithmatex">\(\mu_{\text{sys}} = 0{,}25\)</span> (<span class="arithmatex">\(1{,}00\)</span> ядро для переривань мережі та ядра), сумарний пул розподілу між контейнерами становить <span class="arithmatex">\(3{,}00\)</span> процесорних одиниць:</p>
+<div class="arithmatex">\[
+\begin{aligned}
+\text{Mosquitto (IO-bound):} &amp; \quad C_{\text{limit}, 1} = 0{,}30 \implies C_{\text{quota}} = 30\,000\text{ мкс при } C_{\text{period}} = 100\,000\text{ мкс} \\
+\text{Node-RED (CPU-bound):} &amp; \quad C_{\text{limit}, 2} = 0{,}90 \implies C_{\text{quota}} = 90\,000\text{ мкс} \\
+\text{InfluxDB (Compaction):} &amp; \quad C_{\text{limit}, 3} = 1{,}00 \implies C_{\text{quota}} = 100\,000\text{ мкс} \\
+\text{Home Assistant (Web UI):} &amp; \quad C_{\text{limit}, 4} = 0{,}80 \implies C_{\text{quota}} = 80\,000\text{ мкс}
+\end{aligned}
+\]</div>
+<p>Сумарне значення <span class="arithmatex">\(\sum C_{\text{limit}} = 0{,}30 + 0{,}90 + 1{,}00 + 0{,}80 = 3{,}00\)</span> процесорних одиниць, що гарантує відсутність взаємного блокування потоків виконання.</p>
+<h5 id="4-flash-emmc">Крок 4. Розрахунок деградації Flash-пам'яті накопичувача eMMC</h5>
+<p>База даних InfluxDB отримує щосекунди <span class="arithmatex">\(24\)</span> вимірювання. Одне нормалізоване повідомлення у форматі Line Protocol формує запис розміром <span class="arithmatex">\(S_{\text{point}} \approx 80\text{ байт}\)</span>. Добовий обсяг чистої телеметрії <span class="arithmatex">\(W_{\text{data}}\)</span> обчислюється наступним чином:</p>
+<div class="arithmatex">\[W_{\text{data}} = \lambda_{\text{total}} \cdot S_{\text{point}} \cdot 86\,400\text{ с} = 24 \cdot 80 \cdot 86\,400 = 165\,888\,000\text{ байт} \approx 0{,}154\text{ Гбайт/добу}\]</div>
+<p>Оскільки сервіси ведуть системні логи зі швидкістю близько <span class="arithmatex">\(W_{\text{logs}} \approx 0{,}08\text{ Гбайт/добу}\)</span>, загальний обсяг даних на запис <span class="arithmatex">\(W_{\text{daily}}\)</span> з урахуванням коефіцієнта посилення запису <span class="arithmatex">\(\text{WAF} = 3{,}5\)</span> становить:</p>
+<div class="arithmatex">\[W_{\text{daily\_actual}} = (W_{\text{data}} + W_{\text{logs}}) \cdot \text{WAF} = (0{,}154 + 0{,}08) \cdot 3{,}5 = 0{,}819\text{ Гбайт/добу}\]</div>
+<p>Розрахунок прогнозованого терміну служби комірок пам'яті <span class="arithmatex">\(T_{\text{life}}\)</span> здійснюється за формулою:</p>
+<div class="arithmatex">\[T_{\text{life}} = \frac{E_{\text{NAND}} \cdot C_{\text{PE}}}{W_{\text{daily\_actual}}} = \frac{16 \cdot 3000}{0{,}819} = \frac{48\,000}{0{,}819} \approx 58\,608\text{ днів} \approx 160\text{ років}\]</div>
+<p>Отриманий результат підтверджує, що винесення бази даних на окремий іменований том із використанням внутрішніх механізмів буферизації WAL гарантує колосальний запас надійності твердотільного накопичувача.</p>
+<h4 id="_8">Інтерпретація результатів та альтернативні сценарії</h4>
+<p>Проведені інженерні розрахунки свідчать, що запропонований мікросервісний стек на базі Docker Compose повністю задовольняє вимогам надійності фармацевтичного складу. Система функціонує в межах <span class="arithmatex">\(75\%\)</span> утилізації оперативної пам'яті, має захищені мережеві контури та високий ресурс апаратного накопичувача.</p>
+<p>Проаналізуємо зміну поведінки системи за умови радикальної зміни вхідних умов:</p>
+<ol>
+<li>
+<p>Зменшення обсягу оперативної пам'яті шлюзу до <span class="arithmatex">\(512\text{ Мбайт}\)</span>. За такого обмеження реалізація наведеного стеку є принципово неможливою, оскільки один лише процес InfluxDB 2.x разом із середовищем виконання Home Assistant потребують мінімум <span class="arithmatex">\(1\text{ Гбайт}\)</span> RAM. У цьому випадку інженер зобов'язаний перейти до архітектурної декомпозиції першого рівня: на шлюзі залишається виключно брокер Eclipse Mosquitto та оптимізований модуль фільтрації на мові C або Rust, скомпільований у форматі Unikernel чи мінімального контейнера на базі Alpine Linux (<span class="arithmatex">\(M_{\text{limit}} \le 48\text{ Мбайт}\)</span>). Усі операції збереження даних та рендерингу інтерфейсу переносяться на вищий рівень ієрархії — сервер туманних або хмарних обчислень.</p>
+</li>
+<li>
+<p>Зростання частоти опитування датчиків до <span class="arithmatex">\(100\text{ Гц}\)</span> (наприклад, перехід до вібраційного контролю механізмів). У такому режимі вхідний потік становитиме <span class="arithmatex">\(12\,000\text{ пакетів/с}\)</span>. Середовище Node-RED на базі однопотокового рушія JavaScript не впорається з диспетчеризацією черги подій, що викличе переповнення виділеної оперативної пам'яті та постійні спрацьовування OOM Killer. Альтернативним сценарієм стане заміна Node-RED на компільований мікросервіс потокового аналізу (наприклад, на базі Apache Arroyo або власного демона на Go/C++), а також агрегація даних безпосередньо у внутрішній пам'яті за допомогою кольцевого буфера перед скиданням на накопичувач.</p>
+</li>
+</ol>
+<hr />
+<h3 id="32">3.2. Зведена довідкова система лекції</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Термін / Концепція</th>
+<th style="text-align: left;">Формалізація / Сутність</th>
+<th style="text-align: left;">Реальний кейс застосування</th>
+<th style="text-align: left;">Основне обмеження / Ризик</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Гіпервізор першого типу (Bare-Metal)</strong></td>
+<td style="text-align: left;">Програмний або апаратно-програмний шар, що виконується безпосередньо на фізичному обладнанні: <span class="arithmatex">\(M_{\text{VM}} = M_{\text{guest}} + M_{\text{kernel}}\)</span></td>
+<td style="text-align: left;">Розподіл критичних контурів SCADA та підсистем АСУ ТП на промислових серверах Advantech</td>
+<td style="text-align: left;">Високий оверхед оперативної пам'яті; неможливість запуску на бюджетних мікропроцесорах</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Контейнеризація (OS-Level)</strong></td>
+<td style="text-align: left;">Ізоляція просторів користувача в межах єдиного ядра операційної системи Linux через cgroups та namespaces</td>
+<td style="text-align: left;">Розгортання стеків збору даних Mosquitto + Node-RED на шлюзах Raspberry Pi та Dell Edge</td>
+<td style="text-align: left;">Спільне ядро створює загрозу безпеці при наявності експлойтів виходу з контейнера (container escape)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Простори імен (Namespaces)</strong></td>
+<td style="text-align: left;">Механізм ядра Linux, що дискретизує глобальні системні ресурси (PID, NET, MNT, IPC, UTS, USER)</td>
+<td style="text-align: left;">Створення ізольованих мережевих стеків для розділення технологічного та публічного трафіку</td>
+<td style="text-align: left;">Не обмежують споживання фізичних ресурсів (пам'яті, процесора, дисків)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Контрольні групи (cgroups v2)</strong></td>
+<td style="text-align: left;">Механізм кількісного обмеження та пріоритезації утилізації ресурсів процесора, пам'яті та введення-виведення</td>
+<td style="text-align: left;">Встановлення жорсткої квоти RAM для сервісу візуалізації, щоб запобігти падінню брокера телеметрії</td>
+<td style="text-align: left;">При перевищенні ліміту <code>memory.max</code> процес всередині контейнера аварійно завершується OOM Killer</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Файлова система Overlay2</strong></td>
+<td style="text-align: left;">Драйвер шаруватої файлової системи, що реалізує парадигму Copy-on-Write (CoW)</td>
+<td style="text-align: left;">Базове збереження незмінних образів служб із мінімальним використанням постійної пам'яті</td>
+<td style="text-align: left;">Високий коефіцієнт посилення запису; падіння продуктивності бази даних при інтенсивному IO</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Іменований том (Docker Volume)</strong></td>
+<td style="text-align: left;">Виділений каталог файлової системи хостової ОС, змонтований безпосередньо в контейнер в обхід CoW</td>
+<td style="text-align: left;">Збереження історичних баз даних часових рядів InfluxDB та конфігураційних баз Home Assistant</td>
+<td style="text-align: left;">Необхідність ручного контролю прав доступу на рівні файлової системи хоста</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Мостова мережа (Bridge Network)</strong></td>
+<td style="text-align: left;">Віртуальний програмний комутатор ядра Linux, що з'єднує контейнери за допомогою віртуальних пар <code>veth</code></td>
+<td style="text-align: left;">Ізоляція внутрішнього трафіку бази даних від зовнішнього сегмента промислової локальної мережі</td>
+<td style="text-align: left;">Продуктивність обмежена накладними витратами на трансляцію мережевих адрес (NAT)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Docker Compose</strong></td>
+<td style="text-align: left;">Інструмент декларативного опису та оркестрації багатоконтейнерних додатків у форматі файлів YAML</td>
+<td style="text-align: left;">Стандартизоване введення в експлуатацію партії з сотень прикордонних шлюзів однією командою</td>
+<td style="text-align: left;">Відсутність вбудованих механізмів динамічного автоматичного масштабування між вузлами</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="33">3.3. Контрольні питання та завдання</h3>
+<h4 id="_9">Прикладні тестові завдання</h4>
+<ol>
+<li>
+<p>Під час конфігурування файлу <code>docker-compose.yml</code> інженер вказав директиву <code>ports: ["1883:1883"]</code> для брокера Mosquitto та <code>expose: ["8086"]</code> для бази даних InfluxDB. Обидва сервіси підключені до спільної мережі <code>driver: bridge</code>. Яке твердження точно описує доступність сервісів?</p>
+</li>
+<li>
+<p>A. Порт брокера 1883 доступний лише всередині мостової мережі, а база даних 8086 доступна для зовнішніх пристроїв.</p>
+</li>
+<li>
+<p>B. Обидва сервіси повністю відкриті для доступу через фізичний мережевий інтерфейс Ethernet шлюзу.</p>
+</li>
+<li>
+<p>C. Порт 1883 транслюється на фізичний інтерфейс хоста, а порт 8086 доступний лише для інших контейнерів цієї віртуальної мережі.</p>
+</li>
+<li>
+<p>D. Жоден із сервісів не зможе обмінюватися даними до моменту ручного налаштування міжмережевого екрана хоста.</p>
+</li>
+</ol>
+<details class="note">
+<summary>Розгорнути аналіз / відповідь</summary>
+<p><strong>Правильний варіант: C.</strong></p>
+<ol>
+<li>
+<p>Директива <code>ports</code> створює реальні правила трансляції адрес у системі <code>iptables</code> хоста, завдяки чому трафік з будь-якого зовнішнього джерела, що надходить на порт 1883 шлюзу, перенаправляється всередину контейнера Mosquitto. Директива <code>expose</code> виконує виключно інформаційну роль всередині Docker-мережі, повідомляючи сусіднім контейнерам (наприклад, Node-RED), що служба очікує підключень на порт 8086, але жодних портів на зовнішніх інтерфейсах хоста не публікує, що захищає базу даних від несанкціонованого зовнішнього сканування.</p>
+</li>
+<li>
+<p>Аналіз дистракторів: Варіант A описує поведінку з точністю до навпаки. Варіант B є хибним, оскільки директива <code>expose</code> не відкриває порт на зовнішніх інтерфейсах хоста. Варіант D не відповідає дійсності, оскільки рушій Docker автоматично додає необхідні ланцюжки правил у міжмережевий екран операційної системи Linux.</p>
+</li>
+</ol>
+</details>
+<ol>
+<li>
+<p>У системі збору телеметрії мікросервіс обробки скриптів Node-RED має встановлений ліміт пам'яті <span class="arithmatex">\(256\text{ Мбайт}\)</span>. Внаслідок некоректно написаного алгоритму масив вхідних повідомлень безперервно накопичується в оперативній пам'яті. Що відбудеться у системі, коли споживання пам'яті досягне встановленої межі?</p>
+</li>
+<li>
+<p>A. Відбудеться аварійна паніка всього системного ядра Linux із перезавантаженням фізичного шлюзу.</p>
+</li>
+<li>
+<p>B. Процесорний планувальник примусово виділить сторінковий кеш хоста, що сповільнить сусідні контейнери.</p>
+</li>
+<li>
+<p>C. Ядро активує механізм OOM Killer всередині контрольної групи контейнера і завершить процес Node-RED сигналом SIGKILL.</p>
+</li>
+<li>
+<p>D. Контейнерний рушій автоматично збільшить обсяг виділеної пам'яті за рахунок невикористаних ресурсів Mosquitto.</p>
+</li>
+</ol>
+<details class="note">
+<summary>Розгорнути аналіз / відповідь</summary>
+<p><strong>Правильний варіант: C.</strong></p>
+<ol>
+<li>
+<p>Підсистема контрольних груп ядра Linux (cgroups) ізолює облік споживання пам'яті для кожного контейнера. При досягненні ліміту, встановленого параметром <code>memory.max</code>, ядро ініціює скидання кешу, а у разі неможливості вивільнення адресного простору викликає Out-Of-Memory Killer. Цей механізм надсилає системний сигнал термінації процесу з найбільшим показником внутрішньої уразливості (<code>oom_score</code>) саме всередині зазначеного контейнера. Якщо в конфігурації Compose встановлено політику <code>restart: unless-stopped</code>, контейнер буде перезапущено без аварії хостової ОС.</p>
+</li>
+<li>
+<p>Аналіз дистракторів: Варіант A є хибним, оскільки ізоляція cgroups запобігає впливу на ядро хоста. Варіант B не відповідає дійсності, оскільки ліміт пам'яті жорстко обмежує суму анонімної пам'яті та сторінкового кешу для цієї групи. Варіант D є принципово невірним, оскільки ліміти пам'яті в Docker є статичними обмеженнями, які не можуть динамічно змінюватися без зміни конфігурації.</p>
+</li>
+</ol>
+</details>
+<ol>
+<li>
+<p>Для підвищення надійності бази даних InfluxDB інженер вирішив зберігати файли бази даних у багатошаровій файловій системі контейнера без використання монтування томів (<code>volumes</code>). Який критичний інженерний наслідок матиме таке рішення під час промислової експлуатації?</p>
+</li>
+<li>
+<p>A. База даних відмовиться запускатися через конфлікт просторів імен користувачів.</p>
+</li>
+<li>
+<p>B. Усі накопичені історичні дані будуть безповоротно знищені під час першого ж штатного оновлення образу контейнера.</p>
+</li>
+<li>
+<p>C. Швидкість зчитування даних зросте в кілька разів завдяки попередньому кешуванню шарів.</p>
+</li>
+<li>
+<p>D. Контейнер автоматично заблокує мережевий інтерфейс бази даних для збереження цілісності файлів.</p>
+</li>
+</ol>
+<details class="note">
+<summary>Розгорнути аналіз / відповідь</summary>
+<p><strong>Правильний варіант: B.</strong></p>
+<ol>
+<li>
+<p>Робочий шар контейнера, побудований на базі драйвера Overlay2, є ефемерним і жорстко прив'язаний до життєвого циклу конкретного контейнера. Під час виконання операцій оновлення версії сервісу (<code>docker compose pull</code> та <code>docker compose up -d</code>) старий контейнер зупиняється та повністю видаляється разом із його верхнім шаром запису, внаслідок чого всі історичні файли бази даних будуть незворотно втрачені. Для систем збереження стану використання іменованих томів або прив'язувальних монтувань (bind mounts) є критичним обов'язковим інваріантом проектування.</p>
+</li>
+<li>
+<p>Аналіз дистракторів: Варіант A є помилковим, оскільки файлова система CoW прозоро працює з просторами імен. Варіант C не відповідає дійсності, оскільки механізм копіювання при записі (CoW) викликає додаткові накладні витрати та уповільнює дискові операції, а не прискорює їх. Варіант D не має під собою технічного підґрунтя в архітектурі Docker.</p>
+</li>
+</ol>
+</details>
+<ol>
+<li>
+<p>Промисловий шлюз працює в автономному режимі, і зовнішнє мережеве з'єднання з хмарою обривається на 72 години. Яка комбінація налаштувань брокера Mosquitto та бази даних забезпечить повне збереження даних телеметрії без вичерпання апаратних ресурсів?</p>
+</li>
+<li>
+<p>A. Використання виключно протоколу QoS 0 та зберігання повідомлень лише в оперативній пам'яті.</p>
+</li>
+<li>
+<p>B. Активація персистентного збереження черг у Mosquitto на диску з обмеженням розміру черги та локальне буферизоване збереження в InfluxDB на іменованому томі.</p>
+</li>
+<li>
+<p>C. Повне відключення брокера повідомлень і тимчасове перенаправлення датчиків безпосередньо у веб-інтерфейс Home Assistant.</p>
+</li>
+<li>
+<p>D. Налаштування нескінченного розміру черг у пам'яті з відключенням механізму ротації журналів.</p>
+</li>
+</ol>
+<details class="note">
+<summary>Розгорнути аналіз / відповідь</summary>
+<p><strong>Правильний варіант: B.</strong></p>
+<ol>
+<li>
+<p>За умови тривалої відсутності зовнішнього каналу зв'язку прикордонний шлюз повинен взяти на себе функції автономного сховища. Конфігурування персистентності брокера (<code>persistence true</code> у конфігураційному файлі Mosquitto) із обмеженням максимального розміру черг (<code>max_queued_messages</code>) дозволяє акумулювати пакети з гарантованим рівнем доставки QoS 1 на диску без переповнення RAM. Одночасно мікросервіс логіки записує всі метрики в локальну базу даних InfluxDB, розміщену на персистентному томі, забезпечуючи збереження повної історії до моменту відновлення зв'язку з хмарою.</p>
+</li>
+<li>
+<p>Аналіз дистракторів: Варіант A призведе до миттєвої втрати телеметрії при будь-яких мережевих флуктуаціях, оскільки рівень QoS 0 не передбачає повторної відправки. Варіант C технічно нереалізовний і порушує принципи функціональної декомпозиції. Варіант D гарантовано викличе вичерпання пам'яті та аварійну зупинку брокера процесом OOM Killer.</p>
+</li>
+</ol>
+</details>
+<hr />
+<h4 id="_10">Завдання для самостійної роботи</h4>
+<h5 id="_11">Постановка задачі</h5>
+<p>Вам доручено спроектувати систему автономного моніторингу та управління мікрокліматом для мобільного рефрижераторного автопоїзда, що транспортує донорську плазму крові. Система розгортається на базі автомобільного вбудованого обчислювача з процесором ARMv8 (<span class="arithmatex">\(2\text{ ядра}\)</span>, <span class="arithmatex">\(1{,}2\text{ ГГц}\)</span>), обмеженим обсягом оперативної пам'яті <span class="arithmatex">\(1024\text{ Мбайт}\)</span> та твердотільним накопичувачем eMMC обсягом <span class="arithmatex">\(8\text{ Гбайт}\)</span>. Автопоїзд може перебувати поза зоною дії стільникових мереж LTE до 48 годин. Під час руху шлюз повинен опитувати 16 бездротових сенсорних датчиків температури та струму компресора з частотою один раз на дві секунди, локально архівувати вимірювання, виявляти аварійні відхилення температури та відображати інформаційне табло на екрані водія.</p>
+<h5 id="_12">Завдання для виконання</h5>
+<ol>
+<li>
+<p>Складіть формалізований маніфест оркестрації у файлі <code>docker-compose.yml</code>, що описує взаємодію трьох мікросервісів: брокера Eclipse Mosquitto, сервісу обробки подій та сповіщень водія, а також оптимізованого сховища часових рядів.</p>
+</li>
+<li>
+<p>Розрахуйте та зафіксуйте у специфікації Compose жорсткі обмеження споживання оперативної пам'яті та процесорних часток для кожного контейнера так, щоб сумарне резервування підсистемою cgroups не перевищувало <span class="arithmatex">\(768\text{ Мбайт}\)</span>, гарантуючи стабільну роботу хостової операційної системи.</p>
+</li>
+<li>
+<p>Опишіть конфігурацію іменованих томів для гарантованого збереження бази даних телеметрії при вимкненні акумуляторного живлення транспорту та налаштуйте політику автоматичного відновлення сервісів після аварійних зупинок.</p>
+</li>
+<li>
+<p>Розробіть параметри конфігураційного файлу демона Docker для оптимізації розміру дискових журналів, встановивши обмеження на розмір одного файлу логування та максимальну кількість файлів ротації задля запобігання передчасному зносу комірок пам'яті eMMC.</p>
+</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Повернутись нагору
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Kyrylo Vadurin &bull; <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.top", "navigation.tracking", "header.autohide", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u0421\u043a\u043e\u043f\u0456\u0439\u043e\u0432\u0430\u043d\u043e \u0432 \u0431\u0443\u0444\u0435\u0440", "clipboard.copy": "\u0421\u043a\u043e\u043f\u0456\u044e\u0432\u0430\u0442\u0438 \u0432 \u0431\u0443\u0444\u0435\u0440", "search.result.more.one": "\u0429\u0435 1 \u0437\u0431\u0456\u0433 \u043d\u0430 \u0446\u0456\u0439 \u0441\u0442\u043e\u0440\u0456\u043d\u0446\u0456", "search.result.more.other": "\u0429\u0435 # \u0437\u0431\u0456\u0433\u0456\u0432 \u043d\u0430 \u0446\u0456\u0439 \u0441\u0442\u043e\u0440\u0456\u043d\u0446\u0456", "search.result.none": "\u0417\u0431\u0456\u0433\u0456\u0432 \u043d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u043e", "search.result.one": "\u0417\u043d\u0430\u0439\u0434\u0435\u043d\u043e 1 \u0437\u0431\u0456\u0433", "search.result.other": "\u0417\u043d\u0430\u0439\u0434\u0435\u043d\u043e # \u0437\u0431\u0456\u0433\u0456\u0432", "search.result.placeholder": "\u0420\u043e\u0437\u043f\u043e\u0447\u043d\u0456\u0442\u044c \u043f\u0438\u0441\u0430\u0442\u0438 \u0434\u043b\u044f \u043f\u043e\u0448\u0443\u043a\u0443", "search.result.term.missing": "\u041d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u043e \u0437\u0430\u043f\u0438\u0442\u0443", "select.version": "\u041e\u0431\u0440\u0430\u0442\u0438 \u0432\u0435\u0440\u0441\u0456\u044e"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

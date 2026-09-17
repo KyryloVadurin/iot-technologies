@@ -1,0 +1,3696 @@
+
+<!doctype html>
+<html lang="uk" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Навчальний портал з дисципліни "Технології ІоТ"">
+      
+      
+      
+      
+        <link rel="prev" href="../lk12/">
+      
+      
+        <link rel="next" href="../lk14/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Тема 13. Big Data в ІоТ - Технології Інтернету речей</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#13-big-data" class="md-skip">
+          Перейти до змісту
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Хедер">
+    <a href="../.." title="Технології Інтернету речей" class="md-header__button md-logo" aria-label="Технології Інтернету речей" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Технології Інтернету речей
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Тема 13. Big Data в ІоТ
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan"  aria-label="Переключити на темну тему"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Переключити на темну тему" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="cyan"  aria-label="Переключити на світлу тему"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Переключити на світлу тему" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Пошук" placeholder="Пошук" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Шукати">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Очистити" aria-label="Очистити" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Пошук розпочато
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Вкладки" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Робоча програма
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../lk1/" class="md-tabs__link">
+          
+  
+  
+  Лекції
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../lb/lb1/" class="md-tabs__link">
+          
+  
+  
+  Лабораторні роботи
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../pz/pz1/" class="md-tabs__link">
+          
+  
+  
+  Практичні заняття
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../kp/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Курсовий проєкт
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../sr/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Самостійна робота
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../sr/quest/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Контрольні завдання (Іспит)
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Навігація" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Технології Інтернету речей" class="md-nav__button md-logo" aria-label="Технології Інтернету речей" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Технології Інтернету речей
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Робоча програма
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Лекції
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Лекції
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 1. Екосистема та архітектура IoT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 2. Технології WPAN та WLAN у IoT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 3. LPWAN технології
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 4. Прикладні протоколи ІоТ (MQTT, CoAP)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 5. Туманні (Fog) та граничні (Edge) обчислення
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 6. Мікроконтролерні платформи (ESP32)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 7. Інтелектуальні сенсори
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 8. Виконавчі пристрої
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 9. Віртуалізація та контейнеризація IoT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 10. IoT платформи та Middleware
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 11. Розумний будинок (Home Assistant)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 12. Промисловий ІоТ (IIoT)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 13. Big Data в ІоТ
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 13. Big Data в ІоТ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Зміст">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Зміст
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Мета лекції
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Очікувані результати навчання
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Детальний покроковий план лекції
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Детальний покроковий план лекції">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-5v-iot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Теоретико-концептуальний базис. Модель 5V та парадигми обробки телеметрії в IoT
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-lambda-kappa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Методологія та аналіз граничних умов. Проектування архітектурних шаблонів Lambda та Kappa
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-smart-grid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Практичний індустріальний / фаховий кейс. Розгортання відмовостійкого аналітичного конвеєра в Smart Grid
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-5v-iot_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Теоретико-концептуальний базис. Модель 5V та парадигми обробки телеметрії в IoT
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Теоретико-концептуальний базис. Модель 5V та парадигми обробки телеметрії в IoT">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-5v" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1. Специфікація характеристик великих даних (5V) у кіберфізичних розподілених системах сенсорного моніторингу
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2. Формати серіалізації, схеми кодування та оптимізація збереження телеметричних потоків від польових мікроконтролерів до озера даних
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-batch-stream" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3. Принципові розбіжності між пакетною (Batch) та потоковою (Stream) парадигмами обробки інформаційних масивів
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-event-time-watermarks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4. Математичні та алгоритмічні моделі віконної агрегації, концепція часу подій (Event Time) та механізм водяних знаків (Watermarks)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Вказівки для самостійного осмислення
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-lambda-kappa_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Методологія та аналіз граничних умов. Проектування архітектурних шаблонів Lambda та Kappa
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Методологія та аналіз граничних умов. Проектування архітектурних шаблонів Lambda та Kappa">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-lambda-batch-layer-speed-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1. Організація трирівневої структури Lambda-архітектури з розділенням пакетного шару (Batch Layer) та шару швидкості (Speed Layer)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-serving-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2. Побудова аналітичного шару обслуговування запитів (Serving Layer) та механізми консолідації гетерогенних представлень
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-kappa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3. Архітектурний шаблон Kappa на базі незмінного розподіленого журналу подій з єдиним потоковим рушієм
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4. Критичні бар'єри та вузькі місця паралельних контурів: проблема подвійної кодової бази, десинхронізація станів та затримки реплікації
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-iot-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5. Критерії вибору та порівняльна оцінка відмовостійкості обчислювальних стеків для промислових IoT-платформ
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Вказівки для самостійного осмислення
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-smart-grid_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Практичний індустріальний / фаховий кейс. Розгортання відмовостійкого аналітичного конвеєра в Smart Grid
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Практичний індустріальний / фаховий кейс. Розгортання відмовостійкого аналітичного конвеєра в Smart Grid">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-pmu-apache-kafka-spark-flink" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1. Комплексний фаховий кейс. Проектування гібридної аналітичної платформи моніторингу високовольтної підстанції на базі синхрофазорних вимірювань PMU із застосуванням Apache Kafka, Spark та Flink
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1. Комплексний фаховий кейс. Проектування гібридної аналітичної платформи моніторингу високовольтної підстанції на базі синхрофазорних вимірювань PMU із застосуванням Apache Kafka, Spark та Flink">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Постановка задачі / ситуації
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Покроковий аналіз та розв'язок
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Покроковий аналіз та розв&#39;язок">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 1. Розрахунок інтенсивності інформаційного потоку та пропускної здатності мережі
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-data-lake" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 2. Оцінка необхідного обсягу сховища озера даних (Data Lake)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-watermarks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 3. Параметризація шару швидкості та конфігурація водяних знаків (Watermarks)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 4. Алгоритмічна формалізація злиття представлень у шарі обслуговування
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Інтерпретація результатів та альтернативні сценарії
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2. Зведена довідкова система лекції
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3. Контрольні питання та завдання
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3. Контрольні питання та завдання">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Прикладні тестові завдання
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Завдання для самостійної роботи
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Завдання для самостійної роботи">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Постановка задачі
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Завдання для виконання
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 14. Machine Learning на межі мережі
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 15. Кібербезпека в системах ІоТ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Лабораторні роботи
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Лабораторні роботи
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 1. Моделювання топологій IoT-мереж
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 2. Симуляція підсистем Розумного будинку
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 3. Дослідження локального MQTT-брокера
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 4. Схемотехнічне моделювання вузла збору
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 5. Прошивка ESP32 для передавання телеметрії MQTT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 6. Декларативне програмування ESP32 (ESPHome)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 7. Серверне середовище Linux для IoT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 8. Контейнеризація в ІоТ (Docker Compose)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 9. Middleware ІоТ (Node-RED)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 10. Сервіс REST API для агрегації даних
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 11. Платформи розумного будинку (Home Assistant)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 12. Сценарії автоматизації Home Assistant
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 13. Обробка телеметрії мовою Python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 14. HMI Dashboard для диспетчеризації
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 15. Комплексне наскрізне тестування IoT-системи
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практичні заняття
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Практичні заняття
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 1. Розрахунок пропускної здатності та живлення
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 2. Проєктування ієрархії топіків MQTT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 3. Правила фільтрації на Edge-шлюзах
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 4. Моделювання АЦП для сенсорів
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 5. Оптимізація енергетичного профілю
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 6. Проєктування конфігурації Docker Compose
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 7. Логічні схеми в Node-RED
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 8. Сценарії Trigger-Condition-Action
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 9. Конвеєр обробки даних (ETL)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 10. Моделювання загроз безпеки (STRIDE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Курсовий проєкт
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Самостійна робота
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sr/quest/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Контрольні завдання (Іспит)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Зміст">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Зміст
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Мета лекції
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Очікувані результати навчання
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Детальний покроковий план лекції
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Детальний покроковий план лекції">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-5v-iot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Теоретико-концептуальний базис. Модель 5V та парадигми обробки телеметрії в IoT
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-lambda-kappa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Методологія та аналіз граничних умов. Проектування архітектурних шаблонів Lambda та Kappa
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-smart-grid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Практичний індустріальний / фаховий кейс. Розгортання відмовостійкого аналітичного конвеєра в Smart Grid
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-5v-iot_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Теоретико-концептуальний базис. Модель 5V та парадигми обробки телеметрії в IoT
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Теоретико-концептуальний базис. Модель 5V та парадигми обробки телеметрії в IoT">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-5v" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1. Специфікація характеристик великих даних (5V) у кіберфізичних розподілених системах сенсорного моніторингу
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2. Формати серіалізації, схеми кодування та оптимізація збереження телеметричних потоків від польових мікроконтролерів до озера даних
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-batch-stream" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3. Принципові розбіжності між пакетною (Batch) та потоковою (Stream) парадигмами обробки інформаційних масивів
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-event-time-watermarks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4. Математичні та алгоритмічні моделі віконної агрегації, концепція часу подій (Event Time) та механізм водяних знаків (Watermarks)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Вказівки для самостійного осмислення
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-lambda-kappa_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Методологія та аналіз граничних умов. Проектування архітектурних шаблонів Lambda та Kappa
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Методологія та аналіз граничних умов. Проектування архітектурних шаблонів Lambda та Kappa">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-lambda-batch-layer-speed-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1. Організація трирівневої структури Lambda-архітектури з розділенням пакетного шару (Batch Layer) та шару швидкості (Speed Layer)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-serving-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2. Побудова аналітичного шару обслуговування запитів (Serving Layer) та механізми консолідації гетерогенних представлень
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-kappa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3. Архітектурний шаблон Kappa на базі незмінного розподіленого журналу подій з єдиним потоковим рушієм
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4. Критичні бар'єри та вузькі місця паралельних контурів: проблема подвійної кодової бази, десинхронізація станів та затримки реплікації
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-iot-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5. Критерії вибору та порівняльна оцінка відмовостійкості обчислювальних стеків для промислових IoT-платформ
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Вказівки для самостійного осмислення
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-smart-grid_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Практичний індустріальний / фаховий кейс. Розгортання відмовостійкого аналітичного конвеєра в Smart Grid
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Практичний індустріальний / фаховий кейс. Розгортання відмовостійкого аналітичного конвеєра в Smart Grid">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-pmu-apache-kafka-spark-flink" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1. Комплексний фаховий кейс. Проектування гібридної аналітичної платформи моніторингу високовольтної підстанції на базі синхрофазорних вимірювань PMU із застосуванням Apache Kafka, Spark та Flink
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1. Комплексний фаховий кейс. Проектування гібридної аналітичної платформи моніторингу високовольтної підстанції на базі синхрофазорних вимірювань PMU із застосуванням Apache Kafka, Spark та Flink">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Постановка задачі / ситуації
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Покроковий аналіз та розв'язок
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Покроковий аналіз та розв&#39;язок">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 1. Розрахунок інтенсивності інформаційного потоку та пропускної здатності мережі
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-data-lake" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 2. Оцінка необхідного обсягу сховища озера даних (Data Lake)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-watermarks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 3. Параметризація шару швидкості та конфігурація водяних знаків (Watermarks)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 4. Алгоритмічна формалізація злиття представлень у шарі обслуговування
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Інтерпретація результатів та альтернативні сценарії
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2. Зведена довідкова система лекції
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3. Контрольні питання та завдання
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3. Контрольні питання та завдання">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Прикладні тестові завдання
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Завдання для самостійної роботи
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Завдання для самостійної роботи">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Постановка задачі
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Завдання для виконання
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="13-big-data">Тема 13. Технології Big Data в Інтернеті речей: потокова аналітика, Лямбда та Каппа архітектури</h1>
+<h2 id="_1">Мета лекції</h2>
+<p>Формування у майбутніх інженерів комплексної системи фундаментальних знань та прикладних компетентностей щодо проектування, масштабування та оптимізації високонавантажених систем обробки великих даних у кіберфізичних комплексах Інтернету речей. Опанування математичних засад потокової та пакетної обробки неперервних телеметричних потоків, вивчення інженерних компромісів між затримкою доставки та повнотою аналітичних розрахунків, а також глибоке засвоєння методології побудови відмовостійких архітектурних рішень на базі шаблонів Lambda та Kappa для їх подальшого самостійного впровадження у критично важливих промислових, транспортних та муніципальних інфраструктурах.</p>
+<h2 id="_2">Очікувані результати навчання</h2>
+<ol>
+<li>
+<p><strong>Знання та розуміння.</strong> Здобувачі вищої освіти засвоять сутність моделі 5V у контексті телеметрії Інтернету речей, внутрішню будову та специфіку бінарних і колонкових форматів даних, математичний апарат віконної агрегації та концептуальні відмінності функціонування обчислювальних контурів у шаблонах Lambda та Kappa.</p>
+</li>
+<li>
+<p><strong>Застосування.</strong> Студенти набудуть здатності практично конфігурувати брокери повідомлень і конвеєри поглинання даних, будувати аналітичні моделі агрегації за часовими вікнами з використанням водяних знаків для компенсації мережевих затримок, а також розробляти узгоджені схеми збереження даних у гарячих і холодних сховищах.</p>
+</li>
+<li>
+<p><strong>Аналіз.</strong> Слухачі зможуть здійснювати системне діагностування вузьких місць розподілених обчислювальних контурів, диференціювати затримки передачі та обробки на різних рівнях стека IoT, аналізувати проблеми подвійної кодової бази та виявляти ризики десинхронізації станів між пакетним шаром і шаром швидкості.</p>
+</li>
+<li>
+<p><strong>Оцінювання та синтез.</strong> Майбутні фахівці зможуть науково обґрунтовувати вибір між Lambda- та Kappa-архітектурами на основі індустріальних вимог до латентності, пропускної здатності та надійності, а також синтезувати комплексні технічні специфікації для відмовостійких аналітичних платформ моніторингу складних кіберфізичних об'єктів.</p>
+</li>
+</ol>
+<hr />
+<h2 id="_3">Детальний покроковий план лекції</h2>
+<h3 id="1-5v-iot">1. Теоретико-концептуальний базис. Модель 5V та парадигми обробки телеметрії в IoT</h3>
+<ul>
+<li>
+<p>1.1. Специфікація характеристик великих даних (5V) у кіберфізичних розподілених системах сенсорного моніторингу.</p>
+</li>
+<li>
+<p>1.2. Формати серіалізації, схеми кодування та оптимізація збереження телеметричних потоків від польових мікроконтролерів до озера даних.</p>
+</li>
+<li>
+<p>1.3. Принципові розбіжності між пакетною (Batch) та потоковою (Stream) парадигмами обробки інформаційних масивів.</p>
+</li>
+<li>
+<p>1.4. Математичні та алгоритмічні моделі віконної агрегації, концепція часу подій (Event Time) та механізм водяних знаків (Watermarks).</p>
+</li>
+</ul>
+<h3 id="2-lambda-kappa">2. Методологія та аналіз граничних умов. Проектування архітектурних шаблонів Lambda та Kappa</h3>
+<ul>
+<li>
+<p>2.1. Організація трирівневої структури Lambda-архітектури з розділенням пакетного шару (Batch Layer) та шару швидкості (Speed Layer).</p>
+</li>
+<li>
+<p>2.2. Побудова аналітичного шару обслуговування запитів (Serving Layer) та механізми консолідації гетерогенних представлень.</p>
+</li>
+<li>
+<p>2.3. Архітектурний шаблон Kappa на базі незмінного розподіленого журналу подій з єдиним потоковим рушієм.</p>
+</li>
+<li>
+<p>2.4. Критичні бар'єри та вузькі місця паралельних контурів: проблема подвійної кодової бази, десинхронізація станів та затримки реплікації.</p>
+</li>
+<li>
+<p>2.5. Критерії вибору та порівняльна оцінка відмовостійкості обчислювальних стеків для промислових IoT-платформ.</p>
+</li>
+</ul>
+<h3 id="3-smart-grid">3. Практичний індустріальний / фаховий кейс. Розгортання відмовостійкого аналітичного конвеєра в Smart Grid</h3>
+<p><strong>Тема наскрізної задачі.</strong> «Проектування гібридної аналітичної платформи моніторингу високовольтної підстанції на базі синхрофазорних вимірювань PMU із застосуванням Apache Kafka, Spark та Flink»</p>
+<h2 id="1-5v-iot_1">1. Теоретико-концептуальний базис. Модель 5V та парадигми обробки телеметрії в IoT</h2>
+<h3 id="11-5v">1.1. Специфікація характеристик великих даних (5V) у кіберфізичних розподілених системах сенсорного моніторингу</h3>
+<p>Стрімке розгортання систем Інтернету речей у промисловому секторі, енергетиці, транспортній інфраструктурі та комунальному господарстві спричинило якісний перехід від локального збору показників до глобальної аналітики розподілених кіберфізичних комплексів. Традиційні реляційні системи управління базами даних, що функціонують за принципами транзакційної цілісності та вимагають жорсткої структуризації таблиць, виявилися неспроможними обробляти неперервні потоки телеметрії. У просторі Інтернету речей інформаційні потоки від сенсорних мереж набули всіх ознак <strong>великих даних</strong> (Big Data), що зумовило необхідність адаптації класичної аналітичної моделі <strong>5V</strong> до інженерних реалій розподілених апаратно-програмних комплексів.</p>
+<p>Характеристика <strong>обсягу (Volume)</strong> у системах Інтернету речей визначається масштабом розгортання периферійних пристроїв та високою частотою зняття метрик. На відміну від класичних бізнес-систем, де генерація транзакцій ініціюється дискретними діями користувачів, промислові сенсори генерують вимірювання детерміновано та безперервно. Окремий акустичний датчик або триосьовий акселерометр, що функціонує на платформі мікроконтролера STM32 чи вузла MPU-6050, опитується із частотою від кількох сотень герц до десятків кілогерц, що продукує десятки гігабайтів сирої інформації щогодини з одного агрегата.</p>
+<p>Вектор <strong>швидкості (Velocity)</strong> відображає інтенсивність надходження повідомлень та вимоги до реакції обчислювальної системи на події реального світу. Телеметрія генерується у формі рухомих даних (<strong>Data in Motion</strong>), які вимагають попередньої фільтрації, маршрутизації та агрегації в темпі надходження. Якщо затримка аналізу в системах електронної комерції допускає секундні або хвилинні інтервали, то у критичних контурах автоматизації з запізнюванням понад кілька мілісекунд коригувальний керуючий сигнал на виконавчий механізм втрачає сенс і може призвести до аварійної зупинки обладнання.</p>
+<p>Параметр <strong>різноманітності (Variety)</strong> зумовлений глибокою апаратною та програмною гетерогенністю Інтернету речей. В єдиний аналітичний простір стікаються структуровані чисельні часові ряди, бінарні пакети послідовних шин контролерів, текстові повідомлення прикладних протоколів, просторово-часові координати рухомих об'єктів та неструктуровані медіадані систем комп'ютерного зору. Об'єднання цих потоків вимагає створення універсальних рівнів абстракції протоколів.</p>
+<p>Властивість <strong>достовірності (Veracity)</strong> безпосередньо пов'язана з фізичною природою первинних вимірювань. Сенсорні потоки за своєю суттю є зашумленими: вони містять аномалії, пропуски через нестабільність бездротового зв'язку стандарту IEEE 802.15.4 або LoRaWAN, систематичний апаратний дрейф калібрувальних коефіцієнтів та помилки розсинхронізації внутрішніх таймерів. Аналітичні системи мають розрізняти реальні фізичні девіації об'єкта та хибні спрацьовування апаратної частини.</p>
+<p>Кінцева категорія <strong>цінності (Value)</strong> визначає економічну та технологічну доцільність обробки телеметрії. Вона полягає у переході від ретроспективної фіксації аварій до прогностичного технічного обслуговування, розрахунку загальної ефективності функціонування обладнання та динамічної оптимізації енергетичних балансів розумних мереж.</p>
+<pre class="mermaid"><code>flowchart TD
+    subgraph IoT_Edge["Рівень фізичних пристроїв та краю мережі (Edge Tier)"]
+        S1["Високочастотні сенсори&lt;br/&gt;(Вібрація, Акустика: 1–10 кГц)"]
+        S2["Низькочастотні сенсори&lt;br/&gt;(Клімат, Тиск: 0.1–1 Гц)"]
+        S3["Системи комп'ютерного зору&lt;br/&gt;(Відеопотоки RTSP)"]
+        MCU["Периферійні контролери&lt;br/&gt;(Попередня фільтрація, АЦП)"]
+
+        S1 --&gt; MCU
+        S2 --&gt; MCU
+    end
+
+    subgraph Ingestion_Layer["Рівень поглинання та первинної класифікації (Ingestion)"]
+        GW["Прикордонний шлюз (Edge Gateway)"]
+        Broker["Розподілений брокер повідомлень&lt;br/&gt;(Apache Kafka / MQTT)"]
+    end
+
+    subgraph Storage_Tier["Розподілена архітектура зберігання (Storage Architecture)"]
+        Hot["Гаряче сховище&lt;br/&gt;(TSDB: InfluxDB / TimescaleDB)"]
+        Cold["Холодне сховище&lt;br/&gt;(Data Lake: HDFS / S3 Parquet)"]
+    end
+
+    subgraph Analytical_Processing["Аналітична обробка та синтез цінності (Value)"]
+        CEP["Обробка складних подій&lt;br/&gt;(CEP, ковзні вікна, фільтрація — Veracity)"]
+        ML["Предиктивні моделі&lt;br/&gt;(Машинне навчання, прогноз відмов)"]
+    end
+
+    subgraph Action_Tier["Рівень дій та візуалізації (Application / Actuation)"]
+        Target["Керуючий вплив на актуатори&lt;br/&gt;та диспетчерські панелі"]
+    end
+
+    %% Зв'язки між підграфами (винесені назовні для стабільного рендерингу)
+    MCU --&gt;|"Неперервний потік (Velocity)"| GW
+    S3 --&gt;|"IP-потік відео (High Bandwidth)"| GW
+    GW --&gt;|"Гетерогенні структури (Variety)"| Broker
+
+    Broker --&gt;|"Потік подій у реальному часі"| CEP
+    Broker --&gt;|"Оперативні метрики"| Hot
+    Broker --&gt;|"Повний масив телеметрії (Volume)"| Cold
+
+    Cold --&gt;|"Історичні дані для тренування"| ML
+    CEP --&gt;|"Миттєве реагування / тривоги"| Target
+    ML --&gt;|"Предиктивні рекомендації"| Target
+    CEP -.-&gt;|"Агреговані метрики"| Hot</code></pre>
+<p>Математичний опис сумарної швидкості надходження інформації <span class="arithmatex">\(V_{total}(t)\)</span> від масиву з <span class="arithmatex">\(N\)</span> сенсорних пристроїв формалізується залежністю:</p>
+<div class="arithmatex">\[V_{total}(t) = \sum_{i=1}^{N} f_i \cdot \left( S_{payload, i} + S_{meta, i} \right) \cdot \left( 1 - \delta_i \right)\]</div>
+<p>де <span class="arithmatex">\(f_i\)</span> позначає частоту дискретизації та формування повідомлень <span class="arithmatex">\(i\)</span>-м датчиком, виражену в герцах; <span class="arithmatex">\(S_{payload, i}\)</span> є розміром корисного навантаження вимірюваної фізичної величини у байтах; <span class="arithmatex">\(S_{meta, i}\)</span> представляє розмір метаданих кадру, що включають часову мітку, ідентифікатор вузла та код достовірності; <span class="arithmatex">\(\delta_i\)</span> позначає коефіцієнт скорочення обсягу інформації за рахунок локальної фільтрації та компресії безпосередньо на мікроконтролері, який змінюється в діапазоні від нуля до одиниці.</p>
+<p>Сумарний обсяг сховища <span class="arithmatex">\(S_{storage}(T)\)</span>, необхідний для накопичення історичного масиву телеметрії за часовий інтервал <span class="arithmatex">\(T\)</span>, описується інтегральним рівнянням з урахуванням динамічного коефіцієнта стиснення:</p>
+<div class="arithmatex">\[S_{storage}(T) = \int_{0}^{T} V_{total}(t) \cdot \left( 1 - \kappa(t) \right) \, dt + M_{index}(T)\]</div>
+<p>де <span class="arithmatex">\(\kappa(t)\)</span> позначає усереднений коефіцієнт стиснення даних алгоритмами колонкового кодування на часовому проміжку; <span class="arithmatex">\(M_{index}(T)\)</span> є функцією зростання обсягу системних індексів, структур B-дерев або LSM-дерев, необхідних для адресації та пошуку часових рядів.</p>
+<blockquote>
+<p><strong>ПРАКТИЧНИЙ ЯКІР:</strong> На сучасних газоперекачувальних станціях моніторинг турбінних агрегатів виконується за допомогою п'єзоелектричних датчиків вібрації з частотою дискретизації <span class="arithmatex">\(10\text{ кГц}\)</span>, де один агрегат формує понад <span class="arithmatex">\(1{,}7\text{ Гбайт}\)</span> необробленої телеметрії щогодини. Застосування периферійної фільтрації на базі промислових контролерів дозволяє скоротити потік даних на <span class="arithmatex">\(85\%\)</span> шляхом передачі лише спектральних коефіцієнтів швидкого перетворення Фур'є, виключаючи перевантаження корпоративної мережі передачі даних.</p>
+</blockquote>
+<hr />
+<h3 id="12">1.2. Формати серіалізації, схеми кодування та оптимізація збереження телеметричних потоків від польових мікроконтролерів до озера даних</h3>
+<p>Ефективність функціонування систем великих даних у просторі Інтернету речей визначається вибором формату внутрішнього представлення інформації на кожному етапі її руху. Польові контролери, такі як мікроконтролери платформи Arduino або мікросхеми ESP8266 та ESP32, мають суворі обмеження обсягу оперативної пам'яті та тактової частоти процесора, тому використання надлишкових текстових форматів на рівні польового зв'язку є неприпустимим. Водночас аналітичні платформи рівня озера даних (Data Lake) потребують бінарних структур, оптимізованих для паралельного читання селективних колонок у терабайтних масивах.</p>
+<p>Текстовий формат <strong>JSON</strong> здобув значне поширення на рівні прототипів та веб-інтерфейсів завдяки легкості сприйняття людиною, проте він створює надмірне навантаження на обчислювальні ресурси вбудованих систем. Повторення рядкових назв ключів у кожному повідомленні збільшує трафік на сотні відсотків порівняно з корисним навантаженням, а необхідність синтаксичного аналізу рядків на боці мікроконтролера викликає непродуктивне витрачання циклів центрального процесора.</p>
+<p>Для передачі телеметрії між прикордонними пристроями та брокерами повідомлень застосовують компактні бінарні протоколи. <strong>Protocol Buffers (Protobuf)</strong> забезпечує строгу типізацію даних на основі попередньо скомпільованих схем, транслюючи числові значення у компактний формат зі змінною довжиною байтів (varint), що знижує обсяг повідомлення у кілька разів порівняно з текстовими аналогами. </p>
+<p>Формат <strong>Apache Avro</strong> оптимізований для потокових систем поглинання даних. Він зберігає схему у форматі JSON окремо від самих повідомлень, маркуючи пакети лише числовим ідентифікатором схеми. У поєднанні з реєстром схем (<strong>Schema Registry</strong>) Avro забезпечує еволюцію структур даних, гарантуючи сумісність старих і нових версій прошивок мікроконтролерів без зупинки глобального конвеєра обробки.</p>
+<p>На рівні довготривалого зберігання в озері даних де-факто стандартом став колонково-орієнтований формат <strong>Apache Parquet</strong>. На відміну від рядкових сховищ, де всі атрибути одного запису зберігаються послідовно, Parquet розбиває масив на групи рядків і зберігає значення кожного поля окремим безперервним бінарним блоком. Це дозволяє аналітичним рушіям зчитувати з диска лише ті стовпці, які беруть участь у розрахунку, ігноруючи решту атрибутів. Крім того, однорідність даних у межах колонки дозволяє застосовувати спеціалізовані методи компресії: кодування довжинами серій (<strong>Run-Length Encoding, RLE</strong>), бітове пакування (<strong>Bit Packing</strong>) та словникову компресію.</p>
+<p>Під час проектування сховищ для великих обсягів телеметрії інженери стикаються з критичними відмінностями між форматами обміну даними, що наведені у таблиці нижче.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Формат представлення</th>
+<th style="text-align: left;">Тип та архітектура структури</th>
+<th style="text-align: left;">Ефективність стиснення та швидкість обробки</th>
+<th style="text-align: left;">Можливості еволюції схеми даних</th>
+<th style="text-align: left;">Приклад з реальної практики</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>JSON</strong></td>
+<td style="text-align: left;">Текстовий, ієрархічний, без явної схеми</td>
+<td style="text-align: left;">Вкрай низьке стиснення, повільний синтаксичний парсинг через сканування рядків</td>
+<td style="text-align: left;">Повна динамічна гнучкість за відсутності формальних гарантій</td>
+<td style="text-align: left;">Відладка REST-інтерфейсів веб-сторінок налаштування шлюзів через HTTP</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Protocol Buffers</strong></td>
+<td style="text-align: left;">Бінарний, рядково-орієнтований, строга типізація</td>
+<td style="text-align: left;">Високе стиснення корисного навантаження, надшвидка серіалізація в C++ коді</td>
+<td style="text-align: left;">Висока, за умови збереження унікальних числових тегів полів</td>
+<td style="text-align: left;">Передача телеметрії бортових контролерів електромобілів через gRPC-канали</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Apache Avro</strong></td>
+<td style="text-align: left;">Бінарний, потоковий, схема відокремлена від даних</td>
+<td style="text-align: left;">Висока щільність пакування, швидка серіалізація за наявності локальної схеми</td>
+<td style="text-align: left;">Повна підтримка зворотної сумісності через централізований Schema Registry</td>
+<td style="text-align: left;">Поглинання вимірювань смарт-лічильників брокером Apache Kafka для стрімінгу</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Apache Parquet</strong></td>
+<td style="text-align: left;">Бінарний, колонково-орієнтований, збагачений метаданими</td>
+<td style="text-align: left;">Максимальна компресія однотипних колонок (Snappy, ZSTD), блискавичні вибірки</td>
+<td style="text-align: left;">Підтримка додавання нових колонок метрик без перезапису файлових блоків</td>
+<td style="text-align: left;">Довготривалий ретроспективний аналіз річних трендів напруги в розподілених мережах Smart Grid</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>ТИПОВА ПОМИЛКА:</strong> Збереження сирих телеметричних повідомлень безпосередньо у форматі JSON на розподілені файлові системи HDFS або об'єктні сховища S3 є грубою інженерною помилкою. Це спричиняє так звану проблему дрібних файлів (Small Files Problem), перевантажує оперативну пам'ять метаданими простору імен та змушує аналітичні рушії виконувати повне сканування гігабайтних обсягів текстових символів замість прямого адресного вичитування потрібних числових колонок.</p>
+</blockquote>
+<hr />
+<h3 id="13-batch-stream">1.3. Принципові розбіжності між пакетною (Batch) та потоковою (Stream) парадигмами обробки інформаційних масивів</h3>
+<p>Усі обчислювальні завдання в аналітиці великих даних класифікуються за фундаментальним критерієм часових обмежень надходження вхідних масивів. Пакетна обробка (<strong>Batch Processing</strong>) та потокова обробка (<strong>Stream Processing</strong>) спираються на принципово різні математичні моделі та вимагають діаметрально протилежних інженерних підходів до розподілу пам'яті, дискового введення-виведення та обчислювальних ресурсів.</p>
+<p>Пакетна парадигма оперує концепцією <strong>обмеженого набору даних</strong> (Bounded Data). Вхідний масив є статичним, дискретним за часом та завершеним у просторі. Обчислювальний процес ініціюється періодично за розкладом або по досягненні певного кванту інформації. Парадигма пакетних обчислень, яскравими представниками якої є класична модель <strong>MapReduce</strong> та обчислення ядра <strong>Apache Spark</strong>, оптимізується за критерієм максимальної пропускної здатності (<strong>Throughput</strong>). </p>
+<p>Утилізація обчислювальних ресурсів у пакетному режимі прагне до ста відсотків: алгоритм планувальника розпаралелює виконання операцій над терабайтними блоками файлів, зберігаючи проміжні результати на розподілених дискових масивах або в пам'яті виконавців. Проте розплатою за здатність виконувати складні багатовимірні перетворення, глибокі математичні регресії та навчання нейромережевих моделей є висока латентність, яка вимірюється хвилинами, годинами або добами.</p>
+<p>Потокова парадигма розглядає світ як неперервну генерацію <strong>необмежених даних</strong> (Unbounded Data). У цій моделі не існує поняття завершеного набору: нові елементи потоку виникають щомиті і мають бути опрацьовані індивідуально в міру надходження (<strong>Record-by-Record</strong>) або надмалими мікропакетами (<strong>Micro-Batching</strong>). Потокові рушії, такі як <strong>Apache Flink</strong> та <strong>Apache Spark Structured Streaming</strong>, оптимізуються за критерієм мінімальної затримки обробки (<strong>Low Latency</strong>). </p>
+<p>Усі проміжні розрахунки виконуються виключно в оперативній пам'яті з використанням швидких вбудованих сховищ стану (наприклад, RocksDB), що забезпечує час відгуку системи на рівні одиниць чи десятків мілісекунд. Проте потокові обчислення суворо обмежені у доступних аналітичних операціях: через неможливість зафіксувати глобальний контекст потік не дозволяє проводити довільні реляційні з'єднання нелокалізованих у часі сутностей без застосування часових меж.</p>
+<blockquote>
+<p><strong>ПРАКТИЧНИЙ ЯКІР:</strong> У системах диспетчеризації магістрального транспорту алгоритми потокової обробки безперервно аналізують телеметрію з GPS-трекерів та CAN-шин вантажівок для миттєвого контролю виходу за межі геозон та фіксації екстреного гальмування із часом реакції <span class="arithmatex">\(80\text{ мс}\)</span>. Водночас пакетний аналітичний контур раз на добу завантажує терабайтний зріз показників витрати палива та температурних режимів двигунів для побудови математичних моделей оптимізації міжремонтних інтервалів автопарку.</p>
+</blockquote>
+<hr />
+<h3 id="14-event-time-watermarks">1.4. Математичні та алгоритмічні моделі віконної агрегації, концепція часу подій (Event Time) та механізм водяних знаків (Watermarks)</h3>
+<p>Для виконання статистичних, регресійних або спектральних обчислень над нескінченними потоками телеметрії необхідно дискретизувати часову вісь на скінченні інтервали. Ця процедура реалізується за допомогою <strong>віконних функцій</strong> (Windowing). У практиці проектування інформаційних систем Інтернету речей виділяють три базові типи віконних моделей: фіксовані, ковзні та сесійні вікна.</p>
+<p>Фіксовані вікна (<strong>Tumbling Windows</strong>) ділять часовий потік на послідовні інтервали однакової тривалості <span class="arithmatex">\(\Delta T\)</span>, які не перекриваються та не мають проміжків між собою. Кожна подія сенсорної мережі належить рівно одному вікну. Якщо <span class="arithmatex">\(t\)</span> є часовою міткою вимірювання, то індекс вікна <span class="arithmatex">\(k\)</span> детерміновано обчислюється як ціла частина від ділення часу на ширину вікна:</p>
+<div class="arithmatex">\[k = \left\lfloor \frac{t}{\Delta T} \right\rfloor\]</div>
+<p>Ковзні вікна (<strong>Sliding Windows</strong>) характеризуються фіксованою тривалістю <span class="arithmatex">\(\Delta T\)</span> та параметром кроку зміщення <span class="arithmatex">\(\delta\)</span>, де <span class="arithmatex">\(\delta &lt; \Delta T\)</span>. Оскільки крок зміщення менший за розмір вікна, суміжні інтервали частково перекриваються. Подія з міткою часу <span class="arithmatex">\(t\)</span> одночасно потрапляє до декількох послідовних вікон, кількість яких дорівнює <span class="arithmatex">\(\lceil \Delta T / \delta \rceil\)</span>. Це забезпечує високу плавність розрахунку ковзних середніх або оцінки середньоквадратичного відхилення сигналів у динаміці.</p>
+<p>Сесійні вікна (<strong>Session Windows</strong>) формуються динамічно на основі аналізу пауз неактивності джерела даних. Сесія залишається відкритою доти, доки інтервал між послідовними повідомленнями датчика не перевищує порогового значення <span class="arithmatex">\(T_{gap}\)</span>. Як тільки виникає пауза <span class="arithmatex">\(\Delta t &gt; T_{gap}\)</span>, сесійне вікно закривається, ініціюючи виконання агрегаційної функції над накопиченими записами, а наступне повідомлення започатковує нову сесію.</p>
+<p>Для виконання агрегації потоковий процесор застосовує оператор згортки над множиною точок, що потрапили у межі визначеного вікна:</p>
+<div class="arithmatex">\[y(W_k) = \bigoplus_{x_j \in W_k} \varphi(x_j)\]</div>
+<p>де <span class="arithmatex">\(\bigoplus\)</span> позначає комутативну та асоціативну бінарну операцію акумуляції значень; <span class="arithmatex">\(\varphi(x_j)\)</span> є функцією проекції або перетворення сирого вимірювання <span class="arithmatex">\(x_j\)</span>.</p>
+<p>Критичною проблемою потокової аналітики в Інтернеті речей є розмежування трьох часових шкал:</p>
+<ol>
+<li>
+<p>Час події (<strong>Event Time</strong>) — фізичний момент виникнення явища на об'єкті спостереження, що фіксується локальним годинником мікроконтролера і записується в тіло пакету.</p>
+</li>
+<li>
+<p>Час поглинання (<strong>Ingestion Time</strong>) — системний час брокера повідомлень або шлюзу в момент реєстрації кадру в черзі на вхідному контурі.</p>
+</li>
+<li>
+<p>Час обробки (<strong>Processing Time</strong>) — локальний системний час обчислювального вузла кластера, який безпосередньо виконує алгоритмічний код віконної трансформації.</p>
+</li>
+</ol>
+<p>Через флуктуації пропускної здатності бездротових каналів зв'язку, буферизацію на проміжних вузлах та повторні передачі кадрів пакети надходять до обчислювача із непередбачуваним запізненням та порушенням хронологічної послідовності (<strong>Out-of-Order Data</strong>). Використання Processing Time у таких умовах призводить до спотворення результатів: події, що відбулися одночасно у фізичному просторі, потрапляють у різні обчислювальні вікна через затримку в радіоефірі.</p>
+<p>Для коректної обробки інформації за шкалою Event Time застосовується механізм <strong>водяних знаків (Watermarks)</strong>. Водяний знак є монотонно зростаючою службовою міткою часу <span class="arithmatex">\(W(t)\)</span>, яка вплітається в потік подій і сигналізує обчислювачу, що надходження повідомлень з часом події, меншим за <span class="arithmatex">\(W(t)\)</span>, вважається малоймовірним.</p>
+<p>Математично генерація евристичного водяного знака з фіксованим відставанням описується формулою:</p>
+<div class="arithmatex">\[W(t) = \max_{j} \{ t_{event, j} \} - \Delta t_{skew}\]</div>
+<p>де <span class="arithmatex">\(\max \{ t_{event, j} \}\)</span> позначає максимальний зафіксований час події серед усіх пакетів, поглинених системою на даний момент часу; <span class="arithmatex">\(\Delta t_{skew}\)</span> є емпірично встановленим захисним інтервалом запізнення, що враховує максимальну очікувану затримку в мережах передачі даних.</p>
+<pre class="mermaid"><code>stateDiagram-v2
+    [*] --&gt; Ingestion: Надходження телеметричного кадру з датчика
+
+    state Ingestion {
+        Extract: Вилучення мітки Event Time (t_event)
+        GenerateWM: Оновлення Watermark W(t) = max(t_event) - delta_skew
+    }
+
+    Ingestion --&gt; WindowRouting: Маршрутизація в часове вікно
+
+    state WindowRouting {
+        CheckTime: Порівняння t_event та поточного Watermark W(t)
+        InTime: t_event &gt;= W(t) (Своєчасна подія)
+        Late: t_event &lt; W(t) (Запізніла подія)
+    }
+
+    CheckTime --&gt; InTime
+    CheckTime --&gt; Late
+
+    InTime --&gt; Accumulation: Запис у стан відповідного вікна [T_start, T_end)
+
+    state WindowExecution {
+        WaitWM: Очікування умов закриття вікна
+        FireTrigger: Настання події W(t) &gt;= T_end (Закриття вікна)
+        ComputeAggregate: Обчислення агрегації f(x) над станом вікна
+        PurgeState: Очищення оперативного стану (Eviction)
+    }
+
+    Accumulation --&gt; WaitWM
+    WaitWM --&gt; FireTrigger
+    FireTrigger --&gt; ComputeAggregate
+    ComputeAggregate --&gt; PurgeState
+
+    Late --&gt; SideOutput: Перенаправлення в потік запізнілих даних (Dead Letter Queue)
+    Late --&gt; AllowedLateness: Дооблік (якщо t_event &gt; T_end - L_allowed)
+
+    PurgeState --&gt; [*]: Емісія результату в шар обслуговування
+    SideOutput --&gt; [*]: Реєстрація аномалії передачі</code></pre>
+<p>Події, чий фізичний час <span class="arithmatex">\(t_{event}\)</span> перевищує значення поточного водяного знака, акумулюються у робочому стані відкритого вікна. Щойно водяний знак перетинає верхню часову межу вікна (<span class="arithmatex">\(W(t) \ge T_{end}\)</span>), вікно вважається сформованим: тригер викликає функцію агрегації, емітує результуючий вектор в аналітичне сховище та ініціює видалення проміжного стану з оперативної пам'яті. </p>
+<p>Події, які прибувають після закриття вікна (<span class="arithmatex">\(t_{event} &lt; W(t)\)</span>), класифікуються як запізнілі. Залежно від політики системи вони або відкидаються, або направляються в ізольований потік коригування (<strong>Side Output</strong>), запобігаючи нескінченному блокуванню ресурсів кластера.</p>
+<blockquote>
+<p><strong>КОНТРОЛЬНЕ ПИТАННЯ:</strong> Під час тимчасового обриву стільникового каналу зв'язку автономний агротехнічний комбайн продовжував вести збір телеметрії з датчиків витрати палива та позиціонування протягом 40 хвилин, накопичуючи пакети в локальному буфері енергонезалежної пам'яті. Після відновлення зв'язку вся черга накопичених пакетів надійшла на брокер повідомлень за 10 секунд. Як поведеться потоковий обчислювальний процесор, сконфігурований на розрахунок 5-хвилинних агрегатів, у двох випадках: якщо він налаштований за шкалою Processing Time та якщо він працює за шкалою Event Time з механізмом Watermarks?</p>
+</blockquote>
+<details class="note">
+<summary>Розгорнути аналіз / відповідь</summary>
+<p><strong>Правильний варіант: За шкалою Processing Time виникне некоректний стрибок агрегатів, тоді як за Event Time дані ретроспективно розподіляться за 8 відповідними вікнами.</strong></p>
+<ol>
+<li>
+<p>При використанні шкали <strong>Processing Time</strong> потоковий процесор маркує всі повідомлення системним часом моменту їх надходження на сервер. Оскільки 40-хвилинний масив інформації надходить на обчислювач за 10 секунд, усі дані комбайна потраплять до одного-двох поточних 5-хвилинних вікон. Це сформує фіктивний 8-кратний сплеск витрати палива в поточному вікні, повністю спотворивши статистику, а попередні вікна залишаться порожніми.</p>
+</li>
+<li>
+<p>При застосуванні шкали <strong>Event Time</strong> процесор аналізує вбудовані часові мітки генерації вимірювань сенсорами. Якщо глибина допустимого запізнення (Allowed Lateness) у системі дозволяє обробку таких затримок або якщо механізм генерації водяних знаків враховує монотонне відставання міток, завантажений буфер пакетів коректно розіб'ється на вісім послідовних 5-хвилинних вікон у минулому часі. Кожне вікно обчислить точні витрати палива для свого фізичного інтервалу руху.</p>
+</li>
+</ol>
+</details>
+<hr />
+<h3 id="_4">Вказівки для самостійного осмислення</h3>
+<ol>
+<li>
+<p>Проаналізуйте інженерні компроміси між вибором бінарного формату серіалізації Protocol Buffers та Apache Avro для організації обміну даними між польовими сенсорними шлюзами промислового підприємства та хмарним брокером повідомлень, звернувши особливу увагу на накладні витрати пам'яті мікроконтролера та механізми забезпечення зворотної сумісності при зміні складу підключених датчиків.</p>
+</li>
+<li>
+<p>Складіть аналітичну записку з порівнянням поведінки віконних агрегацій різного типу (Tumbling, Sliding та Session) в умовах виникнення раптового затору в мережі зв'язку, визначивши параметри захисного часового зсуву для генератора водяних знаків, які гарантують баланс між повнотою охоплення вимірювань та граничним часом утримання стану вікна в оперативній пам'яті потокового процесора.</p>
+</li>
+<li>
+<p>Дослідіть вплив високої частоти дискретизації вібраційних датчиків на продуктивність розподіленого дискового сховища озера даних, розрахувавши критичні пороги пропускної здатності шини введення-виведення при переході від наївного збереження часових рядів до пакетного стиснення з використанням колонкових алгоритмів Apache Parquet.</p>
+</li>
+</ol>
+<h2 id="2-lambda-kappa_1">2. Методологія та аналіз граничних умов. Проектування архітектурних шаблонів Lambda та Kappa</h2>
+<h3 id="21-lambda-batch-layer-speed-layer">2.1. Організація трирівневої структури Lambda-архітектури з розділенням пакетного шару (Batch Layer) та шару швидкості (Speed Layer)</h3>
+<p>Класична методологія проектування розподілених інформаційних систем обробки великих даних у кіберфізичних просторах спирається на парадигму функціональної декомпозиції обчислювальних навантажень. <strong>Lambda-архітектура</strong> була розроблена як системна відповідь на неможливість забезпечення одночасно низької латентності та глобальної аналітичної точності в межах єдиного технологічного стека. В основу архітектури покладено фундаментальний принцип, згідно з яким будь-який довільний аналітичний запит є функцією від усієї сукупності історичних даних системи. </p>
+<p>Для практичної реалізації цього принципу контур обробки інформації розділяється на два паралельні обчислювальні тракти, що живляться з єдиного незмінного джерела первинних подій, а результати їхньої роботи інтегруються на вихідному рівні представлення.</p>
+<p>Первинне поглинання інформації здійснюється на рівні розподіленого незмінного журналу подій, де дані телеметрії фіксуються в порядку їх надходження без будь-яких деструктивних модифікацій. Відправлені промисловими шлюзами або мікроконтролерами пакети дублюються у два незалежні контури: пакетний шар (<strong>Batch Layer</strong>) та шар швидкості (<strong>Speed Layer</strong>).</p>
+<p>Пакетний шар виконує роль еталонного сховища та обчислювача над повним масивом незмінних первинних даних (<strong>Master Dataset</strong>). Усі вимірювання, що надходять від сенсорних мереж, записуються в розподілену файлову систему HDFS або об'єктне сховище S3 у вихідному вигляді. Пакетний процесор періодично запускає обчислювальні завдання над накопиченими історичними блоками. </p>
+<p>Головним завданням цього шару є формування попередньо розрахованих пакетних представлень (<strong>Batch Views</strong>). Оскільки пакетний шар має доступ до всієї глибини ретроспективних вимірювань і необмежений жорсткими часовими рамками, він виконує повне очищення даних від шумів, усуває дублікати, виправляє наслідки порушення черговості пакетів та будує глобальні статистичні агрегати. Повторне обчислення пакетного представлення з нуля гарантує виправлення будь-яких системних збоїв чи алгоритмічних помилок, що могли виникнути на попередніх циклах.</p>
+<p>Паралельно функціонує шар швидкості, головним призначенням якого є мінімізація затримки між фізичним моментом генерації сигналу датчиком та його відображенням у системі прийняття рішень. Цей шар обробляє виключно той дельта-потік телеметрії, який надійшов у систему після запуску останньої ітерації пакетного процесора і ще не встиг потрапити до актуального пакетного представлення. </p>
+<p>Обчислення виконуються потоковими процесорами в оперативній пам'яті без звернення до повільних дискових масивів. Шар швидкості генерує оперативні представлення в реальному часі (<strong>Real-Time Views</strong>). На відміну від пакетного шару, шар швидкості використовує інкрементні алгоритми обчислення та ймовірнісні структури даних, жертвуючи абсолютною точністю та повнотою заради досягнення субсекундної швидкодії.</p>
+<blockquote>
+<p><strong>ВАЖЛИВО:</strong> Незмінність первинного набору даних (Immutability of Master Dataset) є базовим інваріантом Lambda-архітектури. Будь-які корекції алгоритмів або усунення системних помилок здійснюються виключно шляхом повторного пакетного прогону історичного масиву сирих подій через оновлену функцію обробки, а не модифікацією вже збережених агрегованих показників.</p>
+</blockquote>
+<hr />
+<h3 id="22-serving-layer">2.2. Побудова аналітичного шару обслуговування запитів (Serving Layer) та механізми консолідації гетерогенних представлень</h3>
+<p>Шар обслуговування запитів (<strong>Serving Layer</strong>) є інтеграційним ядром Lambda-архітектури, що забезпечує низьколатентний доступ клієнтських додатків до результатів обчислень обох паралельних контурів. Цей рівень реалізується на базі розподілених нереляційних баз даних, оптимізованих для інтенсивного пакетного запису та швидких вибірок за ключем, таких як Apache Cassandra, Apache HBase або ClickHouse.</p>
+<p>Основна складність функціонування шару обслуговування полягає у необхідності динамічного об'єднання двох принципово різних структур: статичних, заздалегідь індексованих пакетних представлень (Batch Views) та динамічних, постійно оновлюваних оперативних представлень (Real-Time Views). Коли клієнтська система ініціює запит на отримання значень показників за певний інтервал, механізм маршрутизації шару обслуговування декомпозує його на дві складові, паралельно опитує обидва сховища та синтезує фінальну відповідь.</p>
+<p>Взаємодія компонентів у часі під час надходження телеметрії та виконання клієнтських аналітичних запитів наведена на діаграмі нижче.</p>
+<pre class="mermaid"><code>sequenceDiagram
+    autonumber
+    actor Sensor as Сенсорний вузол (Edge)
+    participant Broker as Брокер черги (Kafka)
+    participant Speed as Шар швидкості (Flink)
+    participant Batch as Пакетний шар (Spark)
+    participant Master as Первинне сховище (HDFS)
+    participant Serving as Шар представлень (Cassandra)
+    actor Client as Диспетчер / SCADA
+
+    Sensor-&gt;&gt;Broker: Телеметричний кадр (t_event = t)
+    par Потоковий контур
+        Broker-&gt;&gt;Speed: Негайне вичитування події
+        Speed-&gt;&gt;Serving: Інкремент Real-time View (дельта за вікно)
+    and Пакетний контур
+        Broker-&gt;&gt;Master: Асинхронна персистенція у Master Dataset
+        Note over Batch,Master: Ініціалізація Batch-циклу за розкладом Delta_T
+        Master-&gt;&gt;Batch: Завантаження блоку [0, t - Delta_T]
+        Batch-&gt;&gt;Batch: Повний розрахунок точних агрегатів
+        Batch-&gt;&gt;Serving: Запис оновленого Batch View
+        Serving-&gt;&gt;Serving: Інвалідація застарілих даних у Real-time View
+    end
+    Client-&gt;&gt;Serving: Аналітичний запит Q(t_start, t_now)
+    Serving-&gt;&gt;Serving: Злиття Batch View + Real-time View
+    Serving--&gt;&gt;Client: Консолідований вектор метрик</code></pre>
+<p>Формалізація процесу розв'язання аналітичного запиту та узгодження гетерогенних станів у шарі обслуговування описується наступною послідовністю операцій:</p>
+<div class="arithmatex">\[
+\begin{aligned}
+\text{Крок 1 (Декомпозиція часового простору):} &amp; \quad \mathcal{T}_{query} = [t_{start}, \, t_{now}] = \mathcal{T}_{batch} \cup \mathcal{T}_{speed}, \\
+&amp; \quad \text{де } \mathcal{T}_{batch} = [t_{start}, \, T_{checkpoint}], \quad \mathcal{T}_{speed} = (T_{checkpoint}, \, t_{now}] \\
+\text{Крок 2 (Паралельна екстракція представлень):} &amp; \quad \mathcal{V}_{batch} = \mathcal{F}_{read}(\text{BatchStore}, \, Q, \, \mathcal{T}_{batch}), \\
+&amp; \quad \mathcal{V}_{speed} = \mathcal{F}_{read}(\text{RealtimeStore}, \, Q, \, \mathcal{T}_{speed}) \\
+\text{Крок 3 (Консолідація та дедуплікація):} &amp; \quad \mathcal{R}_{final} = \mathcal{M}_{merge}\left(\mathcal{V}_{batch}, \, \mathcal{V}_{speed}\right) \setminus \mathcal{D}_{overlap} \\
+\text{Крок 4 (Інвалідація оперативного шару):} &amp; \quad \text{RealtimeStore} \leftarrow \text{RealtimeStore} \setminus \left\{ x(t) \mid t \le T_{checkpoint} \right\}
+\end{aligned}
+\]</div>
+<p>де <span class="arithmatex">\(t_{start}\)</span> та <span class="arithmatex">\(t_{now}\)</span> позначають початкову та поточну часові межі користувацького запиту <span class="arithmatex">\(Q\)</span>; <span class="arithmatex">\(T_{checkpoint}\)</span> є міткою часу останнього успішно завершеного розрахунку пакетного шару; <span class="arithmatex">\(\mathcal{V}_{batch}\)</span> представляє історичний набір даних високої точності, зчитаний із постійного сховища; <span class="arithmatex">\(\mathcal{V}_{speed}\)</span> відповідає оперативному набору свіжих метрик, згенерованому шаром швидкості; <span class="arithmatex">\(\mathcal{M}_{merge}\)</span> позначає оператор об'єднання схем і структур вибірок; <span class="arithmatex">\(\mathcal{D}_{overlap}\)</span> є областю колізійного перекриття даних, викликаного затримкою фіксації транзакцій між шарами, яка підлягає обов'язковому вилученню; <span class="arithmatex">\(\text{RealtimeStore}\)</span> позначає внутрішній стан бази даних шару швидкості, що очищується від застарілих записів після оновлення пакетних таблиць.</p>
+<hr />
+<h3 id="23-kappa">2.3. Архітектурний шаблон Kappa на базі незмінного розподіленого журналу подій з єдиним потоковим рушієм</h3>
+<p>Незважаючи на високу відмовостійкість, функціональна дуальність Lambda-архітектури породжує значні інженерні витрати на її супровід. У відповідь на ці виклики Джей Крепс запропонував альтернативну методологію, яка отримала назву <strong>Kappa-архітектури</strong>. Ключова ідея шаблону Kappa полягає у повній ліквідації пакетного рівня як окремого технологічного шару та уніфікації всієї обробки навколо єдиного потокового обчислювального рушія.</p>
+<p>У Kappa-архітектурі єдиним джерелом істини для всієї системи виступає розподілений апенд-онлі журнал подій (<strong>Append-Only Distributed Log</strong>), найчастіше реалізований засобами Apache Kafka або Apache Pulsar. На відміну від типових конфігурацій черг повідомлень, де дані видаляються одразу після вичитування абонентами, у системі Kappa встановлюється тривалий або нескінченний термін утримання повідомлень (<strong>Retention Policy</strong>). Це дозволяє розглядати журнал не просто як тимчасовий буфер, а як постійне сховище повної історії функціонування кіберфізичної системи.</p>
+<p>Обробка даних як у режимі реального часу, так і над історичними вибірками виконується єдиним програмним кодом за допомогою потокових фреймворків (Apache Flink, Kafka Streams або Bytewax). Поняття пакетної обробки трансформується у вироджений випадок потокової обробки: історичні дані розглядаються як обмежений часовими рамками потік, що зчитується з журналу подій на максимальній швидкості пропускної здатності дискової підсистеми.</p>
+<p>Методологічний алгоритм перерахунку історичних даних або оновлення бізнес-логіки у системі Kappa не вимагає переписування коду під інший фреймворк і виконується за чіткою послідовністю дій:</p>
+<ol>
+<li>
+<p>Програміст вносить зміни до аналітичного алгоритму і розгортає нову версію потокового застосунку поруч із поточною діючою версією без зупинки системи.</p>
+</li>
+<li>
+<p>Новий екземпляр застосунку призначається до нової групи споживачів (Consumer Group) брокера повідомлень і налаштовує свій стартовий покажчик читання на нульовий оффсет (Offset 0), починаючи паралельне вичитування всієї збереженої історії журналу подій.</p>
+</li>
+<li>
+<p>У міру проходження історичних даних новий застосунок записує результати обчислень у нову незалежну таблицю шару представлення, не впливаючи на роботу основного інтерфейсу користувача.</p>
+</li>
+<li>
+<p>Як тільки новий застосунок наздоганяє реальний час надходження подій, системний маршрутизатор виконує атомарне перемикання трафіку користувацьких запитів на нове представлення, після чого стара версія потокового завдання разом зі застарілою таблицею безперервно виводяться з експлуатації.</p>
+</li>
+</ol>
+<blockquote>
+<p><strong>ПРАКТИЧНИЙ ЯКІР:</strong> Індустріальна платформа аналітики промислового Інтернету речей Siemens MindSphere використовує принципи Kappa-архітектури для обробки телеметрії виробничих ліній. Завдяки тривалому зберіганню сирих сигналів у топіках Apache Kafka, інженери мають можливість безперервно навчати та валідувати нові алгоритми виявлення аномалій верстатів з ЧПК безпосередньо на реальних історичних даних, виключаючи необхідність підтримки окремих Hadoop-кластерів.</p>
+</blockquote>
+<hr />
+<h3 id="24">2.4. Критичні бар'єри та вузькі місця паралельних контурів: проблема подвійної кодової бази, десинхронізація станів та затримки реплікації</h3>
+<p>Практична реалізація систем великих даних в Інтернеті речей стикається із суворими інженерними та алгоритмічними обмеженнями, які можуть нівелювати теоретичні переваги обраних архітектурних шаблонів. Проектувальник зобов'язаний чітко розпізнавати граничні умови працездатності кожної моделі.</p>
+<p>Головним системним недоліком Lambda-архітектури є <strong>проблема подвійної кодової бази (Dual Codebase Problem)</strong>. Необхідність реалізації однієї й тієї самої логіки обробки різними інструментами (наприклад, мовою Scala для пакетного рушія Apache Spark та мовою Java для потокового процесора Apache Flink) створює розрив у поведінці алгоритмів. </p>
+<p>Різні внутрішні бібліотеки оптимізації математичних операцій, відмінності в алгоритмах віконного закриття та різна точність представлення чисел із плаваючою комою призводять до виникнення ситуацій, коли шар швидкості та пакетний шар видають відмінні значення для ідентичних фізичних подій. Це явище спричиняє раптові стрибки графіків на диспетчерських панелях у момент, коли попередньо розраховані значення шару швидкості заміщуються точними пакетними представленнями.</p>
+<p>Наступним критичним бар'єром є <strong>проблема гонитви станів (Race Conditions) та десинхронізації вікон</strong>. Якщо пакетний процес розрахунку затримується через брак обчислювальних ресурсів кластера або блокування операцій введення-виведення, шар швидкості змушений необмежено утримувати в оперативній пам'яті все більший обсяг незакритих станів. Переповнення оперативної пам'яті вузлів потокового процесора призводить до скидання буферів на диск, стрімкої деградації продуктивності та лавиноподібного зростання латентності, що перетворює шар швидкості на неефективний псевдопакетний контур.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>ГРАНИЧНІ УМОВИ НЕЗАСТОСОВНОСТІ ТА КРИТИЧНОГО ЗБОЮ АРХІТЕКТУРНИХ МОДЕЛЕЙ:
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>1. Граничні умови для Lambda-архітектури:
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>   - Об'єкти з високою динамікою зміни алгоритмів: якщо бізнес-правила коригуються частіше, 
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>     ніж період повного регресійного тестування подвійної кодової бази, система неминуче 
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>     переходить у стан хронічної семантичної неузгодженості результатів.
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>   - Дефіцит кваліфікованого інженерного персоналу: подвоєння обчислювальної інфраструктури 
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>     (Spark + Flink + Hadoop + Cassandra) підвищує операційні витрати (OPEX) до меж, 
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>     що перевищують комерційну цінність отримуваної телеметрії.
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>2. Граничні умови для Kappa-архітектури:
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>   - Невисока пропускна здатність сховища при повторному відтворенні: якщо обсяг історичних даних 
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>     сягає десятків петабайтів, повне зчитування журналу брокера від нульового зміщення 
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>     створює критичне дискове навантаження, уповільнюючи поточне поглинання свіжих вимірювань 
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>     та блокуючи процеси реального часу.
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>   - Складні багатовимірні Joins із довільним часовим зміщенням: алгоритми, що вимагають 
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>     зіставлення подій, віддалених одна від одної на роки (наприклад, порівняння параметрів 
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>     зносу турбіни із заводськими тестами трирічної давнини), перевантажують внутрішній стан 
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>     потокових рушіїв і призводять до фатальних помилок вичерпання пам'яті (OutOfMemoryError).
+</span></code></pre></div>
+<hr />
+<h3 id="25-iot-">2.5. Критерії вибору та порівняльна оцінка відмовостійкості обчислювальних стеків для промислових IoT-платформ</h3>
+<p>Вибір оптимального архітектурного шаблону для промислових кіберфізичних комплексів є багатокритеріальною оптимізаційною задачею, де інженерні компроміси безпосередньо впливають на вартість володіння системою, надійність та готовність інформаційного сервісу. Для обґрунтованого проектування архітектури необхідно зіставити ключові технічні та економічні показники розглянутих моделей.</p>
+<p>Порівняльна матриця функціональних характеристик, складності та обмежень базових аналітичних підходів подана в таблиці нижче.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Архітектурний критерій</th>
+<th style="text-align: left;">Традиційна пакетна архітектура (Batch/Hadoop)</th>
+<th style="text-align: left;">Lambda-архітектура (Гібрид Spark + Flink)</th>
+<th style="text-align: left;">Kappa-архітектура (Уніфікований Flink/Kafka)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Мінімальна гарантована латентність</strong></td>
+<td style="text-align: left;">Від <span class="arithmatex">\(10\text{ хвилин}\)</span> до десятків годин</td>
+<td style="text-align: left;"><span class="arithmatex">\(10\text{ мс} \dots 100\text{ мс}\)</span> (у шарі швидкості)</td>
+<td style="text-align: left;"><span class="arithmatex">\(10\text{ мс} \dots 50\text{ мс}\)</span> (неперервно)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Складність алгоритмічної кодової бази</strong></td>
+<td style="text-align: left;">Низька (єдиний пакетний фреймворк)</td>
+<td style="text-align: left;">Критично висока (синхронізація логіки на двох мовах/рушіях)</td>
+<td style="text-align: left;">Середня (єдиний потоковий код для всіх сценаріїв)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Накладні витрати на інфраструктуру</strong></td>
+<td style="text-align: left;">Базові (один обчислювальний кластер)</td>
+<td style="text-align: left;">Подвійні (утримання паралельних серверних потужностей)</td>
+<td style="text-align: left;">Оптимізовані (високі вимоги лише до дискового масиву брокера)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Ефективність виконання глобальних Ad-hoc запитів</strong></td>
+<td style="text-align: left;">Максимальна (глибоке сканування Parquet/ORC масивів)</td>
+<td style="text-align: left;">Висока (через шари індексованих Batch Views)</td>
+<td style="text-align: left;">Обмежена (вимагає попередньої матеріалізації представлень)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Складність впровадження</strong></td>
+<td style="text-align: left;">Низька: стандартні налаштування ETL та MapReduce задач</td>
+<td style="text-align: left;">Екстремальна: складна інтеграція та налагодження шару злиття</td>
+<td style="text-align: left;">Висока: вимагає глибокого розуміння потокового стану та оффсетів</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Критичні ризики / Обмеження</strong></td>
+<td style="text-align: left;">Непридатність для систем аварійного захисту та безпеки</td>
+<td style="text-align: left;">Семантичний розрив результатів, гонитва станів під час злиття</td>
+<td style="text-align: left;">Висока вартість довготривалого утримання петабайт у топіках брокера</td>
+</tr>
+</tbody>
+</table>
+<p>Аналіз матриці свідчить, що <strong>Lambda-архітектура</strong> залишається безальтернативним вибором для енергетичних комплексів, хімічних заводів та об'єктів критичної інфраструктури, де діють суворі нормативні вимоги до аудиту незмінних первинних даних, а ціна помилки аналітики може вимірюватися мільйонними збитками або людськими жертвами. </p>
+<p>Натомість <strong>Kappa-архітектура</strong> демонструє максимальну ефективність у проектах розумного міста (Smart City), розподілених логістичних мережах та споживчому сегменті Інтернету речей, де критично важливими є гнучкість адаптації коду, швидкість виведення нових сервісів на ринок та відсутність витрат на синхронізацію різнорідних системних шарів.</p>
+<blockquote>
+<p><strong>КОНТРОЛЬНЕ ПИТАННЯ:</strong> Під час модернізації диспетчерського пункту теплової електростанції інженерам було доручено розробити систему детектування детонаційних хвиль у камерах згоряння на базі масиву п'єзодатчиків тиску (<span class="arithmatex">\(5\text{ кГц}\)</span>). Одночасно система повинна виконувати довгостроковий розрахунок коефіцієнта корисної дії котлоагрегатів за місяць на основі інтеграції показників спаленого газу та хімічного складу води. Яку архітектуру — Lambda чи Kappa — необхідно обрати для реалізації даного проекту, і які конкретно технологічні компоненти повинні бути задіяні для запобігання втратам високочастотних імпульсів тиску?</p>
+</blockquote>
+<details class="note">
+<summary>Розгорнути аналіз / відповідь</summary>
+<p><strong>Правильний варіант: Необхідно впроваджувати Lambda-архітектуру з локалізованим Edge-контуром для детектування детонації.</strong></p>
+<ol>
+<li>
+<p><strong>Обґрунтування архітектурного вибору:</strong> 
+Поставлена задача містить два діаметрально протилежні функціональні контури: задачу протиаварійного захисту з латентністю реагування менше <span class="arithmatex">\(5\text{ мс}\)</span> (детектування детонації) та важке ретроспективне інтегральне обчислення термодинамічного ККД котла за місяць з множинними нелінійними з'єднаннями різнорідних показників. </p>
+</li>
+<li>
+<p>Спроба реалізувати місячний розрахунок ККД через потоковий рушій Kappa-архітектури призведе до колапсу пам'яті через необхідність утримання гігантського місячного стану (State) для багатокомпонентних кореляцій. </p>
+</li>
+<li>
+<p>Відповідно, для даного промислового об'єкта класична <strong>Lambda-архітектура</strong> є єдино надійним рішенням: довгостроковий ККД розраховується в пакетному шарі (Apache Spark) над первинним архівом у Parquet/HDFS, а детонаційний контур обслуговується шаром швидкості.</p>
+</li>
+<li>
+<p><strong>Запобігання втратам високочастотних імпульсів (<span class="arithmatex">\(5\text{ кГц}\)</span>):</strong>
+Передача сирого потоку <span class="arithmatex">\(5\text{ кГц}\)</span> від кожного датчика безпосередньо у центральний брокер повідомлень перевантажить мережу. </p>
+</li>
+<li>
+<p>На рівні польових мікроконтролерів (Edge Tier) реалізується пороговий апаратний тригер або розрахунок ковзної дисперсії в реальному часі. </p>
+</li>
+<li>
+<p>Безпосередньо у високошвидкісний брокер (Apache Kafka) передаються лише пакети високої мітки загрози при виході амплітуди за критичну межу, що гарантує доставку аварійного кадру потоковому рушію менш ніж за <span class="arithmatex">\(2\text{ мс}\)</span>.</p>
+</li>
+</ol>
+</details>
+<hr />
+<h3 id="_5">Вказівки для самостійного осмислення</h3>
+<ol>
+<li>
+<p>Розробіть формалізовану структурну модель дедуплікації даних у шарі обслуговування (Serving Layer) Lambda-архітектури для сценарію, коли потоковий процесор через мережеві затримки продовжив оновлювати оперативні таблиці після успішного завершення чергового пакетного розрахунку та запису нових історичних представлень.</p>
+</li>
+<li>
+<p>Проаналізуйте з використанням апарату теорії масового обслуговування механізм повторного вичитування журналу подій у Kappa-архітектурі при перерахунку річного обсягу телеметрії, розрахувавши необхідну пропускну здатність дискової підсистеми брокера повідомлень, за якої час побудови нового аналітичного представлення не перевищить регламентного ліміту у 6 годин.</p>
+</li>
+<li>
+<p>Дослідіть технічні причини виникнення семантичного розриву (Semantic Gap) між результатами обчислень алгоритмів машинного навчання у пакетному та потоковому контурах Lambda-архітектури, запропонувавши інженерні методи верифікації ідентичності математичних результатів без зниження загальної продуктивності системи.</p>
+</li>
+</ol>
+<h2 id="3-smart-grid_1">3. Практичний індустріальний / фаховий кейс. Розгортання відмовостійкого аналітичного конвеєра в Smart Grid</h2>
+<h3 id="31-pmu-apache-kafka-spark-flink">3.1. Комплексний фаховий кейс. Проектування гібридної аналітичної платформи моніторингу високовольтної підстанції на базі синхрофазорних вимірювань PMU із застосуванням Apache Kafka, Spark та Flink</h3>
+<h4 id="_6">Постановка задачі / ситуації</h4>
+<p>На магістральній високовольтній підстанції напругою <span class="arithmatex">\(750\text{ кВ} / 330\text{ кВ}\)</span> об'єднаної енергетичної системи впроваджується система моніторингу перехідних режимів (WAMS, Wide Area Monitoring System). Об'єкт спостереження містить сорок пристроїв синхрофазорних вимірювань (<strong>Phasor Measurement Units, PMU</strong>), які встановлені на трансформаторах, збірних шинах та відхідних лініях електропередач. Кожен пристрій вимірює миттєві вектори напруги та струму, синхронізуючись із сигналами точного часу супутників GPS відповідно до стандарту IEEE C37.118.</p>
+<p>Перед інженерною групою постає завдання спроектувати відмовостійку архітектуру збору, збереження та аналізу телеметрії, яка одночасно розв'язує дві суперечливі задачі:</p>
+<ol>
+<li>
+<p>Забезпечення роботи швидкого контуру автоматичного протиаварійного захисту (детектування асинхронного ходу, міжсистемних низькочастотних коливань та локалізації коротких замикань) із наскрізною затримкою обробки не більше <span class="arithmatex">\(100\text{ мс}\)</span>.</p>
+</li>
+<li>
+<p>Забезпечення роботи повільного аналітичного контуру (глибинний аналіз деградації ізоляції силових трансформаторів, спектральний аналіз вищих гармонік, розрахунок фактичних втрат активної потужності та формування обов'язкових регуляторних звітів за місяць) над повним історичним масивом вимірювань без втрати сирих даних.</p>
+</li>
+</ol>
+<p>Вхідні параметри, апаратні обмеження та вимоги до надійності проектованої системи наведені у таблиці нижче.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Параметр системи</th>
+<th style="text-align: left;">Технічне значення / Характеристика</th>
+<th style="text-align: left;">Примітка та інженерні обмеження</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Кількість терміналів PMU (<span class="arithmatex">\(N\)</span>)</strong></td>
+<td style="text-align: left;"><span class="arithmatex">\(40\text{ одиниць}\)</span></td>
+<td style="text-align: left;">Розподілені по відкритому розподільчому пристрою підстанції</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Частота формування кадрів (<span class="arithmatex">\(f_s\)</span>)</strong></td>
+<td style="text-align: left;"><span class="arithmatex">\(50\text{ кадрів/с}\)</span> (<span class="arithmatex">\(50\text{ Гц}\)</span>)</td>
+<td style="text-align: left;">Синхронізація за мітками часу GPS із точністю <span class="arithmatex">\(\le 1\text{ мкс}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Розмір корисного навантаження (<span class="arithmatex">\(S_{pmu}\)</span>)</strong></td>
+<td style="text-align: left;"><span class="arithmatex">\(128\text{ байтів}\)</span></td>
+<td style="text-align: left;">Величини та фазові кути 4 напруг, 4 струмів, частота, ROCOF</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Розмір мережевого кадру (<span class="arithmatex">\(S_{frame}\)</span>)</strong></td>
+<td style="text-align: left;"><span class="arithmatex">\(168\text{ байтів}\)</span></td>
+<td style="text-align: left;">Включає заголовки TCP/IP та службові поля IEEE C37.118</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Гранична латентність швидкого контуру</strong></td>
+<td style="text-align: left;"><span class="arithmatex">\(\tau_{crit} \le 100\text{ мс}\)</span></td>
+<td style="text-align: left;">Час від фізичної події до генерації сигналу керування</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Глибина ретроспективного архіву</strong></td>
+<td style="text-align: left;"><span class="arithmatex">\(365\text{ діб}\)</span> (<span class="arithmatex">\(1\text{ рік}\)</span>)</td>
+<td style="text-align: left;">Повний масив незмінних даних для державного регулятора</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Допустиме запізнення пакетів (<span class="arithmatex">\(\Delta t_{skew}\)</span>)</strong></td>
+<td style="text-align: left;"><span class="arithmatex">\(40\text{ мс}\)</span></td>
+<td style="text-align: left;">Максимальний джиттер комутаторів мережі підстанції</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Цільова доступність системи (SLA)</strong></td>
+<td style="text-align: left;"><span class="arithmatex">\(99{,}999\%\)</span> («п'ять дев'яток»)</td>
+<td style="text-align: left;">Не більше 5 хвилин сумарного простою на рік</td>
+</tr>
+</tbody>
+</table>
+<p>Архітектура розв'язання задачі базується на Lambda-шаблоні, адаптованому під стандарти промислової автоматизації, що проілюстровано на блок-схемі нижче.</p>
+<pre class="mermaid"><code>flowchart TD
+    subgraph Substation_Edge["Периферія підстанції (Edge Tier)"]
+        PMU["Масив PMU (40 одиниць, 50 Гц, IEEE C37.118)"]
+        PDC["Концентратор фазорних даних (Phasor Data Concentrator)"]
+        PMU --&gt;|Кадри 168 Б по мережі Ethernet| PDC
+    end
+
+    subgraph Ingestion_Cluster["Кластер буферизації та первинного поглинання"]
+        Kafka["Кластер Apache Kafka (Топік 'pmu-telemetry', 12 партицій)"]
+        PDC --&gt;|Потоковий бінарний експорт Avro| Kafka
+    end
+
+    subgraph Speed_Layer["Шар швидкості (Speed Layer)"]
+        Flink["Потоковий рушій Apache Flink"]
+        AlertEngine["Модуль протиаварійного контролю (State: RocksDB)"]
+        RT_Store["Оперативна база (Redis / In-Memory Cluster)"]
+
+        Kafka --&gt;|Event Time стрім| Flink
+        Flink &lt;--&gt; AlertEngine
+        AlertEngine --&gt;|Латентність &lt; 100 мс| Relay["Сигнал на автоматику РЗА"]
+        Flink --&gt;|Ковзні вікна| RT_Store
+    end
+
+    subgraph Batch_Layer["Пакетний шар (Batch Layer)"]
+        Secor["Коннектор пакування (Kafka-to-Storage)"]
+        DataLake["Озеро даних HDFS / Ceph (Формат Parquet + Snappy)"]
+        Spark["Обчислювальний кластер Apache Spark"]
+        Batch_Store["Колонкова СУБД (ClickHouse)"]
+
+        Kafka --&gt;|Асинхронний злив| Secor
+        Secor --&gt; DataLake
+        DataLake --&gt;|Нічні та годинні завдання| Spark
+        Spark --&gt;|Batch Views| Batch_Store
+    end
+
+    subgraph Serving_Layer["Шар обслуговування запитів (Serving Layer)"]
+        Gateway["Уніфікований API Gateway"]
+        SCADA["Диспетчерський пульт SCADA / EMS"]
+
+        RT_Store --&gt; Gateway
+        Batch_Store --&gt; Gateway
+        Gateway --&gt; SCADA
+    end</code></pre>
+<h4 id="_7">Покроковий аналіз та розв'язок</h4>
+<h5 id="1">Крок 1. Розрахунок інтенсивності інформаційного потоку та пропускної здатності мережі</h5>
+<p>Розрахунок сумарної швидкості надходження корисної телеметрії та необхідної пропускної здатності каналу зв'язку є першим етапом проектування системи. Для визначення навантаження підставимо значення параметрів із таблиці вхідних даних у вираз:</p>
+<div class="arithmatex">\[
+\begin{aligned}
+V_{payload} &amp;= N \cdot f_s \cdot S_{pmu} = 40 \cdot 50 \cdot 128 = 256\,000\text{ байтів/с} = 250\text{ Кбайт/с} \\
+V_{network} &amp;= N \cdot f_s \cdot S_{frame} = 40 \cdot 50 \cdot 168 = 336\,000\text{ байтів/с} = 328{,}125\text{ Кбайт/с} \approx 2{,}69\text{ Мбіт/с}
+\end{aligned}
+\]</div>
+<p>Потік пакетів у системі становить рівно <span class="arithmatex">\(2\,000\text{ повідомлень/с}\)</span>. Хоча мережева швидкість <span class="arithmatex">\(2{,}69\text{ Мбіт/с}\)</span> повністю вкладається в стандартний інтерфейс Ethernet <span class="arithmatex">\(100\text{Base-TX}\)</span>, ключовим викликом є не обсяг каналу, а частота обробки транзакцій брокером повідомлень без накопичення затримок у чергах.</p>
+<h5 id="2-data-lake">Крок 2. Оцінка необхідного обсягу сховища озера даних (Data Lake)</h5>
+<p>Для забезпечення річного зберігання масиву незмінних первинних даних розраховується добовий та річний обсяг простору. При прямому збереженні сирого потоку без стиснення добовий обсяг <span class="arithmatex">\(S_{raw/day}\)</span> становить:</p>
+<div class="arithmatex">\[S_{raw/day} = V_{network} \cdot 86\,400 = 336\,000 \cdot 86\,400 = 29\,030\,400\,000\text{ байтів} \approx 27{,}037\text{ Гбайт/добу}\]</div>
+<p>Оскільки чисельні часові ряди синхрофазорів характеризуються високим ступенем кореляції сусідніх відліків, застосування колонкового формату Apache Parquet зі стисненням алгоритмом Snappy забезпечує коефіцієнт компресії <span class="arithmatex">\(\kappa = 0{,}78\)</span>. Тоді скоригований добовий обсяг збереження <span class="arithmatex">\(S_{parquet/day}\)</span> та річна ємність озера даних <span class="arithmatex">\(S_{year}\)</span> визначаються співвідношеннями:</p>
+<div class="arithmatex">\[
+\begin{aligned}
+S_{parquet/day} &amp;= S_{raw/day} \cdot (1 - \kappa) = 27{,}037 \cdot (1 - 0{,}78) = 5{,}948\text{ Гбайт/добу} \\
+S_{year} &amp;= 5{,}948 \cdot 365 \approx 2\,171\text{ Гбайт} \approx 2{,}12\text{ Тбайт}
+\end{aligned}
+\]</div>
+<p>З урахуванням трикратного фактора реплікації в кластері HDFS (<span class="arithmatex">\(R = 3\)</span>) та необхідності виділення <span class="arithmatex">\(30\%\)</span> технологічного резерву під індекси та метадані, мінімальна чиста ємність дискового масиву сховища становить <span class="arithmatex">\(S_{cluster} = 2{,}12 \cdot 3 \cdot 1{,}3 = 8{,}27\text{ Тбайт}\)</span>.</p>
+<h5 id="3-watermarks">Крок 3. Параметризація шару швидкості та конфігурація водяних знаків (Watermarks)</h5>
+<p>Для виявлення міжсистемних низькочастотних коливань частоти мережі (діапазон коливань від <span class="arithmatex">\(0{,}1\)</span> до <span class="arithmatex">\(2\text{ Гц}\)</span>) у потоковому процесорі Apache Flink налаштовується ковзне вікно тривалістю <span class="arithmatex">\(\Delta T = 2\text{ с}\)</span> із кроком зміщення <span class="arithmatex">\(\delta = 100\text{ мс}\)</span>. Для запобігання втраті даних через мережевий джиттер генератор водяних знаків налаштовується на затримку <span class="arithmatex">\(\Delta t_{skew} = 40\text{ мс}\)</span>:</p>
+<div class="arithmatex">\[W(t) = \max_{j} \{ t_{event, j} \} - 0{,}040\text{ с}\]</div>
+<p>Обсяг оперативної пам'яті <span class="arithmatex">\(M_{state}\)</span>, необхідний потоковому рушію для утримання відкритого стану всіх паралельних вікон по 40 вузлах PMU з урахуванням допустимого запізнення, обчислюється як:</p>
+<div class="arithmatex">\[M_{state} = N \cdot (\Delta T + \Delta t_{skew}) \cdot f_s \cdot S_{state\_record} = 40 \cdot (2{,}0 + 0{,}04) \cdot 50 \cdot 256\text{ байтів} \approx 1\,044\,480\text{ байтів} \approx 1{,}0\text{ Мбайт}\]</div>
+<p>Малий обсяг стану дозволяє утримувати всі робочі структури у швидкісній пам'яті L3/RAM процесорних вузлів із бекендом на базі RocksDB, забезпечуючи час обчислення ковзного вікна менше <span class="arithmatex">\(8\text{ мс}\)</span>, що гарантує сумарний бюджет затримки контуру в межах <span class="arithmatex">\(65\text{ мс}\)</span> (при ліміті <span class="arithmatex">\(100\text{ мс}\)</span>).</p>
+<h5 id="4">Крок 4. Алгоритмічна формалізація злиття представлень у шарі обслуговування</h5>
+<p>Консолідація даних для диспетчерського інтерфейсу SCADA, що надсилає запит на інтервал <span class="arithmatex">\([t_{now} - 1\text{ година}, \, t_{now}]\)</span>, формалізується алгоритмом динамічного вибору гранул:</p>
+<div class="arithmatex">\[
+\begin{aligned}
+\text{Крок 1:} &amp; \quad T_{checkpoint} = \text{ClickHouse.getMaxTimestamp()} \\
+\text{Крок 2:} &amp; \quad \mathcal{V}_{batch} = \text{SELECT time, pmu\_id, v\_mag, freq FROM batch\_views WHERE time BETWEEN } (t_{now} - 3600) \text{ AND } T_{checkpoint} \\
+\text{Крок 3:} &amp; \quad \mathcal{V}_{speed} = \text{Redis.zrangebyscore}(\text{realtime\_stream}, \, T_{checkpoint} + 1, \, t_{now}) \\
+\text{Крок 4:} &amp; \quad \mathcal{R}_{SCADA} = \text{MergeSort}(\mathcal{V}_{batch}, \, \mathcal{V}_{speed})
+\end{aligned}
+\]</div>
+<p>де <span class="arithmatex">\(T_{checkpoint}\)</span> фіксує останню закриту годину пакетного агрегатора; вибірка <span class="arithmatex">\(\mathcal{V}_{batch}\)</span> повертає точно згладжені значення з постійного сховища ClickHouse; <span class="arithmatex">\(\mathcal{V}_{speed}\)</span> повертає високочастотну сиру телеметрію останніх секунд із пам'яті Redis; функція MergeSort гарантує лінійне поєднання масивів без розривів часового ряду на межі переходу.</p>
+<h4 id="_8">Інтерпретація результатів та альтернативні сценарії</h4>
+<p>Розрахунки доводять, що розроблена комбінація технологій повністю задовольняє вимогам надійності та швидкодії об'єкта генерації: критичний контур протиаварійного захисту функціонує в ізольованому потоковому шарі з латентністю <span class="arithmatex">\(65\text{ мс}\)</span>, тоді як важкі аналітичні алгоритми працюють над озером даних обсягом <span class="arithmatex">\(2{,}12\text{ Тбайт/рік}\)</span> без деградації оперативного моніторингу.</p>
+<p>Аналіз альтернативних сценаріїв визначає межі стійкості спроектованої системи:</p>
+<ol>
+<li>
+<p>Якщо кількість терміналів PMU зросте вдесятеро (до 400 одиниць у масштабі регіонального оператора передачі), сумарний вхідний потік сягне <span class="arithmatex">\(20\,000\text{ повідомлень/с}\)</span>, що вимагатиме переходу від локального шлюзу до шардованого кластера брокерів Apache Kafka із збільшенням кількості партицій топіка до 48 для забезпечення паралельної утилізації потокових ядер Flink.</p>
+</li>
+<li>
+<p>Якщо інженерне рішення розгортатиметься на віддалених сонячних електростанціях без надійного оптоволоконного зв'язку, де передача здійснюється через стільникові модеми з затримками до <span class="arithmatex">\(2\text{ с}\)</span>, модель водяних знаків із фіксованим відставанням <span class="arithmatex">\(40\text{ мс}\)</span> призведе до масової класифікації даних як запізнілих та їх втрати швидким контуром. У такому разі потоковий рушій повинен бути переконфігурований на адаптивну генерацію водяних знаків на основі квантилів запізнення або переведений на модель децентралізованих обчислень (Edge Computing) із первинною фіксацією аварій безпосередньо на польовому шлюзі.</p>
+</li>
+</ol>
+<hr />
+<h3 id="32">3.2. Зведена довідкова система лекції</h3>
+<p>Підсумкова система концепцій, аналітичних моделей та технологічних інструментів, розглянутих у межах лекції, систематизована у зведеній інженерній матриці.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Термін / Концепція</th>
+<th style="text-align: left;">Формалізація / Сутність</th>
+<th style="text-align: left;">Реальний кейс застосування</th>
+<th style="text-align: left;">Основне обмеження / Ризик</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Модель 5V Big Data</strong></td>
+<td style="text-align: left;">Комплексна характеристика потоків даних за параметрами Volume, Velocity, Variety, Veracity, Value</td>
+<td style="text-align: left;">Класифікація вимірювальних потоків енергосистеми Smart Grid</td>
+<td style="text-align: left;">Нехтування Veracity призводить до хибних аварійних сигналів</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Protocol Buffers</strong></td>
+<td style="text-align: left;">Бінарна серіалізація зі строгою типізацією та числовими тегами полів кадру</td>
+<td style="text-align: left;">Передача векторних вимірювань PMU на шлюз за стандартом IEEE C37.118</td>
+<td style="text-align: left;">Вимагає попередньої дистрибуції скомпільованих схем на всі вузли</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Apache Avro</strong></td>
+<td style="text-align: left;">Бінарний потоковий формат із динамічним відокремленням схеми через Registry</td>
+<td style="text-align: left;">Буферизація та маршрутизація телеметрії в топіках Apache Kafka</td>
+<td style="text-align: left;">Затримка першого виклику при зверненні до зовнішнього Schema Registry</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Apache Parquet</strong></td>
+<td style="text-align: left;">Колонково-орієнтований бінарний формат збереження з блоками метаданих</td>
+<td style="text-align: left;">Довготривале сховище Data Lake для ретроспективного аналізу</td>
+<td style="text-align: left;">Непридатний для потокового оновлення окремих полів у реальному часі</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Batch Processing</strong></td>
+<td style="text-align: left;">Пакетна обчислювальна модель над обмеженими масивами (Bounded Data)</td>
+<td style="text-align: left;">Розрахунок місячного балансу активної та реактивної енергії підстанції</td>
+<td style="text-align: left;">Висока латентність (від хвилин до годин), неможливість реагування на аварії</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Stream Processing</strong></td>
+<td style="text-align: left;">Неперервна обробка необмежених потоків даних у пам'яті (In-Memory)</td>
+<td style="text-align: left;">Автоматичне виявлення асинхронного ходу ліній у системі РЗА</td>
+<td style="text-align: left;">Обмежений обсяг пам'яті для утримання історичного контексту подій</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Tumbling Window</strong></td>
+<td style="text-align: left;">Фіксовані часові вікна <span class="arithmatex">\(\Delta T\)</span>, що не перекриваються: <span class="arithmatex">\(k = \lfloor t / \Delta T \rfloor\)</span></td>
+<td style="text-align: left;">Дискретний підрахунок кількості імпульсів лічильників за кожні 5 хвилин</td>
+<td style="text-align: left;">Втрата контексту на стиках двох послідовних розрахункових вікон</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Sliding Window</strong></td>
+<td style="text-align: left;">Перекривні часові вікна <span class="arithmatex">\(\Delta T\)</span> із кроком зміщення <span class="arithmatex">\(\delta\)</span> (<span class="arithmatex">\(\delta &lt; \Delta T\)</span>)</td>
+<td style="text-align: left;">Безперервний розрахунок ковзного середньоквадратичного значення напруги</td>
+<td style="text-align: left;">Збільшення навантаження на пам'ять пропорційно відношенню <span class="arithmatex">\(\Delta T / \delta\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Event Time</strong></td>
+<td style="text-align: left;">Фізичний час генерації вимірювання сенсором за шкалою GPS/RTC</td>
+<td style="text-align: left;">Кореляція векторів напруги з різних географічних точок енергомережі</td>
+<td style="text-align: left;">Необхідність використання складних алгоритмів обліку запізнілих даних</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Watermarks</strong></td>
+<td style="text-align: left;">Монотонно зростаюча службова мітка часу: <span class="arithmatex">\(W(t) = \max(t_e) - \Delta t_{skew}\)</span></td>
+<td style="text-align: left;">Фіксація закриття часових вікон у потоковому процесорі Apache Flink</td>
+<td style="text-align: left;">Заниження <span class="arithmatex">\(\Delta t_{skew}\)</span> веде до втрати даних, завищення — до затримок</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Lambda-архітектура</strong></td>
+<td style="text-align: left;">Гібридний патерн паралельної обробки через Batch Layer, Speed Layer та Serving Layer</td>
+<td style="text-align: left;">Корпоративні WAMS/EMS системи керування магістральними мережами</td>
+<td style="text-align: left;">Проблема подвійної кодової бази та ризики розсинхронізації станів</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Kappa-архітектура</strong></td>
+<td style="text-align: left;">Патерн обробки всіх сценаріїв єдиним потоковим рушієм над журналом Kafka</td>
+<td style="text-align: left;">Системи динамічного моніторингу парку електротранспорту Smart City</td>
+<td style="text-align: left;">Висока вартість зберігання петабайтних архівів безпосередньо в топіках</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="33">3.3. Контрольні питання та завдання</h3>
+<h4 id="_9">Прикладні тестові завдання</h4>
+<ol>
+<li>
+<p>Під час аналізу роботи швидкого контуру моніторингу вібрації турбіни потоковий процесор раптово почав ігнорувати <span class="arithmatex">\(15\%\)</span> вхідних повідомлень, що надходять від бездротових датчиків, маркуючи їх як запізнілі (Late Events). Адміністратор встановив, що середній мережевий джиттер зріс із <span class="arithmatex">\(15\text{ мс}\)</span> до <span class="arithmatex">\(60\text{ мс}\)</span> через перевантаження радіоканалу, тоді як параметр генератора водяних знаків <span class="arithmatex">\(\Delta t_{skew}\)</span> залишався рівним <span class="arithmatex">\(20\text{ мс}\)</span>. Яке коригування конфігурації рушія відновлює повний прийом даних із мінімальним впливом на загальну латентність контуру аварійного захисту?</p>
+</li>
+<li>
+<p>A. Перемикання обчислень на системну часову шкалу Processing Time із повною ліквідацією водяних знаків.</p>
+</li>
+<li>
+<p>B. Збільшення параметра допустимого часового зсуву водяного знака <span class="arithmatex">\(\Delta t_{skew}\)</span> до <span class="arithmatex">\(70\text{ мс}\)</span>.</p>
+</li>
+<li>
+<p>C. Збільшення розміру фіксованого вікна Tumbling Window з <span class="arithmatex">\(200\text{ мс}\)</span> до <span class="arithmatex">\(2\text{ с}\)</span>.</p>
+</li>
+<li>
+<p>D. Направлення всіх запізнілих повідомлень у чергу Side Output із їх подальшим вилученням.</p>
+</li>
+</ol>
+<details class="note">
+<summary>Розгорнути аналіз / відповідь</summary>
+<p><strong>Правильний варіант: B.</strong></p>
+<ol>
+<li>
+<p>Механізм водяних знаків базується на рівнянні <span class="arithmatex">\(W(t) = \max \{ t_{event} \} - \Delta t_{skew}\)</span>. Якщо фактичний мережевий джиттер сягає <span class="arithmatex">\(60\text{ мс}\)</span>, а допустимий зсув становить лише <span class="arithmatex">\(20\text{ мс}\)</span>, водяний знак перетинає кінцеву межу вікна раніше, ніж фізичний пакет доходить мережею. Встановлення <span class="arithmatex">\(\Delta t_{skew} = 70\text{ мс}\)</span> компенсує максимальну мережеву затримку і гарантує потрапляння пакетів у робочий стан вікна до його закриття, збільшуючи загальну затримку реакції лише на контрольовані <span class="arithmatex">\(50\text{ мс}\)</span>.</p>
+</li>
+<li>
+<p>Аналіз дистракторів:</p>
+</li>
+<li>
+<p>Варіант A є помилковим, оскільки перехід на Processing Time в умовах джиттеру призведе до змішування відліків різних фізичних секунд в одне вікно, спотворюючи результати фазового аналізу.</p>
+</li>
+<li>
+<p>Варіант C не усуває проблему запізнення пакетів відносно водяного знака всередині самого вікна, а лише збільшує загальну латентність системи у десять разів.</p>
+</li>
+<li>
+<p>Варіант D призведе до остаточної втрати <span class="arithmatex">\(15\%\)</span> критичних вимірювань для контуру реального часу, оскільки дані осядуть у допоміжній черзі без участі в розрахунку протиаварійного тригера.</p>
+</li>
+</ol>
+</details>
+<ol>
+<li>
+<p>Інженерна група обирає формат зберігання піврічного архіву телеметрії підстанції (понад 50 мільярдів числових записів) для забезпечення можливості виконання аналітиками довільних Ad-hoc SQL-запитів, які звертаються до 2-3 обраних колонок параметрів струму. Чому використання колонкового формату Apache Parquet є радикально ефективнішим за збереження даних у масиві файлів Apache Avro або JSON?</p>
+</li>
+<li>
+<p>A. Parquet автоматично видаляє дублікати записів на рівні заголовків файлових блоків.</p>
+</li>
+<li>
+<p>B. Parquet не потребує наявності метаданих і використовує текстову компресію рядків за алгоритмом Gzip.</p>
+</li>
+<li>
+<p>C. Parquet підтримує пропуск непотрібних колонок при читанні (Projection Pushdown) та використовує статистику блоків для пропуску непотрібних діапазонів рядків (Predicate Pushdown).</p>
+</li>
+<li>
+<p>D. Parquet дозволяє здійснювати інкрементний запис по одному повідомленню безпосередньо з мікроконтролера.</p>
+</li>
+</ol>
+<details class="note">
+<summary>Розгорнути аналіз / відповідь</summary>
+<p><strong>Правильний варіант: C.</strong></p>
+<ol>
+<li>
+<p>Формат Apache Parquet організований за колонковим принципом. При читанні запиту, що вимагає аналізу лише колонок струму, дискова підсистема взагалі не зчитує байти інших колонок (Projection Pushdown), зменшуючи обсяг зчитування на <span class="arithmatex">\(80-90\%\)</span>. Крім того, кожен блок Parquet містить метадані про мінімальні та максимальні значення (min/max statistics) для кожної колонки, що дозволяє рушію запитів повністю пропускати цілі блоки файлів, якщо шукані часові інтервали не перетинаються з їхнім діапазоном (Predicate Pushdown).</p>
+</li>
+<li>
+<p>Аналіз дистракторів:</p>
+</li>
+<li>
+<p>Варіант A є технічно хибним, оскільки Parquet не є транзакційною СУБД і не виконує автоматичну дедуплікацію на рівні формату.</p>
+</li>
+<li>
+<p>Варіант B суперечить структурі формату: Parquet перенасичений службовими бінарними метаданими у кінцевику файлу (File Footer) і не є текстовим.</p>
+</li>
+<li>
+<p>Варіант D описує властивість, прямо протилежну сутності Parquet: запис у Parquet вимагає накопичення великих груп рядків (Row Groups) в оперативній пам'яті і є категорично неефективним для поодиноких записів від польових мікроконтролерів.</p>
+</li>
+</ol>
+</details>
+<ol>
+<li>
+<p>У промисловій системі контролю теплових режимів, спроектованій за принципами класичної Lambda-архітектури, виявлено феномен стрибкоподібної зміни усереднених показників температури щогодини в момент оновлення диспетчерського дашборду. Технічний аудит показав, що обчислювальна логіка розрахунку ковзного середнього в Apache Spark (Batch Layer) використовує алгоритм дійсних чисел подвійної точності IEEE 754 (Double), а в Apache Flink (Speed Layer) оптимізована під 32-бітні цілі числа з фіксованою комою. Проявом якої класичної системної проблеми великих даних є цей інцидент?</p>
+</li>
+<li>
+<p>A. Проблеми голодування ресурсів брокера (Broker Resource Starvation).</p>
+</li>
+<li>
+<p>B. Проблеми семантичного розриву внаслідок подвійної кодової бази (Dual Codebase Semantic Gap).</p>
+</li>
+<li>
+<p>C. Порушення реплікації партицій у кластері незмінного збереження.</p>
+</li>
+<li>
+<p>D. Аномалії переповнення буфера зворотного тиску (Backpressure Saturation).</p>
+</li>
+</ol>
+<details class="note">
+<summary>Розгорнути аналіз / відповідь</summary>
+<p><strong>Правильний варіант: B.</strong></p>
+<ol>
+<li>
+<p>Сутність проблеми подвійної кодової бази в Lambda-архітектурі полягає в необхідності підтримки двох незалежних реалізацій однакових математичних алгоритмів для різних обчислювальних середовищ. Навіть незначні відмінності в машинному представленні чисел, округленні чи логіці агрегації між пакетом (Spark) та потоком (Flink) призводять до розбіжностей результатів. Коли шар обслуговування заміщує тимчасові значення шару швидкості еталонними пакетними даними, користувач спостерігає штучний стрибок значень на графіку.</p>
+</li>
+<li>
+<p>Аналіз дистракторів:</p>
+</li>
+<li>
+<p>Варіант A стосується дефіциту процесорного часу або пам'яті брокера черги і проявляється у зростанні затримок доставки, а не в розбіжності числових значень.</p>
+</li>
+<li>
+<p>Варіант C описує мережевий збій кластера збереження, наслідком якого є повна недоступність частини файлових блоків, а не планомірна розбіжність розрахунків.</p>
+</li>
+<li>
+<p>Варіант D описує гідродинамічний ефект перевантаження конвеєра обробки, який зупиняє вичитування з черги, але не змінює внутрішню математичну логіку коду.</p>
+</li>
+</ol>
+</details>
+<ol>
+<li>
+<p>Проектувальник системи диспетчеризації вітроелектростанції пропонує повністю відмовитися від Lambda-архітектури на користь Kappa-архітектури, аргументуючи це скороченням витрат на супровід коду. Система повинна виконувати аналіз швидкості деградації лопатей шляхом порівняння поточних вібрацій із еталонними випробуваннями, що проводилися три роки тому при запуску станції, над масивом у <span class="arithmatex">\(25\text{ Пбайт}\)</span> сирих вимірювань. Яка критична гранична умова робить вибір Kappa-архітектури для цього завдання технологічно та економічно неспроможним?</p>
+</li>
+<li>
+<p>A. Відсутність у брокера Apache Kafka механізмів автентифікації користувачів за протоколом Kerberos.</p>
+</li>
+<li>
+<p>B. Неможливість потокових процесорів виконувати віконні операції тривалістю понад одну секунду.</p>
+</li>
+<li>
+<p>C. Колосальні дискові витрати на постійне утримання 25 Пбайт сирих логів у черзі брокера та надвисока тривалість і ресурсомісткість процедури повторного відтворення такого обсягу потоковим рушієм.</p>
+</li>
+<li>
+<p>D. Несумісність протоколу передачі телеметрії вітрогенераторів із форматом серіалізації JSON.</p>
+</li>
+</ol>
+<details class="note">
+<summary>Розгорнути аналіз / відповідь</summary>
+<p><strong>Правильний варіант: C.</strong></p>
+<ol>
+<li>
+<p>Архітектура Kappa вимагає зберігання всієї ретроспективної історії в топіках брокера повідомлень із нескінченною політикою утримання (Retention) та базується на повному повторному вичитуванні журналу для перерахунку. Зберігання 25 Пбайт у сховищі Kafka з трикратною реплікацією на високошвидкісних NVMe/SSD дисках є економічно неприйнятним. Крім того, потоковий перерахунок 25 Пбайт від нульового зміщення триватиме тижнями і перевантажить дискову підсистему кластера, заблокувавши поточне поглинання свіжої телеметрії.</p>
+</li>
+<li>
+<p>Аналіз дистракторів:</p>
+</li>
+<li>
+<p>Варіант A є хибним, оскільки корпоративні версії Kafka повністю підтримують Kerberos та SASL для безпеки.</p>
+</li>
+<li>
+<p>Варіант B не відповідає дійсності: сучасні потокові рушії (зокрема Apache Flink) можуть утримувати стани вікон будь-якої тривалості за умови наявності відповідного обсягу сховища RocksDB.</p>
+</li>
+<li>
+<p>Варіант D не є валідним технічним обмеженням, оскільки брокери повідомлень та потокові процесори повністю нейтральні до формату корисного навантаження пакетів.</p>
+</li>
+</ol>
+</details>
+<hr />
+<h4 id="_10">Завдання для самостійної роботи</h4>
+<h5 id="_11">Постановка задачі</h5>
+<p>Вам доручено розробити технічну архітектуру та специфікацію аналітичної платформи моніторингу парку промислових сонячних електростанцій загальною встановленою потужністю <span class="arithmatex">\(200\text{ МВт}\)</span>. Комплекс містить 80 інверторних підстанцій, кожна з яких оснащена сорока трифазними смарт-лічильниками електроенергії та десятьма метеостанціями (датчики сонячної інсоляції, температури фотопанелей, швидкості та напрямку вітру). Метрологічні пристрої опитуються із частотою <span class="arithmatex">\(1\text{ Гц}\)</span>. </p>
+<p>Платформа повинна розв'язувати завдання миттєвого контролю генерації активної потужності для компенсації відхилень у загальній енергомережі із затримкою не більше <span class="arithmatex">\(200\text{ мс}\)</span>, а також забезпечувати щоденне машинне навчання прогнозу генерації на наступну добу з інтеграцією зовнішніх погодних моделей чисельного прогнозування погоди.</p>
+<h5 id="_12">Завдання для виконання</h5>
+<ol>
+<li>
+<p>Розрахуйте добовий та річний обсяг генерації сирих даних телеметрії всім комплексом сонячних електростанцій, визначивши параметри стиснення при переході від протоколу Modbus TCP до колонкових бінарних структур.</p>
+</li>
+<li>
+<p>Розробіть структурну схему поглинання та аналітичної обробки телеметрії, обґрунтувавши вибір між архітектурними шаблонами Lambda та Kappa з урахуванням вимоги щоденного перенавчання прогностичних моделей.</p>
+</li>
+<li>
+<p>Сформулюйте математичну модель конфігурації часових вікон потокового процесора для оперативного розрахунку сумарної генерації активної потужності, розрахувавши параметри водяних знаків в умовах нестабільного бездротового каналу зв'язку.</p>
+</li>
+<li>
+<p>Опишіть інженерні заходи щодо запобігання втраті даних та переповненню оперативної пам'яті потокових обчислювальних вузлів у разі масштабного аварійного обриву каналу зв'язку між станціями та центральною хмарною платформою тривалістю до 4 годин.</p>
+</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Повернутись нагору
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Kyrylo Vadurin &bull; <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.top", "navigation.tracking", "header.autohide", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u0421\u043a\u043e\u043f\u0456\u0439\u043e\u0432\u0430\u043d\u043e \u0432 \u0431\u0443\u0444\u0435\u0440", "clipboard.copy": "\u0421\u043a\u043e\u043f\u0456\u044e\u0432\u0430\u0442\u0438 \u0432 \u0431\u0443\u0444\u0435\u0440", "search.result.more.one": "\u0429\u0435 1 \u0437\u0431\u0456\u0433 \u043d\u0430 \u0446\u0456\u0439 \u0441\u0442\u043e\u0440\u0456\u043d\u0446\u0456", "search.result.more.other": "\u0429\u0435 # \u0437\u0431\u0456\u0433\u0456\u0432 \u043d\u0430 \u0446\u0456\u0439 \u0441\u0442\u043e\u0440\u0456\u043d\u0446\u0456", "search.result.none": "\u0417\u0431\u0456\u0433\u0456\u0432 \u043d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u043e", "search.result.one": "\u0417\u043d\u0430\u0439\u0434\u0435\u043d\u043e 1 \u0437\u0431\u0456\u0433", "search.result.other": "\u0417\u043d\u0430\u0439\u0434\u0435\u043d\u043e # \u0437\u0431\u0456\u0433\u0456\u0432", "search.result.placeholder": "\u0420\u043e\u0437\u043f\u043e\u0447\u043d\u0456\u0442\u044c \u043f\u0438\u0441\u0430\u0442\u0438 \u0434\u043b\u044f \u043f\u043e\u0448\u0443\u043a\u0443", "search.result.term.missing": "\u041d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u043e \u0437\u0430\u043f\u0438\u0442\u0443", "select.version": "\u041e\u0431\u0440\u0430\u0442\u0438 \u0432\u0435\u0440\u0441\u0456\u044e"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
