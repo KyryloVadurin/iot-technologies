@@ -1,0 +1,3163 @@
+
+<!doctype html>
+<html lang="uk" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Навчальний портал з дисципліни "Технології ІоТ"">
+      
+      
+      
+      
+        <link rel="prev" href="../pz6/">
+      
+      
+        <link rel="next" href="../pz8/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>ПЗ 7. Логічні схеми в Node-RED - Технології Інтернету речей</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#no-7-node-red" class="md-skip">
+          Перейти до змісту
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Хедер">
+    <a href="../.." title="Технології Інтернету речей" class="md-header__button md-logo" aria-label="Технології Інтернету речей" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Технології Інтернету речей
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              ПЗ 7. Логічні схеми в Node-RED
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan"  aria-label="Переключити на темну тему"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Переключити на темну тему" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="cyan"  aria-label="Переключити на світлу тему"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Переключити на світлу тему" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Пошук" placeholder="Пошук" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Шукати">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Очистити" aria-label="Очистити" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Пошук розпочато
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Вкладки" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Робоча програма
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../lk/lk1/" class="md-tabs__link">
+          
+  
+  
+  Лекції
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../lb/lb1/" class="md-tabs__link">
+          
+  
+  
+  Лабораторні роботи
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../pz1/" class="md-tabs__link">
+          
+  
+  
+  Практичні заняття
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../kp/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Курсовий проєкт
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../sr/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Самостійна робота
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../sr/quest/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Контрольні завдання (Іспит)
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Навігація" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Технології Інтернету речей" class="md-nav__button md-logo" aria-label="Технології Інтернету речей" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Технології Інтернету речей
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Робоча програма
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Лекції
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Лекції
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lk/lk1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 1. Екосистема та архітектура IoT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lk/lk2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 2. Технології WPAN та WLAN у IoT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lk/lk3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 3. LPWAN технології
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lk/lk4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 4. Прикладні протоколи ІоТ (MQTT, CoAP)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lk/lk5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 5. Туманні (Fog) та граничні (Edge) обчислення
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lk/lk6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 6. Мікроконтролерні платформи (ESP32)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lk/lk7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 7. Інтелектуальні сенсори
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lk/lk8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 8. Виконавчі пристрої
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lk/lk9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 9. Віртуалізація та контейнеризація IoT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lk/lk10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 10. IoT платформи та Middleware
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lk/lk11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 11. Розумний будинок (Home Assistant)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lk/lk12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 12. Промисловий ІоТ (IIoT)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lk/lk13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 13. Big Data в ІоТ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lk/lk14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 14. Machine Learning на межі мережі
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lk/lk15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 15. Кібербезпека в системах ІоТ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Лабораторні роботи
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Лабораторні роботи
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 1. Моделювання топологій IoT-мереж
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 2. Симуляція підсистем Розумного будинку
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 3. Дослідження локального MQTT-брокера
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 4. Схемотехнічне моделювання вузла збору
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 5. Прошивка ESP32 для передавання телеметрії MQTT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 6. Декларативне програмування ESP32 (ESPHome)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 7. Серверне середовище Linux для IoT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 8. Контейнеризація в ІоТ (Docker Compose)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 9. Middleware ІоТ (Node-RED)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 10. Сервіс REST API для агрегації даних
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 11. Платформи розумного будинку (Home Assistant)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 12. Сценарії автоматизації Home Assistant
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 13. Обробка телеметрії мовою Python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 14. HMI Dashboard для диспетчеризації
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 15. Комплексне наскрізне тестування IoT-системи
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практичні заняття
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Практичні заняття
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pz1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 1. Розрахунок пропускної здатності та живлення
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pz2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 2. Проєктування ієрархії топіків MQTT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pz3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 3. Правила фільтрації на Edge-шлюзах
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pz4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 4. Моделювання АЦП для сенсорів
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pz5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 5. Оптимізація енергетичного профілю
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pz6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 6. Проєктування конфігурації Docker Compose
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 7. Логічні схеми в Node-RED
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 7. Логічні схеми в Node-RED
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Зміст">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Зміст
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1 Теоретичні відомості
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-0" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2 Підготовка середовища та розгортання проєкту (Крок 0)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3 Порядок виконання роботи
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3 Порядок виконання роботи">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Індивідуальні завдання
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Покроковий алгоритм та розв'язок еталонного прикладу
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2 Покроковий алгоритм та розв&#39;язок еталонного прикладу">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 1. Створення вузлів вхідного потоку та десеріалізації
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 2. Налаштування розгалуження та логіки для поливу і світла
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 3. Написання алгоритму гістерезису для нагрівача у вузлі Function
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-json-node-red" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 4. Повний еталонний JSON-маніфест для імпорту в Node-RED
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Запуск, тестування та перевірка результатів
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3 Запуск, тестування та перевірка результатів">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mosquitto_sub" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Еталонний результат виведення в консолі mosquitto_sub:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debug-node-red" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Приклад відображення записів у панелі Debug вікна Node-RED:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4 Вимоги до змісту звіту
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5 Контрольні запитання для захисту роботи
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pz8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 8. Сценарії Trigger-Condition-Action
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pz9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 9. Конвеєр обробки даних (ETL)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pz10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 10. Моделювання загроз безпеки (STRIDE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Курсовий проєкт
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Самостійна робота
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sr/quest/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Контрольні завдання (Іспит)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Зміст">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Зміст
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1 Теоретичні відомості
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-0" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2 Підготовка середовища та розгортання проєкту (Крок 0)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3 Порядок виконання роботи
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3 Порядок виконання роботи">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Індивідуальні завдання
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Покроковий алгоритм та розв'язок еталонного прикладу
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2 Покроковий алгоритм та розв&#39;язок еталонного прикладу">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 1. Створення вузлів вхідного потоку та десеріалізації
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 2. Налаштування розгалуження та логіки для поливу і світла
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 3. Написання алгоритму гістерезису для нагрівача у вузлі Function
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-json-node-red" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 4. Повний еталонний JSON-маніфест для імпорту в Node-RED
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Запуск, тестування та перевірка результатів
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3 Запуск, тестування та перевірка результатів">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mosquitto_sub" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Еталонний результат виведення в консолі mosquitto_sub:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debug-node-red" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Приклад відображення записів у панелі Debug вікна Node-RED:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4 Вимоги до змісту звіту
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5 Контрольні запитання для захисту роботи
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="no-7-node-red">Практичне заняття № 7. Складання логічних схем обробки подій та потоків даних для середовища Node-RED</h1>
+<p><strong>Мета:</strong> Опанувати концепцію потокового програмування (Flow-Based Programming) у системах Інтернету речей, вивчити математичні та алгоритмічні моделі асинхронної обробки подій, а також набути практичних навичок формалізації технічного завдання, проєктування графів потоків даних (Node Graphs), налаштування вузлів селекції, перетворення даних і генерації виконуваних конфігурацій для середовища Node-RED.</p>
+<p><strong>Стек технологій та інструменти:</strong></p>
+<ul>
+<li>
+<p><strong>Мова програмування / Середовище:</strong> JavaScript (ECMAScript 2022+), середовище виконання Node.js (версія 18.x LTS або 20.x LTS), графічна платформа оркестрації потоків Node-RED (версія 3.1+ або 4.x).</p>
+</li>
+<li>
+<p><strong>Платформа / Бібліотеки / Модулі:</strong> Вбудовані вузли Node-RED (<code>node-red-node-mqtt</code>, <code>node-red-contrib-custom</code>), клієнтський інструментарій тестування протоколу MQTT (<code>mosquitto-clients</code>).</p>
+</li>
+<li>
+<p><strong>Інструменти розробки:</strong> Вебінтерфейс редактора Node-RED Flow Editor, консоль/термінал операційної системи, середовище моделювання діаграм Draw.io або нотація Mermaid.</p>
+</li>
+</ul>
+<hr />
+<h2 id="1">1 Теоретичні відомості</h2>
+<p>Парадигма потокового програмування (Flow-Based Programming, FBP) розглядає програмний застосунок як орієнтований граф, у якому вершинами виступають незалежні функціональні блоки (вузли або процеси), а ребрами — канали передавання повідомлень. У контексті Інтернету речей середовище Node-RED реалізує дану модель через асинхронну подієво-орієнтовану архітектуру (Event-Driven Architecture). Одиницею інформаційного обміну між вузлами є універсальний об'єкт повідомлення <code>msg</code>, обов'язковим атрибутом якого виступає поле корисного навантаження <code>msg.payload</code>, що містить дані телеметрії або команди керування у довільному форматі (найчастіше у вигляді серіалізованого об'єкта JSON).</p>
+<p>Обробка подій у потокових мережах базується на теорії кінцевих автоматів (Finite State Machines, FSM) та механізмах фільтрації потоків даних у реальному часі (Complex Event Processing, CEP). Кожен вузол функціонує як ізольований «чорний ящик», який активується виключно в момент надходження вхідного повідомлення на його порт, виконує детерміноване перетворення над об'єктом <code>msg</code> та передає модифіковане повідомлення на один або кілька вихідних портів відповідно до закладених внутрішніх правил.</p>
+<p><pre class="mermaid"><code>graph LR
+    subgraph Ingestion [Рівень прийому даних]
+        MQTT_IN[Вузол MQTT In&lt;br/&gt;Підписка на топік телеметрії]
+    end
+
+    subgraph Processing [Рівень обробки та селекції подій]
+        SWITCH[Вузол Switch&lt;br/&gt;Умовна фільтрація значень]
+        CHANGE[Вузол Change&lt;br/&gt;Трансформація структури msg]
+        FUNC[Вузол Function&lt;br/&gt;Алгоритм гістерезису JS]
+    end
+
+    subgraph Egress [Рівень виконавчих дій та моніторингу]
+        MQTT_OUT[Вузол MQTT Out&lt;br/&gt;Публікація керуючої команди]
+        DEBUG[Вузол Debug&lt;br/&gt;Вивід у системний журнал]
+    end
+
+    MQTT_IN --&gt;|msg.payload: JSON| SWITCH
+    SWITCH --&gt;|Порт 1: Температура низька| CHANGE
+    SWITCH --&gt;|Порт 2: Комплексний стан| FUNC
+    CHANGE --&gt;|Формований payload команди| MQTT_OUT
+    FUNC --&gt;|Керуючий імпульс| MQTT_OUT
+    MQTT_OUT --&gt; DEBUG
+
+    style MQTT_IN fill:#cce5ff,stroke:#333,stroke-width:2px
+    style SWITCH fill:#fff3cd,stroke:#333,stroke-width:2px
+    style CHANGE fill:#d4edda,stroke:#333,stroke-width:2px
+    style FUNC fill:#d1ecf1,stroke:#333,stroke-width:2px
+    style MQTT_OUT fill:#f8d7da,stroke:#333,stroke-width:2px</code></pre>
+<em>Рисунок 1 — Граф потоку обробки подій у парадигмі Flow-Based Programming</em></p>
+<p>На рисунку 1 проілюстровано стандартний конвеєр обробки телеметрії. Вхідний вузол <code>MQTT In</code> приймає масив даних від польового контролера, перетворює бінарний потік у структурований JSON та спрямовує його до вузла селекції <code>Switch</code>. Вузол <code>Switch</code> аналізує числові атрибути повідомлення, розгалужуючи потік на кілька ізольованих гілок. Вузол <code>Change</code> виконує швидку декларативну модифікацію властивостей повідомлення (наприклад, записує нове значення в <code>msg.payload</code>), тоді як вузол <code>Function</code> реалізує складну алгоритмічну обробку мовою JavaScript. Фінальні команди передаються до актуаторів через вузол <code>MQTT Out</code> та паралельно фіксуються в журналі <code>Debug</code>.</p>
+<p>У системах автоматичного регулювання мікроклімату для запобігання частим перемиканням актуаторів (явище «деренчання» або oscillation), які призводять до передчасного зносу реле та силових приводів, застосовують математичний апарат релейного регулювання з гістерезисом. Функція стану виконавчого пристрою <span class="arithmatex">\(u(t)\)</span> описується кусочно-неперервною залежністю:</p>
+<div class="arithmatex">\[u(t) = \begin{cases} 1, &amp; \text{якщо } x(t) \le X_{\text{set}} - \frac{\Delta X}{2} \\ 0, &amp; \text{якщо } x(t) \ge X_{\text{set}} + \frac{\Delta X}{2} \\ u(t - \Delta t), &amp; \text{якщо } X_{\text{set}} - \frac{\Delta X}{2} \lt  x(t) \lt  X_{\text{set}} + \frac{\Delta X}{2} \end{cases}\]</div>
+<p>де <span class="arithmatex">\(u(t)\)</span> — керуючий дискретний сигнал на виході алгоритму у поточний момент часу <span class="arithmatex">\(t\)</span>, який набуває значення 1 (активовано) або 0 (деактивовано);<br />
+<span class="arithmatex">\(x(t)\)</span> — поточне виміряне значення фізичного параметра з сенсора (наприклад, температура в <span class="arithmatex">\(^\circ\text{C}\)</span> або вологість у <span class="arithmatex">\(\%\)</span>);<br />
+<span class="arithmatex">\(X_{\text{set}}\)</span> — встановлене користувачем цільове значення регульованого параметра (Setpoint);<br />
+<span class="arithmatex">\(\Delta X\)</span> — зона нечутливості або ширина петлі гістерезису (Hysteresis Band) у відповідних фізичних одиницях;<br />
+<span class="arithmatex">\(u(t - \Delta t)\)</span> — значення керуючого сигналу на попередньому кроці квантування часу, що забезпечує збереження поточного стану всередині петлі гістерезису.</p>
+<p><pre class="mermaid"><code>stateDiagram-v2
+    [*] --&gt; Idle: Ініціалізація системи
+
+    state "Обігрів ВИМКНЕНО (u = 0)" as Idle {
+        direction LTR
+        Normal: Температура в нормі
+    }
+
+    state "Обігрів УВІМКНЕНО (u = 1)" as Heating {
+        direction LTR
+        Active: Підігрів робочої зони
+    }
+
+    Idle --&gt; Heating: x(t) &lt;= X_set - ΔX/2 (Нижній поріг)
+    Heating --&gt; Idle: x(t) &gt;= X_set + ΔX/2 (Верхній поріг)
+
+    note right of Idle: Стан очікування за замовчуванням
+    note right of Heating: Працює ТЕН або калорифер</code></pre>
+<em>Рисунок 2 — Скінченний автомат стану регулятора з зоною гістерезису</em></p>
+<p>Загальна затримка обробки повідомлення у розробленому потоці Node-RED (<span class="arithmatex">\(T_{\text{flow}}\)</span>) визначається як сума часу перебування повідомлення в чергах обробки рушія Node.js та тривалості безпосереднього виконання коду в кожному вузлі:</p>
+<div class="arithmatex">\[T_{\text{flow}} = \sum_{i=1}^{N} \tau_{\text{exec}, i} + \sum_{j=1}^{N-1} \tau_{\text{queue}, j}\]</div>
+<p>де <span class="arithmatex">\(N\)</span> — загальна кількість послідовно з'єднаних вузлів у ланцюгу обробки;<br />
+<span class="arithmatex">\(\tau_{\text{exec}, i}\)</span> — час виконання інструкцій <span class="arithmatex">\(i\)</span>-го функціонального вузла (с);<br />
+<span class="arithmatex">\(\tau_{\text{queue}, j}\)</span> — затримка повідомлення в черзі мікротасок циклу подій (Event Loop) між вузлами <span class="arithmatex">\(j\)</span> та <span class="arithmatex">\(j+1\)</span> (с).</p>
+<hr />
+<h2 id="2-0">2 Підготовка середовища та розгортання проєкту (Крок 0)</h2>
+<p>Для підготовки робочого середовища необхідно перевірити наявність встановленого інтерпретатора Node.js, пакетного менеджера npm та розгорнути локальний екземпляр Node-RED.</p>
+<ol>
+<li>Відкрийте термінал операційної системи та виконайте перевірку встановлених версій базових компонентів:</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Перевірка версії платформи Node.js (потрібна v18.0.0 або вище)</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>node<span class="w"> </span>--version
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># Перевірка версії пакетного менеджера npm</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>npm<span class="w"> </span>--version
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c1"># Перевірка наявності встановленого глобального модуля Node-RED</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>node-red<span class="w"> </span>--version
+</span></code></pre></div>
+<ol>
+<li>Якщо Node-RED не встановлено, виконайте глобальну інсталяцію засобами npm:</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Встановлення стабільної версії Node-RED глобально в системі</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>npm<span class="w"> </span>install<span class="w"> </span>-g<span class="w"> </span>--unsafe-perm<span class="w"> </span>node-red
+</span></code></pre></div>
+<ol>
+<li>Створіть робочу директорію для файлів практичного заняття та перейдіть до неї:</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>~/IoT_Practicals/PZ7_NodeRED_Flows/<span class="o">{</span>flows,tests,docs<span class="o">}</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nb">cd</span><span class="w"> </span>~/IoT_Practicals/PZ7_NodeRED_Flows
+</span></code></pre></div>
+<p>Структура файлів розробленого проєкту повинна мати такий вигляд:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>IoT_Practicals/PZ7_NodeRED_Flows/
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>├── flows/
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>│   └── greenhouse_flow.json      # Повна експортована конфігурація графа потоків Node-RED
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>├── tests/
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>│   ├── simulate_sensors.sh       # Bash-скрипт генерації тестових MQTT-повідомлень
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>│   └── test_payloads.json        # Набір еталонних вхідних векторів для перевірки логіки
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>└── docs/
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>    └── logic_diagram.png         # Експортована структурна схема алгоритму
+</span></code></pre></div>
+<ol>
+<li>Запустіть сервер Node-RED у фоновому або термінальному режимі за допомогою команди:</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Запуск локального сервера Node-RED на стандартному порту 1880</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>node-red
+</span></code></pre></div>
+<p>Після успішного старту сервера відкрийте веббраузер і перейдіть за адресою <code>http://127.0.0.1:1880</code>.</p>
+<hr />
+<h2 id="3">3 Порядок виконання роботи</h2>
+<h3 id="31">3.1 Індивідуальні завдання</h3>
+<p>Кожен здобувач вищої освіти розробляє алгоритмічну блок-схему та відповідний потік обробки подій у середовищі Node-RED для системи автоматизації відповідно до індивідуального варіанта.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Варіант</th>
+<th style="text-align: left;">Назва системи / Об'єкт</th>
+<th style="text-align: left;">Вхідні MQTT топіки та структура JSON</th>
+<th style="text-align: left;">Порогові умови та логіка гістерезису</th>
+<th style="text-align: left;">Вихідні MQTT топіки та команди</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>1</strong></td>
+<td style="text-align: left;">Розумна промислова теплиця</td>
+<td style="text-align: left;"><code>greenhouse/sensors</code><br/><code>{"temp": 18.5, "humidity": 65}</code></td>
+<td style="text-align: left;">Обігрів: <span class="arithmatex">\(T_{\text{set}} = 22^\circ\text{C}, \Delta T = 2^\circ\text{C}\)</span>. Якщо <span class="arithmatex">\(T \le 21^\circ\text{C}\)</span> — ON; якщо <span class="arithmatex">\(T \ge 23^\circ\text{C}\)</span> — OFF.</td>
+<td style="text-align: left;"><code>greenhouse/relay/heater</code><br/><code>{"state": "ON" / "OFF"}</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>2</strong></td>
+<td style="text-align: left;">Клімат серверної шафи</td>
+<td style="text-align: left;"><code>datacenter/rack1/env</code><br/><code>{"temp": 29.0, "fan_rpm": 1200}</code></td>
+<td style="text-align: left;">Охолодження: <span class="arithmatex">\(T_{\text{set}} = 24^\circ\text{C}, \Delta T = 4^\circ\text{C}\)</span>. Якщо <span class="arithmatex">\(T \ge 26^\circ\text{C}\)</span> — Fan MAX; якщо <span class="arithmatex">\(T \le 22^\circ\text{C}\)</span> — Fan ECO.</td>
+<td style="text-align: left;"><code>datacenter/rack1/cooling</code><br/><code>{"mode": "MAX" / "ECO"}</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>3</strong></td>
+<td style="text-align: left;">Сушарка зернового елеватора</td>
+<td style="text-align: left;"><code>elevator/dryer/data</code><br/><code>{"grain_moist": 16.2, "t_air": 60}</code></td>
+<td style="text-align: left;">Продувка: якщо вологість зерна <span class="arithmatex">\(&gt; 14.5\%\)</span> — пальники ON; якщо <span class="arithmatex">\(\le 13.5\%\)</span> — пальники OFF, охолодження ON.</td>
+<td style="text-align: left;"><code>elevator/dryer/burners</code><br/><code>{"burners": 1 / 0, "blower": 1}</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>4</strong></td>
+<td style="text-align: left;">Стерилізаційна автоклавна</td>
+<td style="text-align: left;"><code>hospital/autoclave/stat</code><br/><code>{"pressure": 2.1, "temp": 121}</code></td>
+<td style="text-align: left;">Безпека: якщо тиск <span class="arithmatex">\(&gt; 2.4\text{ bar}\)</span> або <span class="arithmatex">\(T &gt; 135^\circ\text{C}\)</span> — аварійний скид; якщо тиск <span class="arithmatex">\(&lt; 1.8\text{ bar}\)</span> — нагрів.</td>
+<td style="text-align: left;"><code>hospital/autoclave/valve</code><br/><code>{"valve_open": true/false}</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>5</strong></td>
+<td style="text-align: left;">Автоматичний інкубатор</td>
+<td style="text-align: left;"><code>poultry/incubator/env</code><br/><code>{"temp": 37.2, "humidity": 52}</code></td>
+<td style="text-align: left;">Зволоження: якщо вологість <span class="arithmatex">\(&lt; 50\%\)</span> — зволожувач ON; якщо <span class="arithmatex">\(&gt; 60\%\)</span> — OFF. <span class="arithmatex">\(T_{\text{set}} = 37.8^\circ\text{C}, \Delta T = 0.4^\circ\text{C}\)</span>.</td>
+<td style="text-align: left;"><code>poultry/incubator/ctrl</code><br/><code>{"humidifier": 1, "heater": 1}</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>6</strong></td>
+<td style="text-align: left;">Біореактор культивування</td>
+<td style="text-align: left;"><code>biotech/reactor5/params</code><br/><code>{"ph": 6.8, "dissolved_o2": 18}</code></td>
+<td style="text-align: left;">Аерація: якщо <span class="arithmatex">\(O_2 &lt; 20\%\)</span> — кисневий клапан OPEN; якщо <span class="arithmatex">\(pH &lt; 6.5\)</span> — дозатор лугу START.</td>
+<td style="text-align: left;"><code>biotech/reactor5/dosing</code><br/><code>{"o2_valve": 100, "base_pump": 1}</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>7</strong></td>
+<td style="text-align: left;">Охолодження тягового двигуна</td>
+<td style="text-align: left;"><code>transport/train/engine</code><br/><code>{"temp_stator": 92, "current": 340}</code></td>
+<td style="text-align: left;">Струмовий захист: якщо <span class="arithmatex">\(T &gt; 95^\circ\text{C}\)</span> і струм <span class="arithmatex">\(&gt; 300\text{A}\)</span> — знизити тягу на <span class="arithmatex">\(50\%\)</span>; якщо <span class="arithmatex">\(T &lt; 70^\circ\text{C}\)</span> — номінал.</td>
+<td style="text-align: left;"><code>transport/train/traction</code><br/><code>{"power_limit": 50 / 100}</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>8</strong></td>
+<td style="text-align: left;">Система водопідготовки басейну</td>
+<td style="text-align: left;"><code>aquapark/pool2/water</code><br/><code>{"cl_free": 0.3, "turbidity": 4.2}</code></td>
+<td style="text-align: left;">Хлорування: якщо вільний <span class="arithmatex">\(\text{Cl} &lt; 0.5\text{ мг/л}\)</span> — насос хлору ON; якщо каламутність <span class="arithmatex">\(&gt; 3.0\text{ NTU}\)</span> — фільтр FLUSH.</td>
+<td style="text-align: left;"><code>aquapark/pool2/pumps</code><br/><code>{"cl_dosing": 1, "filter_mode": 2}</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>9</strong></td>
+<td style="text-align: left;">Овочесховище картоплі</td>
+<td style="text-align: left;"><code>storage/potato/cell1</code><br/><code>{"co2_ppm": 1200, "temp": 4.5}</code></td>
+<td style="text-align: left;">Вентиляція: якщо <span class="arithmatex">\(\text{CO}_2 &gt; 1000\text{ ppm}\)</span> — заслінки відкрити на <span class="arithmatex">\(100\%\)</span>; підтримувати <span class="arithmatex">\(T\)</span> в межах <span class="arithmatex">\(2.0 \dots 4.0^\circ\text{C}\)</span>.</td>
+<td style="text-align: left;"><code>storage/potato/dampers</code><br/><code>{"position_pct": 100 / 20}</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>10</strong></td>
+<td style="text-align: left;">Зарядний хаб електробусів</td>
+<td style="text-align: left;"><code>chargehub/station4/status</code><br/><code>{"grid_load_kw": 140, "soc": 78}</code></td>
+<td style="text-align: left;">Балансування: якщо пікове навантаження мережі <span class="arithmatex">\(&gt; 130\text{ кВт}\)</span> — струм заряду <span class="arithmatex">\(32\text{A}\)</span>; інакше <span class="arithmatex">\(128\text{A}\)</span>.</td>
+<td style="text-align: left;"><code>chargehub/station4/pilot</code><br/><code>{"max_current": 32 / 128}</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>11</strong></td>
+<td style="text-align: left;">Гідропонна установка зелені</td>
+<td style="text-align: left;"><code>hydroponics/rack3/sensors</code><br/><code>{"ec_ms": 1.2, "water_temp": 19}</code></td>
+<td style="text-align: left;">Живильний розчин: якщо <span class="arithmatex">\(\text{EC} &lt; 1.6\text{ мСм/см}\)</span> — додати концентрат A+B на 5 сек; <span class="arithmatex">\(T_{\text{water}}\)</span> тримати <span class="arithmatex">\(18 \dots 20^\circ\text{C}\)</span>.</td>
+<td style="text-align: left;"><code>hydroponics/rack3/pumps</code><br/><code>{"dose_pump_sec": 5, "chiller": 0}</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>12</strong></td>
+<td style="text-align: left;">Фарбувальна камера СТО</td>
+<td style="text-align: left;"><code>autocare/paint_booth/data</code><br/><code>{"voc_level": 450, "airflow": 0.8}</code></td>
+<td style="text-align: left;">Захист маляра: якщо леткі органічні сполуки <span class="arithmatex">\(&gt; 300\text{ мг/м}^3\)</span> — аварійна витяжка ON, блокування дверей замком.</td>
+<td style="text-align: left;"><code>autocare/paint_booth/safety</code><br/><code>{"exhaust_fan": 1, "door_lock": 1}</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>13</strong></td>
+<td style="text-align: left;">Автономний сонячний інвертор</td>
+<td style="text-align: left;"><code>energy/solar/inverter1</code><br/><code>{"v_bat": 46.8, "p_solar": 2400}</code></td>
+<td style="text-align: left;">Пріоритет живлення: якщо <span class="arithmatex">\(V_{\text{bat}} &lt; 47.0\text{V}\)</span> — перемкнути лінію на міську мережу; якщо <span class="arithmatex">\(&gt; 52.0\text{V}\)</span> — на сонце.</td>
+<td style="text-align: left;"><code>energy/solar/grid_switch</code><br/><code>{"source": "GRID" / "SOLAR"}</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>14</strong></td>
+<td style="text-align: left;">Склад фармацевтичних вакцин</td>
+<td style="text-align: left;"><code>pharma/coldchain/box9</code><br/><code>{"temp": -18.2, "door_open": 0}</code></td>
+<td style="text-align: left;">Холодовий ланцюг: діапазон строго <span class="arithmatex">\(-22 \dots -15^\circ\text{C}\)</span>. Якщо <span class="arithmatex">\(T &gt; -15^\circ\text{C}\)</span> більше 60 сек — надсилати тривогу ALARM.</td>
+<td style="text-align: left;"><code>pharma/coldchain/alarm</code><br/><code>{"alert_level": "CRITICAL"}</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>15</strong></td>
+<td style="text-align: left;">ГНС (газорозподільний пункт)</td>
+<td style="text-align: left;"><code>gas/station12/telemetry</code><br/><code>{"p_in": 12.0, "p_out": 0.35}</code></td>
+<td style="text-align: left;">Редукування: якщо вихідний тиск <span class="arithmatex">\(&gt; 0.4\text{ МПа}\)</span> — відсічний клапан TRIP; якщо вхідний <span class="arithmatex">\(&lt; 6.0\text{ МПа}\)</span> — попередити диспетчера.</td>
+<td style="text-align: left;"><code>gas/station12/valves</code><br/><code>{"shutoff_valve": "CLOSED"}</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>16</strong></td>
+<td style="text-align: left;">Розумна вулична дренажна помпа</td>
+<td style="text-align: left;"><code>drainage/sector4/level</code><br/><code>{"water_level_cm": 85, "rain": 1}</code></td>
+<td style="text-align: left;">Відкачування: якщо рівень води <span class="arithmatex">\(&gt; 80\text{ см}\)</span> — основна помпа ON; якщо <span class="arithmatex">\(&gt; 120\text{ см}\)</span> — підключити резервну помпу.</td>
+<td style="text-align: left;"><code>drainage/sector4/pumps</code><br/><code>{"pump_main": 1, "pump_aux": 1}</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>17</strong></td>
+<td style="text-align: left;">Опалення шкільного спортзалу</td>
+<td style="text-align: left;"><code>school/gym/climate</code><br/><code>{"temp": 15.0, "schedule_active": 1}</code></td>
+<td style="text-align: left;">Якщо розклад активний: підтримувати <span class="arithmatex">\(T = 18^\circ\text{C}\)</span> (<span class="arithmatex">\(\Delta T = 1^\circ\text{C}\)</span>); у позаурочний час підтримувати <span class="arithmatex">\(T = 12^\circ\text{C}\)</span>.</td>
+<td style="text-align: left;"><code>school/gym/heating</code><br/><code>{"valve_pos": 75}</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>18</strong></td>
+<td style="text-align: left;">Компресорна станція заводу</td>
+<td style="text-align: left;"><code>factory/air/comp2</code><br/><code>{"press_bar": 6.2, "oil_temp": 78}</code></td>
+<td style="text-align: left;">Пневмомережа: тримати тиск <span class="arithmatex">\(6.5 \dots 8.0\text{ бар}\)</span>. Якщо <span class="arithmatex">\(P \le 6.5\)</span> — Load; якщо <span class="arithmatex">\(P \ge 8.0\)</span> — Unload. Якщо <span class="arithmatex">\(T_{\text{oil}} &gt; 90\)</span> — Stop.</td>
+<td style="text-align: left;"><code>factory/air/comp2/cmd</code><br/><code>{"state": "LOAD" / "UNLOAD"}</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>19</strong></td>
+<td style="text-align: left;">Капельна фільтрація вина</td>
+<td style="text-align: left;"><code>winery/filtration/tank3</code><br/><code>{"diff_pressure": 1.8, "flow": 45}</code></td>
+<td style="text-align: left;">Забиття фільтра: якщо диференційний тиск <span class="arithmatex">\(&gt; 1.5\text{ бар}\)</span> та потік <span class="arithmatex">\(&lt; 50\text{ л/год}\)</span> — увімкнути цикл зворотної промивки.</td>
+<td style="text-align: left;"><code>winery/filtration/wash</code><br/><code>{"backwash_cycle": true}</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>20</strong></td>
+<td style="text-align: left;">Автоматична мийка вагонів</td>
+<td style="text-align: left;"><code>railway/wash/track1</code><br/><code>{"train_pos_m": 12.5, "speed": 0.4}</code></td>
+<td style="text-align: left;">Якщо поїзд у зоні <span class="arithmatex">\(10 \dots 50\text{ м}\)</span> та швидкість <span class="arithmatex">\(&lt; 0.8\text{ м/с}\)</span> — подати миючий розчин та обертати щітки.</td>
+<td style="text-align: left;"><code>railway/wash/actuators</code><br/><code>{"brushes": 1, "chemical_pump": 1}</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="32">3.2 Покроковий алгоритм та розв'язок еталонного прикладу</h3>
+<p>Як еталонний приклад розглянемо проектування логіки для задачі <strong>«Комплексний кліматичний контроль теплиці вирощування екзотичних рослин»</strong>:</p>
+<ul>
+<li>
+<p>Вхідний топік MQTT: <code>agro/greenhouse/telemetry</code></p>
+</li>
+<li>
+<p>Вхідне повідомлення: JSON вигляду <code>{"temperature": 21.4, "soil_moisture": 38.0, "lux": 150}</code></p>
+</li>
+<li>
+<p>Технічні вимоги:</p>
+</li>
+<li>Підтримувати температуру повітря на рівні <span class="arithmatex">\(24^\circ\text{C}\)</span> за допомогою гістерезису шириною <span class="arithmatex">\(\Delta T = 2^\circ\text{C}\)</span> (ТЕН вмикається при <span class="arithmatex">\(T \le 23^\circ\text{C}\)</span>, вимикається при <span class="arithmatex">\(T \ge 25^\circ\text{C}\)</span>).</li>
+<li>Контролювати вологість ґрунту: якщо <code>soil_moisture</code> падає нижче <span class="arithmatex">\(40\%\)</span>, сформувати команду відкриття клапана поливу на топік <code>agro/greenhouse/irrigation</code> зі значенням <code>{"valve": "OPEN"}</code>; якщо вологість перевищує <span class="arithmatex">\(55\%\)</span>, надіслати команду <code>{"valve": "CLOSE"}</code>.</li>
+<li>Контролювати освітленість: якщо <code>lux</code> менше 300 люкс, активувати фітолампу (топік <code>agro/greenhouse/lighting</code>, значення <code>{"lamp_power": 100}</code>), інакше — вимкнути <code>{"lamp_power": 0}</code>.</li>
+<li>Усі керуючі команди дублювати у системний консольний лог з міткою часу.</li>
+</ul>
+<p><pre class="mermaid"><code>graph TD
+    A[MQTT In: agro/greenhouse/telemetry] --&gt; B[JSON Parser: Перетворення рядка в об'єкт]
+    B --&gt; C{Switch: Розподіл параметрів}
+
+    C --&gt;|Перевірка вологості| D{Switch: soil_moisture}
+    D --&gt;|&lt;= 40%| E1[Change: valve = OPEN]
+    D --&gt;|&gt;= 55%| E2[Change: valve = CLOSE]
+    E1 --&gt; OUT_IRR[MQTT Out: agro/greenhouse/irrigation]
+    E2 --&gt; OUT_IRR
+
+    C --&gt;|Перевірка освітлення| F{Switch: lux}
+    F --&gt;|&lt; 300| G1[Change: lamp_power = 100]
+    F --&gt;|&gt;= 300| G2[Change: lamp_power = 0]
+    G1 --&gt; OUT_LIGHT[MQTT Out: agro/greenhouse/lighting]
+    G2 --&gt; OUT_LIGHT
+
+    C --&gt;|Аналіз температури| H[Function: Алгоритм гістерезису ТЕН]
+    H --&gt; OUT_HEAT[MQTT Out: agro/greenhouse/heater]
+
+    OUT_IRR --&gt; DEBUG[Debug: Системний моніторинг]
+    OUT_LIGHT --&gt; DEBUG
+    OUT_HEAT --&gt; DEBUG
+
+    style A fill:#bbf,stroke:#333,stroke-width:2px
+    style H fill:#f9f,stroke:#333,stroke-width:2px
+    style DEBUG fill:#bfb,stroke:#333,stroke-width:2px</code></pre>
+<em>Рисунок 3 — Алгоритмічна структура потоку керування мікрокліматом теплиці</em></p>
+<h4 id="1_1">Крок 1. Створення вузлів вхідного потоку та десеріалізації</h4>
+<ol>
+<li>
+<p>Перетягніть із лівої палітри вузол <strong>mqtt in</strong> на робоче поле (Flow 1).</p>
+</li>
+<li>
+<p>Двічі клацніть на вузол <strong>mqtt in</strong> та налаштуйте його параметри:</p>
+</li>
+<li>
+<p><strong>Server:</strong> виберіть локальний брокер або додайте новий (<code>127.0.0.1:1883</code>);</p>
+</li>
+<li>
+<p><strong>Topic:</strong> <code>agro/greenhouse/telemetry</code>;</p>
+</li>
+<li>
+<p><strong>QoS:</strong> <code>1</code>;</p>
+</li>
+<li>
+<p><strong>Output:</strong> <code>auto-detect (parsed JSON object)</code>.</p>
+</li>
+<li>
+<p><strong>Name:</strong> <code>Отримання телеметрії теплиці</code>.</p>
+</li>
+</ol>
+<h4 id="2">Крок 2. Налаштування розгалуження та логіки для поливу і світла</h4>
+<ol>
+<li>
+<p>Додайте вузол <strong>switch</strong> для аналізу параметра <code>msg.payload.soil_moisture</code>:</p>
+</li>
+<li>
+<p>Правило 1: <code>&lt;= 40</code> (вихід 1);</p>
+</li>
+<li>
+<p>Правило 2: <code>&gt;= 55</code> (вихід 2).</p>
+</li>
+<li>
+<p>З'єднайте вихід 1 вузла <strong>switch</strong> із новим вузлом <strong>change</strong>:</p>
+</li>
+<li>
+<p>Встановіть дію: <code>Set</code> <code>msg.payload</code> to <code>JSON</code> <code>{"valve": "OPEN", "reason": "LOW_MOISTURE"}</code>.</p>
+</li>
+<li>
+<p>З'єднайте вихід 2 вузла <strong>switch</strong> із другим вузлом <strong>change</strong>:</p>
+</li>
+<li>
+<p>Встановіть дію: <code>Set</code> <code>msg.payload</code> to <code>JSON</code> <code>{"valve": "CLOSE", "reason": "OPTIMAL_MOISTURE"}</code>.</p>
+</li>
+<li>
+<p>Додайте вузол <strong>mqtt out</strong>, встановіть топік <code>agro/greenhouse/irrigation</code>, QoS <code>1</code>, Retain <code>true</code> та підключіть виходи обох блоків <strong>change</strong>.</p>
+</li>
+<li>
+<p>Аналогічно додайте блок <strong>switch</strong> для аналізу <code>msg.payload.lux</code> з правилами <code>&lt; 300</code> та <code>&gt;= 300</code>, налаштуйте відповідні блоки <strong>change</strong> на відправку <code>{"lamp_power": 100}</code> і <code>{"lamp_power": 0}</code>, підключивши їх до вузла <strong>mqtt out</strong> із топіком <code>agro/greenhouse/lighting</code>.</p>
+</li>
+</ol>
+<h4 id="3-function">Крок 3. Написання алгоритму гістерезису для нагрівача у вузлі Function</h4>
+<p>Для реалізації релейного регулятора з пам'яттю стану скористаємося контекстним сховищем вузла (<code>context.get</code> / <code>context.set</code>), що дозволяє зберігати поточний стан між ітераціями надходження повідомлень.</p>
+<p>Додайте вузол <strong>function</strong> з назвою <code>Гістерезис ТЕН</code> та введіть повний виконуваний код мовою JavaScript:</p>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1">// =====================================================================</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="c1">// АЛГОРИТМ РЕЛЕЙНОГО РЕГУЛЮВАННЯ ТЕМПЕРАТУРИ З ГІСТЕРЕЗИСОМ</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="c1">// =====================================================================</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="c1">// 1. Зчитування цільових констант регулювання</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="kd">const</span><span class="w"> </span><span class="nx">T_SET</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">24.0</span><span class="p">;</span><span class="w">         </span><span class="c1">// Базова цільова уставка температури (°C)</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="kd">const</span><span class="w"> </span><span class="nx">DELTA_T</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2.0</span><span class="p">;</span><span class="w">       </span><span class="c1">// Ширина петлі гістерезису (°C)</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="kd">const</span><span class="w"> </span><span class="nx">T_LOW</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">T_SET</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="nx">DELTA_T</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2.0</span><span class="p">);</span><span class="w">   </span><span class="c1">// Нижній поріг увімкнення: 23.0 °C</span>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="kd">const</span><span class="w"> </span><span class="nx">T_HIGH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">T_SET</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="nx">DELTA_T</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2.0</span><span class="p">);</span><span class="w">  </span><span class="c1">// Верхній поріг вимкнення: 25.0 °C</span>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="c1">// 2. Отримання поточного стану нагрівача з енергонезалежного контексту вузла</span>
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="c1">// За замовчуванням при першому запуску стан вважається вимкненим (OFF)</span>
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="kd">let</span><span class="w"> </span><span class="nx">currentState</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">'heater_state'</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s1">'OFF'</span><span class="p">;</span>
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>
+</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="c1">// 3. Валідація вхідного значення температури</span>
+</span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="nx">payload</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="kc">undefined</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">msg</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">temperature</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="kc">undefined</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-17"><a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="w">    </span><span class="nx">node</span><span class="p">.</span><span class="nx">warn</span><span class="p">(</span><span class="s2">"Отримано некоректний пакет: відсутнє поле msg.payload.temperature"</span><span class="p">);</span>
+</span><span id="__span-5-18"><a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span><span class="w"> </span><span class="c1">// Припинення обробки некоректного повідомлення</span>
+</span><span id="__span-5-19"><a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="p">}</span>
+</span><span id="__span-5-20"><a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a>
+</span><span id="__span-5-21"><a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="kd">let</span><span class="w"> </span><span class="nx">currentTemp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Number</span><span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">temperature</span><span class="p">);</span>
+</span><span id="__span-5-22"><a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a>
+</span><span id="__span-5-23"><a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a><span class="c1">// 4. Логіка автомата станів з урахуванням зони нечутливості</span>
+</span><span id="__span-5-24"><a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a><span class="kd">let</span><span class="w"> </span><span class="nx">stateChanged</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+</span><span id="__span-5-25"><a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a>
+</span><span id="__span-5-26"><a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">currentTemp</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="nx">T_LOW</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">currentState</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="s1">'ON'</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-27"><a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a><span class="w">    </span><span class="nx">currentState</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'ON'</span><span class="p">;</span>
+</span><span id="__span-5-28"><a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a><span class="w">    </span><span class="nx">stateChanged</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+</span><span id="__span-5-29"><a id="__codelineno-5-29" name="__codelineno-5-29" href="#__codelineno-5-29"></a><span class="w">    </span><span class="nx">node</span><span class="p">.</span><span class="nx">status</span><span class="p">({</span><span class="nx">fill</span><span class="o">:</span><span class="w"> </span><span class="s2">"red"</span><span class="p">,</span><span class="w"> </span><span class="nx">shape</span><span class="o">:</span><span class="w"> </span><span class="s2">"dot"</span><span class="p">,</span><span class="w"> </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s2">"Обігрів: УВІМКНЕНО ("</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">currentTemp</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">"°C)"</span><span class="p">});</span>
+</span><span id="__span-5-30"><a id="__codelineno-5-30" name="__codelineno-5-30" href="#__codelineno-5-30"></a><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">currentTemp</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="nx">T_HIGH</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">currentState</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="s1">'OFF'</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-31"><a id="__codelineno-5-31" name="__codelineno-5-31" href="#__codelineno-5-31"></a><span class="w">    </span><span class="nx">currentState</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'OFF'</span><span class="p">;</span>
+</span><span id="__span-5-32"><a id="__codelineno-5-32" name="__codelineno-5-32" href="#__codelineno-5-32"></a><span class="w">    </span><span class="nx">stateChanged</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+</span><span id="__span-5-33"><a id="__codelineno-5-33" name="__codelineno-5-33" href="#__codelineno-5-33"></a><span class="w">    </span><span class="nx">node</span><span class="p">.</span><span class="nx">status</span><span class="p">({</span><span class="nx">fill</span><span class="o">:</span><span class="w"> </span><span class="s2">"grey"</span><span class="p">,</span><span class="w"> </span><span class="nx">shape</span><span class="o">:</span><span class="w"> </span><span class="s2">"ring"</span><span class="p">,</span><span class="w"> </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s2">"Обігрів: ВИМКНЕНО ("</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">currentTemp</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">"°C)"</span><span class="p">});</span>
+</span><span id="__span-5-34"><a id="__codelineno-5-34" name="__codelineno-5-34" href="#__codelineno-5-34"></a><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-35"><a id="__codelineno-5-35" name="__codelineno-5-35" href="#__codelineno-5-35"></a><span class="w">    </span><span class="c1">// Температура всередині петлі гістерезису (T_LOW &lt; T &lt; T_HIGH) — стан не змінюється</span>
+</span><span id="__span-5-36"><a id="__codelineno-5-36" name="__codelineno-5-36" href="#__codelineno-5-36"></a><span class="w">    </span><span class="nx">node</span><span class="p">.</span><span class="nx">status</span><span class="p">({</span>
+</span><span id="__span-5-37"><a id="__codelineno-5-37" name="__codelineno-5-37" href="#__codelineno-5-37"></a><span class="w">        </span><span class="nx">fill</span><span class="o">:</span><span class="w"> </span><span class="nx">currentState</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">'ON'</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s2">"red"</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">"grey"</span><span class="p">,</span>
+</span><span id="__span-5-38"><a id="__codelineno-5-38" name="__codelineno-5-38" href="#__codelineno-5-38"></a><span class="w">        </span><span class="nx">shape</span><span class="o">:</span><span class="w"> </span><span class="nx">currentState</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">'ON'</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s2">"dot"</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">"ring"</span><span class="p">,</span>
+</span><span id="__span-5-39"><a id="__codelineno-5-39" name="__codelineno-5-39" href="#__codelineno-5-39"></a><span class="w">        </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s2">"Стабільний стан: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">currentState</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">" ("</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">currentTemp</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">"°C)"</span>
+</span><span id="__span-5-40"><a id="__codelineno-5-40" name="__codelineno-5-40" href="#__codelineno-5-40"></a><span class="w">    </span><span class="p">});</span>
+</span><span id="__span-5-41"><a id="__codelineno-5-41" name="__codelineno-5-41" href="#__codelineno-5-41"></a><span class="p">}</span>
+</span><span id="__span-5-42"><a id="__codelineno-5-42" name="__codelineno-5-42" href="#__codelineno-5-42"></a>
+</span><span id="__span-5-43"><a id="__codelineno-5-43" name="__codelineno-5-43" href="#__codelineno-5-43"></a><span class="c1">// 5. Оновлення збереженого стану в контексті</span>
+</span><span id="__span-5-44"><a id="__codelineno-5-44" name="__codelineno-5-44" href="#__codelineno-5-44"></a><span class="nx">context</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">'heater_state'</span><span class="p">,</span><span class="w"> </span><span class="nx">currentState</span><span class="p">);</span>
+</span><span id="__span-5-45"><a id="__codelineno-5-45" name="__codelineno-5-45" href="#__codelineno-5-45"></a>
+</span><span id="__span-5-46"><a id="__codelineno-5-46" name="__codelineno-5-46" href="#__codelineno-5-46"></a><span class="c1">// 6. Формування вихідного повідомлення лише у разі фактичної зміни стану</span>
+</span><span id="__span-5-47"><a id="__codelineno-5-47" name="__codelineno-5-47" href="#__codelineno-5-47"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">stateChanged</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-48"><a id="__codelineno-5-48" name="__codelineno-5-48" href="#__codelineno-5-48"></a><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">outMsg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-49"><a id="__codelineno-5-49" name="__codelineno-5-49" href="#__codelineno-5-49"></a><span class="w">        </span><span class="nx">topic</span><span class="o">:</span><span class="w"> </span><span class="s2">"agro/greenhouse/heater"</span><span class="p">,</span>
+</span><span id="__span-5-50"><a id="__codelineno-5-50" name="__codelineno-5-50" href="#__codelineno-5-50"></a><span class="w">        </span><span class="nx">payload</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-51"><a id="__codelineno-5-51" name="__codelineno-5-51" href="#__codelineno-5-51"></a><span class="w">            </span><span class="nx">state</span><span class="o">:</span><span class="w"> </span><span class="nx">currentState</span><span class="p">,</span>
+</span><span id="__span-5-52"><a id="__codelineno-5-52" name="__codelineno-5-52" href="#__codelineno-5-52"></a><span class="w">            </span><span class="nx">current_temperature</span><span class="o">:</span><span class="w"> </span><span class="nx">currentTemp</span><span class="p">,</span>
+</span><span id="__span-5-53"><a id="__codelineno-5-53" name="__codelineno-5-53" href="#__codelineno-5-53"></a><span class="w">            </span><span class="nx">setpoint</span><span class="o">:</span><span class="w"> </span><span class="nx">T_SET</span><span class="p">,</span>
+</span><span id="__span-5-54"><a id="__codelineno-5-54" name="__codelineno-5-54" href="#__codelineno-5-54"></a><span class="w">            </span><span class="nx">timestamp</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">().</span><span class="nx">toISOString</span><span class="p">()</span>
+</span><span id="__span-5-55"><a id="__codelineno-5-55" name="__codelineno-5-55" href="#__codelineno-5-55"></a><span class="w">        </span><span class="p">},</span>
+</span><span id="__span-5-56"><a id="__codelineno-5-56" name="__codelineno-5-56" href="#__codelineno-5-56"></a><span class="w">        </span><span class="nx">qos</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span>
+</span><span id="__span-5-57"><a id="__codelineno-5-57" name="__codelineno-5-57" href="#__codelineno-5-57"></a><span class="w">        </span><span class="nx">retain</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span>
+</span><span id="__span-5-58"><a id="__codelineno-5-58" name="__codelineno-5-58" href="#__codelineno-5-58"></a><span class="w">    </span><span class="p">};</span>
+</span><span id="__span-5-59"><a id="__codelineno-5-59" name="__codelineno-5-59" href="#__codelineno-5-59"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">outMsg</span><span class="p">;</span>
+</span><span id="__span-5-60"><a id="__codelineno-5-60" name="__codelineno-5-60" href="#__codelineno-5-60"></a><span class="p">}</span>
+</span><span id="__span-5-61"><a id="__codelineno-5-61" name="__codelineno-5-61" href="#__codelineno-5-61"></a>
+</span><span id="__span-5-62"><a id="__codelineno-5-62" name="__codelineno-5-62" href="#__codelineno-5-62"></a><span class="c1">// Якщо стан не змінився — повідомлення на вихід не надсилається для економії трафіку</span>
+</span><span id="__span-5-63"><a id="__codelineno-5-63" name="__codelineno-5-63" href="#__codelineno-5-63"></a><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+</span></code></pre></div>
+<h4 id="4-json-node-red">Крок 4. Повний еталонний JSON-маніфест для імпорту в Node-RED</h4>
+<p>Для імпорту готової конфігурації у Node-RED натисніть комбінацію клавіш <code>Ctrl+I</code> (або виберіть <em>Меню</em> <span class="arithmatex">\(\to\)</span> <em>Import</em>), вставте наведений нижче JSON-код та натисніть кнопку <strong>Import</strong>:</p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="p">[</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tab_greenhouse_ctrl"</span><span class="p">,</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tab"</span><span class="p">,</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">        </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Greenhouse Automation"</span><span class="p">,</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">        </span><span class="nt">"disabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">        </span><span class="nt">"info"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Практичне заняття 7: Еталонний потік клімат-контролю теплиці"</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="w">        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mqtt_broker_local"</span><span class="p">,</span>
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="w">        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mqtt-broker"</span><span class="p">,</span>
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="w">        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Local Mosquitto"</span><span class="p">,</span>
+</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="w">        </span><span class="nt">"broker"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127.0.0.1"</span><span class="p">,</span>
+</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="w">        </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1883"</span><span class="p">,</span>
+</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="w">        </span><span class="nt">"clientid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NodeRED_Core_Engine"</span><span class="p">,</span>
+</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="w">        </span><span class="nt">"autoConnect"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="w">        </span><span class="nt">"usetls"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+</span><span id="__span-6-18"><a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a><span class="w">        </span><span class="nt">"compatmode"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+</span><span id="__span-6-19"><a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a><span class="w">        </span><span class="nt">"keepalive"</span><span class="p">:</span><span class="w"> </span><span class="s2">"60"</span><span class="p">,</span>
+</span><span id="__span-6-20"><a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a><span class="w">        </span><span class="nt">"cleansession"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+</span><span id="__span-6-21"><a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-6-22"><a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-6-23"><a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a><span class="w">        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"node_mqtt_in_telemetry"</span><span class="p">,</span>
+</span><span id="__span-6-24"><a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a><span class="w">        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mqtt in"</span><span class="p">,</span>
+</span><span id="__span-6-25"><a id="__codelineno-6-25" name="__codelineno-6-25" href="#__codelineno-6-25"></a><span class="w">        </span><span class="nt">"z"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tab_greenhouse_ctrl"</span><span class="p">,</span>
+</span><span id="__span-6-26"><a id="__codelineno-6-26" name="__codelineno-6-26" href="#__codelineno-6-26"></a><span class="w">        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Telemetry In"</span><span class="p">,</span>
+</span><span id="__span-6-27"><a id="__codelineno-6-27" name="__codelineno-6-27" href="#__codelineno-6-27"></a><span class="w">        </span><span class="nt">"topic"</span><span class="p">:</span><span class="w"> </span><span class="s2">"agro/greenhouse/telemetry"</span><span class="p">,</span>
+</span><span id="__span-6-28"><a id="__codelineno-6-28" name="__codelineno-6-28" href="#__codelineno-6-28"></a><span class="w">        </span><span class="nt">"qos"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span>
+</span><span id="__span-6-29"><a id="__codelineno-6-29" name="__codelineno-6-29" href="#__codelineno-6-29"></a><span class="w">        </span><span class="nt">"datatype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"json"</span><span class="p">,</span>
+</span><span id="__span-6-30"><a id="__codelineno-6-30" name="__codelineno-6-30" href="#__codelineno-6-30"></a><span class="w">        </span><span class="nt">"broker"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mqtt_broker_local"</span><span class="p">,</span>
+</span><span id="__span-6-31"><a id="__codelineno-6-31" name="__codelineno-6-31" href="#__codelineno-6-31"></a><span class="w">        </span><span class="nt">"nl"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+</span><span id="__span-6-32"><a id="__codelineno-6-32" name="__codelineno-6-32" href="#__codelineno-6-32"></a><span class="w">        </span><span class="nt">"rap"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+</span><span id="__span-6-33"><a id="__codelineno-6-33" name="__codelineno-6-33" href="#__codelineno-6-33"></a><span class="w">        </span><span class="nt">"rh"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+</span><span id="__span-6-34"><a id="__codelineno-6-34" name="__codelineno-6-34" href="#__codelineno-6-34"></a><span class="w">        </span><span class="nt">"x"</span><span class="p">:</span><span class="w"> </span><span class="mi">140</span><span class="p">,</span>
+</span><span id="__span-6-35"><a id="__codelineno-6-35" name="__codelineno-6-35" href="#__codelineno-6-35"></a><span class="w">        </span><span class="nt">"y"</span><span class="p">:</span><span class="w"> </span><span class="mi">180</span><span class="p">,</span>
+</span><span id="__span-6-36"><a id="__codelineno-6-36" name="__codelineno-6-36" href="#__codelineno-6-36"></a><span class="w">        </span><span class="nt">"wires"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-6-37"><a id="__codelineno-6-37" name="__codelineno-6-37" href="#__codelineno-6-37"></a><span class="w">            </span><span class="p">[</span>
+</span><span id="__span-6-38"><a id="__codelineno-6-38" name="__codelineno-6-38" href="#__codelineno-6-38"></a><span class="w">                </span><span class="s2">"node_switch_moist"</span><span class="p">,</span>
+</span><span id="__span-6-39"><a id="__codelineno-6-39" name="__codelineno-6-39" href="#__codelineno-6-39"></a><span class="w">                </span><span class="s2">"node_switch_lux"</span><span class="p">,</span>
+</span><span id="__span-6-40"><a id="__codelineno-6-40" name="__codelineno-6-40" href="#__codelineno-6-40"></a><span class="w">                </span><span class="s2">"node_func_hysteresis"</span>
+</span><span id="__span-6-41"><a id="__codelineno-6-41" name="__codelineno-6-41" href="#__codelineno-6-41"></a><span class="w">            </span><span class="p">]</span>
+</span><span id="__span-6-42"><a id="__codelineno-6-42" name="__codelineno-6-42" href="#__codelineno-6-42"></a><span class="w">        </span><span class="p">]</span>
+</span><span id="__span-6-43"><a id="__codelineno-6-43" name="__codelineno-6-43" href="#__codelineno-6-43"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-6-44"><a id="__codelineno-6-44" name="__codelineno-6-44" href="#__codelineno-6-44"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-6-45"><a id="__codelineno-6-45" name="__codelineno-6-45" href="#__codelineno-6-45"></a><span class="w">        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"node_switch_moist"</span><span class="p">,</span>
+</span><span id="__span-6-46"><a id="__codelineno-6-46" name="__codelineno-6-46" href="#__codelineno-6-46"></a><span class="w">        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"switch"</span><span class="p">,</span>
+</span><span id="__span-6-47"><a id="__codelineno-6-47" name="__codelineno-6-47" href="#__codelineno-6-47"></a><span class="w">        </span><span class="nt">"z"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tab_greenhouse_ctrl"</span><span class="p">,</span>
+</span><span id="__span-6-48"><a id="__codelineno-6-48" name="__codelineno-6-48" href="#__codelineno-6-48"></a><span class="w">        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Moisture Decision"</span><span class="p">,</span>
+</span><span id="__span-6-49"><a id="__codelineno-6-49" name="__codelineno-6-49" href="#__codelineno-6-49"></a><span class="w">        </span><span class="nt">"property"</span><span class="p">:</span><span class="w"> </span><span class="s2">"payload.soil_moisture"</span><span class="p">,</span>
+</span><span id="__span-6-50"><a id="__codelineno-6-50" name="__codelineno-6-50" href="#__codelineno-6-50"></a><span class="w">        </span><span class="nt">"propertyType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"msg"</span><span class="p">,</span>
+</span><span id="__span-6-51"><a id="__codelineno-6-51" name="__codelineno-6-51" href="#__codelineno-6-51"></a><span class="w">        </span><span class="nt">"rules"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-6-52"><a id="__codelineno-6-52" name="__codelineno-6-52" href="#__codelineno-6-52"></a><span class="w">            </span><span class="p">{</span>
+</span><span id="__span-6-53"><a id="__codelineno-6-53" name="__codelineno-6-53" href="#__codelineno-6-53"></a><span class="w">                </span><span class="nt">"t"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lte"</span><span class="p">,</span>
+</span><span id="__span-6-54"><a id="__codelineno-6-54" name="__codelineno-6-54" href="#__codelineno-6-54"></a><span class="w">                </span><span class="nt">"v"</span><span class="p">:</span><span class="w"> </span><span class="s2">"40"</span><span class="p">,</span>
+</span><span id="__span-6-55"><a id="__codelineno-6-55" name="__codelineno-6-55" href="#__codelineno-6-55"></a><span class="w">                </span><span class="nt">"vt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"num"</span>
+</span><span id="__span-6-56"><a id="__codelineno-6-56" name="__codelineno-6-56" href="#__codelineno-6-56"></a><span class="w">            </span><span class="p">},</span>
+</span><span id="__span-6-57"><a id="__codelineno-6-57" name="__codelineno-6-57" href="#__codelineno-6-57"></a><span class="w">            </span><span class="p">{</span>
+</span><span id="__span-6-58"><a id="__codelineno-6-58" name="__codelineno-6-58" href="#__codelineno-6-58"></a><span class="w">                </span><span class="nt">"t"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gte"</span><span class="p">,</span>
+</span><span id="__span-6-59"><a id="__codelineno-6-59" name="__codelineno-6-59" href="#__codelineno-6-59"></a><span class="w">                </span><span class="nt">"v"</span><span class="p">:</span><span class="w"> </span><span class="s2">"55"</span><span class="p">,</span>
+</span><span id="__span-6-60"><a id="__codelineno-6-60" name="__codelineno-6-60" href="#__codelineno-6-60"></a><span class="w">                </span><span class="nt">"vt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"num"</span>
+</span><span id="__span-6-61"><a id="__codelineno-6-61" name="__codelineno-6-61" href="#__codelineno-6-61"></a><span class="w">            </span><span class="p">}</span>
+</span><span id="__span-6-62"><a id="__codelineno-6-62" name="__codelineno-6-62" href="#__codelineno-6-62"></a><span class="w">        </span><span class="p">],</span>
+</span><span id="__span-6-63"><a id="__codelineno-6-63" name="__codelineno-6-63" href="#__codelineno-6-63"></a><span class="w">        </span><span class="nt">"checkall"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span>
+</span><span id="__span-6-64"><a id="__codelineno-6-64" name="__codelineno-6-64" href="#__codelineno-6-64"></a><span class="w">        </span><span class="nt">"repair"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+</span><span id="__span-6-65"><a id="__codelineno-6-65" name="__codelineno-6-65" href="#__codelineno-6-65"></a><span class="w">        </span><span class="nt">"outputs"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+</span><span id="__span-6-66"><a id="__codelineno-6-66" name="__codelineno-6-66" href="#__codelineno-6-66"></a><span class="w">        </span><span class="nt">"x"</span><span class="p">:</span><span class="w"> </span><span class="mi">410</span><span class="p">,</span>
+</span><span id="__span-6-67"><a id="__codelineno-6-67" name="__codelineno-6-67" href="#__codelineno-6-67"></a><span class="w">        </span><span class="nt">"y"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span>
+</span><span id="__span-6-68"><a id="__codelineno-6-68" name="__codelineno-6-68" href="#__codelineno-6-68"></a><span class="w">        </span><span class="nt">"wires"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-6-69"><a id="__codelineno-6-69" name="__codelineno-6-69" href="#__codelineno-6-69"></a><span class="w">            </span><span class="p">[</span>
+</span><span id="__span-6-70"><a id="__codelineno-6-70" name="__codelineno-6-70" href="#__codelineno-6-70"></a><span class="w">                </span><span class="s2">"node_change_valve_on"</span>
+</span><span id="__span-6-71"><a id="__codelineno-6-71" name="__codelineno-6-71" href="#__codelineno-6-71"></a><span class="w">            </span><span class="p">],</span>
+</span><span id="__span-6-72"><a id="__codelineno-6-72" name="__codelineno-6-72" href="#__codelineno-6-72"></a><span class="w">            </span><span class="p">[</span>
+</span><span id="__span-6-73"><a id="__codelineno-6-73" name="__codelineno-6-73" href="#__codelineno-6-73"></a><span class="w">                </span><span class="s2">"node_change_valve_off"</span>
+</span><span id="__span-6-74"><a id="__codelineno-6-74" name="__codelineno-6-74" href="#__codelineno-6-74"></a><span class="w">            </span><span class="p">]</span>
+</span><span id="__span-6-75"><a id="__codelineno-6-75" name="__codelineno-6-75" href="#__codelineno-6-75"></a><span class="w">        </span><span class="p">]</span>
+</span><span id="__span-6-76"><a id="__codelineno-6-76" name="__codelineno-6-76" href="#__codelineno-6-76"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-6-77"><a id="__codelineno-6-77" name="__codelineno-6-77" href="#__codelineno-6-77"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-6-78"><a id="__codelineno-6-78" name="__codelineno-6-78" href="#__codelineno-6-78"></a><span class="w">        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"node_change_valve_on"</span><span class="p">,</span>
+</span><span id="__span-6-79"><a id="__codelineno-6-79" name="__codelineno-6-79" href="#__codelineno-6-79"></a><span class="w">        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"change"</span><span class="p">,</span>
+</span><span id="__span-6-80"><a id="__codelineno-6-80" name="__codelineno-6-80" href="#__codelineno-6-80"></a><span class="w">        </span><span class="nt">"z"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tab_greenhouse_ctrl"</span><span class="p">,</span>
+</span><span id="__span-6-81"><a id="__codelineno-6-81" name="__codelineno-6-81" href="#__codelineno-6-81"></a><span class="w">        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Valve OPEN"</span><span class="p">,</span>
+</span><span id="__span-6-82"><a id="__codelineno-6-82" name="__codelineno-6-82" href="#__codelineno-6-82"></a><span class="w">        </span><span class="nt">"rules"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-6-83"><a id="__codelineno-6-83" name="__codelineno-6-83" href="#__codelineno-6-83"></a><span class="w">            </span><span class="p">{</span>
+</span><span id="__span-6-84"><a id="__codelineno-6-84" name="__codelineno-6-84" href="#__codelineno-6-84"></a><span class="w">                </span><span class="nt">"t"</span><span class="p">:</span><span class="w"> </span><span class="s2">"set"</span><span class="p">,</span>
+</span><span id="__span-6-85"><a id="__codelineno-6-85" name="__codelineno-6-85" href="#__codelineno-6-85"></a><span class="w">                </span><span class="nt">"p"</span><span class="p">:</span><span class="w"> </span><span class="s2">"payload"</span><span class="p">,</span>
+</span><span id="__span-6-86"><a id="__codelineno-6-86" name="__codelineno-6-86" href="#__codelineno-6-86"></a><span class="w">                </span><span class="nt">"pt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"msg"</span><span class="p">,</span>
+</span><span id="__span-6-87"><a id="__codelineno-6-87" name="__codelineno-6-87" href="#__codelineno-6-87"></a><span class="w">                </span><span class="nt">"to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{\"valve\":\"OPEN\",\"mode\":\"AUTO\"}"</span><span class="p">,</span>
+</span><span id="__span-6-88"><a id="__codelineno-6-88" name="__codelineno-6-88" href="#__codelineno-6-88"></a><span class="w">                </span><span class="nt">"tot"</span><span class="p">:</span><span class="w"> </span><span class="s2">"json"</span>
+</span><span id="__span-6-89"><a id="__codelineno-6-89" name="__codelineno-6-89" href="#__codelineno-6-89"></a><span class="w">            </span><span class="p">}</span>
+</span><span id="__span-6-90"><a id="__codelineno-6-90" name="__codelineno-6-90" href="#__codelineno-6-90"></a><span class="w">        </span><span class="p">],</span>
+</span><span id="__span-6-91"><a id="__codelineno-6-91" name="__codelineno-6-91" href="#__codelineno-6-91"></a><span class="w">        </span><span class="nt">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span>
+</span><span id="__span-6-92"><a id="__codelineno-6-92" name="__codelineno-6-92" href="#__codelineno-6-92"></a><span class="w">        </span><span class="nt">"property"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span>
+</span><span id="__span-6-93"><a id="__codelineno-6-93" name="__codelineno-6-93" href="#__codelineno-6-93"></a><span class="w">        </span><span class="nt">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span>
+</span><span id="__span-6-94"><a id="__codelineno-6-94" name="__codelineno-6-94" href="#__codelineno-6-94"></a><span class="w">        </span><span class="nt">"to"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span>
+</span><span id="__span-6-95"><a id="__codelineno-6-95" name="__codelineno-6-95" href="#__codelineno-6-95"></a><span class="w">        </span><span class="nt">"reg"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+</span><span id="__span-6-96"><a id="__codelineno-6-96" name="__codelineno-6-96" href="#__codelineno-6-96"></a><span class="w">        </span><span class="nt">"x"</span><span class="p">:</span><span class="w"> </span><span class="mi">650</span><span class="p">,</span>
+</span><span id="__span-6-97"><a id="__codelineno-6-97" name="__codelineno-6-97" href="#__codelineno-6-97"></a><span class="w">        </span><span class="nt">"y"</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="p">,</span>
+</span><span id="__span-6-98"><a id="__codelineno-6-98" name="__codelineno-6-98" href="#__codelineno-6-98"></a><span class="w">        </span><span class="nt">"wires"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-6-99"><a id="__codelineno-6-99" name="__codelineno-6-99" href="#__codelineno-6-99"></a><span class="w">            </span><span class="p">[</span>
+</span><span id="__span-6-100"><a id="__codelineno-6-100" name="__codelineno-6-100" href="#__codelineno-6-100"></a><span class="w">                </span><span class="s2">"node_mqtt_out_irrigation"</span>
+</span><span id="__span-6-101"><a id="__codelineno-6-101" name="__codelineno-6-101" href="#__codelineno-6-101"></a><span class="w">            </span><span class="p">]</span>
+</span><span id="__span-6-102"><a id="__codelineno-6-102" name="__codelineno-6-102" href="#__codelineno-6-102"></a><span class="w">        </span><span class="p">]</span>
+</span><span id="__span-6-103"><a id="__codelineno-6-103" name="__codelineno-6-103" href="#__codelineno-6-103"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-6-104"><a id="__codelineno-6-104" name="__codelineno-6-104" href="#__codelineno-6-104"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-6-105"><a id="__codelineno-6-105" name="__codelineno-6-105" href="#__codelineno-6-105"></a><span class="w">        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"node_change_valve_off"</span><span class="p">,</span>
+</span><span id="__span-6-106"><a id="__codelineno-6-106" name="__codelineno-6-106" href="#__codelineno-6-106"></a><span class="w">        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"change"</span><span class="p">,</span>
+</span><span id="__span-6-107"><a id="__codelineno-6-107" name="__codelineno-6-107" href="#__codelineno-6-107"></a><span class="w">        </span><span class="nt">"z"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tab_greenhouse_ctrl"</span><span class="p">,</span>
+</span><span id="__span-6-108"><a id="__codelineno-6-108" name="__codelineno-6-108" href="#__codelineno-6-108"></a><span class="w">        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Valve CLOSE"</span><span class="p">,</span>
+</span><span id="__span-6-109"><a id="__codelineno-6-109" name="__codelineno-6-109" href="#__codelineno-6-109"></a><span class="w">        </span><span class="nt">"rules"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-6-110"><a id="__codelineno-6-110" name="__codelineno-6-110" href="#__codelineno-6-110"></a><span class="w">            </span><span class="p">{</span>
+</span><span id="__span-6-111"><a id="__codelineno-6-111" name="__codelineno-6-111" href="#__codelineno-6-111"></a><span class="w">                </span><span class="nt">"t"</span><span class="p">:</span><span class="w"> </span><span class="s2">"set"</span><span class="p">,</span>
+</span><span id="__span-6-112"><a id="__codelineno-6-112" name="__codelineno-6-112" href="#__codelineno-6-112"></a><span class="w">                </span><span class="nt">"p"</span><span class="p">:</span><span class="w"> </span><span class="s2">"payload"</span><span class="p">,</span>
+</span><span id="__span-6-113"><a id="__codelineno-6-113" name="__codelineno-6-113" href="#__codelineno-6-113"></a><span class="w">                </span><span class="nt">"pt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"msg"</span><span class="p">,</span>
+</span><span id="__span-6-114"><a id="__codelineno-6-114" name="__codelineno-6-114" href="#__codelineno-6-114"></a><span class="w">                </span><span class="nt">"to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{\"valve\":\"CLOSE\",\"mode\":\"AUTO\"}"</span><span class="p">,</span>
+</span><span id="__span-6-115"><a id="__codelineno-6-115" name="__codelineno-6-115" href="#__codelineno-6-115"></a><span class="w">                </span><span class="nt">"tot"</span><span class="p">:</span><span class="w"> </span><span class="s2">"json"</span>
+</span><span id="__span-6-116"><a id="__codelineno-6-116" name="__codelineno-6-116" href="#__codelineno-6-116"></a><span class="w">            </span><span class="p">}</span>
+</span><span id="__span-6-117"><a id="__codelineno-6-117" name="__codelineno-6-117" href="#__codelineno-6-117"></a><span class="w">        </span><span class="p">],</span>
+</span><span id="__span-6-118"><a id="__codelineno-6-118" name="__codelineno-6-118" href="#__codelineno-6-118"></a><span class="w">        </span><span class="nt">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span>
+</span><span id="__span-6-119"><a id="__codelineno-6-119" name="__codelineno-6-119" href="#__codelineno-6-119"></a><span class="w">        </span><span class="nt">"property"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span>
+</span><span id="__span-6-120"><a id="__codelineno-6-120" name="__codelineno-6-120" href="#__codelineno-6-120"></a><span class="w">        </span><span class="nt">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span>
+</span><span id="__span-6-121"><a id="__codelineno-6-121" name="__codelineno-6-121" href="#__codelineno-6-121"></a><span class="w">        </span><span class="nt">"to"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span>
+</span><span id="__span-6-122"><a id="__codelineno-6-122" name="__codelineno-6-122" href="#__codelineno-6-122"></a><span class="w">        </span><span class="nt">"reg"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+</span><span id="__span-6-123"><a id="__codelineno-6-123" name="__codelineno-6-123" href="#__codelineno-6-123"></a><span class="w">        </span><span class="nt">"x"</span><span class="p">:</span><span class="w"> </span><span class="mi">660</span><span class="p">,</span>
+</span><span id="__span-6-124"><a id="__codelineno-6-124" name="__codelineno-6-124" href="#__codelineno-6-124"></a><span class="w">        </span><span class="nt">"y"</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span>
+</span><span id="__span-6-125"><a id="__codelineno-6-125" name="__codelineno-6-125" href="#__codelineno-6-125"></a><span class="w">        </span><span class="nt">"wires"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-6-126"><a id="__codelineno-6-126" name="__codelineno-6-126" href="#__codelineno-6-126"></a><span class="w">            </span><span class="p">[</span>
+</span><span id="__span-6-127"><a id="__codelineno-6-127" name="__codelineno-6-127" href="#__codelineno-6-127"></a><span class="w">                </span><span class="s2">"node_mqtt_out_irrigation"</span>
+</span><span id="__span-6-128"><a id="__codelineno-6-128" name="__codelineno-6-128" href="#__codelineno-6-128"></a><span class="w">            </span><span class="p">]</span>
+</span><span id="__span-6-129"><a id="__codelineno-6-129" name="__codelineno-6-129" href="#__codelineno-6-129"></a><span class="w">        </span><span class="p">]</span>
+</span><span id="__span-6-130"><a id="__codelineno-6-130" name="__codelineno-6-130" href="#__codelineno-6-130"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-6-131"><a id="__codelineno-6-131" name="__codelineno-6-131" href="#__codelineno-6-131"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-6-132"><a id="__codelineno-6-132" name="__codelineno-6-132" href="#__codelineno-6-132"></a><span class="w">        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"node_switch_lux"</span><span class="p">,</span>
+</span><span id="__span-6-133"><a id="__codelineno-6-133" name="__codelineno-6-133" href="#__codelineno-6-133"></a><span class="w">        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"switch"</span><span class="p">,</span>
+</span><span id="__span-6-134"><a id="__codelineno-6-134" name="__codelineno-6-134" href="#__codelineno-6-134"></a><span class="w">        </span><span class="nt">"z"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tab_greenhouse_ctrl"</span><span class="p">,</span>
+</span><span id="__span-6-135"><a id="__codelineno-6-135" name="__codelineno-6-135" href="#__codelineno-6-135"></a><span class="w">        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lux Decision"</span><span class="p">,</span>
+</span><span id="__span-6-136"><a id="__codelineno-6-136" name="__codelineno-6-136" href="#__codelineno-6-136"></a><span class="w">        </span><span class="nt">"property"</span><span class="p">:</span><span class="w"> </span><span class="s2">"payload.lux"</span><span class="p">,</span>
+</span><span id="__span-6-137"><a id="__codelineno-6-137" name="__codelineno-6-137" href="#__codelineno-6-137"></a><span class="w">        </span><span class="nt">"propertyType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"msg"</span><span class="p">,</span>
+</span><span id="__span-6-138"><a id="__codelineno-6-138" name="__codelineno-6-138" href="#__codelineno-6-138"></a><span class="w">        </span><span class="nt">"rules"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-6-139"><a id="__codelineno-6-139" name="__codelineno-6-139" href="#__codelineno-6-139"></a><span class="w">            </span><span class="p">{</span>
+</span><span id="__span-6-140"><a id="__codelineno-6-140" name="__codelineno-6-140" href="#__codelineno-6-140"></a><span class="w">                </span><span class="nt">"t"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lt"</span><span class="p">,</span>
+</span><span id="__span-6-141"><a id="__codelineno-6-141" name="__codelineno-6-141" href="#__codelineno-6-141"></a><span class="w">                </span><span class="nt">"v"</span><span class="p">:</span><span class="w"> </span><span class="s2">"300"</span><span class="p">,</span>
+</span><span id="__span-6-142"><a id="__codelineno-6-142" name="__codelineno-6-142" href="#__codelineno-6-142"></a><span class="w">                </span><span class="nt">"vt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"num"</span>
+</span><span id="__span-6-143"><a id="__codelineno-6-143" name="__codelineno-6-143" href="#__codelineno-6-143"></a><span class="w">            </span><span class="p">},</span>
+</span><span id="__span-6-144"><a id="__codelineno-6-144" name="__codelineno-6-144" href="#__codelineno-6-144"></a><span class="w">            </span><span class="p">{</span>
+</span><span id="__span-6-145"><a id="__codelineno-6-145" name="__codelineno-6-145" href="#__codelineno-6-145"></a><span class="w">                </span><span class="nt">"t"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gte"</span><span class="p">,</span>
+</span><span id="__span-6-146"><a id="__codelineno-6-146" name="__codelineno-6-146" href="#__codelineno-6-146"></a><span class="w">                </span><span class="nt">"v"</span><span class="p">:</span><span class="w"> </span><span class="s2">"300"</span><span class="p">,</span>
+</span><span id="__span-6-147"><a id="__codelineno-6-147" name="__codelineno-6-147" href="#__codelineno-6-147"></a><span class="w">                </span><span class="nt">"vt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"num"</span>
+</span><span id="__span-6-148"><a id="__codelineno-6-148" name="__codelineno-6-148" href="#__codelineno-6-148"></a><span class="w">            </span><span class="p">}</span>
+</span><span id="__span-6-149"><a id="__codelineno-6-149" name="__codelineno-6-149" href="#__codelineno-6-149"></a><span class="w">        </span><span class="p">],</span>
+</span><span id="__span-6-150"><a id="__codelineno-6-150" name="__codelineno-6-150" href="#__codelineno-6-150"></a><span class="w">        </span><span class="nt">"checkall"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span>
+</span><span id="__span-6-151"><a id="__codelineno-6-151" name="__codelineno-6-151" href="#__codelineno-6-151"></a><span class="w">        </span><span class="nt">"repair"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+</span><span id="__span-6-152"><a id="__codelineno-6-152" name="__codelineno-6-152" href="#__codelineno-6-152"></a><span class="w">        </span><span class="nt">"outputs"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+</span><span id="__span-6-153"><a id="__codelineno-6-153" name="__codelineno-6-153" href="#__codelineno-6-153"></a><span class="w">        </span><span class="nt">"x"</span><span class="p">:</span><span class="w"> </span><span class="mi">390</span><span class="p">,</span>
+</span><span id="__span-6-154"><a id="__codelineno-6-154" name="__codelineno-6-154" href="#__codelineno-6-154"></a><span class="w">        </span><span class="nt">"y"</span><span class="p">:</span><span class="w"> </span><span class="mi">260</span><span class="p">,</span>
+</span><span id="__span-6-155"><a id="__codelineno-6-155" name="__codelineno-6-155" href="#__codelineno-6-155"></a><span class="w">        </span><span class="nt">"wires"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-6-156"><a id="__codelineno-6-156" name="__codelineno-6-156" href="#__codelineno-6-156"></a><span class="w">            </span><span class="p">[</span>
+</span><span id="__span-6-157"><a id="__codelineno-6-157" name="__codelineno-6-157" href="#__codelineno-6-157"></a><span class="w">                </span><span class="s2">"node_change_light_on"</span>
+</span><span id="__span-6-158"><a id="__codelineno-6-158" name="__codelineno-6-158" href="#__codelineno-6-158"></a><span class="w">            </span><span class="p">],</span>
+</span><span id="__span-6-159"><a id="__codelineno-6-159" name="__codelineno-6-159" href="#__codelineno-6-159"></a><span class="w">            </span><span class="p">[</span>
+</span><span id="__span-6-160"><a id="__codelineno-6-160" name="__codelineno-6-160" href="#__codelineno-6-160"></a><span class="w">                </span><span class="s2">"node_change_light_off"</span>
+</span><span id="__span-6-161"><a id="__codelineno-6-161" name="__codelineno-6-161" href="#__codelineno-6-161"></a><span class="w">            </span><span class="p">]</span>
+</span><span id="__span-6-162"><a id="__codelineno-6-162" name="__codelineno-6-162" href="#__codelineno-6-162"></a><span class="w">        </span><span class="p">]</span>
+</span><span id="__span-6-163"><a id="__codelineno-6-163" name="__codelineno-6-163" href="#__codelineno-6-163"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-6-164"><a id="__codelineno-6-164" name="__codelineno-6-164" href="#__codelineno-6-164"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-6-165"><a id="__codelineno-6-165" name="__codelineno-6-165" href="#__codelineno-6-165"></a><span class="w">        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"node_change_light_on"</span><span class="p">,</span>
+</span><span id="__span-6-166"><a id="__codelineno-6-166" name="__codelineno-6-166" href="#__codelineno-6-166"></a><span class="w">        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"change"</span><span class="p">,</span>
+</span><span id="__span-6-167"><a id="__codelineno-6-167" name="__codelineno-6-167" href="#__codelineno-6-167"></a><span class="w">        </span><span class="nt">"z"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tab_greenhouse_ctrl"</span><span class="p">,</span>
+</span><span id="__span-6-168"><a id="__codelineno-6-168" name="__codelineno-6-168" href="#__codelineno-6-168"></a><span class="w">        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Light ON"</span><span class="p">,</span>
+</span><span id="__span-6-169"><a id="__codelineno-6-169" name="__codelineno-6-169" href="#__codelineno-6-169"></a><span class="w">        </span><span class="nt">"rules"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-6-170"><a id="__codelineno-6-170" name="__codelineno-6-170" href="#__codelineno-6-170"></a><span class="w">            </span><span class="p">{</span>
+</span><span id="__span-6-171"><a id="__codelineno-6-171" name="__codelineno-6-171" href="#__codelineno-6-171"></a><span class="w">                </span><span class="nt">"t"</span><span class="p">:</span><span class="w"> </span><span class="s2">"set"</span><span class="p">,</span>
+</span><span id="__span-6-172"><a id="__codelineno-6-172" name="__codelineno-6-172" href="#__codelineno-6-172"></a><span class="w">                </span><span class="nt">"p"</span><span class="p">:</span><span class="w"> </span><span class="s2">"payload"</span><span class="p">,</span>
+</span><span id="__span-6-173"><a id="__codelineno-6-173" name="__codelineno-6-173" href="#__codelineno-6-173"></a><span class="w">                </span><span class="nt">"pt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"msg"</span><span class="p">,</span>
+</span><span id="__span-6-174"><a id="__codelineno-6-174" name="__codelineno-6-174" href="#__codelineno-6-174"></a><span class="w">                </span><span class="nt">"to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{\"lamp_power\":100}"</span><span class="p">,</span>
+</span><span id="__span-6-175"><a id="__codelineno-6-175" name="__codelineno-6-175" href="#__codelineno-6-175"></a><span class="w">                </span><span class="nt">"tot"</span><span class="p">:</span><span class="w"> </span><span class="s2">"json"</span>
+</span><span id="__span-6-176"><a id="__codelineno-6-176" name="__codelineno-6-176" href="#__codelineno-6-176"></a><span class="w">            </span><span class="p">}</span>
+</span><span id="__span-6-177"><a id="__codelineno-6-177" name="__codelineno-6-177" href="#__codelineno-6-177"></a><span class="w">        </span><span class="p">],</span>
+</span><span id="__span-6-178"><a id="__codelineno-6-178" name="__codelineno-6-178" href="#__codelineno-6-178"></a><span class="w">        </span><span class="nt">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span>
+</span><span id="__span-6-179"><a id="__codelineno-6-179" name="__codelineno-6-179" href="#__codelineno-6-179"></a><span class="w">        </span><span class="nt">"property"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span>
+</span><span id="__span-6-180"><a id="__codelineno-6-180" name="__codelineno-6-180" href="#__codelineno-6-180"></a><span class="w">        </span><span class="nt">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span>
+</span><span id="__span-6-181"><a id="__codelineno-6-181" name="__codelineno-6-181" href="#__codelineno-6-181"></a><span class="w">        </span><span class="nt">"to"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span>
+</span><span id="__span-6-182"><a id="__codelineno-6-182" name="__codelineno-6-182" href="#__codelineno-6-182"></a><span class="w">        </span><span class="nt">"reg"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+</span><span id="__span-6-183"><a id="__codelineno-6-183" name="__codelineno-6-183" href="#__codelineno-6-183"></a><span class="w">        </span><span class="nt">"x"</span><span class="p">:</span><span class="w"> </span><span class="mi">640</span><span class="p">,</span>
+</span><span id="__span-6-184"><a id="__codelineno-6-184" name="__codelineno-6-184" href="#__codelineno-6-184"></a><span class="w">        </span><span class="nt">"y"</span><span class="p">:</span><span class="w"> </span><span class="mi">240</span><span class="p">,</span>
+</span><span id="__span-6-185"><a id="__codelineno-6-185" name="__codelineno-6-185" href="#__codelineno-6-185"></a><span class="w">        </span><span class="nt">"wires"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-6-186"><a id="__codelineno-6-186" name="__codelineno-6-186" href="#__codelineno-6-186"></a><span class="w">            </span><span class="p">[</span>
+</span><span id="__span-6-187"><a id="__codelineno-6-187" name="__codelineno-6-187" href="#__codelineno-6-187"></a><span class="w">                </span><span class="s2">"node_mqtt_out_light"</span>
+</span><span id="__span-6-188"><a id="__codelineno-6-188" name="__codelineno-6-188" href="#__codelineno-6-188"></a><span class="w">            </span><span class="p">]</span>
+</span><span id="__span-6-189"><a id="__codelineno-6-189" name="__codelineno-6-189" href="#__codelineno-6-189"></a><span class="w">        </span><span class="p">]</span>
+</span><span id="__span-6-190"><a id="__codelineno-6-190" name="__codelineno-6-190" href="#__codelineno-6-190"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-6-191"><a id="__codelineno-6-191" name="__codelineno-6-191" href="#__codelineno-6-191"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-6-192"><a id="__codelineno-6-192" name="__codelineno-6-192" href="#__codelineno-6-192"></a><span class="w">        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"node_change_light_off"</span><span class="p">,</span>
+</span><span id="__span-6-193"><a id="__codelineno-6-193" name="__codelineno-6-193" href="#__codelineno-6-193"></a><span class="w">        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"change"</span><span class="p">,</span>
+</span><span id="__span-6-194"><a id="__codelineno-6-194" name="__codelineno-6-194" href="#__codelineno-6-194"></a><span class="w">        </span><span class="nt">"z"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tab_greenhouse_ctrl"</span><span class="p">,</span>
+</span><span id="__span-6-195"><a id="__codelineno-6-195" name="__codelineno-6-195" href="#__codelineno-6-195"></a><span class="w">        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Light OFF"</span><span class="p">,</span>
+</span><span id="__span-6-196"><a id="__codelineno-6-196" name="__codelineno-6-196" href="#__codelineno-6-196"></a><span class="w">        </span><span class="nt">"rules"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-6-197"><a id="__codelineno-6-197" name="__codelineno-6-197" href="#__codelineno-6-197"></a><span class="w">            </span><span class="p">{</span>
+</span><span id="__span-6-198"><a id="__codelineno-6-198" name="__codelineno-6-198" href="#__codelineno-6-198"></a><span class="w">                </span><span class="nt">"t"</span><span class="p">:</span><span class="w"> </span><span class="s2">"set"</span><span class="p">,</span>
+</span><span id="__span-6-199"><a id="__codelineno-6-199" name="__codelineno-6-199" href="#__codelineno-6-199"></a><span class="w">                </span><span class="nt">"p"</span><span class="p">:</span><span class="w"> </span><span class="s2">"payload"</span><span class="p">,</span>
+</span><span id="__span-6-200"><a id="__codelineno-6-200" name="__codelineno-6-200" href="#__codelineno-6-200"></a><span class="w">                </span><span class="nt">"pt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"msg"</span><span class="p">,</span>
+</span><span id="__span-6-201"><a id="__codelineno-6-201" name="__codelineno-6-201" href="#__codelineno-6-201"></a><span class="w">                </span><span class="nt">"to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{\"lamp_power\":0}"</span><span class="p">,</span>
+</span><span id="__span-6-202"><a id="__codelineno-6-202" name="__codelineno-6-202" href="#__codelineno-6-202"></a><span class="w">                </span><span class="nt">"tot"</span><span class="p">:</span><span class="w"> </span><span class="s2">"json"</span>
+</span><span id="__span-6-203"><a id="__codelineno-6-203" name="__codelineno-6-203" href="#__codelineno-6-203"></a><span class="w">            </span><span class="p">}</span>
+</span><span id="__span-6-204"><a id="__codelineno-6-204" name="__codelineno-6-204" href="#__codelineno-6-204"></a><span class="w">        </span><span class="p">],</span>
+</span><span id="__span-6-205"><a id="__codelineno-6-205" name="__codelineno-6-205" href="#__codelineno-6-205"></a><span class="w">        </span><span class="nt">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span>
+</span><span id="__span-6-206"><a id="__codelineno-6-206" name="__codelineno-6-206" href="#__codelineno-6-206"></a><span class="w">        </span><span class="nt">"property"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span>
+</span><span id="__span-6-207"><a id="__codelineno-6-207" name="__codelineno-6-207" href="#__codelineno-6-207"></a><span class="w">        </span><span class="nt">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span>
+</span><span id="__span-6-208"><a id="__codelineno-6-208" name="__codelineno-6-208" href="#__codelineno-6-208"></a><span class="w">        </span><span class="nt">"to"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span>
+</span><span id="__span-6-209"><a id="__codelineno-6-209" name="__codelineno-6-209" href="#__codelineno-6-209"></a><span class="w">        </span><span class="nt">"reg"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+</span><span id="__span-6-210"><a id="__codelineno-6-210" name="__codelineno-6-210" href="#__codelineno-6-210"></a><span class="w">        </span><span class="nt">"x"</span><span class="p">:</span><span class="w"> </span><span class="mi">640</span><span class="p">,</span>
+</span><span id="__span-6-211"><a id="__codelineno-6-211" name="__codelineno-6-211" href="#__codelineno-6-211"></a><span class="w">        </span><span class="nt">"y"</span><span class="p">:</span><span class="w"> </span><span class="mi">280</span><span class="p">,</span>
+</span><span id="__span-6-212"><a id="__codelineno-6-212" name="__codelineno-6-212" href="#__codelineno-6-212"></a><span class="w">        </span><span class="nt">"wires"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-6-213"><a id="__codelineno-6-213" name="__codelineno-6-213" href="#__codelineno-6-213"></a><span class="w">            </span><span class="p">[</span>
+</span><span id="__span-6-214"><a id="__codelineno-6-214" name="__codelineno-6-214" href="#__codelineno-6-214"></a><span class="w">                </span><span class="s2">"node_mqtt_out_light"</span>
+</span><span id="__span-6-215"><a id="__codelineno-6-215" name="__codelineno-6-215" href="#__codelineno-6-215"></a><span class="w">            </span><span class="p">]</span>
+</span><span id="__span-6-216"><a id="__codelineno-6-216" name="__codelineno-6-216" href="#__codelineno-6-216"></a><span class="w">        </span><span class="p">]</span>
+</span><span id="__span-6-217"><a id="__codelineno-6-217" name="__codelineno-6-217" href="#__codelineno-6-217"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-6-218"><a id="__codelineno-6-218" name="__codelineno-6-218" href="#__codelineno-6-218"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-6-219"><a id="__codelineno-6-219" name="__codelineno-6-219" href="#__codelineno-6-219"></a><span class="w">        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"node_func_hysteresis"</span><span class="p">,</span>
+</span><span id="__span-6-220"><a id="__codelineno-6-220" name="__codelineno-6-220" href="#__codelineno-6-220"></a><span class="w">        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"function"</span><span class="p">,</span>
+</span><span id="__span-6-221"><a id="__codelineno-6-221" name="__codelineno-6-221" href="#__codelineno-6-221"></a><span class="w">        </span><span class="nt">"z"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tab_greenhouse_ctrl"</span><span class="p">,</span>
+</span><span id="__span-6-222"><a id="__codelineno-6-222" name="__codelineno-6-222" href="#__codelineno-6-222"></a><span class="w">        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Гістерезис ТЕН"</span><span class="p">,</span>
+</span><span id="__span-6-223"><a id="__codelineno-6-223" name="__codelineno-6-223" href="#__codelineno-6-223"></a><span class="w">        </span><span class="nt">"func"</span><span class="p">:</span><span class="w"> </span><span class="s2">"const T_SET = 24.0;\nconst DELTA_T = 2.0;\nconst T_LOW = T_SET - (DELTA_T / 2.0);\nconst T_HIGH = T_SET + (DELTA_T / 2.0);\n\nlet currentState = context.get('heater_state') || 'OFF';\n\nif (!msg.payload || msg.payload.temperature === undefined) {\n    node.warn(\"Некоректний формат температури\");\n    return null;\n}\n\nlet currentTemp = Number(msg.payload.temperature);\nlet stateChanged = false;\n\nif (currentTemp &lt;= T_LOW &amp;&amp; currentState !== 'ON') {\n    currentState = 'ON';\n    stateChanged = true;\n} else if (currentTemp &gt;= T_HIGH &amp;&amp; currentState !== 'OFF') {\n    currentState = 'OFF';\n    stateChanged = true;\n}\n\ncontext.set('heater_state', currentState);\n\nif (stateChanged) {\n    return {\n        topic: \"agro/greenhouse/heater\",\n        payload: {\n            state: currentState,\n            current_temperature: currentTemp,\n            setpoint: T_SET,\n            timestamp: new Date().toISOString()\n        },\n        qos: 1,\n        retain: true\n    };\n}\nreturn null;"</span><span class="p">,</span>
+</span><span id="__span-6-224"><a id="__codelineno-6-224" name="__codelineno-6-224" href="#__codelineno-6-224"></a><span class="w">        </span><span class="nt">"outputs"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+</span><span id="__span-6-225"><a id="__codelineno-6-225" name="__codelineno-6-225" href="#__codelineno-6-225"></a><span class="w">        </span><span class="nt">"noerr"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+</span><span id="__span-6-226"><a id="__codelineno-6-226" name="__codelineno-6-226" href="#__codelineno-6-226"></a><span class="w">        </span><span class="nt">"initialize"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span>
+</span><span id="__span-6-227"><a id="__codelineno-6-227" name="__codelineno-6-227" href="#__codelineno-6-227"></a><span class="w">        </span><span class="nt">"finalize"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span>
+</span><span id="__span-6-228"><a id="__codelineno-6-228" name="__codelineno-6-228" href="#__codelineno-6-228"></a><span class="w">        </span><span class="nt">"libs"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+</span><span id="__span-6-229"><a id="__codelineno-6-229" name="__codelineno-6-229" href="#__codelineno-6-229"></a><span class="w">        </span><span class="nt">"x"</span><span class="p">:</span><span class="w"> </span><span class="mi">420</span><span class="p">,</span>
+</span><span id="__span-6-230"><a id="__codelineno-6-230" name="__codelineno-6-230" href="#__codelineno-6-230"></a><span class="w">        </span><span class="nt">"y"</span><span class="p">:</span><span class="w"> </span><span class="mi">180</span><span class="p">,</span>
+</span><span id="__span-6-231"><a id="__codelineno-6-231" name="__codelineno-6-231" href="#__codelineno-6-231"></a><span class="w">        </span><span class="nt">"wires"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-6-232"><a id="__codelineno-6-232" name="__codelineno-6-232" href="#__codelineno-6-232"></a><span class="w">            </span><span class="p">[</span>
+</span><span id="__span-6-233"><a id="__codelineno-6-233" name="__codelineno-6-233" href="#__codelineno-6-233"></a><span class="w">                </span><span class="s2">"node_mqtt_out_heater"</span>
+</span><span id="__span-6-234"><a id="__codelineno-6-234" name="__codelineno-6-234" href="#__codelineno-6-234"></a><span class="w">            </span><span class="p">]</span>
+</span><span id="__span-6-235"><a id="__codelineno-6-235" name="__codelineno-6-235" href="#__codelineno-6-235"></a><span class="w">        </span><span class="p">]</span>
+</span><span id="__span-6-236"><a id="__codelineno-6-236" name="__codelineno-6-236" href="#__codelineno-6-236"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-6-237"><a id="__codelineno-6-237" name="__codelineno-6-237" href="#__codelineno-6-237"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-6-238"><a id="__codelineno-6-238" name="__codelineno-6-238" href="#__codelineno-6-238"></a><span class="w">        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"node_mqtt_out_irrigation"</span><span class="p">,</span>
+</span><span id="__span-6-239"><a id="__codelineno-6-239" name="__codelineno-6-239" href="#__codelineno-6-239"></a><span class="w">        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mqtt out"</span><span class="p">,</span>
+</span><span id="__span-6-240"><a id="__codelineno-6-240" name="__codelineno-6-240" href="#__codelineno-6-240"></a><span class="w">        </span><span class="nt">"z"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tab_greenhouse_ctrl"</span><span class="p">,</span>
+</span><span id="__span-6-241"><a id="__codelineno-6-241" name="__codelineno-6-241" href="#__codelineno-6-241"></a><span class="w">        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Irrigation Command"</span><span class="p">,</span>
+</span><span id="__span-6-242"><a id="__codelineno-6-242" name="__codelineno-6-242" href="#__codelineno-6-242"></a><span class="w">        </span><span class="nt">"topic"</span><span class="p">:</span><span class="w"> </span><span class="s2">"agro/greenhouse/irrigation"</span><span class="p">,</span>
+</span><span id="__span-6-243"><a id="__codelineno-6-243" name="__codelineno-6-243" href="#__codelineno-6-243"></a><span class="w">        </span><span class="nt">"qos"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span>
+</span><span id="__span-6-244"><a id="__codelineno-6-244" name="__codelineno-6-244" href="#__codelineno-6-244"></a><span class="w">        </span><span class="nt">"retain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span>
+</span><span id="__span-6-245"><a id="__codelineno-6-245" name="__codelineno-6-245" href="#__codelineno-6-245"></a><span class="w">        </span><span class="nt">"respTopic"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span>
+</span><span id="__span-6-246"><a id="__codelineno-6-246" name="__codelineno-6-246" href="#__codelineno-6-246"></a><span class="w">        </span><span class="nt">"contentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span>
+</span><span id="__span-6-247"><a id="__codelineno-6-247" name="__codelineno-6-247" href="#__codelineno-6-247"></a><span class="w">        </span><span class="nt">"userProps"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span>
+</span><span id="__span-6-248"><a id="__codelineno-6-248" name="__codelineno-6-248" href="#__codelineno-6-248"></a><span class="w">        </span><span class="nt">"correl"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span>
+</span><span id="__span-6-249"><a id="__codelineno-6-249" name="__codelineno-6-249" href="#__codelineno-6-249"></a><span class="w">        </span><span class="nt">"expiry"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span>
+</span><span id="__span-6-250"><a id="__codelineno-6-250" name="__codelineno-6-250" href="#__codelineno-6-250"></a><span class="w">        </span><span class="nt">"broker"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mqtt_broker_local"</span><span class="p">,</span>
+</span><span id="__span-6-251"><a id="__codelineno-6-251" name="__codelineno-6-251" href="#__codelineno-6-251"></a><span class="w">        </span><span class="nt">"x"</span><span class="p">:</span><span class="w"> </span><span class="mi">920</span><span class="p">,</span>
+</span><span id="__span-6-252"><a id="__codelineno-6-252" name="__codelineno-6-252" href="#__codelineno-6-252"></a><span class="w">        </span><span class="nt">"y"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span>
+</span><span id="__span-6-253"><a id="__codelineno-6-253" name="__codelineno-6-253" href="#__codelineno-6-253"></a><span class="w">        </span><span class="nt">"wires"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+</span><span id="__span-6-254"><a id="__codelineno-6-254" name="__codelineno-6-254" href="#__codelineno-6-254"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-6-255"><a id="__codelineno-6-255" name="__codelineno-6-255" href="#__codelineno-6-255"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-6-256"><a id="__codelineno-6-256" name="__codelineno-6-256" href="#__codelineno-6-256"></a><span class="w">        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"node_mqtt_out_light"</span><span class="p">,</span>
+</span><span id="__span-6-257"><a id="__codelineno-6-257" name="__codelineno-6-257" href="#__codelineno-6-257"></a><span class="w">        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mqtt out"</span><span class="p">,</span>
+</span><span id="__span-6-258"><a id="__codelineno-6-258" name="__codelineno-6-258" href="#__codelineno-6-258"></a><span class="w">        </span><span class="nt">"z"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tab_greenhouse_ctrl"</span><span class="p">,</span>
+</span><span id="__span-6-259"><a id="__codelineno-6-259" name="__codelineno-6-259" href="#__codelineno-6-259"></a><span class="w">        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lighting Command"</span><span class="p">,</span>
+</span><span id="__span-6-260"><a id="__codelineno-6-260" name="__codelineno-6-260" href="#__codelineno-6-260"></a><span class="w">        </span><span class="nt">"topic"</span><span class="p">:</span><span class="w"> </span><span class="s2">"agro/greenhouse/lighting"</span><span class="p">,</span>
+</span><span id="__span-6-261"><a id="__codelineno-6-261" name="__codelineno-6-261" href="#__codelineno-6-261"></a><span class="w">        </span><span class="nt">"qos"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span>
+</span><span id="__span-6-262"><a id="__codelineno-6-262" name="__codelineno-6-262" href="#__codelineno-6-262"></a><span class="w">        </span><span class="nt">"retain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span>
+</span><span id="__span-6-263"><a id="__codelineno-6-263" name="__codelineno-6-263" href="#__codelineno-6-263"></a><span class="w">        </span><span class="nt">"respTopic"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span>
+</span><span id="__span-6-264"><a id="__codelineno-6-264" name="__codelineno-6-264" href="#__codelineno-6-264"></a><span class="w">        </span><span class="nt">"contentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span>
+</span><span id="__span-6-265"><a id="__codelineno-6-265" name="__codelineno-6-265" href="#__codelineno-6-265"></a><span class="w">        </span><span class="nt">"userProps"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span>
+</span><span id="__span-6-266"><a id="__codelineno-6-266" name="__codelineno-6-266" href="#__codelineno-6-266"></a><span class="w">        </span><span class="nt">"correl"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span>
+</span><span id="__span-6-267"><a id="__codelineno-6-267" name="__codelineno-6-267" href="#__codelineno-6-267"></a><span class="w">        </span><span class="nt">"expiry"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span>
+</span><span id="__span-6-268"><a id="__codelineno-6-268" name="__codelineno-6-268" href="#__codelineno-6-268"></a><span class="w">        </span><span class="nt">"broker"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mqtt_broker_local"</span><span class="p">,</span>
+</span><span id="__span-6-269"><a id="__codelineno-6-269" name="__codelineno-6-269" href="#__codelineno-6-269"></a><span class="w">        </span><span class="nt">"x"</span><span class="p">:</span><span class="w"> </span><span class="mi">910</span><span class="p">,</span>
+</span><span id="__span-6-270"><a id="__codelineno-6-270" name="__codelineno-6-270" href="#__codelineno-6-270"></a><span class="w">        </span><span class="nt">"y"</span><span class="p">:</span><span class="w"> </span><span class="mi">260</span><span class="p">,</span>
+</span><span id="__span-6-271"><a id="__codelineno-6-271" name="__codelineno-6-271" href="#__codelineno-6-271"></a><span class="w">        </span><span class="nt">"wires"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+</span><span id="__span-6-272"><a id="__codelineno-6-272" name="__codelineno-6-272" href="#__codelineno-6-272"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-6-273"><a id="__codelineno-6-273" name="__codelineno-6-273" href="#__codelineno-6-273"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-6-274"><a id="__codelineno-6-274" name="__codelineno-6-274" href="#__codelineno-6-274"></a><span class="w">        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"node_mqtt_out_heater"</span><span class="p">,</span>
+</span><span id="__span-6-275"><a id="__codelineno-6-275" name="__codelineno-6-275" href="#__codelineno-6-275"></a><span class="w">        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mqtt out"</span><span class="p">,</span>
+</span><span id="__span-6-276"><a id="__codelineno-6-276" name="__codelineno-6-276" href="#__codelineno-6-276"></a><span class="w">        </span><span class="nt">"z"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tab_greenhouse_ctrl"</span><span class="p">,</span>
+</span><span id="__span-6-277"><a id="__codelineno-6-277" name="__codelineno-6-277" href="#__codelineno-6-277"></a><span class="w">        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Heater Command"</span><span class="p">,</span>
+</span><span id="__span-6-278"><a id="__codelineno-6-278" name="__codelineno-6-278" href="#__codelineno-6-278"></a><span class="w">        </span><span class="nt">"topic"</span><span class="p">:</span><span class="w"> </span><span class="s2">"agro/greenhouse/heater"</span><span class="p">,</span>
+</span><span id="__span-6-279"><a id="__codelineno-6-279" name="__codelineno-6-279" href="#__codelineno-6-279"></a><span class="w">        </span><span class="nt">"qos"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span>
+</span><span id="__span-6-280"><a id="__codelineno-6-280" name="__codelineno-6-280" href="#__codelineno-6-280"></a><span class="w">        </span><span class="nt">"retain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span>
+</span><span id="__span-6-281"><a id="__codelineno-6-281" name="__codelineno-6-281" href="#__codelineno-6-281"></a><span class="w">        </span><span class="nt">"respTopic"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span>
+</span><span id="__span-6-282"><a id="__codelineno-6-282" name="__codelineno-6-282" href="#__codelineno-6-282"></a><span class="w">        </span><span class="nt">"contentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span>
+</span><span id="__span-6-283"><a id="__codelineno-6-283" name="__codelineno-6-283" href="#__codelineno-6-283"></a><span class="w">        </span><span class="nt">"userProps"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span>
+</span><span id="__span-6-284"><a id="__codelineno-6-284" name="__codelineno-6-284" href="#__codelineno-6-284"></a><span class="w">        </span><span class="nt">"correl"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span>
+</span><span id="__span-6-285"><a id="__codelineno-6-285" name="__codelineno-6-285" href="#__codelineno-6-285"></a><span class="w">        </span><span class="nt">"expiry"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span>
+</span><span id="__span-6-286"><a id="__codelineno-6-286" name="__codelineno-6-286" href="#__codelineno-6-286"></a><span class="w">        </span><span class="nt">"broker"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mqtt_broker_local"</span><span class="p">,</span>
+</span><span id="__span-6-287"><a id="__codelineno-6-287" name="__codelineno-6-287" href="#__codelineno-6-287"></a><span class="w">        </span><span class="nt">"x"</span><span class="p">:</span><span class="w"> </span><span class="mi">910</span><span class="p">,</span>
+</span><span id="__span-6-288"><a id="__codelineno-6-288" name="__codelineno-6-288" href="#__codelineno-6-288"></a><span class="w">        </span><span class="nt">"y"</span><span class="p">:</span><span class="w"> </span><span class="mi">180</span><span class="p">,</span>
+</span><span id="__span-6-289"><a id="__codelineno-6-289" name="__codelineno-6-289" href="#__codelineno-6-289"></a><span class="w">        </span><span class="nt">"wires"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+</span><span id="__span-6-290"><a id="__codelineno-6-290" name="__codelineno-6-290" href="#__codelineno-6-290"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-6-291"><a id="__codelineno-6-291" name="__codelineno-6-291" href="#__codelineno-6-291"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-6-292"><a id="__codelineno-6-292" name="__codelineno-6-292" href="#__codelineno-6-292"></a><span class="w">        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"node_debug_trace"</span><span class="p">,</span>
+</span><span id="__span-6-293"><a id="__codelineno-6-293" name="__codelineno-6-293" href="#__codelineno-6-293"></a><span class="w">        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"debug"</span><span class="p">,</span>
+</span><span id="__span-6-294"><a id="__codelineno-6-294" name="__codelineno-6-294" href="#__codelineno-6-294"></a><span class="w">        </span><span class="nt">"z"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tab_greenhouse_ctrl"</span><span class="p">,</span>
+</span><span id="__span-6-295"><a id="__codelineno-6-295" name="__codelineno-6-295" href="#__codelineno-6-295"></a><span class="w">        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"System Audit Log"</span><span class="p">,</span>
+</span><span id="__span-6-296"><a id="__codelineno-6-296" name="__codelineno-6-296" href="#__codelineno-6-296"></a><span class="w">        </span><span class="nt">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+</span><span id="__span-6-297"><a id="__codelineno-6-297" name="__codelineno-6-297" href="#__codelineno-6-297"></a><span class="w">        </span><span class="nt">"tosidebar"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+</span><span id="__span-6-298"><a id="__codelineno-6-298" name="__codelineno-6-298" href="#__codelineno-6-298"></a><span class="w">        </span><span class="nt">"console"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+</span><span id="__span-6-299"><a id="__codelineno-6-299" name="__codelineno-6-299" href="#__codelineno-6-299"></a><span class="w">        </span><span class="nt">"tostatus"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+</span><span id="__span-6-300"><a id="__codelineno-6-300" name="__codelineno-6-300" href="#__codelineno-6-300"></a><span class="w">        </span><span class="nt">"complete"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span>
+</span><span id="__span-6-301"><a id="__codelineno-6-301" name="__codelineno-6-301" href="#__codelineno-6-301"></a><span class="w">        </span><span class="nt">"targetType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"full"</span><span class="p">,</span>
+</span><span id="__span-6-302"><a id="__codelineno-6-302" name="__codelineno-6-302" href="#__codelineno-6-302"></a><span class="w">        </span><span class="nt">"statusVal"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span>
+</span><span id="__span-6-303"><a id="__codelineno-6-303" name="__codelineno-6-303" href="#__codelineno-6-303"></a><span class="w">        </span><span class="nt">"statusType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"auto"</span><span class="p">,</span>
+</span><span id="__span-6-304"><a id="__codelineno-6-304" name="__codelineno-6-304" href="#__codelineno-6-304"></a><span class="w">        </span><span class="nt">"x"</span><span class="p">:</span><span class="w"> </span><span class="mi">910</span><span class="p">,</span>
+</span><span id="__span-6-305"><a id="__codelineno-6-305" name="__codelineno-6-305" href="#__codelineno-6-305"></a><span class="w">        </span><span class="nt">"y"</span><span class="p">:</span><span class="w"> </span><span class="mi">340</span><span class="p">,</span>
+</span><span id="__span-6-306"><a id="__codelineno-6-306" name="__codelineno-6-306" href="#__codelineno-6-306"></a><span class="w">        </span><span class="nt">"wires"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+</span><span id="__span-6-307"><a id="__codelineno-6-307" name="__codelineno-6-307" href="#__codelineno-6-307"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-6-308"><a id="__codelineno-6-308" name="__codelineno-6-308" href="#__codelineno-6-308"></a><span class="p">]</span>
+</span></code></pre></div>
+<ol>
+<li>Натисніть червону кнопку <strong>Deploy</strong> у правому верхньому кутку робочого вікна для компіляції та запуску потоку на виконуючому рушії.</li>
+</ol>
+<hr />
+<h3 id="33">3.3 Запуск, тестування та перевірка результатів</h3>
+<p>Для перевірки коректності функціонування розробленого графа потоків відкрийте два окремих термінальних вікна: у першому запустіть утиліту прослуховування топіків <code>mosquitto_sub</code>, а у другому надсилайте тестові пакети за допомогою <code>mosquitto_pub</code>.</p>
+<ol>
+<li>Запустіть моніторинг усіх вихідних топіків системи в окремому терміналі:</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># Підписка на всі підтопіки теплиці за допомогою символу підстановки #</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>mosquitto_sub<span class="w"> </span>-h<span class="w"> </span><span class="m">127</span>.0.0.1<span class="w"> </span>-p<span class="w"> </span><span class="m">1883</span><span class="w"> </span>-t<span class="w"> </span><span class="s2">"agro/greenhouse/#"</span><span class="w"> </span>-v
+</span></code></pre></div>
+<ol>
+<li>Виконайте послідовне надсилання тестових тестових наборів даних у топік телеметрії:</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># Тест 1: Знижена температура (21.5°C), низька вологість (35%), слабке світло (120 lx)</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>mosquitto_pub<span class="w"> </span>-h<span class="w"> </span><span class="m">127</span>.0.0.1<span class="w"> </span>-p<span class="w"> </span><span class="m">1883</span><span class="w"> </span>-t<span class="w"> </span><span class="s2">"agro/greenhouse/telemetry"</span><span class="w"> </span>-m<span class="w"> </span><span class="s1">'{"temperature": 21.5, "soil_moisture": 35.0, "lux": 120}'</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="c1"># Тест 2: Температура всередині петлі гістерезису (23.8°C) — ТЕН повинен залишитися ON</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>mosquitto_pub<span class="w"> </span>-h<span class="w"> </span><span class="m">127</span>.0.0.1<span class="w"> </span>-p<span class="w"> </span><span class="m">1883</span><span class="w"> </span>-t<span class="w"> </span><span class="s2">"agro/greenhouse/telemetry"</span><span class="w"> </span>-m<span class="w"> </span><span class="s1">'{"temperature": 23.8, "soil_moisture": 48.0, "lux": 450}'</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="c1"># Тест 3: Температура перевищила верхній поріг (25.4°C), вологість достатня (58%)</span>
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>mosquitto_pub<span class="w"> </span>-h<span class="w"> </span><span class="m">127</span>.0.0.1<span class="w"> </span>-p<span class="w"> </span><span class="m">1883</span><span class="w"> </span>-t<span class="w"> </span><span class="s2">"agro/greenhouse/telemetry"</span><span class="w"> </span>-m<span class="w"> </span><span class="s1">'{"temperature": 25.4, "soil_moisture": 58.0, "lux": 600}'</span>
+</span></code></pre></div>
+<h4 id="mosquitto_sub">Еталонний результат виведення в консолі <code>mosquitto_sub</code>:</h4>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>agro/greenhouse/telemetry {"temperature": 21.5, "soil_moisture": 35.0, "lux": 120}
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>agro/greenhouse/irrigation {"valve":"OPEN","mode":"AUTO"}
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>agro/greenhouse/lighting {"lamp_power":100}
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>agro/greenhouse/heater {"state":"ON","current_temperature":21.5,"setpoint":24,"timestamp":"2026-08-26T14:15:02.104Z"}
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>agro/greenhouse/telemetry {"temperature": 23.8, "soil_moisture": 48.0, "lux": 450}
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>agro/greenhouse/lighting {"lamp_power":0}
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>agro/greenhouse/telemetry {"temperature": 25.4, "soil_moisture": 58.0, "lux": 600}
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>agro/greenhouse/irrigation {"valve":"CLOSE","mode":"AUTO"}
+</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>agro/greenhouse/heater {"state":"OFF","current_temperature":25.4,"setpoint":24,"timestamp":"2026-08-26T14:15:15.820Z"}
+</span></code></pre></div>
+<h4 id="debug-node-red">Приклад відображення записів у панелі Debug вікна Node-RED:</h4>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>[26.08.2026, 17:15:02] node: System Audit Log
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>agro/greenhouse/heater : msg : Object
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>{
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>  topic: "agro/greenhouse/heater",
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>  payload: {
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>    state: "ON",
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>    current_temperature: 21.5,
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>    setpoint: 24,
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>    timestamp: "2026-08-26T14:15:02.104Z"
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>  },
+</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>  qos: 1,
+</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>  retain: true,
+</span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>  _msgid: "6c7d23a1.9f123c"
+</span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a>}
+</span></code></pre></div>
+<p>Аналіз отриманих результатів підтверджує: при температурі <span class="arithmatex">\(21.5^\circ\text{C}\)</span> ТЕН активувався (<code>state: "ON"</code>). При підвищенні температури до <span class="arithmatex">\(23.8^\circ\text{C}\)</span> стан нагрівача не змінився, а нове повідомлення в топік <code>heater</code> не публікувалося. При досягненні <span class="arithmatex">\(25.4^\circ\text{C}\)</span> обігрів деактивувався (<code>state: "OFF"</code>).</p>
+<hr />
+<h2 id="4">4 Вимоги до змісту звіту</h2>
+<p>Звіт оформлюється українською мовою на аркушах формату А4 відповідно до стандарту ДСТУ 3008:2015 і повинен містити такі розділи:</p>
+<ol>
+<li>
+<p><strong>Титульна сторінка</strong> із зазначенням назви Міністерства освіти і науки України, назви університету, кафедри, дисципліни, номера практичного заняття, теми роботи, номера навчальної групи, прізвища та ініціалів здобувача й викладача.</p>
+</li>
+<li>
+<p><strong>Мета роботи</strong> та теоретичний опис обраної технології потокової обробки подій.</p>
+</li>
+<li>
+<p><strong>Постановка індивідуального завдання</strong> для закріпленого варіанта з таблиці 3.1: опис системи, перелік топіків, формат JSON та математичні межі спрацювання регуляторів.</p>
+</li>
+<li>
+<p><strong>Алгоритмічна блок-схема потоку</strong> (створена у нотації UML або Mermaid) із відображенням напрямків руху повідомлень між вузлами.</p>
+</li>
+<li>
+<p><strong>Повний вихідний код функціональних вузлів (Function Nodes)</strong> мовою JavaScript із детальним коментарем кожного рядка програми.</p>
+</li>
+<li>
+<p><strong>Експортований JSON-маніфест</strong> розробленого графа потоків (Flow JSON).</p>
+</li>
+<li>
+<p><strong>Результати тестування:</strong> скріншоти робочого поля Node-RED зі статусами вузлів, скріншоти панелі налагодження (Debug sidebar) та логи з термінала <code>mosquitto_sub</code> для трьох характерних режимів роботи (нижче норми, норма, вище норми).</p>
+</li>
+<li>
+<p><strong>Аналітичні висновки</strong>, у яких оцінено надійність роботи розробленого автомата станів, проаналізовано затримки обробки та обґрунтовано вибір ширини зони гістерезису.</p>
+</li>
+</ol>
+<hr />
+<h2 id="5">5 Контрольні запитання для захисту роботи</h2>
+<ol>
+<li>
+<p><strong>У чому полягає фундаментальна відмінність між парадигмою Flow-Based Programming (FBP) та класичним процедурним або об'єктно-орієнтованим підходом до обробки даних?</strong> Поясніть роль об'єкта <code>msg</code> як базового контейнера стану.</p>
+</li>
+<li>
+<p><strong>Чому для релейного керування виконавчими пристроями в ІоТ обов'язковим є застосування зони нечутливості (гістерезису)?</strong> Які наслідки для апаратного забезпечення матиме відсутність гістерезису при коливаннях показів датчика на межі порогового значення?</p>
+</li>
+<li>
+<p><strong>Яким чином у середовищі Node-RED організовано збереження внутрішнього стану змінних між окремими викликами вузла Function?</strong> Поясніть різницю між контекстами <code>context</code>, <code>flow</code> та <code>global</code>.</p>
+</li>
+<li>
+<p><strong>Яке призначення мають атрибути <code>QoS</code> (Quality of Service) та <code>Retain</code> у вузлах <code>mqtt in</code> та <code>mqtt out</code>?</strong> У яких випадках прапорець Retain є критично важливим для актуаторів?</p>
+</li>
+<li>
+<p><strong>Як впливає велика кількість вузлів типу Function із важкими обчисленнями на загальну швидкодію Node-RED?</strong> Поясніть поведінку циклу подій (Event Loop) у середовищі Node.js при блокуючих синхронних операціях.</p>
+</li>
+<li>
+<p><strong>Опишіть порядок валідації вхідних даних у вузлах Switch.</strong> Яким чином обробляється ситуація, коли у вхідному JSON-пакеті взагалі відсутнє поле, за яким виконується перевірка умови?</p>
+</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Повернутись нагору
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Kyrylo Vadurin &bull; <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.top", "navigation.tracking", "header.autohide", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u0421\u043a\u043e\u043f\u0456\u0439\u043e\u0432\u0430\u043d\u043e \u0432 \u0431\u0443\u0444\u0435\u0440", "clipboard.copy": "\u0421\u043a\u043e\u043f\u0456\u044e\u0432\u0430\u0442\u0438 \u0432 \u0431\u0443\u0444\u0435\u0440", "search.result.more.one": "\u0429\u0435 1 \u0437\u0431\u0456\u0433 \u043d\u0430 \u0446\u0456\u0439 \u0441\u0442\u043e\u0440\u0456\u043d\u0446\u0456", "search.result.more.other": "\u0429\u0435 # \u0437\u0431\u0456\u0433\u0456\u0432 \u043d\u0430 \u0446\u0456\u0439 \u0441\u0442\u043e\u0440\u0456\u043d\u0446\u0456", "search.result.none": "\u0417\u0431\u0456\u0433\u0456\u0432 \u043d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u043e", "search.result.one": "\u0417\u043d\u0430\u0439\u0434\u0435\u043d\u043e 1 \u0437\u0431\u0456\u0433", "search.result.other": "\u0417\u043d\u0430\u0439\u0434\u0435\u043d\u043e # \u0437\u0431\u0456\u0433\u0456\u0432", "search.result.placeholder": "\u0420\u043e\u0437\u043f\u043e\u0447\u043d\u0456\u0442\u044c \u043f\u0438\u0441\u0430\u0442\u0438 \u0434\u043b\u044f \u043f\u043e\u0448\u0443\u043a\u0443", "search.result.term.missing": "\u041d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u043e \u0437\u0430\u043f\u0438\u0442\u0443", "select.version": "\u041e\u0431\u0440\u0430\u0442\u0438 \u0432\u0435\u0440\u0441\u0456\u044e"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

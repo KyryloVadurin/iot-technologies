@@ -1,0 +1,3584 @@
+
+<!doctype html>
+<html lang="uk" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Навчальний портал з дисципліни "Технології ІоТ"">
+      
+      
+      
+      
+        <link rel="prev" href="../lk9/">
+      
+      
+        <link rel="next" href="../lk11/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Тема 10. IoT платформи та Middleware - Технології Інтернету речей</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#10-iot-middleware" class="md-skip">
+          Перейти до змісту
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Хедер">
+    <a href="../.." title="Технології Інтернету речей" class="md-header__button md-logo" aria-label="Технології Інтернету речей" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Технології Інтернету речей
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Тема 10. IoT платформи та Middleware
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan"  aria-label="Переключити на темну тему"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Переключити на темну тему" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="cyan"  aria-label="Переключити на світлу тему"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Переключити на світлу тему" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Пошук" placeholder="Пошук" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Шукати">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Очистити" aria-label="Очистити" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Пошук розпочато
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Вкладки" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Робоча програма
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../lk1/" class="md-tabs__link">
+          
+  
+  
+  Лекції
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../lb/lb1/" class="md-tabs__link">
+          
+  
+  
+  Лабораторні роботи
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../pz/pz1/" class="md-tabs__link">
+          
+  
+  
+  Практичні заняття
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../kp/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Курсовий проєкт
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../sr/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Самостійна робота
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../sr/quest/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Контрольні завдання (Іспит)
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Навігація" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Технології Інтернету речей" class="md-nav__button md-logo" aria-label="Технології Інтернету речей" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Технології Інтернету речей
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Робоча програма
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Лекції
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Лекції
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 1. Екосистема та архітектура IoT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 2. Технології WPAN та WLAN у IoT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 3. LPWAN технології
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 4. Прикладні протоколи ІоТ (MQTT, CoAP)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 5. Туманні (Fog) та граничні (Edge) обчислення
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 6. Мікроконтролерні платформи (ESP32)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 7. Інтелектуальні сенсори
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 8. Виконавчі пристрої
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 9. Віртуалізація та контейнеризація IoT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 10. IoT платформи та Middleware
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 10. IoT платформи та Middleware
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Зміст">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Зміст
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Мета лекції
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Очікувані результати навчання
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Детальний покроковий план лекції
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Детальний покроковий план лекції">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-middleware-iot-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Теоретико-концептуальний базис. Архітектура Middleware та функціональна таксономія IoT-платформ
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-node-red-nodejs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Методологія та аналіз граничних умов. Потокова обробка в Node-RED та асинхронні моделі обчислень у Node.js
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Практичний індустріальний / фаховий кейс. Проєктування багатопротокольного шлюзу промислового Інтернету речей
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-middleware-iot-_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Теоретико-концептуальний базис. Архітектура Middleware та функціональна таксономія IoT-платформ
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Теоретико-концептуальний базис. Архітектура Middleware та функціональна таксономія IoT-платформ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1. Концепція та системні функції проміжного програмного забезпечення як інструменту подолання гетерогенності розподілених кіберфізичних систем
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-aep-cmp-dmp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2. Функціональна таксономія платформ Інтернету речей з виокремленням рівнів AEP, CMP, DMP та хмарних розширень загального призначення
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3. Архітектурна модель восьми базових компонентів повнофункціональної платформи Інтернету речей та принципи їхньої міжрівневої інтеграції
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4. Математична формалізація процесів нормалізації протоколів і простору фізичних вимірювань за критерієм мінімізації інформаційної ентропії
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Вказівки для самостійного осмислення
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-node-red-nodejs_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Методологія та аналіз граничних умов. Потокова обробка в Node-RED та асинхронні моделі обчислень у Node.js
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Методологія та аналіз граничних умов. Потокова обробка в Node-RED та асинхронні моделі обчислень у Node.js">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-node-red" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1. Парадигма потокового програмування та граф-орієнтована модель обробки подійних повідомлень у середовищі Node-RED
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-mqtt-websockets-http-rest-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2. Механізми міжпротокольної маршрутизації, фільтрації та контекстної трансформації корисного навантаження в контурах MQTT, WebSockets та HTTP REST API
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-reactor-libuv-nodejs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3. Архітектурний шаблон Reactor, фазова структура циклу подій Libuv та реалізація неблокуючого введення-виведення в Node.js
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-mg1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4. Моделювання латентності черги подій на основі співвідношення Поллачека-Хінчіна для систем масового обслуговування типу M/G/1
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5. Критичні бар'єри та вузькі місця однопотокової обробки, проблема блокування циклу подій ресурсомістким синхронним кодом та методи розвантаження ядра за допомогою пулу потоків
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Практичний індустріальний / фаховий кейс. Проєктування багатопротокольного шлюзу промислового Інтернету речей
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Практичний індустріальний / фаховий кейс. Проєктування багатопротокольного шлюзу промислового Інтернету речей">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-node-red-nodejs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1. Комплексний фаховий кейс. Розгортання відмовостійкого прикордонного шлюзу на базі Node-RED та Node.js
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1. Комплексний фаховий кейс. Розгортання відмовостійкого прикордонного шлюзу на базі Node-RED та Node.js">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Постановка задачі / ситуації
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Покроковий аналіз та розв'язок
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Покроковий аналіз та розв&#39;язок">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-modbus-rtu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 1. Розрахунок пропускної здатності фізичного рівня Modbus RTU та частоти опитування
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-nodejs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 2. Оцінка сумарного навантаження на чергу подій Node.js
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-event-loop-lag-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 3. Моделювання затримки Event Loop Lag за формулою Поллачека-Хінчіна
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 4. Аналіз критичного стану при виникненні аномалії корисного навантаження
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Інтерпретація результатів та альтернативні сценарії
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2. Зведена довідкова система лекції
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3. Контрольні питання та завдання
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3. Контрольні питання та завдання">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Прикладні тестові завдання
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Завдання для самостійної роботи
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Завдання для самостійної роботи">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Постановка задачі
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Завдання для виконання
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 11. Розумний будинок (Home Assistant)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 12. Промисловий ІоТ (IIoT)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 13. Big Data в ІоТ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 14. Machine Learning на межі мережі
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 15. Кібербезпека в системах ІоТ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Лабораторні роботи
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Лабораторні роботи
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 1. Моделювання топологій IoT-мереж
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 2. Симуляція підсистем Розумного будинку
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 3. Дослідження локального MQTT-брокера
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 4. Схемотехнічне моделювання вузла збору
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 5. Прошивка ESP32 для передавання телеметрії MQTT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 6. Декларативне програмування ESP32 (ESPHome)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 7. Серверне середовище Linux для IoT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 8. Контейнеризація в ІоТ (Docker Compose)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 9. Middleware ІоТ (Node-RED)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 10. Сервіс REST API для агрегації даних
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 11. Платформи розумного будинку (Home Assistant)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 12. Сценарії автоматизації Home Assistant
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 13. Обробка телеметрії мовою Python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 14. HMI Dashboard для диспетчеризації
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 15. Комплексне наскрізне тестування IoT-системи
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практичні заняття
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Практичні заняття
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 1. Розрахунок пропускної здатності та живлення
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 2. Проєктування ієрархії топіків MQTT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 3. Правила фільтрації на Edge-шлюзах
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 4. Моделювання АЦП для сенсорів
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 5. Оптимізація енергетичного профілю
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 6. Проєктування конфігурації Docker Compose
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 7. Логічні схеми в Node-RED
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 8. Сценарії Trigger-Condition-Action
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 9. Конвеєр обробки даних (ETL)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 10. Моделювання загроз безпеки (STRIDE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Курсовий проєкт
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Самостійна робота
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sr/quest/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Контрольні завдання (Іспит)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Зміст">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Зміст
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Мета лекції
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Очікувані результати навчання
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Детальний покроковий план лекції
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Детальний покроковий план лекції">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-middleware-iot-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Теоретико-концептуальний базис. Архітектура Middleware та функціональна таксономія IoT-платформ
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-node-red-nodejs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Методологія та аналіз граничних умов. Потокова обробка в Node-RED та асинхронні моделі обчислень у Node.js
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Практичний індустріальний / фаховий кейс. Проєктування багатопротокольного шлюзу промислового Інтернету речей
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-middleware-iot-_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Теоретико-концептуальний базис. Архітектура Middleware та функціональна таксономія IoT-платформ
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Теоретико-концептуальний базис. Архітектура Middleware та функціональна таксономія IoT-платформ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1. Концепція та системні функції проміжного програмного забезпечення як інструменту подолання гетерогенності розподілених кіберфізичних систем
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-aep-cmp-dmp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2. Функціональна таксономія платформ Інтернету речей з виокремленням рівнів AEP, CMP, DMP та хмарних розширень загального призначення
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3. Архітектурна модель восьми базових компонентів повнофункціональної платформи Інтернету речей та принципи їхньої міжрівневої інтеграції
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4. Математична формалізація процесів нормалізації протоколів і простору фізичних вимірювань за критерієм мінімізації інформаційної ентропії
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Вказівки для самостійного осмислення
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-node-red-nodejs_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Методологія та аналіз граничних умов. Потокова обробка в Node-RED та асинхронні моделі обчислень у Node.js
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Методологія та аналіз граничних умов. Потокова обробка в Node-RED та асинхронні моделі обчислень у Node.js">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-node-red" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1. Парадигма потокового програмування та граф-орієнтована модель обробки подійних повідомлень у середовищі Node-RED
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-mqtt-websockets-http-rest-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2. Механізми міжпротокольної маршрутизації, фільтрації та контекстної трансформації корисного навантаження в контурах MQTT, WebSockets та HTTP REST API
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-reactor-libuv-nodejs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3. Архітектурний шаблон Reactor, фазова структура циклу подій Libuv та реалізація неблокуючого введення-виведення в Node.js
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-mg1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4. Моделювання латентності черги подій на основі співвідношення Поллачека-Хінчіна для систем масового обслуговування типу M/G/1
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5. Критичні бар'єри та вузькі місця однопотокової обробки, проблема блокування циклу подій ресурсомістким синхронним кодом та методи розвантаження ядра за допомогою пулу потоків
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Практичний індустріальний / фаховий кейс. Проєктування багатопротокольного шлюзу промислового Інтернету речей
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Практичний індустріальний / фаховий кейс. Проєктування багатопротокольного шлюзу промислового Інтернету речей">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-node-red-nodejs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1. Комплексний фаховий кейс. Розгортання відмовостійкого прикордонного шлюзу на базі Node-RED та Node.js
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1. Комплексний фаховий кейс. Розгортання відмовостійкого прикордонного шлюзу на базі Node-RED та Node.js">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Постановка задачі / ситуації
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Покроковий аналіз та розв'язок
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Покроковий аналіз та розв&#39;язок">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-modbus-rtu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 1. Розрахунок пропускної здатності фізичного рівня Modbus RTU та частоти опитування
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-nodejs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 2. Оцінка сумарного навантаження на чергу подій Node.js
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-event-loop-lag-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 3. Моделювання затримки Event Loop Lag за формулою Поллачека-Хінчіна
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 4. Аналіз критичного стану при виникненні аномалії корисного навантаження
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Інтерпретація результатів та альтернативні сценарії
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2. Зведена довідкова система лекції
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3. Контрольні питання та завдання
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3. Контрольні питання та завдання">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Прикладні тестові завдання
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Завдання для самостійної роботи
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Завдання для самостійної роботи">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Постановка задачі
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Завдання для виконання
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="10-iot-middleware">Тема 10. IoT платформи та Middleware</h1>
+<h2 id="_1">Мета лекції</h2>
+<p>Метою лекції є формування у майбутніх інженерів комплексної системи знань щодо архітектурних принципів, функціонального призначення та практичного використання проміжного програмного забезпечення і платформ Інтернету речей, вивчення концепцій та математичних засад нормалізації гетерогенних даних, а також опанування методології потокового візуального програмування в середовищі Node-RED і розробки масштабованих асинхронних серверних рішень на базі середовища Node.js для надійної інтеграції розподілених польових пристроїв із корпоративними та хмарними сервісами.</p>
+<h2 id="_2">Очікувані результати навчання</h2>
+<ol>
+<li>
+<p><strong>Знання та розуміння.</strong> Студенти засвоять фундаментальні принципи функціонування проміжного програмного забезпечення, класифікацію платформ Інтернету речей за функціональними напрямами, концепцію потокового програмування та архітектуру однопотокового неблокуючого циклу обробки подій у середовищі Node.js.</p>
+</li>
+<li>
+<p><strong>Застосування.</strong> Здобувачі вищої освіти набудуть практичних умінь конструювати інформаційні графи в середовищі Node-RED для міжпротокольної конвертації телеметрії, а також розробляти серверні мікросервіси на мові JavaScript для обробки та ретрансляції сенсорних потоків даних.</p>
+</li>
+<li>
+<p><strong>Аналіз.</strong> Студенти зможуть аналізувати мережеву латентність у розподілених інформаційних ланцюжках, порівнювати багатопотокові та подійно-орієнтовані моделі конкурентності за допомогою аналітичного апарату теорії масового обслуговування, а також локалізувати вузькі місця у вузлах трансформації даних.</p>
+</li>
+<li>
+<p><strong>Оцінювання та синтез.</strong> Слухачі навчаться обґрунтовувати вибір типу платформи Інтернету речей під конкретні інженерні обмеження, проєктувати відмовостійкі архітектури прикордонних шлюзів і розробляти комплексні сценарії взаємодії між гетерогенними сенсорними мережами та хмарними системами збереження даних.</p>
+</li>
+</ol>
+<hr />
+<h2 id="_3">Детальний покроковий план лекції</h2>
+<h3 id="1-middleware-iot-">1. Теоретико-концептуальний базис. Архітектура Middleware та функціональна таксономія IoT-платформ</h3>
+<ul>
+<li>
+<p>1.1. Концепція та системні функції проміжного програмного забезпечення як інструменту подолання гетерогенності розподілених кіберфізичних систем</p>
+</li>
+<li>
+<p>1.2. Функціональна таксономія платформ Інтернету речей з виокремленням рівнів AEP, CMP, DMP та хмарних розширень загального призначення</p>
+</li>
+<li>
+<p>1.3. Архітектурна модель восьми базових компонентів повнофункціональної платформи Інтернету речей та принципи їхньої міжрівневої інтеграції</p>
+</li>
+<li>
+<p>1.4. Математична формалізація процесів нормалізації протоколів і простору фізичних вимірювань за критерієм мінімізації інформаційної ентропії</p>
+</li>
+</ul>
+<h3 id="2-node-red-nodejs">2. Методологія та аналіз граничних умов. Потокова обробка в Node-RED та асинхронні моделі обчислень у Node.js</h3>
+<ul>
+<li>
+<p>2.1. Парадигма потокового програмування та граф-орієнтована модель обробки подійних повідомлень у середовищі Node-RED</p>
+</li>
+<li>
+<p>2.2. Механізми міжпротокольної маршрутизації, фільтрації та контекстної трансформації корисного навантаження в контурах MQTT, WebSockets та HTTP REST API</p>
+</li>
+<li>
+<p>2.3. Архітектурний шаблон Reactor, фазова структура циклу подій Libuv та реалізація неблокуючого введення-виведення в Node.js</p>
+</li>
+<li>
+<p>2.4. Моделювання латентності черги подій на основі співвідношення Поллачека-Хінчіна для систем масового обслуговування типу M/G/1</p>
+</li>
+<li>
+<p>2.5. Критичні бар'єри та вузькі місця однопотокової обробки, проблема блокування циклу подій ресурсомістким синхронним кодом та методи розвантаження ядра за допомогою пулу потоків</p>
+</li>
+</ul>
+<h3 id="3">3. Практичний індустріальний / фаховий кейс. Проєктування багатопротокольного шлюзу промислового Інтернету речей</h3>
+<p><strong>Тема наскрізної задачі.</strong> «Розгортання відмовостійкого прикордонного шлюзу на базі Node-RED та Node.js для агрегації телеметрії з польової мережі Modbus RTU/MQTT та її трансляції до хмарної платформи з контролем затримок Event Loop»</p>
+<h2 id="1-middleware-iot-_1">1. Теоретико-концептуальний базис. Архітектура Middleware та функціональна таксономія IoT-платформ</h2>
+<h3 id="11">1.1. Концепція та системні функції проміжного програмного забезпечення як інструменту подолання гетерогенності розподілених кіберфізичних систем</h3>
+<p>Сучасні кіберфізичні системи та розподілені комплекси Інтернету речей характеризуються екстремальним рівнем просторової, апаратної та протокольної гетерогенності. На рівні первинного збору інформації функціонують тисячі різнорідних пристроїв: від восьмибітних мікроконтролерів із вкрай обмеженими обчислювальними ресурсами та енергонезалежною пам'яттю обсягом у кілька кілобайтів до багатоядерних промислових контролерів та прикордонних серверів. Фізичний рівень передачі даних формується несумісними між собою дротовими та бездротовими каналами зв'язку, що охоплюють польові шини послідовного обміну, промислові мережі на основі оптичного волокна, локальні радіоінтерфейси субгігагерцового діапазону, а також стільникові стандарти низького енергоспоживання. Формати представлення вимірювальних величин варіюються від щільно упакованих бінарних бітових масок, сирих шістнадцяткових значень напруги аналого-цифрових перетворювачів до структурованих текстових рядків. Пряма інтеграція кожного окремого датчика чи виконавчого органу безпосередньо з кінцевими аналітичними або корпоративними додатками призводить до експоненційного зростання кількості зв'язків <span class="arithmatex">\(N \times M\)</span>, унеможливлює модифікацію системи та створює непереборні бар'єри масштабування.</p>
+<p>Для подолання проблеми структурної дезінтеграції в архітектуру сучасних систем вводиться <strong>проміжне програмне забезпечення</strong> (Middleware). За своєю системною суттю проміжне програмне забезпечення являє собою функціональний шар абстракції, розташований між операційними системами, мережевими драйверами апаратних вузлів та високорівневим прикладним програмним забезпеченням. Головна роль цього шару полягає в приховуванні технічних деталей реалізації фізичного обладнання, забезпеченні прозорості локалізації ресурсів, фільтрації інформаційних шумів та уніфікації методів програмного доступу до сервісів. Проміжне програмне забезпечення гарантує декомпозицію системи на автономні підсистеми завдяки просторовому та часовому розв'язанню компонентів. При просторовому розв'язанні відправник даних не потребує знання фізичної мережевої топології чи IP-адреси конкретного отримувача, адресуючи інформацію до логічних каналів чи тематичних просторів імен. Часове розв'язання дозволяє джерелам інформації публікувати вимірювання навіть тоді, коли кінцевий споживач перебуває в режимі глибокого сну або тимчасово недоступний через деградацію каналу зв'язку.</p>
+<p>Функціональний базис сучасного проміжного програмного забезпечення реалізує кілька ключових завдань системної інтеграції. Насамперед це інкапсуляція мережевих протоколів та забезпечення їх міжрівневої трансляції, що дозволяє поєднувати периферійні сегменти без підтримки стека IP із магістральними мережами. Другим критичним завданням є семантична конвертація даних, під час якої різнорідні структури перетворюються на єдиний інформаційний базис підприємства. Проміжне програмне забезпечення бере на себе маршрутизацію повідомлень, балансування мережевого навантаження, управління локальними чергами доставки в умовах нестабільного радіозв'язку, а також забезпечення наскрізної кібербезпеки за допомогою шифрування, авторизації запитів та контролю цілісності інформаційних потоків.</p>
+<blockquote>
+<p><strong>ПРАКТИЧНИЙ ЯКІР:</strong> У процесі цифровізації складальних цехів авіабудівного концерну Airbus розгортання промислового проміжного програмного забезпечення дозволило об'єднати в єдиний контур моніторингу застарілі преси з інтерфейсом RS-485 та новітні мобільні заклепувальні платформи, що передають телеметрію по бездротовому стандарту Wi-Fi 6, скоротивши час виявлення геометричних дефектів фюзеляжу на 40 відсотків без заміни наявного верстатного парку.</p>
+</blockquote>
+<hr />
+<h3 id="12-aep-cmp-dmp">1.2. Функціональна таксономія платформ Інтернету речей з виокремленням рівнів AEP, CMP, DMP та хмарних розширень загального призначення</h3>
+<p>Розвиток концепції проміжного програмного забезпечення зумовив формування спеціалізованого класу програмних комплексів, які отримали назву платформ Інтернету речей. Оскільки жоден універсальний монолітний програмний продукт не здатний одночасно задовольнити взаємовиключні вимоги ультранизької латентності польових мереж та практично необмеженої місткості глобальних аналітичних сховищ, на ринку сформувалася чітка спеціалізація рішень. </p>
+<pre class="mermaid"><code>flowchart TD
+    subgraph EnterpriseLevel["Корпоративний та прикладний рівень"]
+        direction TB
+        ERP["Корпоративні системи (ERP / PLM / MES)"]
+        BI["Системи бізнес-аналітики та предиктивні моделі"]
+    end
+
+    subgraph PlatformTaxonomy["Функціональна таксономія IoT-платформ"]
+        direction TB
+        AEP["Платформи активації додатків (AEP: ThingsBoard, AggreGate)"]
+        DMP["Платформи управління пристроями (DMP: AWS Device Management)"]
+        CMP["Платформи управління зв'язком (CMP: Cisco Jasper)"]
+        CloudCore["Хмарні бекенди загального призначення (AWS IoT, Azure IoT)"]
+    end
+
+    subgraph EdgeLevel["Польовий та прикордонний рівень"]
+        direction TB
+        Gateways["Прикордонні шлюзи (Edge / Fog Nodes)"]
+        FieldDevices["Польові сенсори, актуатори, контролери PLC"]
+    end
+
+    FieldDevices --&gt;|Низькорівневі протоколи| Gateways
+    Gateways --&gt;|WAN / Cellular| CMP
+    Gateways --&gt;|Телеметрія| CloudCore
+    CMP --&gt;|Статус з'єднань| DMP
+    DMP --&gt;|Конфігурація та FOTA| Gateways
+    CloudCore --&gt;|Очищені потоки даних| AEP
+    AEP --&gt;|API Інтеграція| ERP
+    AEP --&gt;|Історичні масиви| BI</code></pre>
+<p>Платформи розробки та активації додатків (<strong>Application Enablement Platforms, AEP</strong>) займають найвищий щабель у прикладній ієрархії IoT-програмного забезпечення. Вони надають інженерам середовище швидкої розробки, яке включає засоби візуального проектування графічних мнемосхем, потужні рушії бізнес-правил, підсистеми управління подіями та диспетчеризації сповіщень. Платформи цього класу абстрагують логіку конкретної предметної галузі від деталей збору інформації, дозволяючи зосередитися на побудові сценаріїв автоматизації розумного будинку, агросектору або інтелектуального виробництва.</p>
+<p>Платформи управління зв'язком (<strong>Connectivity Management Platforms, CMP</strong>) сконцентровані на рівні передачі даних та взаємодії з телекомунікаційною інфраструктурою. Основним завданням систем цього типу є централізоване керування пулом абонентських ідентифікаторів (SIM, eSIM, віртуальні профілі), автоматичний вибір оптимального стільникового оператора, облік використаного трафіку, білінг та діагностика стану радіоканалу в реальному часі. CMP виступають фундаментом для масштабних географічно розподілених систем, таких як моніторинг автопарків або дистанційний облік енергоресурсів на рівні країни.</p>
+<p>Платформи управління пристроями (<strong>Device Management Platforms, DMP</strong>) забезпечують супровід фізичних компонентів системи на всіх стадіях їхньої експлуатації. До функціонального спектра DMP належить безпечна початкова реєстрація вузла в мережі з видачею унікальних криптографічних сертифікатів, постійний моніторинг апаратного стану батарей та сенсорів, віддалена зміна конфігураційних файлів і виконання масових оновлень вбудованого програмного забезпечення за бездротовим каналом. Своєчасна доставка патчів безпеки через механізми DMP є критичною для запобігання використанню польових пристроїв як елементів ботнет-мереж.</p>
+<p>Хмарні бекенди загального призначення є високонавантаженими розподіленими серверами класу IaaS та PaaS, доповненими спеціалізованими модулями обробки даних Інтернету речей. Вони орієнтовані на гарантований прийом терабайтних інформаційних потоків, що надходять одночасно від мільйонів активних сесій, та їх безпечну маршрутизацію в озера даних або розподілені бази часових рядів.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Клас платформи</th>
+<th style="text-align: left;">Архітектурний фокус</th>
+<th style="text-align: left;">Цільовий рівень стека</th>
+<th style="text-align: left;">Приклад з реальної практики</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>AEP (Application Enablement)</strong></td>
+<td style="text-align: left;">Швидке конструювання бізнес-логіки, розробка графічних інтерфейсів, формування правил обробки подій</td>
+<td style="text-align: left;">Прикладний рівень, системи взаємодії з користувачем</td>
+<td style="text-align: left;">Платформа ThingsBoard для моніторингу параметрів мікроклімату та автоматичного поливу у тепличному господарстві</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>CMP (Connectivity Management)</strong></td>
+<td style="text-align: left;">Адміністрування телекомунікаційних профілів, облік стільникового трафіку, виявлення обривів зв'язку</td>
+<td style="text-align: left;">Канальний та мережевий рівні зв'язку операторів</td>
+<td style="text-align: left;">Система Cisco Jasper для централізованого білінгу та контролю зв'язку парку комерційних електромобілів</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>DMP (Device Management)</strong></td>
+<td style="text-align: left;">Автоматизований провіжинінг, моніторинг метрик заліза, масове завантаження мікропрограм FOTA</td>
+<td style="text-align: left;">Рівень фізичних пристроїв та системне програмне забезпечення</td>
+<td style="text-align: left;">Сервіс AWS IoT Device Management для оновлення систем безпеки та сертифікатів вуличних камер спостереження</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Хмарні сервіси (IaaS/PaaS Core)</strong></td>
+<td style="text-align: left;">Масштабований прийом високочастотних потоків, балансування мережевого навантаження, довготривале архівування</td>
+<td style="text-align: left;">Транспортний рівень, глобальні розподілені сховища</td>
+<td style="text-align: left;">Комплекс Azure IoT Hub у поєднанні з HDInsight для накопичення телеметрії з тисяч вітроенергетичних установок</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Edge / Fog Middleware</strong></td>
+<td style="text-align: left;">Локальна нормалізація протоколів, первинна фільтрація шумів, виконання коду без доступу до хмари</td>
+<td style="text-align: left;">Прикордонні шлюзи, промислові маршрутизатори</td>
+<td style="text-align: left;">Фреймворк EdgeX Foundry або платформа Node-RED, розгорнута на контролері цехової конвеєрної лінії</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="13">1.3. Архітектурна модель восьми базових компонентів повнофункціональної платформи Інтернету речей та принципи їхньої міжрівневої інтеграції</h3>
+<p>Згідно з дослідженнями провідних галузевих аналітиків, архітектура повнофункціональної промислової платформи Інтернету речей повинна декомпонуватися на вісім фундаментальних підсистем, кожна з яких відповідає за ізольовану функціональну ділянку обробки інформації та управління.</p>
+<p>Першим базовим елементом є компонент зв'язку та нормалізації. Його призначення полягає в підтримці фізичного мережевого з'єднання з вузлами за широким спектром стандартів та трансляції гетерогенних структур вхідних повідомлень у єдиний внутрішньосистемний формат представлення об'єктів. Без нормалізації будь-яка спроба зіставити дані з різних датчиків призводитиме до фатальних помилок інтерпретації параметрів.</p>
+<p>Другий елемент — компонент управління пристроями. Він функціонує як системний реєстр активів підприємства, зберігаючи унікальні ідентифікатори пристроїв, їхні мережеві адреси, версії апаратних ревізій та поточний експлуатаційний статус. На цю підсистему покладається реалізація життєвого циклу фізичного вузла в мережі.</p>
+<pre class="mermaid"><code>stateDiagram-v2
+    [*] --&gt; Зареєстрований: Внесення фабричного ідентифікатора (DevEUI / MAC)
+    Зареєстрований --&gt; Автентифікований: Обмін сертифікатами (TLS / Pre-shared Key)
+    Автентифікований --&gt; Активний_Моніторинг: Успішний провіжинінг та запуск передачі телеметрії
+    Активний_Моніторинг --&gt; Обробка_Подій: Виявлення аномалії датчика за правилами CEP
+    Обробка_Подій --&gt; Активний_Моніторинг: Повернення до штатних меж вимірювання
+    Активний_Моніторинг --&gt; Оновлення_FOTA: Ініціація доставки нової версії мікропрограми
+    Оновлення_FOTA --&gt; Активний_Моніторинг: Верифікація контрольної суми та перезавантаження
+    Активний_Моніторинг --&gt; Недоступний: Втрата зв'язку (Таймаут Keep-Alive / LWT)
+    Недоступний --&gt; Активний_Моніторинг: Відновлення фізичного каналу зв'язку
+    Недоступний --&gt; Виведений_з_експлуатації: Фізичний демонтаж або відкликання сертифіката
+    Виведений_з_експлуатації --&gt; [*]</code></pre>
+<p>Третім компонентом є база даних, яка в сучасних платформах будується за поліглот-архітектурою. Реляційні бази даних застосовуються для збереження конфігураційних параметрів, прав користувачів та структури активів. Нереляційні сховища типу NoSQL та спеціалізовані бази даних часових рядів використовуються для фіксації безперервних високочастотних векторів телеметрії, де кожен запис супроводжується міткою часу з наносекундною або мілісекундною дискретністю.</p>
+<p>Четвертий компонент відповідає за обробку та управління діями. Цей програмний модуль безперервно аналізує потоки первинних даних, порівнює їх із граничними уставками та генерує керівні впливи на основі методів комплексної обробки подій (<strong>Complex Event Processing, CEP</strong>). Якщо комбінація параметрів свідчить про аварійну ситуацію, механізм правил негайно ініціює виконання відповідного сценарію без очікування запитів від оператора.</p>
+<p>П'ятий компонент — підсистема аналітики. Вона виконує глибинний аналіз накопичених масивів інформації, статистичну обробку, кластеризацію режимів функціонування об'єктів та навчання моделей штучного інтелекту для задач предиктивного обслуговування, попереджаючи технічний персонал про знос підшипників чи деградацію ізоляції задовго до настання критичної відмови.</p>
+<p>Шостим елементом є компонент візуалізації, що формує людино-машинний інтерфейс платформи. Сучасні вимоги передбачають інтерактивне представлення даних на основі технологій веб-графіки, де оператор має змогу переглядати мнемосхеми технологічних процесів, графіки часових трендів, теплові карти та просторову локалізацію об'єктів на інтегрованих географічних картах.</p>
+<p>Сьомий компонент охоплює додаткові інструменти розробки. До них належать графічні конструктори логіки, вбудовані тестові емулятори поведінки датчиків, інструменти відлагодження інформаційних потоків та пісочниці для безпечного виконання користувацьких скриптів без загрози порушення стабільності ядра платформи.</p>
+<p>Восьмий компонент складають зовнішні інтерфейси, які реалізують безпечну взаємодію платформи з навколишнім цифровим середовищем. Через механізми відкритих інтерфейсів REST API, брокери черг повідомлень та веб-сокети здійснюється інтеграція телеметричних даних з корпоративними системами управління виробництвом, системами планування ресурсів підприємства та сторонніми хмарними екосистемами.</p>
+<blockquote>
+<p><strong>ТИПОВА ПОМИЛКА:</strong> Поширеною помилкою інженерів-початківців є ототожнення стандартного брокера повідомлень (наприклад, Eclipse Mosquitto) або автономної бази даних часових рядів (наприклад, InfluxDB) із повноцінною платформою Інтернету речей. Брокер повідомлень вирішує виключно транспортне завдання передачі бітових пакетів за шаблоном публікація-підписка без збереження стану, семантичного розбору чи аналітики. Використання ізольованого брокера без інших семи компонентів архітектури вимагає створення власної надбудови управління пристроями, візуалізації та безпеки, що багаторазово здорожчує кінцеву вартість проєкту.</p>
+</blockquote>
+<hr />
+<h3 id="14">1.4. Математична формалізація процесів нормалізації протоколів і простору фізичних вимірювань за критерієм мінімізації інформаційної ентропії</h3>
+<p>Процес нормалізації інформаційних потоків на рівні проміжного програмного забезпечення є суворою математичною операцією взаємно-однозначного перетворення гетерогенного дискретного простору сирих вимірювань у канонічний континуальний простір станів фізичного об'єкта. Формалізуємо множину сирих вхідних пакетів, що надходять від довільного сенсорного вузла, як кортеж інформаційних параметрів:</p>
+<div class="arithmatex">\[m_{in} = \langle P_{src}, \tau_{rx}, \mathbf{b} \rangle\]</div>
+<p>де <span class="arithmatex">\(P_{src} \in \mathcal{P}\)</span> визначає протокол передачі фізичного каналу зв'язку зі скінченної множини підтримуваних протоколів <span class="arithmatex">\(\mathcal{P} = \{\text{Modbus}, \text{ZigBee}, \text{LoRaWAN}, \text{BLE}, \text{CoAP}\}\)</span>; <span class="arithmatex">\(\tau_{rx} \in \mathbb{R}^+\)</span> є часовою міткою реєстрації пакета приймальним мережевим інтерфейсом шлюзу; <span class="arithmatex">\(\mathbf{b} = (b_1, b_2, \dots, b_L) \in \{0, 1\}^L\)</span> являє собою двійковий вектор корисного навантаження довжиною <span class="arithmatex">\(L\)</span> біт.</p>
+<p>Оператор семантичного та протокольного перетворення проміжного програмного забезпечення <span class="arithmatex">\(\mathcal{T}_{norm}\)</span> здійснює відображення вхідного повідомлення <span class="arithmatex">\(m_{in}\)</span> у нормалізований вектор фізичних змінних <span class="arithmatex">\(\mathbf{x} \in \mathbb{R}^k\)</span>:</p>
+<div class="arithmatex">\[\mathcal{T}_{norm}: \mathcal{M}_{in} \longrightarrow \mathcal{M}_{norm}\]</div>
+<div class="arithmatex">\[\mathbf{x}(\tau) = \mathbf{K} \cdot \psi_{dec}(\mathbf{b}, P_{src}) + \mathbf{x}_0\]</div>
+<p>де <span class="arithmatex">\(\psi_{dec}: \{0,1\}^L \times \mathcal{P} \to \mathbb{Z}^k\)</span> є функцією синтаксичного декодування та десеріалізації бінарного потоку відповідно до специфікації вхідного протоколу, яка витягує з кадрів сирі цілочисельні коди регістрів АЦП; <span class="arithmatex">\(\mathbf{K} = \operatorname{diag}(k_1, k_2, \dots, k_k)\)</span> позначає діагональну матрицю вагових масштабувальних коефіцієнтів та передавальних характеристик датчиків; <span class="arithmatex">\(\mathbf{x}_0 = [x_{0,1}, x_{0,2}, \dots, x_{0,k}]^T\)</span> є вектором статичних апаратних зміщень (нульових рівнів або поправок калібрування); <span class="arithmatex">\(\tau\)</span> позначає скоригований розрахунковий час фізичного вимірювання.</p>
+<p>Фундаментальною вимогою до коректності алгоритмів нормалізації в розподілених системах є збереження повноти інформації, тобто мінімізація втрати корисної інформації при переході між форматами представлення. Відповідно до теорії інформації Клода Шеннона, інформаційна ентропія дискретного ансамблю повідомлень джерела <span class="arithmatex">\(\mathcal{M}\)</span> визначається виразом:</p>
+<div class="arithmatex">\[H(\mathcal{M}) = -\sum_{i=1}^{N} p(m_i) \log_2 p(m_i)\]</div>
+<p>де <span class="arithmatex">\(p(m_i)\)</span> позначає апостеріорну ймовірність появи дискретного квантованого стану <span class="arithmatex">\(m_i\)</span> серед <span class="arithmatex">\(N\)</span> можливих станів системи.</p>
+<p>Критерій неспотвореної нормалізації протоколів формулюється як мінімізація втрат ентропії <span class="arithmatex">\(\Delta H\)</span> за умови збереження метричних інтервалів та детермінованості перетворення:</p>
+<div class="arithmatex">\[\Delta H = \left| H(\mathcal{M}_{in}) - H(\mathcal{M}_{norm}) \right| \le \varepsilon, \quad \varepsilon \to 0\]</div>
+<p>Якщо оператор <span class="arithmatex">\(\mathcal{T}_{norm}\)</span> містить процедури грубого округлення, втрати розрядності або переповнення буферів, ентропія нормалізованого стану різко спадає, що призводить до незворотної деградації якості роботи високорівневих алгоритмів діагностики та предиктивного аналізу.</p>
+<blockquote>
+<p><strong>ПРАКТИЧНИЙ ЯКІР:</strong> При моніторингу вібрацій підшипників газоперекачувальних турбін на компресорних станціях перехід від сирого бінарного кодування тензодатчиків до спрощеного текстового формату з надмірним округленням плаваючої коми викликав зростання інформаційних втрат <span class="arithmatex">\(\Delta H &gt; 0{,}15\text{ біт/відлік}\)</span>, через що математична модель спектрального аналізу перестала детектувати мікротріщини вала на ранніх стадіях зародження дефекту.</p>
+<p><strong>КОНТРОЛЬНЕ ПИТАННЯ:</strong> Під час модернізації автоматизованого вузла обліку промислових газів на прикордонному шлюзі було впроваджено функцію проміжного програмного забезпечення, яка зчитує 16-розрядні цілочисельні дані витратоміра за протоколом Modbus RTU, конвертує їх у рядок тексту JSON та транслює за протоколом MQTT на хмарний сервер. Яким чином зміна структури представлення даних впливає на пропускну здатність каналу зв'язку та інформаційну ентропію системи вимірювання?</p>
+</blockquote>
+<details class="note">
+<summary>Розгорнути аналіз / відповідь</summary>
+<p><strong>Правильний варіант: Зростає навантаження на канал передачі при збереженні інформаційної ентропії за умови відсутності операцій заокруглення.</strong></p>
+<ol>
+<li>
+<p><strong>Аналітичне обґрунтування:</strong> Первинне корисне навантаження вимірювання в протоколі Modbus займає рівно 2 байти (16 біт). Конвертація цього числа в текстовий формат JSON виду <code>{"flow": 65535}</code> потребує щонайменше 15–20 байтів у кодуванні ASCII/UTF-8, до чого додаються накладні заголовки транспортного рівня TCP/IP та службового пакета MQTT. Таким чином, навантаження на фізичний канал зв'язку зростає приблизно в 8–10 разів. Разом з тим, якщо перетворення цілого числа в десятковий рядок здійснюється без квантування та втрати розрядів, функція синтаксичного відображення залишається бієктивною. У результаті інформаційна ентропія за Шенноном не змінюється, оскільки кожному значенню сирого коду АЦП однозначно відповідає рівно одне текстове числове представлення.</p>
+</li>
+<li>
+<p><strong>Аналіз дистракторів:</strong> Твердження про те, що інформаційна ентропія зменшується внаслідок конвертації у формат JSON, є хибним, оскільки втрата ентропії виникає лише в операціях із неповною інформацією (наприклад, при втраті молодших розрядів чи стисненні з втратами). Твердження про скорочення мережевого трафіку через компактність текстових форматів суперечить дійсності, оскільки бінарні формати завжди мають значно вищу щільність упаковки даних, ніж еквівалентні структуровані текстові серіалізатори.</p>
+</li>
+</ol>
+</details>
+<hr />
+<h3 id="_4">Вказівки для самостійного осмислення</h3>
+<ol>
+<li>
+<p>Здійснити аналітичний розрахунок накладних витрат мережевого трафіку при передачі одного мільйона вимірювань температури у вигляді сирого бінарного буфера довжиною 4 байти порівняно з текстовим документом JSON із зазначенням мітки часу та унікального ідентифікатора пристрою.</p>
+</li>
+<li>
+<p>Проаналізувати функціональні відмінності між архітектурою відкритих прикордонних платформ EdgeX Foundry та комерційних хмарних сервісів Azure IoT Hub, виокремивши специфіку їхнього застосування для виробничих процесів із жорсткими часовими обмеженнями.</p>
+</li>
+<li>
+<p>Розробити концептуальну схему декомпозиції складної системи управління міським водопостачанням на рівні таксономії IoT Analytics, визначивши функціональні обов'язки платформ класу CMP, DMP та AEP у загальному контурі автоматизації.</p>
+</li>
+</ol>
+<h2 id="2-node-red-nodejs_1">2. Методологія та аналіз граничних умов. Потокова обробка в Node-RED та асинхронні моделі обчислень у Node.js</h2>
+<h3 id="21-node-red">2.1. Парадигма потокового програмування та граф-орієнтована модель обробки подійних повідомлень у середовищі Node-RED</h3>
+<p>Парадигма потокового програмування (<strong>Flow-Based Programming, FBP</strong>) базується на концепції представлення обчислювального процесу як орієнтованої мережі автономних функціональних компонентів, що взаємодіють між собою виключно шляхом передачі дискретних інформаційних пакетів через фіксовані комунікаційні канали. На відміну від класичного імперативного підходу, де послідовність виконання жорстко зафіксована лістингом інструкцій та станом глобального адресного простору пам'яті, у парадигмі FBP керування повністю підпорядковане доступності вхідних даних. Функціональний блок залишається пасивним доти, доки на його вхідні інтерфейси не надійде квант інформації, що ініціює локальне перетворення та породжує вихідне повідомлення без модифікації внутрішнього стану сусідніх вузлів.</p>
+<p>У середовищі потокового моделювання <strong>Node-RED</strong> зазначена парадигма отримує формалізовану граф-орієнтовану реалізацію. Програмний потік проектується у формі орієнтованого мультиграфа <span class="arithmatex">\(G = (V, E)\)</span>, де множина вершин <span class="arithmatex">\(V\)</span> відповідає програмним блокам обробки, а множина спрямованих дуг <span class="arithmatex">\(E\)</span> описує комунікаційні траєкторії руху об'єктів повідомлень. Кожен вузол <span class="arithmatex">\(v_i \in V\)</span> інкапсулює детерміновану функцію перетворення <span class="arithmatex">\(\phi_i: \mathcal{M} \to \mathcal{M} \cup \{\emptyset\}\)</span>, що відображає вхідне повідомлення у вихідне або повністю відсіює його у разі невиконання заданих фільтраційних умов.</p>
+<p>Комунікація між вершинами графа здійснюється за допомогою уніфікованого об'єкта повідомлення <code>msg</code>. Архітектурна узгодженість середовища забезпечується збереженням базових полів, серед яких головну інформаційну роль відіграє корисне навантаження <code>msg.payload</code> довільної структури та контекстний маршрутизатор <code>msg.topic</code>. Для збереження проміжних результатів обчислень у Node-RED використовується трирівнева модель контексту: локальний контекст вузла (<strong>Node Context</strong>), видимий лише в межах поточної вершини; контекст інформаційного потоку (<strong>Flow Context</strong>), доступний для всіх взаємопов'язаних вузлів на окремій вкладці робочої області; глобальний контекст (<strong>Global Context</strong>), доступний для всієї активної конфігурації середовища. </p>
+<blockquote>
+<p><strong>ВАЖЛИВО:</strong> При проєктуванні інформаційних потоків у Node-RED використання глобального контексту має суворо обмежуватися константами конфігурації, оскільки неконтрольована модифікація глобальних об'єктів паралельними асинхронними подіями порушує інваріант ізоляції FBP-компонентів і породжує важковиправні стани перегонів (race conditions).</p>
+</blockquote>
+<hr />
+<h3 id="22-mqtt-websockets-http-rest-api">2.2. Механізми міжпротокольної маршрутизації, фільтрації та контекстної трансформації корисного навантаження в контурах MQTT, WebSockets та HTTP REST API</h3>
+<p>Реалізація шлюзів прикордонної взаємодії вимагає узгодження різних за своєю природою комунікаційних моделей, таких як модель публікації-підписки протоколу MQTT, синхронна транзакційна модель запит-відповідь протоколу HTTP та повнодуплексний потоковий обмін постійних сесій WebSockets. Проміжне програмне забезпечення функціонує як багатопротокольний маршрутизатор, який усуває несумісність форматів та семантичних часових рамок між цими протоколами.</p>
+<pre class="mermaid"><code>sequenceDiagram
+    autonumber
+    participant Sensor as Промисловий сенсор (RS-485 / Modbus)
+    participant EdgeNode as Прикордонний шлюз (Node-RED)
+    participant Broker as Брокер MQTT (Mosquitto)
+    participant CloudAPI as Хмарний REST API (HTTPS)
+    participant ClientWS as SCADA Оператор (WebSockets)
+
+    Sensor-&gt;&gt;EdgeNode: Опитування регістрів через Modbus Master (сирий буфер байтів)
+    Note over EdgeNode: Синтаксичний розбір, десеріалізація та валідація даних
+    EdgeNode-&gt;&gt;Broker: Асинхронний MQTT PUBLISH (QoS 1, топік 'plant/press/temp')
+
+    par Ретрансляція до системи диспетчеризації
+        Broker--&gt;&gt;EdgeNode: Доставка повідомлення на підписаний вузол MQTT In
+        EdgeNode-&gt;&gt;ClientWS: WS Frame: Трансляція потокових даних до веб-інтерфейсу
+    and Збереження та реєстрація аномалій
+        Note over EdgeNode: Оцінка граничних умов: якщо Значення &gt; Поріг
+        EdgeNode-&gt;&gt;CloudAPI: Синхронний HTTP POST /api/v2/alarms (TLS Handshake, JSON)
+        CloudAPI--&gt;&gt;EdgeNode: HTTP Response 201 Created (UID інциденту)
+    end</code></pre>
+<p>Наведена на рисунку послідовність взаємодії демонструє процес одночасного розщеплення інформаційного потоку. Отриманий із польової шини бінарний масив після первинного розбору перетворюється на нормалізоване повідомлення, яке публікується у брокер MQTT для забезпечення локального шинного обміну. Одночасно активований потік дублює інформацію на диспетчерські веб-панелі за допомогою легковикого бінарного протоколу WebSockets без створення накладних витрат на повторні з'єднання. Якщо модуль правил виявляє перевищення технологічного ліміту, потік ініціює створення захищеної сесії TLS для виклику зовнішнього хмарного REST API.</p>
+<p>Міжпротокольна трансформація вимагає обов'язкової динамічної конвертації метаданих. Якщо в протоколі MQTT адресація повністю інкапсульована в текстовому ієрархічному рядку теми, то протокол HTTP вимагає перенесення цієї інформації в структуру шляху уніфікованого ідентифікатора ресурсів (URI) та формування службових заголовків <code>Content-Type</code> і <code>Authorization</code>. Проміжне програмне забезпечення здійснює автоматичне зіставлення цих параметрів, запобігаючи втраті контексту походження вимірювання.</p>
+<hr />
+<h3 id="23-reactor-libuv-nodejs">2.3. Архітектурний шаблон Reactor, фазова структура циклу подій Libuv та реалізація неблокуючого введення-виведення в Node.js</h3>
+<p>В основі високопродуктивної обробки повідомлень як самого середовища Node-RED, так і автономних серверних сервісів Інтернету речей лежить програмна платформа <strong>Node.js</strong>. Її фундаментальною архітектурною концепцією є відмова від виділення окремого потоку операційної системи на кожне мережеве підключення на користь архітектурного шаблону <strong>Reactor</strong>, реалізованого за допомогою низькорівневої системної бібліотеки <strong>Libuv</strong>.</p>
+<p>Шаблон Reactor базується на синхронному демультиплексуванні подій введення-виведення за допомогою механізмів ядра операційної системи, таких як <code>epoll</code> у дистрибутивах Linux, <code>kqueue</code> в BSD-системах та <code>IOCP</code> у сімействі ОС Windows. Замість того, щоб блокувати процесор в очікуванні надходження чергового кадру від датчика, потік програми передає дескриптор сокета ядру операційної системи разом із зареєстрованим вказівником на функцію зворотного виклику (<strong>Callback</strong>).</p>
+<pre class="mermaid"><code>flowchart TD
+    subgraph EventLoopFlow["Ітераційна структура циклу подій Libuv"]
+        direction TB
+        Phase1["1. Timers (Виконання зворотних викликів setTimeout та setInterval)"]
+        Phase2["2. Pending Callbacks (Системні виклики I/O, відкладені з минулого циклу)"]
+        Phase3["3. Idle, Prepare (Внутрішні потреби системного ядра)"]
+        Phase4["4. Poll (Опитування дескрипторів сокетів epoll, блокування при очікуванні)"]
+        Phase5["5. Check (Виконання обробників setImmediate)"]
+        Phase6["6. Close Callbacks (Закриття ресурсів: socket.on 'close')"]
+    end
+
+    Microtasks["Черга мікрозадач (process.nextTick, Promise.then)"]
+
+    Phase1 --&gt; Microtasks
+    Microtasks --&gt; Phase2
+    Phase2 --&gt; Microtasks
+    Microtasks --&gt; Phase3
+    Phase3 --&gt; Microtasks
+    Microtasks --&gt; Phase4
+    Phase4 --&gt; Microtasks
+    Microtasks --&gt; Phase5
+    Phase5 --&gt; Microtasks
+    Microtasks --&gt; Phase6
+    Phase6 --&gt; Microtasks
+    Microtasks --&gt;|Нова ітерація циклу| Phase1</code></pre>
+<p>Цикл подій (<strong>Event Loop</strong>) послідовно проходить через шість строго детермінованих фаз, виконання кожної з яких супроводжується очищенням пріоритетної черги мікрозадач:</p>
+<ol>
+<li>
+<p>Фаза таймерів перевіряє поріг спрацьовування таймерів, створених функціями <code>setTimeout()</code> та <code>setInterval()</code>, та ініціює їхні обробники.</p>
+</li>
+<li>
+<p>Фаза очікування зворотних викликів виконує функції, які повернули системні помилки мережевих адаптерів або буферів на попередніх кроках.</p>
+</li>
+<li>
+<p>Фаза підготовки та простою виконує внутрішні налаштування контексту рушія.</p>
+</li>
+<li>
+<p>Фаза опитування є ядром системи, де здійснюється розрахунок часу блокування потоку, отримання нових пакетів даних із зареєстрованих сокетів та запуск функцій обробки вхідної телеметрії.</p>
+</li>
+<li>
+<p>Фаза перевірки викликає специфічні функції, призначені методом <code>setImmediate()</code>, дозволяючи впроваджувати код безпосередньо після фази опитування введення-виведення.</p>
+</li>
+<li>
+<p>Фаза закриття виконує деструктори та очищення пам'яті при аварійному або штатному розриві сокетів.</p>
+</li>
+</ol>
+<p>Черга мікрозадач, що обробляє виклики <code>process.nextTick()</code> та резолви <code>Promise</code>, має найвищий пріоритет. Вона повністю вичерпується після завершення кожної операції поточної фази, що забезпечує миттєву реакцію на внутрішні зміни стану програми.</p>
+<hr />
+<h3 id="24-mg1">2.4. Моделювання латентності черги подій на основі співвідношення Поллачека-Хінчіна для систем масового обслуговування типу M/G/1</h3>
+<p>Для кількісної оцінки часових характеристик та стійкості прикордонного шлюзу на базі Node.js застосуємо апарат теорії масового обслуговування. Оскільки вхідний потік повідомлень від великої кількості незалежних сенсорів є пуассонівським процесом, а тривалість обробки повідомлень є випадковою величиною з довільним законом розподілу через змінну довжину корисного навантаження, прикордонний шлюз моделюється як система масового обслуговування типу <span class="arithmatex">\(M/G/1\)</span>.</p>
+<p>Формалізуємо процес аналізу та розрахунку середнього часу перебування повідомлення в черзі подій циклу Event Loop за допомогою поетапного виведення:</p>
+<div class="arithmatex">\[
+\begin{aligned}
+\text{Крок 1 (Параметризація навантаження):} &amp; \quad \lambda = \sum_{j=1}^{M} \lambda_j, \quad \mathbb{E}[S] = \frac{1}{\mu} \\
+\text{Крок 2 (Коефіцієнт завантаження системи):} &amp; \quad \rho = \lambda \cdot \mathbb{E}[S] = \frac{\lambda}{\mu} \lt  1 \\
+\text{Крок 3 (Другий момент часу обслуговування):} &amp; \quad \mathbb{E}[S^2] = \operatorname{Var}(S) + (\mathbb{E}[S])^2 = \sigma_S^2 + \frac{1}{\mu^2} \\
+\text{Крок 4 (Формула Поллачека-Хінчіна):} &amp; \quad W_q = \frac{\lambda \cdot \mathbb{E}[S^2]}{2(1 - \rho)} = \frac{\lambda (\sigma_S^2 + \mu^{-2})}{2(1 - \lambda / \mu)} \\
+\text{Крок 5 (Повний середній час затримки):} &amp; \quad T_{resp} = W_q + \mathbb{E}[S] = \frac{\lambda (\sigma_S^2 + \mu^{-2})}{2(1 - \lambda / \mu)} + \frac{1}{\mu}
+\end{aligned}
+\]</div>
+<p>У наведеній математичній моделі величина <span class="arithmatex">\(\lambda\)</span> позначає сумарну інтенсивність вхідного потоку пакетів від <span class="arithmatex">\(M\)</span> підключених пристроїв, вимірювану в повідомленнях за секунду; <span class="arithmatex">\(\mathbb{E}[S]\)</span> є математичним сподіванням часу виконання синхронного коду обробника в головному потоці V8; <span class="arithmatex">\(\mu\)</span> — середня продуктивність обробки подій одним потоком; <span class="arithmatex">\(\rho\)</span> — безрозмірний коефіцієнт утилізації обчислювальних ресурсів процесора; <span class="arithmatex">\(\sigma_S^2\)</span> позначає дисперсію часу виконання обробників; <span class="arithmatex">\(W_q\)</span> визначає математичне сподівання часу очікування повідомлення в черзі циклу подій (<strong>Event Loop Lag</strong>); <span class="arithmatex">\(T_{resp}\)</span> є повним часом реакції шлюзу від моменту надходження пакета до завершення його передачі у вихідний канал.</p>
+<p>Аналіз формули Поллачека-Хінчіна виявляє критичну залежність: навіть за умови ненасиченого навантаження, коли коефіцієнт утилізації процесора становить помірні величини <span class="arithmatex">\(\rho \approx 0{,}6 \dots 0{,}7\)</span>, значна дисперсія тривалості обробки <span class="arithmatex">\(\sigma_S^2\)</span> викликає різке, майже експоненційне зростання часу очікування <span class="arithmatex">\(W_q\)</span>. Якщо в систему надходять неструктуровані пакети, час парсингу яких суттєво відрізняється від середнього, виникають тривалі мікрозатримки, неприпустимі для систем автоматизації реального часу.</p>
+<blockquote>
+<p><strong>ПРАКТИЧНИЙ ЯКІР:</strong> Під час пікових навантажень на автоматизованих сортувальних терміналах логістичного оператора Deutsche Post обробка штрих-кодів посилчастих сканерів за допомогою однопотокового шлюзу викликала зростання затримки Event Loop Lag з <span class="arithmatex">\(2\text{ мс}\)</span> до <span class="arithmatex">\(450\text{ мс}\)</span> через варіативність довжини бінарних пакетів, що зумовило збої синхронізації оптичних датчиків конвеєра та вимагало винесення розбору зображень у пули Worker Threads.</p>
+</blockquote>
+<hr />
+<h3 id="25">2.5. Критичні бар'єри та вузькі місця однопотокової обробки, проблема блокування циклу подій ресурсомістким синхронним кодом та методи розвантаження ядра за допомогою пулу потоків</h3>
+<p>Незважаючи на високу ефективність архітектури Reactor під час операцій введення-виведення, однопотокова природа середовища Node.js становить головне джерело архітектурних ризиків у задачах Інтернету речей. Головний потік платформи виконує компіляцію, оптимізацію коду в рушії V8 та виклики всіх функцій зворотного виклику. Якщо будь-який вузол системи запускає обчислювально складну синхронну операцію, весь процес виконання циклу подій повністю блокується.</p>
+<p><strong>ГРАНИЧНІ УМОВИ ЗАСТОСУВАННЯ МОДЕЛІ:</strong>
+Теоретична модель високої масштабованості асинхронного неблокуючого вводу-виводу повністю деградує та втрачає практичну релевантність у таких випадках:</p>
+<ul>
+<li>
+<p>Якщо корисне навантаження складається з великих обсягів структурованого тексту, операція <code>JSON.parse()</code> над масивами розміром понад <span class="arithmatex">\(5\text{ Мбайт}\)</span> блокує головний потік на десятки мілісекунд, протягом яких шлюз перестає відповідати на Keep-Alive запити від мережевих контролерів.</p>
+</li>
+<li>
+<p>Застосування криптографічних операцій шифрування або підпису телеметрії алгоритмами типу RSA без використання апаратних криптопроцесорів призводить до падіння пропускної здатності черги сокетів на два порядки.</p>
+</li>
+<li>
+<p>Використання регулярних виразів із катастрофічним поверненням (Catastrophic Backtracking) для синтаксичного аналізу сирих рядків може спричинити зависання процесу V8 із навантаженням на процесорне ядро у 100 відсотків.</p>
+</li>
+</ul>
+<p>Для усунення зазначених критичних бар'єрів розробляються методи апаратного та програмного розвантаження головного ядра. Першим підходом є делегування важких завдань стандартному фоновому пулу потоків бібліотеки Libuv (<strong>Thread Pool</strong>), розмір якого за замовчуванням становить 4 потоки і може бути динамічно розширений встановленням змінної середовища <code>UV_THREADPOOL_SIZE</code>. Цей пул автоматично обслуговує системні виклики файлової системи, DNS-запити та вбудовані криптографічні модулі. Другим підходом є використання багатопотокового модуля <strong>Worker Threads</strong>, що дозволяє створювати паралельні ізоляти рушія V8 зі спільним буфером пам'яті (<code>SharedArrayBuffer</code>), переносячи ресурсомісткі математичні алгоритми цифрової фільтрації на інші фізичні ядра центрального процесора.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Модель обробки</th>
+<th style="text-align: left;">Складність впровадження</th>
+<th style="text-align: left;">Пропускна здатність при I/O-bound задачах</th>
+<th style="text-align: left;">Поведінка при ресурсомістких обчисленнях (CPU-bound)</th>
+<th style="text-align: left;">Критичні ризики / Обмеження</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Однопотоковий Reactor (Node.js / Node-RED)</strong></td>
+<td style="text-align: left;">Низька (проста модель написання коду без синхронізації)</td>
+<td style="text-align: left;">Екстремально висока (до <span class="arithmatex">\(10^5\)</span> підключень на вузол)</td>
+<td style="text-align: left;">Катастрофічна деградація (блокування черги подій)</td>
+<td style="text-align: left;">Блокування головного потоку будь-якою синхронною операцією, ризик переповнення пам'яті</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Багатопотокова блокуюча модель (Java / C++)</strong></td>
+<td style="text-align: left;">Висока (вимагає управління м'ютексами, блокуваннями)</td>
+<td style="text-align: left;">Середня (лінійне зростання витрат на стек потоку)</td>
+<td style="text-align: left;">Висока (рівномірний розподіл навантаження по ядрах)</td>
+<td style="text-align: left;">Високі накладні витрати на перемикання контексту ОС, загроза взаємних блокувань (Deadlocks)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Пул Worker Threads у Node.js</strong></td>
+<td style="text-align: left;">Середня (вимагає організації асинхронного IPC зв'язку)</td>
+<td style="text-align: left;">Висока (збереження неблокуючого мережевого вводу)</td>
+<td style="text-align: left;">Добра (обчислення ізольовані в окремих потоках)</td>
+<td style="text-align: left;">Накладні витрати на серіалізацію повідомлень між потоками, складність балансування пулу</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Акторна модель (Erlang / Elixir OTP)</strong></td>
+<td style="text-align: left;">Дуже висока (вимагає зміни парадигми на чисту функціональну)</td>
+<td style="text-align: left;">Максимальна (мільйони паралельних мікропроцесів)</td>
+<td style="text-align: left;">Відмінна (витісняюча багатозадачність, ізоляція крахів)</td>
+<td style="text-align: left;">Високий поріг входження, дефіцит готових драйверів промислового обладнання</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<blockquote>
+<p><strong>КОНТРОЛЬНЕ ПИТАННЯ:</strong> Промисловий контролер автоматизації газової котельні під керуванням середовища Node-RED опитує 50 датчиків тиску та температури з інтервалом <span class="arithmatex">\(100\text{ мс}\)</span> через послідовну шину Modbus RTU. Інженер додав у потік обробки вузол <code>Function</code>, який виконує синхронний розрахунок поліноміальної регресії вищого порядку для прогнозування аварійного викиду газу, що триває в середньому <span class="arithmatex">\(80\text{ мс}\)</span> на кожну вибірку. Поясніть, чому через кілька секунд після запуску система починає фіксувати масові таймаути читання датчиків і втрачає зв'язок із сервером диспетчеризації?</p>
+</blockquote>
+<details class="note">
+<summary>Розгорнути аналіз / відповідь</summary>
+<p><strong>Правильний варіант: Блокування однопотокового циклу подій (Event Loop) важким синхронним обчисленням у поєднанні з переповненням черги вхідних запитів.</strong></p>
+<ol>
+<li>
+<p><strong>Етапи аналітичного розв'язку:</strong></p>
+</li>
+<li>
+<p>Розрахунок сумарної інтенсивності вхідного потоку: при періоді опитування кожного з <span class="arithmatex">\(50\)</span> датчиків у <span class="arithmatex">\(T = 100\text{ мс}\)</span>, сумарна частота генерації подій становить <span class="arithmatex">\(\lambda = 50 / 0{,}1 = 500\text{ подій/с}\)</span>.</p>
+</li>
+<li>
+<p>Аналіз тривалості обслуговування: тривалість синхронної обчислювальної функції складає <span class="arithmatex">\(S = 80\text{ мс} = 0{,}08\text{ с}\)</span>. Максимальна пропускна здатність процесора для даної задачі становить <span class="arithmatex">\(\mu = 1 / 0{,}08 = 12{,}5\text{ подій/с}\)</span>.</p>
+</li>
+<li>
+<p>Оцінка коефіцієнта завантаження системи: <span class="arithmatex">\(\rho = \lambda / \mu = 500 / 12{,}5 = 40\)</span>. Оскільки умова стійкості черги <span class="arithmatex">\(\rho &lt; 1\)</span> грубо порушена, черга задач у фазі Poll починає зростати до нескінченності.</p>
+</li>
+<li>
+<p>Наслідки для системи: цикл подій виявляється заблокованим синхронним кодом регресії протягом <span class="arithmatex">\(80\text{ мс}\)</span>. Таймери опитування послідовного порту та зворотні виклики Keep-Alive сокета TCP/IP не можуть отримати процесорний час. Послідовні буфери переповнюються, викликаючи системні помилки переповнення (Overrun Error), а брокер розриває з'єднання через перевищення інтервалу пінгу.</p>
+</li>
+<li>
+<p><strong>Аналіз дистракторів:</strong></p>
+</li>
+<li>
+<p>Пояснення через недостатню швидкість фізичної лінії RS-485 є хибним, оскільки таймаути виникають не на фізичній лінії, а безпосередньо в диспетчері подій операційної системи шлюзу.</p>
+</li>
+<li>
+<p>Пояснення збоєм операційної пам'яті є вторинним: витік або дефіцит оперативної пам'яті стане наслідком необмеженого буферизування невідпрацьованих об'єктів <code>msg</code> у черзі Libuv, але першопричиною є порушення правила неблокуючого виконання в головному потоці V8.</p>
+</li>
+</ol>
+</details>
+<h2 id="3_1">3. Практичний індустріальний / фаховий кейс. Проєктування багатопротокольного шлюзу промислового Інтернету речей</h2>
+<h3 id="31-node-red-nodejs">3.1. Комплексний фаховий кейс. Розгортання відмовостійкого прикордонного шлюзу на базі Node-RED та Node.js</h3>
+<h4 id="_5">Постановка задачі / ситуації</h4>
+<p>На металургійному комбінаті впроваджується система моніторингу та раннього виявлення перегріву підшипникових вузлів прокатного стану. Технологічна лінія містить тридцять два важких редуктори, кожен з яких оснащений цифровим вимірювальним модулем температури та струму двигуна з інтерфейсом RS-485 (протокол Modbus RTU). Одночасно в цеху розгорнута бездротова сенсорна мережа з двохсот автономних віброперетворювачів, які передають усереднені спектральні характеристики вібрації через локальний бездротовий шлюз у топіки брокера MQTT.</p>
+<p>Перед інженером-розробником поставлено завдання спроєктувати та запустити прикордонний шлюз на базі промислового комп'ютера з операційною системою Linux. Шлюз повинен опитувати фізичні пристрої за протоколом Modbus RTU, приймати асинхронні повідомлення MQTT, виконувати локальну первинну нормалізацію даних, виявляти аварійні виходи за уставки та транслювати агреговані телеметричні пакети до корпоративної хмарної платформи через зовнішній канал 4G/LTE за протоколом HTTPS REST API. Головним інженерним викликом є запобігання деградації пропускної здатності та накопичення черг у циклі подій Node-RED при сплесках вібраційних повідомлень.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Параметр системи</th>
+<th style="text-align: left;">Символьне позначення</th>
+<th style="text-align: left;">Числове значення</th>
+<th style="text-align: left;">Одиниці вимірювання та примітки</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Кількість Modbus-вузлів на шині RS-485</td>
+<td style="text-align: left;"><span class="arithmatex">\(N\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(32\)</span></td>
+<td style="text-align: left;">Прилади обліку температури та струму</td>
+</tr>
+<tr>
+<td style="text-align: left;">Швидкість передачі по шині RS-485</td>
+<td style="text-align: left;"><span class="arithmatex">\(B\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(19200\)</span></td>
+<td style="text-align: left;">біт/с (формат кадру: 1 старт, 8 даних, 1 стоп, без парності)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Розмір запиту / відповіді Modbus RTU</td>
+<td style="text-align: left;"><span class="arithmatex">\(L_{req} / L_{resp}\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(8 / 15\)</span></td>
+<td style="text-align: left;">Байти (читання чотирьох регістрів зберігання)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Затримка відповіді датчика Modbus</td>
+<td style="text-align: left;"><span class="arithmatex">\(t_{turn}\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(5{,}0\)</span></td>
+<td style="text-align: left;">мілісекунди (апаратна затримка контролера)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Кількість вібродатчиків у мережі MQTT</td>
+<td style="text-align: left;"><span class="arithmatex">\(M\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(200\)</span></td>
+<td style="text-align: left;">Бездротові автономні вузли</td>
+</tr>
+<tr>
+<td style="text-align: left;">Частота публікації одного вібродатчика</td>
+<td style="text-align: left;"><span class="arithmatex">\(f_{v}\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(5\)</span></td>
+<td style="text-align: left;">повідомлень за секунду (<span class="arithmatex">\(5\text{ Гц}\)</span>)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Середній час обробки пакета в Node-RED</td>
+<td style="text-align: left;"><span class="arithmatex">\(\mathbb{E}[S]\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(0{,}4\)</span></td>
+<td style="text-align: left;">мілісекунди (<span class="arithmatex">\(0{,}0004\text{ с}\)</span>)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Середньоквадратичне відхилення часу обробки</td>
+<td style="text-align: left;"><span class="arithmatex">\(\sigma_S\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(0{,}2\)</span></td>
+<td style="text-align: left;">мілісекунди (<span class="arithmatex">\(0{,}0002\text{ с}\)</span>)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Пропускна здатність каналу зв'язку 4G/LTE</td>
+<td style="text-align: left;"><span class="arithmatex">\(C_{wan}\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(5\)</span></td>
+<td style="text-align: left;">Мбіт/с</td>
+</tr>
+<tr>
+<td style="text-align: left;">Допустима затримка аварійної реакції</td>
+<td style="text-align: left;"><span class="arithmatex">\(\tau_{crit}\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(100\)</span></td>
+<td style="text-align: left;">мілісекунди (жорстке обмеження автоматики)</td>
+</tr>
+</tbody>
+</table>
+<pre class="mermaid"><code>flowchart TD
+    subgraph FieldLevel["Польовий рівень вимірювань"]
+        ModbusBus["Шина RS-485 (32 вузли Modbus RTU)"]
+        VibroSensors["200 бездротових сенсорів вібрації (MQTT)"]
+    end
+
+    subgraph EdgeGateway["Прикордонний шлюз (Промисловий ПК під Linux)"]
+        SerialPort["RS-485 Serial Driver (/dev/ttyS1)"]
+        MQTT_Client["Локальний MQTT клієнт"]
+
+        subgraph NodeRED_Runtime["Середовище Node-RED / Node.js Engine"]
+            InputModbus["Вузол Modbus-Master (Poll loop)"]
+            InputMQTT["Вузол MQTT In (Topic Subscriber)"]
+            WorkerPool["Worker Thread (Ізольований парсинг і спектральний аналіз)"]
+            CEP_Engine["Function Node (Логіка перевірки аварійних уставок)"]
+            LocalBuffer["Кільцевий буфер пам'яті (RAM Backpressure)"]
+            HTTP_Sender["Вузол HTTP Request (Зовнішній REST Client)"]
+        end
+    end
+
+    subgraph CloudEnterprise["Корпоративний та хмарний рівень"]
+        CloudBroker["Хмарний сервер диспетчеризації (REST API / HTTPS)"]
+        Storage["База даних часових рядів (TSDB)"]
+    end
+
+    ModbusBus --&gt; SerialPort
+    SerialPort --&gt; InputModbus
+    VibroSensors --&gt; MQTT_Client
+    MQTT_Client --&gt; InputMQTT
+
+    InputMQTT --&gt; WorkerPool
+    InputModbus --&gt; CEP_Engine
+    WorkerPool --&gt; CEP_Engine
+
+    CEP_Engine --&gt;|Нормальний стан| LocalBuffer
+    CEP_Engine --&gt;|Аварія T &gt; 85°C| HTTP_Sender
+    LocalBuffer --&gt;|Пакетна відправка раз на 10 с| HTTP_Sender
+
+    HTTP_Sender --&gt;|4G/LTE Uplink| CloudBroker
+    CloudBroker --&gt; Storage</code></pre>
+<hr />
+<h4 id="_6">Покроковий аналіз та розв'язок</h4>
+<h5 id="1-modbus-rtu">Крок 1. Розрахунок пропускної здатності фізичного рівня Modbus RTU та частоти опитування</h5>
+<p>Для запобігання колізіям на спільній шині RS-485 шлюз виступає в ролі єдиного ведучого пристрою (Master). Тривалість передачі одного байта <span class="arithmatex">\(t_{byte}\)</span> при швидкості <span class="arithmatex">\(19200\text{ біт/с}\)</span> та довжині символу в <span class="arithmatex">\(10\text{ біт}\)</span> становить:</p>
+<div class="arithmatex">\[t_{byte} = \frac{10}{19200} \approx 0{,}5208\text{ мс}\]</div>
+<p>Повний час транзакції для опитування одного підпорядкованого пристрою <span class="arithmatex">\(t_{slave}\)</span> складається з передачі запиту, міжфреймового інтервалу тиші <span class="arithmatex">\(3{,}5\text{ символу}\)</span>, апаратного часу реакції датчика <span class="arithmatex">\(t_{turn}\)</span>, прийому відповіді та захисного інтервалу завершення кадру:</p>
+<div class="arithmatex">\[t_{frame\_silence} = 3{,}5 \times t_{byte} = 3{,}5 \times 0{,}5208 \approx 1{,}823\text{ мс}\]</div>
+<div class="arithmatex">\[
+\begin{aligned}
+t_{slave} &amp;= (L_{req} \times t_{byte}) + t_{frame\_silence} + t_{turn} + (L_{resp} \times t_{byte}) + t_{frame\_silence} \\
+t_{slave} &amp;= (8 \times 0{,}5208) + 1{,}823 + 5{,}0 + (15 \times 0{,}5208) + 1{,}823 \approx 20{,}637\text{ мс}
+\end{aligned}
+\]</div>
+<p>Загальний період опитування всіх <span class="arithmatex">\(N = 32\)</span> датчиків на шині становить:</p>
+<div class="arithmatex">\[T_{cycle} = N \times t_{slave} = 32 \times 20{,}637\text{ мс} \approx 660{,}38\text{ мс} \approx 0{,}66\text{ с}\]</div>
+<p>Інтенсивність надходження повідомлень від підсистеми Modbus дорівнює:</p>
+<div class="arithmatex">\[\lambda_{Modbus} = \frac{N}{T_{cycle}} = \frac{32}{0{,}66038} \approx 48{,}46\text{ повідомлень/с}\]</div>
+<h5 id="2-nodejs">Крок 2. Оцінка сумарного навантаження на чергу подій Node.js</h5>
+<p>Загальний вхідний потік формується суперпозицією детермінованого опитування Modbus та стохастичного надходження повідомлень від вібродатчиків по каналу MQTT:</p>
+<div class="arithmatex">\[\lambda_{MQTT} = M \times f_v = 200 \times 5 = 1000\text{ повідомлень/с}\]</div>
+<div class="arithmatex">\[\lambda = \lambda_{Modbus} + \lambda_{MQTT} = 48{,}46 + 1000 = 1048{,}46\text{ повідомлень/с}\]</div>
+<p>Розрахуємо коефіцієнт завантаження головного потоку платформи <span class="arithmatex">\(\rho\)</span> за умови, що середній час обробки повідомлення становить <span class="arithmatex">\(\mathbb{E}[S] = 0{,}0004\text{ с}\)</span>:</p>
+<div class="arithmatex">\[\rho = \lambda \cdot \mathbb{E}[S] = 1048{,}46 \times 0{,}0004 \approx 0{,}4194 \quad (41{,}94\%)\]</div>
+<p>Оскільки коефіцієнт завантаження менший за одиницю (<span class="arithmatex">\(\rho &lt; 1\)</span>), система залишається ергодичною, і черга в теорії не повинна необмежено зростати.</p>
+<h5 id="3-event-loop-lag-">Крок 3. Моделювання затримки Event Loop Lag за формулою Поллачека-Хінчіна</h5>
+<p>Для оцінки реального часу очікування повідомлення у черзі подій Libuv застосуємо математичну модель системи масового обслуговування <span class="arithmatex">\(M/G/1\)</span>. Другий початковий момент часу обслуговування <span class="arithmatex">\(\mathbb{E}[S^2]\)</span> визначається через дисперсію <span class="arithmatex">\(\sigma_S^2 = (0{,}0002)^2 = 4 \times 10^{-8}\text{ с}^2\)</span>:</p>
+<div class="arithmatex">\[\mathbb{E}[S^2] = \sigma_S^2 + (\mathbb{E}[S])^2 = 4 \times 10^{-8} + (0{,}0004)^2 = 2{,}0 \times 10^{-7}\text{ с}^2\]</div>
+<p>Середній час перебування повідомлення в черзі циклу подій становить:</p>
+<div class="arithmatex">\[W_q = \frac{\lambda \cdot \mathbb{E}[S^2]}{2(1 - \rho)} = \frac{1048{,}46 \times 2{,}0 \times 10^{-7}}{2 \times (1 - 0{,}4194)} = \frac{2{,}0969 \times 10^{-4}}{1{,}1612} \approx 1{,}8058 \times 10^{-4}\text{ с} \approx 0{,}181\text{ мс}\]</div>
+<p>Повний час реакції програмного шлюзу на одну подію складає:</p>
+<div class="arithmatex">\[T_{resp} = W_q + \mathbb{E}[S] = 0{,}181\text{ мс} + 0{,}4\text{ мс} = 0{,}581\text{ мс}\]</div>
+<p>Отримане значення <span class="arithmatex">\(0{,}581\text{ мс}\)</span> значно менше за критичний технологічний поріг <span class="arithmatex">\(\tau_{crit} = 100\text{ мс}\)</span>, що підтверджує стійкість системи в штатному режимі функціонування.</p>
+<h5 id="4">Крок 4. Аналіз критичного стану при виникненні аномалії корисного навантаження</h5>
+<p>Припустимо, що в результаті програмного збою один із вібродатчиків починає надсилати нестиснені сирі масиви спектра, що призводить до зростання часу розбору JSON у вузлі Node-RED до <span class="arithmatex">\(S_{anomaly} = 2{,}5\text{ мс}\)</span> (<span class="arithmatex">\(0{,}0025\text{ с}\)</span>). Якщо частка таких повідомлень становить лише <span class="arithmatex">\(10\%\)</span> від загального потоку MQTT (<span class="arithmatex">\(\lambda_{anomaly} = 100\text{ повідомлень/с}\)</span>), новий середній час обробки перераховується наступним чином:</p>
+<div class="arithmatex">\[\mathbb{E}[S_{new}] = 0{,}9 \times 0{,}0004 + 0{,}1 \times 0{,}0025 = 0{,}00036 + 0{,}00025 = 0{,}00061\text{ с}\]</div>
+<p>Новий коефіцієнт завантаження системи:</p>
+<div class="arithmatex">\[\rho_{new} = \lambda \cdot \mathbb{E}[S_{new}] = 1048{,}46 \times 0{,}00061 \approx 0{,}6396\]</div>
+<p>Розрахуємо новий другий момент часу обслуговування, враховуючи високу варіативність:</p>
+<div class="arithmatex">\[\mathbb{E}[S_{new}^2] = 0{,}9 \times (0{,}0004^2 + 0{,}0002^2) + 0{,}1 \times (0{,}0025)^2 = 0{,}9 \times (2 \times 10^{-7}) + 0{,}1 \times (6{,}25 \times 10^{-6}) = 8{,}05 \times 10^{-7}\text{ с}^2\]</div>
+<p>Новий середній час очікування в черзі:</p>
+<div class="arithmatex">\[W_{q\_new} = \frac{1048{,}46 \times 8{,}05 \times 10^{-7}}{2 \times (1 - 0{,}6396)} = \frac{8{,}44 \times 10^{-4}}{0{,}7208} \approx 1{,}17 \times 10^{-3}\text{ с} \approx 1{,}17\text{ мс}\]</div>
+<p>Хоча математичне сподівання затримки зросло майже на порядок, система зберігає працездатність, проте поодинокі важкі повідомлення блокують цикл подій на <span class="arithmatex">\(2{,}5\text{ мс}\)</span>, що зумовлює сплески джиттеру в опитуванні послідовного порту RS-485.</p>
+<hr />
+<h4 id="_7">Інтерпретація результатів та альтернативні сценарії</h4>
+<p>Проведений розрахунок доводить, що архітектура на основі Node-RED та Node.js забезпечує необхідну швидкодію в умовах змішаних промислових навантажень за умови, що час обчислень у функціональних вузлах суворо обмежений субмілісекундним діапазоном.</p>
+<p>Якби проектні вимоги змінилися у бік збільшення кількості точок вібромоніторингу до двох тисяч або частоти опитування до <span class="arithmatex">\(50\text{ Гц}\)</span> на датчик, вхідна інтенсивність сягнула б величини <span class="arithmatex">\(\lambda \approx 100000\text{ повідомлень/с}\)</span>. За таких умов коефіцієнт <span class="arithmatex">\(\rho\)</span> перевищив би <span class="arithmatex">\(40\)</span>, що призвело б до миттєвого колапсу системи, вичерпання виділеної оперативної пам'яті V8 Heap та аварійного завершення процесу. </p>
+<p>Для вирішення подібних високочастотних завдань необхідно застосувати альтернативну архітектуру: перенести процедури парсингу та попередньої фільтрації вібраційного спектра безпосередньо на прикордонний рівень драйверів операційної системи шляхом розробки C++ аддонів для Node.js або використання пулу фонових потоків <code>Worker Threads</code>, а вхідний потік протоколу MQTT агрегувати на рівні проміжного брокера з пакетною передачею телеметрії.</p>
+<hr />
+<h3 id="32">3.2. Зведена довідкова система лекції</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Термін / Концепція</th>
+<th style="text-align: left;">Формалізація / Сутність</th>
+<th style="text-align: left;">Реальний кейс застосування</th>
+<th style="text-align: left;">Основне обмеження / Ризик</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Проміжне ПЗ (Middleware)</strong></td>
+<td style="text-align: left;">Шар абстракції <span class="arithmatex">\(\mathcal{T}_{norm}: \mathcal{M}_{in} \to \mathcal{M}_{norm}\)</span>, що усуває просторову та часову прив'язку систем</td>
+<td style="text-align: left;">Інтеграція застарілих верстатів ЧПУ з хмарними MES-системами</td>
+<td style="text-align: left;">Зростання обчислювальних накладних витрат та затримок передачі</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>AEP Платформа</strong></td>
+<td style="text-align: left;">Комплекс інструментів візуалізації, CEP та оркестрації бізнес-правил</td>
+<td style="text-align: left;">Диспетчеризація мікроклімату в мережі тепличних господарств</td>
+<td style="text-align: left;">Непридатність для прямого керування швидкими приводами (&lt;10 мс)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>DMP Платформа</strong></td>
+<td style="text-align: left;">Сервіс обліку життєвого циклу, автентифікації та масових оновлень FOTA</td>
+<td style="text-align: left;">Управління прошивками парку з 50 000 розумних лічильників води</td>
+<td style="text-align: left;">Ризик виведення з ладу обладнання при некоректній верифікації образу</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>CMP Платформа</strong></td>
+<td style="text-align: left;">Інтерфейс управління пулом телеком-з'єднань, e-SIM та білінгу трафіку</td>
+<td style="text-align: left;">Моніторинг та балансування зв'язку логістичного парку вантажівок</td>
+<td style="text-align: left;">Залежність від зони покриття та тарифної політики стільникових мереж</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Flow-Based Programming</strong></td>
+<td style="text-align: left;">Обчислення у вигляді орієнтованого графа <span class="arithmatex">\(G=(V,E)\)</span> над об'єктами <code>msg</code></td>
+<td style="text-align: left;">Візуальна побудова шлюзів телеметрії в середовищі Node-RED</td>
+<td style="text-align: left;">Складність відлагодження паралельних гілок та спільних контекстів</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Шаблон Reactor</strong></td>
+<td style="text-align: left;">Синхронне демультиплексування подій сокетів через системний виклик <code>epoll</code></td>
+<td style="text-align: left;">Обслуговування тисяч одночасних IoT-з'єднань одним потоком Node.js</td>
+<td style="text-align: left;">Повне блокування черги при виконанні синхронних обчислень CPU</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Event Loop Lag</strong></td>
+<td style="text-align: left;">Час очікування задачі в черзі фази Poll, оцінюваний через <span class="arithmatex">\(W_q\)</span> для <span class="arithmatex">\(M/G/1\)</span></td>
+<td style="text-align: left;">Моніторинг надійності прикордонного IoT-шлюзу під навантаженням</td>
+<td style="text-align: left;">Лавиноподібне зростання затримок при збільшенні дисперсії часу обробки</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Зворотний тиск (Backpressure)</strong></td>
+<td style="text-align: left;">Механізм сигналізації джерелу про зниження темпу генерації потоку даних</td>
+<td style="text-align: left;">Захист локального буфера пам'яті шлюзу при обриві зовнішнього 4G каналу</td>
+<td style="text-align: left;">Ризик втрати телеметрії при відсутності локальних енергонезалежних буферів</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="33">3.3. Контрольні питання та завдання</h3>
+<h4 id="_8">Прикладні тестові завдання</h4>
+<ol>
+<li>
+<p>Прикордонний шлюз на базі Node-RED збирає телеметрію з контролерів. Розробник реалізував функцію розрахунку геш-суми SHA-256 від вхідного буфера даних розміром 10 Мбайт за допомогою стандартного синхронного модуля <code>crypto.createHash</code> у вузлі Function. Що відбудеться з мережевими клієнтами MQTT, які надсилають Keep-Alive пакети кожні 100 мс, під час виконання цього блоку?</p>
+</li>
+<li>
+<p>A. Клієнти продовжать роботу без змін, оскільки Node-RED автоматично виносить вузли Function в окремі процеси ОС.</p>
+</li>
+<li>
+<p>B. Повідомлення клієнтів будуть оброблені з мінімальною затримкою завдяки асинхронному пулу потоків Libuv.</p>
+</li>
+<li>
+<p>C. Клієнти отримають таймаут з'єднання та будуть відключені брокером, оскільки синхронний виклик заблокує цикл подій.</p>
+</li>
+<li>
+<p>D. Платформа перенаправить надлишковий трафік у віртуальну пам'ять без затримки основного потоку.</p>
+</li>
+</ol>
+<details class="note">
+<summary>Розгорнути аналіз / відповідь</summary>
+<p><strong>Правильний варіант: C.</strong></p>
+<ol>
+<li>
+<p><strong>Повне обґрунтування:</strong> Синхронні методи криптографічного модуля, виконані всередині головного потоку Node.js (де функціонує середовище виконання Node-RED), блокують стек викликів V8 на весь час обчислення гешу. Протягом цього проміжку жодна фаза циклу подій (включаючи обробку сокетів <code>epoll</code> та таймерів) не отримує процесорного часу. Якщо тривалість розрахунку перевищує інтервал очікування пінгу, брокер вважає вузол відключеним та ініціює процедуру розриву сесії.</p>
+</li>
+<li>
+<p><strong>Аналіз дистракторів:</strong></p>
+</li>
+<li>
+<p>Варіант A є хибним, оскільки стандартний вузол <code>Function</code> у Node-RED виконує JavaScript у тому ж самому процесі та потоці, що й саме ядро середовища.</p>
+</li>
+<li>
+<p>Варіант B є хибним, оскільки синхронні функції з префіксом <code>Sync</code> або прямі обчислювальні виклики без зворотного виклику не делегуються системному пулу потоків Libuv.</p>
+</li>
+<li>
+<p>Варіант D є хибним, оскільки пам'ять під черги формується динамічно, але не здатна компенсувати зупинку диспетчеризації дескрипторів вхідних мережевих інтерфейсів.</p>
+</li>
+</ol>
+</details>
+<ol>
+<li>
+<p>Під час аналізу черги повідомлень на шлюзі встановлено, що середнє завантаження процесора становить <span class="arithmatex">\(\rho = 0{,}5\)</span>. Проте дисперсія тривалості парсингу повідомлень зросла у 16 разів через надходження пошкоджених пакетів різної довжини. Як зміниться середній час очікування повідомлення в черзі <span class="arithmatex">\(W_q\)</span> відповідно до формули Поллачека-Хінчіна?</p>
+</li>
+<li>
+<p>A. Зменшиться вдвічі через спрацьовування внутрішніх механізмів витіснення задач.</p>
+</li>
+<li>
+<p>B. Залишиться незмінним, оскільки коефіцієнт утилізації ядра <span class="arithmatex">\(\rho\)</span> не змінився.</p>
+</li>
+<li>
+<p>C. Зросте майже прямо пропорційно зростанню другого моменту часу обслуговування.</p>
+</li>
+<li>
+<p>D. Зросте рівно вдвічі відповідно до лінійної моделі Маркова <span class="arithmatex">\(M/M/1\)</span>.</p>
+</li>
+</ol>
+<details class="note">
+<summary>Розгорнути аналіз / відповідь</summary>
+<p><strong>Правильний варіант: C.</strong></p>
+<ol>
+<li>
+<p><strong>Повне обґрунтування:</strong> Згідно з формулою Поллачека-Хінчіна <span class="arithmatex">\(W_q = \frac{\lambda \mathbb{E}[S^2]}{2(1 - \rho)}\)</span>, час очікування в черзі безпосередньо пропорційний другому моменту часу обслуговування <span class="arithmatex">\(\mathbb{E}[S^2] = \sigma_S^2 + (\mathbb{E}[S])^2\)</span>. При незмінному значенні <span class="arithmatex">\(\rho = 0{,}5\)</span> та математичному сподіванні <span class="arithmatex">\(\mathbb{E}[S]\)</span>, різке збільшення дисперсії <span class="arithmatex">\(\sigma_S^2\)</span> суттєво збільшує чисельник дробу, що призводить до відповідного пропорційного зростання часу затримки в черзі Event Loop.</p>
+</li>
+<li>
+<p><strong>Аналіз дистракторів:</strong></p>
+</li>
+<li>
+<p>Варіант A є хибним, оскільки цикл подій Libuv реалізує кооперативну, а не витісняючу багатозадачність, і не може зменшити чергу без втрати пакетів.</p>
+</li>
+<li>
+<p>Варіант B є хибним, оскільки незалежність затримки від дисперсії характерна лише для примітивних систем без урахування стохастичності тривалості операцій.</p>
+</li>
+<li>
+<p>Варіант D є хибним, оскільки модель <span class="arithmatex">\(M/M/1\)</span> спирається на експоненційний розподіл тривалості обслуговування, де дисперсія жорстко пов'язана із математичним сподіванням, що не відповідає реальним умовам варіативного парсингу пакетів.</p>
+</li>
+</ol>
+</details>
+<ol>
+<li>
+<p>Який механізм середовища Node-RED забезпечує тимчасове припинення зчитування повідомлень із польової шини у випадку, коли зовнішній хмарний буфер переповнений або фізичний канал передачі тимчасово недоступний?</p>
+</li>
+<li>
+<p>A. Автоматичне збільшення тактової частоти віртуальної машини V8.</p>
+</li>
+<li>
+<p>B. Реалізація механізму зворотного тиску (Backpressure) з використанням сигналів паузи джерела.</p>
+</li>
+<li>
+<p>C. Примусове скидання налаштувань підпорядкованих мікроконтролерів до заводських параметрів.</p>
+</li>
+<li>
+<p>D. Перемикання операційної системи шлюзу в однокористувацький режим безпеки.</p>
+</li>
+</ol>
+<details class="note">
+<summary>Розгорнути аналіз / відповідь</summary>
+<p><strong>Правильний варіант: B.</strong></p>
+<ol>
+<li>
+<p><strong>Повне обґрунтування:</strong> Механізм зворотного тиску (Backpressure) у потокових архітектурах призначений для захисту від переповнення оперативної пам'яті шлюзу. Коли цільовий вузол (наприклад, HTTP-клієнт) не встигає відправляти дані через деградацію каналу зв'язку, він сигналізує попереднім вузлам у ланцюжку про необхідність призупинення викликів читання (виклики методів <code>pause()</code> потоку читання), що змушує вхідний драйвер тимчасово припинити генерацію нових об'єктів <code>msg</code>.</p>
+</li>
+<li>
+<p><strong>Аналіз дистракторів:</strong></p>
+</li>
+<li>
+<p>Варіант A є технічно абсурдним, оскільки тактова частота процесора керується апаратними регуляторами енергоспоживання ядра ОС і не залежить від стану мережевих черг прикладного ПЗ.</p>
+</li>
+<li>
+<p>Варіант C є некоректним, оскільки збій зв'язку верхнього рівня не повинен призводити до деструктивного скидання конфігурації польового обладнання.</p>
+</li>
+<li>
+<p>Варіант D не має відношення до управління інформаційними потоками вводу-виводу на прикладному рівні.</p>
+</li>
+</ol>
+</details>
+<ol>
+<li>
+<p>За якої умови повнофункціональна платформа Інтернету речей класу AEP здатна гарантувати виконання керуючого впливу на польовий актуатор із затримкою менше 5 мілісекунд?</p>
+</li>
+<li>
+<p>A. Лише за умови розгортання бізнес-правил у високопродуктивному хмарному кластері з доступом через супутниковий канал.</p>
+</li>
+<li>
+<p>B. За умови підключення всіх датчиків виключно за протоколом HTTP/1.1 із використанням сертифікатів безпеки.</p>
+</li>
+<li>
+<p>C. За умови виконання бізнес-логіки безпосередньо на прикордонному шлюзі (Edge/Fog) із використанням детермінованих польових інтерфейсів.</p>
+</li>
+<li>
+<p>D. Така вимога є принципово недосяжною для будь-яких архітектур Інтернету речей.</p>
+</li>
+</ol>
+<details class="note">
+<summary>Розгорнути аналіз / відповідь</summary>
+<p><strong>Правильний варіант: C.</strong></p>
+<ol>
+<li>
+<p><strong>Повне обґрунтування:</strong> Затримки передачі пакетів через глобальні мережі (WAN, Інтернет, стільниковий зв'язок) становлять десятки й сотні мілісекунд і мають високу стохастичну варіативність (джиттер). Єдиним технічним способом гарантувати час відгуку на рівні субмілісекундного або мілісекундного діапазону (&lt; 5 мс) є перенесення обробної логіки AEP безпосередньо на прикордонний шлюз цехового рівня, з'єднаний із виконавчими пристроями через детерміновані канали польового зв'язку (наприклад, Real-Time Ethernet або виділена шина введення-виведення).</p>
+</li>
+<li>
+<p><strong>Аналіз дистракторів:</strong></p>
+</li>
+<li>
+<p>Варіант A суперечить законам фізики розповсюдження електромагнітних хвиль, оскільки затримка сигналу до геостаціонарного або середньоорбітального супутника перевищує сотні мілісекунд.</p>
+</li>
+<li>
+<p>Варіант B призведе до гарантованого порушення часового ліміту через великі накладні витрати на встановлення TCP-сесій та обробку текстових заголовків HTTP.</p>
+</li>
+<li>
+<p>Варіант D є хибним, оскільки парадигма туманних і прикордонних обчислень (Fog/Edge Computing) успішно вирішує задачі жорсткого реального часу на локальному рівні.</p>
+</li>
+</ol>
+</details>
+<hr />
+<h4 id="_9">Завдання для самостійної роботи</h4>
+<h5 id="_10">Постановка задачі</h5>
+<p>На фармацевтичному складі зберігання термолабільних вакцин необхідно забезпечити безперервний моніторинг температури в сорока п'яти холодильних камерах. Кожна камера обладнана прецизійним перетворювачем температури з виходом RS-485 (Modbus RTU). Додатково в приміщеннях встановлено тридцять охоронних датчиків відкриття дверей з автономним живленням, які надсилають повідомлення тривоги через радіошлюз LoRaWAN у локальний брокер MQTT. Необхідно розробити архітектуру інформаційного шлюзу на базі Node-RED, який здійснює циклічне опитування датчиків Modbus, відстежує стан дверей по MQTT, веде локальне кільцеве архівування телеметрії на випадок зникнення зв'язку та передає дані на центральний сервер фармаконагляду за протоколом HTTPS.</p>
+<h5 id="_11">Завдання для виконання</h5>
+<ol>
+<li>
+<p>Визначити оптимальну швидкість опитування шини RS-485 та часовий розклад зняття показників з усіх сорока п'яти температурних датчиків, виключаючи виникнення таймаутів фізичного інтерфейсу.</p>
+</li>
+<li>
+<p>Спроєктувати схему граф-орієнтованого потоку Node-RED, що об'єднує гілки обробки Modbus та MQTT з використанням внутрішніх змінних контексту потоку для збереження останніх відомих станів об'єктів.</p>
+</li>
+<li>
+<p>Розрахувати теоретичне навантаження на головний потік платформи Node.js та обґрунтувати граничний обсяг повідомлень, який шлюз здатен накопичити в оперативній пам'яті під час аварійного відключення зовнішнього Інтернет-каналу тривалістю до двох годин.</p>
+</li>
+<li>
+<p>Розробити алгоритм екстреного сповіщення, який при підвищенні температури в будь-якій камері понад допустиму межу формує терміновий сигнал тривоги та забезпечує його пріоритетну відправку без блокування черги циклу подій.</p>
+</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Повернутись нагору
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Kyrylo Vadurin &bull; <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.top", "navigation.tracking", "header.autohide", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u0421\u043a\u043e\u043f\u0456\u0439\u043e\u0432\u0430\u043d\u043e \u0432 \u0431\u0443\u0444\u0435\u0440", "clipboard.copy": "\u0421\u043a\u043e\u043f\u0456\u044e\u0432\u0430\u0442\u0438 \u0432 \u0431\u0443\u0444\u0435\u0440", "search.result.more.one": "\u0429\u0435 1 \u0437\u0431\u0456\u0433 \u043d\u0430 \u0446\u0456\u0439 \u0441\u0442\u043e\u0440\u0456\u043d\u0446\u0456", "search.result.more.other": "\u0429\u0435 # \u0437\u0431\u0456\u0433\u0456\u0432 \u043d\u0430 \u0446\u0456\u0439 \u0441\u0442\u043e\u0440\u0456\u043d\u0446\u0456", "search.result.none": "\u0417\u0431\u0456\u0433\u0456\u0432 \u043d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u043e", "search.result.one": "\u0417\u043d\u0430\u0439\u0434\u0435\u043d\u043e 1 \u0437\u0431\u0456\u0433", "search.result.other": "\u0417\u043d\u0430\u0439\u0434\u0435\u043d\u043e # \u0437\u0431\u0456\u0433\u0456\u0432", "search.result.placeholder": "\u0420\u043e\u0437\u043f\u043e\u0447\u043d\u0456\u0442\u044c \u043f\u0438\u0441\u0430\u0442\u0438 \u0434\u043b\u044f \u043f\u043e\u0448\u0443\u043a\u0443", "search.result.term.missing": "\u041d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u043e \u0437\u0430\u043f\u0438\u0442\u0443", "select.version": "\u041e\u0431\u0440\u0430\u0442\u0438 \u0432\u0435\u0440\u0441\u0456\u044e"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

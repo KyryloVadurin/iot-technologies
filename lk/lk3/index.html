@@ -1,0 +1,3734 @@
+
+<!doctype html>
+<html lang="uk" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Навчальний портал з дисципліни "Технології ІоТ"">
+      
+      
+      
+      
+        <link rel="prev" href="../lk2/">
+      
+      
+        <link rel="next" href="../lk4/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Тема 3. LPWAN технології - Технології Інтернету речей</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#3-lorawan-sigfox-nb-iot" class="md-skip">
+          Перейти до змісту
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Хедер">
+    <a href="../.." title="Технології Інтернету речей" class="md-header__button md-logo" aria-label="Технології Інтернету речей" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Технології Інтернету речей
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Тема 3. LPWAN технології
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan"  aria-label="Переключити на темну тему"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Переключити на темну тему" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="cyan"  aria-label="Переключити на світлу тему"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Переключити на світлу тему" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Пошук" placeholder="Пошук" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Шукати">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Очистити" aria-label="Очистити" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Пошук розпочато
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Вкладки" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Робоча програма
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../lk1/" class="md-tabs__link">
+          
+  
+  
+  Лекції
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../lb/lb1/" class="md-tabs__link">
+          
+  
+  
+  Лабораторні роботи
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../pz/pz1/" class="md-tabs__link">
+          
+  
+  
+  Практичні заняття
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../kp/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Курсовий проєкт
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../sr/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Самостійна робота
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../sr/quest/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Контрольні завдання (Іспит)
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Навігація" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Технології Інтернету речей" class="md-nav__button md-logo" aria-label="Технології Інтернету речей" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Технології Інтернету речей
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Робоча програма
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Лекції
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Лекції
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 1. Екосистема та архітектура IoT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 2. Технології WPAN та WLAN у IoT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 3. LPWAN технології
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 3. LPWAN технології
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Зміст">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Зміст
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Мета лекції
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Очікувані результати навчання
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Детальний покроковий план лекції
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Детальний покроковий план лекції">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-lpwan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Теоретико-концептуальний базис. Фізичні основи модуляції та мережеві архітектури LPWAN
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Методологія та аналіз граничних умов. Протокольні стеки, енергетичні бюджети та системні бар'єри
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Практичний індустріальний / фаховий кейс. Проектування бездротової інфраструктури збору телеметрії
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-lpwan_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Теоретико-концептуальний базис. Фізичні основи модуляції та мережеві архітектури LPWAN
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Теоретико-концептуальний базис. Фізичні основи модуляції та мережеві архітектури LPWAN">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-lpwan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1. Еволюційна суперечність між дальністю, швидкістю передачі та енергоспоживанням у бездротових сенсорних мережах та передумови формування класу LPWAN
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-lora-chirp-spread-spectrum-sf-fec" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2. Фізичні засади технології LoRa: модуляція з лінійним частотним розширенням спектра (Chirp Spread Spectrum), коефіцієнт розширення (SF) та механізм прямої корекції помилок (FEC)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-ultra-narrow-band-sigfox-rftdma" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3. Принципи надвузькосмугового радіозв'язку (Ultra Narrow Band) у технології Sigfox: спектральна щільність потужності шуму, просторово-часове рознесення та метод канального доступу RFTDMA
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-nb-iot-ofdma-sc-fdma-lte-standalone-guard-band-in-band" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4. Архітектура радіоінтерфейсу стандарту NB-IoT: використання методів OFDMA і SC-FDMA та сценарії частотного розгортання в ліцензованому спектрі LTE (Standalone, Guard-band, In-band)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Вказівки для самостійного осмислення
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Методологія та аналіз граничних умов. Протокольні стеки, енергетичні бюджети та системні бар'єри
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Методологія та аналіз граничних умов. Протокольні стеки, енергетичні бюджети та системні бар&#39;єри">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-lorawan-a-b-c-adr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1. Канальний протокол LoRaWAN: топологія «зірка зірок», часові профілі вікон прийому класів пристроїв (Клас A, B, C) та функціонування алгоритму адаптивної швидкості (ADR)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-rrc-psm-edrx-20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2. Механізми енергозбереження та забезпечення зв'язності в ліцензованих мережах: протокольні стани RRC, режими PSM і eDRX, кодування повтореннями для розширення покриття на 20 дБ
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-aes-128-lorawan-sigfox-3gpp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3. Організація інформаційної безпеки: дворівневе симетричне шифрування AES-128 у LoRaWAN, автентифікація повідомлень у Sigfox та захист каналів стільникового зв'язку рівня 3GPP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-lorawan-sigfox-nb-iot-latency-ip-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4. Комплексний порівняльний аналіз технологій LoRaWAN, Sigfox та NB-IoT за параметрами пропускної здатності, затримок (latency), енергетичного потенціалу та підтримки IP-адресації
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-duty-cycle-etsi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5. Критичні обмеження, регуляторні бар'єри робочого циклу передавачів (Duty Cycle за нормами ETSI) та проблеми масштабованості при масовому розгортанні вузлів у неліцензованих смугах частот
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Вказівки для самостійного осмислення
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Практичний індустріальний / фаховий кейс. Проектування бездротової інфраструктури збору телеметрії
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Практичний індустріальний / фаховий кейс. Проектування бездротової інфраструктури збору телеметрії">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1. Комплексний фаховий кейс. Розробка та розрахунок параметрів бездротової мережі автоматизованого обліку водопостачання в умовах щільної міської забудови та підвального розташування вузлів обліку
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1. Комплексний фаховий кейс. Розробка та розрахунок параметрів бездротової мережі автоматизованого обліку водопостачання в умовах щільної міської забудови та підвального розташування вузлів обліку">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Постановка задачі / ситуації
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Покроковий аналіз та розв'язок
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Покроковий аналіз та розв&#39;язок">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 1. Розрахунок енергетичного бюджету радіолінії та оцінка радіопокриття
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-time-on-air" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 2. Розрахунок часу перебування пакета в ефірі (Time-on-Air)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 3. Розрахунок енергетичного бюджету та життєвого циклу автономного джерела живлення
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 4. Оцінка завантаження радіоефіру та необхідної кількості шлюзів
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Інтерпретація результатів та альтернативні сценарії
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2. Зведена довідкова система лекції
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3. Контрольні питання та завдання
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3. Контрольні питання та завдання">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Прикладні тестові завдання
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Завдання для самостійної роботи
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Завдання для самостійної роботи">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Постановка задачі
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Завдання для виконання
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 4. Прикладні протоколи ІоТ (MQTT, CoAP)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 5. Туманні (Fog) та граничні (Edge) обчислення
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 6. Мікроконтролерні платформи (ESP32)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 7. Інтелектуальні сенсори
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 8. Виконавчі пристрої
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 9. Віртуалізація та контейнеризація IoT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 10. IoT платформи та Middleware
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 11. Розумний будинок (Home Assistant)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 12. Промисловий ІоТ (IIoT)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 13. Big Data в ІоТ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 14. Machine Learning на межі мережі
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 15. Кібербезпека в системах ІоТ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Лабораторні роботи
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Лабораторні роботи
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 1. Моделювання топологій IoT-мереж
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 2. Симуляція підсистем Розумного будинку
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 3. Дослідження локального MQTT-брокера
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 4. Схемотехнічне моделювання вузла збору
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 5. Прошивка ESP32 для передавання телеметрії MQTT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 6. Декларативне програмування ESP32 (ESPHome)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 7. Серверне середовище Linux для IoT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 8. Контейнеризація в ІоТ (Docker Compose)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 9. Middleware ІоТ (Node-RED)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 10. Сервіс REST API для агрегації даних
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 11. Платформи розумного будинку (Home Assistant)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 12. Сценарії автоматизації Home Assistant
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 13. Обробка телеметрії мовою Python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 14. HMI Dashboard для диспетчеризації
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 15. Комплексне наскрізне тестування IoT-системи
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практичні заняття
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Практичні заняття
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 1. Розрахунок пропускної здатності та живлення
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 2. Проєктування ієрархії топіків MQTT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 3. Правила фільтрації на Edge-шлюзах
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 4. Моделювання АЦП для сенсорів
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 5. Оптимізація енергетичного профілю
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 6. Проєктування конфігурації Docker Compose
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 7. Логічні схеми в Node-RED
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 8. Сценарії Trigger-Condition-Action
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 9. Конвеєр обробки даних (ETL)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 10. Моделювання загроз безпеки (STRIDE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Курсовий проєкт
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Самостійна робота
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sr/quest/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Контрольні завдання (Іспит)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Зміст">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Зміст
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Мета лекції
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Очікувані результати навчання
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Детальний покроковий план лекції
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Детальний покроковий план лекції">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-lpwan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Теоретико-концептуальний базис. Фізичні основи модуляції та мережеві архітектури LPWAN
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Методологія та аналіз граничних умов. Протокольні стеки, енергетичні бюджети та системні бар'єри
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Практичний індустріальний / фаховий кейс. Проектування бездротової інфраструктури збору телеметрії
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-lpwan_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Теоретико-концептуальний базис. Фізичні основи модуляції та мережеві архітектури LPWAN
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Теоретико-концептуальний базис. Фізичні основи модуляції та мережеві архітектури LPWAN">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-lpwan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1. Еволюційна суперечність між дальністю, швидкістю передачі та енергоспоживанням у бездротових сенсорних мережах та передумови формування класу LPWAN
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-lora-chirp-spread-spectrum-sf-fec" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2. Фізичні засади технології LoRa: модуляція з лінійним частотним розширенням спектра (Chirp Spread Spectrum), коефіцієнт розширення (SF) та механізм прямої корекції помилок (FEC)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-ultra-narrow-band-sigfox-rftdma" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3. Принципи надвузькосмугового радіозв'язку (Ultra Narrow Band) у технології Sigfox: спектральна щільність потужності шуму, просторово-часове рознесення та метод канального доступу RFTDMA
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-nb-iot-ofdma-sc-fdma-lte-standalone-guard-band-in-band" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4. Архітектура радіоінтерфейсу стандарту NB-IoT: використання методів OFDMA і SC-FDMA та сценарії частотного розгортання в ліцензованому спектрі LTE (Standalone, Guard-band, In-band)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Вказівки для самостійного осмислення
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Методологія та аналіз граничних умов. Протокольні стеки, енергетичні бюджети та системні бар'єри
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Методологія та аналіз граничних умов. Протокольні стеки, енергетичні бюджети та системні бар&#39;єри">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-lorawan-a-b-c-adr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1. Канальний протокол LoRaWAN: топологія «зірка зірок», часові профілі вікон прийому класів пристроїв (Клас A, B, C) та функціонування алгоритму адаптивної швидкості (ADR)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-rrc-psm-edrx-20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2. Механізми енергозбереження та забезпечення зв'язності в ліцензованих мережах: протокольні стани RRC, режими PSM і eDRX, кодування повтореннями для розширення покриття на 20 дБ
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-aes-128-lorawan-sigfox-3gpp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3. Організація інформаційної безпеки: дворівневе симетричне шифрування AES-128 у LoRaWAN, автентифікація повідомлень у Sigfox та захист каналів стільникового зв'язку рівня 3GPP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-lorawan-sigfox-nb-iot-latency-ip-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4. Комплексний порівняльний аналіз технологій LoRaWAN, Sigfox та NB-IoT за параметрами пропускної здатності, затримок (latency), енергетичного потенціалу та підтримки IP-адресації
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-duty-cycle-etsi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5. Критичні обмеження, регуляторні бар'єри робочого циклу передавачів (Duty Cycle за нормами ETSI) та проблеми масштабованості при масовому розгортанні вузлів у неліцензованих смугах частот
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Вказівки для самостійного осмислення
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Практичний індустріальний / фаховий кейс. Проектування бездротової інфраструктури збору телеметрії
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Практичний індустріальний / фаховий кейс. Проектування бездротової інфраструктури збору телеметрії">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1. Комплексний фаховий кейс. Розробка та розрахунок параметрів бездротової мережі автоматизованого обліку водопостачання в умовах щільної міської забудови та підвального розташування вузлів обліку
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1. Комплексний фаховий кейс. Розробка та розрахунок параметрів бездротової мережі автоматизованого обліку водопостачання в умовах щільної міської забудови та підвального розташування вузлів обліку">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Постановка задачі / ситуації
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Покроковий аналіз та розв'язок
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Покроковий аналіз та розв&#39;язок">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 1. Розрахунок енергетичного бюджету радіолінії та оцінка радіопокриття
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-time-on-air" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 2. Розрахунок часу перебування пакета в ефірі (Time-on-Air)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 3. Розрахунок енергетичного бюджету та життєвого циклу автономного джерела живлення
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 4. Оцінка завантаження радіоефіру та необхідної кількості шлюзів
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Інтерпретація результатів та альтернативні сценарії
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2. Зведена довідкова система лекції
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3. Контрольні питання та завдання
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3. Контрольні питання та завдання">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Прикладні тестові завдання
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Завдання для самостійної роботи
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Завдання для самостійної роботи">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Постановка задачі
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Завдання для виконання
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="3-lorawan-sigfox-nb-iot">Тема 3. Технології бездротових глобальних мереж низької потужності: LoRaWAN, Sigfox та NB-IoT</h1>
+<h2 id="_1">Мета лекції</h2>
+<p>Формування у майбутніх фахівців комплексної системи фундаментальних теоретичних знань і практичних компетентностей щодо фізичних принципів передачі сигналів, архітектурної побудови, канальних протоколів доступу та алгоритмів енергозбереження в бездротових глобальних мережах низької потужності (LPWAN). Дисципліна закладає інженерну базу для обґрунтованого проектування, розгортання та адміністрування телекомунікаційної інфраструктури інтернету речей, забезпечуючи вміння знаходити компроміс між пропускною здатністю каналу, енергетичним потенціалом радіолінії, радіусом покриття та тривалістю автономної роботи кінцевих пристроїв для вирішення прикладних завдань автоматизації, розумного обліку та моніторингу виробничих процесів.</p>
+<h2 id="_2">Очікувані результати навчання</h2>
+<ol>
+<li>
+<p><strong>Знання та розуміння.</strong> Здобувачі вищої освіти засвоять теоретичні положення побудови систем LPWAN, фізичну природу методів модуляції з розширенням спектра (Chirp Spread Spectrum) та надвузькосмугового зв'язку (Ultra Narrow Band), архітектурні особливості стеків протоколів LoRaWAN, Sigfox, а також специфікацію стандарту стільникового зв'язку NB-IoT у ліцензованому спектрі.</p>
+</li>
+<li>
+<p><strong>Застосування.</strong> Студенти набудуть практичних умінь розраховувати енергетичний бюджет радіолінії (Link Budget), визначати часові параметри перебування пакета в ефірі (Time-on-Air), конфігурувати режими енергозбереження кінцевих модулів (PSM, eDRX) та призначати класи функціонування терміналів відповідно до вимог технічного завдання.</p>
+</li>
+<li>
+<p><strong>Аналіз.</strong> Слухачі зможуть виконувати порівняльний декомпозиційний аналіз мережевих топологій, досліджувати залежність завадостійкості від коефіцієнтів розширення спектра і кодових повторень, а також оцінювати вразливості систем та протокольні обмеження ліцензованого і неліцензованого радіочастотного спектра.</p>
+</li>
+<li>
+<p><strong>Оцінювання та синтез.</strong> Майбутні інженери зможуть критично оцінювати техніко-економічну ефективність впровадження різних стандартів LPWAN для спеціалізованих сценаріїв використання та синтезувати оптимальну архітектуру гетерогенної мережі збору телеметрії з дотриманням нормативних вимог робочого циклу (Duty Cycle) і криптографічного захисту даних.</p>
+</li>
+</ol>
+<hr />
+<h2 id="_3">Детальний покроковий план лекції</h2>
+<h3 id="1-lpwan">1. Теоретико-концептуальний базис. Фізичні основи модуляції та мережеві архітектури LPWAN</h3>
+<ul>
+<li>
+<p>1.1. Еволюційна суперечність між дальністю, швидкістю передачі та енергоспоживанням у бездротових сенсорних мережах та передумови формування класу LPWAN.</p>
+</li>
+<li>
+<p>1.2. Фізичні засади технології LoRa: модуляція з лінійним частотним розширенням спектра (Chirp Spread Spectrum), коефіцієнт розширення (SF) та механізм прямої корекції помилок (FEC).</p>
+</li>
+<li>
+<p>1.3. Принципи надвузькосмугового радіозв'язку (Ultra Narrow Band) у технології Sigfox: спектральна щільність потужності шуму, просторово-часове рознесення та метод канального доступу RFTDMA.</p>
+</li>
+<li>
+<p>1.4. Архітектура радіоінтерфейсу стандарту NB-IoT: використання методів OFDMA і SC-FDMA та сценарії частотного розгортання в ліцензованому спектрі LTE (Standalone, Guard-band, In-band).</p>
+</li>
+</ul>
+<h3 id="2">2. Методологія та аналіз граничних умов. Протокольні стеки, енергетичні бюджети та системні бар'єри</h3>
+<ul>
+<li>
+<p>2.1. Канальний протокол LoRaWAN: топологія «зірка зірок», часові профілі вікон прийому класів пристроїв (Клас A, Клас B, Клас C) та функціонування алгоритму адаптивної швидкості (ADR).</p>
+</li>
+<li>
+<p>2.2. Механізми енергозбереження та забезпечення зв'язності в ліцензованих мережах: протокольні стани RRC, режими PSM і eDRX, кодування повтореннями для розширення покриття на 20 дБ.</p>
+</li>
+<li>
+<p>2.3. Організація інформаційної безпеки: дворівневе симетричне шифрування AES-128 у LoRaWAN, автентифікація повідомлень у Sigfox та захист каналів стільникового зв'язку рівня 3GPP.</p>
+</li>
+<li>
+<p>2.4. Комплексний порівняльний аналіз технологій LoRaWAN, Sigfox та NB-IoT за параметрами пропускної здатності, затримок (latency), енергетичного потенціалу та підтримки IP-адресації.</p>
+</li>
+<li>
+<p>2.5. Критичні обмеження, регуляторні бар'єри робочого циклу передавачів (Duty Cycle за нормами ETSI) та проблеми масштабованості при масовому розгортанні вузлів у неліцензованих смугах частот.</p>
+</li>
+</ul>
+<h3 id="3">3. Практичний індустріальний / фаховий кейс. Проектування бездротової інфраструктури збору телеметрії</h3>
+<p><strong>Тема наскрізної задачі.</strong> «Розробка та розрахунок параметрів бездротової мережі автоматизованого обліку водопостачання в умовах щільної міської забудови та підвального розташування вузлів обліку».</p>
+<h2 id="1-lpwan_1">1. Теоретико-концептуальний базис. Фізичні основи модуляції та мережеві архітектури LPWAN</h2>
+<h3 id="11-lpwan">1.1. Еволюційна суперечність між дальністю, швидкістю передачі та енергоспоживанням у бездротових сенсорних мережах та передумови формування класу LPWAN</h3>
+<p>Проєктування бездротових сенсорних мереж та розподілених кіберфізичних систем історично стримувалося фундаментальним компромісом між радіусом просторового охоплення, швидкістю передачі даних та енергетичною автономністю кінцевого вузла. У межах класичної теорії зв'язку гранична пропускна здатність каналу зв'язку в умовах адитивного білого гаусового шуму описується теоремою Шеннона-Гартлі:</p>
+<div class="arithmatex">\[C = B \log_2 \left(1 + \frac{P_{sig}}{P_{noise}}\right)\]</div>
+<p>де <span class="arithmatex">\(C\)</span> позначає пропускну здатність каналу, вимірювану в бітах за секунду; <span class="arithmatex">\(B\)</span> є шириною смуги пропускання частотного каналу в герцах; <span class="arithmatex">\(P_{sig}\)</span> представляє середню потужність корисного сигналу на вході приймача у ватах; <span class="arithmatex">\(P_{noise}\)</span> виражає інтегральну потужність шуму в межах обраної смуги пропускання у ватах.</p>
+<p>З наведеного математичного виразу випливає, що за фіксованого відношення потужності сигналу до потужності шуму підвищення швидкості передачі інформації вимагає пропорційного розширення частотної смуги <span class="arithmatex">\(B\)</span>. Одночасно, відповідно до рівняння радіолокаційного та радіозв'язкового бюджету лінії (<strong>Link Budget</strong>), рівень прийнятої потужності сигналу <span class="arithmatex">\(P_{rx}\)</span> на вході приймача залежить від потужності випромінювання передавача, коефіцієнтів підсилення антен і втрат розповсюдження у вільному просторі:</p>
+<div class="arithmatex">\[P_{rx} = P_{tx} + G_{tx} + G_{rx} - L_{path} - L_{misc}\]</div>
+<p>де <span class="arithmatex">\(P_{rx}\)</span> та <span class="arithmatex">\(P_{tx}\)</span> позначають потужності сигналу на прийомі та передачі відповідно, виражені в децибел-міліватах (дБм); <span class="arithmatex">\(G_{tx}\)</span> та <span class="arithmatex">\(G_{rx}\)</span> визначають коефіцієнти спрямованої дії передавальної та приймальної антен у децибелах (дБі); <span class="arithmatex">\(L_{path}\)</span> відповідає загальним втратам енергії радіохвилі на трасі розповсюдження (Path Loss) у децибелах; <span class="arithmatex">\(L_{misc}\)</span> акумулює апаратні втрати в антенно-фідерному тракті та деградацію сигналу через перешкоди у децибелах.</p>
+<p>Традиційні бездротові технології локального та персонального радіусу дії, такі як IEEE 802.11 (Wi-Fi), оптимізовані для максимізації пропускної здатності шляхом розширення смуги до десятків мегагерц та застосування складних квадратурних амплітудних модуляцій, однак їхній енергетичний бюджет обмежує радіус дії межами сотні метрів, а струм споживання радіотракту виключає багаторічну роботу від автономного хімічного джерела. Навпаки, стандарти бездротових персональних мереж, такі як IEEE 802.15.4 (ZigBee) або IEEE 802.15.1 (Bluetooth Low Energy), зменшують енергоспоживання завдяки звуженню робочого циклу трансивера, проте через низьку чутливість приймального тракту (порядку <span class="arithmatex">\(-85\dots -95\text{ дБм}\)</span>) та обмежену вихідну потужність вимагають організації складної ретрансляційної комірчастої топології (<strong>mesh-мережі</strong>) для покриття значних географічних зон. Своєю чергою, ретрансляція пакетів проміжними вузлами призводить до лавиноподібного вичерпання енергії батарей вузлів-маршрутизаторів та створює непередбачувані затримки при доставці пакетів.</p>
+<p>Класичні стільникові технології попередніх поколінь (GSM/GPRS/3G) покривають великі відстані, проте надмірне ускладнення протоколів сигналізації, необхідність безперервної синхронізації з базовими станціями та значні пікові струми прийомопередавача (до <span class="arithmatex">\(2\text{ А}\)</span> у піках передачі GSM) роблять автономне використання польових пристроїв тривалістю понад кілька місяців неможливим без заміни джерел струму. </p>
+<p>У результаті усвідомлення цих обмежень виник новий клас мережевих технологій — глобальні мережі з низьким енергоспоживанням (<strong>LPWAN</strong>, Low-Power Wide-Area Network). Технологічна парадигма LPWAN докорінно змінює пріоритети: пропускна здатність свідомо знижується до одиниць або десятків кілобіт за секунду (а в деяких випадках — до сотень біт за секунду), що дозволяє радикально підвищити енергетичний потенціал радіолінії до <span class="arithmatex">\(150\dots 164\text{ дБ}\)</span>. Це забезпечує прямий зв'язок між кінцевими сенсорами та базовими станціями на відстанях у десятки кілометрів без проміжних ретрансляторів, зберігаючи теоретичний термін експлуатації батареї пристрою до <span class="arithmatex">\(5\dots 10\text{ років}\)</span>.</p>
+<p>Нижче наведена діаграма класифікації бездротових технологій Інтернету речей відповідно до їхньої просторової досяжності та швидкості передачі даних.</p>
+<pre class="mermaid"><code>flowchart TD
+    Root["Класифікація бездротових технологій IoT"] --&gt; ShortRange["Мережі малого радіусу дії (WPAN / WLAN)"]
+    Root --&gt; LongRange["Мережі великого радіусу дії (WMAN / WWAN)"]
+
+    ShortRange --&gt; SR_High["Висока швидкість передачі"]
+    ShortRange --&gt; SR_Low["Низька швидкість передачі"]
+    SR_High --&gt; WiFi["Wi-Fi (IEEE 802.11a/b/g/n/ac)"]
+    SR_Low --&gt; WPAN_Tech["ZigBee (IEEE 802.15.4), BLE, Z-Wave"]
+
+    LongRange --&gt; LR_High["Висока пропускна здатність (Cellular M2M)"]
+    LongRange --&gt; LR_Low["Клас LPWAN (Низька швидкість, мікропотужність)"]
+
+    LR_High --&gt; HighCellular["LTE Cat.1, LTE Cat.4, 5G NR"]
+
+    LR_Low --&gt; Unlicensed["Неліцензований спектр (ISM-діапазони)"]
+    LR_Low --&gt; Licensed["Ліцензований стільниковий спектр (3GPP)"]
+
+    Unlicensed --&gt; LoRaTech["LoRa / LoRaWAN (CSS-модуляція)"]
+    Unlicensed --&gt; SigfoxTech["Sigfox (UNB-технологія)"]
+    Licensed --&gt; NBIoT["NB-IoT (LTE Cat-NB1 / Cat-NB2)"]
+    Licensed --&gt; LTE_M["LTE-M (eMTC / Cat-M1)"]</code></pre>
+<blockquote>
+<p><strong>ПРАКТИЧНИЙ ЯКІР:</strong> У муніципальних системах обліку води міста Барселона розгортання технологій LPWAN замість ручного зчитування лічильників дозволило підключити понад 200 000 пристроїв обліку в підвальних приміщеннях через єдину мережу з менш ніж сорока базових станцій, забезпечивши гарантований термін автономної роботи кінцевих радіомодулів протягом дванадцяти років від інтегрованих літій-тіонілхлоридних батарей.</p>
+</blockquote>
+<hr />
+<h3 id="12-lora-chirp-spread-spectrum-sf-fec">1.2. Фізичні засади технології LoRa: модуляція з лінійним частотним розширенням спектра (Chirp Spread Spectrum), коефіцієнт розширення (SF) та механізм прямої корекції помилок (FEC)</h3>
+<p>Технологія <strong>LoRa</strong> (Long Range) представляє фізичний рівень (Physical Layer, PHY) зв'язку, права на який належать корпорації Semtech. В її основі лежить метод розширення спектра лінійною частотною модуляцією (<strong>CSS</strong>, Chirp Spread Spectrum). На відміну від класичних систем із фазовою маніпуляцією (наприклад, BPSK або QPSK), у модуляції CSS інформаційним носієм виступає синусоїдальний сигнал, частота якого безперервно та лінійно змінюється протягом тривалості символу — так званий <strong>чірп</strong> (chirp).</p>
+<p>Математичний опис миттєвої частоти базового немодульованого висхідного чірпа (<strong>up-chirp</strong>) у часовому вікні передачі символу <span class="arithmatex">\(t \in [0, T_{sym}]\)</span> задається лінійним рівнянням:</p>
+<div class="arithmatex">\[f(t) = f_{0} - \frac{BW}{2} + \left( \frac{BW}{T_{sym}} \right) \cdot t\]</div>
+<p>де <span class="arithmatex">\(f_{0}\)</span> позначає центральну носійну частоту радіоканалу в герцах; <span class="arithmatex">\(BW\)</span> є шириною смуги пропускання сигналу (Bandwidth) у герцах; <span class="arithmatex">\(T_{sym}\)</span> позначає повну часову тривалість одного символу модуляції в секундах. </p>
+<p>Для спадного чірпа (<strong>down-chirp</strong>) похідна миттєвої частоти за часом є від'ємною, тобто частота лінійно спадає від значення <span class="arithmatex">\(f_{0} + \frac{BW}{2}\)</span> до значення <span class="arithmatex">\(f_{0} - \frac{BW}{2}\)</span>. Спадні чірпи використовуються здебільшого для формування службових сигналів преамбули кадру, забезпечуючи мережеву синхронізацію часових шкал передавача та приймача.</p>
+<p>Ключовим параметром цифрового керування характеристиками фізичного каналу LoRa є коефіцієнт розширення спектра (<strong>SF</strong>, Spreading Factor), який може набувати дискретних цілочисельних значень від 7 до 12. Фізичний зміст коефіцієнта розширення полягає в тому, що він визначає кількість інформаційних бітів, що кодуються одним радіосимволом:</p>
+<div class="arithmatex">\[\text{Кількість бітів на символ} = SF\]</div>
+<p>Кожен символ тривалістю <span class="arithmatex">\(T_{sym}\)</span> формується з рівно <span class="arithmatex">\(2^{SF}\)</span> елементарних дискретних складових частотної траєкторії, які називаються <strong>чіпами</strong> (chips). Швидкість маніпуляції чіпів <span class="arithmatex">\(R_c\)</span> (Chip Rate) у модуляції LoRa тотожно дорівнює ширині виділеної смуги пропускання сигналу, тобто <span class="arithmatex">\(R_c = BW\)</span> (чіпів за секунду). Звідси випливає фундаментальна формула визначення часової тривалості одного символу LoRa:</p>
+<div class="arithmatex">\[T_{sym} = \frac{2^{SF}}{BW}\]</div>
+<p>Кодування конкретного інформаційного значення символу <span class="arithmatex">\(S\)</span>, де ціле число <span class="arithmatex">\(S \in [0, 2^{SF}-1]\)</span>, здійснюється за допомогою циклічного часового зсуву початкової точки частотного розгортання. Сигнал стартує з проміжної частоти <span class="arithmatex">\(f_{start} = f_{0} - \frac{BW}{2} + \frac{S}{2^{SF}} \cdot BW\)</span>, лінійно наростає до верхньої межі <span class="arithmatex">\(f_{0} + \frac{BW}{2}\)</span>, після чого стрибкоподібно переходить до нижньої межі <span class="arithmatex">\(f_{0} - \frac{BW}{2}\)</span> та продовжує наростання до моменту завершення символу <span class="arithmatex">\(T_{sym}\)</span>. Оскільки такий циклічний зсув зберігає незмінною похідну <span class="arithmatex">\(\frac{df}{dt}\)</span>, сигнали з однаковими <span class="arithmatex">\(BW\)</span> та <span class="arithmatex">\(SF\)</span> мають ідентичний нахил траєкторії в частотно-часовій площині.</p>
+<p>Сигнали, згенеровані з різними коефіцієнтами розширення <span class="arithmatex">\(SF\)</span>, взаємно квазіортогональні. Це дозволяє приймачеві шлюзу на одній несучій частоті та в межах однієї смуги пропускання одночасно й без взаємного руйнування демодулювати кілька потоків даних від різних кінцевих пристроїв, якщо вони передають пакети з різними значеннями <span class="arithmatex">\(SF\)</span>.</p>
+<p>Для забезпечення стабільності каналу в умовах глибоких завмирань фізичний рівень LoRa інтегрує механізм прямої корекції помилок (<strong>FEC</strong>, Forward Error Correction). Швидкість кодування задається відношенням:</p>
+<div class="arithmatex">\[CR = \frac{4}{4 + n}, \quad n \in \{1, 2, 3, 4\}\]</div>
+<p>де <span class="arithmatex">\(n\)</span> визначає кількість доданих надлишкових бітів паритету на кожні чотири біти корисних даних. З урахуванням коефіцієнта розширення <span class="arithmatex">\(SF\)</span>, смуги пропускання <span class="arithmatex">\(BW\)</span> та обраного значення кодового рівня <span class="arithmatex">\(CR\)</span>, результуюча корисна швидкість передачі бітів <span class="arithmatex">\(R_b\)</span> обчислюється наступним чином:</p>
+<div class="arithmatex">\[R_b = SF \cdot \frac{BW}{2^{SF}} \cdot \left( \frac{4}{4 + n} \right)\]</div>
+<p>Зі збільшенням параметра <span class="arithmatex">\(SF\)</span> тривалість передачі символу подвоюється з кожним кроком, внаслідок чого корисна бітова швидкість падає, проте пропорційно зростає енергія, зосереджена в одному символі. Завдяки кореляційній обробці демодулятор LoRa здатний виявляти сигнал при співвідношеннях потужності сигналу до потужності шуму (<strong>SNR</strong>, Signal-to-Noise Ratio), що лежать значно нижче рівня шумів (до <span class="arithmatex">\(-20\text{ дБ}\)</span> для <span class="arithmatex">\(SF=12\)</span>). Гранична чутливість приймача <span class="arithmatex">\(S_{rx}\)</span> (дБм) описується залежністю:</p>
+<div class="arithmatex">\[S_{rx} = -174 + 10 \log_{10}(BW) + NF + \text{SNR}_{limit}\]</div>
+<p>де <span class="arithmatex">\(-174\text{ дБм/Гц}\)</span> представляє спектральну густину потужності теплового шуму за кімнатної температури; <span class="arithmatex">\(NF\)</span> є коефіцієнтом шуму приймального тракту в децибелах; <span class="arithmatex">\(\text{SNR}_{limit}\)</span> відповідає мінімальному значенню відношення сигнал/шум, необхідному для стійкої демодуляції конкретного <span class="arithmatex">\(SF\)</span>. Для смуги <span class="arithmatex">\(125\text{ кГц}\)</span> і <span class="arithmatex">\(SF=12\)</span> чутливість досягає <span class="arithmatex">\(-137\text{ дБм}\)</span>, забезпечуючи енергетичний потенціал лінії зв'язку понад <span class="arithmatex">\(155\text{ дБ}\)</span>.</p>
+<blockquote>
+<p><strong>ТИПОВА ПОМИЛКА:</strong> Поширена інженерна помилка полягає в ототожненні понять «LoRa» та «LoRaWAN». LoRa є виключно запатентованим пропрієтарним фізичним рівнем модуляції сигналів, що реалізується на кристалах трансиверів (Semtech SX1276, SX1262), тоді як LoRaWAN є відкритим протоколом вищих рівнів (канального доступу MAC, мережевого управління та шифрування), який розроблений консорціумом LoRa Alliance і може функціонувати навіть поверх інших фізичних рівнів, таких як FSK.</p>
+</blockquote>
+<hr />
+<h3 id="13-ultra-narrow-band-sigfox-rftdma">1.3. Принципи надвузькосмугового радіозв'язку (Ultra Narrow Band) у технології Sigfox: спектральна щільність потужності шуму, просторово-часове рознесення та метод канального доступу RFTDMA</h3>
+<p>На відміну від підходу LoRa, побудованого на значному штучному розширенні смуги випромінювання (Spread Spectrum), альтернативна технологія <strong>Sigfox</strong> базується на концепції надвузькосмугової передачі (<strong>UNB</strong>, Ultra Narrow Band). Фізичний принцип UNB полягає в тому, що сигнал випромінюється у надзвичайно вузькій смузі частот шириною всього лише <span class="arithmatex">\(100\text{ Гц}\)</span> для європейського регіону (стандарт ETSI <span class="arithmatex">\(868\text{ МГц}\)</span>) або <span class="arithmatex">\(600\text{ Гц}\)</span> для Північної Америки (стандарт FCC <span class="arithmatex">\(902\text{ МГц}\)</span>).</p>
+<p>Зв'язок між шириною спектральної смуги та рівнем шумів безпосередньо випливає з формули потужності теплового (найквістового) шуму в радіоканалі:</p>
+<div class="arithmatex">\[P_{noise} = k \cdot T \cdot B\]</div>
+<p>де <span class="arithmatex">\(k\)</span> позначає постійну Больцмана (<span class="arithmatex">\(1{,}38 \times 10^{-23}\text{ Дж/К}\)</span>); <span class="arithmatex">\(T\)</span> відповідає абсолютній температурі приймача в кельвінах; <span class="arithmatex">\(B\)</span> є еквівалентною шумовою смугою пропускання фільтра приймача в герцах. </p>
+<p>У логарифмічній шкалі потужність шуму при кімнатній температурі (<span class="arithmatex">\(T = 290\text{ К}\)</span>) описується виразом:</p>
+<div class="arithmatex">\[P_{noise}\text{ [дБм]} = -174\text{ [дБм/Гц]} + 10 \log_{10}(B)\]</div>
+<p>Порівнюючи смугу пропускання LoRa (<span class="arithmatex">\(B = 125\text{ кГц}\)</span>) та смугу Sigfox (<span class="arithmatex">\(B = 100\text{ Гц}\)</span>), можна простежити різницю в інтегральній потужності теплового шуму, що потрапляє у вхідний тракт приймача:</p>
+<div class="arithmatex">\[P_{noise, \text{LoRa}} = -174 + 10 \log_{10}(125000) = -174 + 51 = -123\text{ дБм}\]</div>
+<div class="arithmatex">\[P_{noise, \text{Sigfox}} = -174 + 10 \log_{10}(100) = -174 + 20 = -154\text{ дБм}\]</div>
+<p>Таким чином, колосальне звуження смуги приймання в технології Sigfox забезпечує фізичне зниження потужності внутрішнього шуму на <span class="arithmatex">\(31\text{ дБ}\)</span>. Завдяки цьому зникає потреба в алгоритмах розширення спектра для детектування сигналів нижче рівня шумів: звичайна диференціальна двійкова фазова маніпуляція (<strong>DBPSK</strong>, Differential Binary Phase Shift Keying), застосована у висхідному каналі (Uplink), забезпечує чутливість базових станцій оператора на рівні <span class="arithmatex">\(-142\dots -146\text{ дБм}\)</span> за вихідної потужності передавача кінцевого вузла всього <span class="arithmatex">\(+14\text{ дБм}\)</span> (<span class="arithmatex">\(25\text{ мВт}\)</span>). У низхідному каналі (Downlink) використовується гаусова частотна маніпуляція (<strong>GFSK</strong>) у смузі <span class="arithmatex">\(600\text{ Гц}\)</span> зі швидкістю передачі даних <span class="arithmatex">\(600\text{ біт/с}\)</span>.</p>
+<p>Метод канального доступу в Sigfox класифікується як множинний доступ із випадковим вибором частоти та часу (<strong>RFTDMA</strong>, Random Frequency and Time Division Multiple Access). На кінцевих пристроях відсутня функція попереднього прослуховування ефіру перед початком передачі (Listen-Before-Talk, LBT). Вузол не синхронізується з базовою станцією за часом і не виконує процедур узгодження з'єднання (Handshake). </p>
+<p>Для забезпечення необхідної ймовірності доставки пакетів в умовах некерованої колізійної обстановки застосовується парадигма просторово-часового та частотного рознесення (<strong>Spatial, Frequency, and Time Diversity</strong>). Кожне повідомлення передається пристроєм тричі: на трьох різних випадкових центральних частотах у межах доступного операційного діапазону шириною <span class="arithmatex">\(192\text{ кГц}\)</span>, причому між цими трьома передачами витримуються випадкові часові інтервали тривалістю кілька сотень мілісекунд. Передане повідомлення приймається одночасно всіма базовими станціями в зоні радіовидимості, після чого дедуплікація та збирання даних виконуються в хмарному ядрі мережі (<strong>Sigfox Cloud</strong>).</p>
+<p>Нижче наведена діаграма часового процесу формування та випромінювання триразового пакета передачі Sigfox.</p>
+<pre class="mermaid"><code>stateDiagram-v2
+    [*] --&gt; SleepMode: Очікування внутрішньої події сенсора
+    SleepMode --&gt; Transmit_1: Пробудження вузла та вибір частоти f1
+
+    state Transmit_1 {
+        TX1: Генерація DBPSK кадру на частоті f1 (тривалість ~2 с)
+    }
+
+    Transmit_1 --&gt; Pause_1: Псевдовипадкова часова затримка (~500 мс)
+
+    state Pause_1 {
+        Wait1: Очікування та зміна несучої на f2
+    }
+
+    Pause_1 --&gt; Transmit_2: Вибір частоти f2
+
+    state Transmit_2 {
+        TX2: Повторна передача кадру на частоті f2 (тривалість ~2 с)
+    }
+
+    Transmit_2 --&gt; Pause_2: Псевдовипадкова часова затримка (~500 мс)
+
+    state Pause_2 {
+        Wait2: Очікування та зміна несучої на f3
+    }
+
+    Pause_2 --&gt; Transmit_3: Вибір частоти f3
+
+    state Transmit_3 {
+        TX3: Фінальна передача кадру на частоті f3 (тривалість ~2 с)
+    }
+
+    Transmit_3 --&gt; AwaitDownlink: Перехід до стану очікування вікна прийому
+    AwaitDownlink --&gt; SleepMode: Завершення сеансу та перехід у глибокий сон</code></pre>
+<p>Через використання бітової швидкості лише <span class="arithmatex">\(100\text{ біт/с}\)</span> сумарний час передачі одного кадру корисного навантаження становить близько двох секунд, а весь триразовий цикл випромінювання займає до шести секунд активної роботи передавача. Суворі нормативні регламенти європейського комітету ETSI EN 300-220 обмежують максимальний робочий цикл випромінювання (<strong>Duty Cycle</strong>) величиною <span class="arithmatex">\(1\%\)</span> за годину, що еквівалентно 36 секундам трансляції на годину для одного термінала. Внаслідок цього архітектура Sigfox має фундаментальні регуляторні та протокольні обмеження:</p>
+<ul>
+<li>
+<p>Довжина корисного навантаження висхідного повідомлення обмежена значенням рівно <span class="arithmatex">\(12\text{ байтів}\)</span>.</p>
+</li>
+<li>
+<p>Кількість висхідних трансляцій становить максимум <span class="arithmatex">\(140\text{ повідомлень на добу}\)</span> для одного термінала.</p>
+</li>
+<li>
+<p>Обсяг низхідного повідомлення від базової станції не перевищує <span class="arithmatex">\(8\text{ байтів}\)</span>, а кількість таких трансляцій жорстко лімітована до чотирьох сеансів на добу.</p>
+</li>
+</ul>
+<blockquote>
+<p><strong>ПРАКТИЧНИЙ ЯКІР:</strong> Система автономної охоронної сигналізації та захисту від глушіння Securitas Direct використовує технологію Sigfox як резервний завадозахищений канал передачі сигналу тривоги: завдяки ширині спектра всього 100 Гц передача сигналу тривоги успішно проходить крізь навмисні широкосмугові завади побутових глушилок радіочастот GSM/3G/4G, які застосовують зловмисники.</p>
+</blockquote>
+<hr />
+<h3 id="14-nb-iot-ofdma-sc-fdma-lte-standalone-guard-band-in-band">1.4. Архітектура радіоінтерфейсу стандарту NB-IoT: використання методів OFDMA і SC-FDMA та сценарії частотного розгортання в ліцензованому спектрі LTE (Standalone, Guard-band, In-band)</h3>
+<p>Стандарт <strong>NB-IoT</strong> (NarrowBand Internet of Things), стандартизований консорціумом 3GPP у межах Специфікацій Release 13 (LTE Cat-NB1) та Release 14/15 (LTE Cat-NB2), є відповіддю телекомунікаційної індустрії на розвиток неліцензованих протоколів LPWAN. Його ключовою концептуальною відмінністю є функціонування виключно в межах ліцензованого спектра частот операторів стільникового зв'язку (смуги LTE Band 1, 3, 8, 20, 28 тощо). Це гарантує повну відсутність некерованої радіоінтерференції, що виникає в загальнодоступних ISM-діапазонах, забезпечує високу якість обслуговування (<strong>QoS</strong>) та детермінований час передачі сигналів.</p>
+<p>Фізичний радіоінтерфейс стандарту NB-IoT адаптовано під системну смугу шириною рівно <span class="arithmatex">\(180\text{ кГц}\)</span>, що точно відповідає ширині одного стандартного фізичного ресурсного блоку (<strong>PRB</strong>, Physical Resource Block) у мережах широкосмугового доступу LTE, а разом із необхідними захисними інтервалами вимагає смуги пропускання <span class="arithmatex">\(200\text{ кГц}\)</span>. </p>
+<p>Специфікація 3GPP визначає три базові сценарії розгортання радіоінтерфейсу NB-IoT у ліцензованому частотному спектрі оператора:</p>
+<ol>
+<li>
+<p>Автономний режим (<strong>Standalone</strong>) передбачає виділення окремої смуги частот <span class="arithmatex">\(200\text{ кГц}\)</span>, отриманої шляхом рефармінгу однієї або кількох несних каналів застарілої системи GSM (де ширина несучої становить <span class="arithmatex">\(200\text{ кГц}\)</span>), або використання вільного спектра технології CDMA. Даний режим повністю виключає взаємний вплив стільникового LTE-трафіку та сенсорної мережі.</p>
+</li>
+<li>
+<p>Режим захисної смуги (<strong>Guard-band</strong>) використовує невикористовуваний спектральний ресурс на захисних інтервалах між несучими широкосмугових каналів LTE (наприклад, смуг шириною <span class="arithmatex">\(5\)</span>, <span class="arithmatex">\(10\)</span>, <span class="arithmatex">\(15\)</span> або <span class="arithmatex">\(20\text{ МГц}\)</span>). Це дозволяє розгорнути послугу без втрати ресурсних блоків комерційного мобільного трафіку користувачів.</p>
+</li>
+<li>
+<p>Внутрішньосмуговий режим (<strong>In-band</strong>) виділяє один робочий ресурсний блок PRB безпосередньо всередині загальної смуги частот діючого носія LTE. У цьому сценарії базова станція (eNodeB) виділяє ресурси часу та потужності для терміналів NB-IoT динамічно, резервуючи додаткове підсилення потужності (Power Boosting на <span class="arithmatex">\(3\dots 6\text{ дБ}\)</span>) для виділеного блока.</p>
+</li>
+</ol>
+<p>На рівні фізичної модуляції в низхідному каналі (Downlink від базової станції до пристрою) завжди застосовується технологія ортогонального частотного мультиплексування <strong>OFDMA</strong> (Orthogonal Frequency Division Multiple Access) із міжканальним інтервалом <span class="arithmatex">\(\Delta f = 15\text{ кГц}\)</span>. У межах смуги <span class="arithmatex">\(180\text{ кГц}\)</span> формуються рівно 12 паралельних піднесучих, кожна з яких модулюється методом QPSK.</p>
+<p>У висхідному каналі (Uplink від пристрою до базової станції) стандарт підтримує метод множинного доступу з частотним розділенням та однією несучою <strong>SC-FDMA</strong> (Single-Carrier FDMA), що знижує відношення пікової до середньої потужності сигналу (PAPR) та запобігає перевитраті заряду джерела живлення. Для висхідного каналу стандартизовано два режими роботи:</p>
+<ul>
+<li>
+<p>Багатотональний режим (<strong>Multi-tone</strong>), де передавач активує 3, 6 або 12 піднесучих із частотним рознесенням <span class="arithmatex">\(\Delta f = 15\text{ кГц}\)</span>, використовуючи модуляцію QPSK, що забезпечує пікову швидкість висхідного каналу до <span class="arithmatex">\(62{,}5\text{ кбіт/с}\)</span> (у Cat-NB1) або до <span class="arithmatex">\(158\text{ кбіт/с}\)</span> (у Cat-NB2).</p>
+</li>
+<li>
+<p>Однотональний режим (<strong>Single-tone</strong>), де застосовується лише одна піднесуча з рознесенням <span class="arithmatex">\(\Delta f = 15\text{ кГц}\)</span> або спеціально передбаченим надвузьким рознесенням <span class="arithmatex">\(\Delta f = 3{,}75\text{ кГц}\)</span> (загалом 48 піднесучих у каналі) з модуляцією <span class="arithmatex">\(\pi/2\text{-BPSK}\)</span> або <span class="arithmatex">\(\pi/4\text{-QPSK}\)</span>. Однотональний режим дозволяє сконцентрувати всю потужність передавача (<span class="arithmatex">\(23\text{ дБм}\)</span>, або <span class="arithmatex">\(200\text{ мВт}\)</span>) у надвузькій смузі, максимізуючи щільність випромінювання.</p>
+</li>
+</ul>
+<p>Фундаментальною перевагою NB-IoT є технологія розширення радіопокриття на <span class="arithmatex">\(+20\text{ дБ}\)</span> порівняно з базовим рівнем стандарту GSM/LTE, що забезпечує максимальні допустимі втрати на трасі розповсюдження (<strong>MCL</strong>, Maximum Coupling Loss) до <span class="arithmatex">\(164\text{ дБ}\)</span>. Такий результат досягається за рахунок механізму надлишкового канального повторення блоків даних (<strong>Repetition Coding</strong>). Залежно від виміряного рівня втрат у радіоканалі, базова станція відносить пристрій до одного з трьох рівнів охоплення покриття (<strong>Coverage Enhancement</strong>, CE):</p>
+<ul>
+<li>
+<p>Нормальний рівень покриття (CE Level 0) із відсутністю або мінімальною кількістю повторень (MCL до <span class="arithmatex">\(144\text{ дБ}\)</span>).</p>
+</li>
+<li>
+<p>Посилений рівень покриття (CE Level 1) із кількістю повторень блоків до 16 разів (MCL до <span class="arithmatex">\(154\text{ дБ}\)</span>).</p>
+</li>
+<li>
+<p>Екстремальний рівень покриття (CE Level 2) із багаторазовим дублюванням кожного переданого субкадру до 128 разів у низхідному каналі та до 2048 разів у висхідному каналі (MCL до <span class="arithmatex">\(164\text{ дБ}\)</span>). </p>
+</li>
+</ul>
+<p>Приймач когерентно накопичує енергію всіх повторених копій пакетів, що дозволяє демодулювати сигнал крізь залізобетонні перекриття, екрановані підвальні стіни та масивні металеві кришки технологічних колодязів підземних комунікацій.</p>
+<p>Нижче наведено порівняльну таблицю фізичних та системних характеристик базових бездротових технологій, що розглядаються у курсі.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Параметр порівняння</th>
+<th style="text-align: left;">LoRa / LoRaWAN</th>
+<th style="text-align: left;">Sigfox</th>
+<th style="text-align: left;">NB-IoT (3GPP Cat-NB1)</th>
+<th style="text-align: left;">ZigBee (IEEE 802.15.4)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Частотний спектр</strong></td>
+<td style="text-align: left;">Неліцензований (ISM 868/915 МГц)</td>
+<td style="text-align: left;">Неліцензований (ISM 868/902 МГц)</td>
+<td style="text-align: left;">Ліцензований (LTE Band 3, 8, 20 тощо)</td>
+<td style="text-align: left;">Неліцензований (ISM 2,4 ГГц, 868 МГц)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Ширина каналу</strong></td>
+<td style="text-align: left;">125 кГц, 250 кГц, 500 кГц</td>
+<td style="text-align: left;">100 Гц (Uplink), 600 Гц (Downlink)</td>
+<td style="text-align: left;">180 кГц (один ресурсний блок LTE)</td>
+<td style="text-align: left;">5 МГц (для діапазону 2,4 ГГц)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Метод модуляції</strong></td>
+<td style="text-align: left;">Chirp Spread Spectrum (CSS)</td>
+<td style="text-align: left;">DBPSK (Uplink), GFSK (Downlink)</td>
+<td style="text-align: left;">SC-FDMA (Uplink), OFDMA (Downlink)</td>
+<td style="text-align: left;">O-QPSK з розширенням DSSS</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Максимальний Link Budget</strong></td>
+<td style="text-align: left;"><span class="arithmatex">\(155\dots 157\text{ дБ}\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(155\dots 160\text{ дБ}\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(164\text{ дБ}\)</span> (розширення покриття +20 дБ)</td>
+<td style="text-align: left;"><span class="arithmatex">\(105\dots 110\text{ дБ}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Пікова корисна швидкість</strong></td>
+<td style="text-align: left;">250 біт/с – 50 кбіт/с</td>
+<td style="text-align: left;">100 біт/с</td>
+<td style="text-align: left;">20 – 62,5 кбіт/с</td>
+<td style="text-align: left;">250 кбіт/с</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Обсяг корисного навантаження</strong></td>
+<td style="text-align: left;">51 – 222 байти (залежно від SF)</td>
+<td style="text-align: left;">Фіксовано 12 байт (Uplink)</td>
+<td style="text-align: left;">До 1600 байт (нативна підтримка IP)</td>
+<td style="text-align: left;">До 102 байтів</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Топологія мережі</strong></td>
+<td style="text-align: left;">Зірка зірок (Star-of-Stars)</td>
+<td style="text-align: left;">Зірка до хмари (Star-to-Cloud)</td>
+<td style="text-align: left;">Зірка мобільного зв'язку (eNodeB)</td>
+<td style="text-align: left;">Комірчаста (Mesh), дерево кластерів</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Приклад з реальної практики</strong></td>
+<td style="text-align: left;">Локальна телеметрія агрохолдингу через приватні шлюзи</td>
+<td style="text-align: left;">Сигналізація викрадення автотранспорту в межах континенту</td>
+<td style="text-align: left;">Розумні лічильники газу в глибоких підвалах мегаполіса</td>
+<td style="text-align: left;">Домашня система автоматизації освітлення за протоколом ZigBee</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>КОНТРОЛЬНЕ ПИТАННЯ:</strong> Чому застосування максимального рівня кодування повтореннями (Coverage Enhancement Level 2 із фактором дублювання до 2048 разів) у стандарті NB-IoT забезпечує проникнення сигналу в підвали з показником MCL до <span class="arithmatex">\(164\text{ дБ}\)</span>, але одночасно створює критичну загрозу розрахунковому життєвому циклу автономного джерела живлення сенсора?</p>
+</blockquote>
+<details class="note">
+<summary>Розгорнути аналіз / відповідь</summary>
+<p><strong>Правильний варіант: Зростання тривалості активного стану передавача (Time-on-Air) у сотні разів збільшує сумарне споживання енергії на передачу одиничного кадру, нівелюючи переваги енергозберігаючих режимів.</strong></p>
+<ol>
+<li>
+<p>Механізм розширення покриття (Coverage Enhancement) у стандарті NB-IoT не збільшує пікову потужність передавача понад апаратну межу <span class="arithmatex">\(+23\text{ дБм}\)</span> (<span class="arithmatex">\(200\text{ мВт}\)</span>), а базується на тривалому накопиченні енергії сигналу шляхом когерентного складання багаторазово повторених однакових субкадрів (до 2048 разів). У нормальному режимі (CE Level 0) час випромінювання пакета становить десятки мілісекунд, і витрати заряду акумулятора є мізерними. У режимі CE Level 2 час перебування вузла в стані активної передачі з максимальним струмом споживання (<span class="arithmatex">\(I_{tx} \approx 120\dots 220\text{ мА}\)</span>) розтягується на десятки секунд для передачі одного короткого повідомлення. У результаті один сеанс передачі витрачає заряд батареї, еквівалентний тисячам передач у сприятливих умовах, що скорочує розрахунковий 10-річний ресурс джерела струму до кількох місяців.</p>
+</li>
+<li>
+<p>Аналіз дистракторів:</p>
+</li>
+<li>
+<p>Твердження про те, що батарея деградує через надмірне перегрівання передавача чи короткочасні сплески імпульсного струму, є технічно неточним, оскільки піковий струм обмежений внутрішньою схемотехнікою підсилювача і не перевищує номінальних розрядних характеристик літієвих елементів живлення.</p>
+</li>
+<li>
+<p>Припущення, що падіння ресурсу батареї спричинене постійними колізіями з сусідніми терміналами, є помилковим, оскільки в стандарті NB-IoT базова станція централізовано планує ортогональні часово-частотні ресурси для кожного вузла, повністю усуваючи випадкові колізії на канальному рівні.</p>
+</li>
+</ol>
+</details>
+<hr />
+<h3 id="_4">Вказівки для самостійного осмислення</h3>
+<ol>
+<li>
+<p>Розрахуйте тривалість перебування в ефірі (Time-on-Air) для пакета LoRa з довжиною корисного навантаження 32 байти, шириною смуги пропускання 125 кГц, швидкістю кодування CR 4/5 та коефіцієнтами розширення спектра SF=7 та SF=12 відповідно, проаналізувавши кількісну різницю у витратах енергії між двома конфігураціями.</p>
+</li>
+<li>
+<p>Проаналізуйте обмеження регламенту ETSI EN 300-220 щодо річного балансу використання неліцензованого спектра частот та сформулюйте аналітичний висновок про придатність протоколу Sigfox для побудови мереж моніторингу вібрацій промислового обладнання з частотою дискретизації вимірювань один раз на хвилину.</p>
+</li>
+<li>
+<p>Дослідіть архітектурні відмінності розподілу висхідних піднесучих технології NB-IoT у режимах Single-tone (з рознесенням 3,75 кГц) та Multi-tone (з рознесенням 15 кГц) з точки зору мінімізації коефіцієнта пік-фактора потужності (PAPR) вихідного підсилювача передавача.</p>
+</li>
+</ol>
+<h2 id="2_1">2. Методологія та аналіз граничних умов. Протокольні стеки, енергетичні бюджети та системні бар'єри</h2>
+<h3 id="21-lorawan-a-b-c-adr">2.1. Канальний протокол LoRaWAN: топологія «зірка зірок», часові профілі вікон прийому класів пристроїв (Клас A, B, C) та функціонування алгоритму адаптивної швидкості (ADR)</h3>
+<p>Організація канального доступу в екосистемі LoRaWAN базується на децентралізованому протоколі типу Pure ALOHA, за якого пристрої ініціюють трансляцію даних асинхронно, без попереднього прослуховування несучої частоти. Відсутність вимоги щодо постійної синхронізації з базовою станцією дозволяє кінцевому пристрою перебувати в режимі глибокого сну з мікропотужним струмом споживання до моменту виникнення вимірювальної або таймерної події. Проте взаємодія кінцевого вузла з мережевим сервером суттєво різниться залежно від програмно-апаратного класу пристрою.</p>
+<p>Пристрої <strong>Класу A</strong> підтримують найбільш енергоефективну модель, де кожен цикл зв'язку є виключно висхідним (<strong>Uplink-driven</strong>). Після випромінювання пакета передавач вимикається, і мікроконтролер переходить в режим очікування на час інтервалу <span class="arithmatex">\(RECEIVE\_DELAY1\)</span> (за стандартом — <span class="arithmatex">\(1\text{ секунда}\)</span>), після чого відкриває перше приймальне вікно <span class="arithmatex">\(RX1\)</span>. Якщо на центральній частоті та з коефіцієнтом розширення висхідного пакета сигнал від шлюзу не зафіксовано протягом тривалості преамбули, вузол вимикає радіотракт до завершення інтервалу <span class="arithmatex">\(RECEIVE\_DELAY2\)</span> (<span class="arithmatex">\(2\text{ секунди}\)</span> від моменту закінчення передачі). У вікні <span class="arithmatex">\(RX2\)</span> прийом здійснюється на окремій загальносистемній частоті (для регіону EU868 це <span class="arithmatex">\(869{,}525\text{ МГц}\)</span>) із фіксованим заниженим коефіцієнтом розширення спектра (зазвичай <span class="arithmatex">\(SF9\)</span> або <span class="arithmatex">\(SF12\)</span>). Якщо команда чи підтвердження не надійшли у вікні <span class="arithmatex">\(RX2\)</span>, вузол знеструмлює трансивер до наступної ініціативи висхідної передачі.</p>
+<p>Пристрої <strong>Класу B</strong> усувають головне обмеження Класу A — неможливість доставки повідомлень від сервера за ініціативою самого сервера без попереднього висхідного запиту. Для цього мережеві шлюзи випромінюють високоточний радіомаяк (<strong>Beacon</strong>) кожні <span class="arithmatex">\(128\text{ секунд}\)</span>, прив'язаний до секундної мітки супутників GPS. Кінцевий пристрій синхронізує свій внутрішній кварцовий генератор із цим маяком і за детермінованим псевдовипадковим алгоритмом періодично активує короткі слоти прийому (<strong>Ping Slots</strong>). Тривалість одного слота становить близько <span class="arithmatex">\(30\text{ мс}\)</span>, а їхня частота може варіюватися від одного слота за секунду до одного слота за весь інтервал між маяками. Це гарантує доставку низхідного трафіку з прогнозованою максимальною затримкою.</p>
+<p>Пристрої <strong>Класу C</strong> забезпечують роботу з мінімально можливою латентністю, оскільки їхнє вікно прийому <span class="arithmatex">\(RX2\)</span> залишається відкритим постійно, вимикаючись виключно на інтервал випромінювання власних висхідних кадрів або на час роботи вікна <span class="arithmatex">\(RX1\)</span>. Постійний струм споживання високочастотної частини трансивера (на рівні <span class="arithmatex">\(10\dots 15\text{ мА}\)</span>) робить експлуатацію таких модулів від автономних батарей неможливою без використання зовнішнього джерела живлення.</p>
+<p>Фундаментальним механізмом балансування ємності мережі та енергоспоживання вузлів у LoRaWAN є алгоритм адаптивної швидкості передачі даних (<strong>ADR</strong>, Adaptive Data Rate). Цей механізм передає контроль над параметрами радіолінії мережевому серверу. Сервер накопичує історію вимірювань якості сигналу для останніх <span class="arithmatex">\(N\)</span> пакетів (за замовчуванням <span class="arithmatex">\(N = 20\)</span>) від конкретного пристрою, оцінюючи параметри відношення сигнал/шум (<span class="arithmatex">\(SNR\)</span>).</p>
+<p>Формалізований процес адаптації фізичних параметрів радіоканалу в алгоритмі ADR виконується за наступною математичною процедурою:</p>
+<div class="arithmatex">\[
+\begin{aligned}
+\text{Крок 1 (Оцінка запасу завадостійкості):} &amp; \quad SNR_{margin} = \max_{i=1..N}(SNR_i) - SNR_{req}(SF) - M_{margin} \\
+\text{Крок 2 (Визначення кількості кроків оптимізації):} &amp; \quad N_{steps} = \mathrm{round}\left(\frac{SNR_{margin}}{3}\right) \\
+\text{Крок 3 (Зниження коефіцієнта розширення):} &amp; \quad \Delta SF = \min\left(N_{steps}, SF_{current} - SF_{min}\right) \\
+&amp; \quad SF_{new} = SF_{current} - \Delta SF \\
+\text{Крок 4 (Зниження вихідної потужності передавача):} &amp; \quad N_{pwr} = N_{steps} - \Delta SF \\
+&amp; \quad P_{tx, new} = \max\left(P_{tx, min}, P_{tx, current} - N_{pwr} \cdot 3\text{ дБ}\right)
+\end{aligned}
+\]</div>
+<p>де <span class="arithmatex">\(\max_{i=1..N}(SNR_i)\)</span> представляє максимальне відношення сигнал/шум серед останніх <span class="arithmatex">\(N\)</span> прийнятих висхідних пакетів у децибелах; <span class="arithmatex">\(SNR_{req}(SF)\)</span> є теоретичним мінімальним порогом демодуляції для поточного коефіцієнта розширення спектра; <span class="arithmatex">\(M_{margin}\)</span> позначає внутрішній інженерний запас надійності каналу (Device Margin, зазвичай встановлюється рівним <span class="arithmatex">\(10\text{ дБ}\)</span>); значення <span class="arithmatex">\(3\text{ дБ}\)</span> відповідає кроку між суміжними значеннями <span class="arithmatex">\(SF\)</span> або ступенями дискретного атенюатора потужності вихідного каскаду передавача.</p>
+<p>Після виконання розрахунку мережевий сервер формує спеціальну керуючу команду канального рівня <code>LinkADRReq</code>, яка передається пристрою в найближчому вікні прийому. Вузол змінює конфігурацію регістрів радіомодема та повертає підтвердження <code>LinkADRAns</code>.</p>
+<blockquote>
+<p><strong>ГРАНИЧНІ УМОВИ:</strong> Алгоритм ADR стає абсолютно нерелевантним і призводить до катастрофічної втрати зв'язку, якщо кінцеві вузли встановлені на мобільних об'єктах (наприклад, у системах моніторингу громадського транспорту чи відстеження великої рогатої худоби). Під час переміщення об'єкта багатопроменева інтерференція та просторове віддалення від базової станції змінюють профіль каналу набагато швидше, ніж сервер накопичує історію з 20 висхідних повідомлень. Якщо сервер на основі сприятливих вимірювань зменшить параметр <span class="arithmatex">\(SF\)</span> до мінімального значення <span class="arithmatex">\(SF7\)</span>, а об'єкт переміститься за масивну залізобетонну споруду, рівень сигналу миттєво впаде нижче порогу чутливості, внаслідок чого пристрій втратить канал зв'язку з мережею на тривалий час. Для рухомих об'єктів механізм ADR повинен бути примусово деактивований у прошивці мікроконтролера.</p>
+</blockquote>
+<hr />
+<h3 id="22-rrc-psm-edrx-20">2.2. Механізми енергозбереження та забезпечення зв'язності в ліцензованих мережах: протокольні стани RRC, режими PSM і eDRX, кодування повтореннями для розширення покриття на 20 дБ</h3>
+<p>На відміну від мереж з довільним доступом, протокольний стек стандарту <strong>NB-IoT</strong> базується на суворій часово-частотній синхронізації та виділенні радіоресурсів під керуванням базової станції (eNodeB). На канальному та мережевому рівнях взаємодія регулюється протоколом управління радіоресурсами (<strong>RRC</strong>, Radio Resource Control). Класичний для систем мобільного зв'язку стан безперервного моніторингу пейджингових повідомлень утилізує занадто багато енергії, тому в специфікаціях 3GPP Release 13 стандартизовано два специфічні режими енергозбереження: <strong>PSM</strong> та <strong>eDRX</strong>.</p>
+<p>У режимі <strong>PSM</strong> (Power Saving Mode) пристрій після завершення обміну пакетами у стані <span class="arithmatex">\(RRC\_Connected\)</span> переходить у режим очікування <span class="arithmatex">\(RRC\_Idle\)</span> і запускає активний таймер <span class="arithmatex">\(T3324\)</span>. Протягом часу дії таймера <span class="arithmatex">\(T3324\)</span> термінал залишається доступним для низхідних викликів базової станції. Після вичерпання цього часового інтервалу модуль вимикає приймальний і передавальний тракти, входячи у стан надглибокого сну з типовим споживанням струму <span class="arithmatex">\(I_{psm} \approx 3\dots 5\text{ мкА}\)</span>. </p>
+<p>Головна відмінність стану PSM від повного вимкнення живлення полягає в збереженні контексту реєстрації пристрою в опорній мережі (Core Network): збереженими залишаються виділена IP-адреса, ідентифікатори базової станції та криптографічні ключі сесії. Пристрій перебуває в режимі PSM до завершення дії періодичного таймера оновлення зони відстеження (<strong>TAU</strong>, Tracking Area Update) <span class="arithmatex">\(T3412\)</span>, значення якого може сягати <span class="arithmatex">\(413\text{ діб}\)</span>, або до виникнення апаратного переривання від сенсора.</p>
+<p>Режим <strong>eDRX</strong> (Extended Discontinuous Reception) оптимізує інтервали прийому у фазі <span class="arithmatex">\(RRC\_Idle\)</span>. Замість класичного циклу перевірки пейджингового каналу тривалістю <span class="arithmatex">\(1{,}28\dots 2{,}56\text{ с}\)</span>, режим eDRX збільшує цей період до величини <span class="arithmatex">\(40{,}96\text{ хвилини}\)</span>. В інтервалах між циклами пейджингу пристрій повністю вимикає радіоприймач, мінімізуючи середній інтегральний струм споживання в очікуванні команд від системи автоматизації.</p>
+<p>Іншим критичним механізмом NB-IoT є технологія забезпечення зв'язності через залізобетонні перешкоди шляхом розширення максимальних допустимих втрат на трасі розповсюдження радіохвилі до <span class="arithmatex">\(MCL = 164\text{ дБ}\)</span>, що на <span class="arithmatex">\(20\text{ дБ}\)</span> перевищує характеристики класичного стандарту LTE. </p>
+<p>Аналітичний розрахунок енерговитрат на одну сесію передачі даних <span class="arithmatex">\(E_{session}\)</span> в умовах граничного розширення покриття (Coverage Enhancement Level 2) формалізується наступним покроковим рівнянням:</p>
+<div class="arithmatex">\[
+\begin{aligned}
+\text{Крок 1 (Час перебування в активній передачі):} &amp; \quad T_{tx\_active} = N_{rep} \cdot T_{subframe} \cdot K_{blocks} \\
+\text{Крок 2 (Енергія фази випромінювання):} &amp; \quad E_{tx} = V_{dd} \cdot I_{tx}(P_{max}) \cdot T_{tx\_active} \\
+\text{Крок 3 (Енергія процедури синхронізації NPRACH):} &amp; \quad E_{sync} = V_{dd} \cdot I_{tx}(P_{max}) \cdot \left(N_{preamble\_rep} \cdot T_{preamble}\right) \\
+\text{Крок 4 (Сумарні енергетичні витрати циклу):} &amp; \quad E_{session} = E_{sync} + E_{tx} + V_{dd} \cdot I_{rx} \cdot T_{rx\_ack}
+\end{aligned}
+\]</div>
+<p>де <span class="arithmatex">\(N_{rep}\)</span> представляє коефіцієнт повторення блоків даних у висхідному каналі (може досягати значення до 2048 разів); <span class="arithmatex">\(T_{subframe}\)</span> позначає тривалість одного субкадру стандарту, що дорівнює <span class="arithmatex">\(1\text{ мс}\)</span>; <span class="arithmatex">\(K_{blocks}\)</span> є кількістю сформованих субкадрів з корисним навантаженням; <span class="arithmatex">\(V_{dd}\)</span> позначає робочу напругу живлення вузла (В); <span class="arithmatex">\(I_{tx}(P_{max})\)</span> виражає струм споживання передавача на максимальній вихідній потужності <span class="arithmatex">\(+23\text{ дБм}\)</span> (зазвичай від <span class="arithmatex">\(180\)</span> до <span class="arithmatex">\(250\text{ мА}\)</span>); <span class="arithmatex">\(N_{preamble\_rep}\)</span> позначає кількість повторень преамбули каналу випадкового доступу NPRACH; <span class="arithmatex">\(T_{preamble}\)</span> є тривалістю однієї преамбули; <span class="arithmatex">\(I_{rx}\)</span> та <span class="arithmatex">\(T_{rx\_ack}\)</span> відповідають струму споживання приймача та тривалості очікування підтвердження відповідно.</p>
+<blockquote>
+<p><strong>ГРАНИЧНІ УМОВИ:</strong> Фізична модель розширення покриття NB-IoT через багаторазові повторення (<span class="arithmatex">\(N_{rep} \gg 1\)</span>) демонструє повну непридатність для систем із жорстким детермінованим часом реакції (Hard Real-Time). За максимального значення фактора повторення висхідного каналу тривалість передачі одного інформаційного пакета розміром 50 байтів зростає від початкових <span class="arithmatex">\(50\text{ мс}\)</span> до <span class="arithmatex">\(25\dots 35\text{ секунд}\)</span>. Крім того, тривале випромінювання на максимальній потужності призводить до локального нагрівання кристала радіомодуля, стрибкоподібного падіння напруги на внутрішньому опорі хімічного джерела живлення та скорочення реального терміну експлуатації батареї від розрахункових 10 років до менш ніж 8 місяців.</p>
+</blockquote>
+<hr />
+<h3 id="23-aes-128-lorawan-sigfox-3gpp">2.3. Організація інформаційної безпеки: дворівневе симетричне шифрування AES-128 у LoRaWAN, автентифікація повідомлень у Sigfox та захист каналів стільникового зв'язку рівня 3GPP</h3>
+<p>Безпека в технологіях глобальних мереж низької потужності розглядається через призму балансу між криптографічною стійкістю та ресурсними обмеженнями апаратних обчислювачів кінцевих вузлів, які зазвичай базуються на 8-бітних або 32-бітних мікроконтролерах із ядрами ARM Cortex-M0+/M3 та мізерним обсягом пам'яті.</p>
+<p>У стандарті <strong>LoRaWAN</strong> реалізовано дворівневу модель симетричної криптографії на базі стандарту блочного шифрування <strong>AES-128</strong>. Підключення пристрою до мережі здійснюється за двома сценаріями: персоналізація при виробництві (<strong>ABP</strong>, Activation By Personalization) або активація через ефір (<strong>OTAA</strong>, Over-The-Air Activation). З точки зору безпеки стандарт категорично рекомендує процедуру OTAA.</p>
+<p>Нижче наведена діаграма послідовності сигнального обміну під час виконання процедури підключення вузла LoRaWAN OTAA та подальшої передачі телеметрії.</p>
+<pre class="mermaid"><code>sequenceDiagram
+    autonumber
+    participant Node as Сенсорний вузол
+    participant GW as Базовий шлюз
+    participant NS as Мережевий сервер
+    participant JS as Сервер активації (Join Server)
+    participant AS as Сервер додатків
+
+    Note over Node: Збережено: DevEUI, JoinEUI, AppKey
+    Node-&gt;&gt;GW: Join-Request (DevNonce, JoinEUI, DevEUI, MIC)
+    GW-&gt;&gt;NS: Форвадування Join-Request через IP Backhaul
+    NS-&gt;&gt;JS: Запит автентифікації пристрою
+    Note over JS: Перевірка DevNonce та розрахунок сесійних ключів
+    JS--&gt;&gt;NS: Відповідь: Join-Accept (NwkSKey, AppSKey)
+    NS-&gt;&gt;GW: Передача кадру Join-Accept
+    GW-&gt;&gt;Node: Join-Accept (AppNonce, NetID, DevAddr, MIC)
+    Note over Node: Дешифрування за допомогою AppKey
+    Note over Node: Локальна генерація NwkSKey та AppSKey
+
+    Note over Node,AS: Захищений інформаційний сеанс зв'язку
+    Node-&gt;&gt;GW: Data Uplink (Зашифровано AppSKey, MIC розраховано NwkSKey)
+    GW-&gt;&gt;NS: Передача пакета мережевому серверу
+    Note over NS: Валідація MIC через NwkSKey та перевірка лічильника FCntUp
+    NS-&gt;&gt;AS: Передача зашифрованого корисного навантаження (Payload)
+    Note over AS: Дешифрування корисних даних сенсора через AppSKey</code></pre>
+<p>Під час виконання процедури OTAA кінцевий пристрій генерує випадкове одноразове число <span class="arithmatex">\(DevNonce\)</span> для захисту від атак повторного відтворення (<strong>Replay Attacks</strong>). Сервер активації відповідає повідомленням <code>Join-Accept</code>, яке містить ідентифікатор мережі <span class="arithmatex">\(NetID\)</span>, адресу пристрою <span class="arithmatex">\(DevAddr\)</span> та випадкове число сервера <span class="arithmatex">\(AppNonce\)</span>. Після прийому цього пакета обидві сторони незалежно генерують пару симетричних сесійних ключів:</p>
+<div class="arithmatex">\[NwkSKey = \mathrm{AES128\_Encrypt}(AppKey, 0x01 \mid AppNonce \mid NetID \mid DevNonce \mid pad)\]</div>
+<div class="arithmatex">\[AppSKey = \mathrm{AES128\_Encrypt}(AppKey, 0x02 \mid AppNonce \mid NetID \mid DevNonce \mid pad)\]</div>
+<p>Мережевий ключ <span class="arithmatex">\(NwkSKey\)</span> передається на мережевий сервер і служить для перевірки цілісності кадру за допомогою 4-байтного поля <span class="arithmatex">\(MIC\)</span> (розрахованого алгоритмом AES-128-CMAC) та шифрування службових команд управління рівнем MAC. Ключ додатків <span class="arithmatex">\(AppSKey\)</span> відомий виключно кінцевому пристрою та серверу додатків, що забезпечує наскрізну конфіденційність: навіть за повної компрометації оператора базових станцій і мережевого сервера зловмисник не має змоги дешифрувати показники сенсорів.</p>
+<p>У технології <strong>Sigfox</strong> модель безпеки організована значно простіше, що обумовлено жорстким лімітом на розмір пакета. Кожен пристрій на етапі виробництва отримує симетричний 16-байтний ключ автентифікації, прошитий у захищену пам'ять. Системний протокол Sigfox забезпечує виключно автентифікацію джерела повідомлення та контроль цілісності за допомогою криптографічного коду автентифікації повідомлення на основі хеш-функції (<strong>HMAC</strong>), розрахованого над корисним навантаженням та послідовним номером кадру. Корисне навантаження кадру Sigfox за замовчуванням передається у відкритому, незашифрованому вигляді. Захист від атак повторного відтворення гарантується перевіркою послідовного 12-бітного лічильника повідомлень, який не повинен зменшуватися.</p>
+<p>У стандарті <strong>NB-IoT</strong> безпека реалізується на рівні телекомунікаційної інфраструктури 3GPP. Автентифікація базується на апаратній смарт-картці USIM/eSIM та протоколі взаємної автентифікації й розподілу ключів (<strong>AKA</strong>, Authentication and Key Agreement). Трафік шифрується на канальному рівні (рівень PDCP) алгоритмами AES, SNOW 3G або ZUC зі 128-бітними чи 256-бітними ключами. Додатково на рівні додатків для безпечної передачі IP-датаграм поверх ненадійного протоколу UDP застосовується протокол захисту транспортного рівня дейтаграм (<strong>DTLS</strong>, Datagram Transport Layer Security).</p>
+<blockquote>
+<p><strong>ВАЖЛИВО:</strong> Фундаментальним криптографічним інваріантом у мережах LoRaWAN є неприпустимість скидання лічильників висхідних (<span class="arithmatex">\(FCntUp\)</span>) та низхідних (<span class="arithmatex">\(FCntDown\)</span>) пакетів без повторної генерації сесійних ключів. У пристроях, активованих за спрощеним методом ABP, де ключі зашиті статично, перезавантаження мікроконтролера призводить до обнулення локального лічильника <span class="arithmatex">\(FCntUp\)</span>. У результаті мережевий сервер, зафіксувавши пакет із меншим значенням лічильника, ніж було зареєстровано раніше, автоматично відкидає всі наступні повідомлення як потенційну атаку повтору (Replay Attack), що призводить до повного блокування передачі даних.</p>
+</blockquote>
+<hr />
+<h3 id="24-lorawan-sigfox-nb-iot-latency-ip-">2.4. Комплексний порівняльний аналіз технологій LoRaWAN, Sigfox та NB-IoT за параметрами пропускної здатності, затримок (latency), енергетичного потенціалу та підтримки IP-адресації</h3>
+<p>Прийняття обґрунтованого системного рішення щодо вибору конкретної технології класу LPWAN вимагає зіставлення їхніх техніко-економічних параметрів у вигляді матриці критеріїв, що відображає обмеження радіоінтерфейсу, мережеву складність та операційні ризики.</p>
+<p>Нижче наведена детальна порівняльна матриця функціональних характеристик та інженерних ризиків технологій LPWAN.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Критерій оцінки</th>
+<th style="text-align: left;">LoRaWAN (Клас A)</th>
+<th style="text-align: left;">Sigfox</th>
+<th style="text-align: left;">NB-IoT (Cat-NB1)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Ефективна пропускна здатність</strong></td>
+<td style="text-align: left;">Від <span class="arithmatex">\(250\text{ біт/с}\)</span> до <span class="arithmatex">\(50\text{ кбіт/с}\)</span></td>
+<td style="text-align: left;">Фіксовано <span class="arithmatex">\(100\text{ біт/с}\)</span> (Uplink)</td>
+<td style="text-align: left;">Від <span class="arithmatex">\(20\text{ кбіт/с}\)</span> до <span class="arithmatex">\(62{,}5\text{ кбіт/с}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Мінімальна затримка низхідного зв'язку</strong></td>
+<td style="text-align: left;">Секунди (очікування вікон RX1/RX2)</td>
+<td style="text-align: left;">До десятків секунд (строго за запитом)</td>
+<td style="text-align: left;">Від <span class="arithmatex">\(1{,}5\text{ с}\)</span> (eDRX) до годин (глибокий PSM)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Енергетичний потенціал лінії (Link Budget)</strong></td>
+<td style="text-align: left;"><span class="arithmatex">\(150\dots 156\text{ дБ}\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(155\dots 160\text{ дБ}\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(164\text{ дБ}\)</span> (найглибше покриття)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Підтримка нативного стека TCP/IP</strong></td>
+<td style="text-align: left;">Відсутня (вимагає шлюзової конверсії або адаптації SCHC)</td>
+<td style="text-align: left;">Відсутня (трансляція через хмарні вебхуки Callbacks)</td>
+<td style="text-align: left;">Повна нативна підтримка стеків IPv4/IPv6, UDP, CoAP, MQTT</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Складність впровадження</strong></td>
+<td style="text-align: left;">Середня: вимагає розгортання власних шлюзів і мережевого сервера або використання публічного сервера</td>
+<td style="text-align: left;">Низька: готові модеми, миттєве підключення до хмари оператора Sigfox</td>
+<td style="text-align: left;">Висока: контракт із мобільним оператором, активація SIM-карт, конфігурування APN та операторських таймерів</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Критичні ризики / Обмеження</strong></td>
+<td style="text-align: left;">Колізії типу ALOHA при зростанні щільності мережі; ліміт Duty Cycle базових станцій</td>
+<td style="text-align: left;">Повна залежність від комерційного оператора Sigfox; відсутність локального шифрування корисного навантаження</td>
+<td style="text-align: left;">Постійні операційні витрати (OPEX); різка деградація батареї в зоні слабкого сигналу (CE2)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Приклад з реальної практики</strong></td>
+<td style="text-align: left;">Приватна телеметрична мережа гірничо-збагачувального комбінату</td>
+<td style="text-align: left;">Трекінг міжнародних логістичних контейнерів на автотрасах</td>
+<td style="text-align: left;">Інтелектуальний комерційний облік газу в багатоквартирних будинках</td>
+</tr>
+</tbody>
+</table>
+<p>Аналіз матриці свідчить про наявність чіткого розмежування архітектурних концепцій. Технологія <strong>Sigfox</strong> забезпечує найпростіший шлях інтеграції кінцевого сенсора завдяки повній абстракції мережевих функцій у хмарі оператора, проте накладає найжорсткіші обмеження на обсяг транзакцій (до 12 байтів) та позбавляє розробника контролю над конфіденційністю переданих вимірювань.</p>
+<p>Технологія <strong>LoRaWAN</strong> виступає оптимальним промисловим стандартом для побудови приватних, повністю автономних та ізольованих систем передачі даних, які не потребують сплати абонентської плати операторам зв'язку. Проте відсутність нативної підтримки протоколу IP вимагає застосування спеціалізованих механізмів адаптації, таких як специфікація статичного стиснення контексту заголовків (<strong>SCHC</strong>, Static Context Header Compression, RFC 8724), яка дозволяє інкапсулювати IPv6-дейтаграми поверх кадрів LoRaWAN.</p>
+<p>Стандарт <strong>NB-IoT</strong> органічно інтегрується в сучасну інтернет-інфраструктуру завдяки підтримці класичної IP-адресації та стандартних протоколів прикладного рівня, таких як CoAP, MQTT та LwM2M, що усуває потребу у проміжних трансляторах даних. Водночас це вимагає постійних операційних витрат на оплату стільникового трафіку та ретельного інженерного контролю радіопокриття для запобігання передчасному розряду джерел живлення.</p>
+<hr />
+<h3 id="25-duty-cycle-etsi">2.5. Критичні обмеження, регуляторні бар'єри робочого циклу передавачів (Duty Cycle за нормами ETSI) та проблеми масштабованості при масовому розгортанні вузлів у неліцензованих смугах частот</h3>
+<p>Використання неліцензованого спектра радіочастот регулюється обов'язковими міжнародними та національними стандартами, спрямованими на забезпечення електромагнітної сумісності та запобігання монополізації ефіру окремими системами. У європейському регіоні діє стандарт <strong>ETSI EN 300-220</strong>, що встановлює жорсткі нормативи щодо максимального робочого циклу випромінювання (<strong>Duty Cycle</strong>) у смугах <span class="arithmatex">\(868\text{ МГц}\)</span>.</p>
+<p>Робочий цикл визначається як частка часу, протягом якої пристрій має право генерувати радіовипромінювання в межах спостережуваного інтервалу тривалістю в одну годину (<span class="arithmatex">\(T_{obs} = 3600\text{ секунд}\)</span>):</p>
+<div class="arithmatex">\[\text{Duty Cycle} = \frac{\sum T_{on}}{T_{obs}} \cdot 100\%\]</div>
+<p>де <span class="arithmatex">\(\sum T_{on}\)</span> представляє сумарний час активного випромінювання передавача (Time-on-Air) у секундах за інтервал <span class="arithmatex">\(T_{obs}\)</span>.</p>
+<p>Після кожної передачі кадру тривалістю <span class="arithmatex">\(T_{on}\)</span> мікроконтролер пристрою згідно з вимогами стандарту зобов'язаний витримати час примусового радіомовчання <span class="arithmatex">\(T_{off}\)</span>, який обчислюється за формулою:</p>
+<div class="arithmatex">\[T_{off} = T_{on} \cdot \left( \frac{1 - \text{Duty Cycle}}{\text{Duty Cycle}} \right)\]</div>
+<p>Для основного діапазону частот LoRaWAN (піддіапазон g1: <span class="arithmatex">\(868{,}0\dots 868{,}6\text{ МГц}\)</span>) ліміт робочого циклу становить строго <span class="arithmatex">\(1\%\)</span>. Це означає, що пристрій не може вести передачу довше <span class="arithmatex">\(36\text{ секунд}\)</span> протягом однієї астрономічної години. Якщо вузол передає пакет із коефіцієнтом <span class="arithmatex">\(SF12\)</span>, час його перебування в ефірі може сягати <span class="arithmatex">\(T_{on} \approx 2{,}8\text{ секунди}\)</span>, що змушує передавач витримувати інтервал мовчання:</p>
+<div class="arithmatex">\[T_{off} = 2{,}8 \cdot \left( \frac{1 - 0{,}01}{0{,}01} \right) = 2{,}8 \cdot 99 = 277{,}2\text{ секунди} \approx 4{,}6\text{ хвилини}\]</div>
+<p>У разі спроби частішого виходу в ефір пристрій порушує регламент зв'язку, що тягне за собою відмову в сертифікації обладнання та створення недопустимих завад іншим користувачам спектра.</p>
+<blockquote>
+<p><strong>ПРАКТИЧНИЙ ЯКІР:</strong> У 2018 році на одному з великих нафтохімічних терміналів у Нідерландах розгортання системи промислового моніторингу на 5000 датчиків за протоколом LoRaWAN зазнало колапсу через неврахування обмеження Duty Cycle для шлюзів. Розробники налаштували передачу всіх пакетів у режимі з обов'язковим підтвердженням прийому (Confirmed Uplink). Через велику кількість датчиків шлюз вичерпав свій дозволений 10-відсотковий ліміт мовлення у виділеному піддіапазоні 869,4–869,65 МГц вже за 15 хвилин роботи. Вичерпавши ліміт, шлюз перестав транслювати квитанції ACK у вікнах RX2, внаслідок чого сенсори почали нескінченні повторні передачі (до 8 спроб кожен), що спричинило повний параліч радіоефіру та лавиноподібний розряд акумуляторів усієї вимірювальної мережі.</p>
+</blockquote>
+<p>Другим системним бар'єром неліцензованого спектра є теоретична межа пропускної здатності несинхронізованих протоколів множинного доступу. Оскільки канальний рівень LoRaWAN побудований на принципах Pure ALOHA, ймовірність успішної передачі пакета без колізій <span class="arithmatex">\(P_{succ}\)</span> за умови загальної інтенсивності генерування пакетів у мережі <span class="arithmatex">\(G\)</span> (вимірюваної в пакетах за час тривалості одного кадру) описується рівнянням Пуассона:</p>
+<div class="arithmatex">\[P_{succ} = e^{-2G}\]</div>
+<p>Максимальна теоретична пропускна здатність каналу за такої моделі досягається при значенні інтенсивності трафіку <span class="arithmatex">\(G = 0{,}5\)</span> і становить лише:</p>
+<div class="arithmatex">\[S_{max} = G \cdot e^{-2G} = 0{,}5 \cdot e^{-1} \approx 0{,}184 \quad (18{,}4\%)\]</div>
+<p>Якщо сумарне навантаження на радіоканал перевищує цей поріг, мережа входить у режим колізійного колапсу: більшість пакетів стикаються в ефірі, взаємно знищуються, а корисний трафік прямує до нуля. Хоча квазіортогональність коефіцієнтів розширення <span class="arithmatex">\(SF\)</span> дещо покращує цей показник (створюючи кілька віртуальних підканалів на одній частоті), неідеальне придушення інтерференції сусідніх <span class="arithmatex">\(SF\)</span> (так званий ефект захоплення або Capture Effect) накладає жорсткі межі на максимальну кількість сенсорів, що можуть обслуговуватися одним концентратором (зазвичай не більше <span class="arithmatex">\(1000\dots 2000\)</span> вузлів на 8-канальний шлюз за умови трансляції рідше ніж один раз на 15 хвилин).</p>
+<blockquote>
+<p><strong>КОНТРОЛЬНЕ ПИТАННЯ:</strong> Під час аудиту проекту автономного газоаналізатора для шахтного колектора інженер запропонував використовувати LoRaWAN з передачею даних на коефіцієнті <span class="arithmatex">\(SF12\)</span> з підтвердженням доставки (Confirmed Uplink) кожні 2 хвилини в піддіапазоні g1 (868,0–868,6 МГц, Duty Cycle = 1%). Обчисліть параметри каналу та оцініть, чому запропоноване проектне рішення є непрацездатним з точки зору нормативних регламентів зв'язку.</p>
+</blockquote>
+<details class="note">
+<summary>Розгорнути аналіз / відповідь</summary>
+<p><strong>Правильний варіант: Запропонована конфігурація грубо порушує регламент ETSI EN 300-220, оскільки необхідний час перебування в ефірі перевищує нормативний ліміт Duty Cycle у 2,3 рази, а шлюз швидко вичерпає власний ліміт мовлення для надсилання підтверджень ACK.</strong></p>
+<ol>
+<li>
+<p>Розрахунок часу перебування в ефірі (Time-on-Air) для пакета LoRaWAN з типовою довжиною корисного навантаження газоаналізатора (наприклад, 20 байт) разом із заголовками канального рівня MAC (13 байт) за параметрів <span class="arithmatex">\(SF = 12\)</span>, <span class="arithmatex">\(BW = 125\text{ кГц}\)</span>, <span class="arithmatex">\(CR = 4/5\)</span> та преамбули у 8 символів показує, що тривалість одного пакета <span class="arithmatex">\(T_{on}\)</span> становить приблизно <span class="arithmatex">\(2{,}79\text{ секунди}\)</span>. Якщо пристрій передає дані кожні 2 хвилини, то за одну годину (<span class="arithmatex">\(3600\text{ секунд}\)</span>) він здійснить рівно 30 передач. Сумарний час випромінювання становитиме:
+$<span class="arithmatex">\(\sum T_{on} = 30 \cdot 2{,}79\text{ с} = 83{,}7\text{ секунди}\)</span>$
+Нормативне обмеження Duty Cycle в 1% дозволяє випромінювати не більше <span class="arithmatex">\(36\text{ секунд}\)</span> на годину. Коефіцієнт використання ефіру цим пристроєм складе <span class="arithmatex">\(\frac{83{,}7}{3600} \cdot 100\% \approx 2{,}325\%\)</span>, що є прямим порушенням закону про зв'язок. Більше того, робота в режимі підтвердження прийому (Confirmed Uplink) за такого коефіцієнта розширення змусить базову станцію відповідати на кожне повідомлення довгим низхідним пакетом на тому ж <span class="arithmatex">\(SF12\)</span>, що заблокує власний ліміт передавача шлюзу вже за наявності кількох десятків подібних приладів у радіусі дії.</p>
+</li>
+<li>
+<p>Аналіз дистракторів:</p>
+</li>
+<li>
+<p>Припущення, що система працюватиме за рахунок зменшення міжканального інтервалу або застосування фільтрації, є помилковим, оскільки обмеження Duty Cycle є нормативно-часовим бар'єром, який не залежить від схемотехніки приймача і вимагає обов'язкового періоду мовчання.</p>
+</li>
+<li>
+<p>Твердження про те, що проблему можна вирішити переходом на Клас C, є беззмістовним, оскільки Клас C не знімає з передавача обов'язку дотримуватися ліміту 1% Duty Cycle на передачу, а також унеможливлює автономне живлення пристрою в шахті.</p>
+</li>
+</ol>
+</details>
+<hr />
+<h3 id="_5">Вказівки для самостійного осмислення</h3>
+<ol>
+<li>
+<p>Складіть математичну модель розрахунку часу перебування в ефірі (Time-on-Air) кадру LoRaWAN з урахуванням тривалості преамбули, бітів заголовка та механізму низькошвидкісної оптимізації (Low Data Rate Optimization), визначивши граничний розмір корисного навантаження для коефіцієнта розширення SF12 за збереження вимоги Duty Cycle менше 0,1% при годинному інтервалі передачі.</p>
+</li>
+<li>
+<p>Проаналізуйте сценарій розгортання мережі NB-IoT у режимі In-band для оператора з шириною робочої смуги LTE 10 МГц та оцініть вплив функції підсилення потужності (Power Boosting) ресурсного блоку IoT на пропускну здатність суміжних ресурсних блоків комерційного трафіку смартфонів.</p>
+</li>
+<li>
+<p>Дослідіть механізм запобігання колізіям між низхідними та висхідними пакетами в пристроях LoRaWAN Класу B, розрахувавши мінімальний часовий захисний інтервал між завершенням трансляції маяка (Beacon) та першим доступним слотом опитування (Ping Slot).</p>
+</li>
+</ol>
+<h2 id="3_1">3. Практичний індустріальний / фаховий кейс. Проектування бездротової інфраструктури збору телеметрії</h2>
+<h3 id="31">3.1. Комплексний фаховий кейс. Розробка та розрахунок параметрів бездротової мережі автоматизованого обліку водопостачання в умовах щільної міської забудови та підвального розташування вузлів обліку</h3>
+<h4 id="_6">Постановка задачі / ситуації</h4>
+<p>Перед інженерною групою комунального підприємства водопостачання поставлено завдання модернізації комерційного обліку води в житловому масиві міста з високою щільністю забудови (багатоповерхові будинки з масивними залізобетонними фундаментами). Існуючий метод щомісячного ручного обходу контролерами генерує високі операційні витрати, призводить до значних затримок виявлення аварійних витоків і небалансу подачі ресурсу, а також унеможливлює точне формування погодинних профілів споживання. </p>
+<p>Основною технічною складністю проекту є встановлення вузлів обліку в екранованих підвальних приміщеннях нижче рівня ґрунту та в середині технологічних ніш, де сигнал перекривається товстими бетонними стінами та чавунними люками. Необхідно здійснити інженерний вибір між розгортанням власної приватної мережі LoRaWAN та підключенням до публічної мережі стільникового зв'язку стандарту NB-IoT, забезпечивши гарантований термін автономного функціонування кінцевих модулів не менше десяти років без заміни батарей.</p>
+<p>Вхідні вимоги, проектні обмеження та характеристики середовища наведено у таблиці нижче.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Параметр системи</th>
+<th style="text-align: left;">Значення параметра</th>
+<th style="text-align: left;">Одиниці вимірювання</th>
+<th style="text-align: left;">Примітки та інженерні обмеження</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Кількість вузлів обліку (<span class="arithmatex">\(N\)</span>)</strong></td>
+<td style="text-align: left;">15 000</td>
+<td style="text-align: left;">одиниць</td>
+<td style="text-align: left;">Індивідуальні лічильники холодної води в підвалах</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Площа зони обслуговування (<span class="arithmatex">\(S\)</span>)</strong></td>
+<td style="text-align: left;">4,0</td>
+<td style="text-align: left;">км²</td>
+<td style="text-align: left;">Щільна житлова забудова, радіус зони <span class="arithmatex">\(R \approx 1{,}13\text{ км}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Розташування сенсорних модулів</strong></td>
+<td style="text-align: left;">-1,5 ... -2,5</td>
+<td style="text-align: left;">метри</td>
+<td style="text-align: left;">Підвали будинків, глибина відносно поверхні землі</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Додаткові втрати на перешкодах (<span class="arithmatex">\(L_{pen}\)</span>)</strong></td>
+<td style="text-align: left;">25,0</td>
+<td style="text-align: left;">дБ</td>
+<td style="text-align: left;">Затухання крізь залізобетонні перекриття та ґрунт</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Обсяг корисного навантаження (<span class="arithmatex">\(PL\)</span>)</strong></td>
+<td style="text-align: left;">24</td>
+<td style="text-align: left;">байти</td>
+<td style="text-align: left;">Покази лічильника, статус зворотного клапана, напруга батареї, код аварії</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Періодичність виходу на зв'язок</strong></td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">рази на добу</td>
+<td style="text-align: left;">Фіксована передача телеметрії кожні 12 годин</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Ємність автономної батареї (<span class="arithmatex">\(Q_{nom}\)</span>)</strong></td>
+<td style="text-align: left;">8500</td>
+<td style="text-align: left;">мА·год</td>
+<td style="text-align: left;">Елемент живлення типу Li-SOCl2 (типорозмір C, 3,6 В)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Річний саморозряд елемента живлення</strong></td>
+<td style="text-align: left;">1,0</td>
+<td style="text-align: left;">% на рік</td>
+<td style="text-align: left;">Пасивна деградація хімічного джерела струму</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Вимога до надійності доставки пакетів</strong></td>
+<td style="text-align: left;">99,0</td>
+<td style="text-align: left;">%</td>
+<td style="text-align: left;">Забезпечення розрахунку балансу без втрати місячних даних</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Бюджетні обмеження розгортання (CAPEX)</strong></td>
+<td style="text-align: left;">Обмежений</td>
+<td style="text-align: left;">умовні одиниці</td>
+<td style="text-align: left;">Пріоритет мінімізації вартості обладнання інфраструктури</td>
+</tr>
+</tbody>
+</table>
+<p>Нижче наведено блок-схему алгоритму прийняття інженерного рішення та покрокового проектування інфраструктури збору телеметрії.</p>
+<pre class="mermaid"><code>flowchart TD
+    Start["Початок проектування системи обліку"] --&gt; AnalyzeReq["Аналіз вихідних даних: 15 000 точок, підвали, 10 років автономності"]
+    AnalyzeReq --&gt; CalcBudget["Розрахунок необхідного бюджету радіолінії (Link Budget)"]
+
+    CalcBudget --&gt; CheckPenetration{"Чи забезпечує LoRaWAN покриття з урахуванням затухання 25 дБ?"}
+    CheckPenetration -- "Так, за умови SF10-SF12" --&gt; CalcToA["Розрахунок Time-on-Air (ToA) та вибір робочого SF"]
+    CheckPenetration -- "Ні" --&gt; SelectNBIoT["Вибір стандарту NB-IoT (MCL до 164 дБ)"]
+
+    CalcToA --&gt; DutyCheck{"Чи дотримується ліміт ETSI Duty Cycle 1%?"}
+    DutyCheck -- "Ні" --&gt; OptimizePayload["Оптимізація розміру корисного навантаження"]
+    DutyCheck -- "Так" --&gt; CalcEnergy["Розрахунок інтегрального споживання енергії за 10 років"]
+
+    CalcEnergy --&gt; BatteryCheck{"Чи забезпечує батарея 8500 мА·год роботу 10 років?"}
+    BatteryCheck -- "Так" --&gt; CapacityGW["Розрахунок пропускної здатності шлюзів та колізій"]
+    BatteryCheck -- "Ні" --&gt; OptimizeInterval["Зниження періодичності або заміна джерела живлення"]
+
+    CapacityGW --&gt; FinalArch["Фіналізація топології: кількість шлюзів, конфігурація антен"]
+    SelectNBIoT --&gt; FinalArch</code></pre>
+<h4 id="_7">Покроковий аналіз та розв'язок</h4>
+<h5 id="1">Крок 1. Розрахунок енергетичного бюджету радіолінії та оцінка радіопокриття</h5>
+<p>Для визначення фізичної можливості встановлення радіозв'язку необхідно зіставити максимально досяжний енергетичний потенціал радіолінії (<strong>Link Budget</strong>) технології LoRaWAN із розрахунковими втратами поширення радіохвилі в умовах щільної міської забудови з урахуванням проникнення в підвали.</p>
+<p>Втрати на трасі поширення у міському середовищі обчислюються за емпіричною моделлю Окумура-Хата для діапазону <span class="arithmatex">\(868\text{ МГц}\)</span> на максимальній відстані <span class="arithmatex">\(d = 1{,}2\text{ км}\)</span> від базової станції за висоти підвісу антени шлюзу <span class="arithmatex">\(h_{gw} = 30\text{ м}\)</span> та висоти антени лічильника <span class="arithmatex">\(h_{node} = 1\text{ м}\)</span>:</p>
+<div class="arithmatex">\[L_{path} = 69{,}55 + 26{,}16 \log_{10}(f) - 13{,}82 \log_{10}(h_{gw}) - a(h_{node}) + \left[44{,}9 - 6{,}55 \log_{10}(h_{gw})\right] \log_{10}(d)\]</div>
+<p>де <span class="arithmatex">\(f = 868\text{ МГц}\)</span> є робочою частотою; поправковий коефіцієнт для висоти антени термінала становить <span class="arithmatex">\(a(h_{node}) \approx 0\text{ дБ}\)</span>.</p>
+<p>Підстановка числових параметрів дозволяє отримати оцінку втрат у вільному просторі та забудові:</p>
+<div class="arithmatex">\[L_{path} = 69{,}55 + 26{,}16 \log_{10}(868) - 13{,}82 \log_{10}(30) + \left[44{,}9 - 6{,}55 \log_{10}(30)\right] \log_{10}(1{,}2) \approx 126{,}8\text{ дБ}\]</div>
+<p>Загальні втрати радіосигналу на трасі <span class="arithmatex">\(L_{total}\)</span> з урахуванням проходження крізь залізобетонні стіни та перекриття підвалів визначаються сумою:</p>
+<div class="arithmatex">\[L_{total} = L_{path} + L_{pen} = 126{,}8\text{ дБ} + 25{,}0\text{ дБ} = 151{,}8\text{ дБ}\]</div>
+<p>З боку апаратної частини передавача кінцевого вузла вихідна потужність становить <span class="arithmatex">\(P_{tx} = +14\text{ дБм}\)</span>, коефіцієнт підсилення компактної підвальної антени лічильника дорівнює <span class="arithmatex">\(G_{node} = -2\text{ дБі}\)</span>, а підсилення секторної базової антени шлюзу становить <span class="arithmatex">\(G_{gw} = +6\text{ дБі}\)</span>. Рівень сигналу на вході приймача шлюзу складе:</p>
+<div class="arithmatex">\[P_{rx} = P_{tx} + G_{node} + G_{gw} - L_{total} = 14 - 2 + 6 - 151{,}8 = -133{,}8\text{ дБм}\]</div>
+<p>Чутливість приймача LoRaWAN для смуги <span class="arithmatex">\(BW = 125\text{ кГц}\)</span> залежно від коефіцієнта розширення становить: для <span class="arithmatex">\(SF7\)</span> вона дорівнює <span class="arithmatex">\(-123\text{ дБм}\)</span>, для <span class="arithmatex">\(SF10\)</span> становить <span class="arithmatex">\(-132\text{ дБм}\)</span>, а для <span class="arithmatex">\(SF12\)</span> досягає <span class="arithmatex">\(-137\text{ дБм}\)</span>. Отже, для забезпечення стійкого зв'язку з підвальними приміщеннями на межі зони обслуговування пристрої мають використовувати виключно коефіцієнти <span class="arithmatex">\(SF11\)</span> або <span class="arithmatex">\(SF12\)</span>, що забезпечує запас завадостійкості не менше <span class="arithmatex">\(3{,}2\text{ дБ}\)</span>.</p>
+<h5 id="2-time-on-air">Крок 2. Розрахунок часу перебування пакета в ефірі (Time-on-Air)</h5>
+<p>Час перебування пакета в ефірі (<span class="arithmatex">\(T_{ToA}\)</span>) складається з тривалості випромінювання преамбули та тривалості передачі фізичного кадру з корисним навантаженням. </p>
+<p>Повна довжина кадру фізичного рівня LoRaWAN містить <span class="arithmatex">\(24\text{ байти}\)</span> корисних даних лічильника та <span class="arithmatex">\(13\text{ байтів}\)</span> обов'язкових заголовків протоколу MAC (поля MHDR, DevAddr, FCtrl, FCnt, FPort та 4 байти коду MIC), що дає сумарний обсяг корисного навантаження <span class="arithmatex">\(PL = 37\text{ байтів}\)</span>.</p>
+<p>Тривалість символу для конфігурації <span class="arithmatex">\(SF12\)</span> та смуги <span class="arithmatex">\(BW = 125\text{ кГц}\)</span> дорівнює:</p>
+<div class="arithmatex">\[T_{sym} = \frac{2^{12}}{125\,000} = \frac{4096}{125\,000} = 0{,}032768\text{ с} = 32{,}768\text{ мс}\]</div>
+<p>Тривалість преамбули за стандартом становить <span class="arithmatex">\(N_{pream} = 8\)</span> символів плюс <span class="arithmatex">\(4{,}25\)</span> обов'язкових синхронізаційних символів:</p>
+<div class="arithmatex">\[T_{preamble} = (8 + 4{,}25) \cdot T_{sym} = 12{,}25 \cdot 32{,}768\text{ мс} = 401{,}41\text{ мс}\]</div>
+<p>Кількість символів корисного навантаження <span class="arithmatex">\(N_{payload}\)</span> визначається специфікацією за формулою:</p>
+<div class="arithmatex">\[N_{payload} = 8 + \max\left( \left\lceil \frac{8PL - 4SF + 28 + 16 - 20H}{4(SF - 2DE)} \right\rceil \cdot (CR + 4), \; 0 \right)\]</div>
+<p>де <span class="arithmatex">\(PL = 37\)</span>; <span class="arithmatex">\(SF = 12\)</span>; наявність заголовка позначається <span class="arithmatex">\(H = 0\)</span> (явний заголовок); наявність оптимізації низької швидкості (обов'язкова для <span class="arithmatex">\(SF11\)</span> і <span class="arithmatex">\(SF12\)</span>) задається як <span class="arithmatex">\(DE = 1\)</span>; швидкість кодування паритету <span class="arithmatex">\(CR = 1\)</span> (що відповідає кодуванню <span class="arithmatex">\(4/5\)</span>).</p>
+<p>Виконаємо поетапне обчислення аргументу функції округлення до більшого цілого:</p>
+<div class="arithmatex">\[\frac{8 \cdot 37 - 4 \cdot 12 + 28 + 16 - 0}{4 \cdot (12 - 2)} = \frac{296 - 48 + 44}{40} = \frac{292}{40} = 7{,}3 \implies \lceil 7{,}3 \rceil = 8\]</div>
+<div class="arithmatex">\[N_{payload} = 8 + (8 \cdot 5) = 48\text{ символів}\]</div>
+<p>Сумарна тривалість передачі пакета в ефірі для конфігурації <span class="arithmatex">\(SF12\)</span> становить:</p>
+<div class="arithmatex">\[T_{ToA} = T_{preamble} + N_{payload} \cdot T_{sym} = 401{,}41\text{ мс} + 48 \cdot 32{,}768\text{ мс} = 401{,}41 + 1572{,}86 = 1974{,}27\text{ мс} \approx 1{,}974\text{ с}\]</div>
+<h5 id="3_2">Крок 3. Розрахунок енергетичного бюджету та життєвого циклу автономного джерела живлення</h5>
+<p>Для оцінки терміну служби хімічного джерела живлення необхідно врахувати енерговитрати у трьох режимах: активної передачі, очікування вікон прийому та глибокого сну.</p>
+<p>Ефективна доступна ємність батареї Li-SOCl2 з початковим номіналом <span class="arithmatex">\(Q_{\text{nom}} = 8500\text{ мА}\cdot\text{год}\)</span> за умови 10-річного терміну експлуатації зменшується на величину паспортного саморозряду (<span class="arithmatex">\(1\%\)</span> на рік) та коефіцієнта нелінійної деградації при імпульсному розряді (<span class="arithmatex">\(\eta = 0{,}85\)</span>):</p>
+<div class="arithmatex">\[Q_{\text{eff}} = Q_{\text{nom}} \cdot (1 - 0{,}01 \cdot 10) \cdot \eta = 8500 \cdot 0{,}90 \cdot 0{,}85 \approx 6502{,}5\text{ мА}\cdot\text{год}\]</div>
+<p>За добу пристрій здійснює рівно дві висхідні трансляції. Розрахунок щоденного споживання заряду <span class="arithmatex">\(Q_{\text{day}}\)</span> виконується за складовими:</p>
+<div class="arithmatex">\[
+\begin{aligned}
+\text{Крок 1 (Заряд фази передачі):} &amp; \quad Q_{\text{tx}} = 2 \cdot \left(\frac{I_{\text{tx}} \cdot T_{\text{ToA}}}{3600}\right) = 2 \cdot \left(\frac{40\text{ мА} \cdot 1{,}974\text{ с}}{3600}\right) \approx 0{,}04387\text{ мА}\cdot\text{год} \\
+\text{Крок 2 (Заряд вікон прийому RX1/RX2):} &amp; \quad Q_{\text{rx}} = 2 \cdot \left(\frac{I_{\text{rx}} \cdot T_{\text{rx\_windows}}}{3600}\right) = 2 \cdot \left(\frac{12\text{ мА} \cdot 0{,}08\text{ с}}{3600}\right) \approx 0{,}00053\text{ мА}\cdot\text{год} \\
+\text{Крок 3 (Заряд режиму сну):} &amp; \quad Q_{\text{sleep}} = I_{\text{sleep}} \cdot \left(24 - \frac{2 \cdot (T_{\text{ToA}} + T_{\text{rx}})}{3600}\right) \approx 0{,}002\text{ мА} \cdot 24\text{ год} = 0{,}04800\text{ мА}\cdot\text{год} \\
+\text{Крок 4 (Сумарний добовий заряд):} &amp; \quad Q_{\text{day}} = Q_{\text{tx}} + Q_{\text{rx}} + Q_{\text{sleep}} = 0{,}04387 + 0{,}00053 + 0{,}04800 = 0{,}0924\text{ мА}\cdot\text{год/добу}
+\end{aligned}
+\]</div>
+<p>де <span class="arithmatex">\(I_{tx} = 40\text{ мА}\)</span> є струмом передавача за потужності <span class="arithmatex">\(+14\text{ дБм}\)</span>; <span class="arithmatex">\(I_{rx} = 12\text{ мА}\)</span> позначає струм приймального тракту під час відкриття вікон прийому тривалістю сукупно <span class="arithmatex">\(T_{rx\_windows} \approx 80\text{ мс}\)</span>; <span class="arithmatex">\(I_{sleep} = 2\text{ мкА}\)</span> (<span class="arithmatex">\(0{,}002\text{ мА}\)</span>) є струмом споживання мікроконтролера та годинника реального часу в режимі сну.</p>
+<p>Розрахунковий термін автономної роботи <span class="arithmatex">\(T_{life}\)</span> (у роках) становить:</p>
+<div class="arithmatex">\[T_{life} = \frac{Q_{eff}}{Q_{day} \cdot 365} = \frac{6502{,}5}{0{,}0924 \cdot 365} = \frac{6502{,}5}{33{,}726} \approx 19{,}28\text{ року}\]</div>
+<p>Отримане значення суттєво перевищує цільову вимогу в 10 років. На практиці термін експлуатації обмежиться природною хімічною деградацією електроліту та пасивацією літієвого анода, що підтверджує можливість стабільної 10-12-річної експлуатації лічильників без втручання персоналу.</p>
+<h5 id="4">Крок 4. Оцінка завантаження радіоефіру та необхідної кількості шлюзів</h5>
+<p>Для перевірки стійкості системи до колізій необхідно визначити канальне навантаження. Загальна кількість передач становить:</p>
+<div class="arithmatex">\[N_{trans} = 15\,000\text{ пристроїв} \cdot 2\text{ передачі/добу} = 30\,000\text{ повідомлень на добу}\]</div>
+<p>Сумарний час перебування всіх вузлів в ефірі за добу дорівнює:</p>
+<div class="arithmatex">\[T_{air\_total} = 30\,000 \cdot 1{,}974\text{ с} = 59\,220\text{ секунд}\]</div>
+<p>Один стандартний шлюз LoRaWAN підтримує 8 незалежних частотних каналів. У добі міститься <span class="arithmatex">\(86\,400\text{ секунд}\)</span>. Відповідно, сумарний часовий фонд 8-канального шлюзу становить:</p>
+<div class="arithmatex">\[T_{gw\_fund} = 8 \cdot 86\,400 = 691\,200\text{ канало-секунд на добу}\]</div>
+<p>Коефіцієнт утилізації радіоефіру для одного шлюзу склав би <span class="arithmatex">\(\frac{59\,220}{691\,200} \approx 8{,}56\%\)</span>. Оскільки теоретична межа пропускної здатності Pure ALOHA становить <span class="arithmatex">\(18{,}4\%\)</span>, один шлюз теоретично міг би впоратися з трафіком. Проте для гарантування просторового резервування, нівелювання радіотіней від щільної забудови та мінімізації пакетних втрат нижче рівня <span class="arithmatex">\(1\%\)</span> необхідно забезпечити мінімум трикратне перекриття кожної точки масиву. </p>
+<p>Таким чином, для покриття району площею <span class="arithmatex">\(4\text{ км}^2\)</span> з підвальними вузлами потрібно розгорнути рівно 4 базові шлюзи, встановлені на панівних висотах житлового масиву.</p>
+<h4 id="_8">Інтерпретація результатів та альтернативні сценарії</h4>
+<p>Проведений інженерний розрахунок доводить, що приватна мережа LoRaWAN із чотирма 8-канальними шлюзами повністю задовольняє вимоги технічного завдання за автономністю (понад 10 років) та пропускною здатністю для 15 000 лічильників.</p>
+<p>Якщо розглядати альтернативні сценарії зміни вихідних вимог, інженерні рішення трансформуються наступним чином:</p>
+<ol>
+<li>
+<p>У разі підвищення вимог до дискретності збору телеметрії до одного опитування кожні 15 хвилин замість двох разів на добу, сумарне щоденне число передач зросте з 2 до 96 на пристрій, що збільшить енерговитрати передавача у 48 разів. У такому сценарії розрахунковий термін служби батареї скоротиться до 1,4 року, що зробить проект економічно неприйнятним. Одночасно сумарний час перебування вузлів в ефірі перевищить пропускну здатність шлюзів і викличе колізійний колапс мережі ALOHA.</p>
+</li>
+<li>
+<p>У разі перенесення вузлів обліку з підвалів на зовнішні фасади будівель параметр додаткового затухання знизиться з <span class="arithmatex">\(25\text{ дБ}\)</span> до <span class="arithmatex">\(0\text{ дБ}\)</span>. Це дозволить алгоритму ADR перевести всі пристрої з енергоємного режиму <span class="arithmatex">\(SF12\)</span> на високошвидкісний <span class="arithmatex">\(SF7\)</span>. Тривалість перебування в ефірі <span class="arithmatex">\(T_{ToA}\)</span> скоротиться з <span class="arithmatex">\(1974\text{ мс}\)</span> до <span class="arithmatex">\(61\text{ мс}\)</span> (у 32 рази), знизивши споживання енергії батареї майже до нуля (витрати визначатимуться виключно струмом сну) та збільшивши ємність мережі до понад 100 000 пристроїв на один шлюз.</p>
+</li>
+<li>
+<p>Якщо на об'єкті встановлено жорстку вимогу миттєвого дистанційного перекриття подачі води за несплату або в разі аварійного витоку, використання LoRaWAN Класу A стає неможливим через затримку реакції до 12 годин. Переведення пристроїв у Клас C дозволить реалізувати миттєву реакцію, але вимагатиме прокладання ліній зовнішнього живлення 220 В до кожного лічильника. Альтернативою стане перехід на стандарт NB-IoT із налаштуванням розширеного режиму eDRX, який дозволить приймати низхідні команди перекриття клапана з затримкою не більше двох хвилин, зберігаючи трирічну автономність від батареї підвищеної ємності.</p>
+</li>
+</ol>
+<hr />
+<h3 id="32">3.2. Зведена довідкова система лекції</h3>
+<p>Нижче наведено фундаментальну матрицю систематизації ключових понять, технологій та архітектурних рішень глобальних мереж низької потужності.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Термін / Концепція</th>
+<th style="text-align: left;">Формалізація / Сутність</th>
+<th style="text-align: left;">Реальний кейс застосування</th>
+<th style="text-align: left;">Основне обмеження / Ризик</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Chirp Spread Spectrum (CSS)</strong></td>
+<td style="text-align: left;">Модуляція лінійною зміною частоти <span class="arithmatex">\(f(t) = f_0 \pm \frac{BW}{T_{sym}} t\)</span> зі збереженням ортогональності сигналів на різних коефіцієнтах <span class="arithmatex">\(SF\)</span>.</td>
+<td style="text-align: left;">Фізичний рівень радіоінтерфейсу в бездротових сенсорних модулях LoRa.</td>
+<td style="text-align: left;">Низька спектральна ефективність та зниження швидкості передачі за великих значень <span class="arithmatex">\(SF\)</span>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Ultra Narrow Band (UNB)</strong></td>
+<td style="text-align: left;">Концентрація енергії сигналу у надвузькій смузі (<span class="arithmatex">\(100\text{ Гц}\)</span>), що знижує потужність теплового шуму приймача на <span class="arithmatex">\(31\text{ дБ}\)</span>.</td>
+<td style="text-align: left;">Глобальна мережа Sigfox для передачі надкоротких статусних сигналів телеметрії.</td>
+<td style="text-align: left;">Повна непридатність для потокових вимірювань і жорсткий ліміт на корисне навантаження в 12 байтів.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>SC-FDMA</strong></td>
+<td style="text-align: left;">Схема множинного доступу з однією несучою, що мінімізує відношення пікової до середньої потужності сигналу (PAPR).</td>
+<td style="text-align: left;">Висхідний радіоканал стандарту NB-IoT у режимах Single-tone та Multi-tone.</td>
+<td style="text-align: left;">Складність алгоритмічної компенсації частотного зсуву при русі об'єкта.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Link Budget (Енергетичний потенціал)</strong></td>
+<td style="text-align: left;">Різниця між потужністю випромінювання передавача та чутливістю приймача: <span class="arithmatex">\(LB = P_{tx} - S_{rx}\)</span>.</td>
+<td style="text-align: left;">Розрахунок радіопокриття при проникненні в цокольні поверхи та шахти.</td>
+<td style="text-align: left;">Нелінійне зростання втрат на дифракційних краях перешкод у щільній міській забудові.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Duty Cycle (Робочий цикл)</strong></td>
+<td style="text-align: left;">Відношення дозволеного сумарного часу випромінювання до загального часу спостереження: <span class="arithmatex">\(\frac{\sum T_{on}}{T_{obs}} \le 1\%\)</span>.</td>
+<td style="text-align: left;">Нормативний регламент комітету ETSI EN 300-220 для неліцензованого спектра <span class="arithmatex">\(868\text{ МГц}\)</span>.</td>
+<td style="text-align: left;">Неможливість роботи шлюзів LoRaWAN у режимі частих підтверджень (ACK) через вичерпання ліміту.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Adaptive Data Rate (ADR)</strong></td>
+<td style="text-align: left;">Алгоритм динамічного керування параметрами <span class="arithmatex">\(SF\)</span> та <span class="arithmatex">\(P_{tx}\)</span> на основі розрахунку запасу завадостійкості <span class="arithmatex">\(SNR_{margin}\)</span>.</td>
+<td style="text-align: left;">Оптимізація енергоспоживання стаціонарних лічильників газу та води на мережевому сервері.</td>
+<td style="text-align: left;">Непридатність для рухомих вузлів, де зміна просторового профілю каналу призводить до обриву зв'язку.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Power Saving Mode (PSM)</strong></td>
+<td style="text-align: left;">Стан надглибокого сну радіомодема із збереженням контексту реєстрації пристрою в опорній мережі 3GPP до 413 діб.</td>
+<td style="text-align: left;">Автономні датчики тиску в магістральних нафтопроводах із періодичністю сеансу раз на добу.</td>
+<td style="text-align: left;">Пристрій повністю недоступний для низхідних викликів і команд управління під час перебування в PSM.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Extended Discontinuous Reception (eDRX)</strong></td>
+<td style="text-align: left;">Протокольне розширення періоду перевірки пейджингового каналу базової станції в режимі очікування до <span class="arithmatex">\(40{,}96\text{ хв}\)</span>.</td>
+<td style="text-align: left;">Контролери розумного вуличного освітлення з можливістю включення за розкладом.</td>
+<td style="text-align: left;">Збільшення інтегрального споживання струму порівняно з PSM за високої частоти пейджингу.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Over-The-Air Activation (OTAA)</strong></td>
+<td style="text-align: left;">Процедура динамічного узгодження сесійних ключів <span class="arithmatex">\(NwkSKey\)</span> та <span class="arithmatex">\(AppSKey\)</span> на основі разових чисел <span class="arithmatex">\(DevNonce\)</span> та <span class="arithmatex">\(AppNonce\)</span>.</td>
+<td style="text-align: left;">Захищене введення в експлуатацію нових модулів обліку без статичного прошивання сесійних ключів.</td>
+<td style="text-align: left;">Ризик атаки на вичерпання ліміту реєстрацій за умови відсутності валідації лічильника сесій.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Static Context Header Compression (SCHC)</strong></td>
+<td style="text-align: left;">Механізм стиснення та фрагментації пакетів IPv6/UDP/CoAP до розмірів кадрів канального рівня LPWAN (RFC 8724).</td>
+<td style="text-align: left;">Наскрізне підключення лічильників з протоколом DLMS/COSEM через стек LoRaWAN.</td>
+<td style="text-align: left;">Високі вимоги до обчислювальних ресурсів мікроконтролера для розбирання та збирання контекстів.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="33">3.3. Контрольні питання та завдання</h3>
+<h4 id="_9">Прикладні тестові завдання</h4>
+<ol>
+<li>
+<p>Під час проектування системи дистанційного моніторингу витоків природного газу інженер налаштував передачу висхідних пакетів LoRaWAN з обов'язковим підтвердженням доставки (Confirmed Uplink). Система об'єднує 8 000 датчиків, що передають дані через один 8-канальний шлюз у піддіапазоні 868,0–868,6 МГц. Через тиждень після запуску відсоток втрачених пакетів зріс із 0,5% до 42%. Яка фундаментальна системна причина спричинила деградацію зв'язку?</p>
+</li>
+<li>
+<p>A. Відбулася деградація чутливості приймального тракту шлюзу внаслідок нагрівання вхідного підсилювача LNA.</p>
+</li>
+<li>
+<p>B. Шлюз вичерпав нормативний ліміт робочого циклу (Duty Cycle 1%) на передачу пакетів підтвердження ACK, через що датчики перейшли в режим повторних трансляцій.</p>
+</li>
+<li>
+<p>C. Виникла несумісність форматів шифрування ключів NwkSKey на стороні мережевого сервера через переповнення черги повідомлень.</p>
+</li>
+<li>
+<p>D. Радіомодеми сенсорів автоматично змінили ширину смуги пропускання з 125 кГц на 500 кГц для подолання завад.</p>
+</li>
+</ol>
+<details class="note">
+<summary>Розгорнути аналіз / відповідь</summary>
+<p><strong>Правильний варіант: B.</strong></p>
+<ol>
+<li>
+<p>Шлюз LoRaWAN підпорядковується тим самим нормативним обмеженням стандарту ETSI EN 300-220, що й кінцеві пристрої. У піддіапазоні 868,0–868,6 МГц максимальний робочий цикл випромінювання обмежений величиною 1% (не більше 36 секунд на годину на канал). За наявності 8 000 датчиків і спроби надсилання підтвердження ACK на кожен висхідний пакет, передавач шлюзу витрачає свій ліміт мовлення протягом перших хвилин години. Після вичерпання ліміту шлюз блокує випромінювання ACK-пакетів. Кінцеві датчики, не отримавши квитанції у вікнах RX1 та RX2, вважають передачу невдалою та ініціюють до 8 повторних спроб передачі того самого кадру. Це створює колізійний шторм в ефірі, лавиноподібно перевантажує канал Pure ALOHA та спричиняє катастрофічне падіння надійності доставки даних.</p>
+</li>
+<li>
+<p>Аналіз дистракторів:</p>
+</li>
+<li>
+<p>Варіант A є хибним, оскільки сучасні шлюзові концентратори промислового класу мають стабільні теплові характеристики та систему термокомпенсації, що виключає падіння чутливості на десятки децибел.</p>
+</li>
+<li>
+<p>Варіант C є хибним, оскільки ключі NwkSKey є статичними або узгодженими на рівні сесії математичними сутностями, які не можуть зазнати форматної деградації через розмір черг.</p>
+</li>
+<li>
+<p>Варіант D є хибним, оскільки пристрої LoRaWAN не мають права довільно змінювати ширину смуги пропускання без отримання явної конфігураційної команди від мережевого сервера.</p>
+</li>
+</ol>
+</details>
+<ol>
+<li>
+<p>Автономний сенсор вологості ґрунту в мережі NB-IoT налаштовано на роботу в режимі PSM зі значеннями таймерів: активний таймер T3324 = 10 секунд, періодичний таймер TAU T3412 = 24 години. Оператор надіслав команду дистанційного оновлення конфігурації вимірювань о 14:00, проте пристрій отримав і застосував команду лише наступного дня о 06:15. Чому виникла така часова затримка?</p>
+</li>
+<li>
+<p>A. Базова станція eNodeB відкинула команду через наявність помилок у транспортному протоколі SCTP.</p>
+</li>
+<li>
+<p>B. Пристрій перебував у режимі глибокого сну PSM з вимкненим радіоприймачем і зміг прийняти низхідну команду лише після виходу на черговий сеанс зв'язку.</p>
+</li>
+<li>
+<p>C. Радіомодем автоматично знизив рівень покриття до Coverage Enhancement Level 0, що заблокувало низхідний канал зв'язку.</p>
+</li>
+<li>
+<p>D. Сталася колізія пакетів у каналі довільного доступу NPRACH через одночасне оновлення прошивки сусідніх вузлів.</p>
+</li>
+</ol>
+<details class="note">
+<summary>Розгорнути аналіз / відповідь</summary>
+<p><strong>Правильний варіант: B.</strong></p>
+<ol>
+<li>
+<p>У режимі PSM після закінчення дії таймера T3324 (10 секунд після останньої передачі) радіотракт пристрою повністю вимикається для збереження енергії. Протягом періоду до спрацювання таймера T3412 термінал фізично не здатний приймати сигнали пейджингу або радіовиклику від базової станції. Будь-які низхідні повідомлення буферизуються на мережевому сервері (IoT Core) оператора та доставляються на пристрій лише тоді, коли він сам ініціює наступний сеанс зв'язку (за розкладом вимірювань о 06:15 або за завершенням 24-годинного таймера TAU).</p>
+</li>
+<li>
+<p>Аналіз дистракторів:</p>
+</li>
+<li>
+<p>Варіант A є хибним, оскільки протокол SCTP функціонує в опорній мережі стільникового оператора між eNodeB та MME/SGW і не має відношення до налаштувань таймерів енергозбереження кінцевого модуля.</p>
+</li>
+<li>
+<p>Варіант C є хибним, оскільки рівень CE0 навпаки є найбільш сприятливим режимом зв'язку з мінімальними затримками без потреби у повтореннях кадрів.</p>
+</li>
+<li>
+<p>Варіант D є хибним, оскільки канал NPRACH використовується для початкової синхронізації при висхідній передачі, а затримка низхідної команди зумовлена саме неактивним станом приймача в фазі PSM.</p>
+</li>
+</ol>
+</details>
+<ol>
+<li>
+<p>Для організації моніторингу температури в рефрижераторі, що рухається міжнародною трасою, обрано технологію Sigfox. Сенсор передає температуру кожні 10 хвилин. Під час руху через гірський перевал на швидкості 90 км/год зв'язок раптово зник на 40 хвилин, хоча потужність сигналу базових станцій на перевалі була достатньою. Який фізичний фактор спричинив відмову?</p>
+</li>
+<li>
+<p>A. Перевищення порогового значення кута нахилу фазової траєкторії лінійного чірпа модуляції CSS.</p>
+</li>
+<li>
+<p>B. Доплерівський зсув частоти на високій швидкості руху перевищив надвузьку смугу каналу 100 Гц, унеможлививши детектування сигналу DBPSK фільтрами базової станції.</p>
+</li>
+<li>
+<p>C. Спрацював апаратний захист від перегрівання підсилювача потужності передавача внаслідок роботи схеми SC-FDMA.</p>
+</li>
+<li>
+<p>D. Вичерпався добовий ліміт утилізації акумулятора через перехід вузла в режим постійного прийому Класу C.</p>
+</li>
+</ol>
+<details class="note">
+<summary>Розгорнути аналіз / відповідь</summary>
+<p><strong>Правильний варіант: B.</strong></p>
+<ol>
+<li>
+<p>Смуга пропускання висхідного каналу технології Sigfox становить лише 100 Гц. Доплерівський зсув частоти <span class="arithmatex">\(\Delta f_d\)</span>, що виникає при русі передавача зі швидкістю <span class="arithmatex">\(v = 90\text{ км/год} = 25\text{ м/с}\)</span> на частоті <span class="arithmatex">\(f = 868\text{ МГц}\)</span>, обчислюється за формулою <span class="arithmatex">\(\Delta f_d = \frac{v}{c} \cdot f = \frac{25}{3 \cdot 10^8} \cdot 868 \cdot 10^6 \approx 72{,}3\text{ Гц}\)</span>. Додатковий температурний дрейф нестабілізованого кварцового генератора сенсора в умовах холоду легко додає ще <span class="arithmatex">\(50\dots 100\text{ Гц}\)</span> зсуву. Внаслідок цього носійна частота виходить за межі вузької смуги пропускання демодулятора базової станції, і корисний сигнал повністю відфільтровується як завада.</p>
+</li>
+<li>
+<p>Аналіз дистракторів:</p>
+</li>
+<li>
+<p>Варіант A є хибним, оскільки модуляція CSS використовується в технології LoRa, а не в системі Sigfox.</p>
+</li>
+<li>
+<p>Варіант C є хибним, оскільки метод доступу SC-FDMA є складовою стандарту NB-IoT і не застосовується в архітектурі Sigfox.</p>
+</li>
+<li>
+<p>Варіант D є хибним, оскільки концепція класів пристроїв (Клас A/B/C) належить до специфікації LoRaWAN, а передавачі Sigfox взагалі не підтримують таку класифікацію.</p>
+</li>
+</ol>
+</details>
+<ol>
+<li>
+<p>Мережевий інженер намагається реалізувати передачу повних пакетів IPv6 поверх каналу LoRaWAN. Яке фундаментальне протокольне обмеження унеможливлює пряму передачу без використання проміжних механізмів адаптації, таких як SCHC?</p>
+</li>
+<li>
+<p>A. Відсутність криптографічного алгоритму AES-256 у специфікаціях протоколу LoRaWAN.</p>
+</li>
+<li>
+<p>B. Максимальний розмір кадру (MTU) для протоколу IPv6 повинен становити не менше 1280 байтів, що перевищує граничний розмір корисного навантаження кадру LoRaWAN (до 222 байтів).</p>
+</li>
+<li>
+<p>C. Несумісність частотного рознесення каналів стандарту IEEE 802.15.4 з адресацією глобальних мереж WAN.</p>
+</li>
+<li>
+<p>D. Неможливість роботи протоколу контролю передачі TCP поверх топологій типу «зірка зірок».</p>
+</li>
+</ol>
+<details class="note">
+<summary>Розгорнути аналіз / відповідь</summary>
+<p><strong>Правильний варіант: B.</strong></p>
+<ol>
+<li>
+<p>Специфікація стандарту IPv6 (RFC 8200) встановлює вимогу, згідно з якою кожен канальний рівень, що забезпечує пряму передачу дейтаграм IP, зобов'язаний підтримувати максимальний розмір блоку передачі (MTU) величиною щонайменше 1280 байтів. Максимальний розмір корисного навантаження кадру LoRaWAN фізично обмежений значенням від 51 до 222 байтів (залежно від коефіцієнта розширення SF). Пряма передача дейтаграми IPv6 призводить до відкидання пакета через неможливість розміщення заголовків і даних у кадрі. Для подолання цього обмеження робочою групою IETF було розроблено протокол статичного стиснення контексту заголовків та фрагментації SCHC (RFC 8724).</p>
+</li>
+<li>
+<p>Аналіз дистракторів:</p>
+</li>
+<li>
+<p>Варіант A є хибним, оскільки стандарт IPv6 не вимагає обов'язкової наявності саме шифрування AES-256 на канальному рівні для проходження мережевого трафіку.</p>
+</li>
+<li>
+<p>Варіант C є хибним, оскільки стандарт IEEE 802.15.4 регламентує мережі WPAN (наприклад, 6LoWPAN), а LoRaWAN базується на зовсім іншому фізичному радіоінтерфейсі.</p>
+</li>
+<li>
+<p>Варіант D є хибним, оскільки протокол TCP є транспортним протоколом і функціонує поверх будь-яких фізичних та логічних топологій канального рівня за умови забезпечення відповідного MTU та надійності.</p>
+</li>
+</ol>
+</details>
+<hr />
+<h4 id="_10">Завдання для самостійної роботи</h4>
+<h5 id="_11">Постановка задачі</h5>
+<p>Агрохолдинг планує розгорнути систему автоматизованого моніторингу мікроклімату та стану ґрунту на площі 50 км² (відкриті сільськогосподарські угіддя з перепадом висот рельєфу до 15 метрів). Система включає 2 000 автономних грунтових зондів, що вимірюють вологість на трьох горизонтах, температуру та електропровідність. Корисне навантаження одного вимірювального пакета становить 16 байтів. Періодичність передачі даних — один раз на 30 хвилин. Центральна садиба підприємства має щоглу зв'язку висотою 45 метрів із доступом до мережі Інтернет. Студенту необхідно розробити комплексний технічний проект телекомунікаційної підсистеми збору даних на основі технології LoRaWAN.</p>
+<h5 id="_12">Завдання для виконання</h5>
+<ol>
+<li>
+<p>Обчисліть параметри бюджету радіолінії для найбільш віддаленого зонда на відстані 5 км від щогли зв'язку за моделлю Okumura-Hata для відкритої місцевості, врахувавши висоту підвісу антени шлюзу 45 метрів та висоту штирьової антени сенсора 0,5 метра над рівнем ґрунту.</p>
+</li>
+<li>
+<p>Розрахуйте точний час перебування в ефірі (Time-on-Air) висхідного пакета для коефіцієнтів розширення спектра SF7 та SF10 у смузі 125 кГц зі швидкістю кодування паритету 4/5, визначивши допустимість застосування кожного з них відповідно до правила 1% Duty Cycle.</p>
+</li>
+<li>
+<p>Виконайте розрахунок необхідної ємності автономної літієвої батареї для забезпечення 7-річного життєвого циклу польового зонда за умови передачі телеметрії двічі на годину та споживання мікроконтролера в стані сну на рівні 2,5 мкА.</p>
+</li>
+<li>
+<p>Складіть структурну схему організації системи наскрізного шифрування телеметрії від сенсорного вузла до сервера додатків підприємства із зазначенням точок генерації, зберігання та використання ключів AppKey, NwkSKey та AppSKey.</p>
+</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Повернутись нагору
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Kyrylo Vadurin &bull; <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.top", "navigation.tracking", "header.autohide", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u0421\u043a\u043e\u043f\u0456\u0439\u043e\u0432\u0430\u043d\u043e \u0432 \u0431\u0443\u0444\u0435\u0440", "clipboard.copy": "\u0421\u043a\u043e\u043f\u0456\u044e\u0432\u0430\u0442\u0438 \u0432 \u0431\u0443\u0444\u0435\u0440", "search.result.more.one": "\u0429\u0435 1 \u0437\u0431\u0456\u0433 \u043d\u0430 \u0446\u0456\u0439 \u0441\u0442\u043e\u0440\u0456\u043d\u0446\u0456", "search.result.more.other": "\u0429\u0435 # \u0437\u0431\u0456\u0433\u0456\u0432 \u043d\u0430 \u0446\u0456\u0439 \u0441\u0442\u043e\u0440\u0456\u043d\u0446\u0456", "search.result.none": "\u0417\u0431\u0456\u0433\u0456\u0432 \u043d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u043e", "search.result.one": "\u0417\u043d\u0430\u0439\u0434\u0435\u043d\u043e 1 \u0437\u0431\u0456\u0433", "search.result.other": "\u0417\u043d\u0430\u0439\u0434\u0435\u043d\u043e # \u0437\u0431\u0456\u0433\u0456\u0432", "search.result.placeholder": "\u0420\u043e\u0437\u043f\u043e\u0447\u043d\u0456\u0442\u044c \u043f\u0438\u0441\u0430\u0442\u0438 \u0434\u043b\u044f \u043f\u043e\u0448\u0443\u043a\u0443", "search.result.term.missing": "\u041d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u043e \u0437\u0430\u043f\u0438\u0442\u0443", "select.version": "\u041e\u0431\u0440\u0430\u0442\u0438 \u0432\u0435\u0440\u0441\u0456\u044e"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

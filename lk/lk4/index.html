@@ -1,0 +1,3686 @@
+
+<!doctype html>
+<html lang="uk" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Навчальний портал з дисципліни "Технології ІоТ"">
+      
+      
+      
+      
+        <link rel="prev" href="../lk3/">
+      
+      
+        <link rel="next" href="../lk5/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Тема 4. Прикладні протоколи ІоТ (MQTT, CoAP) - Технології Інтернету речей</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#4" class="md-skip">
+          Перейти до змісту
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Хедер">
+    <a href="../.." title="Технології Інтернету речей" class="md-header__button md-logo" aria-label="Технології Інтернету речей" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Технології Інтернету речей
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Тема 4. Прикладні протоколи ІоТ (MQTT, CoAP)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan"  aria-label="Переключити на темну тему"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Переключити на темну тему" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="cyan"  aria-label="Переключити на світлу тему"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Переключити на світлу тему" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Пошук" placeholder="Пошук" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Шукати">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Очистити" aria-label="Очистити" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Пошук розпочато
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Вкладки" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Робоча програма
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../lk1/" class="md-tabs__link">
+          
+  
+  
+  Лекції
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../lb/lb1/" class="md-tabs__link">
+          
+  
+  
+  Лабораторні роботи
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../pz/pz1/" class="md-tabs__link">
+          
+  
+  
+  Практичні заняття
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../kp/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Курсовий проєкт
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../sr/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Самостійна робота
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../sr/quest/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Контрольні завдання (Іспит)
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Навігація" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Технології Інтернету речей" class="md-nav__button md-logo" aria-label="Технології Інтернету речей" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Технології Інтернету речей
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Робоча програма
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Лекції
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Лекції
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 1. Екосистема та архітектура IoT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 2. Технології WPAN та WLAN у IoT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 3. LPWAN технології
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 4. Прикладні протоколи ІоТ (MQTT, CoAP)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 4. Прикладні протоколи ІоТ (MQTT, CoAP)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Зміст">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Зміст
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Мета лекції
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Очікувані результати навчання
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Детальний покроковий план лекції
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Детальний покроковий план лекції">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-mqtt-coap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Теоретико-концептуальний базис. Архітектурні моделі та принципи функціонування протоколів MQTT і CoAP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Методологія та аналіз граничних умов. Бінарні формати, рівні надійності та системні бар'єри застосування
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Практичний індустріальний / фаховий кейс. Проектування гетерогенної телеметричної системи підприємства
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-mqtt-coap_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Теоретико-концептуальний базис. Архітектурні моделі та принципи функціонування протоколів MQTT і CoAP
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Теоретико-концептуальний базис. Архітектурні моделі та принципи функціонування протоколів MQTT і CoAP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-message-oriented-middleware-publishsubscribe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1. Парадигма Message-Oriented Middleware та архітектурний патерн «видавець-підписник» (Publish/Subscribe) із просторовим, часовим і синхронізаційним розв'язанням компонентів мережі
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2. Функціональна роль, внутрішня організація та механізми тематичної фільтрації брокера повідомлень у розподілених топологіях Інтернету речей
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-coap-restful-uri-udp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3. Специфікація протоколу CoAP у розрізі моделі RESTful, принципи адресації ресурсів URI та дворівнева структура взаємодії поверх ненадійного дейтаграмного транспорту UDP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-coap-observe-rfc-7641" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4. Механізм асинхронного спостереження CoAP Observe (RFC 7641) як реалізація розподіленої моделі підписки без використання централізованого брокера
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Вказівки для самостійного осмислення
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Методологія та аналіз граничних умов. Бінарні формати, рівні надійності та системні бар'єри застосування
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Методологія та аналіз граничних умов. Бінарні формати, рівні надійності та системні бар&#39;єри застосування">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-mqtt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1. Анатомія бінарного кадру MQTT та алгоритм кодування залишкової довжини
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-qos-0-1-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2. Алгоритмічні процедури квитування та рукостискання рівнів QoS 0, 1 та 2
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-keep-alive-lwt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3. Керування станом сесій, діагностика Keep-Alive та механізм LWT
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-coap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4. Транзакційний шар CoAP, експоненційний відступ та надійність дейтаграм
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5. Порівняльний аналіз системних бар'єрів, енергоефективності та накладних витрат у польових мережах
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Вказівки для самостійного осмислення
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Практичний індустріальний / фаховий кейс. Проектування гетерогенної телеметричної системи підприємства
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Практичний індустріальний / фаховий кейс. Проектування гетерогенної телеметричної системи підприємства">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-esp32-mosquitto-coap-mqtt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1. Комплексний фаховий кейс. Розробка та оптимізація багаторівневої телеметричної мережі моніторингу виробничого цеху на базі мікроконтролерів ESP32 та брокера Mosquitto з трансляцією протоколу CoAP у MQTT на крайовому шлюзі
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1. Комплексний фаховий кейс. Розробка та оптимізація багаторівневої телеметричної мережі моніторингу виробничого цеху на базі мікроконтролерів ESP32 та брокера Mosquitto з трансляцією протоколу CoAP у MQTT на крайовому шлюзі">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Постановка задачі / ситуації
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Покроковий аналіз та розв'язок
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Покроковий аналіз та розв&#39;язок">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-coap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 1. Аналітичний розрахунок розміру бінарного кадру CoAP та оцінка протокольної ефективності
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 2. Розрахунок тривалості активних радіофаз трансивера та сумарного енергетичного бюджету сенсора
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-coap-to-mqtt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 3. Алгоритм трансляції CoAP-to-MQTT на крайовому шлюзі
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 4. Розрахунок пропускної здатності та навантаження магістрального каналу зв'язку
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Інтерпретація результатів та альтернативні сценарії
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2. Зведена довідкова система лекції
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3. Контрольні питання та завдання
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3. Контрольні питання та завдання">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Прикладні тестові завдання
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Завдання для самостійної роботи
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Завдання для самостійної роботи">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Постановка задачі
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Завдання для виконання
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 5. Туманні (Fog) та граничні (Edge) обчислення
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 6. Мікроконтролерні платформи (ESP32)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 7. Інтелектуальні сенсори
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 8. Виконавчі пристрої
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 9. Віртуалізація та контейнеризація IoT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 10. IoT платформи та Middleware
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 11. Розумний будинок (Home Assistant)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 12. Промисловий ІоТ (IIoT)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 13. Big Data в ІоТ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 14. Machine Learning на межі мережі
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 15. Кібербезпека в системах ІоТ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Лабораторні роботи
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Лабораторні роботи
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 1. Моделювання топологій IoT-мереж
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 2. Симуляція підсистем Розумного будинку
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 3. Дослідження локального MQTT-брокера
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 4. Схемотехнічне моделювання вузла збору
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 5. Прошивка ESP32 для передавання телеметрії MQTT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 6. Декларативне програмування ESP32 (ESPHome)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 7. Серверне середовище Linux для IoT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 8. Контейнеризація в ІоТ (Docker Compose)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 9. Middleware ІоТ (Node-RED)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 10. Сервіс REST API для агрегації даних
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 11. Платформи розумного будинку (Home Assistant)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 12. Сценарії автоматизації Home Assistant
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 13. Обробка телеметрії мовою Python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 14. HMI Dashboard для диспетчеризації
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 15. Комплексне наскрізне тестування IoT-системи
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практичні заняття
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Практичні заняття
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 1. Розрахунок пропускної здатності та живлення
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 2. Проєктування ієрархії топіків MQTT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 3. Правила фільтрації на Edge-шлюзах
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 4. Моделювання АЦП для сенсорів
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 5. Оптимізація енергетичного профілю
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 6. Проєктування конфігурації Docker Compose
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 7. Логічні схеми в Node-RED
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 8. Сценарії Trigger-Condition-Action
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 9. Конвеєр обробки даних (ETL)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 10. Моделювання загроз безпеки (STRIDE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Курсовий проєкт
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Самостійна робота
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sr/quest/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Контрольні завдання (Іспит)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Зміст">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Зміст
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Мета лекції
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Очікувані результати навчання
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Детальний покроковий план лекції
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Детальний покроковий план лекції">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-mqtt-coap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Теоретико-концептуальний базис. Архітектурні моделі та принципи функціонування протоколів MQTT і CoAP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Методологія та аналіз граничних умов. Бінарні формати, рівні надійності та системні бар'єри застосування
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Практичний індустріальний / фаховий кейс. Проектування гетерогенної телеметричної системи підприємства
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-mqtt-coap_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Теоретико-концептуальний базис. Архітектурні моделі та принципи функціонування протоколів MQTT і CoAP
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Теоретико-концептуальний базис. Архітектурні моделі та принципи функціонування протоколів MQTT і CoAP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-message-oriented-middleware-publishsubscribe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1. Парадигма Message-Oriented Middleware та архітектурний патерн «видавець-підписник» (Publish/Subscribe) із просторовим, часовим і синхронізаційним розв'язанням компонентів мережі
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2. Функціональна роль, внутрішня організація та механізми тематичної фільтрації брокера повідомлень у розподілених топологіях Інтернету речей
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-coap-restful-uri-udp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3. Специфікація протоколу CoAP у розрізі моделі RESTful, принципи адресації ресурсів URI та дворівнева структура взаємодії поверх ненадійного дейтаграмного транспорту UDP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-coap-observe-rfc-7641" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4. Механізм асинхронного спостереження CoAP Observe (RFC 7641) як реалізація розподіленої моделі підписки без використання централізованого брокера
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Вказівки для самостійного осмислення
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Методологія та аналіз граничних умов. Бінарні формати, рівні надійності та системні бар'єри застосування
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Методологія та аналіз граничних умов. Бінарні формати, рівні надійності та системні бар&#39;єри застосування">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-mqtt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1. Анатомія бінарного кадру MQTT та алгоритм кодування залишкової довжини
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-qos-0-1-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2. Алгоритмічні процедури квитування та рукостискання рівнів QoS 0, 1 та 2
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-keep-alive-lwt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3. Керування станом сесій, діагностика Keep-Alive та механізм LWT
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-coap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4. Транзакційний шар CoAP, експоненційний відступ та надійність дейтаграм
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5. Порівняльний аналіз системних бар'єрів, енергоефективності та накладних витрат у польових мережах
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Вказівки для самостійного осмислення
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Практичний індустріальний / фаховий кейс. Проектування гетерогенної телеметричної системи підприємства
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Практичний індустріальний / фаховий кейс. Проектування гетерогенної телеметричної системи підприємства">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-esp32-mosquitto-coap-mqtt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1. Комплексний фаховий кейс. Розробка та оптимізація багаторівневої телеметричної мережі моніторингу виробничого цеху на базі мікроконтролерів ESP32 та брокера Mosquitto з трансляцією протоколу CoAP у MQTT на крайовому шлюзі
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1. Комплексний фаховий кейс. Розробка та оптимізація багаторівневої телеметричної мережі моніторингу виробничого цеху на базі мікроконтролерів ESP32 та брокера Mosquitto з трансляцією протоколу CoAP у MQTT на крайовому шлюзі">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Постановка задачі / ситуації
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Покроковий аналіз та розв'язок
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Покроковий аналіз та розв&#39;язок">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-coap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 1. Аналітичний розрахунок розміру бінарного кадру CoAP та оцінка протокольної ефективності
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 2. Розрахунок тривалості активних радіофаз трансивера та сумарного енергетичного бюджету сенсора
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-coap-to-mqtt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 3. Алгоритм трансляції CoAP-to-MQTT на крайовому шлюзі
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 4. Розрахунок пропускної здатності та навантаження магістрального каналу зв'язку
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Інтерпретація результатів та альтернативні сценарії
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2. Зведена довідкова система лекції
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3. Контрольні питання та завдання
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3. Контрольні питання та завдання">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Прикладні тестові завдання
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Завдання для самостійної роботи
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Завдання для самостійної роботи">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Постановка задачі
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Завдання для виконання
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="4">Тема 4. Прикладні протоколи Інтернету речей</h1>
+<h2 id="_1">Мета лекції</h2>
+<p>Формування у майбутніх інженерів комплексної системи фундаментальних знань і прикладних компетенцій щодо архітектури, принципів функціонування та механізмів реалізації протоколів прикладного рівня MQTT та CoAP, які оптимізовані для функціонування в умовах суворих апаратних та мережевих обмежень систем Інтернету речей, із акцентом на вибір раціонального комунікаційного стека, забезпечення гарантованої доставки даних, досягнення максимальної енергоефективності кінцевих вузлів та їхньої безшовної інтеграції з хмарними і туманними аналітичними платформами сучасних автоматизованих комплексів.</p>
+<h2 id="_2">Очікувані результати навчання</h2>
+<ol>
+<li>
+<p><strong>Знання та розуміння.</strong> Здобувачі вищої освіти засвоять базові концепції архітектурних патернів Publish/Subscribe та RESTful для розподілених середовищ Інтернету речей, детально вивчивши бінарну структуру пакетів MQTT і CoAP, призначення керуючих прапорців, механізми збережених повідомлень Retain, заповіту LWT, а також функціональні відмінності чотирьох типів повідомлень транзакційного рівня CoAP.</p>
+</li>
+<li>
+<p><strong>Застосування.</strong> Здобувачі зможуть практично проектувати семантично вивірені простори ієрархічних топіків MQTT із використанням однорівневих і багаторівневих підстановочних знаків, налаштовувати клієнтські сесії з відповідними рівнями гарантії доставки QoS, а також конфігурувати взаємодію кінцевих мікроконтролерних вузлів із брокерами повідомлень і серверами CoAP із реалізацією адаптивних часових таймаутів.</p>
+</li>
+<li>
+<p><strong>Аналіз.</strong> Здобувачі навчаться здійснювати системний порівняльний інженерний аналіз протокольних стеків MQTT і CoAP за критеріями мережевого оверхеду, латентності, пропускної здатності, споживання струму та навантаження на обчислювальні ресурси мікроконтролера в умовах бездротових каналів зв'язку з високим рівнем втрат пакетів.</p>
+</li>
+<li>
+<p><strong>Оцінювання та синтез.</strong> Здобувачі оволодіють умінням аргументовано обґрунтовувати вибір прикладного протоколу під специфічні вимоги промислових та побутових сценаріїв Інтернету речей, синтезувати масштабовані багаторівневі телеметричні архітектури з трансляцією протоколів на межових шлюзах та оцінювати стійкість інфраструктури до апаратних збоїв, обривів ліній зв'язку й атак на цілісність інформаційних потоків.</p>
+</li>
+</ol>
+<hr />
+<h2 id="_3">Детальний покроковий план лекції</h2>
+<h3 id="1-mqtt-coap">1. Теоретико-концептуальний базис. Архітектурні моделі та принципи функціонування протоколів MQTT і CoAP</h3>
+<ul>
+<li>
+<p>1.1. Парадигма Message-Oriented Middleware та архітектурний патерн «видавець-підписник» (Publish/Subscribe) із просторовим, часовим і синхронізаційним розв'язанням компонентів мережі</p>
+</li>
+<li>
+<p>1.2. Функціональна роль, внутрішня організація та механізми тематичної фільтрації брокера повідомлень у розподілених топологіях Інтернету речей</p>
+</li>
+<li>
+<p>1.3. Специфікація протоколу CoAP у розрізі моделі RESTful, принципи адресації ресурсів URI та дворівнева структура взаємодії поверх ненадійного дейтаграмного транспорту UDP</p>
+</li>
+<li>
+<p>1.4. Механізм асинхронного спостереження CoAP Observe (RFC 7641) як реалізація розподіленої моделі підписки без використання централізованого брокера</p>
+</li>
+</ul>
+<h3 id="2">2. Методологія та аналіз граничних умов. Бінарні формати, рівні надійності та системні бар'єри застосування</h3>
+<ul>
+<li>
+<p>2.1. Анатомія бінарного кадру MQTT, структура фіксованого і змінного заголовків та алгоритм кодування залишкової довжини змінною кількістю байтів (Variable Byte Integer)</p>
+</li>
+<li>
+<p>2.2. Механізми забезпечення надійності в MQTT: процедури квитування та послідовності рукостискання для рівнів якості обслуговування QoS 0, QoS 1 і QoS 2</p>
+</li>
+<li>
+<p>2.3. Керування станом клієнтських сесій в MQTT через процедури діагностики Keep-Alive, кешування Retained Messages та превентивну публікацію заповіту Last Will and Testament (LWT)</p>
+</li>
+<li>
+<p>2.4. Транзакційний шар CoAP, алгоритм доставки підтверджуваних повідомлень (CON/ACK) та розрахунок інтервалів повторної передачі за моделлю експоненційного відступу (Exponential Backoff)</p>
+</li>
+<li>
+<p>2.5. Критичні бар'єри масштабування, вразливість до втрати пакетів у каналах LLN та обмеження енергоефективності транспортних протоколів TCP і UDP у польових сенсорних мережах</p>
+</li>
+</ul>
+<h3 id="3">3. Практичний індустріальний / фаховий кейс. Проектування гетерогенної телеметричної системи підприємства</h3>
+<p><strong>Тема наскрізної задачі.</strong> «Розробка та оптимізація багаторівневої телеметричної мережі моніторингу виробничого цеху на базі мікроконтролерів ESP32 та брокера Mosquitto з трансляцією протоколу CoAP у MQTT на крайовому шлюзі»</p>
+<h2 id="1-mqtt-coap_1">1. Теоретико-концептуальний базис. Архітектурні моделі та принципи функціонування протоколів MQTT і CoAP</h2>
+<h3 id="11-message-oriented-middleware-publishsubscribe">1.1. Парадигма Message-Oriented Middleware та архітектурний патерн «видавець-підписник» (Publish/Subscribe) із просторовим, часовим і синхронізаційним розв'язанням компонентів мережі</h3>
+<p>Традиційна парадигма розподілених обчислень, що базується на моделі взаємодії типу «клієнт-сервер» та протоколі HTTP, орієнтована на передачу значних обсягів структурованої інформації через стабільні дротові або високошвидкісні бездротові магістралі. У класичному шаблоні «запит-відповідь» клієнт ініціює з'єднання, надсилає текстовий запит із великою кількістю службових заголовків і переходить у стан очікування результату, що вимагає постійної підтримки активної сесії або регулярного синхронного опитування сервера. Застосування подібної схеми у гетерогенних середовищах Інтернету речей стикається з фундаментальними фізичними та апаратними обмеженнями, серед яких критичний дефіцит оперативної пам'яті мікроконтролерів, висока питома вартість енергетичних витрат на підтримку радіоканалу та нестабільність бездротових сенсорних мереж із частими втратами пакетів.</p>
+<p>Для подолання цих бар'єрів у галузі Інтернету речей домінує концепція проміжного програмного забезпечення, орієнтованого на повідомлення, відома як <strong>Message-Oriented Middleware</strong>. Базовим конструктивним елементом цієї парадигми є архітектурний патерн <strong>«видавець-підписник»</strong> (<strong>Publish/Subscribe</strong>), який виключає необхідність прямого адресного узгодження між джерелом інформації та її споживачем. Архітектура розподіленої взаємодії досягає системної ефективності завдяки реалізації трьох незалежних рівнів декомпозиції комунікаційного процесу.</p>
+<p>Перший рівень становить <strong>просторове розв'язання</strong>, яке полягає в тому, що відправник (видавець) та отримувачі (підписники) не потребують взаємного знання IP-адрес, мережевих портів або фізичного розташування один одного. Усі взаємодії замикаються на проміжному маршрутизуючому вузлі, завдяки чому топологія кінцевих пристроїв може динамічно змінюватися без потреби реконфігурації всієї мережі. Другим рівнем є <strong>часове розв'язання</strong>, згідно з яким взаємодіючі вузли не зобов'язані одночасно перебувати в активній мережевій фазі. Джерело даних здатне опублікувати виміряний параметр і негайно перейти в режим глибокого сну для збереження енергії батареї, тоді як проміжний вузол буферизує повідомлення і передає його споживачеві в момент його виходу на зв'язок. Третім фундаментальним аспектом є <strong>синхронізаційне розв'язання</strong>, що забезпечує асинхронність транзакцій: операція публікації не блокує виконання основного обчислювального потоку на мікроконтролері видавця, усуваючи простої процесорного ядра в очікуванні підтвердження доставки від віддалених абонентів.</p>
+<p>Математичний опис надійності доставки повідомлення <span class="arithmatex">\(P_{\text{deliv}}\)</span> у розподіленій Pub/Sub-системі з урахуванням просторово-часового розв'язання, ймовірності доступності вузлів та часу життя повідомлення описується наступною аналітичною залежністю:</p>
+<div class="arithmatex">\[P_{\text{deliv}}(T) = \prod_{j \in \text{Sub}(T)} \left[ 1 - \left(1 - p_j\right)^{1 + R_j} \right] \cdot \mathbb{I}\left(t_{\text{sub}, j} - t_{\text{pub}} \le \tau_{\text{TTL}}\right)\]</div>
+<p>У наведеній моделі множина <span class="arithmatex">\(\text{Sub}(T)\)</span> позначає актуальний перелік підписників, зареєстрованих на ієрархічну тему <span class="arithmatex">\(T\)</span>. Параметр <span class="arithmatex">\(p_j\)</span> визначає статистичну ймовірність успішної передачі одиничного кадру через фізичний радіоканал зв'язку до <span class="arithmatex">\(j\)</span>-го підписника в умовах стохастичних завад. Змінна <span class="arithmatex">\(R_j\)</span> відповідає за гранично дозволену кількість повторних спроб передачі непідтвердженого кадру з боку посередника. Функція <span class="arithmatex">\(\mathbb{I}(\cdot)\)</span> є індикаторною функцією Хевісайда, яка приймає одиничне значення за умови виконання часового критерію і дорівнює нулю у випадку його порушення. Змінна <span class="arithmatex">\(t_{\text{pub}}\)</span> позначає точну часову мітку публікації повідомлення джерелом, <span class="arithmatex">\(t_{\text{sub}, j}\)</span> вказує на часовий момент доступності <span class="arithmatex">\(j\)</span>-го клієнта для прийому даних, а константа <span class="arithmatex">\(\tau_{\text{TTL}}\)</span> регламентує максимальний час життя повідомлення у черзі очікування.</p>
+<blockquote>
+<p><strong>ПРАКТИЧНИЙ ЯКІР:</strong> У розподілених системах моніторингу нафтогазових трубопроводів автономні вібраційні сенсори транслюють аварійні осцилограми через супутникові модеми з посекундною тарифікацією, де часове та просторове розв'язання патерну Pub/Sub забезпечує доставку критичних сповіщень диспетчерам без підтримки постійного IP-з'єднання між польовим контролером та сервером SCADA.</p>
+</blockquote>
+<hr />
+<h3 id="12">1.2. Функціональна роль, внутрішня організація та механізми тематичної фільтрації брокера повідомлень у розподілених топологіях Інтернету речей</h3>
+<p>Центральним диспетчеризуючим вузлом у традиційних топологіях «видавець-підписник» виступає <strong>брокер повідомлень</strong>. Брокер є спеціалізованим серверним програмним комплексом, який бере на себе повне навантаження з організації комунікацій, звільняючи периферійні мікроконтролери від необхідності виконання ресурсоємних завдань взаємного пошуку пристроїв та узгодження статусів сесій. Основними системними завданнями брокера є прийом вхідних з'єднань від клієнтів, парсинг пакетів прикладного рівня, демультиплексування інформаційних потоків, буферизація повідомлень у чергах та їх гарантована реплікація відповідно до активних підписок.</p>
+<pre class="mermaid"><code>flowchart TD
+    subgraph ClientsPublishers["Клієнти-Видавці"]
+        P1["Сенсорний вузол 1 (ESP32)"]
+        P2["Промисловий контролер (PLC)"]
+    end
+
+    subgraph MessageBroker["Архітектура ядра брокера повідомлень"]
+        CM["Менеджер мережевих сесій (Session State)"]
+        AuthMod["Модуль автентифікації та контролю доступу (ACL)"]
+
+        subgraph Engine["Маршрутизація та буферизація"]
+            TT["Дерево ієрархічних топіків (Prefix Trie)"]
+            FiltEngine["Селектор фільтрації (Wildcard Engine)"]
+            QueueMgr["Менеджер черг (Message Queues &amp; Retain)"]
+        end
+
+        CM --&gt; AuthMod
+        AuthMod --&gt; TT
+        TT --&gt; FiltEngine
+        FiltEngine --&gt; QueueMgr
+    end
+
+    subgraph ClientsSubscribers["Клієнти-Підписники"]
+        S1["База даних часових рядів (InfluxDB)"]
+        S2["Панель моніторингу оператора (HMI)"]
+        S3["Шлюз аварійної сигналізації"]
+    end
+
+    P1 --&gt;|PUBLISH| CM
+    P2 --&gt;|PUBLISH| CM
+    QueueMgr --&gt;|DISPATCH| S1
+    QueueMgr --&gt;|DISPATCH| S2
+    QueueMgr --&gt;|DISPATCH| S3</code></pre>
+<p>Організація адресації в брокері спирається на структуру <strong>ієрархічних топіків</strong>, які формуються у вигляді рядків змінної довжини в кодуванні UTF-8, де окремі логічні рівні розмежовуються символом прямої косої риски. Для оптимізації маршрутизації повідомлень брокери використовують алгоритмічну структуру префіксного дерева (Trie). Вузли цього дерева відповідають окремим текстовим сегментам імен, а листки містять вказівники на черги підписників. Така деревоподібна схема дозволяє реалізувати гнучкі підписки завдяки використанню спеціальних метасимволів групової фільтрації.</p>
+<p>Символ <strong>«плюс»</strong> (<code>+</code>) виконує функцію однорівневого підстановочного знака і може заміщати строго один ієрархічний сегмент на будь-якій позиції шляху. Наприклад, вираз підписки <code>factory/workshop2/+/temperature</code> забезпечує отримання даних від будь-яких температурних датчиків, встановлених на різних технологічних лініях другого цеху. Символ <strong>«ґрати»</strong> (<code>#</code>) слугує багаторівневим підстановочним знаком і заміщує довільну кількість наступних дочірніх підрівнів дерева. За правилами протоколу цей символ може знаходитися виключно на завершальній позиції виразу підписки, тому запит <code>factory/workshop2/#</code> призведе до надсилання підписнику абсолютно всіх телеметричних даних, діагностичних параметрів та аварійних сповіщень зазначеного виробничого приміщення.</p>
+<p>Математична формалізація процесу відповідності між вектором опублікованого топіка <span class="arithmatex">\(\mathbf{T}\)</span> та вектором фільтра підписки <span class="arithmatex">\(\mathbf{F}\)</span> може бути представлена у вигляді наступної предикатної моделі:</p>
+<div class="arithmatex">\[\mathbf{T} = \left(t_1, t_2, \dots, t_n\right), \quad \mathbf{F} = \left(f_1, f_2, \dots, f_m\right)\]</div>
+<div class="arithmatex">\[\text{Match}(\mathbf{T}, \mathbf{F}) = \begin{cases} 
+\text{True}, &amp; \text{якщо } (m = n) \land \left(\forall i \in \{1, \dots, n\}: (f_i = t_i) \lor (f_i = '+')\right) \\ 
+\text{True}, &amp; \text{якщо } \exists k \le m: (f_k = '\#') \land \left(\forall i \lt  k: (f_i = t_i) \lor (f_i = '+')\right) \\ 
+\text{False}, &amp; \text{в усіх інших випадках.} 
+\end{cases}\]</div>
+<p>У наведеній моделі вектор <span class="arithmatex">\(\mathbf{T}\)</span> складається з <span class="arithmatex">\(n\)</span> послідовних текстових сегментів <span class="arithmatex">\(t_i\)</span>, які формують конкретний маршрут публікації без застосування спеціальних символів. Вектор фільтра <span class="arithmatex">\(\mathbf{F}\)</span> містить <span class="arithmatex">\(m\)</span> компонентів <span class="arithmatex">\(f_i\)</span>, які можуть бути як явними ідентифікаторами, так і підстановочними знаками. Перша умова описує строгий збіг довжини шляхів з урахуванням допустимості заміни окремих елементів знаком однорівневої підстановки. Друга умова фіксує правила обробки багаторівневого фільтра, коли наявність символу <code>_#_</code> на позиції <span class="arithmatex">\(k\)</span> санкціонує довільний залишок шляху за умови повного збігу всіх попередніх префіксних сегментів.</p>
+<blockquote>
+<p><strong>ТИПОВА ПОМИЛКА:</strong> Хибне ототожнення збережених повідомлень (Retained Messages) протоколу MQTT із механізмами персистентних черг брокерів корпоративного класу, таких як Apache Kafka чи RabbitMQ. Якщо видавець транслює повідомлення в топік без активації прапорця Retain, а в цей конкретний момент часу на даний топік немає жодного активного підписника, брокер негайно і безповоротно знищує цей пакет. Вузол, який підключиться до мережі навіть через одну мілісекунду після трансляції, не отримає повідомлення, якщо воно не було позначене як збережене.</p>
+</blockquote>
+<hr />
+<h3 id="13-coap-restful-uri-udp">1.3. Специфікація протоколу CoAP у розрізі моделі RESTful, принципи адресації ресурсів URI та дворівнева структура взаємодії поверх ненадійного дейтаграмного транспорту UDP</h3>
+<p>У випадках, коли кінцеві пристрої функціонують у бездротових персональних мережах із жорстким обмеженням енергоспоживання та обчислювальних ресурсів класу LLN (Low-Power and Lossy Networks), використання протоколу MQTT може виявитися надлишковим через необхідність встановлення повноцінної сесії TCP із тривалим трьохетапним рукостисканням (SYN, SYN-ACK, ACK) та суттєвими накладними витратами на підтримку каналу. Спеціально для таких умов робочою групою IETF CoRE був стандартизований обмежений протокол додатків <strong>CoAP</strong> (<strong>Constrained Application Protocol</strong>, RFC 7252).</p>
+<p>Протокол CoAP переносить архітектурні принципи передачі стану представлення (<strong>REST</strong>) у світ вбудованих мікросистем. На відміну від брокер-орієнтованих топологій, CoAP використовує пряму взаємодію за принципом «клієнт-сервер», де кожен інтелектуальний датчик або виконавчий механізм виступає повноцінним веб-сервером, ресурси якого однозначно ідентифікуються уніфікованими індикаторами ресурсів (<strong>URI</strong>). Для маніпуляції станом фізичних об'єктів використовуються стандартизовані методи прикладного рівня: операція <strong>GET</strong> виконує зчитування поточних показників датчика, <strong>POST</strong> здійснює створення нового ресурсу або ініціює обчислювальну функцію, <strong>PUT</strong> виконує примусове оновлення параметрів конфігурації актуатора, а <strong>DELETE</strong> видаляє відповідний логічний дескриптор.</p>
+<blockquote>
+<p><strong>ПРАКТИЧНИЙ ЯКІР:</strong> У муніципальних системах розумного вуличного освітлення мікроконтролери дорожніх світильників під керуванням бездротового стека 6LoWPAN використовують протокол CoAP, що дозволяє диспетчерській станції звертатися безпосередньо до кожного ліхтаря за його IPv6-адресою та змінювати скважність ШІМ-модулятора запитом PUT без постійного утримання TCP-з'єднань.</p>
+</blockquote>
+<p>Архітектурна модель CoAP реалізує функціональний розподіл на два логічні підрівні: подуровень обміну повідомленнями (<strong>Messages Layer</strong>) та подуровень запитів і відповідей (<strong>Request/Response Layer</strong>). Подуровень повідомлень працює безпосередньо поверх дейтаграмного протоколу <strong>UDP</strong> (використовуючи порт 5683 для незахищеного обміну та 5684 для шифрування за протоколом DTLS) і забезпечує компенсацію ненадійності транспортного середовища. Цей рівень оперує чотирма основними типами пакетів:</p>
+<ol>
+<li>
+<p>Підтверджувані повідомлення <strong>CON</strong> (Confirmable), які вимагають обов'язкової відповіді від протилежної сторони для перевірки факту проходження дейтаграми крізь мережу.</p>
+</li>
+<li>
+<p>Непідтверджувані повідомлення <strong>NON</strong> (Non-confirmable), які надсилаються без квитування для передачі періодичної телеметрії, де втрата окремого кадру не є критичною.</p>
+</li>
+<li>
+<p>Повідомлення підтвердження <strong>ACK</strong> (Acknowledgement), які підтверджують успішне отримання пакета типу CON і можуть транспортувати корисне навантаження відповіді.</p>
+</li>
+<li>
+<p>Повідомлення скидання <strong>RST</strong> (Reset), які вказують на отримання некоректного кадру або сигналізують про втрату контексту обробки на стороні сервера.</p>
+</li>
+</ol>
+<p>Подуровень запитів і відповідей відповідає за передачу кодів методів та статусів виконання. Для забезпечення коректного зіставлення запитів із отриманими відповідями у дейтаграмному середовищі CoAP застосовує роздільні механізми ідентифікації. Поле <strong>Message ID</strong> (16 бітів) функціонує виключно на подуровні повідомлень для виявлення дублікатів та підтвердження транзакцій між сусідніми вузлами. Натомість поле <strong>Token</strong> (довжиною від 0 до 8 байтів) належить до подуровня запитів і слугує наскрізним ідентифікатором сесії, що дозволяє клієнту зіставити отриману відповідь із раніше ініційованим запитом навіть у випадку, коли сервер повертає відкладену розділену відповідь (Separate Response) із новим числовим значенням Message ID.</p>
+<blockquote>
+<p><strong>КОНТРОЛЬНЕ ПИТАННЯ:</strong> За яких умов сервер CoAP повертає клієнту відповідь, у якій значення 16-бітного поля Message ID відрізняється від значення Message ID, переданого у вихідному запиті?</p>
+<p><details markdown="1">
+<summary>Розгорнути аналіз / відповідь</summary></p>
+<p><strong>Правильний варіант: У разі використання розділеної відповіді (Separate Response), коли обробка запиту вимагає тривалого часу.</strong></p>
+<ol>
+<li>
+<p>Коли клієнт надсилає запит у підтверджуваному повідомленні типу CON, сервер повинен негайно підтвердити фізичне отримання дейтаграми. Якщо сервер не може сформувати корисні дані миттєво (наприклад, триває перетворення АЦП повільного сенсора), він відправляє порожній кадр ACK із тим самим Message ID, завершуючи транзакцію на рівні повідомлень. Після завершення вимірювань сервер ініціює новий окремий пакет типу CON або NON, що містить результат обробки, поле Token для зв'язування з вихідним запитом та абсолютно новий Message ID, оскільки це незалежна дейтаграма в мережі UDP.</p>
+</li>
+<li>
+<p>Аналіз альтернативних випадків: У разі суміщеної відповіді (Piggybacked Response) сервер повертає корисні дані безпосередньо всередині первинного пакета ACK, тому Message ID зобов'язаний збігатися з Message ID запиту. При використанні непідтверджуваних повідомлень NON сервер не надсилає ACK взагалі, а відповідь повертається як новий незалежний запит або не генерується, проте базовий протокольний механізм зміни Message ID асоціюється саме з переходом від пігібекінгу до розділених відповідей через таймаути апаратного рівня.
+</details></p>
+</li>
+</ol>
+</blockquote>
+<hr />
+<h3 id="14-coap-observe-rfc-7641">1.4. Механізм асинхронного спостереження CoAP Observe (RFC 7641) як реалізація розподіленої моделі підписки без використання централізованого брокера</h3>
+<p>Класична парадигма REST спирається на пасивну роль сервера, який очікує вхідних команд і не може самостійно ініціювати передачу оновлень клієнтам. У динамічних сценаріях Інтернету речей це змушувало б клієнтські додатки періодично опитувати сенсорний вузол запитами GET, що призводить до невиправданого розходу енергії акумулятора та засмічення радіоефіру однотипним трафіком. Для інтеграції переваг патерну Publish/Subscribe безпосередньо у стек CoAP без введення виділеного брокера повідомлень було розроблено розширення протоколу <strong>CoAP Observe</strong> (стандартизоване у специфікації RFC 7641).</p>
+<p>Архітектурний принцип CoAP Observe трансформує звичайний стан взаємодії клієнта та сервера у відносини між спостерігачем та суб'єктом спостереження. Клієнт надсилає стандартний запит GET до цільового ресурсу, додаючи у заголовок спеціальну опцію <code>Observe</code> зі значенням <span class="arithmatex">\(0\)</span>. Наявність цієї опції сигналізує серверу про необхідність не лише повернути поточний стан ресурсу, але й внести клієнта до локального списку спостерігачів. Щоразу, коли фізичний стан об'єкта змінюється або спливає заданий часовий інтервал, сервер самостійно формує та транслює клієнту нове повідомлення зі свіжими даними, де опція Observe містить монотонно зростаючий порядковий номер оновлення.</p>
+<pre class="mermaid"><code>stateDiagram-v2
+    [*] --&gt; Неініціалізований: Запуск вузлів мережі
+
+    Неініціалізований --&gt; Реєстрація: Клієнт надсилає GET Observe=0 (CON)
+
+    state Реєстрація {
+        [*] --&gt; ОчікуванняСервера
+        ОчікуванняСервера --&gt; АвторизаціяСпостерігача: Перевірка прав доступу
+        АвторизаціяСпостерігача --&gt; ФіксаціяТокена: Збереження пари Token + IP/Port
+    }
+
+    Реєстрація --&gt; АктивнеСпостереження: Сервер повертає ACK 2.05 Content (Observe=1)
+
+    state АктивнеСпостереження {
+        [*] --&gt; МоніторингСтану
+        МоніторингСтану --&gt; Нотифікація: Зміна вимірюваного параметра
+        Нотифікація --&gt; ВідправкаNON: Використання ненадійних сповіщень
+        Нотифікація --&gt; ВідправкаCON: Контрольна перевірка зв'язку
+        ВідправкаNON --&gt; МоніторингСтану: Оновлення значення
+        ВідправкаCON --&gt; ОчікуванняACK: Очікування квитанції від клієнта
+        ОчікуванняACK --&gt; МоніторингСтану: ACK успішно отримано
+    }
+
+    АктивнеСпостереження --&gt; Деєстрація: Клієнт надсилає RST у відповідь на сповіщення
+    АктивнеСпостереження --&gt; Деєстрація: Клієнт надсилає GET з Observe=1
+    АктивнеСпостереження --&gt; Деєстрація: Таймаут повторних спроб CON (клієнт недоступний)
+
+    Деєстрація --&gt; [*]: Видалення запису зі списку клієнтів</code></pre>
+<p>Життєвий цикл відносин спостереження, наведений на діаграмі станів, демонструє адаптивні механізми контролю цілісності зв'язку. Сервер може надсилати нотифікації у вигляді непідтверджуваних повідомлень NON для мінімізації накладних витрат. Проте для запобігання ситуації, коли сервер продовжує відправляти сповіщення клієнту, який вийшов із ладу або перемістився в іншу підмережу, періодично використовується підтверджуване повідомлення CON. Якщо клієнт не відповідає на повідомлення CON протягом встановленої кількості повторів, сервер автоматично видаляє його зі списку спостерігачів. Клієнт також може ініціювати дереєстрацію двома шляхами: пасивно, відповівши кадром RST на чергове сповіщення, або активно, надіславши звичайний GET-запит із параметром <code>Observe=1</code>.</p>
+<p>Для комплексної систематизації розглянутих комунікаційних моделей та їх зіставлення з альтернативними протоколами розподілених систем складено наступну порівняльну таблицю.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Протокол / Технологія</th>
+<th style="text-align: left;">Парадигма взаємодії</th>
+<th style="text-align: left;">Транспортний протокол</th>
+<th style="text-align: left;">Ключовий механізм узгодження стану</th>
+<th style="text-align: left;">Приклад з реальної практики</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>MQTT</strong></td>
+<td style="text-align: left;">Централізована публікація та підписка (Pub/Sub)</td>
+<td style="text-align: left;">TCP (порти 1883, 8883)</td>
+<td style="text-align: left;">Централізований брокер повідомлень із деревом топіків та рівнями QoS</td>
+<td style="text-align: left;">Агрегація показників електролічильників житлового комплексу на шлюзі LoRaWAN-MQTT</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>CoAP (Базовий)</strong></td>
+<td style="text-align: left;">Клієнт-серверний RESTful (Запит-відповідь)</td>
+<td style="text-align: left;">UDP (порти 5683, 5684)</td>
+<td style="text-align: left;">Транзакційний шар Message ID з парними пакетами CON/ACK та токенами</td>
+<td style="text-align: left;">Моніторинг параметрів вологості ґрунту в сільськогосподарських сенсорних мережах 6LoWPAN</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>CoAP Observe</strong></td>
+<td style="text-align: left;">Розподілена публікація та підписка без брокера</td>
+<td style="text-align: left;">UDP (порти 5683, 5684)</td>
+<td style="text-align: left;">Реєстрація списку спостерігачів на сервері через розширення заголовка GET</td>
+<td style="text-align: left;">Пряме керування та синхронізація станів групи вуличних світильників у мережі Thread</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>HTTP/REST</strong></td>
+<td style="text-align: left;">Синхронний клієнт-сервер (Pull-модель)</td>
+<td style="text-align: left;">TCP (порти 80, 443)</td>
+<td style="text-align: left;">Сесійні текстові заголовки та явне синхронне опитування сервера (Polling)</td>
+<td style="text-align: left;">Завантаження звітів споживання енергії оператором через браузерний веб-інтерфейс</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>AMQP</strong></td>
+<td style="text-align: left;">Черги повідомлень та маршрутизація (MOM)</td>
+<td style="text-align: left;">TCP (порт 5672)</td>
+<td style="text-align: left;">Програмні вузли обміну (Exchanges), прив'язки (Bindings) та черги брокера</td>
+<td style="text-align: left;">Інтеграція банківських систем обробки фінансових мікротранзакцій та терміналів оплати</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>DDS</strong></td>
+<td style="text-align: left;">Розподілена шина даних (Data-Centric Pub/Sub)</td>
+<td style="text-align: left;">UDP / IP Multicast</td>
+<td style="text-align: left;">Децентралізована глобальна реляційна шина даних із розширеними політиками QoS</td>
+<td style="text-align: left;">Автономне керування рухом промислових мобільних роботів-штабелерів на складі</td>
+</tr>
+</tbody>
+</table>
+<p>Аналітичний огляд засвідчує, що протокол MQTT є технологічно зрілим стандартом для задач централізованої телеметрії з високими вимогами до кешування та моніторингу статусу пристроїв, тоді як CoAP разом із розширенням Observe забезпечує безпрецедентну швидкість реакції та енергоефективність в автономних мережах прямої взаємодії між розумними речами.</p>
+<hr />
+<h3 id="_4">Вказівки для самостійного осмислення</h3>
+<ol>
+<li>
+<p>Зіставте накладні витрати на передачу одного трибайтового показника температури при використанні протоколів HTTP, MQTT та CoAP, врахувавши мінімальні розміри заголовків прикладного, транспортного та мережевого рівнів для кожного випадку.</p>
+</li>
+<li>
+<p>Спроєктуйте семантичну структуру ієрархічного дерева топіків MQTT для автоматизованої системи моніторингу виробничих приміщень фармацевтичного заводу з урахуванням необхідності одночасної підписки на аварійні сповіщення від усіх критичних автоклавів.</p>
+</li>
+<li>
+<p>Проаналізуйте алгоритмічні ризики розсинхронізації спостерігача та суб'єкта спостереження в розширенні CoAP Observe за умов масової втрати дейтаграм UDP у зашумленому промисловому радіоефірі.</p>
+</li>
+</ol>
+<h2 id="2_1">2. Методологія та аналіз граничних умов. Бінарні формати, рівні надійності та системні бар'єри застосування</h2>
+<h3 id="21-mqtt">2.1. Анатомія бінарного кадру MQTT та алгоритм кодування залишкової довжини</h3>
+<p>Проєктування бінарного формату кадру в протоколі <strong>MQTT</strong> підпорядковане фундаментальному інженерному компромісу: забезпечити мінімальне навантаження на канал зв'язку при збереженні масштабованої структури метаданих. Кожен пакет протоколу складається з обов'язкового фіксованого заголовка, розмір якого починається від двох байтів, а також опціональних змінного заголовка та корисного навантаження. Перший байт фіксованого заголовка жорстко стандартизує розподіл бітових полів, де старша тетрада (біти 7–4) ідентифікує тип керуючого пакета, а молодша тетрада (біти 3–0) визначає спеціальні прапорці виконання транзакції.</p>
+<p>Починаючи з другого байта фіксованого заголовка, розміщується поле залишкової довжини (<strong>Remaining Length</strong>), яке визначає сумарну кількість байтів, що містяться у змінному заголовку та полі корисного навантаження поточного пакета. Для досягнення максимальної щільності упаковки при роботі як із мікроскопічними сенсорними значеннями, так і з великими масивами даних, розробники протоколу застосували алгоритм кодування змінною кількістю байтів (<strong>Variable Byte Integer</strong>). Згідно з цим підходом, молодші сім бітів кожного байта несуть інформаційне навантаження, тоді як найстарший восьмий біт слугує прапором продовження, вказуючи на наявність наступного байта довжини.</p>
+<p>Формалізація алгоритмічного процесу побайтового кодування довільного цілочисельного значення залишкової довжини <span class="arithmatex">\(L \in [0, 268\,435\,455]\)</span> у бінарну послідовність байтів <span class="arithmatex">\(B_0, B_1, \dots, B_{N-1}\)</span> представляється у вигляді наступної покрокової моделі:</p>
+<div class="arithmatex">\[
+\begin{aligned}
+\text{Крок 1 (Ініціалізація змінних процесу):} &amp; \quad X \leftarrow L, \quad i \leftarrow 0 \\
+\text{Крок 2 (Виділення поточного септичного сегмента):} &amp; \quad \text{encoded\_byte} \leftarrow X \pmod{128}, \quad X \leftarrow \lfloor X / 128 \rfloor \\
+\text{Крок 3 (Модифікація прапора продовження):} &amp; \quad \text{якщо } X &gt; 0 \implies \text{encoded\_byte} \leftarrow \text{encoded\_byte} \lor 128 \\
+\text{Крок 4 (Фіксація байта та циклічний перехід):} &amp; \quad B_i \leftarrow \text{encoded\_byte}, \quad i \leftarrow i + 1, \quad \text{повторювати Крок 2, доки } X &gt; 0
+\end{aligned}
+\]</div>
+<p>У наведеному формалізованому алгоритмі змінна <span class="arithmatex">\(X\)</span> позначає поточний нерозподілений числовий залишок довжини корисного навантаження кадру. Оператор <span class="arithmatex">\(\pmod{128}\)</span> виділяє молодші сім бітів поточного числа, які переносяться в бінарну комірку <span class="arithmatex">\(\text{encoded\_byte}\)</span>. Оператор <span class="arithmatex">\(\lfloor X / 128 \rfloor\)</span> виконує цілочисельне ділення зі зсувом вправо на сім бітових позицій. Логічна операція побітового «АБО» з числом 128 (<span class="arithmatex">\(0\text{x}80\)</span>) виставляє старший біт продовження в одиничний стан, якщо величина залишку <span class="arithmatex">\(X\)</span> строго більша за нуль. Масив <span class="arithmatex">\(B_i\)</span> зберігає результуючу послідовність бінарного представлення довжини кадру в пам'яті.</p>
+<p>Аналіз граничних умов функціонування цього алгоритму виявляє фундаментальні апаратні бар'єри при реалізації на мікроконтролерах із малою розрядністю шини. Математична межа кодування обмежує довжину пакета значенням <span class="arithmatex">\(268\,435\,455\)</span> байтів (рівно чотири байти в полі довжини). Якщо польовий вузол на базі 8-розрядного мікроконтролера AVR або 16-розрядного контролера MSP430 стикається з некоректно сформованим потоком байтів, у якому п'ятий байт поспіль має встановлений біт продовження, алгоритм входить у стан невизначеності. </p>
+<p>Крім того, на практиці передача пакетів, залишкова довжина яких перевищує доступний обсяг статичної оперативної пам'яті (SRAM) мікроконтролера, призводить до фрагментації купи (Heap Fragmentation) та аварійного перезавантаження системи через переповнення стека (Stack Overflow). У каналах із високим рівнем джитеру затримка між надходженням окремих байтів поля Remaining Length може бути інтерпретована локальним мережевим стеком як розрив пакета, що вимагає впровадження жорстких таймаутів побайтового зчитування на рівні драйвера послідовного інтерфейсу.</p>
+<hr />
+<h3 id="22-qos-0-1-2">2.2. Алгоритмічні процедури квитування та рукостискання рівнів QoS 0, 1 та 2</h3>
+<p>Специфікація MQTT визначає концепцію якості обслуговування (<strong>Quality of Service</strong>, <strong>QoS</strong>) як наскрізний контракт надійності, що укладається між відправником і брокером або між брокером і підписником. Обслуговування потоків телеметрії суттєво різниться за рівнем складності кінцевих автоматів станів та навантаженням на буферну пам'ять взаємодіючих сторін.</p>
+<p>При реалізації рівня <strong>QoS 0</strong> обмін обмежується одностороннім надсиланням кадру PUBLISH. Процедура не передбачає ведення обліку доставлених пакетів, тому поле ідентифікатора пакета (<strong>Packet Identifier</strong>) у змінному заголовку повністю відсутнє. Протилежна сторона приймає повідомлення за принципом максимальних зусиль (Best Effort).</p>
+<p>Рівень <strong>QoS 1</strong> спирається на двостороннє квитування. Відправник зобов'язаний присвоїти кожному повідомленню унікальний 16-бітний <code>Packet Identifier</code> і зберігати повну копію кадру в локальній черзі відправки (In-flight Queue). Прийом повідомлення підтверджується відправкою зворотного пакета <strong>PUBACK</strong>, що містить аналогічний ідентифікатор. До моменту надходження PUBACK повідомлення вважається незавершеним. Якщо час очікування відповіді перевищує встановлений таймаут, відправник повторно передає пакет із виставленим прапором дубліката <code>DUP=1</code>.</p>
+<p>Найбільш захищений рівень <strong>QoS 2</strong> унеможливлює як втрату, так і дублювання інформації завдяки чотиристоронньому сеансу рукостискання. Взаємодія розбивається на дві фази: первинну фіксацію отримання повідомлення та кінцеве вивільнення ресурсів із черги.</p>
+<pre class="mermaid"><code>sequenceDiagram
+    autonumber
+    actor Publisher as Клієнт-Видавець
+    participant Broker as Брокер повідомлень
+    actor Subscriber as Клієнт-Підписник
+
+    Note over Publisher,Broker: Фаза 1 рівня QoS 2: Публікація та первинне квитування
+    Publisher-&gt;&gt;Broker: PUBLISH (MID=0x04A1, QoS=2, DUP=0, Payload)
+    activate Broker
+    Broker-&gt;&gt;Broker: Збереження стану MID=0x04A1 у буфері
+    Broker--&gt;&gt;Publisher: PUBREC (MID=0x04A1)
+    deactivate Broker
+
+    Note over Publisher,Broker: Фаза 2 рівня QoS 2: Підтвердження фіксації та розблокування
+    activate Publisher
+    Publisher-&gt;&gt;Publisher: Блокування повторних передач Payload
+    Publisher-&gt;&gt;Broker: PUBREL (MID=0x04A1)
+    deactivate Publisher
+
+    activate Broker
+    Broker-&gt;&gt;Broker: Вивільнення повідомлення для відправки підписникам
+    Broker--&gt;&gt;Publisher: PUBCOMP (MID=0x04A1)
+    deactivate Broker
+
+    Note over Broker,Subscriber: Трансляція підписнику за обраним ним рівнем QoS 1
+    Broker-&gt;&gt;Subscriber: PUBLISH (MID=0x8F12, QoS=1, DUP=0, Payload)
+    Subscriber--&gt;&gt;Broker: PUBACK (MID=0x8F12)</code></pre>
+<p>Часова діаграма демонструє, що критичною ланкою протоколу є розв'язання можливих мережевих колізій на проміжних етапах передачі. Якщо пакет <strong>PUBREC</strong> або <strong>PUBREL</strong> губиться в каналі зв'язку, спрацьовує механізм повторної передачі відповідного пакета з тим самим числовим значенням ідентифікатора. </p>
+<blockquote>
+<p><strong>ВАЖЛИВО:</strong> Ідентифікатор пакета (Packet Identifier) залишається зайнятим і не може бути повторно використаний стеком для нових публікацій доти, доки поточна транзакція не завершиться отриманням фінального кадру PUBACK (для QoS 1) або PUBCOMP (для QoS 2). Пул доступних ідентифікаторів обмежений діапазоном <span class="arithmatex">\([1, 65\,535]\)</span>, тому перевищення ліміту одночасних непідтверджених транзакцій (In-flight Limit) призводить до блокування вихідного буфера клієнта.</p>
+</blockquote>
+<p>Аналіз граничних умов виявляє різке падіння ефективності рівнів QoS 1 та QoS 2 у бездротових каналах із високим показником затримки сигналу (RTT) та частими розривами сесій. У разі аварійного відключення зв'язку брокер зобов'язаний зберігати непідтверджені повідомлення для кожного підписника, у якого сесія зареєстрована як постійна (<code>CleanSession = 0</code>). Якщо відключений пристрій перебуває в офлайн-режимі протягом тривалого періоду, черга повідомлень брокера переповнюється, що призводить або до примусового скидання старих пакетів, або до вичерпання пулу оперативної пам'яті сервера та відмови в обслуговуванні всієї системи.</p>
+<hr />
+<h3 id="23-keep-alive-lwt">2.3. Керування станом сесій, діагностика Keep-Alive та механізм LWT</h3>
+<p>Специфікація протоколу MQTT передбачає розвинену систему контролю життєвого циклу мережевих з'єднань, яка базується на прапорі очищення сесії <strong>CleanSession</strong>, таймері спостереження <strong>Keep-Alive</strong> та механізмі заповіту <strong>Last Will and Testament</strong> (<strong>LWT</strong>).</p>
+<p>При встановленні з'єднання через керуючий пакет CONNECT клієнт передає конфігураційний біт CleanSession. Якщо прапор встановлено в одиничний стан (<code>CleanSession = 1</code>), брокер ініціює тимчасову сесію: усі підписки та недоставлені пакети знищуються в момент розриву транспортного TCP-з'єднання. Навпаки, нульове значення прапора (<code>CleanSession = 0</code>) зобов'язує брокер зберігати повний стан клієнтської сесії, включаючи список оформлених підписок, непідтверджені повідомлення рівнів QoS 1 та QoS 2, а також чергу нових публікацій, що надійшли під час відсутності клієнта в мережі.</p>
+<p>Для оперативного виявлення розривів зв'язку без очікування системного таймауту сокета операційної системи (який у стеку TCP може досягати двох годин) застосовується механізм Keep-Alive. Клієнт самостійно декларує інтервал очікування <span class="arithmatex">\(T_{\text{KA}}\)</span> у секундах під час відправки кадру CONNECT. Якщо за вказаний проміжок часу вузол не має корисних даних для публікації, він надсилає двобайтний тестовий пакет <strong>PINGREQ</strong>, на який брокер зобов'язаний негайно згенерувати відповідь <strong>PINGRESP</strong>.</p>
+<p>Формальний розрахунок контрольного таймауту відключення клієнта брокером <span class="arithmatex">\(T_{\text{disconnect}}\)</span> та умов активації механізму LWT описується наступними виразами:</p>
+<div class="arithmatex">\[T_{\text{timeout\_broker}} = 1{,}5 \cdot T_{\text{KA}}\]</div>
+<div class="arithmatex">\[
+\begin{aligned}
+\text{Крок 1 (Реєстрація контрольного часу):} &amp; \quad t_{\text{last\_activity}} \leftarrow \max(t_{\text{recv\_data}}, t_{\text{recv\_ping}}) \\
+\text{Крок 2 (Оцінка інтервалу мовчання):} &amp; \quad \Delta t_{\text{silence}} = t_{\text{current}} - t_{\text{last\_activity}} \\
+\text{Крок 3 (Прийняття рішення щодо скидання сесії):} &amp; \quad \text{якщо } \Delta t_{\text{silence}} &gt; T_{\text{timeout\_broker}} \implies \text{Session\_Abort}() \\
+\text{Крок 4 (Публікація заповіту LWT):} &amp; \quad \text{якщо } \text{Session\_Abort} = \text{True} \land \text{CleanDisconnect} = \text{False} \implies \text{Publish}(T_{\text{will}}, M_{\text{will}})
+\end{aligned}
+\]</div>
+<p>У даному алгоритмі змінна <span class="arithmatex">\(T_{\text{KA}}\)</span> позначає заявлений клієнтом період Keep-Alive, що масштабується брокером за стандартом коефіцієнтом <span class="arithmatex">\(1{,}5\)</span> для компенсації флуктуацій мережевої затримки. Змінна <span class="arithmatex">\(t_{\text{last\_activity}}\)</span> фіксує останній момент надходження довільного коректного пакета від клієнта. Параметр <span class="arithmatex">\(\Delta t_{\text{silence}}\)</span> визначає тривалість повної відсутності мережевих подій. Процедура <span class="arithmatex">\(\text{Session\_Abort}()\)</span> примусово закриває активний сокет із боку сервера. Заповітне повідомлення <span class="arithmatex">\(M_{\text{will}}\)</span> публікується в заздалегідь визначений топік <span class="arithmatex">\(T_{\text{will}}\)</span> тільки тоді, коли розрив каналу стався аварійно, без отримання фінального пакета DISCONNECT.</p>
+<blockquote>
+<p><strong>ПРАКТИЧНИЙ ЯКІР:</strong> У системах телеметрії комерційного транспорту через мобільні мережі 2G/3G конфігурація параметра Keep-Alive менше 30 секунд призводить до швидкого вичерпання заряду резервного акумулятора трекера та блокування SIM-картки стільниковим оператором через паразитно високу частоту відправки сигнальних пакетів PINGREQ у зонах нестабільного радіопокриття.</p>
+</blockquote>
+<p>Граничні умови надійності механізму LWT безпосередньо пов'язані з явищем мережевого мерехтіння (Network Flapping). У бездротових середовищах із глибокими інтерференційними завмираннями затримка доставки пакетів PINGREQ може перевищувати мультиплікований інтервал <span class="arithmatex">\(1{,}5 \cdot T_{\text{KA}}\)</span>. У цьому випадку брокер передчасно приймає рішення про аварійне падіння вузла і транслює в мережу повідомлення LWT про перехід у стан «Offline». Якщо мікроконтролер відновлює працездатність каналу через секунду після цього, виникає критичний системний конфлікт: брокер фіксує повторний запит CONNECT від клієнта з тим самим ClientID, що змушує його примусово закрити попередню сесію і генерує нескінченний цикл взаємних перепідключень.</p>
+<hr />
+<h3 id="24-coap">2.4. Транзакційний шар CoAP, експоненційний відступ та надійність дейтаграм</h3>
+<p>Протокол CoAP компенсує ненадійність дейтаграмного транспорту UDP за допомогою спеціалізованого транзакційного кінцевого автомата, ядрами якого є механізм підтверджуваних повідомлень (<strong>CON</strong>) та алгоритм повторної передачі з експоненційним відступом (<strong>Exponential Backoff</strong>). На відміну від транспортного протоколу TCP, який реалізує потокове ковзне вікно передачі, базовий CoAP (RFC 7252) використовує жорстке обмеження: між двома взаємодіючими кінцевими точками в один момент часу може бути відкрита лише одна непідтверджена транзакція (параметр <span class="arithmatex">\(N_{\text{START}} = 1\)</span>).</p>
+<p>У випадку надсилання повідомлення типу CON відправник встановлює таймер повторної передачі на початкове значення <span class="arithmatex">\(T_0\)</span>, яке розраховується з урахуванням випадкового зсуву для запобігання ефекту синхронної перевантаженості мережі (Thundering Herd Problem).</p>
+<p>Формалізація розрахунку таймаутів повторних передач і загального бюджету часу транзакції <span class="arithmatex">\(T_{\text{total\_wait}}\)</span> для максимальної кількості спроб <span class="arithmatex">\(\text{MAX\_RETRANSMIT}\)</span> представляється у вигляді послідовності кроків:</p>
+<div class="arithmatex">\[
+\begin{aligned}
+\text{Крок 1 (Рандомізація базового таймауту):} &amp; \quad T_0 = \text{ACK\_TIMEOUT} \cdot \left(1 + \text{rand}() \cdot (\text{ACK\_RANDOM\_FACTOR} - 1)\right) \\
+\text{Крок 2 (Експоненційне масштабування спроб):} &amp; \quad T_r = T_0 \cdot 2^r, \quad \forall r \in \{0, 1, \dots, \text{MAX\_RETRANSMIT}\} \\
+\text{Крок 3 (Інтегральна оцінка часу очікування):} &amp; \quad T_{\text{total\_wait}} = \sum_{r=0}^{\text{MAX\_RETRANSMIT}} T_r = T_0 \cdot \left(2^{\text{MAX\_RETRANSMIT} + 1} - 1\right)
+\end{aligned}
+\]</div>
+<p>У даному математичному описі константа <span class="arithmatex">\(\text{ACK\_TIMEOUT}\)</span> встановлена в специфікації за замовчуванням на рівні <span class="arithmatex">\(2{,}0\)</span> с. Параметр <span class="arithmatex">\(\text{ACK\_RANDOM\_FACTOR}\)</span> дорівнює <span class="arithmatex">\(1{,}5\)</span>. Змінна <span class="arithmatex">\(\text{rand}()\)</span> є функцією генерації псевдовипадкових чисел із рівномірним розподілом на інтервалі <span class="arithmatex">\([0, 1]\)</span>, що забезпечує отримання початкового таймауту <span class="arithmatex">\(T_0\)</span> у діапазоні від <span class="arithmatex">\(2{,}0\)</span> до <span class="arithmatex">\(3{,}0\)</span> с. Індекс <span class="arithmatex">\(r\)</span> визначає поточний номер повторної спроби передачі (<span class="arithmatex">\(0 \le r \le 4\)</span>). Значення <span class="arithmatex">\(\text{MAX\_RETRANSMIT} = 4\)</span> обмежує граничну кількість циклів ретрансляції, після вичерпання яких транзакція визнається невдалою, а ресурс — недоступним.</p>
+<p>Граничні умови цієї моделі проявляються при розгортанні CoAP у багатоскачкових мережах (<strong>Multi-hop Mesh</strong>) на базі технологій 6LoWPAN чи ZigBee. У випадку, коли кількість транзитних вузлів між клієнтом і сервером перевищує 4–5 стрибків, базовий час обігу пакета (RTT) у мережі може перевищувати мінімальний початковий таймаут <span class="arithmatex">\(T_0 = 2{,}0\)</span> с. Це спричиняє так звану фальшиву ретрансляцію: відправник починає повторне надсилання кадру CON зі збільшеним таймаутом ще до того, як вихідний пакет дійде до адресата. Мережа перевантажується дублікатами пакетів, буфери черг маршрутизаторів переповнюються, викликаючи системний колапс перевантаження (Congestion Collapse), за якого коефіцієнт корисного пропускання каналу падає майже до нуля.</p>
+<hr />
+<h3 id="25">2.5. Порівняльний аналіз системних бар'єрів, енергоефективності та накладних витрат у польових мережах</h3>
+<p>Вибір між протоколами MQTT та CoAP для польових сенсорних мереж вимагає ретельного інженерного зіставлення накладних витрат усіх рівнів комунікаційного стека. Фізичний рівень стандарту IEEE 802.15.4 жорстко обмежує максимальний розмір кадру (<strong>MTU</strong>) величиною 127 байтів. Якщо врахувати накладні витрати канального рівня MAC (до 25 байтів) та заголовка безпеки AES-CCM (до 14 байтів), доступний обсяг для передачі даних вищих рівнів становить лише близько 81–88 байтів.</p>
+<p>Транспортний протокол TCP, необхідний для MQTT, має фіксований заголовок розміром 20 байтів, тоді як дейтаграмний заголовок UDP, що використовується протоколом CoAP, займає всього 8 байтів. У поєднанні зі стандартним заголовком IPv6 (40 байтів) передача кадру MQTT вимагає обов'язкової фрагментації на рівні адаптації 6LoWPAN, оскільки сумарний стек заголовків <span class="arithmatex">\(40 + 20 + 2 = 62\)</span> байти залишає під корисні дані лічені байти. Натомість CoAP у комбінації зі стисненням заголовків 6LoWPAN (IPHC) дозволяє скоротити мережевий і транспортний оверхед до кількох байтів, укладаючи всю транзакцію разом із корисним навантаженням в один фізичний кадр IEEE 802.15.4.</p>
+<p>Математична залежність витрат енергії автономного вузла <span class="arithmatex">\(E_{\text{tx}}\)</span> на передачу корисного навантаження <span class="arithmatex">\(L_{\text{payload}}\)</span> з урахуванням сумарного оверхеду заголовків <span class="arithmatex">\(L_{\text{headers}}\)</span> та середнього струму споживання передавача <span class="arithmatex">\(I_{\text{tx}}\)</span> визначається формулою:</p>
+<div class="arithmatex">\[E_{\text{tx}} = U_{\text{bat}} \cdot I_{\text{tx}} \cdot \frac{8 \cdot (L_{\text{payload}} + L_{\text{headers}})}{R_{\text{data}}}\]</div>
+<p>де <span class="arithmatex">\(U_{\text{bat}}\)</span> — робоча напруга джерела живлення вузла (В); <span class="arithmatex">\(I_{\text{tx}}\)</span> — струм споживання радіотрансивера у режимі активного випромінювання (А); <span class="arithmatex">\(R_{\text{data}}\)</span> — фізична швидкість передачі даних у каналі (наприклад, <span class="arithmatex">\(250\,000\)</span> біт/с для IEEE 802.15.4); <span class="arithmatex">\(L_{\text{headers}}\)</span> — сумарний розмір службових заголовків усіх рівнів стека (байтів). Зі збільшенням <span class="arithmatex">\(L_{\text{headers}}\)</span> тривалість активного перебування трансивера в ефірі лінійно зростає, що критично скорочує життєвий цикл автономної батареї.</p>
+<p>У наступній аналітичній матриці систематизовано та зіставлено ключові моделі та методи обох протоколів за критеріями складності впровадження, енергетичних витрат та критичних експлуатаційних обмежень.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Протокольний режим / Метод</th>
+<th style="text-align: left;">Транспортний профіль</th>
+<th style="text-align: left;">Складність впровадження</th>
+<th style="text-align: left;">Енергетичний слід</th>
+<th style="text-align: left;">Критичні ризики / Обмеження</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>MQTT QoS 0</strong></td>
+<td style="text-align: left;">TCP (без повторів на рівні додатків)</td>
+<td style="text-align: left;">Низька (мінімальний клієнтський стек)</td>
+<td style="text-align: left;">Низький (відсутність квитування)</td>
+<td style="text-align: left;">Повна втрата телеметрії при короткочасних розривах каналу зв'язку</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>MQTT QoS 1</strong></td>
+<td style="text-align: left;">TCP (з двостороннім квитуванням PUBACK)</td>
+<td style="text-align: left;">Середня (потребує черги непідтверджених кадрів)</td>
+<td style="text-align: left;">Середній (наявність повторних передач)</td>
+<td style="text-align: left;">Можливість дублювання записів у базі даних при затримці PUBACK</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>MQTT QoS 2</strong></td>
+<td style="text-align: left;">TCP (чотиристороннє рукостискання)</td>
+<td style="text-align: left;">Висока (складний кінцевий автомат, персистентний стан)</td>
+<td style="text-align: left;">Високий (чотири пакети на одну транзакцію)</td>
+<td style="text-align: left;">Блокування вихідного буфера при високому RTT, загроза падіння брокера</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>CoAP NON</strong></td>
+<td style="text-align: left;">UDP (дейтаграмна передача без квитування)</td>
+<td style="text-align: left;">Мінімальна (простий формат повідомлення)</td>
+<td style="text-align: left;">Екстремально низький (ідеально для сну)</td>
+<td style="text-align: left;">Відсутність зворотного зв'язку про фізичну доставку інформації</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>CoAP CON</strong></td>
+<td style="text-align: left;">UDP (повтори з експоненційним відступом)</td>
+<td style="text-align: left;">Середня (таймери та облік Message ID)</td>
+<td style="text-align: left;">Низький / Змінний (залежить від втрат)</td>
+<td style="text-align: left;">Колапс перевантаження мережі (Congestion Collapse) при глибоких топологіях</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>CoAP Observe</strong></td>
+<td style="text-align: left;">UDP (асинхронні оновлення стану)</td>
+<td style="text-align: left;">Середня (керування списками спостерігачів)</td>
+<td style="text-align: left;">Низький (усуває необхідність опитування Polling)</td>
+<td style="text-align: left;">Ризик втрати клієнта при тривалій відсутності контрольних CON-сповіщень</td>
+</tr>
+</tbody>
+</table>
+<p>Порівняльний аналіз доводить, що застосування протоколу MQTT із високими рівнями QoS є виправданим виключно в магістральних ділянках мереж з доступом до постійного електроживлення, тоді як у напівпровідникових периферійних сегментах безпосереднього збору даних доцільно використовувати CoAP або MQTT-SN для збереження енергетичного ресурсу польових пристроїв.</p>
+<hr />
+<blockquote>
+<p><strong>КОНТРОЛЬНЕ ПИТАННЯ:</strong> Під час промислового випробування телеметричної мережі виявлено, що бездротові датчики вібрації на базі мікроконтролерів STM32, які транслюють дані за протоколом MQTT з рівнем надійності QoS 1 через стільниковий канал GPRS, повністю розряджають батарею за 48 годин замість розрахункових 12 місяців. Інженерний аудит зафіксував, що через високий рівень завад у цеху показник втрати пакетів у каналі зв'язку сягає <span class="arithmatex">\(35\%\)</span>, а час обігу пакета (RTT) коливається від <span class="arithmatex">\(1\,800\)</span> до <span class="arithmatex">\(4\,500\)</span> мс. У конфігурації клієнта параметр Keep-Alive встановлено на <span class="arithmatex">\(15\)</span> с, а таймаут очікування пакета PUBACK зафіксовано на рівні <span class="arithmatex">\(1\,000\)</span> мс. Здійсніть комплексний поетапний аналіз причин критичної енергетичної деградації вузла та сформулюйте необхідні коригувальні заходи.</p>
+<p><details markdown="1">
+<summary>Розгорнути аналіз / відповідь</summary></p>
+<p><strong>Правильний варіант: Аварійна деградація енергоефективності спричинена штормом повторних передач (Packet Storm) через некоректно занижений таймаут PUBACK та надмірний трафік Keep-Alive.</strong></p>
+<ol>
+<li><strong>Аналітичне обґрунтування виникнення проблеми:</strong></li>
+<li><strong>Конфлікт таймауту підтвердження:</strong> Значення RTT каналу становить <span class="arithmatex">\(1\,800–4\,500\)</span> мс, тоді як клієнт очікує підтвердження PUBACK лише <span class="arithmatex">\(1\,000\)</span> мс. Це означає, що клієнт гарантовано починає повторну передачу вихідного кадру з виставленим прапором <code>DUP=1</code> ще до того, як перший пакет фізично дійде до брокера. Радіомодем вузла працює у безперервному циклі випромінювання на максимальній потужності передавача, не переходячи в енергозберігаючий режим сну (Sleep Mode).</li>
+<li><strong>Надлишковість діагностичних пакетів:</strong> Встановлений період Keep-Alive у <span class="arithmatex">\(15\)</span> с змушує пристрій у моменти відсутності корисної телеметрії постійно пробуджувати модуль зв'язку для відправки кадру PINGREQ і очікування PINGRESP, що повністю нівелює можливості циклічного засинання мікроконтролера.</li>
+<li>
+<p><strong>Шторм дублікатів у стільниковому каналі:</strong> Враховуючи <span class="arithmatex">\(35\%\)</span> випадкових втрат пакетів, множинні дублікати перевантажують вихідний радіобуфер стільникового модема, провокуючи черги, подальше зростання RTT і безперервну генерацію повторних спроб.</p>
+</li>
+<li>
+<p><strong>Комплекс технічних заходів для вирішення проблеми:</strong></p>
+</li>
+<li>Збільшити таймаут очікування PUBACK до величини, що гарантовано перевищує максимальний RTT каналу з запасом: <span class="arithmatex">\(T_{\text{ack\_wait}} \ge 1{,}5 \cdot \text{RTT}_{\text{max}} = 1{,}5 \cdot 4\,500\text{ мс} = 6\,750\text{ мс}\)</span>, а також впровадити алгоритм експоненційного відступу для інтервалів між повторами.</li>
+<li>Збільшити параметр Keep-Alive до технологічно обґрунтованого максимуму (наприклад, <span class="arithmatex">\(300–600\)</span> с), перевівши відправку статусів на механізм LWT або рідкісні контрольні синхронізації.</li>
+<li>Реалізувати локальне накопичення телеметричних пакетів у енергонезалежній flash-пам'яті мікроконтролера з наступною пакетною передачею пачки даних за один короткий сеанс зв'язку (Batch Uploading) замість спроби надсилання кожної окремої точки вимірювання в реальному часі.
+</details></li>
+</ol>
+</blockquote>
+<hr />
+<h3 id="_5">Вказівки для самостійного осмислення</h3>
+<ol>
+<li>
+<p>Розрахуйте аналітично загальну тривалість блокування клієнтського потоку CoAP при втраті перших трьох підтверджуваних повідомлень CON, прийнявши початковий нормативний параметр <span class="arithmatex">\(\text{ACK\_TIMEOUT} = 3{,}0\)</span> с та випадковий коефіцієнт рандомізації <span class="arithmatex">\(\text{rand}() = 0{,}75\)</span>.</p>
+</li>
+<li>
+<p>Проаналізуйте потенційні загрози вичерпання ресурсів оперативної пам'яті брокера Mosquitto при масовому аварійному відключенні 10 000 клієнтів, які працюють за схемою <code>CleanSession = 0</code> з рівнем надійності QoS 1, якщо вхідний потік нових публікацій від інших джерел зберігає інтенсивність 50 повідомлень на секунду.</p>
+</li>
+<li>
+<p>Оцініть граничні умови застосування протоколу CoAP у топологіях із трансляцією мережевих адрес (NAT), визначивши мінімально допустимі інтервали відправки трафіку для підтримки відкритого стану сесійних таблиць маршрутизаторів.</p>
+</li>
+</ol>
+<h2 id="3_1">3. Практичний індустріальний / фаховий кейс. Проектування гетерогенної телеметричної системи підприємства</h2>
+<h3 id="31-esp32-mosquitto-coap-mqtt">3.1. Комплексний фаховий кейс. Розробка та оптимізація багаторівневої телеметричної мережі моніторингу виробничого цеху на базі мікроконтролерів ESP32 та брокера Mosquitto з трансляцією протоколу CoAP у MQTT на крайовому шлюзі</h3>
+<h4 id="_6">Постановка задачі / ситуації</h4>
+<p>На металургійному комбінаті модернізується цех гарячого прокату, де експлуатується критичне роторне обладнання: промислові димососи, прокатні кліті та високовольтні насоси системи гідрозбиву окалини. Непередбачений вихід із ладу підшипників кочення на приводах цих вузлів призводить до аварійної зупинки всієї технологічної лінії із прямими збитками понад <span class="arithmatex">\(30\,000\)</span> доларів США за годину простою. Необхідно розгорнути бездротову автономну систему предиктивної діагностики вібрації та теплового стану обладнання на базі 120 сенсорних вузлів. </p>
+<p>Умови виробничого середовища характеризуються високим рівнем електромагнітних завад від частотно-регульованих приводів потужністю до 2 МВт, наявністю масивних залізобетонних та металевих екрануючих конструкцій, що спричиняють значне загасання радіосигналу та багатопроменеву інтерференцію, а також неможливістю прокладання ліній зовнішнього дротового живлення до контрольованих об'єктів. Центральна диспетчерська SCADA підприємства інтегрується виключно за протоколом MQTT, проте пряме використання зв'язки MQTT/TCP на автономних польових сенсорах неможливе через надмірні енергетичні витрати радіотрансивера на підтримку постійного з'єднання та високу ймовірність обриву сесій TCP у зашумленому ефірі.</p>
+<p>Для розв'язання поставленої задачі обрано гібридну багаторівневу топологію: безпосередній збір вібраційних і температурних даних здійснюється кінцевими автономними мікроконтролерними вузлами за енергоефективним протоколом CoAP поверх ненадійного дейтаграмного транспорту UDP у бездротовій мережі 6LoWPAN (IEEE 802.15.4), після чого потоки дейтаграм надходять на цеховий крайовий шлюз (Edge Gateway), де транслюються у формат JSON і публікуються через протокол MQTT у центральний брокер корпоративної мережі.</p>
+<p>Вихідні параметри, фізичні обмеження середовища та вимоги до автономності системи зведені у наступну таблицю.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Параметр системи</th>
+<th style="text-align: left;">Значення</th>
+<th style="text-align: left;">Одиниця вимірювання</th>
+<th style="text-align: left;">Інженерний зміст параметра</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Загальна кількість сенсорних вузлів (<span class="arithmatex">\(N\)</span>)</strong></td>
+<td style="text-align: left;">120</td>
+<td style="text-align: left;">шт.</td>
+<td style="text-align: left;">Кількість точок віброконтролю на роторному обладнанні цеху</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Корисне навантаження сенсора (<span class="arithmatex">\(L_{\text{payload}}\)</span>)</strong></td>
+<td style="text-align: left;">12</td>
+<td style="text-align: left;">байт</td>
+<td style="text-align: left;">Часова мітка (4 байти), RMS віброшвидкості (4 байти), температура (4 байти)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Період планової передачі (<span class="arithmatex">\(\Delta t_{\text{norm}}\)</span>)</strong></td>
+<td style="text-align: left;">10</td>
+<td style="text-align: left;">с</td>
+<td style="text-align: left;">Нормативний часовий крок опитування технологічного параметра</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Ємність батареї сенсора (<span class="arithmatex">\(C_{\text{bat}}\)</span>)</strong></td>
+<td style="text-align: left;">2400</td>
+<td style="text-align: left;"><span class="arithmatex">\(\text{мА}\cdot\text{год}\)</span></td>
+<td style="text-align: left;">Літій-тіонілхлоридний елемент живлення <span class="arithmatex">\(\text{Li-SOCl}_2\)</span> (<span class="arithmatex">\(U_{\text{bat}} = 3{,}6\text{ В}\)</span>)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Струм передавача радіомодуля (<span class="arithmatex">\(I_{\text{tx}}\)</span>)</strong></td>
+<td style="text-align: left;">28</td>
+<td style="text-align: left;">мА</td>
+<td style="text-align: left;">Споживання струму мікроконтролером при активному випромінюванні в ефір</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Струм приймача радіомодуля (<span class="arithmatex">\(I_{\text{rx}}\)</span>)</strong></td>
+<td style="text-align: left;">20</td>
+<td style="text-align: left;">мА</td>
+<td style="text-align: left;">Споживання струму у фазі очікування квитанції підтвердження ACK</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Струм глибокого сну вузла (<span class="arithmatex">\(I_{\text{sleep}}\)</span>)</strong></td>
+<td style="text-align: left;">2,5</td>
+<td style="text-align: left;">мкА</td>
+<td style="text-align: left;">Споживання енергії сенсором у фазі низькоспоживаючого сну Deep Sleep</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Швидкість у радіоканалі (<span class="arithmatex">\(R_{\text{data}}\)</span>)</strong></td>
+<td style="text-align: left;">250</td>
+<td style="text-align: left;">кбіт/с</td>
+<td style="text-align: left;">Фізична швидкість стандарту IEEE 802.15.4 у діапазоні 2,4 ГГц</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Ймовірність втрати пакета (<span class="arithmatex">\(p_{\text{loss}}\)</span>)</strong></td>
+<td style="text-align: left;">8</td>
+<td style="text-align: left;">%</td>
+<td style="text-align: left;">Статистична втрата дейтаграм через індустріальні завади в цеху</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Вимога до автономного терміну служби</strong></td>
+<td style="text-align: left;"><span class="arithmatex">\(\ge 24\)</span></td>
+<td style="text-align: left;">місяці</td>
+<td style="text-align: left;">Безперервне функціонування без регламентної заміни батареї</td>
+</tr>
+</tbody>
+</table>
+<p>Архітектурна взаємодія між польовими сенсорними вузлами, цеховим шлюзом конвертації та центральним сервером диспетчеризації представлена на наступній функціональній схемі.</p>
+<pre class="mermaid"><code>flowchart TD
+    subgraph FieldLayer["Польовий рівень бездротової мережі 6LoWPAN"]
+        S1["Сенсорний вузол 1 (ESP32 / CoAP Server)"]
+        S2["Сенсорний вузол 2 (ESP32 / CoAP Server)"]
+        SN["Сенсорний вузол 120 (ESP32 / CoAP Server)"]
+    end
+
+    subgraph EdgeLayer["Рівень крайового шлюзу (Edge Gateway / Linux)"]
+        BR["Граничний маршрутизатор 6LoWPAN (Border Router)"]
+        CoAPClient["Асинхронний диспетчер CoAP (CoAP Client / Observer)"]
+        PayloadProc["Семантичний транслятор та валідатор JSON"]
+        MQTTPub["Клієнтський модуль публікації MQTT"]
+
+        BR --&gt; CoAPClient
+        CoAPClient --&gt; PayloadProc
+        PayloadProc --&gt; MQTTPub
+    end
+
+    subgraph CorporateLayer["Корпоративний серверний рівень (SCADA / Cloud)"]
+        Mosquitto["Брокер повідомлень Eclipse Mosquitto"]
+        SCADA["Система диспетчеризації SCADA / InfluxDB"]
+
+        Mosquitto --&gt; SCADA
+    end
+
+    S1 --&gt;|CoAP CON / UDP| BR
+    S2 --&gt;|CoAP CON / UDP| BR
+    SN --&gt;|CoAP CON / UDP| BR
+    MQTTPub --&gt;|MQTT PUBLISH QoS 1 / TCP| Mosquitto</code></pre>
+<h4 id="_7">Покроковий аналіз та розв'язок</h4>
+<h5 id="1-coap">Крок 1. Аналітичний розрахунок розміру бінарного кадру CoAP та оцінка протокольної ефективності</h5>
+<p>Для забезпечення надійної доставки параметрів вібрації кінцеві вузли використовують підтверджувані повідомлення CoAP CON із методом PUT до ресурсу шлюзу. Повний розмір фізичного кадру на канальному рівні IEEE 802.15.4 формується сумою довжин заголовків усіх задіяних протокольних рівнів та корисного навантаження датчика:</p>
+<div class="arithmatex">\[L_{\text{frame}} = L_{\text{MAC}} + L_{\text{6LoWPAN}} + L_{\text{UDP}} + L_{\text{CoAP\_hdr}} + L_{\text{payload}}\]</div>
+<p>Підстановка числових значень специфікації дає наступний вираз:</p>
+<div class="arithmatex">\[L_{\text{frame}} = 23 + 7 + 8 + 16 + 12 = 66\text{ байтів}\]</div>
+<p>де заголовок рівня MAC стандарту IEEE 802.15.4 з адресацією розширеними ідентифікаторами EUI-64 займає 23 байти; заголовок адаптаційного рівня 6LoWPAN у режимі стиснення IPHC займає 7 байтів; заголовок дейтаграми UDP складає 8 байтів; заголовок CoAP разом із 4-байтним базовим заголовком, 4-байтним токеном кореляції, 7-байтною опцією Uri-Path та однобайтним маркером навантаження становить 16 байтів; поле корисних даних <span class="arithmatex">\(L_{\text{payload}}\)</span> дорівнює 12 байтам.</p>
+<p>Коефіцієнт протокольного оверхеду (протокольної ефективності) <span class="arithmatex">\(\eta_{\text{proto}}\)</span>, що показує частку цільових технологічних даних у загальному обсязі випроміненого радіоефіру, обчислюється як відношення корисного навантаження до повного розміру кадру:</p>
+<div class="arithmatex">\[\eta_{\text{proto}} = \frac{L_{\text{payload}}}{L_{\text{frame}}} \cdot 100\% = \frac{12}{66} \cdot 100\% \approx 18{,}18\%\]</div>
+<h5 id="2_2">Крок 2. Розрахунок тривалості активних радіофаз трансивера та сумарного енергетичного бюджету сенсора</h5>
+<p>Час передачі вихідного кадру <span class="arithmatex">\(t_{\text{tx}}\)</span> за фізичної швидкості каналу <span class="arithmatex">\(R_{\text{data}} = 250\,000\)</span> біт/с розраховується через пряме ділення бітового обсягу кадру на пропускну здатність:</p>
+<div class="arithmatex">\[t_{\text{tx}} = \frac{L_{\text{frame}} \cdot 8}{R_{\text{data}}} = \frac{66 \cdot 8}{250\,000} = \frac{528}{250\,000} \approx 2{,}112 \cdot 10^{-3}\text{ с} = 2{,}112\text{ мс}\]</div>
+<p>Сервер-шлюз у відповідь генерує порожній кадр підтвердження CoAP ACK довжиною 42 байти у фізичному каналі, тривалість прийому якого <span class="arithmatex">\(t_{\text{rx}}\)</span> становить:</p>
+<div class="arithmatex">\[t_{\text{rx}} = \frac{L_{\text{ACK}} \cdot 8}{R_{\text{data}}} = \frac{42 \cdot 8}{250\,000} = \frac{336}{250\,000} \approx 1{,}344 \cdot 10^{-3}\text{ с} = 1{,}344\text{ мс}\]</div>
+<p>З урахуванням статистичного коефіцієнта втрат у цеху <span class="arithmatex">\(p_{\text{loss}} = 0{,}08\)</span>, середня кількість передач для успішного завершення однієї транзакції становить <span class="arithmatex">\(k_{\text{tx}} = 1 + p_{\text{loss}} = 1{,}08\)</span>. Електричний заряд <span class="arithmatex">\(Q_{\text{active}}\)</span>, що споживається вузлом за один десятисекундний період вимірювання, складається з активних витрат на передачу, прийом квитанції та пасивного струму сну протягом залишку часу <span class="arithmatex">\(\Delta t_{\text{sleep}} = 10 - (t_{\text{tx}} + t_{\text{rx}}) \approx 9{,}9965\)</span> с:</p>
+<div class="arithmatex">\[Q_{\text{active}} = k_{\text{tx}} \cdot \left( I_{\text{tx}} \cdot t_{\text{tx}} + I_{\text{rx}} \cdot t_{\text{rx}} \right) + I_{\text{sleep}} \cdot \Delta t_{\text{sleep}}\]</div>
+<p>Підставляючи параметри струмів і часових інтервалів, отримуємо:</p>
+<div class="arithmatex">\[
+\begin{aligned}
+Q_{\text{active}} &amp;= 1{,}08 \cdot \left( 28\text{ мА} \cdot 0{,}002112\text{ с} + 20\text{ мА} \cdot 0{,}001344\text{ с} \right) + 0{,}0025\text{ мА} \cdot 9{,}9965\text{ с} \\
+&amp;= 1{,}08 \cdot \left( 0{,}059136 + 0{,}02688 \right)\text{ мА}\cdot\text{с} + 0{,}024991\text{ мА}\cdot\text{с} \\
+&amp;= 1{,}08 \cdot 0{,}086016 + 0{,}024991 \approx 0{,}092897 + 0{,}024991 = 0{,}117888\text{ мА}\cdot\text{с}
+\end{aligned}
+\]</div>
+<p>Середній інтегральний струм споживання сенсорного модуля <span class="arithmatex">\(I_{\text{avg}}\)</span> становить:</p>
+<div class="arithmatex">\[I_{\text{avg}} = \frac{Q_{\text{active}}}{\Delta t_{\text{norm}}} = \frac{0{,}117888\text{ мА}\cdot\text{с}}{10\text{ с}} \approx 0{,}011789\text{ мА} = 11{,}79\text{ мкА}\]</div>
+<p>Розрахунковий час автономної роботи сенсорного вузла <span class="arithmatex">\(T_{\text{life}}\)</span> від одного елемента <span class="arithmatex">\(\text{Li-SOCl}_2\)</span> за умови використання <span class="arithmatex">\(85\%\)</span> номінальної ємності (з поправкою на саморозряд елемента живлення близько <span class="arithmatex">\(1{,}5\%\)</span> на рік) обчислюється наступним чином:</p>
+<div class="arithmatex">\[T_{\text{life}} = \frac{C_{\text{bat}} \cdot 0{,}85}{I_{\text{avg}} \cdot 24 \cdot 365} = \frac{2400 \cdot 0{,}85}{0{,}011789 \cdot 8760} = \frac{2040}{103{,}27} \approx 19{,}75\text{ років}\]</div>
+<p>Отримане значення свідчить, що лімітуючим фактором життєвого циклу сенсора буде не витрата енергії на радіозв'язок, а природний хімічний розпад електроліту джерела живлення, що повністю задовольняє проектну вимогу щодо забезпечення мінімум двох років автономності.</p>
+<h5 id="3-coap-to-mqtt">Крок 3. Алгоритм трансляції CoAP-to-MQTT на крайовому шлюзі</h5>
+<p>Крайовий шлюз реалізує процедуру асинхронного мапінгу вхідних дейтаграм CoAP у структуру публікацій MQTT. Алгоритмічний конвеєр перетворення включає наступні операції:</p>
+<ol>
+<li>
+<p>Демодуляція кадру радіомодулем та вилучення вихідної дейтаграми IPv6/UDP через мережевий інтерфейс Tun/Tap операційної системи шлюзу.</p>
+</li>
+<li>
+<p>Верифікація Message ID та вилучення поля Token для формування негайного зворотного підтвердження CoAP ACK із кодом <code>2.04 Changed</code>.</p>
+</li>
+<li>
+<p>Вилучення значення змінного заголовка Uri-Path, виділення унікального апаратного ідентифікатора датчика та його зіставлення з мнемонічною схемою агрегатів цеху.</p>
+</li>
+<li>
+<p>Десеріалізація бінарного масиву корисного навантаження довжиною 12 байтів у фізичні величини за формулами калібрування сенсора.</p>
+</li>
+<li>
+<p>Формування вихідного текстового JSON-пакета для публікації у центральний брокер: <code>{"ts": 1711972800, "vibr_rms": 2.45, "temp": 64.2}</code>.</p>
+</li>
+<li>
+<p>Публікація сформованого кадру через локальний сокет клієнта MQTT у топік виду <code>factory/shop1/drive/pump_4/telemetry</code> з рівнем надійності QoS 1.</p>
+</li>
+</ol>
+<h5 id="4_1">Крок 4. Розрахунок пропускної здатності та навантаження магістрального каналу зв'язку</h5>
+<p>Сумарний трафік, що генерується шлюзом у напрямку центрального брокера Eclipse Mosquitto, формується 120 сенсорними вузлами. Інтенсивність надходження повідомлень на шлюз складає:</p>
+<div class="arithmatex">\[\lambda_{\text{total}} = \frac{N}{\Delta t_{\text{norm}}} = \frac{120}{10\text{ с}} = 12\text{ повідомлень/с}\]</div>
+<p>Довжина кадру MQTT публікації містить фіксований заголовок (2 байти), змінний заголовок із назвою топіка довжиною 37 байтів та Packet ID (2 байти), а також корисне навантаження JSON обсягом 58 байтів, що сумарно становить 99 байтів на рівні прикладного протоколу. З урахуванням зворотного квитування кадрами PUBACK (4 байти) та оверхеду протоколів TCP/IP (40 байтів на сегмент), сумарна смуга пропускання <span class="arithmatex">\(B_{\text{net}}\)</span>, необхідна для передачі телеметрії, дорівнює:</p>
+<div class="arithmatex">\[B_{\text{net}} = \lambda_{\text{total}} \cdot \left( L_{\text{MQTT\_total}} + L_{\text{PUBACK\_total}} \right) \cdot 8\]</div>
+<div class="arithmatex">\[B_{\text{net}} = 12 \cdot \left( (99 + 40) + (4 + 40) \right) \cdot 8 = 12 \cdot (139 + 44) \cdot 8 = 12 \cdot 183 \cdot 8 = 17\,568\text{ біт/с} \approx 17{,}57\text{ кбіт/с}\]</div>
+<p>Потрібна смуга пропускання становить менше <span class="arithmatex">\(0{,}2\%\)</span> пропускної спроможності стандартного каналу Fast Ethernet або Wi-Fi, що гарантує відсутність черг та затримок буферизації на транспортному рівні підприємства.</p>
+<h4 id="_8">Інтерпретація результатів та альтернативні сценарії</h4>
+<p>Розрахунки підтверджують, що використання гетерогенного підходу CoAP-to-MQTT забезпечує екстремально низьке енергоспоживання польових датчиків завдяки відсутності сесійних витрат TCP, тоді як магістральна мережа отримує повністю стандартизований потік даних із детермінованою інтенсивністю та гарантованою доставкою.</p>
+<p>У випадку зміни вихідних умов системи можливі наступні проектні альтернативи:</p>
+<ol>
+<li>
+<p>Якби нормативний період вимірювання було скорочено з 10 секунд до 100 мілісекунд для фіксації ударних вібраційних перехідних процесів, інтегральний струм споживання польового вузла зріс би до <span class="arithmatex">\(0{,}88\text{ мА}\)</span>, що зменшило б автономний термін служби батареї з 19 років до критичних 3,1 місяця, зробивши необхідним застосування енергетичного харвестингу вібрації на основі п'єзогенераторів.</p>
+</li>
+<li>
+<p>Якби замість бездротового сегмента 6LoWPAN/CoAP було ухвалено рішення реалізувати зв'язок сенсорів безпосередньо з хмарним брокером через стільникові модеми NB-IoT із протоколом MQTT, накладні витрати TCP-рукостискань та підтримка сесій Keep-Alive збільшили б витрату заряду батареї в 14 разів, спричиняючи часті втрати сповіщень під час перевантаження базових станцій мобільного оператора.</p>
+</li>
+</ol>
+<hr />
+<h3 id="32">3.2. Зведена довідкова система лекції</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Термін / Концепція</th>
+<th style="text-align: left;">Формалізація / Сутність</th>
+<th style="text-align: left;">Реальний кейс застосування</th>
+<th style="text-align: left;">Основне обмеження / Ризик</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Парадигма Publish/Subscribe</strong></td>
+<td style="text-align: left;">Архітектурна декомпозиція взаємодії через просторове, часове та синхронізаційне розв'язання</td>
+<td style="text-align: left;">Розподілений збір телеметрії у міській системі контролю якості повітря</td>
+<td style="text-align: left;">Залежність надійності всієї системи від доступності центрального вузла маршрутизації</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Брокер повідомлень (Broker)</strong></td>
+<td style="text-align: left;">Серверне програмне ядро, що виконує збереження сесій, селекцію топіків та тиражування пакетів</td>
+<td style="text-align: left;">Центральний диспетчерський сервер обміну даними між підсистемами Розумного будинку</td>
+<td style="text-align: left;">Деградація пропускної здатності та ризик вичерпання RAM при накопиченні офлайн-черг</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Ієрархічні топіки та Wildcards</strong></td>
+<td style="text-align: left;">Деревоподібні адреси UTF-8 із метасимволами вибірки: однорівневим <code>+</code> та кінцевим багаторівневим <code>#</code></td>
+<td style="text-align: left;">Масова адресація датчиків за географічним принципом: <code>city/district/street/sensor</code></td>
+<td style="text-align: left;">Помилкова підписка на кореневий рівень <code>#</code> перевантажує клієнт нерелевантними даними</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Рівень надійності MQTT QoS 0</strong></td>
+<td style="text-align: left;">Одноразова передача дейтаграми «At most once» без квитування на рівні додатків</td>
+<td style="text-align: left;">Високочастотна передача показників швидкості обертання вала двигуна на тахометр</td>
+<td style="text-align: left;">Безповоротна втрата критичної інформації при найменшому збої в каналі зв'язку</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Рівень надійності MQTT QoS 1</strong></td>
+<td style="text-align: left;">Гарантована доставка «At least once» із двостороннім квитуванням парами PUBLISH / PUBACK</td>
+<td style="text-align: left;">Передача сповіщень про перевищення порогового значення температури охолоджувача</td>
+<td style="text-align: left;">Необхідність обробки дублікатів повідомлень на стороні підписника</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Рівень надійності MQTT QoS 2</strong></td>
+<td style="text-align: left;">Доставка строго один раз «Exactly once» через чотиристоронній сеанс зв'язку PUBLISH-PUBREC-PUBREL-PUBCOMP</td>
+<td style="text-align: left;">Дистанційне списання коштів на інтелектуальному платіжному лічильнику газу</td>
+<td style="text-align: left;">Чотирикратне збільшення мережевого трафіку та висока латентність транзакції</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Механізм MQTT LWT (Заповіт)</strong></td>
+<td style="text-align: left;">Публікація збереженого повідомлення брокером від імені клієнта в разі нештатного обриву зв'язку</td>
+<td style="text-align: left;">Сигналізація про аварійний вихід із ладу польового охоронного сповіщувача</td>
+<td style="text-align: left;">Хибні спрацьовування при короткочасних мережевих флуктуаціях (Network Flapping)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Протокол CoAP (RFC 7252)</strong></td>
+<td style="text-align: left;">Дворівневий двійковий RESTful-протокол поверх UDP для ресурсів, що адресуються через URI</td>
+<td style="text-align: left;">Локальне опитування польових приладів обліку в низькошвидкісних мережах 6LoWPAN</td>
+<td style="text-align: left;">Відсутність вбудованих механізмів подолання трансляторів мережевих адрес (NAT)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Розширення CoAP Observe</strong></td>
+<td style="text-align: left;">Механізм асинхронного сповіщення клієнтів про зміну стану ресурсу сервера без брокера</td>
+<td style="text-align: left;">Автоматичне ввімкнення зрошувальних клапанів за сигналом від датчика вологості</td>
+<td style="text-align: left;">Ризик розсинхронізації списку спостерігачів при втраті контрольних пакетів CON</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Експоненційний відступ CoAP</strong></td>
+<td style="text-align: left;">Алгоритмічне подвоєння таймауту ретрансляцій <span class="arithmatex">\(T_r = T_0 \cdot 2^r\)</span> із рандомізованим коефіцієнтом</td>
+<td style="text-align: left;">Запобігання колізійному колапсу радіомережі при масовому відновленні зв'язку після збою</td>
+<td style="text-align: left;">Значне зростання часу виявлення повної відмови недоступного вузла мережі</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="33">3.3. Контрольні питання та завдання</h3>
+<h4 id="_9">Прикладні тестові завдання</h4>
+<ol>
+<li>
+<p>Під час моніторингу виробничої лінії пакувальний автомат публікує повідомлення про кількість виготовлених одиниць продукції за протоколом MQTT у топік <code>factory/line1/pack/counter</code> із прапором <code>CleanSession = 0</code> та рівнем надійності <code>QoS 1</code>. Через ремонтні роботи на комутаторі зв'язок із сервером бази даних (єдиним підписником) обривається на 30 хвилин. Автомат продовжує працювати і публікує 1800 повідомлень за цей час. Що відбудеться з накопиченими даними в момент відновлення фізичного з'єднання підписника з брокером?</p>
+</li>
+<li>
+<p>A. Усі 1800 повідомлень будуть безповоротно втрачені, оскільки брокер скидає буфер у разі відсутності квитанцій PUBACK понад 60 секунд.</p>
+</li>
+<li>
+<p>B. Брокер доставить підписнику лише одне останнє повідомлення, оскільки за специфікацією MQTT черга зберігає тільки один пакет для кожного зареєстрованого топіка.</p>
+</li>
+<li>
+<p>C. Брокер передасть підписнику всю послідовність накопичених повідомлень, при цьому для тих пакетів, квитанції за якими не були зафіксовані вчасно, буде виставлено прапорець <code>DUP = 1</code>.</p>
+</li>
+<li>
+<p>D. З'єднання буде розірвано брокером через виникнення фатальної помилки узгодження лічильника Packet Identifier, що перевищив розмірність 16 бітів.</p>
+</li>
+</ol>
+<details class="note">
+<summary>Розгорнути аналіз / відповідь</summary>
+<p><strong>Правильний варіант: C.</strong></p>
+<ol>
+<li>
+<p><strong>Аналітичне обґрунтування:</strong> Конфігурація <code>CleanSession = 0</code> зобов'язує брокер підтримувати персистентний стан сесії підписника під час його відсутності в мережі. Оскільки публікація велася з рівнем <code>QoS 1</code>, брокер зобов'язаний гарантувати доставку «At least once» і ставити всі вхідні пакети у чергу клієнта. Після перепідключення підписника брокер почне вивантаження черги. Для пакетів, за якими тривалість очікування перевищила таймаут, або у разі повторної спроби передачі, виставляється прапор дубліката <code>DUP = 1</code>.</p>
+</li>
+<li>
+<p><strong>Аналіз дистракторів:</strong></p>
+</li>
+<li>
+<p>Варіант A є помилковим, оскільки брокер MQTT не має фіксованого 60-секундного таймера знищення черг при збереженій сесії; пакети зберігаються відповідно до системних лімітів сховища (max_queued_messages).</p>
+</li>
+<li>
+<p>Варіант B описує поведінку збережених повідомлень (Retained Messages), а не черги гарантованої доставки сесії QoS 1.</p>
+</li>
+<li>
+<p>Варіант D є хибним, оскільки 1800 повідомлень потребують лише 1800 унікальних ідентифікаторів, що значно менше за 16-бітну межу (<span class="arithmatex">\(65\,535\)</span>), і навіть після досягнення межі ідентифікатори перевикористовуються циклічно.</p>
+</li>
+</ol>
+</details>
+<ol>
+<li>
+<p>Інженер налаштував систему адресних підписок для моніторингу роботи двигунів компресорної станції. У системі публікуються параметри за наступними шляхами топіків: <code>station/unit1/motor/temp</code>, <code>station/unit1/motor/voltage</code>, <code>station/unit1/pump/temp</code>, <code>station/unit2/motor/temp</code>. Підписник зареєстрував фільтр у вигляді <code>station/+/motor/+</code>. Які саме з перерахованих потоків даних будуть надходити до цього підписника?</p>
+</li>
+<li>
+<p>A. <code>station/unit1/motor/temp</code>, <code>station/unit1/motor/voltage</code> та <code>station/unit2/motor/temp</code>.</p>
+</li>
+<li>
+<p>B. Тільки <code>station/unit1/motor/temp</code> та <code>station/unit2/motor/temp</code>.</p>
+</li>
+<li>
+<p>C. Усі чотири зазначені потоки даних, оскільки перший символ «плюс» санкціонує отримання інформації від будь-якого підрозділу станції.</p>
+</li>
+<li>
+<p>D. Жоден із потоків, оскільки протокол MQTT забороняє використання двох символів однорівневої підстановки «плюс» в одному виразі фільтра.</p>
+</li>
+</ol>
+<details class="note">
+<summary>Розгорнути аналіз / відповідь</summary>
+<p><strong>Правильний варіант: A.</strong></p>
+<ol>
+<li>
+<p><strong>Аналітичне обґрунтування:</strong> Символ «плюс» (<code>+</code>) є однорівневим підстановочним знаком, який збігається з рівно одним довільним сегментом шляху між двома роздільниками <code>/</code>. Фільтр <code>station/+/motor/+</code> вимагає наявності слова <code>station</code> на першому рівні, довільного ідентифікатора на другому рівні, слова <code>motor</code> на третьому рівні та довільного параметра на четвертому рівні. Цьому критерію ідеально відповідають топіки <code>station/unit1/motor/temp</code>, <code>station/unit1/motor/voltage</code> та <code>station/unit2/motor/temp</code>.</p>
+</li>
+<li>
+<p><strong>Аналіз дистракторів:</strong></p>
+</li>
+<li>
+<p>Варіант B не враховує параметр <code>voltage</code>, який відповідає четвертому сегменту <code>+</code>.</p>
+</li>
+<li>
+<p>Варіант C містить топік <code>station/unit1/pump/temp</code>, де на третій позиції стоїть слово <code>pump</code>, що порушує вимогу наявності сегмента <code>motor</code>.</p>
+</li>
+<li>
+<p>Варіант D базується на хибному твердженні, оскільки специфікація MQTT дозволяє використовувати довільну кількість однорівневих знаків <code>+</code> на будь-яких позиціях ієрархії.</p>
+</li>
+</ol>
+</details>
+<ol>
+<li>
+<p>Вузол бездротової сенсорної мережі CoAP надсилає критичне повідомлення типу CON із початковим таймаутом <code>ACK_TIMEOUT = 2,0 с</code> та коефіцієнтом рандомізації <code>rand() = 0</code>. Внаслідок електромагнітної завади перші три спроби передачі (вихідна трансляція та дві наступні ретрансляції) зазнали втрати в радіоефірі. Лише четверта спроба виявилася успішною, і вузол отримав пакет ACK. Який загальний сумарний час минув від моменту первинного надсилання пакета до моменту фіксації відповіді, якщо фізичний час обігу сигналу (RTT) на четвертій спробі становив 200 мс?</p>
+</li>
+<li>
+<p>A. 2,2 секунди.</p>
+</li>
+<li>
+<p>B. 6,2 секунди.</p>
+</li>
+<li>
+<p>C. 14,2 секунди.</p>
+</li>
+<li>
+<p>D. 30,2 секунди.</p>
+</li>
+</ol>
+<details class="note">
+<summary>Розгорнути аналіз / відповідь</summary>
+<p><strong>Правильний варіант: C.</strong></p>
+<ol>
+<li>
+<p><strong>Аналітичне обґрунтування:</strong> За формулою експоненційного відступу CoAP:
+   $<span class="arithmatex">\(T_0 = \text{ACK\_TIMEOUT} \cdot (1 + 0) = 2{,}0\text{ с}\)</span>$</p>
+</li>
+<li>
+<p>Спроба 0 (первинна передача): таймаут очікування становить <span class="arithmatex">\(T_0 = 2{,}0\)</span> с (пакет втрачено, очікування вичерпано повністю).</p>
+</li>
+<li>
+<p>Спроба 1 (перша ретрансляція): таймаут подвоюється <span class="arithmatex">\(T_1 = 2{,}0 \cdot 2^1 = 4{,}0\)</span> с (пакет втрачено, очікування вичерпано).</p>
+</li>
+<li>
+<p>Спроба 2 (друга ретрансляція): таймаут знову подвоюється <span class="arithmatex">\(T_2 = 2{,}0 \cdot 2^2 = 8{,}0\)</span> с (пакет втрачено, очікування вичерпано).</p>
+</li>
+<li>
+<p>Спроба 3 (третя ретрансляція / четверта передача): відправка дейтаграми, відповідь ACK надходить через час <span class="arithmatex">\(\text{RTT} = 0{,}2\)</span> с.
+   Сумарний час: <span class="arithmatex">\(2{,}0 + 4{,}0 + 8{,}0 + 0{,}2 = 14{,}2\)</span> с.</p>
+</li>
+<li>
+<p><strong>Аналіз дистракторів:</strong></p>
+</li>
+<li>
+<p>Варіант A враховує лише одну початкову спробу та час RTT (<span class="arithmatex">\(2{,}0 + 0{,}2\)</span>).</p>
+</li>
+<li>
+<p>Варіант B враховує лише перші дві невдалі спроби (<span class="arithmatex">\(2{,}0 + 4{,}0 + 0{,}2\)</span>).</p>
+</li>
+<li>
+<p>Варіант D помилково включає таймаут третьої ретрансляції (<span class="arithmatex">\(16{,}0\)</span> с), який не відпрацьовував до кінця, оскільки пакет ACK був успішно отриманий через 200 мс після старту спроби.</p>
+</li>
+</ol>
+</details>
+<ol>
+<li>
+<p>Промисловий контролер підключено до брокера MQTT із періодом діагностики зв'язку <code>Keep-Alive = 60 с</code>. У конфігурації зареєстровано заповіт LWT із топіком <code>device/status</code> та корисним навантаженням <code>offline</code>. О 12:00:00 контролер успішно надіслав пакет телеметрії. О 12:00:40 стався раптовий фізичний обрив оптоволоконної лінії без закриття сокета TCP. Клієнт більше не міг відправляти пакети PINGREQ. О котрій годині брокер зафіксує аварійний стан та опублікує повідомлення LWT у мережу?</p>
+</li>
+<li>
+<p>A. О 12:00:40, у момент фактичного обриву оптоволоконного кабелю.</p>
+</li>
+<li>
+<p>B. О 12:01:00, після завершення базового інтервалу Keep-Alive у 60 секунд.</p>
+</li>
+<li>
+<p>C. О 12:01:30, після завершення нормативного таймауту <span class="arithmatex">\(1{,}5 \cdot \text{Keep-Alive}\)</span> від моменту останньої активності.</p>
+</li>
+<li>
+<p>D. О 12:02:10, оскільки коефіцієнт <span class="arithmatex">\(1{,}5\)</span> починає відлічуватися лише після настання моменту обриву лінії.</p>
+</li>
+</ol>
+<details class="note">
+<summary>Розгорнути аналіз / відповідь</summary>
+<p><strong>Правильний варіант: C.</strong></p>
+<ol>
+<li>
+<p><strong>Аналітичне обґрунтування:</strong> Згідно зі специфікацією MQTT брокер веде моніторинг часу від моменту надходження останнього валідного пакета від клієнта (<span class="arithmatex">\(t_{\text{last}} = \text{12:00:00}\)</span>). Граничний допустимий період мовчання клієнта становить півтора значення Keep-Alive:
+   $<span class="arithmatex">\(T_{\text{timeout}} = 1{,}5 \cdot 60\text{ с} = 90\text{ с}\)</span>$
+   Брокер зафіксує таймаут та ініціює аварійну процедуру публікації заповіту LWT точно в момент часу <span class="arithmatex">\(\text{12:00:00} + 90\text{ с} = \text{12:01:30}\)</span>.</p>
+</li>
+<li>
+<p><strong>Аналіз дистракторів:</strong></p>
+</li>
+<li>
+<p>Варіант A є неможливим, оскільки протокол TCP у напіввідкритому стані не генерує миттєвих сигналів розриву для прикладного рівня без отримання кадру TCP FIN/RST.</p>
+</li>
+<li>
+<p>Варіант B ігнорує вимогу специфікації щодо обов'язкового множення інтервалу Keep-Alive на коефіцієнт <span class="arithmatex">\(1{,}5\)</span> для компенсації мережевого джитеру.</p>
+</li>
+<li>
+<p>Варіант D помилково відлічує таймаут від моменту фізичної аварії, про який сервер не має жодної інформації до моменту настання системного таймауту сесії.</p>
+</li>
+</ol>
+</details>
+<hr />
+<h4 id="_10">Завдання для самостійної роботи</h4>
+<h5 id="_11">Постановка задачі</h5>
+<p>Розглядається проект муніципальної системи комерційного обліку споживання природного газу, що охоплює <span class="arithmatex">\(50\,000\)</span> інтелектуальних побутових лічильників, розміщених у багатоквартирних будинках міста. Прилади обліку живляться від незнімної внутрішньої батареї з розрахунковим терміном експлуатації не менше 10 років. Зв'язок організовано через стільникову технологію NB-IoT. Необхідно провести системне проєктування комунікаційного стека, обґрунтувати вибір між CoAP та MQTT, мінімізувати оверхед та запропонувати архітектуру безпечної передачі даних до муніципального розрахункового центру.</p>
+<h5 id="_12">Завдання для виконання</h5>
+<ol>
+<li>
+<p>Складіть математичну модель добового енергетичного балансу лічильника газу, порівнявши витрати енергії при передачі даних один раз на добу за протоколами CoAP/UDP та MQTT/TCP з урахуванням тривалості радіосесії в мережі NB-IoT.</p>
+</li>
+<li>
+<p>Розробіть ієрархічну схему адресації та структуру пакетів корисного навантаження із застосуванням бінарної серіалізації CBOR замість JSON для досягнення максимальної протокольної ефективності на канальному рівні.</p>
+</li>
+<li>
+<p>Опишіть алгоритмічні заходи щодо запобігання мережевому шторму повідомлень, якщо внаслідок збою базової станції стільникового зв'язку кілька тисяч лічильників одночасно вийдуть із режиму сну та спробують передати накопичені архіви споживання.</p>
+</li>
+<li>
+<p>Спроєктуйте архітектуру шлюзової підсистеми розрахункового центру з механізмами балансування вхідного дейтаграмного навантаження та верифікації цілісності даних на основі протоколу безпеки DTLS.</p>
+</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Повернутись нагору
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Kyrylo Vadurin &bull; <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.top", "navigation.tracking", "header.autohide", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u0421\u043a\u043e\u043f\u0456\u0439\u043e\u0432\u0430\u043d\u043e \u0432 \u0431\u0443\u0444\u0435\u0440", "clipboard.copy": "\u0421\u043a\u043e\u043f\u0456\u044e\u0432\u0430\u0442\u0438 \u0432 \u0431\u0443\u0444\u0435\u0440", "search.result.more.one": "\u0429\u0435 1 \u0437\u0431\u0456\u0433 \u043d\u0430 \u0446\u0456\u0439 \u0441\u0442\u043e\u0440\u0456\u043d\u0446\u0456", "search.result.more.other": "\u0429\u0435 # \u0437\u0431\u0456\u0433\u0456\u0432 \u043d\u0430 \u0446\u0456\u0439 \u0441\u0442\u043e\u0440\u0456\u043d\u0446\u0456", "search.result.none": "\u0417\u0431\u0456\u0433\u0456\u0432 \u043d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u043e", "search.result.one": "\u0417\u043d\u0430\u0439\u0434\u0435\u043d\u043e 1 \u0437\u0431\u0456\u0433", "search.result.other": "\u0417\u043d\u0430\u0439\u0434\u0435\u043d\u043e # \u0437\u0431\u0456\u0433\u0456\u0432", "search.result.placeholder": "\u0420\u043e\u0437\u043f\u043e\u0447\u043d\u0456\u0442\u044c \u043f\u0438\u0441\u0430\u0442\u0438 \u0434\u043b\u044f \u043f\u043e\u0448\u0443\u043a\u0443", "search.result.term.missing": "\u041d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u043e \u0437\u0430\u043f\u0438\u0442\u0443", "select.version": "\u041e\u0431\u0440\u0430\u0442\u0438 \u0432\u0435\u0440\u0441\u0456\u044e"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

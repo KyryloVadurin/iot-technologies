@@ -1,0 +1,3596 @@
+
+<!doctype html>
+<html lang="uk" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Навчальний портал з дисципліни "Технології ІоТ"">
+      
+      
+      
+      
+        <link rel="prev" href="../lk13/">
+      
+      
+        <link rel="next" href="../lk15/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Тема 14. Machine Learning на межі мережі - Технології Інтернету речей</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#14" class="md-skip">
+          Перейти до змісту
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Хедер">
+    <a href="../.." title="Технології Інтернету речей" class="md-header__button md-logo" aria-label="Технології Інтернету речей" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Технології Інтернету речей
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Тема 14. Machine Learning на межі мережі
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan"  aria-label="Переключити на темну тему"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Переключити на темну тему" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="cyan"  aria-label="Переключити на світлу тему"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Переключити на світлу тему" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Пошук" placeholder="Пошук" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Шукати">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Очистити" aria-label="Очистити" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Пошук розпочато
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Вкладки" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Робоча програма
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../lk1/" class="md-tabs__link">
+          
+  
+  
+  Лекції
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../lb/lb1/" class="md-tabs__link">
+          
+  
+  
+  Лабораторні роботи
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../pz/pz1/" class="md-tabs__link">
+          
+  
+  
+  Практичні заняття
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../kp/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Курсовий проєкт
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../sr/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Самостійна робота
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../sr/quest/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Контрольні завдання (Іспит)
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Навігація" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Технології Інтернету речей" class="md-nav__button md-logo" aria-label="Технології Інтернету речей" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Технології Інтернету речей
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Робоча програма
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Лекції
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Лекції
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 1. Екосистема та архітектура IoT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 2. Технології WPAN та WLAN у IoT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 3. LPWAN технології
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 4. Прикладні протоколи ІоТ (MQTT, CoAP)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 5. Туманні (Fog) та граничні (Edge) обчислення
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 6. Мікроконтролерні платформи (ESP32)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 7. Інтелектуальні сенсори
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 8. Виконавчі пристрої
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 9. Віртуалізація та контейнеризація IoT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 10. IoT платформи та Middleware
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 11. Розумний будинок (Home Assistant)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 12. Промисловий ІоТ (IIoT)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 13. Big Data в ІоТ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 14. Machine Learning на межі мережі
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 14. Machine Learning на межі мережі
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Зміст">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Зміст
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Мета лекції
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Очікувані результати навчання
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Детальний покроковий план лекції
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Детальний покроковий план лекції">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-iot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Теоретико-концептуальний базис. Парадигма обробки даних та аналітичні моделі в IoT
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-tinyml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Методологія та аналіз граничних умов. Технології оптимізації та інференсу TinyML на мікроконтролерах
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Практичний індустріальний / фаховий кейс. Проектування вбудованої системи предиктивної діагностики
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-iot_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Теоретико-концептуальний базис. Парадигма обробки даних та аналітичні моделі в IoT
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Теоретико-концептуальний базис. Парадигма обробки даних та аналітичні моделі в IoT">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-data-science" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1. Специфіка життєвого циклу Data Science та класифікація типів даних у промислових сенсорних мережах
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2. Математичний апарат вилучення діагностичних ознак у часовій та спектральній областях вібраційних сигналів
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3. Архітектура та математичні засади детектування аномалій за допомогою глибинних автоенкодерів
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4. Прогнозування залишкового ресурсу безаварійної експлуатації вузлів на основі рекурентних та згорткових моделей
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Вказівки для самостійного осмислення
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-tinyml_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Методологія та аналіз граничних умов. Технології оптимізації та інференсу TinyML на мікроконтролерах
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Методологія та аналіз граничних умов. Технології оптимізації та інференсу TinyML на мікроконтролерах">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1. Конвеєр компресії нейромережевих моделей: структурне проріджування ваг та дистиляція знань
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-float32-int8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2. Математична формалізація однорідного афінного квантування з одинарної точності Float32 в цілочисельний формат Int8
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-tensorflow-lite-for-microcontrollers-tensor-arena" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3. Архітектура середовища виконання TensorFlow Lite for Microcontrollers і принципи керування статичним буфером пам'яті Tensor Arena
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-edge-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4. Апаратні обмеження оперативної пам'яті, обчислювальної швидкодії та автономного енергоспоживання мікроконтролерів як критичний бар'єр масштабування Edge AI
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5. Механізми забезпечення стійкості до дрейфу концепцій і даних та захист локальних моделей від компрометації
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Вказівки для самостійного осмислення
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Практичний індустріальний / фаховий кейс. Проектування вбудованої системи предиктивної діагностики
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Практичний індустріальний / фаховий кейс. Проектування вбудованої системи предиктивної діагностики">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-esp32-tinyml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1. Комплексний фаховий кейс. Розробка та оптимізація вбудованої системи вібродіагностики промислового насосного агрегату на базі мікроконтролера ESP32 з використанням моделі TinyML
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1. Комплексний фаховий кейс. Розробка та оптимізація вбудованої системи вібродіагностики промислового насосного агрегату на базі мікроконтролера ESP32 з використанням моделі TinyML">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Постановка задачі / ситуації
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Покроковий аналіз та розв'язок
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Покроковий аналіз та розв&#39;язок">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 1. Розрахунок кінематичних частот дефектів підшипника та параметрів частотного розкладу
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 2. Формування та нормалізація вектора вхідних ознак
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 3. Розрахунок похибки реконструкції квантованого автоенкодера
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 4. Розрахунок енергетичного бюджету та ресурсу автономної роботи
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Інтерпретація результатів та альтернативні сценарії
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2. Зведена довідкова система лекції
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3. Контрольні питання та завдання
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3. Контрольні питання та завдання">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Прикладні тестові завдання
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Завдання для самостійної роботи
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Завдання для самостійної роботи">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Постановка задачі
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Завдання для виконання
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 15. Кібербезпека в системах ІоТ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Лабораторні роботи
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Лабораторні роботи
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 1. Моделювання топологій IoT-мереж
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 2. Симуляція підсистем Розумного будинку
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 3. Дослідження локального MQTT-брокера
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 4. Схемотехнічне моделювання вузла збору
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 5. Прошивка ESP32 для передавання телеметрії MQTT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 6. Декларативне програмування ESP32 (ESPHome)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 7. Серверне середовище Linux для IoT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 8. Контейнеризація в ІоТ (Docker Compose)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 9. Middleware ІоТ (Node-RED)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 10. Сервіс REST API для агрегації даних
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 11. Платформи розумного будинку (Home Assistant)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 12. Сценарії автоматизації Home Assistant
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 13. Обробка телеметрії мовою Python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 14. HMI Dashboard для диспетчеризації
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 15. Комплексне наскрізне тестування IoT-системи
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практичні заняття
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Практичні заняття
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 1. Розрахунок пропускної здатності та живлення
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 2. Проєктування ієрархії топіків MQTT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 3. Правила фільтрації на Edge-шлюзах
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 4. Моделювання АЦП для сенсорів
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 5. Оптимізація енергетичного профілю
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 6. Проєктування конфігурації Docker Compose
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 7. Логічні схеми в Node-RED
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 8. Сценарії Trigger-Condition-Action
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 9. Конвеєр обробки даних (ETL)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 10. Моделювання загроз безпеки (STRIDE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Курсовий проєкт
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Самостійна робота
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sr/quest/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Контрольні завдання (Іспит)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Зміст">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Зміст
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Мета лекції
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Очікувані результати навчання
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Детальний покроковий план лекції
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Детальний покроковий план лекції">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-iot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Теоретико-концептуальний базис. Парадигма обробки даних та аналітичні моделі в IoT
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-tinyml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Методологія та аналіз граничних умов. Технології оптимізації та інференсу TinyML на мікроконтролерах
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Практичний індустріальний / фаховий кейс. Проектування вбудованої системи предиктивної діагностики
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-iot_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Теоретико-концептуальний базис. Парадигма обробки даних та аналітичні моделі в IoT
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Теоретико-концептуальний базис. Парадигма обробки даних та аналітичні моделі в IoT">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-data-science" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1. Специфіка життєвого циклу Data Science та класифікація типів даних у промислових сенсорних мережах
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2. Математичний апарат вилучення діагностичних ознак у часовій та спектральній областях вібраційних сигналів
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3. Архітектура та математичні засади детектування аномалій за допомогою глибинних автоенкодерів
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4. Прогнозування залишкового ресурсу безаварійної експлуатації вузлів на основі рекурентних та згорткових моделей
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Вказівки для самостійного осмислення
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-tinyml_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Методологія та аналіз граничних умов. Технології оптимізації та інференсу TinyML на мікроконтролерах
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Методологія та аналіз граничних умов. Технології оптимізації та інференсу TinyML на мікроконтролерах">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1. Конвеєр компресії нейромережевих моделей: структурне проріджування ваг та дистиляція знань
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-float32-int8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2. Математична формалізація однорідного афінного квантування з одинарної точності Float32 в цілочисельний формат Int8
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-tensorflow-lite-for-microcontrollers-tensor-arena" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3. Архітектура середовища виконання TensorFlow Lite for Microcontrollers і принципи керування статичним буфером пам'яті Tensor Arena
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-edge-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4. Апаратні обмеження оперативної пам'яті, обчислювальної швидкодії та автономного енергоспоживання мікроконтролерів як критичний бар'єр масштабування Edge AI
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5. Механізми забезпечення стійкості до дрейфу концепцій і даних та захист локальних моделей від компрометації
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Вказівки для самостійного осмислення
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Практичний індустріальний / фаховий кейс. Проектування вбудованої системи предиктивної діагностики
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Практичний індустріальний / фаховий кейс. Проектування вбудованої системи предиктивної діагностики">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-esp32-tinyml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1. Комплексний фаховий кейс. Розробка та оптимізація вбудованої системи вібродіагностики промислового насосного агрегату на базі мікроконтролера ESP32 з використанням моделі TinyML
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1. Комплексний фаховий кейс. Розробка та оптимізація вбудованої системи вібродіагностики промислового насосного агрегату на базі мікроконтролера ESP32 з використанням моделі TinyML">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Постановка задачі / ситуації
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Покроковий аналіз та розв'язок
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Покроковий аналіз та розв&#39;язок">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 1. Розрахунок кінематичних частот дефектів підшипника та параметрів частотного розкладу
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 2. Формування та нормалізація вектора вхідних ознак
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 3. Розрахунок похибки реконструкції квантованого автоенкодера
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 4. Розрахунок енергетичного бюджету та ресурсу автономної роботи
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Інтерпретація результатів та альтернативні сценарії
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2. Зведена довідкова система лекції
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3. Контрольні питання та завдання
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3. Контрольні питання та завдання">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Прикладні тестові завдання
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Завдання для самостійної роботи
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Завдання для самостійної роботи">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Постановка задачі
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Завдання для виконання
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="14">Тема 14. Аналіз даних та машинне навчання на межі мережі</h1>
+<h2 id="_1">Мета лекції</h2>
+<p>Мета лекції полягає у формуванні системи фундаментальних теоретичних знань і прикладних інженерних компетентностей щодо методології Data Science у просторі Інтернету речей, принципів децентралізованої обробки сенсорних потоків інформації за парадигмою Edge і Fog Computing, а також архітектурних рішень для проектування, квантування та апаратного розгортання моделей машинного навчання безпосередньо на мікроконтролерах із суворими апаратними обмеженнями обчислювальних і енергетичних ресурсів (TinyML).</p>
+<h2 id="_2">Очікувані результати навчання</h2>
+<ol>
+<li>
+<p><strong>Знання та розуміння.</strong> Студенти повинні засвоїти базові поняття парадигми Edge AI, фази життєвого циклу інженерії даних у кіберфізичних системах, математичні принципи видобування діагностичних ознак у часовій та частотній областях, а також механізми афінного квантування моделей глибокого навчання.</p>
+</li>
+<li>
+<p><strong>Застосування.</strong> Студенти повинні навчитися проектувати компактні нейромережеві моделі предиктивної аналітики, здійснювати оптимізацію обчислювальних графів за допомогою фреймворку TensorFlow Lite for Microcontrollers та інтегрувати цілочисельний інференс у програмне забезпечення мікроконтролерів для автономного моніторингу технічного стану промислових вузлів.</p>
+</li>
+<li>
+<p><strong>Аналіз.</strong> Студенти повинні вміти проводити порівняльний аналіз архітектур розподілених обчислень між хмарним, туманним та граничним рівнями, зіставляти ефективність статистичних і нейромережевих підходів виявлення аномалій, а також діагностувати причини затримок і втрат точності при стисненні математичних моделей.</p>
+</li>
+<li>
+<p><strong>Оцінювання та синтез.</strong> Студенти повинні вміти обґрунтовано вибирати апаратно-програмну конфігурацію Edge-пристроїв із урахуванням апаратних обмежень пам'яті та енергоспоживання, а також розробляти комплексні самовідновлювані алгоритми предиктивного технічного обслуговування промислового обладнання в умовах нестабільного зв'язку з центральними серверами.</p>
+</li>
+</ol>
+<hr />
+<h2 id="_3">Детальний покроковий план лекції</h2>
+<h3 id="1-iot">1. Теоретико-концептуальний базис. Парадигма обробки даних та аналітичні моделі в IoT</h3>
+<ul>
+<li>
+<p>1.1. Специфіка життєвого циклу Data Science та класифікація типів даних у промислових сенсорних мережах</p>
+</li>
+<li>
+<p>1.2. Математичний апарат вилучення діагностичних ознак у часовій та спектральній областях вібраційних сигналів</p>
+</li>
+<li>
+<p>1.3. Архітектура та математичні засади детектування аномалій за допомогою глибинних автоенкодерів</p>
+</li>
+<li>
+<p>1.4. Прогнозування залишкового ресурсу безаварійної експлуатації вузлів на основі рекурентних та згорткових моделей</p>
+</li>
+</ul>
+<h3 id="2-tinyml">2. Методологія та аналіз граничних умов. Технології оптимізації та інференсу TinyML на мікроконтролерах</h3>
+<ul>
+<li>
+<p>2.1. Конвеєр компресії нейромережевих моделей: структурне проріджування ваг та дистиляція знань</p>
+</li>
+<li>
+<p>2.2. Математична формалізація однорідного афінного квантування з одинарної точності Float32 в цілочисельний формат Int8</p>
+</li>
+<li>
+<p>2.3. Архітектура середовища виконання TensorFlow Lite for Microcontrollers і принципи керування статичним буфером пам'яті Tensor Arena</p>
+</li>
+<li>
+<p>2.4. Апаратні обмеження оперативної пам'яті, обчислювальної швидкодії та автономного енергоспоживання мікроконтролерів як критичний бар'єр масштабування Edge AI</p>
+</li>
+<li>
+<p>2.5. Механізми забезпечення стійкості до дрейфу концепцій і даних та захист локальних моделей від компрометації</p>
+</li>
+</ul>
+<h3 id="3">3. Практичний індустріальний / фаховий кейс. Проектування вбудованої системи предиктивної діагностики</h3>
+<p><strong>Тема наскрізної задачі.</strong> «Розробка та оптимізація вбудованої системи вібродіагностики промислового насосного агрегату на базі мікроконтролера ESP32 з використанням моделі TinyML»</p>
+<h2 id="1-iot_1">1. Теоретико-концептуальний базис. Парадигма обробки даних та аналітичні моделі в IoT</h2>
+<h3 id="11-data-science">1.1. Специфіка життєвого циклу Data Science та класифікація типів даних у промислових сенсорних мережах</h3>
+<p>Трансформація класичних автоматизованих систем керування технологічними процесами у кіберфізичні комплекси концепції Індустрії 4.0 зумовила фундаментальний перегляд методології аналізу даних. У традиційних корпоративних інформаційних системах робота аналітика зосереджена на обробці реляційних баз даних, де транзакційні записи володіють чіткою структурою, фіксованою схемою та зберігаються централізовано. На противагу цьому, у просторі промислового Інтернету речей первинним джерелом виступають масиви гетерогенних просторово розподілених вимірювальних пристроїв, що генерують безперервні потоки телеметрії з високою частотою дискретизації. Такі вимірювання характеризуються високим рівнем стохастичних шумів, наявністю пропусків внаслідок збоїв бездротового середовища передачі даних та нестаціонарною динамікою, викликаною зміною експлуатаційних режимів промислового обладнання.</p>
+<p>Життєвий цикл наукових досліджень над даними у кіберфізичних системах спирається на циклічну послідовність інженерних етапів. На фазі визначення мети дослідження формулюється технічне завдання у термінах надійності машин, де цільовими функціями виступають мінімізація коефіцієнта позапланового простою та запобігання катастрофічним відмовам агрегатів. Фаза збору інформації передбачає організацію взаємодії мікроконтролерів із первинними перетворювачами неелектричних величин в електричні сигнали з обов'язковим присвоєнням кожному відліку високоточних часових міток за протоколами точної синхронізації часу. На етапі попередньої підготовки здійснюється очищення отриманих масивів від спотворень, відновлення втрачених фрагментів методами локальної інтерполяції, видалення постійної складової сигналу та нормалізація амплітудних діапазонів. Фази розвідувального аналізу, математичного моделювання та розгортання завершують конвеєр, забезпечуючи перехід від необроблених електричних сигналів до інтелектуального висновку щодо залишкового ресурсу механізмів.</p>
+<pre class="mermaid"><code>flowchart TD
+    subgraph DataClassification["Ієрархічна структура типів даних в інфраструктурі Industrial IoT"]
+        direction TB
+        Root["Потоки даних промислового середовища"]
+
+        Structured["Структуровані дані"]
+        Unstructured["Неструктуровані дані"]
+        SemiStructured["Напівструктуровані та часові ряди"]
+
+        Telemetry["Дискретна телеметрія: тиск, струм, частота обертання"]
+        Acoustic["Акустичні спектрограми та тепловізійні термограми"]
+        HighFreq["Високочастотні часові ряди віброприскорення"]
+        Events["Події контролерів автоматизації та журнали системних аварій"]
+
+        Root --&gt; Structured
+        Root --&gt; Unstructured
+        Root --&gt; SemiStructured
+
+        Structured --&gt; Telemetry
+        Unstructured --&gt; Acoustic
+        SemiStructured --&gt; HighFreq
+        SemiStructured --&gt; Events
+    end</code></pre>
+<p>У промислових мережах циркулюють різні категорії інформації, кожна з яких висуває специфічні вимоги до смуги пропускання та обчислювальної складності аналітичних алгоритмів. Структуровані дані зазвичай являють собою низькочастотні вимірювання повільноплинних термодинамічних процесів, таких як температура мастила підшипникових вузлів або тиск у гідравлічних магістралях, що надходять із частотами від одного вимірювання за хвилину до одного герца. Неструктурована інформація охоплює просторові матриці інтенсивності інфрачервоного випромінювання від тепловізорів та відеопотоки високої чіткості систем технічного зору, що фіксують геометрію виробів на конвеєрі. Особливе місце посідають швидкі часові ряди вібраційного прискорення та фазних струмів статора, які потребують частоти опитування від десяти до ста кілогерців для ідентифікації високочастотних ударних імпульсів, що супроводжують руйнування поверхонь кочення.</p>
+<blockquote>
+<p><strong>ПРАКТИЧНИЙ ЯКІР:</strong> На газоперекачувальних компресорних станціях моніторинг тривісних віброприскорень магістральних нагнітачів формує до трьох гігабайтів сирої телеметрії щогодини з одного підшипникового вузла. Передача такого масиву каналом мобільного або супутникового зв'язку є технічно неможливою, що змушує виконувати компресію даних та попередній спектральний аналіз безпосередньо у вимірювальному контролері на базі промислового ARM-процесора.</p>
+</blockquote>
+<p>Ключовою проблемою розгортання класичних конвеєрів аналізу даних у польових сенсорних мережах є явище просторової та часової дисперсії. Оскільки датчики підключаються через малопотужні бездротові інтерфейси з високим рівнем загасання сигналу, первинні дані надходять до обчислювального шлюзу з нерегулярними інтервалами. Це порушує базове припущення алгоритмів цифрової фільтрації про сталість кроку дискретизації у часі. Тому перед початком будь-якої аналітичної обробки сенсорні масиви мають бути ресемпльовані та приведені до єдиної шкали неперервного синхронного часу за допомогою поліноміальної апроксимації або сплайнів.</p>
+<hr />
+<h3 id="12">1.2. Математичний апарат вилучення діагностичних ознак у часовій та спектральній областях вібраційних сигналів</h3>
+<p>Безпосередня подача сирих масивів високочастотних коливань на вхід алгоритмів машинного навчання призводить до надмірного розростання розмірності простору параметрів і спричиняє ефект перенавчання. Інженерія ознак забезпечує перетворення масиву дискретних вимірювань довжиною у десятки тисяч точок у компактний діагностичний вектор низької розмірності, інваріантний до незначних флуктуацій навантаження. Формування ознак традиційно реалізується у двох комплементарних математичних просторах: часовому та частотному.</p>
+<p>У часовій області вихідний сигнал <span class="arithmatex">\(x = \{x_1, x_2, \dots, x_K\}\)</span>, зареєстрований п'єзоелектричним або ємнісним акселерометром, розглядається як реалізація дискретного випадкового процесу. Для оцінки загального енергетичного рівня вібрації, появи циклічних імпульсів та порушення симетрії розподілу використовується система вищих статистичних моментів. Енергетичну потужність коливань описує середньоквадратичне значення, тоді як ступінь асиметрії розподілу ймовірностей визначається коефіцієнтом асиметрії.</p>
+<p>Математичний апарат обчислення базових статистичних ознак часової області для дискретної вибірки сигналу віброприскорення задається співвідношеннями:</p>
+<div class="arithmatex">\[X_{RMS} = \sqrt{\frac{1}{K} \sum_{k=1}^{K} x_k^2}\]</div>
+<div class="arithmatex">\[S_k = \frac{\frac{1}{K} \sum_{k=1}^{K} (x_k - \bar{x})^3}{\left( \frac{1}{K} \sum_{k=1}^{K} (x_k - \bar{x})^2 \right)^{3/2}}\]</div>
+<div class="arithmatex">\[K_u = \frac{\frac{1}{K} \sum_{k=1}^{K} (x_k - \bar{x})^4}{\left( \frac{1}{K} \sum_{k=1}^{K} (x_k - \bar{x})^2 \right)^2}\]</div>
+<div class="arithmatex">\[C_f = \frac{\max_{1 \le k \le K} |x_k|}{X_{RMS}}\]</div>
+<p>де <span class="arithmatex">\(X_{RMS}\)</span> позначає середньоквадратичне значення віброприскорення, виражене в метрах на секунду в квадраті (<span class="arithmatex">\({\text{м/с}}^2\)</span>); змінна <span class="arithmatex">\(K\)</span> визначає загальну кількість дискретних відліків усередині аналізованого часового вікна спостереження; величина <span class="arithmatex">\(x_k\)</span> є миттєвим значенням амплітуди сигналу на <span class="arithmatex">\(k\)</span>-му кроці квантування; значення <span class="arithmatex">\(\bar{x}\)</span> є вибірковим середнім значенням процесу; параметр <span class="arithmatex">\(S_k\)</span> представляє безрозмірний коефіцієнт асиметрії (Skewness), що сигналізує про виникнення односпрямованих ударних навантажень; величина <span class="arithmatex">\(K_u\)</span> задає безрозмірний коефіцієнт ексцесу (Kurtosis), який відображає гостровершинність закону розподілу ймовірностей випадкової величини; параметр <span class="arithmatex">\(C_f\)</span> позначає безрозмірний пік-фактор (Crest Factor), що чисельно відображає відношення пікової амплітуди до ефективної енергії коливального процесу.</p>
+<p>Аналіз частотної області здійснюється на основі перетворення дискретного сигналу у спектральну густину потужності за допомогою дискретного перетворення Фур'є. Для обчислення комплексного спектра <span class="arithmatex">\(X(n)\)</span> застосовується вираз:</p>
+<div class="arithmatex">\[X(n) = \sum_{k=0}^{K-1} x_k \cdot e^{-j \frac{2\pi}{K} n k}, \quad n = 0, 1, \dots, K-1\]</div>
+<p>де <span class="arithmatex">\(j = \sqrt{-1}\)</span> позначає уявну одиницю; змінна <span class="arithmatex">\(n\)</span> відповідає номеру частотної гармоніки дискретного спектра; дріб <span class="arithmatex">\(\frac{2\pi n}{K}\)</span> представляє нормовану дискретну кругову частоту аналізованого сигналу.</p>
+<p>Особливе практичне значення для роторних машин має співставлення амплітуд спектральних складових із розрахунковими кінематичними частотами дефектів підшипників кочення. Геометрія підшипника визначає просторові інтервали зіткнення дефектної ділянки з тілами кочення. Частоти дефектів зовнішнього кільця (<strong>BPFO</strong>, Ball Pass Frequency Outer) та внутрішнього кільця (<strong>BPFI</strong>, Ball Pass Frequency Inner) розраховуються за формулами:</p>
+<div class="arithmatex">\[f_{BPFO} = \frac{N_b}{2} f_r \left( 1 - \frac{d}{D} \cos \alpha \right)\]</div>
+<div class="arithmatex">\[f_{BPFI} = \frac{N_b}{2} f_r \left( 1 + \frac{d}{D} \cos \alpha \right)\]</div>
+<p>де <span class="arithmatex">\(N_b\)</span> позначає конструктивну кількість тіл кочення (кульок або роликів) у підшипнику; <span class="arithmatex">\(f_r\)</span> є механічною частотою обертання вала ротора, вираженою в герцах (<span class="arithmatex">\({\text{Гц}}\)</span>); <span class="arithmatex">\(d\)</span> задає діаметр тіла кочення в міліметрах; параметр <span class="arithmatex">\(D\)</span> визначає середній діаметр кілець підшипника по центрах тіл кочення в міліметрах; змінна <span class="arithmatex">\(\alpha\)</span> позначає контактний кут нахилу лінії навантаження до площини, радіальної відносно осі вала.</p>
+<blockquote>
+<p><strong>ТИПОВА ПОМИЛКА:</strong> Поширена інженерна помилка полягає у спробі діагностувати ранні дефекти підшипників виключно за зміною загального рівня вібрації або інтегрального середньоквадратичного значення <span class="arithmatex">\(X_{RMS}\)</span>. На початкових стадіях зародження мікротріщини енергія локального сколу металу є мізерною у загальному балансі потужності коливань, тому значення <span class="arithmatex">\(X_{RMS}\)</span> залишається стабільним, тоді як коефіцієнт ексцесу <span class="arithmatex">\(K_u\)</span> та коефіцієнт амплітуди <span class="arithmatex">\(C_f\)</span> фіксують різкий стрибок задовго до нагрівання або макроруйнування деталі.</p>
+</blockquote>
+<hr />
+<h3 id="13">1.3. Архітектура та математичні засади детектування аномалій за допомогою глибинних автоенкодерів</h3>
+<p>Реальні промислові системи характеризуються гострою асиметрією вибірок. У процесі моніторингу складного обладнання інженери володіють колосальними обсягами телеметрії, яка описує нормальну штатну експлуатацію механізмів за різних параметрів навколишнього середовища. Водночас аварійні ситуації та експлуатаційні дефекти фіксуються вкрай рідко, а навмисне доведення дорогих турбін, екструдерів чи генераторів до руйнування заради навчання класифікаторів із учителем є економічно неприпустимим. За таких умов основним аналітичним інструментом стає <strong>навчання без учителя</strong> (Unsupervised Learning) на основі глибинних штучних нейронних мереж архітектури <strong>автоенкодер</strong> (Autoencoder).</p>
+<p>Автоенкодер являє собою симетричну нейромережеву структуру, яка складається з кодувальника (Encoder) та декодувальника (Decoder). Кодувальник виконує нелінійну компресію вхідного вектора ознак <span class="arithmatex">\(\mathbf{x} \in \mathbb{R}^M\)</span> у приховане представлення нижчої розмірності <span class="arithmatex">\(\mathbf{z} \in \mathbb{R}^d\)</span>, де <span class="arithmatex">\(d \ll M\)</span>, формуючи інформаційне «пляшкове горло» (Bottleneck). Декодувальник приймає стиснутий вектор <span class="arithmatex">\(\mathbf{z}\)</span> і здійснює реконструкцію первинного простору ознак, синтезуючи вихідний вектор <span class="arithmatex">\(\hat{\mathbf{x}} \in \mathbb{R}^M\)</span>. Якщо автоенкодер навчений виключно на даних бездефектної роботи механізму, його внутрішні вагові коефіцієнти оптимізуються під збереження закономірностей лише справного функціонування.</p>
+<p>Прямий прохід сигналів крізь повнозв'язний автоенкодер описується системою матричних рівнянь:</p>
+<div class="arithmatex">\[\mathbf{z} = \sigma_e \left( \mathbf{W}_e \mathbf{x} + \mathbf{b}_e \right)\]</div>
+<div class="arithmatex">\[\hat{\mathbf{x}} = \sigma_d \left( \mathbf{W}_d \mathbf{z} + \mathbf{b}_d \right)\]</div>
+<p>де <span class="arithmatex">\(\mathbf{W}_e \in \mathbb{R}^{d \times M}\)</span> та <span class="arithmatex">\(\mathbf{b}_e \in \mathbb{R}^d\)</span> є матрицею синаптичних ваг та вектором зсувів кодувальника відповідно; <span class="arithmatex">\(\mathbf{W}_d \in \mathbb{R}^{M \times d}\)</span> та <span class="arithmatex">\(\mathbf{b}_d \in \mathbb{R}^M\)</span> позначають матрицю синаптичних ваг та вектор зсувів декодувальника; <span class="arithmatex">\(\sigma_e(\cdot)\)</span> та <span class="arithmatex">\(\sigma_d(\cdot)\)</span> задають нелінійні функції активації (наприклад, Rectified Linear Unit або гіперболічний тангенс).</p>
+<p>Функція втрат моделі визначається як середньоквадратична похибка реконструкції вхідного вектора:</p>
+<div class="arithmatex">\[\mathcal{L}_{MSE}(\mathbf{x}, \hat{\mathbf{x}}) = \frac{1}{M} \sum_{m=1}^{M} \left( x_m - \hat{x}_m \right)^2\]</div>
+<p>де <span class="arithmatex">\(x_m\)</span> та <span class="arithmatex">\(\hat{x}_m\)</span> позначають відповідно <span class="arithmatex">\(m\)</span>-ту компоненту вихідного нормалізованого вектора діагностичних ознак та її реконструйовану нейромережею оцінку.</p>
+<p>Коли на вхід розгорнутого у мікроконтролері автоенкодера надходить вектор ознак із реального об'єкта, алгоритм обчислює поточну похибку реконструкції. Оскільки дефектний стан агрегату генерує аномальні співвідношення ознак (наприклад, одночасний аномальний стрибок ексцесу та появу бічних частотних смуг навколо гармонік обертання), нейронна мережа виявляється неспроможною коректно реконструювати цей вектор через вузьке латентне горло. Внаслідок цього значення <span class="arithmatex">\(\mathcal{L}_{MSE}\)</span> різко зростає. </p>
+<p>Деградаційний процес промислового агрегату проходить низку послідовних фаз, які фіксуються зміною похибки реконструкції та визначають відповідні експлуатаційні стани, наведені нижче.</p>
+<pre class="mermaid"><code>stateDiagram-v2
+    [*] --&gt; NormalOperation: Монтаж та припрацювання вузлів
+    NormalOperation --&gt; LatentDegradation: Поява втомних мікротріщин (L_MSE &lt; Поріг)
+    LatentDegradation --&gt; AnomalyDetected: Стрибок похибки реконструкції (L_MSE &gt; Поріг)
+    AnomalyDetected --&gt; DevelopingFault: Поява гармонік BPFO/BPFI у спектрі
+    DevelopingFault --&gt; CriticalState: Висока вібрація, кавітація, локальний нагрів
+    CriticalState --&gt; EmergencyStop: Автоматичне знеструмлення агрегату
+    EmergencyStop --&gt; [*]</code></pre>
+<p>Поріг детектування аномалії <span class="arithmatex">\(\theta_{anomaly}\)</span> формується аналітично на основі статистичних характеристик похибки реконструкції на контрольній вибірці нормального функціонування з використанням критерію трьох сигм:</p>
+<div class="arithmatex">\[\theta_{anomaly} = \mu_{\mathcal{L}} + 3 \cdot \sigma_{\mathcal{L}}\]</div>
+<p>де <span class="arithmatex">\(\mu_{\mathcal{L}}\)</span> позначає математичне сподівання похибки реконструкції на валідаційному масиві штатної роботи; <span class="arithmatex">\(\sigma_{\mathcal{L}}\)</span> є середньоквадратичним відхиленням цієї похибки. Перевищення поточною похибкою встановленого порога <span class="arithmatex">\(\theta_{anomaly}\)</span> слугує детермінованим тригером фіксації початку деградаційного процесу.</p>
+<blockquote>
+<p><strong>ПРАКТИЧНИЙ ЯКІР:</strong> У системах числового програмного керування прецизійними металорізальними верстатами автоенкодери, вбудовані у контролери приводу шпинделя, аналізують параметри струму сервомотора. Поява люфту в кульково-гвинтовій передачі фіксується за зростанням похибки реконструкції струмових гармонік на тридцять мілісекунд раніше, ніж погіршення точності позиціонування призведе до браку виготовленої деталі.</p>
+</blockquote>
+<hr />
+<h3 id="14_1">1.4. Прогнозування залишкового ресурсу безаварійної експлуатації вузлів на основі рекурентних та згорткових моделей</h3>
+<p>Діагностика факту наявності дефекту є лише першою складовою предиктивного аналізу. Для ефективного планування ремонтних кампаній та логістики запасних частин необхідно розв'язати задачу прогнозування залишкового ресурсу безаварійної експлуатації (<strong>RUL</strong>, Remaining Useful Life). Величина RUL являє собою час, що залишається до моменту, коли контрольований параметр технічного стану вузла подолає регламентовану критичну межу безпеки.</p>
+<p>Математична модель деградаційного тренду формалізується за допомогою розрахунку інтегрального індексу здоров'я об'єкта (<strong>Health Index, HI</strong>). Значення індексу здоров'я <span class="arithmatex">\(HI(t)\)</span> нормується на замкнений числовий інтервал <span class="arithmatex">\([0, 1]\)</span>, де одиниця відповідає абсолютно новому бездефектному стану обладнання, а нуль свідчить про досягнення функціональної відмови. Функція прогнозування залишкового ресурсу у дискретний момент часу <span class="arithmatex">\(t_k\)</span> визначається рівнянням:</p>
+<div class="arithmatex">\[RUL(t_k) = \inf \left\{ \Delta t \in \mathbb{R}^+ \mid HI(t_k + \Delta t) \le HI_{crit} \right\}\]</div>
+<p>де <span class="arithmatex">\(\Delta t\)</span> позначає прогнозний часовий інтервал безпечної експлуатації; <span class="arithmatex">\(HI_{crit}\)</span> є нормативно заданим критичним порогом деградації, досягнення якого вимагає негайного виведення агрегату з експлуатації.</p>
+<p>Для екстраполяції часового ряду <span class="arithmatex">\(HI(t)\)</span> використовуються глибокі нейромережеві моделі двох основних класів: рекурентні нейронні мережі з комірками довгої короткострокової пам'яті (<strong>LSTM</strong>, Long Short-Term Memory) або вентильними рекурентними блоками (<strong>GRU</strong>, Gated Recurrent Unit), а також одновимірні згорткові мережі з розширеними згортками (<strong>TCN</strong>, Temporal Convolutional Networks).</p>
+<p>Комірка LSTM розв'язує проблему затухання градієнта при обробці тривалих часових послідовностей завдяки внутрішній системі шлюзів: шлюзу забування <span class="arithmatex">\(f_t\)</span>, вхідного шлюзу <span class="arithmatex">\(i_t\)</span> та вихідного шлюзу <span class="arithmatex">\(o_t\)</span>. Перерахунок внутрішнього стану комірки <span class="arithmatex">\(C_t\)</span> та вихідного вектора стану <span class="arithmatex">\(h_t\)</span> для поточного вхідного значення індексу здоров'я <span class="arithmatex">\(x_t\)</span> здійснюється за математичними формулами:</p>
+<div class="arithmatex">\[f_t = \sigma \left( W_f \cdot [h_{t-1}, x_t] + b_f \right)\]</div>
+<div class="arithmatex">\[i_t = \sigma \left( W_i \cdot [h_{t-1}, x_t] + b_i \right)\]</div>
+<div class="arithmatex">\[\tilde{C}_t = \tanh \left( W_c \cdot [h_{t-1}, x_t] + b_c \right)\]</div>
+<div class="arithmatex">\[C_t = f_t \odot C_{t-1} + i_t \odot \tilde{C}_t\]</div>
+<div class="arithmatex">\[o_t = \sigma \left( W_o \cdot [h_{t-1}, x_t] + b_o \right)\]</div>
+<div class="arithmatex">\[h_t = o_t \odot \tanh(C_t)\]</div>
+<p>де <span class="arithmatex">\(W_f, W_i, W_c, W_o\)</span> є ваговими матрицями відповідних функціональних шлюзів; <span class="arithmatex">\(b_f, b_i, b_c, b_o\)</span> позначають відповідні вектори зсувів; <span class="arithmatex">\(\sigma(\cdot)\)</span> позначає логістичну сигмоїдну функцію; <span class="arithmatex">\(\odot\)</span> є оператором поелементного множення векторів Адамара; <span class="arithmatex">\(C_{t-1}\)</span> та <span class="arithmatex">\(C_t\)</span> представляють стан пам'яті комірки на попередньому та поточному кроках відповідно; <span class="arithmatex">\(h_{t-1}\)</span> та <span class="arithmatex">\(h_t\)</span> позначають вектори прихованого стану.</p>
+<p>Порівняльна систематизація сучасних підходів до предиктивного моделювання технічного стану у системах промислового Інтернету речей наведена у таблиці 1.</p>
+<p><em>Таблиця 1 — Систематизація методів та моделей машинного навчання для предиктивної аналітики в Industrial IoT</em></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Аналітичний підхід</th>
+<th style="text-align: left;">Базова математична модель</th>
+<th style="text-align: left;">Складність інференсу та ресурси</th>
+<th style="text-align: left;">Обмеження та граничні умови застосування</th>
+<th style="text-align: left;">Приклад з реальної практики</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Статистичний пороговий аналіз</strong></td>
+<td style="text-align: left;">Оцінка ковзного середнього, СКЗ, межі <span class="arithmatex">\(3\sigma\)</span></td>
+<td style="text-align: left;">Мінімальна (<span class="arithmatex">\(O(1)\)</span> пам'яті, одиниці тактів MCU)</td>
+<td style="text-align: left;">Непридатний для виявлення складних кореляцій та дефектів на ранніх стадіях</td>
+<td style="text-align: left;">Моніторинг граничної вібрації вентиляційних установок будівлі</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Класичний регресійний аналіз</strong></td>
+<td style="text-align: left;">Поліноміальна регресія, метод опорних векторів (SVR)</td>
+<td style="text-align: left;">Низька (<span class="arithmatex">\(O(N)\)</span> для лінійних моделей)</td>
+<td style="text-align: left;">Припускає спрощений стаціонарний характер деградаційної кривої</td>
+<td style="text-align: left;">Екстраполяція зносу ріжучої кромки токарного різця</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Детектування на базі автоенкодерів</strong></td>
+<td style="text-align: left;">Глибинний MLP-автоенкодер, згортковий автоенкодер</td>
+<td style="text-align: left;">Середня (потребує від <span class="arithmatex">\(15\)</span> до <span class="arithmatex">\(60\text{ Кбайт}\)</span> RAM)</td>
+<td style="text-align: left;">Вимагає ретельної деконтамінації навчальної вибірки від аномалій</td>
+<td style="text-align: left;">Контроль відхилення режимів роботи шнекового екструдера</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Класифікація дефектів (Supervised)</strong></td>
+<td style="text-align: left;">Одновимірні згорткові мережі (1D-CNN), Random Forest</td>
+<td style="text-align: left;">Середня (залежить від кількості фільтрів та глибини)</td>
+<td style="text-align: left;">Потребує наявності розмічених даних реальних аварійних випадків</td>
+<td style="text-align: left;">Розпізнавання типу дефекту редуктора прокатного стана</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Рекурентне оцінювання RUL</strong></td>
+<td style="text-align: left;">Багатошарові мережі LSTM, GRU, TCN</td>
+<td style="text-align: left;">Висока (сотні тисяч операцій MAC, понад <span class="arithmatex">\(100\text{ Кбайт}\)</span> RAM)</td>
+<td style="text-align: left;">Висока чутливість до накопичення похибки на довгих горизонтах прогнозу</td>
+<td style="text-align: left;">Розрахунок залишкового ресурсу підшипників авіаційного газотурбінного двигуна</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>КОНТРОЛЬНЕ ПИТАННЯ:</strong> Чому використання моделей глибокого рекурентного навчання (LSTM) для прогнозування залишкового ресурсу безпосередньо на крайніх польових мікроконтролерах класу Cortex-M0+/M3 є недоцільним, навіть якщо модель попередньо квантована до цілочисельного формату?</p>
+</blockquote>
+<details class="note">
+<summary>Розгорнути аналіз / відповідь</summary>
+<p><strong>Правильний варіант: Через обмеженість статичної оперативної пам'яті (SRAM) та відсутність апаратної підтримки швидких векторних обчислень для циклічних рекурентних переходів.</strong></p>
+<ol>
+<li>
+<p>Обґрунтування: Архітектура комірки LSTM містить чотири внутрішні вентильні структури (forget, input, cell, output gates), кожна з яких потребує багаторазового виконання операцій множення матриці на вектор та обчислення нелінійних функцій активації (сигмоїда, гіперболічний тангенс) на кожному часовому кроці. На мікроконтролерах базового класу (Cortex-M0+/M3), що мають типовий обсяг оперативної пам'яті від <span class="arithmatex">\(16\)</span> до <span class="arithmatex">\(64\text{ Кбайт}\)</span> і позбавлені розширення інструкцій цифрової обробки сигналів (DSP) та апаратного прискорювача обчислень, розміщення динамічного графа станів LSTM призводить до переповнення статичного буфера пам'яті (Tensor Arena). Крім того, тривалість виконання інференсу зростає до сотень мілісекунд, що нівелює переваги роботи у реальному часі та призводить до швидкого вичерпання заряду автономного джерела живлення.</p>
+</li>
+<li>
+<p>Аналіз дистракторів: Припущення про те, що квантування повністю усуває проблему складності, є хибним, оскільки переведення ваг у 8-бітний цілочисельний формат скорочує обсяг Flash-пам'яті у чотири рази, але не спрощує рекурентної топології графа та не зменшує кількість матричних операцій у часі. Твердження про низьку інформативність LSTM є некоректним, оскільки рекурентні мережі демонструють найвищу точність моделювання часових рядів деградації, однак для їхнього інференсу на межі мережі необхідні потужніші процесорні ядра з апаратними блоками векторних обчислень (наприклад, Cortex-M4F, Cortex-M7 або ESP32-S3).</p>
+</li>
+</ol>
+</details>
+<hr />
+<h3 id="_4">Вказівки для самостійного осмислення</h3>
+<ol>
+<li>
+<p>Здійснити порівняльний розрахунок частот пошкодження зовнішнього (<span class="arithmatex">\(f_{BPFO}\)</span>) та внутрішнього (<span class="arithmatex">\(f_{BPFI}\)</span>) кілець для радіального підшипника кочення з параметрами <span class="arithmatex">\(N_b = 8\)</span>, <span class="arithmatex">\(d = 7{,}5\text{ мм}\)</span>, <span class="arithmatex">\(D = 35\text{ мм}\)</span>, <span class="arithmatex">\(\alpha = 0^\circ\)</span> за номінальної швидкості обертання вала електричного двигуна <span class="arithmatex">\(n = 1500\text{ об/хв}\)</span>.</p>
+</li>
+<li>
+<p>Проаналізувати поведінку коефіцієнта ексцесу (<span class="arithmatex">\(K_u\)</span>) та середньоквадратичного значення (<span class="arithmatex">\(X_{RMS}\)</span>) у часі для тристадійного процесу руйнування механічного вузла: від зародження мікротріщини через утомне сколювання до катастрофічного руйнування поверхні тертя.</p>
+</li>
+<li>
+<p>Розробити концептуальну схему розміщення функцій предиктивного аналізу між польовим сенсорним вузлом, локальним туманним шлюзом та централізованою хмарною платформою для компресорної станції із забезпеченням вимог мінімізації мережевого трафіку.</p>
+</li>
+</ol>
+<h2 id="2-tinyml_1">2. Методологія та аналіз граничних умов. Технології оптимізації та інференсу TinyML на мікроконтролерах</h2>
+<h3 id="21">2.1. Конвеєр компресії нейромережевих моделей: структурне проріджування ваг та дистиляція знань</h3>
+<p>Розгортання сучасних архітектур штучних нейронних мереж на мікроконтролерах стримується фундаментальною невідповідністю між алгоритмічною складністю моделей глибокого навчання та фізичними ресурсами кристала кремнію. Типові базові моделі, призначені для цифрової обробки сигналів або комп'ютерного зору, налічують від сотень тисяч до десятків мільйонів вагових коефіцієнтів, представлених у форматі чисел із рухомою комою одинарної точності, що вимагає мегабайтів дискового простору та сотень кілобайтів динамічної пам'яті для зберігання карт проміжних активацій. Для подолання цього бар'єра застосовується методологічний конвеєр модельної компресії, який інтегрує технології структурного проріджування ваг та дистиляції знань.</p>
+<p>Проріджування ваг базується на концепції надлишковості параметричного простору перенавчених нейромереж. У процесі оптимізації вагові коефіцієнти, чия абсолютна величина є близькою до нуля, роблять зникаюче малий внесок у формування вихідної активації нейрона. Проте при реалізації проріджування виникає дилема між неструктурованим та структурним підходами. Неструктуроване проріджування здійснює індивідуальне занулення окремих ваг за заданим числовим порогом, що створює розріджену матрицю довільної форми. На мікроконтролерах без спеціалізованих апаратних блоків прискорення розрідженої алгебри зберігання таких матриць вимагає додаткових масивів індексів у форматах стиснутого рядка або стовпця, що нівелює виграш у пам'яті та ускладнює роботу конвеєра процесорного ядра. </p>
+<p>На противагу цьому, структурне проріджування оперує видаленням цілих структурних одиниць нейромережі: каналів згортки, фільтрів або окремих нейронів повнозв'язних шарів. У результаті розмірність вагових матриць зменшується фізично, що дозволяє використовувати стандартні бібліотеки лінійної алгебри без накладних витрат на індексацію нульових комірок.</p>
+<pre class="mermaid"><code>sequenceDiagram
+    autonumber
+    participant S as Датчик віброприскорення
+    participant D as Контролер DMA
+    participant B as Буфер сирих вибірок
+    participant P as Модуль CMSIS-DSP
+    participant A as Буфер Tensor Arena
+    participant I as Інтерпретатор TFLM
+    participant C as Керуючий контролер
+    S-&gt;&gt;D: Передача дискретних відліків через SPI
+    D-&gt;&gt;B: Заповнення кільцевого буфера в RAM
+    B-&gt;&gt;P: Передача вікна вимірювань для фільтрації
+    P-&gt;&gt;P: Обчислення FFT, RMS та Kurtosis
+    P-&gt;&gt;A: Запис нормалізованого квантованого вектора вхідних тензорів
+    I-&gt;&gt;A: Зчитування вхідних даних та конфігурації операторів
+    I-&gt;&gt;I: Цілочисельне множення з насиченням (CMSIS-NN)
+    I-&gt;&gt;A: Запис вихідного вектора ймовірностей станів
+    I-&gt;&gt;C: Повернення статусу виконання інференсу
+    alt Зафіксовано критичний дефект
+        C-&gt;&gt;C: Активація аварійного протоколу захисту
+    else Штатний режим функціонування
+        C-&gt;&gt;C: Переведення вузла в режим енергозбереження
+    end</code></pre>
+<p>Технологія дистиляції знань реалізує парадигму передачі узагальнюючої спроможності від громіздкої моделі-вчителя до компактної моделі-учня, топологія якої апріорі адаптована під апаратні ліміти цільового мікроконтролера. На відміну від прямого навчання малої мережі на жорстких бінарних мітках класів, учень навчається на пом'якшеному розподілі ймовірностей вихідного шару вчителя. Температурне масштабування вихідних логітів дозволяє виявити так звані «темні знання» — інформацію про приховані міжкатегорійні кореляції, які вчитель виявив під час розв'язання задачі. </p>
+<p>Цільова функція втрат дистиляції поєднує класичну функцію перехресної ентропії відносно істинних міток та розбіжність Кульбака-Лейблера між вихідними розподілами вчителя та учня:</p>
+<div class="arithmatex">\[\mathcal{L}_{KD} = (1 - \alpha) \mathcal{L}_{CE}\left(\mathbf{y}, \sigma(\mathbf{z}_s)\right) + \alpha T^2 \mathcal{D}_{KL}\left(\sigma\left(\frac{\mathbf{z}_s}{T}\right), \sigma\left(\frac{\mathbf{z}_t}{T}\right)\right)\]</div>
+<p>де <span class="arithmatex">\(\mathbf{y}\)</span> позначає вектор істинних міток класів у форматі one-hot; <span class="arithmatex">\(\mathbf{z}_s\)</span> та <span class="arithmatex">\(\mathbf{z}_t\)</span> представляють вектори вихідних логітів моделі-учня та моделі-вчителя відповідно; <span class="arithmatex">\(\sigma(\cdot)\)</span> є векторною функцією Softmax; <span class="arithmatex">\(\alpha \in [0, 1]\)</span> позначає ваговий коефіцієнт компромісу між навчанням за еталоном і наслідуванням вчителя; параметр <span class="arithmatex">\(T \ge 1\)</span> позначає гіперпараметр температури розм'якшення логітів, який підсилює ентропію розподілу ймовірностей для міноритарних класів; <span class="arithmatex">\(\mathcal{L}_{CE}\)</span> визначає функцію стандартної перехресної ентропії; <span class="arithmatex">\(\mathcal{D}_{KL}\)</span> задає функціонал розбіжності Кульбака-Лейблера. Множник <span class="arithmatex">\(T^2\)</span> вводиться для компенсації масштабу градієнтів при підвищенні температури.</p>
+<hr />
+<h3 id="22-float32-int8">2.2. Математична формалізація однорідного афінного квантування з одинарної точності Float32 в цілочисельний формат Int8</h3>
+<p>Квантування нейронних мереж є найбільш ефективним методом апаратної оптимізації, що дозволяє замінити ресурсомісткі операції з рухомою комою на цілочисельні інструкції базового арифметико-логічного пристрою мікроконтролера. Сучасним промисловим стандартом виступає симетричне або афінне асиметричне квантування у 8-бітні цілі числа зі знаком, відоме як цілочисельна схема Google/TensorFlow.</p>
+<p>Аналітичний конвеєр перетворення дійсних тензорів у квантований простір і розрахунок згорткових або лінійних шарів виключно в цілочисельній арифметиці розгортається за такою математичною послідовністю дій:</p>
+<div class="arithmatex">\[
+\begin{aligned}
+\text{Крок 1 (Відображення дійсного простору):} &amp; \quad r = S \cdot (q - Z) \\
+\text{Крок 2 (Підстановка у формулу згортки):} &amp; \quad S_3 \left( q_3^{(i,k)} - Z_3 \right) = \sum_{j} S_1 \left( q_1^{(i,j)} - Z_1 \right) S_2 \left( q_2^{(j,k)} - Z_2 \right) \\
+\text{Крок 3 (Факторизація цілочисельного масштабу):} &amp; \quad q_3^{(i,k)} = Z_3 + M \sum_{j} \left( q_1^{(i,j)} - Z_1 \right) \left( q_2^{(j,k)} - Z_2 \right) \\
+\text{Крок 4 (Апроксимація фіксованою точкою):} &amp; \quad M = \frac{S_1 S_2}{S_3} \approx 2^{-n} M_0, \quad M_0 \in \left[2^{30}, 2^{31}-1\right]
+\end{aligned}
+\]</div>
+<p>де <span class="arithmatex">\(r \in \mathbb{R}\)</span> позначає дійсне значення ваги або активації у форматі Float32; <span class="arithmatex">\(q \in [-128, 127] \subset \mathbb{Z}\)</span> є 8-бітним квантованим цілим числом; <span class="arithmatex">\(S \in \mathbb{R}^+\)</span> позначає дійсний масштабний коефіцієнт квантування; <span class="arithmatex">\(Z \in [-128, 127] \subset \mathbb{Z}\)</span> позначає цілочисельну нульову точку зміщення; індекси 1, 2 та 3 відносяться відповідно до матриці вхідних активацій, матриці синаптичних ваг та матриці результуючих вихідних активацій шару; <span class="arithmatex">\(M\)</span> позначає результуючий дійсний множник масштабування, що лежить строго в діапазоні <span class="arithmatex">\((0, 1)\)</span>; <span class="arithmatex">\(M_0\)</span> є нормалізованим 32-бітним цілим числом без знака; <span class="arithmatex">\(n\)</span> визначає величину цілочисельного арифметичного зсуву вправо.</p>
+<p>Завдяки такій параметризації апаратний процесор мікроконтролера виконує накопичення проміжних добутків у 32-бітному акумуляторі, після чого множить результат на цілочисельний коефіцієнт <span class="arithmatex">\(M_0\)</span> за допомогою стандартної інструкції множення двох 32-бітних чисел із поверненням старшої частини результату, а завершальне масштабування виконується побітовим зсувом на <span class="arithmatex">\(n\)</span> позицій вправо. Це повністю усуває необхідність залучення співпроцесора обчислень із рухомою комою.</p>
+<blockquote>
+<p><strong>ВАЖЛИВО:</strong> У квантованих графах обчислень згортка пакетної нормалізації (Batch Normalization Folding) повинна виконуватися строго до фіксації масштабних коефіцієнтів активацій. Об'єднання параметрів масштабування та зміщення пакетної нормалізації безпосередньо у вагові матриці згорткових ядер усуває необхідність виконання додаткових операцій під час виконання програми та запобігає катастрофічному розширенню динамічного діапазону вхідних сигналів.</p>
+</blockquote>
+<p>Аналіз граничних умов показує, що схема афінного квантування втрачає математичну стабільність, якщо розподіл значень активацій містить поодинокі екстремальні викиди, що характерно для систем із перехідними процесами або сильними електромагнітними завадами. У такому разі різниця між мінімальним та максимальним значеннями зростає, що призводить до значного збільшення масштабного множника <span class="arithmatex">\(S\)</span>. Як наслідок, переважна більшість типових значень сигналу потрапляє в один-два сусідні квантовані рівні, викликаючи колапс простору ознак. Для запобігання цьому явищу алгоритми квантування після навчання вимагають калібрування на репрезентативних підвибірках із застосуванням усічення процентилів розподілу або мінімізації дивергенції Кульбака-Лейблера між вихідним та квантованим розподілами.</p>
+<hr />
+<h3 id="23-tensorflow-lite-for-microcontrollers-tensor-arena">2.3. Архітектура середовища виконання TensorFlow Lite for Microcontrollers і принципи керування статичним буфером пам'яті Tensor Arena</h3>
+<p>Середовище виконання TensorFlow Lite for Microcontrollers (TFLM) розроблене для виконання інференсу на вбудованих платформах без операційної системи або під керуванням операційних систем реального часу. Його архітектура спроєктована з урахуванням фундаментальних вимог надійності промислового програмного забезпечення, де ключовою вимогою є детерміноване використання апаратних ресурсів. </p>
+<p>У класичних хмарних фреймворках виділення оперативної пам'яті для вхідних та вихідних тензорів операцій здійснюється динамічно за допомогою викликів системного менеджера пам'яті. У довготривало працюючих вбудованих системах багаторазове виділення та звільнення пам'яті різного розміру неминуче спричиняє фрагментацію адресної площини, що в певний момент експлуатації призводить до помилки вичерпання доступної пам'яті навіть за наявності достатнього сумарного вільного обсягу. </p>
+<p>Для унеможливлення цього сценарію архітектура TFLM базується на концепції статичного пулу пам'яті, який має назву <strong>Tensor Arena</strong>. На етапі ініціалізації прошивки розробник резервує єдиний неперервний масив байтів фіксованого розміру, за межі якого середовище виконання не виходить за жодних умов:</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">constexpr</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">kTensorArenaSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">64</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1024</span><span class="p">;</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">alignas</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">tensor_arena</span><span class="p">[</span><span class="n">kTensorArenaSize</span><span class="p">];</span>
+</span></code></pre></div>
+<p>Внутрішня організація буфера Tensor Arena базується на двоспрямованій моделі розподілу адресної пам'яті. Від початку масиву виділяється область постійних дескрипторів, де зберігаються структури стану операторів графа, що ініціалізуються один раз під час завантаження моделі і не змінюють свого розташування до перезавантаження мікроконтролера. </p>
+<p>З протилежного кінця буфера формується динамічна область карт активацій, пам'ять якої розподіляється планувальником пам'яті на етапі ініціалізації моделі. Планувальник аналізує топологію обчислювального графа та розраховує інтервали життя кожного тензора активацій. Якщо час існування вихідного тензора першого шару завершується до початку виконання третього шару, область пам'яті першого шару повторно призначається для тензорів наступних шарів. Така схема повторного використання пам'яті зменшує пікові вимоги до оперативної пам'яті у кілька разів.</p>
+<hr />
+<h3 id="24-edge-ai">2.4. Апаратні обмеження оперативної пам'яті, обчислювальної швидкодії та автономного енергоспоживання мікроконтролерів як критичний бар'єр масштабування Edge AI</h3>
+<p>Проєктування систем інтелектуального аналізу на межі мережі вимагає суворого врахування балансу між обчислювальною потужністю та енергетичним бюджетом пристрою. Динамічна потужність <span class="arithmatex">\(P_{dyn}\)</span>, що розсіюється напівпровідниковим кристалом мікроконтролера під час виконання коду інференсу, визначається виразом:</p>
+<div class="arithmatex">\[P_{dyn} = C_{load} \cdot V_{dd}^2 \cdot f_{clk} + I_{leak} \cdot V_{dd}\]</div>
+<p>де <span class="arithmatex">\(C_{load}\)</span> позначає еквівалентну перемикальну ємність логічних вентилів процесорного ядра; <span class="arithmatex">\(V_{dd}\)</span> є напругою живлення мікроконтролера; <span class="arithmatex">\(f_{clk}\)</span> задає тактову частоту ядра; <span class="arithmatex">\(I_{leak}\)</span> визначає статичний струм витоку p-n переходів кремнієвої структури.</p>
+<p>Збільшення тактової частоти для прискорення обчислення згорткових операцій призводить до квадратичного зростання енергоспоживання, що скорочує автономний термін роботи від вбудованої батареї з кількох років до лічених місяців. Крім того, на практиці інженер стикається з так званою стіною пам'яті: швидкість доступу процесора до зовнішньої Flash-пам'яті шиною SPI є значно нижчою за швидкість виконання операцій у ядрі, що спричиняє тривалі цикли очікування процесора та неефективне витрачання струму.</p>
+<p>Порівняльний аналіз ключових технологій оптимізації моделей глибокого навчання для розгортання в умовах обмежених ресурсів наведено у таблиці 2.</p>
+<p><em>Таблиця 2 — Аналітична матриця зіставлення методів оптимізації нейромереж для мікроконтролерів</em></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Метод оптимізації</th>
+<th style="text-align: left;">Коефіцієнт стиснення параметрів</th>
+<th style="text-align: left;">Вплив на швидкість інференсу</th>
+<th style="text-align: left;">Складність впровадження</th>
+<th style="text-align: left;">Критичні ризики та обмеження методології</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Квантування після навчання (PTQ Int8)</strong></td>
+<td style="text-align: left;">Зменшення обсягу у <span class="arithmatex">\(4{,}0\)</span> рази порівняно з Float32</td>
+<td style="text-align: left;">Прискорення у <span class="arithmatex">\(3 \dots 6\)</span> разів на ядрах із SIMD</td>
+<td style="text-align: left;">Низька (не вимагає повторного навчання моделі)</td>
+<td style="text-align: left;">Небезпека нелінійного падіння точності при наявності асиметричних викидів у вибірці</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Квантування під час навчання (QAT)</strong></td>
+<td style="text-align: left;">Зменшення обсягу у <span class="arithmatex">\(4{,}0\)</span> рази порівняно з Float32</td>
+<td style="text-align: left;">Аналогічно PTQ на етапі виконання</td>
+<td style="text-align: left;">Висока (потребує імітації шуму квантування в градієнтах)</td>
+<td style="text-align: left;">Збільшення тривалості збіжності процесу оптимізації ваг у кілька разів</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Структурне проріджування (Pruning)</strong></td>
+<td style="text-align: left;">Скорочення матриць ваг у <span class="arithmatex">\(2 \dots 5\)</span> разів</td>
+<td style="text-align: left;">Прискорення пропорційне кількості скорочених каналів</td>
+<td style="text-align: left;">Середня (вимагає циклічного видалення ваг і донавчання)</td>
+<td style="text-align: left;">Ризик необоротного видалення слабких інформативних ознак високочастотних дефектів</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Дистиляція знань (Distillation)</strong></td>
+<td style="text-align: left;">Стиснення обсягу моделі у <span class="arithmatex">\(5 \dots 20\)</span> разів</td>
+<td style="text-align: left;">Радикальне скорочення кількості операцій множення</td>
+<td style="text-align: left;">Дуже висока (вимагає підбору архітектури учня і гіперпараметрів)</td>
+<td style="text-align: left;">Втрата стійкості узагальнення на межах багатовимірних класів технічних станів</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Заміна повнозв'язних шарів глобальним пулінгом</strong></td>
+<td style="text-align: left;">Зменшення кількості ваг до <span class="arithmatex">\(80\%\)</span> у класифікаційній частині</td>
+<td style="text-align: left;">Незначне прискорення, суттєва економія Flash-пам'яті</td>
+<td style="text-align: left;">Низька (внесення змін до архітектури перед навчанням)</td>
+<td style="text-align: left;">Повна втрата просторової інформації про координати локалізованих ознак у тензорі</td>
+</tr>
+</tbody>
+</table>
+<p>Граничні умови застосування наведених методів визначаються специфікою реального технологічного процесу. Якщо промисловий механізм експлуатується зі змінною швидкістю обертання привода (наприклад, насос із перетворювачем частоти), статична модель TinyML, навчена на фіксованій геометрії спектральних піків, втрачає адекватність. Зсув гармонік розцентрування вала сприймається фіксованими фільтрами нейромережі як катастрофічна системна аномалія, що призводить до потоку хибних спрацьовувань захисної автоматики. </p>
+<blockquote>
+<p><strong>ПРАКТИЧНИЙ ЯКІР:</strong> У вітрогенераторних енергетичних установках морського базування регламент стандарту ISO 10816 вимагає автоматичного розпізнавання режимів штормового флюгування лопатей. Алгоритми TinyML на базі мікроконтролерів Cortex-M4 під час різкого зниження напруги живлення сонячних буферних панелей переводяться в режим субдискретизації, що збільшує похибку розрахунку спектральних ознак і вимагає обов'язкового дублювання апаратними компараторами безпеки.</p>
+</blockquote>
+<hr />
+<h3 id="25">2.5. Механізми забезпечення стійкості до дрейфу концепцій і даних та захист локальних моделей від компрометації</h3>
+<p>Тривала експлуатація інтелектуальних прикордонних вузлів стикається з проблемою старіння алгоритмічного базису, відомою як <strong>дрейф даних</strong> (Data Drift) та <strong>дрейф концепцій</strong> (Concept Drift). Дрейф даних зумовлюється природними змінами характеристик об'єкта, які не свідчать про аварію: природним припрацюванням підшипників, зміною в'язкості мастила внаслідок сезонних коливань температури цеху або плановою заміною технологічного інструменту. Дрейф концепцій полягає у зміні самого статистичного зв'язку між вхідними ознаками та цільовим класом технічного стану. </p>
+<p>Оскільки ресурси мікроконтролера не дозволяють виконувати донавчання важких нейромережевих моделей безпосередньо на кристалі, стабільність системи забезпечується реалізацією гібридного контуру з перевіркою статистичної розбіжності Васерштейна між поточним розподілом ознак та еталонним навчальним датасетом. При виявленні стійкого статистичного відхилення без ознак руйнування вузол формує запит на хмарний рівень для оновлення вагових коефіцієнтів методом бездротового оновлення прошивки (Firmware Over-The-Air, FOTA).</p>
+<p>Питання кібербезпеки моделей на межі мережі має критичне значення у промислових середовищах, де зловмисник може отримати безпосередній фізичний контакт із сенсорним вузлом. За відсутності захисних механізмів зловмисник через налагоджувальні порти JTAG/SWD здатен зчитати дамп Flash-пам'яті мікроконтролера, що призводить до крадіжки інтелектуальної власності (структури та ваг оптимізованої моделі) або її підміни на фальсифікований двійковий код, який маскує реальні аварійні режими. </p>
+<p>Захист локального штучного інтелекту базується на реалізації апаратного кореня довіри (Hardware Root of Trust), включенні криптографічного модуля перевірки підпису завантажувача Secure Boot та використанні апаратного шифрування адресного простору Flash-пам'яті (наприклад, апаратного блоку AES-XTS в мікроконтролерах ESP32-S3), що унеможливлює виконання неавторизованого коду інференсу.</p>
+<blockquote>
+<p><strong>КОНТРОЛЬНЕ ПИТАННЯ:</strong> Під час переведення аналітичної моделі виявлення дефектів підшипників з обчислень Float32 у квантований формат Int8 розробник зафіксував зростання помилок другого роду (пропуск аварійного стану) з 0,8% до 14,2%. Водночас на калібрувальній вибірці точність залишилася високою. Який методологічний фактор під час квантування став причиною втрати чутливості до дефектів і які кроки необхідно вжити для усунення цієї проблеми?</p>
+</blockquote>
+<details class="note">
+<summary>Розгорнути аналіз / відповідь</summary>
+<p><strong>Правильний варіант: Некоректне визначення динамічного діапазону активацій під час калібрування через відсутність у калібрувальному датасеті реалізацій рідкісних високочастотних ударних імпульсів.</strong></p>
+<ol>
+<li>
+<p>Поетапне аналітичне обґрунтування:</p>
+</li>
+<li>
+<p>При пост-тренувальному квантуванні (PTQ) масштабний множник <span class="arithmatex">\(S\)</span> та точка зміщення <span class="arithmatex">\(Z\)</span> розраховуються на основі мінімальних і максимальних значень активацій, зареєстрованих під час прогону через мережу невеликої калібрувальної вибірки.</p>
+</li>
+<li>
+<p>Якщо калібрувальний масив містив переважно дані штатної роботи або слабо виражених дефектів, максимальне значення активацій виявилося штучно заниженим.</p>
+</li>
+<li>
+<p>При появі реального дефекту високої інтенсивності у вхідному вібросигналі виникають амплітудні сплески (високий пік-фактор та ексцес), які перевантажують квантовані шари. Відбувається насичення (saturation clipping) на верхній межі типу Int8 (значення +127), що повністю зрізає верхівки діагностичних піків і спотворює форму вихідного вектора ознак. Внаслідок цього мережа класифікує дефект як шум і пропускає аварію.</p>
+</li>
+<li>
+<p>Для усунення аномалії необхідно включити до калібрувального датасету репрезентативні записи зародження дефектів або перейти на використання квантування, обізнаного про навчання (Quantization-Aware Training, QAT), де модель учиться зберігати чутливість до екстремумів сигналу в умовах обмеженого динамічного діапазону.</p>
+</li>
+<li>
+<p>Аналіз альтернативних факторів:</p>
+</li>
+<li>
+<p>Недостатній розмір буфера Tensor Arena не може бути причиною вибіркового зростання помилок другого роду, оскільки дефіцит пам'яті арени призводить до фатального аварійного завершення програми на етапі розподілу пам'яті (виклик методу AllocateTensors повертає статус помилки) або до системного перезавантаження мікроконтролера за винятком порушення пам'яті.</p>
+</li>
+<li>
+<p>Зниження тактової частоти процесора впливає виключно на часову тривалість інференсу і жодним чином не змінює числові значення обчислюваних вихідних тензорів.</p>
+</li>
+</ol>
+</details>
+<hr />
+<h3 id="_5">Вказівки для самостійного осмислення</h3>
+<ol>
+<li>
+<p>Розрахувати значення цілочисельного множника <span class="arithmatex">\(M_0\)</span> та величину бітового зсуву <span class="arithmatex">\(n\)</span> для масштабних коефіцієнтів <span class="arithmatex">\(S_1 = 0{,}0045\)</span>, <span class="arithmatex">\(S_2 = 0{,}0080\)</span> та <span class="arithmatex">\(S_3 = 0{,}0192\)</span> за умови представлення проміжного результату 32-бітним числом.</p>
+</li>
+<li>
+<p>Проаналізувати вплив температурного коефіцієнта <span class="arithmatex">\(T\)</span> у діапазоні від 1 до 20 на форму вихідного вектора Softmax-активацій моделі-вчителя для задачі трикласової класифікації технічного стану роторного агрегату.</p>
+</li>
+<li>
+<p>Оцінити теоретичний мінімальний обсяг статичного буфера Tensor Arena для одновимірної згорткової нейронної мережі, що містить два шари згортки з шістнадцятьма фільтрами довжиною п'ять відліків при вхідному векторі розмірністю 128 значень.</p>
+</li>
+</ol>
+<h2 id="3_1">3. Практичний індустріальний / фаховий кейс. Проектування вбудованої системи предиктивної діагностики</h2>
+<h3 id="31-esp32-tinyml">3.1. Комплексний фаховий кейс. Розробка та оптимізація вбудованої системи вібродіагностики промислового насосного агрегату на базі мікроконтролера ESP32 з використанням моделі TinyML</h3>
+<h4 id="_6">Постановка задачі / ситуації</h4>
+<p>На підприємстві хімічної промисловості експлуатується критична група консольних відцентрових насосів, призначених для безперервного перекачування агресивних технологічних емульсій. Привод насоса здійснюється від трифазного асинхронного електродвигуна номінальною потужністю 30 кВт із синхронною частотою обертання вала 3000 обертів за хвилину (номінальна частота під навантаженням становить 2950 обертів за хвилину). Основним вузлом, що визначає міжремонтний інтервал і схильний до раптових відмов через втомні напруження та вимивання мастила, є радіальний підшипник кочення марки SKF 6208. Позаплановий вихід насоса з ладу призводить до аварійної зупинки всієї технологічної колони, при цьому прямі економічні збитки становлять понад 120 000 гривень за кожну годину простою.</p>
+<p>Традиційний регламентний огляд вузла спеціалістом-вібродіагностом один раз на місяць виявився неефективним, оскільки розвиток критичного дефекту від стадії зародження мікротріщини до повного руйнування сепаратора під впливом динамічних навантажень відбувається за 7-10 діб. Керівництвом підприємства сформовано технічне завдання на проектування та розгортання автономного діагностичного Edge-вузла, змонтованого безпосередньо на корпусі підшипника. Система повинна здійснювати вимірювання вібраційного прискорення, вилучати статистичні й спектральні ознаки, виконувати локальний інференс квантованої нейромережевої моделі детектування аномалій та передавати агреговані тривожні повідомлення лише за фактом виявлення деструктивних процесів.</p>
+<p><em>Таблиця 3 — Технічні вимоги, проектні обмеження та параметри обладнання насосного агрегату</em></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Категорія параметрів</th>
+<th style="text-align: left;">Конкретний параметр системи</th>
+<th style="text-align: left;">Числове значення</th>
+<th style="text-align: left;">Інженерна інтерпретація та системні обмеження</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Кінематика агрегату</strong></td>
+<td style="text-align: left;">Частота обертання вала (<span class="arithmatex">\(n\)</span>)</td>
+<td style="text-align: left;"><span class="arithmatex">\(2950\text{ об/хв}\)</span></td>
+<td style="text-align: left;">Відповідає оборотній частоті <span class="arithmatex">\(f_r \approx 49{,}17\text{ Гц}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Геометрія підшипника</strong></td>
+<td style="text-align: left;">Кількість тіл кочення (<span class="arithmatex">\(N_b\)</span>)</td>
+<td style="text-align: left;"><span class="arithmatex">\(9\)</span> кульок</td>
+<td style="text-align: left;">Необхідна для розрахунку характеристичних частот дефектів</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Геометрія підшипника</strong></td>
+<td style="text-align: left;">Діаметр кульки (<span class="arithmatex">\(d\)</span>) / середній діаметр (<span class="arithmatex">\(D\)</span>)</td>
+<td style="text-align: left;"><span class="arithmatex">\(d = 12{,}0\text{ мм}\)</span>, <span class="arithmatex">\(D = 60{,}0\text{ мм}\)</span></td>
+<td style="text-align: left;">Контактний кут нахилу лінії навантаження <span class="arithmatex">\(\alpha = 0^\circ\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Вимірювальний тракт</strong></td>
+<td style="text-align: left;">Частота опитування акселерометра (<span class="arithmatex">\(f_s\)</span>)</td>
+<td style="text-align: left;"><span class="arithmatex">\(6400\text{ Гц}\)</span></td>
+<td style="text-align: left;">Забезпечує смугу пропускання частот Найквіста до <span class="arithmatex">\(3200\text{ Гц}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Вимірювальний тракт</strong></td>
+<td style="text-align: left;">Розмір аналізованого вікна вибірки (<span class="arithmatex">\(K\)</span>)</td>
+<td style="text-align: left;"><span class="arithmatex">\(2048\)</span> відліків</td>
+<td style="text-align: left;">Дає роздільну здатність спектра за частотою <span class="arithmatex">\(\Delta f = 3{,}125\text{ Гц}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Апаратна платформа</strong></td>
+<td style="text-align: left;">Мікроконтролер / процесорні ядра</td>
+<td style="text-align: left;">ESP32-WROOM-32 (<span class="arithmatex">\(240\text{ МГц}\)</span>)</td>
+<td style="text-align: left;">Двоядерний 32-розрядний Xtensa LX6, апаратний модуль FPU</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Апаратна платформа</strong></td>
+<td style="text-align: left;">Обсяг доступної оперативної пам'яті (RAM)</td>
+<td style="text-align: left;">Не більше <span class="arithmatex">\(45\text{ Кбайт}\)</span></td>
+<td style="text-align: left;">Ліміт виділення буфера Tensor Arena під середовище TFLM</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Апаратна платформа</strong></td>
+<td style="text-align: left;">Обсяг енергонезалежної пам'яті (Flash)</td>
+<td style="text-align: left;">Не більше <span class="arithmatex">\(80\text{ Кбайт}\)</span></td>
+<td style="text-align: left;">Ліміт масиву ваг та архітектури нейромережі</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Енергозабезпечення</strong></td>
+<td style="text-align: left;">Джерело живлення / струм у режимі сну</td>
+<td style="text-align: left;"><span class="arithmatex">\(\text{Li-SOCl}_2\text{ (3{,}6 В, 8500 мА}\cdot\text{год)}\)</span></td>
+<td style="text-align: left;">Струм у стані глибокого сну <span class="arithmatex">\(I_{sleep} \le 15\text{ мкА}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Регламент роботи</strong></td>
+<td style="text-align: left;">Періодичність діагностичного циклу</td>
+<td style="text-align: left;"><span class="arithmatex">\(1\text{ раз на 10 хвилин}\)</span></td>
+<td style="text-align: left;">Забезпечує цільовий термін автономної служби не менше <span class="arithmatex">\(3\)</span> років</td>
+</tr>
+</tbody>
+</table>
+<p>Архітектура розгортання діагностичного конвеєра на базі мікроконтролера представлена на блок-схемі нижче.</p>
+<pre class="mermaid"><code>flowchart TD
+    subgraph DataAcquisition["Первинний вимірювальний тракт"]
+        A["Датчик віброприскорення (IIS3DWB)"] --&gt;|Шина SPI: 10 Мбіт/с| B["Кільцевий DMA-буфер ESP32 (2048 відліків)"]
+    end
+
+    subgraph EdgeProcessing["Цифрова обробка та інженерія ознак"]
+        B --&gt; C["Фільтрація постійної складової та зважування вікном Ганна"]
+        C --&gt; D["Розрахунок часових моментів: RMS, Kurtosis, Crest Factor"]
+        C --&gt; E["Обчислення 2048-точкового Fast Fourier Transform"]
+        E --&gt; F["Селекція спектральних смуг на частотах BPFO та BPFI"]
+    end
+
+    subgraph TinyMLInference["Локальний нейромережевий інференс"]
+        D --&gt; G["Вектор діагностичних ознак (M = 8)"]
+        F --&gt; G
+        G --&gt; H["Афінне квантування вектора в Int8"]
+        H --&gt; I["TensorFlow Lite for Microcontrollers (Tensor Arena 32 КБ)"]
+        I --&gt; J["Глибинний автоенкодер (Архітектура 8-4-2-4-8)"]
+        J --&gt; K["Розрахунок похибки реконструкції L_MSE"]
+    end
+
+    subgraph DecisionMaking["Логіка прийняття рішень та зв'язок"]
+        K --&gt; L{"L_MSE &gt; 0.0415?"}
+        L --&gt;|Ні: Штатна робота| M["Перехід у Deep Sleep на 600 секунд"]
+        L --&gt;|Так: Дефект вузла| N["Активація LoRaWAN трансивера (Клас A)"]
+        N --&gt; O["Відправка тривожного кадру на сервер SCADA"]
+    end</code></pre>
+<h4 id="_7">Покроковий аналіз та розв'язок</h4>
+<h5 id="1">Крок 1. Розрахунок кінематичних частот дефектів підшипника та параметрів частотного розкладу</h5>
+<p>Для виявлення деструктивних змін геометрії поверхонь тертя необхідно визначити аналітичні частоти контакту тіл кочення. На основі вихідних параметрів швидкість обертання вала ротора у відносних одиницях частоти складає:</p>
+<div class="arithmatex">\[f_r = \frac{n}{60} = \frac{2950}{60} \approx 49{,}17\text{ Гц}\]</div>
+<p>Характеристичні частоти дефектів для зовнішнього кільця (<span class="arithmatex">\(f_{BPFO}\)</span>) та внутрішнього кільця (<span class="arithmatex">\(f_{BPFI}\)</span>) обчислюються шляхом підстановки конструктивних параметрів підшипника:</p>
+<div class="arithmatex">\[f_{BPFO} = \frac{N_b}{2} \cdot f_r \cdot \left(1 - \frac{d}{D}\cos\alpha\right) = \frac{9}{2} \cdot 49{,}17 \cdot \left(1 - \frac{12{,}0}{60{,}0}\cos 0^\circ\right) = 4{,}5 \cdot 49{,}17 \cdot 0{,}80 = 177{,}01\text{ Гц}\]</div>
+<div class="arithmatex">\[f_{BPFI} = \frac{N_b}{2} \cdot f_r \cdot \left(1 + \frac{d}{D}\cos\alpha\right) = \frac{9}{2} \cdot 49{,}17 \cdot \left(1 + \frac{12{,}0}{60{,}0}\cos 0^\circ\right) = 4{,}5 \cdot 49{,}17 \cdot 1{,}20 = 265{,}52\text{ Гц}\]</div>
+<p>Частота дискретизації <span class="arithmatex">\(f_s = 6400\text{ Гц}\)</span> повністю задовольняє теорему Найквіста-Котельникова для моніторингу вищих гармонік дефектів, оскільки верхня межа спектрального аналізу <span class="arithmatex">\(f_{max} = f_s / 2 = 3200\text{ Гц}\)</span> перекриває десятикратне значення частоти <span class="arithmatex">\(f_{BPFI}\)</span>. Крок частотної дискретизації спектра становить <span class="arithmatex">\(\Delta f = f_s / K = 6400 / 2048 = 3{,}125\text{ Гц}\)</span>, що забезпечує чітке розділення гармонік оборотного ряду та дефектних піків.</p>
+<h5 id="2">Крок 2. Формування та нормалізація вектора вхідних ознак</h5>
+<p>У кожному діагностичному циклі мікроконтролер обчислює вісім показників, формуючи вектор <span class="arithmatex">\(\mathbf{x} = [X_{RMS}, K_u, C_f, S_k, E_{r}, E_{BPFO}, E_{BPFI}, f_c]^T\)</span>. Нехай під час перевірки фрагмента зафіксовано такі значення: середньоквадратичне значення <span class="arithmatex">\(X_{RMS} = 4{,}20\text{ м/с}^2\)</span>, ексцес <span class="arithmatex">\(K_u = 7{,}85\)</span> (свідчить про наявність виражених імпульсів ударного характеру), пік-фактор <span class="arithmatex">\(C_f = 4{,}10\)</span>, асиметрія <span class="arithmatex">\(S_k = 0{,}65\)</span>, енергія оборотної частоти <span class="arithmatex">\(E_r = 1{,}12\text{ Дж}\)</span>, енергія смуги зовнішнього кільця <span class="arithmatex">\(E_{BPFO} = 2{,}85\text{ Дж}\)</span>, енергія внутрішнього кільця <span class="arithmatex">\(E_{BPFI} = 0{,}35\text{ Дж}\)</span> та спектральний центр ваги <span class="arithmatex">\(f_c = 412{,}5\text{ Гц}\)</span>. </p>
+<p>Для забезпечення стабільності нейромережі виконується мінімаксна нормалізація кожного показника до інтервалу <span class="arithmatex">\([0, 1]\)</span> на основі заздалегідь розрахованих діапазонів справного стану:</p>
+<div class="arithmatex">\[x_{m}^{norm} = \frac{x_m - x_m^{min}}{x_m^{max} - x_m^{min}}\]</div>
+<p>Для ексцесу <span class="arithmatex">\(K_u\)</span>, діапазон якого під час нормальної роботи складає <span class="arithmatex">\([2{,}5; 3{,}5]\)</span>, нормалізоване значення при зафіксованій аномалії приймає величину:</p>
+<div class="arithmatex">\[x_{K_u}^{norm} = \frac{7{,}85 - 2{,}5}{3{,}5 - 2{,}5} = 5{,}35\]</div>
+<h5 id="3_2">Крок 3. Розрахунок похибки реконструкції квантованого автоенкодера</h5>
+<p>Вектор нормалізованих ознак подається на вхід симетричного автоенкодера з конфігурацією шарів 8-4-2-4-8. Модель повністю квантована у формат Int8. Квантовані активації прихованих шарів та вихідного шару декодувальника обчислюються за правилом цілочисельного множення матриць:</p>
+<div class="arithmatex">\[q_{out} = \text{clip}\left(\left\lfloor \frac{S_1 S_2}{S_3} \sum (q_1 - Z_1)(q_2 - Z_2) \right\rceil + Z_3, -128, 127\right)\]</div>
+<p>Після зворотного приведення виходу мережі до дійсного простору отримано вектор реконструкції <span class="arithmatex">\(\hat{\mathbf{x}}^{norm}\)</span>. Оскільки автоенкодер навчений на нормальних співвідношеннях ознак, він намагається звести аномальний сплеск ексцесу до значення, притаманного бездефектній роботі, формуючи оцінку <span class="arithmatex">\(\hat{x}_{K_u}^{norm} = 1{,}05\)</span>. Відповідно середньоквадратична похибка реконструкції по всіх восьми вимірах становить:</p>
+<div class="arithmatex">\[\mathcal{L}_{MSE}(\mathbf{x}^{norm}, \hat{\mathbf{x}}^{norm}) = \frac{1}{8} \sum_{m=1}^{8} (x_m^{norm} - \hat{x}_m^{norm})^2 = \frac{1}{8} \left( (5{,}35 - 1{,}05)^2 + \dots \right) = 2{,}385\]</div>
+<p>Статистичний поріг детектування аномалії, отриманий на етапі калібрування справного насоса, становить:</p>
+<div class="arithmatex">\[\theta_{threshold} = \mu_{\mathcal{L}} + 3\sigma_{\mathcal{L}} = 0{,}0125 + 3 \cdot 0{,}0042 = 0{,}0251\]</div>
+<p>Оскільки обчислене значення <span class="arithmatex">\(\mathcal{L}_{MSE} = 2{,}385 \gg 0{,}0251\)</span>, система фіксує перехід насосного агрегату в аномальний стан. Локалізація найбільшої похибки в каналі енергії <span class="arithmatex">\(E_{BPFO}\)</span> однозначно вказує на дефект доріжки кочення зовнішнього кільця підшипника.</p>
+<h5 id="4">Крок 4. Розрахунок енергетичного бюджету та ресурсу автономної роботи</h5>
+<p>Діагностичний цикл розбивається на активну фазу збору та обробки даних тривалістю <span class="arithmatex">\(T_{act} = 150\text{ мс}\)</span> із середнім струмом споживання <span class="arithmatex">\(I_{act} = 75\text{ мА}\)</span> (робота мікроконтролера, зчитування з акселерометра та інференс TFLM) та фазу глибокого сну <span class="arithmatex">\(T_{sleep} = 599{,}85\text{ с}\)</span> зі струмом <span class="arithmatex">\(I_{sleep} = 12\text{ мкА}\)</span>.</p>
+<p>Середній струм споживання за один повний період <span class="arithmatex">\(T = 600\text{ с}\)</span> визначається співвідношенням:</p>
+<div class="arithmatex">\[I_{avg} = \frac{I_{act} \cdot T_{act} + I_{sleep} \cdot T_{sleep}}{T} = \frac{75\text{ мА} \cdot 0{,}15\text{ с} + 0{,}012\text{ мА} \cdot 599{,}85\text{ с}}{600\text{ с}} = \frac{11{,}25 + 7{,}198}{600} \approx 0{,}0307\text{ мА}\]</div>
+<p>Теоретичний термін служби батареї типу <span class="arithmatex">\(\text{Li-SOCl}_2\)</span> номінальною ємністю <span class="arithmatex">\(C_{bat} = 8500\text{ мА}\cdot\text{год}\)</span> з урахуванням коефіцієнта деградації та саморозряду <span class="arithmatex">\(\eta = 0{,}85\)</span> становить:</p>
+<div class="arithmatex">\[T_{life} = \frac{C_{bat} \cdot \eta}{I_{avg} \cdot 24 \cdot 365} = \frac{8500 \cdot 0{,}85}{0{,}0307 \cdot 8760} = \frac{7225}{268{,}93} \approx 26{,}86\text{ років}\]</div>
+<p>З урахуванням фізичного старіння хімічного джерела живлення реальний гарантований термін автономного функціонування обмежується 10 роками, що повністю задовольняє проектні вимоги.</p>
+<h4 id="_8">Інтерпретація результатів та альтернативні сценарії</h4>
+<ol>
+<li>
+<p>Розроблена архітектура підтвердила можливість автономного функціонування інтелектуального діагностичного вузла на базі бюджетного мікроконтролера ESP32, забезпечуючи час виконання інференсу квантованої моделі автоенкодера в межах 4,2 мілісекунди при використанні лише 28 Кбайт статичної пам'яті Tensor Arena.</p>
+</li>
+<li>
+<p>Селективне детектування пошкодження зовнішнього кільця підшипника на початковій стадії забезпечило запас часу у 14 діб до настання катастрофічної відмови, що дозволило перевести ремонт агрегату в плановий графік зупинки технологічної лінії.</p>
+</li>
+<li>
+<p>У разі підключення електродвигуна через частотно-регульований привод (зміна частоти обертання в діапазоні від 1000 до 3000 об/хв) жорстко розраховані спектральні вікна стануть нерелевантними через постійне плаваюче зміщення частот <span class="arithmatex">\(f_{BPFO}\)</span> та <span class="arithmatex">\(f_{BPFI}\)</span>. За такого сценарію алгоритм вимагатиме обов'язкового введення додаткового тахометричного каналу синхронізації та переходу до процедури порядкового аналізу (Order Tracking), за якої крок дискретизації за часом замінюється на фіксований кутовий крок повороту вала.</p>
+</li>
+</ol>
+<hr />
+<h3 id="32">3.2. Зведена довідкова система лекції</h3>
+<p><em>Таблиця 4 — Комплексний глосарій інженерних термінів, концепцій та аналітичних моделей Edge AI в IoT</em></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Термін / Концепція</th>
+<th style="text-align: left;">Формалізація / Сутність</th>
+<th style="text-align: left;">Реальний кейс застосування</th>
+<th style="text-align: left;">Основне обмеження / Ризик</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Edge AI / TinyML</strong></td>
+<td style="text-align: left;">Парадигма виконання інференсу ML-моделей на мікроконтролерах (<span class="arithmatex">\(P &lt; 50\text{ мВт}\)</span>, <span class="arithmatex">\(\text{RAM} &lt; 512\text{ КБ}\)</span>)</td>
+<td style="text-align: left;">Вібродіагностика підшипників шахтних підйомних машин</td>
+<td style="text-align: left;">Неможливість донавчання важких моделей безпосередньо на пристрої</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Ексцес (Kurtosis)</strong></td>
+<td style="text-align: left;">Четвертий центральний статистичний момент: <span class="arithmatex">\(K_u = \frac{\mu_4}{\sigma^4}\)</span></td>
+<td style="text-align: left;">Виявлення мікротріщин у редукторах вітрогенераторів</td>
+<td style="text-align: left;">Висока чутливість до поодиноких технологічних ударних завад</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Кінематичні частоти (BPFO/BPFI)</strong></td>
+<td style="text-align: left;">Розрахункові частоти ударів кульок об дефекти кілець підшипника</td>
+<td style="text-align: left;">Моніторинг тягових двигунів магістральних тепловозів</td>
+<td style="text-align: left;">Змазування спектральних піків при ковзанні кульок під навантаженням</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Глибинний автоенкодер</strong></td>
+<td style="text-align: left;">Нейромережа стиснення-відновлення: <span class="arithmatex">\(\hat{\mathbf{x}} = g(f(\mathbf{x}))\)</span>, цільова функція <span class="arithmatex">\(\mathcal{L}_{MSE}\)</span></td>
+<td style="text-align: left;">Детектування аномалій струму в сервоприводах верстатів ЧПК</td>
+<td style="text-align: left;">Ризик перенавчання (запам'ятовування аномалій при брудній вибірці)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Health Index (HI)</strong></td>
+<td style="text-align: left;">Безрозмірний індекс технічного стану вузла, нормований на діапазон <span class="arithmatex">\([0, 1]\)</span></td>
+<td style="text-align: left;">Оцінка деградації лопаток газових турбін ТЕС</td>
+<td style="text-align: left;">Нелінійний характер деградації на завершальних стадіях зносу</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Залишковий ресурс (RUL)</strong></td>
+<td style="text-align: left;">Часовий інтервал до перетину деградаційною кривою критичного порога</td>
+<td style="text-align: left;">Прогнозування відмови роликових млинів збагачувальних фабрик</td>
+<td style="text-align: left;">Накопичення похибки екстраполяції при стохастичних навантаженнях</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Квантування Int8 (PTQ)</strong></td>
+<td style="text-align: left;">Афінне відображення: <span class="arithmatex">\(r = S \cdot (q - Z)\)</span>, де <span class="arithmatex">\(q \in [-128, 127]\)</span></td>
+<td style="text-align: left;">Оптимізація моделі згорткової мережі під ядра Cortex-M4F</td>
+<td style="text-align: left;">Втрата точності через обрізання екстремальних викидів активацій</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Tensor Arena</strong></td>
+<td style="text-align: left;">Статично виділений неперервний буфер RAM для TFLM середовища</td>
+<td style="text-align: left;">Безпечне виконання коду в медичних інфузоматах</td>
+<td style="text-align: left;">Ризик переповнення буфера при складних багатогілкових графах</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Дрейф даних (Data Drift)</strong></td>
+<td style="text-align: left;">Зміна статистичного розподілу вхідних ознак: <span class="arithmatex">\(P_t(\mathbf{x}) \ne P_0(\mathbf{x})\)</span></td>
+<td style="text-align: left;">Сезонна зміна вібраційного фону гідроелектростанцій</td>
+<td style="text-align: left;">Хибні тривожні спрацьовування через зміну температури цеху</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Batch Normalization Folding</strong></td>
+<td style="text-align: left;">Математичне об'єднання параметрів нормалізації з вагами згортки</td>
+<td style="text-align: left;">Зменшення обчислювальної складності інференсу на Edge</td>
+<td style="text-align: left;">Фіксація параметрів унеможливлює адаптацію під нові партії датчиків</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="33">3.3. Контрольні питання та завдання</h3>
+<h4 id="_9">Прикладні тестові завдання</h4>
+<ol>
+<li>
+<p>Під час вібромоніторингу димососа котельного цеху, що обертається з частотою 1500 об/хв, вимірювальний тракт налаштовано на частоту дискретизації <span class="arithmatex">\(f_s = 1000\text{ Гц}\)</span> із розміром вікна швидкого перетворення Фур'є <span class="arithmatex">\(K = 512\)</span> відліків. Для встановленого підшипника розрахункова частота дефекту внутрішнього кільця становить <span class="arithmatex">\(f_{BPFI} = 245{,}8\text{ Гц}\)</span>, а зовнішнього — <span class="arithmatex">\(f_{BPFO} = 172{,}3\text{ Гц}\)</span>. Яка метрологічна проблема виникне при спробі розділити пік дефекту <span class="arithmatex">\(f_{BPFI}\)</span> та п'яту гармоніку оборотної частоти вала (<span class="arithmatex">\(5 \cdot f_r\)</span>)?</p>
+</li>
+<li>
+<p>A. Відбудеться еліасинг (накладання частот) через порушення критерію Найквіста.</p>
+</li>
+<li>
+<p>B. Недостатня роздільна здатність за частотою не дозволить розділити ці піки в спектрі.</p>
+</li>
+<li>
+<p>C. Виникне витік енергії через відсутність ваги вікна Чебишова.</p>
+</li>
+<li>
+<p>D. Помилка квантування АЦП повністю заглушить гармоніку внутрішнього кільця.</p>
+</li>
+</ol>
+<details class="note">
+<summary>Розгорнути аналіз / відповідь</summary>
+<p><strong>Правильний варіант: B.</strong></p>
+<ol>
+<li>
+<p>Повне логічне обґрунтування: Оборотна частота вала дорівнює <span class="arithmatex">\(f_r = 1500 / 60 = 25\text{ Гц}\)</span>. П'ята гармоніка становить <span class="arithmatex">\(5 \cdot 25 = 125\text{ Гц}\)</span>, а дефект внутрішнього кільця — <span class="arithmatex">\(245{,}8\text{ Гц}\)</span>. Проте десята гармоніка вала дорівнює <span class="arithmatex">\(10 \cdot 25 = 250\text{ Гц}\)</span>. Різниця між частотою дефекту та гармонікою становить <span class="arithmatex">\(|250 - 245{,}8| = 4{,}2\text{ Гц}\)</span>. Крок дискретизації спектра за частотою дорівнює <span class="arithmatex">\(\Delta f = f_s / K = 1000 / 512 \approx 1{,}953\text{ Гц}\)</span>. Для впевненого розділення двох близьких піків за критерієм Релея з урахуванням розширення головної пелюстки віконної функції (наприклад, Ганна або Блекмана) ширина пелюстки становить від <span class="arithmatex">\(3\Delta f\)</span> до <span class="arithmatex">\(4\Delta f\)</span> (тобто від <span class="arithmatex">\(5{,}85\)</span> до <span class="arithmatex">\(7{,}81\text{ Гц}\)</span>). Оскільки інтервал між піками (<span class="arithmatex">\(4{,}2\text{ Гц}\)</span>) є меншим за ширину розмиття спектрального вікна, піки зіллються в один неподільний максимум.</p>
+</li>
+<li>
+<p>Аналіз дистракторів:</p>
+</li>
+<li>
+<p>Варіант A хибний, оскільки частота Найквіста <span class="arithmatex">\(f_{Nyq} = f_s / 2 = 500\text{ Гц}\)</span>, що строго більше за найвищу аналізовану частоту <span class="arithmatex">\(250\text{ Гц}\)</span>.</p>
+</li>
+<li>
+<p>Варіант C хибний, оскільки тип віконної функції впливає на рівень бічних пелюсток, але не усуває обмеження фундаментальної роздільної здатності за даної довжини вибірки.</p>
+</li>
+<li>
+<p>Варіант D хибний, оскільки шум квантування 12- або 16-розрядного АЦП знаходиться на рівні нижче -70 дБ і не здатний повністю перекрити гармоніку дефекту розвиненої стадії.</p>
+</li>
+</ol>
+</details>
+<ol>
+<li>
+<p>Інженер розгорнув на мікроконтролері з ядром ARM Cortex-M4F нейромережевий автоенкодер, квантований до Int8, виділивши під Tensor Arena 40 Кбайт пам'яті. Програма успішно компілюється, функція виділення пам'яті <code>AllocateTensors()</code> повертає статус <code>kTfLiteOk</code>, проте під час першого виклику методу <code>Invoke()</code> мікроконтролер переходить у режим фатальної помилки апаратного виключення процесора (HardFault Exception). Яка апаратна причина викликала даний збій?</p>
+</li>
+<li>
+<p>A. Переповнення області пам'яті стека викликане глибиною викликів функцій інтерпретатора.</p>
+</li>
+<li>
+<p>B. Помилка вирівнювання пам'яті (Memory Misalignment) вхідного або вихідного покажчика тензора активацій при спробі виконання векторних інструкцій SIMD.</p>
+</li>
+<li>
+<p>C. Недостатня напруга живлення кристала для перемикання вентилів на частоті 168 МГц.</p>
+</li>
+<li>
+<p>D. Неправильний розрахунок нульової точки квантування в шарі декодувальника.</p>
+</li>
+</ol>
+<details class="note">
+<summary>Розгорнути аналіз / відповідь</summary>
+<p><strong>Правильний варіант: B.</strong></p>
+<ol>
+<li>
+<p>Повне логічне обґрунтування: Бібліотека CMSIS-NN та середовище TFLM на ядрах ARM Cortex-M4F оптимізують операції над цілими 8-бітними числами за допомогою спеціальних 32-розрядних інструкцій SIMD (наприклад, <code>SMLAD</code> — знакове паралельне множення з подвійним накопиченням). Ці апаратні інструкції вимагають, щоб покажчики на масиви даних у пам'яті були суворо вирівняні за 4-байтовою або 16-байтовою межею (<code>alignas(4)</code> або <code>alignas(16)</code>). Якщо буфер Tensor Arena або внутрішній покажчик проміжного тензора був переданий як звичайний невирівняний покажчик на байтовий масив, спроба процесора виконати упаковане 32-розрядне читання призводить до генерації апаратного переривання UsageFault/HardFault через непідтримуване непарне вирівнювання пам'яті.</p>
+</li>
+<li>
+<p>Аналіз дистракторів:</p>
+</li>
+<li>
+<p>Варіант A хибний, оскільки фреймворк TFLM мінімізує використання стека, розміщуючи всі змінні стану всередині статичного пулу Tensor Arena.</p>
+</li>
+<li>
+<p>Варіант C хибний, оскільки просідання напруги живлення викликає перезавантаження від схеми Brown-Out Reset (BOR), а не HardFault.</p>
+</li>
+<li>
+<p>Варіант D хибний, оскільки математична похибка нульової точки призводить лише до числового спотворення результату (похибки класифікації), а не до системного виключення ядра.</p>
+</li>
+</ol>
+</details>
+<ol>
+<li>
+<p>На промисловому вентиляторі гарячого дуття інтелектуальний сенсорний вузол успішно детектував аномалію автоенкодером у літній період експлуатації. З настанням зими температура навколишнього повітря в цеху знизилася з +35 °C до +5 °C, після чого сенсор почав кожні 10 хвилин генерувати помилкові тривожні повідомлення про дефект підшипника, хоча фізичні вимірювання за допомогою еталонного віброметра підтвердили абсолютно справний стан вузла. Який процес відбувся в системі?</p>
+</li>
+<li>
+<p>A. Відбувся збій у роботі Flash-пам'яті мікроконтролера через вплив низьких температур.</p>
+</li>
+<li>
+<p>B. Мав місце дрейф концепцій, спричинений деградацією кремнієвої структури акселерометра.</p>
+</li>
+<li>
+<p>C. Відбувся дрейф даних унаслідок зміни в'язкості мастила при охолодженні, що змінило базовий спектральний розподіл коливань.</p>
+</li>
+<li>
+<p>D. Помилка виникла через переповнення розрядності цілочисельного акумулятора в шарах моделі.</p>
+</li>
+</ol>
+<details class="note">
+<summary>Розгорнути аналіз / відповідь</summary>
+<p><strong>Правильний варіант: C.</strong></p>
+<ol>
+<li>
+<p>Повне логічне обґрунтування: Зниження температури підшипникового вузла на 30 °C призводить до закономірного збільшення динамічної в'язкості пластичного мастила. Більш в'язке мастило змінює демпфувальні властивості масляної плівки в зоні контакту тіл кочення, що спричиняє природне підвищення високочастотного вібраційного фону та зміщення спектрального центру ваги, не пов'язане з механічним дефектом металу. Оскільки автоенкодер навчався на даних виключно теплого періоду, новий безпечний розподіл ознак розцінюється моделлю як аномалія, викликаючи стійке перевищення похибки реконструкції <span class="arithmatex">\(\mathcal{L}_{MSE} &gt; \theta_{threshold}\)</span>. Це класичний прояв дрейфу даних (Data Drift).</p>
+</li>
+<li>
+<p>Аналіз дистракторів:</p>
+</li>
+<li>
+<p>Варіант A хибний, оскільки промислові мікроконтролери гарантують стабільність Flash-пам'яті в діапазоні від -40 °C до +85 °C.</p>
+</li>
+<li>
+<p>Варіант B хибний, оскільки дрейф концепцій означає зміну фізичного зв'язку між ознаками та дефектом, а не просто зміщення вхідного розподілу. Крім того, кремнієві структури MEMS не деградують за таких помірних температурних коливань.</p>
+</li>
+<li>
+<p>Варіант D хибний, оскільки квантований акумулятор використовує насичення (clipping) або 32-розрядну розрядність, що виключає арифметичне циклічне переповнення.</p>
+</li>
+</ol>
+</details>
+<ol>
+<li>
+<p>Проєктується пристрій предиктивного моніторингу редуктора з використанням технології TinyML. Для класифікації чотирьох типів дефектів розглядаються дві архітектури: повнозв'язна нейромережа (MLP) з трьома шарами по 128 нейронів та одновимірна згорткова мережа (1D-CNN) з двома шарами згортки (16 фільтрів розміром 5) та шаром глобального усереднення (Global Average Pooling). Обидві моделі приймають вектор із 128 ознак. Чому архітектура 1D-CNN є значно вигіднішою для розгортання на обмеженому мікроконтролері?</p>
+</li>
+<li>
+<p>A. 1D-CNN не вимагає квантування ваг перед завантаженням у Flash-пам'ять.</p>
+</li>
+<li>
+<p>B. Згорткові шари використовують принцип розділення ваг (Weight Sharing), що на порядок скорочує кількість параметрів та розмір Flash-пам'яті.</p>
+</li>
+<li>
+<p>C. Мережа MLP не підтримує обчислення з використанням цілочисельної арифметики Int8.</p>
+</li>
+<li>
+<p>D. 1D-CNN виконується за один такт процесорного ядра завдяки використанню апаратних тригерів.</p>
+</li>
+</ol>
+<details class="note">
+<summary>Розгорнути аналіз / відповідь</summary>
+<p><strong>Правильний варіант: B.</strong></p>
+<ol>
+<li>
+<p>Повне логічне обґрунтування: У повнозв'язній мережі перший прихований шар вимагає <span class="arithmatex">\(128 \times 128 = 16\ 384\)</span> ваг, другий шар — стільки ж, що разом із зсувами формує понад 33 тисячі параметрів (понад 33 Кбайт Flash навіть у форматі Int8). У структурі 1D-CNN кожен фільтр має розмір <span class="arithmatex">\(5 \times 1\)</span>. Для першого шару з 16 фільтрами кількість ваг становить лише <span class="arithmatex">\(16 \times 5 = 80\)</span> параметрів. Другий шар згортки вимагає <span class="arithmatex">\(16 \times 16 \times 5 = 1280\)</span> параметрів. Використання шару Global Average Pooling повністю усуває масивний повнозв'язний перехід перед виходом. Сумарна кількість ваг 1D-CNN не перевищує 1500 параметрів (менше 2 Кбайт пам'яті), що забезпечує колосальну економію простору Flash-пам'яті при збереженні високої здатності виявляти локальні спектральні патерни.</p>
+</li>
+<li>
+<p>Аналіз дистракторів:</p>
+</li>
+<li>
+<p>Варіант A хибний, оскільки будь-яка нейромережева архітектура вимагає квантування для ефективного виконання на мікроконтролері.</p>
+</li>
+<li>
+<p>Варіант C хибний, оскільки повнозв'язні шари ідеально квантуються за стандартною схемою матричного множення GEMM.</p>
+</li>
+<li>
+<p>Варіант D хибний, оскільки жодна згортка не виконується за один такт; операція згортки є послідовністю багатьох циклів множення з накопиченням.</p>
+</li>
+</ol>
+</details>
+<hr />
+<h4 id="_10">Завдання для самостійної роботи</h4>
+<h5 id="_11">Постановка задачі</h5>
+<p>На магістральному нафтопроводі встановлено електричний підпірний насосний агрегат, підшипникові опори якого обладнані автономним діагностичним модулем на базі мікроконтролера STM32L431 (ядро ARM Cortex-M4, 256 Кбайт Flash, 64 Кбайт SRAM). Живлення здійснюється від акумулятора з підзарядкою від п'єзоелектричного збирача енергії вібрації (Energy Harvester), що генерує в середньому 1,2 мДж енергії за годину. Під час пуску агрегату після планового ремонту виявилося, що через заміну електродвигуна на модель іншого виробника частота обертання вала зросла з 1450 об/хв до 1485 об/хв, що спричинило масове хибне спрацьовування встановленої моделі TinyML. Необхідно провести повний цикл аудиту, адаптації та оптимізації діагностичного вузла.</p>
+<h5 id="_12">Завдання для виконання</h5>
+<ol>
+<li>
+<p>Розрахувати нові характеристичні частоти дефектів підшипника кочення для зміненої частоти обертання вала та визначити мінімально допустиму частоту дискретизації вимірювального тракту, яка гарантує відсутність еліасингу для перших трьох гармонік дефекту внутрішнього кільця.</p>
+</li>
+<li>
+<p>Сформувати математичну модель адаптивного ковзного вікна для розрахунку спектральних ознак, що усуває вплив флуктуацій частоти мережі живлення на результат детектування аномалій.</p>
+</li>
+<li>
+<p>Визначити граничний розмір статичного пулу пам'яті Tensor Arena для розміщення оптимізованої моделі класифікації за умови, що під системний стек та змінні периферійних драйверів у мікроконтролері гарантовано резервується не менше 24 Кбайт оперативної пам'яті.</p>
+</li>
+<li>
+<p>Розрахувати гранично допустиму тривалість активної фази інференсу та максимально можливу частоту опитування датчика, за яких середнє енергоспоживання вузла не перевищуватиме обсяг енергії, що генерується п'єзоелектричним збирачем, забезпечуючи нульовий енергетичний дефіцит системи.</p>
+</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Повернутись нагору
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Kyrylo Vadurin &bull; <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.top", "navigation.tracking", "header.autohide", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u0421\u043a\u043e\u043f\u0456\u0439\u043e\u0432\u0430\u043d\u043e \u0432 \u0431\u0443\u0444\u0435\u0440", "clipboard.copy": "\u0421\u043a\u043e\u043f\u0456\u044e\u0432\u0430\u0442\u0438 \u0432 \u0431\u0443\u0444\u0435\u0440", "search.result.more.one": "\u0429\u0435 1 \u0437\u0431\u0456\u0433 \u043d\u0430 \u0446\u0456\u0439 \u0441\u0442\u043e\u0440\u0456\u043d\u0446\u0456", "search.result.more.other": "\u0429\u0435 # \u0437\u0431\u0456\u0433\u0456\u0432 \u043d\u0430 \u0446\u0456\u0439 \u0441\u0442\u043e\u0440\u0456\u043d\u0446\u0456", "search.result.none": "\u0417\u0431\u0456\u0433\u0456\u0432 \u043d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u043e", "search.result.one": "\u0417\u043d\u0430\u0439\u0434\u0435\u043d\u043e 1 \u0437\u0431\u0456\u0433", "search.result.other": "\u0417\u043d\u0430\u0439\u0434\u0435\u043d\u043e # \u0437\u0431\u0456\u0433\u0456\u0432", "search.result.placeholder": "\u0420\u043e\u0437\u043f\u043e\u0447\u043d\u0456\u0442\u044c \u043f\u0438\u0441\u0430\u0442\u0438 \u0434\u043b\u044f \u043f\u043e\u0448\u0443\u043a\u0443", "search.result.term.missing": "\u041d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u043e \u0437\u0430\u043f\u0438\u0442\u0443", "select.version": "\u041e\u0431\u0440\u0430\u0442\u0438 \u0432\u0435\u0440\u0441\u0456\u044e"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
