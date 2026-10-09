@@ -1,0 +1,2994 @@
+
+<!doctype html>
+<html lang="uk" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Навчальний портал з дисципліни "Технології ІоТ"">
+      
+      
+      
+      
+        <link rel="prev" href="../lb2/">
+      
+      
+        <link rel="next" href="../lb4/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>ЛБ 3. Дослідження локального MQTT-брокера - Технології Інтернету речей</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#no-3-mqtt-eclipse-mosquitto" class="md-skip">
+          Перейти до змісту
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Хедер">
+    <a href="../.." title="Технології Інтернету речей" class="md-header__button md-logo" aria-label="Технології Інтернету речей" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Технології Інтернету речей
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              ЛБ 3. Дослідження локального MQTT-брокера
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan"  aria-label="Переключити на темну тему"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Переключити на темну тему" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="cyan"  aria-label="Переключити на світлу тему"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Переключити на світлу тему" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Пошук" placeholder="Пошук" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Шукати">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Очистити" aria-label="Очистити" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Пошук розпочато
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Вкладки" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Робоча програма
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../lk/lk1/" class="md-tabs__link">
+          
+  
+  
+  Лекції
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../lb1/" class="md-tabs__link">
+          
+  
+  
+  Лабораторні роботи
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../pz/pz1/" class="md-tabs__link">
+          
+  
+  
+  Практичні заняття
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../kp/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Курсовий проєкт
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../sr/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Самостійна робота
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../sr/quest/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Контрольні завдання (Іспит)
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Навігація" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Технології Інтернету речей" class="md-nav__button md-logo" aria-label="Технології Інтернету речей" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Технології Інтернету речей
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Робоча програма
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Лекції
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Лекції
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lk/lk1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 1. Екосистема та архітектура IoT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lk/lk2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 2. Технології WPAN та WLAN у IoT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lk/lk3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 3. LPWAN технології
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lk/lk4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 4. Прикладні протоколи ІоТ (MQTT, CoAP)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lk/lk5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 5. Туманні (Fog) та граничні (Edge) обчислення
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lk/lk6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 6. Мікроконтролерні платформи (ESP32)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lk/lk7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 7. Інтелектуальні сенсори
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lk/lk8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 8. Виконавчі пристрої
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lk/lk9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 9. Віртуалізація та контейнеризація IoT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lk/lk10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 10. IoT платформи та Middleware
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lk/lk11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 11. Розумний будинок (Home Assistant)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lk/lk12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 12. Промисловий ІоТ (IIoT)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lk/lk13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 13. Big Data в ІоТ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lk/lk14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 14. Machine Learning на межі мережі
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lk/lk15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 15. Кібербезпека в системах ІоТ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Лабораторні роботи
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Лабораторні роботи
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lb1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 1. Моделювання топологій IoT-мереж
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lb2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 2. Симуляція підсистем Розумного будинку
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 3. Дослідження локального MQTT-брокера
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 3. Дослідження локального MQTT-брокера
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Зміст">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Зміст
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1 Теоретичні відомості
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-0" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2 Підготовка середовища та розгортання проєкту (Крок 0)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3 Порядок виконання роботи
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3 Порядок виконання роботи">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Індивідуальні завдання
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Покроковий алгоритм та розв'язок еталонного прикладу
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2 Покроковий алгоритм та розв&#39;язок еталонного прикладу">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 1. Формування бази облікових записів користувачів
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-access-control-list-acl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 2. Налаштування правил доступу (Access Control List, ACL)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-mosquitto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 3. Створення конфігураційного файлу брокера Mosquitto
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-mosquitto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 4. Запуск брокера Mosquitto в діагностичному режимі
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-qos-retain-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 5. Тестування рівнів QoS та Retain через CLI
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-lwt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 6. Розробка скрипта автоматизованого тестування з підтримкою LWT
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Запуск, тестування та перевірка результатів
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3 Запуск, тестування та перевірка результатів">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Еталонний вивід програми в терміналі видавця (Python):
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mosquitto_sub" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Еталонний вивід термінала підписника (mosquitto_sub оператора):
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4 Вимоги до змісту звіту
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5 Контрольні запитання для захисту роботи
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lb4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 4. Схемотехнічне моделювання вузла збору
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lb5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 5. Прошивка ESP32 для передавання телеметрії MQTT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lb6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 6. Декларативне програмування ESP32 (ESPHome)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lb7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 7. Серверне середовище Linux для IoT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lb8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 8. Контейнеризація в ІоТ (Docker Compose)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lb9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 9. Middleware ІоТ (Node-RED)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lb10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 10. Сервіс REST API для агрегації даних
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lb11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 11. Платформи розумного будинку (Home Assistant)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lb12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 12. Сценарії автоматизації Home Assistant
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lb13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 13. Обробка телеметрії мовою Python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lb14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 14. HMI Dashboard для диспетчеризації
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lb15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 15. Комплексне наскрізне тестування IoT-системи
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практичні заняття
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Практичні заняття
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 1. Розрахунок пропускної здатності та живлення
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 2. Проєктування ієрархії топіків MQTT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 3. Правила фільтрації на Edge-шлюзах
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 4. Моделювання АЦП для сенсорів
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 5. Оптимізація енергетичного профілю
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 6. Проєктування конфігурації Docker Compose
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 7. Логічні схеми в Node-RED
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 8. Сценарії Trigger-Condition-Action
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 9. Конвеєр обробки даних (ETL)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 10. Моделювання загроз безпеки (STRIDE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Курсовий проєкт
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Самостійна робота
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sr/quest/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Контрольні завдання (Іспит)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Зміст">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Зміст
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1 Теоретичні відомості
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-0" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2 Підготовка середовища та розгортання проєкту (Крок 0)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3 Порядок виконання роботи
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3 Порядок виконання роботи">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Індивідуальні завдання
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Покроковий алгоритм та розв'язок еталонного прикладу
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2 Покроковий алгоритм та розв&#39;язок еталонного прикладу">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 1. Формування бази облікових записів користувачів
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-access-control-list-acl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 2. Налаштування правил доступу (Access Control List, ACL)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-mosquitto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 3. Створення конфігураційного файлу брокера Mosquitto
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-mosquitto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 4. Запуск брокера Mosquitto в діагностичному режимі
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-qos-retain-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 5. Тестування рівнів QoS та Retain через CLI
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-lwt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 6. Розробка скрипта автоматизованого тестування з підтримкою LWT
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Запуск, тестування та перевірка результатів
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3 Запуск, тестування та перевірка результатів">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Еталонний вивід програми в терміналі видавця (Python):
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mosquitto_sub" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Еталонний вивід термінала підписника (mosquitto_sub оператора):
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4 Вимоги до змісту звіту
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5 Контрольні запитання для захисту роботи
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="no-3-mqtt-eclipse-mosquitto">Лабораторна робота № 3. Розгортання, конфігурування та дослідження параметрів функціонування локального MQTT-брокера Eclipse Mosquitto</h1>
+<p><strong>Мета:</strong> Дослідити архітектуру шаблону проєктування «Видавець-Підписник» (Publish/Subscribe), опанувати методи встановлення, конфігурування та адміністрування локального брокера повідомлень Eclipse Mosquitto, вивчити структуру пакетів протоколу MQTT, механізми забезпечення рівнів якості обслуговування (QoS 0, QoS 1, QoS 2), роботу спеціальних прапорців Retain та Last Will and Testament (LWT), а також набути практичних навичок тестування інформаційного обміну за допомогою утиліт командного рядка та графічного клієнта MQTT Explorer.</p>
+<p><strong>Стек технологій та інструменти:</strong></p>
+<ul>
+<li>
+<p><strong>Мова програмування / Середовище:</strong> Командний інтерпретатор Bash / PowerShell, мова програмування Python 3.10+ (для автоматизованого тестування).</p>
+</li>
+<li>
+<p><strong>Платформа / Бібліотеки / Модулі:</strong> Серверний брокер Eclipse Mosquitto (версія 2.0.x), консольні клієнти <code>mosquitto_sub</code>, <code>mosquitto_pub</code>, утиліта генерації паролів <code>mosquitto_passwd</code>, клієнтська бібліотека <code>paho-mqtt</code> (версія 2.0+).</p>
+</li>
+<li>
+<p><strong>Інструменти розробки:</strong> Емулятор термінала операційної системи, графічний клієнт MQTT Explorer, текстовий редактор Visual Studio Code або Nano.</p>
+</li>
+</ul>
+<hr />
+<h2 id="1">1 Теоретичні відомості</h2>
+<p>Протокол MQTT (Message Queuing Telemetry Transport) є відкритим міжнародним стандартом (ISO/IEC 20922) прикладного рівня, оптимізованим для передавання телеметричних даних в умовах обмежених обчислювальних ресурсів кінцевих пристроїв, низької пропускної здатності каналів зв'язку та високої ймовірності нестабільного мережевого з'єднання. На відміну від класичної моделі клієнт-сервер (наприклад, протоколу HTTP), де взаємодія побудована на жорсткій синхронній схемі запит-відповідь, MQTT базується на подійно-орієнтованій архітектурі «Видавець-Підписник» (Publish/Subscribe).</p>
+<p>У центрі мережевої взаємодії розташовується брокер повідомлень (Broker), який виступає посередником і повністю відокремлює клієнтів за трьома вимірами: у просторі (клієнтам не потрібно знати IP-адреси та порти один одного), у часі (відправник і одержувач можуть перебувати в мережі в різні моменти часу) та за синхронізацією (публікація даних не блокує виконання програми клієнта-видавця). Клієнти підключаються до брокера через довготривале TCP-з'єднання (за замовчуванням порт 1883 для незахищеного з'єднання або порт 8883 при використанні TLS/SSL).</p>
+<p><pre class="mermaid"><code>graph TD
+    subgraph Publishers [Видавці / Сенсорні вузли]
+        P1[Сенсорний модуль ESP32&lt;br/&gt;Клієнт: Sensor_LivingRoom]
+        P2[Метеостанція STM32&lt;br/&gt;Клієнт: Sensor_Meteo]
+    end
+
+    subgraph Broker_Core [Серверний рівень: MQTT Broker]
+        MB[Eclipse Mosquitto Broker&lt;br/&gt;TCP Port 1883 / 8883&lt;br/&gt;Routing, Filtering, Auth, LWT, Retain]
+    end
+
+    subgraph Subscribers [Підписники / Керуючі термінали]
+        S1[HMI Панель Node-RED&lt;br/&gt;Підписка: home/+/telemetry]
+        S2[Сервер Home Assistant&lt;br/&gt;Підписка: home/#]
+        S3[Смартфон оператора&lt;br/&gt;Підписка: home/alerts]
+    end
+
+    P1 --&gt;|PUBLISH: home/livingroom/telemetry| MB
+    P2 --&gt;|PUBLISH: home/meteo/telemetry| MB
+
+    MB --&gt;|FORWARD Packet| S1
+    MB --&gt;|FORWARD Packet| S2
+    MB --&gt;|FORWARD Packet| S3
+
+    style MB fill:#bbdefb,stroke:#0d47a1,stroke-width:2px
+    style Publishers fill:#c8e6c9,stroke:#2e7d32,stroke-width:1px
+    style Subscribers fill:#ffe0b2,stroke:#e65100,stroke-width:1px</code></pre>
+<em>Рисунок 1 — Структурна схема маршрутизації повідомлень за моделлю Publish/Subscribe</em></p>
+<p>Наведений на рисунку 1 інформаційний потік організовано за допомогою ієрархічних тем (топіків, Topics), які являють собою текстові UTF-8 рядки, розділені косою рискою (<code>/</code>). Для гнучкої фільтрації повідомлень підписники використовують символи підстановки (Wildcards): символ <code>+</code> замінює строго один рівень ієрархії, а символ <code>#</code> замінює всі дочірні підрівні до кінця гілки топіка.</p>
+<p>Протокол MQTT передбачає три рівні якості обслуговування (Quality of Service, QoS), які гарантують надійність доставки повідомлень за різних умов стабільності фізичного каналу зв'язку.</p>
+<p><pre class="mermaid"><code>sequenceDiagram
+    autonumber
+    participant Pub as Видавець (Publisher)
+    participant Brk as Брокер (Mosquitto)
+    participant Sub as Підписник (Subscriber)
+
+    Note over Pub,Sub: Рівень QoS 0 — Доставка максимум один раз (At most once, Fire and Forget)
+    Pub-&gt;&gt;Brk: PUBLISH (QoS 0, Packet_ID = 0, Topic, Payload)
+    Brk-&gt;&gt;Sub: PUBLISH (QoS 0, Topic, Payload)
+
+    Note over Pub,Sub: Рівень QoS 1 — Гарантована доставка мінімум один раз (At least once)
+    Pub-&gt;&gt;Brk: PUBLISH (QoS 1, Packet_ID = 101, Topic, Payload)
+    Brk-&gt;&gt;Sub: PUBLISH (QoS 1, Packet_ID = 501, Topic, Payload)
+    Sub--&gt;&gt;Brk: PUBACK (Packet_ID = 501)
+    Brk--&gt;&gt;Pub: PUBACK (Packet_ID = 101)
+
+    Note over Pub,Sub: Рівень QoS 2 — Гарантована доставка строго один раз (Exactly once)
+    Pub-&gt;&gt;Brk: PUBLISH (QoS 2, Packet_ID = 102, Topic, Payload)
+    Brk--&gt;&gt;Pub: PUBREC (Packet_ID = 102)
+    Pub-&gt;&gt;Brk: PUBREL (Packet_ID = 102)
+    Brk-&gt;&gt;Sub: PUBLISH (QoS 2, Packet_ID = 502, Topic, Payload)
+    Sub--&gt;&gt;Brk: PUBREC (Packet_ID = 502)
+    Sub-&gt;&gt;Brk: PUBREL (Packet_ID = 502)
+    Sub--&gt;&gt;Brk: PUBCOMP (Packet_ID = 502)
+    Brk--&gt;&gt;Pub: PUBCOMP (Packet_ID = 102)</code></pre>
+<em>Рисунок 2 — Діаграма послідовності процедур підтвердження доставки для рівнів QoS 0, QoS 1 та QoS 2</em></p>
+<p>Особливе значення в MQTT мають службові прапорці, що керують життєвим циклом даних:</p>
+<ul>
+<li>
+<p>Прапорець <strong>Retain</strong> вказує брокеру зберегти останнє опубліковане в даному топіку повідомлення та негайно надіслати його будь-якому новому клієнту, який підпишеться на цей топік у майбутньому.</p>
+</li>
+<li>
+<p>Механізм <strong>Last Will and Testament (LWT)</strong> дозволяє клієнту на етапі ініціалізації з'єднання (<code>CONNECT</code>) зберегти на брокері заповітне аварійне повідомлення. Якщо брокер фіксує непередбачуваний обрив TCP-сесії (наприклад, зникнення живлення або таймаут Keep Alive), він автоматично публікує повідомлення LWT у визначений топік аварій.</p>
+</li>
+</ul>
+<p>Загальний обсяг службового мережевого навантаження одного пакету MQTT (<span class="arithmatex">\(S_{\text{packet}}\)</span>) визначається сумою довжин фіксованого заголовка, змінного заголовка та корисного навантаження:</p>
+<div class="arithmatex">\[S_{\text{packet}} = S_{\text{fixed}} + S_{\text{variable}} + S_{\text{payload}}\]</div>
+<p>де <span class="arithmatex">\(S_{\text{fixed}}\)</span> — розмір фіксованого заголовка, який складається з 1 байта типу пакету і прапорців та <span class="arithmatex">\(1 \dots 4\)</span> байтів довжини залишкової частини (байт);
+<span class="arithmatex">\(S_{\text{variable}}\)</span> — довжина змінного заголовка, що містить ім'я топіка та 2-байтний <code>Packet Identifier</code> для рівнів <span class="arithmatex">\(\text{QoS} \ge 1\)</span> (байт);
+<span class="arithmatex">\(S_{\text{payload}}\)</span> — безпосередній розмір передаваних даних у форматі тексту, JSON або двійкового масиву (байт).</p>
+<p>Час доставки телеметричного повідомлення від видавця до підписника залежить від обраного рівня якості обслуговування і визначається через час кругового обігу пакетів (<span class="arithmatex">\(RTT\)</span>):</p>
+<div class="arithmatex">\[T_{\text{QoS0}} = \frac{RTT_{\text{pub-brk}}}{2} + \frac{RTT_{\text{brk-sub}}}{2}\]</div>
+<div class="arithmatex">\[T_{\text{QoS1}} = RTT_{\text{pub-brk}} + RTT_{\text{brk-sub}}\]</div>
+<div class="arithmatex">\[T_{\text{QoS2}} = 2 \cdot RTT_{\text{pub-brk}} + 2 \cdot RTT_{\text{brk-sub}}\]</div>
+<p>де <span class="arithmatex">\(RTT_{\text{pub-brk}}\)</span> — час кругового обігу пакетів між видавцем та брокером (с);
+<span class="arithmatex">\(RTT_{\text{brk-sub}}\)</span> — час кругового обігу пакетів між брокером та кінцевим підписником (с).</p>
+<p>Коефіцієнт корисної дії передавання інформаційного навантаження (<span class="arithmatex">\(\eta\)</span>) визначається відношенням корисних даних до сумарного трафіку з урахуванням квитанцій підтвердження:</p>
+<div class="arithmatex">\[\eta = \frac{S_{\text{payload}}}{S_{\text{packet}} + \sum S_{\text{ack}}} \cdot 100\%\]</div>
+<p>де <span class="arithmatex">\(\sum S_{\text{ack}}\)</span> — сумарний розмір службових пакетів підтвердження (<code>PUBACK</code> або <code>PUBREC</code> + <code>PUBREL</code> + <code>PUBCOMP</code>), переданих у процесі доставки (байт).</p>
+<hr />
+<h2 id="2-0">2 Підготовка середовища та розгортання проєкту (Крок 0)</h2>
+<p>Для підготовки робочого середовища необхідно встановити брокер Eclipse Mosquitto, консольні утиліти тестування та графічний клієнт.</p>
+<ol>
+<li>Оновіть списки пакетів операційної системи та встановіть брокер разом із клієнтським набором утиліт (для ОС Ubuntu / Debian):</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Оновлення індексу пакетів та інсталяція брокера Mosquitto</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>mosquitto<span class="w"> </span>mosquitto-clients<span class="w"> </span>python3-pip
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="c1"># Встановлення бібліотеки paho-mqtt для написання тестових скриптів</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>pip3<span class="w"> </span>install<span class="w"> </span>paho-mqtt
+</span></code></pre></div>
+<p>Якщо робота виконується в ОС Windows, завантажте та встановіть офіційний інсталятор з сайту <code>mosquitto.org</code>, додайте шлях <code>C:\Program Files\mosquitto</code> до системної змінної <code>PATH</code> та встановіть графічний інструмент <code>MQTT Explorer</code>.</p>
+<ol>
+<li>Перевірте версії встановленого програмного забезпечення:</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Перевірка версії брокера та клієнтських утиліт</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>mosquitto<span class="w"> </span>-h<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-n<span class="w"> </span><span class="m">2</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>mosquitto_pub<span class="w"> </span>--help<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-n<span class="w"> </span><span class="m">2</span>
+</span></code></pre></div>
+<ol>
+<li>Створіть робочу структуру папок проєкту:</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Створення ізольованого каталогу для конфігурацій та логів лабораторної роботи</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>~/MQTT_Lab3/<span class="o">{</span>config,auth,logs,scripts<span class="o">}</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nb">cd</span><span class="w"> </span>~/MQTT_Lab3
+</span></code></pre></div>
+<p>Файлове дерево розгорнутого лабораторного проєкту має такий вигляд:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>MQTT_Lab3/
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>├── config/
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>│   ├── mosquitto.conf        # Головний конфігураційний файл брокера
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>│   └── acl.conf              # Таблиця розмежування прав доступу (ACL)
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>├── auth/
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>│   └── passwords.txt         # Хешована база облікових записів користувачів
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>├── logs/
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>│   └── mosquitto.log         # Файл системного журналу роботи брокера
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>└── scripts/
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>    └── test_client.py        # Скрипт автоматизованого тестування LWT та QoS
+</span></code></pre></div>
+<hr />
+<h2 id="3">3 Порядок виконання роботи</h2>
+<h3 id="31">3.1 Індивідуальні завдання</h3>
+<p>Кожен здобувач налаштовує систему топіків, створює облікові записи та досліджує вказані рівні QoS відповідно до закріпленого варіанта.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Варіант</th>
+<th style="text-align: left;">Предметна область</th>
+<th style="text-align: left;">Префікс кореневого топіка</th>
+<th style="text-align: left;">Сенсорні параметри (Publish)</th>
+<th style="text-align: left;">Актуатори та команди (Subscribe)</th>
+<th style="text-align: left;">Параметри тестування (QoS, Retain, LWT)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>1</strong></td>
+<td style="text-align: left;">Розумна метеостанція</td>
+<td style="text-align: left;"><code>facility/meteo/</code></td>
+<td style="text-align: left;"><code>temp</code>, <code>humidity</code>, <code>pressure</code></td>
+<td style="text-align: left;"><code>anemometer/calibrate</code></td>
+<td style="text-align: left;">QoS 1, Retain для тиску, LWT: <code>meteo/status</code> = <code>offline</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>2</strong></td>
+<td style="text-align: left;">Клімат-контроль серверної</td>
+<td style="text-align: left;"><code>datacenter/rack1/</code></td>
+<td style="text-align: left;"><code>temperature</code>, <code>fan_rpm</code>, <code>ups_v</code></td>
+<td style="text-align: left;"><code>cooling/fan_power</code></td>
+<td style="text-align: left;">QoS 2, Retain для <code>ups_v</code>, LWT: <code>rack1/state</code> = <code>critical</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>3</strong></td>
+<td style="text-align: left;">Охоронний контур складу</td>
+<td style="text-align: left;"><code>logistics/wh2/</code></td>
+<td style="text-align: left;"><code>motion</code>, <code>door_state</code>, <code>vibration</code></td>
+<td style="text-align: left;"><code>alarm/siren_trigger</code></td>
+<td style="text-align: left;">QoS 1, Retain для <code>door_state</code>, LWT: <code>wh2/conn</code> = <code>lost</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>4</strong></td>
+<td style="text-align: left;">Автоматизована теплиця</td>
+<td style="text-align: left;"><code>agri/sector_a/</code></td>
+<td style="text-align: left;"><code>soil_moist</code>, <code>lux</code>, <code>ph_level</code></td>
+<td style="text-align: left;"><code>valve/water_open</code></td>
+<td style="text-align: left;">QoS 0, Retain для <code>ph_level</code>, LWT: <code>sector_a/link</code> = <code>down</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>5</strong></td>
+<td style="text-align: left;">Моніторинг сонячної електростанції</td>
+<td style="text-align: left;"><code>energy/solar_inv3/</code></td>
+<td style="text-align: left;"><code>pv_power</code>, <code>ac_voltage</code>, <code>temp</code></td>
+<td style="text-align: left;"><code>inverter/grid_tie</code></td>
+<td style="text-align: left;">QoS 2, Retain для <code>pv_power</code>, LWT: <code>solar_inv3/diag</code> = <code>fault</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>6</strong></td>
+<td style="text-align: left;">Розумна компресорна станція</td>
+<td style="text-align: left;"><code>factory/comp4/</code></td>
+<td style="text-align: left;"><code>pressure_bar</code>, <code>oil_temp</code>, <code>hours</code></td>
+<td style="text-align: left;"><code>motor/start_stop</code></td>
+<td style="text-align: left;">QoS 1, Retain для <code>hours</code>, LWT: <code>comp4/status</code> = <code>halted</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>7</strong></td>
+<td style="text-align: left;">Смарт-паркінг термінала</td>
+<td style="text-align: left;"><code>transport/park_b/</code></td>
+<td style="text-align: left;"><code>slot_free</code>, <code>co2_ppm</code>, <code>gate_pos</code></td>
+<td style="text-align: left;"><code>barrier/open_close</code></td>
+<td style="text-align: left;">QoS 1, Retain для <code>slot_free</code>, LWT: <code>park_b/gw</code> = <code>offline</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>8</strong></td>
+<td style="text-align: left;">Система захисту від протікань</td>
+<td style="text-align: left;"><code>utility/water_sec/</code></td>
+<td style="text-align: left;"><code>flood_leak</code>, <code>pipe_pressure</code></td>
+<td style="text-align: left;"><code>servo/valve_shut</code></td>
+<td style="text-align: left;">QoS 2, Retain для <code>flood_leak</code>, LWT: <code>water_sec/hw</code> = <code>dead</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>9</strong></td>
+<td style="text-align: left;">Лабораторія лазерної спектроскопії</td>
+<td style="text-align: left;"><code>science/lab5/</code></td>
+<td style="text-align: left;"><code>laser_power</code>, <code>chamber_vac</code></td>
+<td style="text-align: left;"><code>interlock/arm_beam</code></td>
+<td style="text-align: left;">QoS 2, Retain для <code>laser_power</code>, LWT: <code>lab5/node</code> = <code>offline</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>10</strong></td>
+<td style="text-align: left;">Вуличне адаптивне освітлення</td>
+<td style="text-align: left;"><code>city/district9/</code></td>
+<td style="text-align: left;"><code>ambient_light</code>, <code>traffic_flow</code></td>
+<td style="text-align: left;"><code>lighting/dimmer_lvl</code></td>
+<td style="text-align: left;">QoS 0, Retain для <code>lighting/dimmer_lvl</code>, LWT: <code>dist9/st</code> = <code>0</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>11</strong></td>
+<td style="text-align: left;">Контроль медичного депо</td>
+<td style="text-align: left;"><code>hospital/cold_box/</code></td>
+<td style="text-align: left;"><code>temp_celsius</code>, <code>door_open_cnt</code></td>
+<td style="text-align: left;"><code>refrig/eco_mode</code></td>
+<td style="text-align: left;">QoS 2, Retain для <code>temp_celsius</code>, LWT: <code>box/alarm</code> = <code>fail</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>12</strong></td>
+<td style="text-align: left;">Конвеєрна лінія пакування</td>
+<td style="text-align: left;"><code>industry/line7/</code></td>
+<td style="text-align: left;"><code>belt_speed</code>, <code>item_count</code></td>
+<td style="text-align: left;"><code>feeder/speed_set</code></td>
+<td style="text-align: left;">QoS 1, Retain для <code>item_count</code>, LWT: <code>line7/run</code> = <code>stop</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>13</strong></td>
+<td style="text-align: left;">Автоматика водної свердловини</td>
+<td style="text-align: left;"><code>aqua/deep_pump1/</code></td>
+<td style="text-align: left;"><code>flow_rate</code>, <code>motor_current</code></td>
+<td style="text-align: left;"><code>pump/relay_power</code></td>
+<td style="text-align: left;">QoS 1, Retain для <code>flow_rate</code>, LWT: <code>deep_pump1/st</code> = <code>err</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>14</strong></td>
+<td style="text-align: left;">Диспетчеризація трансформатора</td>
+<td style="text-align: left;"><code>power/substation4/</code></td>
+<td style="text-align: left;"><code>oil_level</code>, <code>winding_temp</code></td>
+<td style="text-align: left;"><code>breaker/trip_cmd</code></td>
+<td style="text-align: left;">QoS 2, Retain для <code>winding_temp</code>, LWT: <code>subst4/link</code> = <code>lost</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>15</strong></td>
+<td style="text-align: left;">Система очищення стічних вод</td>
+<td style="text-align: left;"><code>eco/filter_basin/</code></td>
+<td style="text-align: left;"><code>turbidity_ntu</code>, <code>dissolved_o2</code></td>
+<td style="text-align: left;"><code>aerator/blower_on</code></td>
+<td style="text-align: left;">QoS 1, Retain для <code>turbidity_ntu</code>, LWT: <code>basin/health</code> = <code>off</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>16</strong></td>
+<td style="text-align: left;">Зерносховище (елеватор)</td>
+<td style="text-align: left;"><code>agro/silo_tower3/</code></td>
+<td style="text-align: left;"><code>grain_moisture</code>, <code>grain_temp</code></td>
+<td style="text-align: left;"><code>vent/fan_start</code></td>
+<td style="text-align: left;">QoS 1, Retain для <code>grain_temp</code>, LWT: <code>silo3/status</code> = <code>offline</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>17</strong></td>
+<td style="text-align: left;">Охолодження ЦОД</td>
+<td style="text-align: left;"><code>hvac/chiller2/</code></td>
+<td style="text-align: left;"><code>coolant_in</code>, <code>coolant_out</code></td>
+<td style="text-align: left;"><code>compressor/target_hz</code></td>
+<td style="text-align: left;">QoS 2, Retain для <code>coolant_out</code>, LWT: <code>chiller2/op</code> = <code>abort</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>18</strong></td>
+<td style="text-align: left;">Сигналізація витоку хімікатів</td>
+<td style="text-align: left;"><code>chem/tank_farm/</code></td>
+<td style="text-align: left;"><code>nh3_concentration</code>, <code>tank_lvl</code></td>
+<td style="text-align: left;"><code>scrubber/neutralize</code></td>
+<td style="text-align: left;">QoS 2, Retain для <code>tank_lvl</code>, LWT: <code>tank_farm/alert</code> = <code>dead</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>19</strong></td>
+<td style="text-align: left;">Розумна зарядна станція</td>
+<td style="text-align: left;"><code>ev/charge_hub/</code></td>
+<td style="text-align: left;"><code>active_amps</code>, <code>energy_kwh</code></td>
+<td style="text-align: left;"><code>gun/lock_solenoid</code></td>
+<td style="text-align: left;">QoS 1, Retain для <code>energy_kwh</code>, LWT: <code>charge_hub/net</code> = <code>0</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>20</strong></td>
+<td style="text-align: left;">Контроль вітрогенератора</td>
+<td style="text-align: left;"><code>renew/wind_turb1/</code></td>
+<td style="text-align: left;"><code>wind_speed_ms</code>, <code>rotor_rpm</code></td>
+<td style="text-align: left;"><code>blade/pitch_angle</code></td>
+<td style="text-align: left;">QoS 2, Retain для <code>rotor_rpm</code>, LWT: <code>wind_turb1/com</code> = <code>lost</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="32">3.2 Покроковий алгоритм та розв'язок еталонного прикладу</h3>
+<p>У ролі еталонного прикладу розглядається <strong>«Розгортання системи телеметрії та контролю доступу лабораторії робототехніки (RoboLab Telemetry)»</strong>.</p>
+<p>Параметри еталонної конфігурації:</p>
+<ul>
+<li>
+<p>Порт прослуховування: <code>1883</code></p>
+</li>
+<li>
+<p>Адреса прив'язки: <code>127.0.0.1</code> та <code>0.0.0.0</code></p>
+</li>
+<li>
+<p>Базовий топік телеметрії: <code>robolab/node1/telemetry</code></p>
+</li>
+<li>
+<p>Топік керування актуатором: <code>robolab/node1/command</code></p>
+</li>
+<li>
+<p>Топік аварійного заповіту (LWT): <code>robolab/node1/status</code></p>
+</li>
+<li>
+<p>Користувачі: <code>sensor_user</code> (пароль: <code>SensPass2026!</code>), <code>operator_user</code> (пароль: <code>OperPass2026!</code>).</p>
+</li>
+</ul>
+<h4 id="1_1">Крок 1. Формування бази облікових записів користувачів</h4>
+<p>За замовчуванням брокер Mosquitto версії 2.0+ забороняє анонімні підключення без явної конфігурації. Створимо базу автентифікації за допомогою утиліти <code>mosquitto_passwd</code>.</p>
+<p>Виконайте в терміналі команди створення користувачів та їх хешованих паролів:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">cd</span><span class="w"> </span>~/MQTT_Lab3/auth
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="c1"># Створення нового файлу паролів з першим користувачем (-c створює новий файл)</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>mosquitto_passwd<span class="w"> </span>-c<span class="w"> </span>-b<span class="w"> </span>passwords.txt<span class="w"> </span>sensor_user<span class="w"> </span>SensPass2026!
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="c1"># Додавання другого користувача у створений файл (без ключа -c)</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>mosquitto_passwd<span class="w"> </span>-b<span class="w"> </span>passwords.txt<span class="w"> </span>operator_user<span class="w"> </span>OperPass2026!
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="c1"># Перевірте, що файл створено та паролі захешовано алгоритмом PBKDF2/SHA512</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>cat<span class="w"> </span>passwords.txt
+</span></code></pre></div>
+<h4 id="2-access-control-list-acl">Крок 2. Налаштування правил доступу (Access Control List, ACL)</h4>
+<p>Створіть файл правил <code>~/MQTT_Lab3/config/acl.conf</code>, який обмежує права клієнтів (сенсор має право тільки публікувати у свою гілку, оператор має право читати та керувати):</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a># Правила для сенсорного пристрою sensor_user
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>user sensor_user
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>topic write robolab/node1/telemetry
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>topic write robolab/node1/status
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a># Правила для робочого місця оператора operator_user
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>user operator_user
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>topic read robolab/node1/telemetry
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>topic read robolab/node1/status
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>topic write robolab/node1/command
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>topic read robolab/node1/command
+</span></code></pre></div>
+<h4 id="3-mosquitto">Крок 3. Створення конфігураційного файлу брокера Mosquitto</h4>
+<p>Створіть файл конфігурації <code>~/MQTT_Lab3/config/mosquitto.conf</code> із таким повним вмістом:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a># =====================================================================
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a># КОНФІГУРАЦІЯ ЛОКАЛЬНОГО MQTT БРОКЕРА MOSQUITTO (Еталонний приклад)
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a># =====================================================================
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a># Мережевий порт та інтерфейс прослуховування
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>listener 1883 0.0.0.0
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a># Заборона неавторизованих (анонімних) підключень
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>allow_anonymous false
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a># Шляхи до файлів аутентифікації та контролю доступу
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>password_file /home/user/MQTT_Lab3/auth/passwords.txt
+</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>acl_file /home/user/MQTT_Lab3/config/acl.conf
+</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>
+</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a># Налаштування системного журналу (логування)
+</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a>log_dest file /home/user/MQTT_Lab3/logs/mosquitto.log
+</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a>log_dest stdout
+</span><span id="__span-6-18"><a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a>log_type error
+</span><span id="__span-6-19"><a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a>log_type warning
+</span><span id="__span-6-20"><a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a>log_type notice
+</span><span id="__span-6-21"><a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a>log_type information
+</span><span id="__span-6-22"><a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a>
+</span><span id="__span-6-23"><a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a># Збереження стану брокера на диск (Persistent Storage)
+</span><span id="__span-6-24"><a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a>persistence true
+</span><span id="__span-6-25"><a id="__codelineno-6-25" name="__codelineno-6-25" href="#__codelineno-6-25"></a>persistence_location /home/user/MQTT_Lab3/data/
+</span></code></pre></div>
+<p><em>(Примітка: замініть <code>/home/user/</code> на абсолютний шлях до вашої домашньої директорії або використайте команду <code>pwd</code> для визначення точного шляху).</em></p>
+<p>Створіть директорію для файлів персистентності:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>~/MQTT_Lab3/data
+</span></code></pre></div>
+<h4 id="4-mosquitto">Крок 4. Запуск брокера Mosquitto в діагностичному режимі</h4>
+<p>Відкрийте <strong>Термінал №1</strong> та запустіть процес брокера з вказівкою створеної конфігурації:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>mosquitto<span class="w"> </span>-c<span class="w"> </span>~/MQTT_Lab3/config/mosquitto.conf<span class="w"> </span>-v
+</span></code></pre></div>
+<p>Брокер перейде в активний стан та виведе повідомлення про відкриття порту 1883:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>mosquitto version 2.0.18 starting
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>Config loaded from /home/user/MQTT_Lab3/config/mosquitto.conf.
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>Opening ipv4 listen socket on port 1883.
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>mosquitto running
+</span></code></pre></div></p>
+<h4 id="5-qos-retain-cli">Крок 5. Тестування рівнів QoS та Retain через CLI</h4>
+<p>Відкрийте <strong>Термінал №2</strong> (клієнт-підписник <code>operator_user</code>) і підпишіться на топіки телеметрії:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># Підписка на всі топіки лабораторії з якістю обслуговування QoS 1</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>mosquitto_sub<span class="w"> </span>-h<span class="w"> </span><span class="m">127</span>.0.0.1<span class="w"> </span>-p<span class="w"> </span><span class="m">1883</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">  </span>-u<span class="w"> </span><span class="s2">"operator_user"</span><span class="w"> </span>-P<span class="w"> </span><span class="s2">"OperPass2026!"</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">  </span>-t<span class="w"> </span><span class="s2">"robolab/node1/#"</span><span class="w"> </span>-v<span class="w"> </span>-q<span class="w"> </span><span class="m">1</span>
+</span></code></pre></div>
+<p>Відкрийте <strong>Термінал №3</strong> (клієнт-видавець <code>sensor_user</code>) та проведіть серію публікацій:</p>
+<ol>
+<li>
+<p><strong>Публікація зі звичайним режимом (QoS 0):</strong>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>mosquitto_pub<span class="w"> </span>-h<span class="w"> </span><span class="m">127</span>.0.0.1<span class="w"> </span>-p<span class="w"> </span><span class="m">1883</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">  </span>-u<span class="w"> </span><span class="s2">"sensor_user"</span><span class="w"> </span>-P<span class="w"> </span><span class="s2">"SensPass2026!"</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">  </span>-t<span class="w"> </span><span class="s2">"robolab/node1/telemetry"</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">  </span>-m<span class="w"> </span><span class="s1">'{"temp": 24.5, "humidity": 55}'</span><span class="w"> </span>-q<span class="w"> </span><span class="m">0</span>
+</span></code></pre></div></p>
+</li>
+<li>
+<p><strong>Публікація з гарантією доставки (QoS 2) та прапорцем Retain:</strong>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>mosquitto_pub<span class="w"> </span>-h<span class="w"> </span><span class="m">127</span>.0.0.1<span class="w"> </span>-p<span class="w"> </span><span class="m">1883</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">  </span>-u<span class="w"> </span><span class="s2">"sensor_user"</span><span class="w"> </span>-P<span class="w"> </span><span class="s2">"SensPass2026!"</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">  </span>-t<span class="w"> </span><span class="s2">"robolab/node1/telemetry"</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="w">  </span>-m<span class="w"> </span><span class="s1">'{"temp": 26.8, "humidity": 60, "status": "CALIBRATED"}'</span><span class="w"> </span>-q<span class="w"> </span><span class="m">2</span><span class="w"> </span>-r
+</span></code></pre></div></p>
+</li>
+<li>
+<p><strong>Перевірка збереженого повідомлення (Retain):</strong>
+Закрийте підписник у Терміналі №2 (<code>Ctrl+C</code>) і запустіть його знову. Ви переконаєтеся, що останнє повідомлення з прапорцем <code>-r</code> надійде негайно у момент оформлення нової підписки без генерації нової публікації.</p>
+</li>
+</ol>
+<h4 id="6-lwt">Крок 6. Розробка скрипта автоматизованого тестування з підтримкою LWT</h4>
+<p>Створіть файл <code>~/MQTT_Lab3/scripts/test_client.py</code>, який демонструє повноцінну роботу з бібліотекою <code>paho-mqtt</code>, встановлення аварійного заповіту (LWT), обробку викликів зворотного зв'язку (Callbacks) та аварійне відключення:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="ch">#!/usr/bin/env python3</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="c1"># -*- coding: utf-8 -*-</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="kn">import</span><span class="w"> </span><span class="nn">paho.mqtt.client</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mqtt</span>
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>
+</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="c1"># =====================================================================</span>
+</span><span id="__span-13-10"><a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="c1"># КОНФІГУРАЦІЯ ПІДКЛЮЧЕННЯ ТА ТОПІКІВ</span>
+</span><span id="__span-13-11"><a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a><span class="c1"># =====================================================================</span>
+</span><span id="__span-13-12"><a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a><span class="n">BROKER_HOST</span> <span class="o">=</span> <span class="s2">"127.0.0.1"</span>
+</span><span id="__span-13-13"><a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a><span class="n">BROKER_PORT</span> <span class="o">=</span> <span class="mi">1883</span>
+</span><span id="__span-13-14"><a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a><span class="n">CLIENT_ID</span> <span class="o">=</span> <span class="s2">"RoboLab_Sensor_Node1"</span>
+</span><span id="__span-13-15"><a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a>
+</span><span id="__span-13-16"><a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a><span class="n">USERNAME</span> <span class="o">=</span> <span class="s2">"sensor_user"</span>
+</span><span id="__span-13-17"><a id="__codelineno-13-17" name="__codelineno-13-17" href="#__codelineno-13-17"></a><span class="n">PASSWORD</span> <span class="o">=</span> <span class="s2">"SensPass2026!"</span>
+</span><span id="__span-13-18"><a id="__codelineno-13-18" name="__codelineno-13-18" href="#__codelineno-13-18"></a>
+</span><span id="__span-13-19"><a id="__codelineno-13-19" name="__codelineno-13-19" href="#__codelineno-13-19"></a><span class="n">TOPIC_TELEMETRY</span> <span class="o">=</span> <span class="s2">"robolab/node1/telemetry"</span>
+</span><span id="__span-13-20"><a id="__codelineno-13-20" name="__codelineno-13-20" href="#__codelineno-13-20"></a><span class="n">TOPIC_STATUS</span> <span class="o">=</span> <span class="s2">"robolab/node1/status"</span>
+</span><span id="__span-13-21"><a id="__codelineno-13-21" name="__codelineno-13-21" href="#__codelineno-13-21"></a>
+</span><span id="__span-13-22"><a id="__codelineno-13-22" name="__codelineno-13-22" href="#__codelineno-13-22"></a><span class="k">def</span><span class="w"> </span><span class="nf">on_connect</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">userdata</span><span class="p">,</span> <span class="n">flags</span><span class="p">,</span> <span class="n">rc</span><span class="p">,</span> <span class="n">properties</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+</span><span id="__span-13-23"><a id="__codelineno-13-23" name="__codelineno-13-23" href="#__codelineno-13-23"></a><span class="w">    </span><span class="sd">"""</span>
+</span><span id="__span-13-24"><a id="__codelineno-13-24" name="__codelineno-13-24" href="#__codelineno-13-24"></a><span class="sd">    Функція зворотного виклику, яка спрацьовує при встановленні з'єднання з брокером.</span>
+</span><span id="__span-13-25"><a id="__codelineno-13-25" name="__codelineno-13-25" href="#__codelineno-13-25"></a><span class="sd">    Код повернення rc == 0 свідчить про успішну автентифікацію.</span>
+</span><span id="__span-13-26"><a id="__codelineno-13-26" name="__codelineno-13-26" href="#__codelineno-13-26"></a><span class="sd">    """</span>
+</span><span id="__span-13-27"><a id="__codelineno-13-27" name="__codelineno-13-27" href="#__codelineno-13-27"></a>    <span class="k">if</span> <span class="n">rc</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span><span id="__span-13-28"><a id="__codelineno-13-28" name="__codelineno-13-28" href="#__codelineno-13-28"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"[ЗВ'ЯЗОК ВСТАНОВЛЕНО]: Клієнт </span><span class="si">{</span><span class="n">CLIENT_ID</span><span class="si">}</span><span class="s2"> успішно підключився до брокера."</span><span class="p">)</span>
+</span><span id="__span-13-29"><a id="__codelineno-13-29" name="__codelineno-13-29" href="#__codelineno-13-29"></a>        <span class="c1"># Публікуємо статус нормальної роботи вузла з прапорцем Retain</span>
+</span><span id="__span-13-30"><a id="__codelineno-13-30" name="__codelineno-13-30" href="#__codelineno-13-30"></a>        <span class="n">client</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">TOPIC_STATUS</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="s2">"online"</span><span class="p">,</span> <span class="n">qos</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">retain</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span id="__span-13-31"><a id="__codelineno-13-31" name="__codelineno-13-31" href="#__codelineno-13-31"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"[СТАТУС]: Опубліковано стан 'online' у топік </span><span class="si">{</span><span class="n">TOPIC_STATUS</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</span><span id="__span-13-32"><a id="__codelineno-13-32" name="__codelineno-13-32" href="#__codelineno-13-32"></a>    <span class="k">elif</span> <span class="n">rc</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
+</span><span id="__span-13-33"><a id="__codelineno-13-33" name="__codelineno-13-33" href="#__codelineno-13-33"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">"[ПОМИЛКА]: Невірний логін або пароль клієнта."</span><span class="p">)</span>
+</span><span id="__span-13-34"><a id="__codelineno-13-34" name="__codelineno-13-34" href="#__codelineno-13-34"></a>    <span class="k">elif</span> <span class="n">rc</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
+</span><span id="__span-13-35"><a id="__codelineno-13-35" name="__codelineno-13-35" href="#__codelineno-13-35"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">"[ПОМИЛКА]: Авторизацію відхилено правилами ACL."</span><span class="p">)</span>
+</span><span id="__span-13-36"><a id="__codelineno-13-36" name="__codelineno-13-36" href="#__codelineno-13-36"></a>    <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-13-37"><a id="__codelineno-13-37" name="__codelineno-13-37" href="#__codelineno-13-37"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"[ПОМИЛКА]: Збій підключення, код помилки: </span><span class="si">{</span><span class="n">rc</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</span><span id="__span-13-38"><a id="__codelineno-13-38" name="__codelineno-13-38" href="#__codelineno-13-38"></a>
+</span><span id="__span-13-39"><a id="__codelineno-13-39" name="__codelineno-13-39" href="#__codelineno-13-39"></a><span class="k">def</span><span class="w"> </span><span class="nf">on_publish</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">userdata</span><span class="p">,</span> <span class="n">mid</span><span class="p">,</span> <span class="n">reason_code</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">properties</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+</span><span id="__span-13-40"><a id="__codelineno-13-40" name="__codelineno-13-40" href="#__codelineno-13-40"></a><span class="w">    </span><span class="sd">"""</span>
+</span><span id="__span-13-41"><a id="__codelineno-13-41" name="__codelineno-13-41" href="#__codelineno-13-41"></a><span class="sd">    Функція зворотного виклику, що підтверджує успішну відправку пакету на брокер.</span>
+</span><span id="__span-13-42"><a id="__codelineno-13-42" name="__codelineno-13-42" href="#__codelineno-13-42"></a><span class="sd">    """</span>
+</span><span id="__span-13-43"><a id="__codelineno-13-43" name="__codelineno-13-43" href="#__codelineno-13-43"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"[ПІДТВЕРДЖЕННЯ]: Пакет із Message ID </span><span class="si">{</span><span class="n">mid</span><span class="si">}</span><span class="s2"> успішно передано на брокер."</span><span class="p">)</span>
+</span><span id="__span-13-44"><a id="__codelineno-13-44" name="__codelineno-13-44" href="#__codelineno-13-44"></a>
+</span><span id="__span-13-45"><a id="__codelineno-13-45" name="__codelineno-13-45" href="#__codelineno-13-45"></a><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+</span><span id="__span-13-46"><a id="__codelineno-13-46" name="__codelineno-13-46" href="#__codelineno-13-46"></a><span class="w">    </span><span class="sd">"""</span>
+</span><span id="__span-13-47"><a id="__codelineno-13-47" name="__codelineno-13-47" href="#__codelineno-13-47"></a><span class="sd">    Головна функція ініціалізації клієнта, реєстрації LWT та циклічної передачі даних.</span>
+</span><span id="__span-13-48"><a id="__codelineno-13-48" name="__codelineno-13-48" href="#__codelineno-13-48"></a><span class="sd">    """</span>
+</span><span id="__span-13-49"><a id="__codelineno-13-49" name="__codelineno-13-49" href="#__codelineno-13-49"></a>    <span class="c1"># Ініціалізація клієнта з підтримкою протоколу MQTT v3.1.1 / v5.0</span>
+</span><span id="__span-13-50"><a id="__codelineno-13-50" name="__codelineno-13-50" href="#__codelineno-13-50"></a>    <span class="n">client</span> <span class="o">=</span> <span class="n">mqtt</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="n">client_id</span><span class="o">=</span><span class="n">CLIENT_ID</span><span class="p">,</span> <span class="n">protocol</span><span class="o">=</span><span class="n">mqtt</span><span class="o">.</span><span class="n">MQTTv311</span><span class="p">)</span>
+</span><span id="__span-13-51"><a id="__codelineno-13-51" name="__codelineno-13-51" href="#__codelineno-13-51"></a>
+</span><span id="__span-13-52"><a id="__codelineno-13-52" name="__codelineno-13-52" href="#__codelineno-13-52"></a>    <span class="c1"># Встановлення облікових даних</span>
+</span><span id="__span-13-53"><a id="__codelineno-13-53" name="__codelineno-13-53" href="#__codelineno-13-53"></a>    <span class="n">client</span><span class="o">.</span><span class="n">username_pw_set</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="n">USERNAME</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="n">PASSWORD</span><span class="p">)</span>
+</span><span id="__span-13-54"><a id="__codelineno-13-54" name="__codelineno-13-54" href="#__codelineno-13-54"></a>
+</span><span id="__span-13-55"><a id="__codelineno-13-55" name="__codelineno-13-55" href="#__codelineno-13-55"></a>    <span class="c1"># Налаштування заповіту (Last Will and Testament):</span>
+</span><span id="__span-13-56"><a id="__codelineno-13-56" name="__codelineno-13-56" href="#__codelineno-13-56"></a>    <span class="c1"># Якщо зв'язок обірветься аварійно, брокер опублікує payload 'offline' у топік статусу</span>
+</span><span id="__span-13-57"><a id="__codelineno-13-57" name="__codelineno-13-57" href="#__codelineno-13-57"></a>    <span class="n">client</span><span class="o">.</span><span class="n">will_set</span><span class="p">(</span>
+</span><span id="__span-13-58"><a id="__codelineno-13-58" name="__codelineno-13-58" href="#__codelineno-13-58"></a>        <span class="n">topic</span><span class="o">=</span><span class="n">TOPIC_STATUS</span><span class="p">,</span>
+</span><span id="__span-13-59"><a id="__codelineno-13-59" name="__codelineno-13-59" href="#__codelineno-13-59"></a>        <span class="n">payload</span><span class="o">=</span><span class="s2">"offline"</span><span class="p">,</span>
+</span><span id="__span-13-60"><a id="__codelineno-13-60" name="__codelineno-13-60" href="#__codelineno-13-60"></a>        <span class="n">qos</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+</span><span id="__span-13-61"><a id="__codelineno-13-61" name="__codelineno-13-61" href="#__codelineno-13-61"></a>        <span class="n">retain</span><span class="o">=</span><span class="kc">True</span>
+</span><span id="__span-13-62"><a id="__codelineno-13-62" name="__codelineno-13-62" href="#__codelineno-13-62"></a>    <span class="p">)</span>
+</span><span id="__span-13-63"><a id="__codelineno-13-63" name="__codelineno-13-63" href="#__codelineno-13-63"></a>
+</span><span id="__span-13-64"><a id="__codelineno-13-64" name="__codelineno-13-64" href="#__codelineno-13-64"></a>    <span class="c1"># Прив'язка функцій зворотного виклику</span>
+</span><span id="__span-13-65"><a id="__codelineno-13-65" name="__codelineno-13-65" href="#__codelineno-13-65"></a>    <span class="n">client</span><span class="o">.</span><span class="n">on_connect</span> <span class="o">=</span> <span class="n">on_connect</span>
+</span><span id="__span-13-66"><a id="__codelineno-13-66" name="__codelineno-13-66" href="#__codelineno-13-66"></a>    <span class="n">client</span><span class="o">.</span><span class="n">on_publish</span> <span class="o">=</span> <span class="n">on_publish</span>
+</span><span id="__span-13-67"><a id="__codelineno-13-67" name="__codelineno-13-67" href="#__codelineno-13-67"></a>
+</span><span id="__span-13-68"><a id="__codelineno-13-68" name="__codelineno-13-68" href="#__codelineno-13-68"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"[ІНІЦІАЛІЗАЦІЯ]: Спроба підключення до </span><span class="si">{</span><span class="n">BROKER_HOST</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">BROKER_PORT</span><span class="si">}</span><span class="s2">..."</span><span class="p">)</span>
+</span><span id="__span-13-69"><a id="__codelineno-13-69" name="__codelineno-13-69" href="#__codelineno-13-69"></a>    <span class="k">try</span><span class="p">:</span>
+</span><span id="__span-13-70"><a id="__codelineno-13-70" name="__codelineno-13-70" href="#__codelineno-13-70"></a>        <span class="n">client</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">BROKER_HOST</span><span class="p">,</span> <span class="n">BROKER_PORT</span><span class="p">,</span> <span class="n">keepalive</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</span><span id="__span-13-71"><a id="__codelineno-13-71" name="__codelineno-13-71" href="#__codelineno-13-71"></a>    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">error_msg</span><span class="p">:</span>
+</span><span id="__span-13-72"><a id="__codelineno-13-72" name="__codelineno-13-72" href="#__codelineno-13-72"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"[КРИТИЧНА ПОМИЛКА]: Не вдалося з'єднатися з брокером: </span><span class="si">{</span><span class="n">error_msg</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</span><span id="__span-13-73"><a id="__codelineno-13-73" name="__codelineno-13-73" href="#__codelineno-13-73"></a>        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span><span id="__span-13-74"><a id="__codelineno-13-74" name="__codelineno-13-74" href="#__codelineno-13-74"></a>
+</span><span id="__span-13-75"><a id="__codelineno-13-75" name="__codelineno-13-75" href="#__codelineno-13-75"></a>    <span class="c1"># Запуск мережевого потоку обробки подій у фоновому режимі</span>
+</span><span id="__span-13-76"><a id="__codelineno-13-76" name="__codelineno-13-76" href="#__codelineno-13-76"></a>    <span class="n">client</span><span class="o">.</span><span class="n">loop_start</span><span class="p">()</span>
+</span><span id="__span-13-77"><a id="__codelineno-13-77" name="__codelineno-13-77" href="#__codelineno-13-77"></a>
+</span><span id="__span-13-78"><a id="__codelineno-13-78" name="__codelineno-13-78" href="#__codelineno-13-78"></a>    <span class="c1"># Передавання тестових пакетів телеметрії</span>
+</span><span id="__span-13-79"><a id="__codelineno-13-79" name="__codelineno-13-79" href="#__codelineno-13-79"></a>    <span class="n">simulated_temperatures</span> <span class="o">=</span> <span class="p">[</span><span class="mf">22.4</span><span class="p">,</span> <span class="mf">23.1</span><span class="p">,</span> <span class="mf">24.8</span><span class="p">,</span> <span class="mf">25.5</span><span class="p">,</span> <span class="mf">29.2</span><span class="p">]</span>
+</span><span id="__span-13-80"><a id="__codelineno-13-80" name="__codelineno-13-80" href="#__codelineno-13-80"></a>
+</span><span id="__span-13-81"><a id="__codelineno-13-81" name="__codelineno-13-81" href="#__codelineno-13-81"></a>    <span class="k">try</span><span class="p">:</span>
+</span><span id="__span-13-82"><a id="__codelineno-13-82" name="__codelineno-13-82" href="#__codelineno-13-82"></a>        <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">current_temp</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">simulated_temperatures</span><span class="p">):</span>
+</span><span id="__span-13-83"><a id="__codelineno-13-83" name="__codelineno-13-83" href="#__codelineno-13-83"></a>            <span class="n">payload_dict</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="__span-13-84"><a id="__codelineno-13-84" name="__codelineno-13-84" href="#__codelineno-13-84"></a>                <span class="s2">"iteration"</span><span class="p">:</span> <span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>
+</span><span id="__span-13-85"><a id="__codelineno-13-85" name="__codelineno-13-85" href="#__codelineno-13-85"></a>                <span class="s2">"temperature"</span><span class="p">:</span> <span class="n">current_temp</span><span class="p">,</span>
+</span><span id="__span-13-86"><a id="__codelineno-13-86" name="__codelineno-13-86" href="#__codelineno-13-86"></a>                <span class="s2">"timestamp"</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()),</span>
+</span><span id="__span-13-87"><a id="__codelineno-13-87" name="__codelineno-13-87" href="#__codelineno-13-87"></a>                <span class="s2">"sensor_health"</span><span class="p">:</span> <span class="s2">"OK"</span>
+</span><span id="__span-13-88"><a id="__codelineno-13-88" name="__codelineno-13-88" href="#__codelineno-13-88"></a>            <span class="p">}</span>
+</span><span id="__span-13-89"><a id="__codelineno-13-89" name="__codelineno-13-89" href="#__codelineno-13-89"></a>            <span class="n">payload_str</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">payload_dict</span><span class="p">)</span>
+</span><span id="__span-13-90"><a id="__codelineno-13-90" name="__codelineno-13-90" href="#__codelineno-13-90"></a>
+</span><span id="__span-13-91"><a id="__codelineno-13-91" name="__codelineno-13-91" href="#__codelineno-13-91"></a>            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\n</span><span class="s2">[ВІДПРАВКА]: Ітерація </span><span class="si">{</span><span class="n">index</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2"> -&gt; </span><span class="si">{</span><span class="n">payload_str</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</span><span id="__span-13-92"><a id="__codelineno-13-92" name="__codelineno-13-92" href="#__codelineno-13-92"></a>            <span class="c1"># Публікація з якістю обслуговування QoS 2</span>
+</span><span id="__span-13-93"><a id="__codelineno-13-93" name="__codelineno-13-93" href="#__codelineno-13-93"></a>            <span class="n">message_info</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">TOPIC_TELEMETRY</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">payload_str</span><span class="p">,</span> <span class="n">qos</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</span><span id="__span-13-94"><a id="__codelineno-13-94" name="__codelineno-13-94" href="#__codelineno-13-94"></a>            <span class="n">message_info</span><span class="o">.</span><span class="n">wait_for_publish</span><span class="p">()</span>
+</span><span id="__span-13-95"><a id="__codelineno-13-95" name="__codelineno-13-95" href="#__codelineno-13-95"></a>
+</span><span id="__span-13-96"><a id="__codelineno-13-96" name="__codelineno-13-96" href="#__codelineno-13-96"></a>            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</span><span id="__span-13-97"><a id="__codelineno-13-97" name="__codelineno-13-97" href="#__codelineno-13-97"></a>
+</span><span id="__span-13-98"><a id="__codelineno-13-98" name="__codelineno-13-98" href="#__codelineno-13-98"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">[СИМУЛЯЦІЯ АВАРІЙНОГО ЗБОЮ]: Імітуємо раптовий розрив процесу без відправки DISCONNECT..."</span><span class="p">)</span>
+</span><span id="__span-13-99"><a id="__codelineno-13-99" name="__codelineno-13-99" href="#__codelineno-13-99"></a>        <span class="c1"># Примусове завершення програми через os._exit імітує раптове вимкнення живлення мікроконтролера</span>
+</span><span id="__span-13-100"><a id="__codelineno-13-100" name="__codelineno-13-100" href="#__codelineno-13-100"></a>        <span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+</span><span id="__span-13-101"><a id="__codelineno-13-101" name="__codelineno-13-101" href="#__codelineno-13-101"></a>        <span class="n">os</span><span class="o">.</span><span class="n">_exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span><span id="__span-13-102"><a id="__codelineno-13-102" name="__codelineno-13-102" href="#__codelineno-13-102"></a>
+</span><span id="__span-13-103"><a id="__codelineno-13-103" name="__codelineno-13-103" href="#__codelineno-13-103"></a>    <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+</span><span id="__span-13-104"><a id="__codelineno-13-104" name="__codelineno-13-104" href="#__codelineno-13-104"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">[ЗУПИНКА]: Користувач перервав роботу. Коректне відключення..."</span><span class="p">)</span>
+</span><span id="__span-13-105"><a id="__codelineno-13-105" name="__codelineno-13-105" href="#__codelineno-13-105"></a>        <span class="n">client</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">TOPIC_STATUS</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="s2">"offline_graceful"</span><span class="p">,</span> <span class="n">qos</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">retain</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span id="__span-13-106"><a id="__codelineno-13-106" name="__codelineno-13-106" href="#__codelineno-13-106"></a>        <span class="n">client</span><span class="o">.</span><span class="n">loop_stop</span><span class="p">()</span>
+</span><span id="__span-13-107"><a id="__codelineno-13-107" name="__codelineno-13-107" href="#__codelineno-13-107"></a>        <span class="n">client</span><span class="o">.</span><span class="n">disconnect</span><span class="p">()</span>
+</span><span id="__span-13-108"><a id="__codelineno-13-108" name="__codelineno-13-108" href="#__codelineno-13-108"></a>
+</span><span id="__span-13-109"><a id="__codelineno-13-109" name="__codelineno-13-109" href="#__codelineno-13-109"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+</span><span id="__span-13-110"><a id="__codelineno-13-110" name="__codelineno-13-110" href="#__codelineno-13-110"></a>    <span class="n">main</span><span class="p">()</span>
+</span></code></pre></div>
+<hr />
+<h3 id="33">3.3 Запуск, тестування та перевірка результатів</h3>
+<ol>
+<li>Запустіть підписник на статус аварійного заповіту в окремому вікні термінала:</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>mosquitto_sub<span class="w"> </span>-h<span class="w"> </span><span class="m">127</span>.0.0.1<span class="w"> </span>-p<span class="w"> </span><span class="m">1883</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="w">  </span>-u<span class="w"> </span><span class="s2">"operator_user"</span><span class="w"> </span>-P<span class="w"> </span><span class="s2">"OperPass2026!"</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="w">  </span>-t<span class="w"> </span><span class="s2">"robolab/node1/status"</span><span class="w"> </span>-v
+</span></code></pre></div>
+<ol>
+<li>Запустіть написаний Python-скрипт тестування:</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>python3<span class="w"> </span>~/MQTT_Lab3/scripts/test_client.py
+</span></code></pre></div>
+<h4 id="python">Еталонний вивід програми в терміналі видавця (Python):</h4>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>[ІНІЦІАЛІЗАЦІЯ]: Спроба підключення до 127.0.0.1:1883...
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>[ЗВ'ЯЗОК ВСТАНОВЛЕНО]: Клієнт RoboLab_Sensor_Node1 успішно підключився до брокера.
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>[СТАТУС]: Опубліковано стан 'online' у топік robolab/node1/status
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>[ПІДТВЕРДЖЕННЯ]: Пакет із Message ID 1 успішно передано на брокер.
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>[ВІДПРАВКА]: Ітерація 1 -&gt; {"iteration": 1, "temperature": 22.4, "timestamp": 1774526400, "sensor_health": "OK"}
+</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>[ПІДТВЕРДЖЕННЯ]: Пакет із Message ID 2 успішно передано на брокер.
+</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>
+</span><span id="__span-16-9"><a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a>[ВІДПРАВКА]: Ітерація 2 -&gt; {"iteration": 2, "temperature": 23.1, "timestamp": 1774526402, "sensor_health": "OK"}
+</span><span id="__span-16-10"><a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a>[ПІДТВЕРДЖЕННЯ]: Пакет із Message ID 3 успішно передано на брокер.
+</span><span id="__span-16-11"><a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a>
+</span><span id="__span-16-12"><a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a>[ВІДПРАВКА]: Ітерація 3 -&gt; {"iteration": 3, "temperature": 24.8, "timestamp": 1774526404, "sensor_health": "OK"}
+</span><span id="__span-16-13"><a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a>[ПІДТВЕРДЖЕННЯ]: Пакет із Message ID 4 успішно передано на брокер.
+</span><span id="__span-16-14"><a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a>
+</span><span id="__span-16-15"><a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a>[ВІДПРАВКА]: Ітерація 4 -&gt; {"iteration": 4, "temperature": 25.5, "timestamp": 1774526406, "sensor_health": "OK"}
+</span><span id="__span-16-16"><a id="__codelineno-16-16" name="__codelineno-16-16" href="#__codelineno-16-16"></a>[ПІДТВЕРДЖЕННЯ]: Пакет із Message ID 5 успішно передано на брокер.
+</span><span id="__span-16-17"><a id="__codelineno-16-17" name="__codelineno-16-17" href="#__codelineno-16-17"></a>
+</span><span id="__span-16-18"><a id="__codelineno-16-18" name="__codelineno-16-18" href="#__codelineno-16-18"></a>[ВІДПРАВКА]: Ітерація 5 -&gt; {"iteration": 5, "temperature": 29.2, "timestamp": 1774526408, "sensor_health": "OK"}
+</span><span id="__span-16-19"><a id="__codelineno-16-19" name="__codelineno-16-19" href="#__codelineno-16-19"></a>[ПІДТВЕРДЖЕННЯ]: Пакет із Message ID 6 успішно передано на брокер.
+</span><span id="__span-16-20"><a id="__codelineno-16-20" name="__codelineno-16-20" href="#__codelineno-16-20"></a>
+</span><span id="__span-16-21"><a id="__codelineno-16-21" name="__codelineno-16-21" href="#__codelineno-16-21"></a>[СИМУЛЯЦІЯ АВАРІЙНОГО ЗБОЮ]: Імітуємо раптовий розрив процесу без відправки DISCONNECT...
+</span></code></pre></div>
+<h4 id="mosquitto_sub">Еталонний вивід термінала підписника (<code>mosquitto_sub</code> оператора):</h4>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>robolab/node1/status online
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>robolab/node1/telemetry {"iteration": 1, "temperature": 22.4, "timestamp": 1774526400, "sensor_health": "OK"}
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>robolab/node1/telemetry {"iteration": 2, "temperature": 23.1, "timestamp": 1774526402, "sensor_health": "OK"}
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>robolab/node1/telemetry {"iteration": 3, "temperature": 24.8, "timestamp": 1774526404, "sensor_health": "OK"}
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>robolab/node1/telemetry {"iteration": 4, "temperature": 25.5, "timestamp": 1774526406, "sensor_health": "OK"}
+</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>robolab/node1/telemetry {"iteration": 5, "temperature": 29.2, "timestamp": 1774526408, "sensor_health": "OK"}
+</span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a>robolab/node1/status offline
+</span></code></pre></div>
+<p>Зверніть увагу, що рядок <code>robolab/node1/status offline</code> з'являється автоматично через <span class="arithmatex">\(15\text{ секунд}\)</span> (період <span class="arithmatex">\(1{,}5 \times \text{KeepAlive}\)</span>), коли брокер фіксує втрату зв'язку з клієнтом без штатного сигналу <code>DISCONNECT</code>.</p>
+<hr />
+<h2 id="4">4 Вимоги до змісту звіту</h2>
+<p>Звіт оформлюється відповідно до стандарту ДСТУ 3008:2015 і повинен містити такі розділи:</p>
+<ol>
+<li>
+<p><strong>Титульна сторінка</strong> із зазначенням навчального закладу, кафедри, дисципліни, номера лабораторної роботи, номера варіанта та відомостей про автора.</p>
+</li>
+<li>
+<p><strong>Мета роботи</strong> та теоретичні відомості щодо протоколу MQTT, рівнів QoS, призначення Retained та LWT-повідомлень.</p>
+</li>
+<li>
+<p><strong>Постановка індивідуального завдання</strong> для закріпленого варіанта з розробленою картою топіків та профілями безпеки.</p>
+</li>
+<li>
+<p><strong>Конфігураційні файли:</strong> повні тексти файлів <code>mosquitto.conf</code>, <code>passwords.txt</code> (фрагмент хешів) та <code>acl.conf</code>.</p>
+</li>
+<li>
+<p><strong>Розрахункова частина:</strong> розрахунок розміру пакету <span class="arithmatex">\(S_{\text{packet}}\)</span> та коефіцієнта корисної дії каналу <span class="arithmatex">\(\eta\)</span> для повідомлення обраного варіанта згідно з математичною моделлю, наведеною в розділі 1.</p>
+</li>
+<li>
+<p><strong>Вихідний код скрипта тестування</strong> мовою Python з коментарями.</p>
+</li>
+<li>
+<p><strong>Результати експериментів:</strong> скріншоти консолі брокера, терміналів підписника та видавця, а також скріншот дерева топіків у програмі <code>MQTT Explorer</code>.</p>
+</li>
+<li>
+<p><strong>Аналітичні висновки</strong>, де сформульовано оцінку ефективності протоколу MQTT порівняно з HTTP, проаналізовано накладні витрати трафіку для різних рівнів QoS та підтверджено коректність спрацювання механізму LWT.</p>
+</li>
+</ol>
+<hr />
+<h2 id="5">5 Контрольні запитання для захисту роботи</h2>
+<ol>
+<li>
+<p><strong>У чому полягає фундаментальна відмінність шаблону Publish/Subscribe від клієнт-серверної моделі Request/Response протоколу HTTP?</strong> Поясніть, чому MQTT є більш енергоефективним для малопотужних вбудованих систем.</p>
+</li>
+<li>
+<p><strong>Опишіть чотириетапну процедуру підтвердження доставки повідомлення при рівні якості обслуговування QoS 2 (Exactly Once).</strong> Для чого використовується пара пакетів <code>PUBREC</code> та <code>PUBREL</code>?</p>
+</li>
+<li>
+<p><strong>Яке призначення має прапорець Retain у протоколі MQTT?</strong> Що відбувається зі збереженим повідомленням на брокері, якщо видавець публікує у цей же топік порожнє корисне навантаження (Payload нульової довжини) із прапорцем Retain?</p>
+</li>
+<li>
+<p><strong>Поясніть механізм роботи аварійного заповіту (Last Will and Testament, LWT).</strong> За яких умов брокер надсилає повідомлення LWT підписникам, а за яких умов воно видаляється без відправлення?</p>
+</li>
+<li>
+<p><strong>Як символи підстановки <code>+</code> (Single-level Wildcard) та <code>#</code> (Multi-level Wildcard) впливають на обробку підписок брокером?</strong> Наведіть приклад топіка, який відповідає шаблону <code>building/+/room/#</code>, але не відповідає шаблону <code>building/floor1/+</code>.</p>
+</li>
+<li>
+<p><strong>Яким чином у брокері Eclipse Mosquitto реалізується автентифікація та авторизація за допомогою файлу контролю доступу (ACL)?</strong> Які потенційні вразливості виникають при використанні параметра <code>allow_anonymous true</code> у промисловій мережі?</p>
+</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Повернутись нагору
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Kyrylo Vadurin &bull; <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.top", "navigation.tracking", "header.autohide", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u0421\u043a\u043e\u043f\u0456\u0439\u043e\u0432\u0430\u043d\u043e \u0432 \u0431\u0443\u0444\u0435\u0440", "clipboard.copy": "\u0421\u043a\u043e\u043f\u0456\u044e\u0432\u0430\u0442\u0438 \u0432 \u0431\u0443\u0444\u0435\u0440", "search.result.more.one": "\u0429\u0435 1 \u0437\u0431\u0456\u0433 \u043d\u0430 \u0446\u0456\u0439 \u0441\u0442\u043e\u0440\u0456\u043d\u0446\u0456", "search.result.more.other": "\u0429\u0435 # \u0437\u0431\u0456\u0433\u0456\u0432 \u043d\u0430 \u0446\u0456\u0439 \u0441\u0442\u043e\u0440\u0456\u043d\u0446\u0456", "search.result.none": "\u0417\u0431\u0456\u0433\u0456\u0432 \u043d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u043e", "search.result.one": "\u0417\u043d\u0430\u0439\u0434\u0435\u043d\u043e 1 \u0437\u0431\u0456\u0433", "search.result.other": "\u0417\u043d\u0430\u0439\u0434\u0435\u043d\u043e # \u0437\u0431\u0456\u0433\u0456\u0432", "search.result.placeholder": "\u0420\u043e\u0437\u043f\u043e\u0447\u043d\u0456\u0442\u044c \u043f\u0438\u0441\u0430\u0442\u0438 \u0434\u043b\u044f \u043f\u043e\u0448\u0443\u043a\u0443", "search.result.term.missing": "\u041d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u043e \u0437\u0430\u043f\u0438\u0442\u0443", "select.version": "\u041e\u0431\u0440\u0430\u0442\u0438 \u0432\u0435\u0440\u0441\u0456\u044e"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

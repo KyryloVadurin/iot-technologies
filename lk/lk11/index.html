@@ -1,0 +1,3625 @@
+
+<!doctype html>
+<html lang="uk" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Навчальний портал з дисципліни "Технології ІоТ"">
+      
+      
+      
+      
+        <link rel="prev" href="../lk10/">
+      
+      
+        <link rel="next" href="../lk12/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Тема 11. Розумний будинок (Home Assistant) - Технології Інтернету речей</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#11" class="md-skip">
+          Перейти до змісту
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Хедер">
+    <a href="../.." title="Технології Інтернету речей" class="md-header__button md-logo" aria-label="Технології Інтернету речей" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Технології Інтернету речей
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Тема 11. Розумний будинок (Home Assistant)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan"  aria-label="Переключити на темну тему"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Переключити на темну тему" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="cyan"  aria-label="Переключити на світлу тему"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Переключити на світлу тему" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Пошук" placeholder="Пошук" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Шукати">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Очистити" aria-label="Очистити" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Пошук розпочато
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Вкладки" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Робоча програма
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../lk1/" class="md-tabs__link">
+          
+  
+  
+  Лекції
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../lb/lb1/" class="md-tabs__link">
+          
+  
+  
+  Лабораторні роботи
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../pz/pz1/" class="md-tabs__link">
+          
+  
+  
+  Практичні заняття
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../kp/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Курсовий проєкт
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../sr/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Самостійна робота
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../sr/quest/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Контрольні завдання (Іспит)
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Навігація" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Технології Інтернету речей" class="md-nav__button md-logo" aria-label="Технології Інтернету речей" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Технології Інтернету речей
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Робоча програма
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Лекції
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Лекції
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 1. Екосистема та архітектура IoT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 2. Технології WPAN та WLAN у IoT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 3. LPWAN технології
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 4. Прикладні протоколи ІоТ (MQTT, CoAP)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 5. Туманні (Fog) та граничні (Edge) обчислення
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 6. Мікроконтролерні платформи (ESP32)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 7. Інтелектуальні сенсори
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 8. Виконавчі пристрої
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 9. Віртуалізація та контейнеризація IoT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 10. IoT платформи та Middleware
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 11. Розумний будинок (Home Assistant)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 11. Розумний будинок (Home Assistant)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Зміст">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Зміст
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Мета лекції
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Очікувані результати навчання
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Детальний покроковий план лекції
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Детальний покроковий план лекції">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-home-assistant" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Теоретико-концептуальний базис. Архітектурні моделі систем автоматизації будівель та ядро Home Assistant
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Методологія та аналіз граничних умов. Проектування периферійних вузлів, мережева інтеграція та бар'єри відмовостійкості
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Практичний індустріальний / фаховий кейс. Розгортання комплексної автономної системи управління кліматом і безпекою житла
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-home-assistant_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Теоретико-концептуальний базис. Архітектурні моделі систем автоматизації будівель та ядро Home Assistant
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Теоретико-концептуальний базис. Архітектурні моделі систем автоматизації будівель та ядро Home Assistant">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-iot-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1. Еволюція концепції розумного будинку від локальних релейних автоматів і закритих промислових протоколів до відкритих конвергентних IoT-екосистем
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2. Порівняльний системний аналіз хмарно-залежних платформ і концепції локального контролю з розрахунком коефіцієнтів готовності та латентності
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-home-assistant-core" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3. Внутрішня організація ядра Home Assistant Core, взаємозв'язок шини подій, реєстру станів, сервісної підсистеми, планувальника таймерів та бази історії
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4. Об'єктна модель фізичного середовища, типологія доменів і сутностей, а також формалізація логіки автоматизації на основі кінцевих автоматів
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Вказівки для самостійного осмислення
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Методологія та аналіз граничних умов. Проектування периферійних вузлів, мережева інтеграція та бар'єри відмовостійкості
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Методологія та аналіз граничних умов. Проектування периферійних вузлів, мережева інтеграція та бар&#39;єри відмовостійкості">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1. Методи розгортання серверного вузла автоматизації в ізольованих контейнерах та оцінка апаратних ресурсів мікрокомп'ютерних платформ
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-mesh-tcpip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2. Мережева інтеграція польового рівня за допомогою бездротових mesh-мереж, промислових шин та протоколів транспортного рівня TCP/IP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-esp32-esphome-home-assistant-native-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3. Декларативне проектування прошивок мікроконтролерів ESP32 у фреймворку ESPHome та специфікація бінарного протоколу Home Assistant Native API
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4. Методи первинної обробки сигналів на периферійних вузлах, цифрова фільтрація шуму, усунення брязкоту контактів і локальні контури захисту
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5. Критичні бар'єри масштабування, колізії радіоканалів неліцензованого діапазону та ризики порушення доступності при відмові центрального координатора
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Практичний індустріальний / фаховий кейс. Розгортання комплексної автономної системи управління кліматом і безпекою житла
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Практичний індустріальний / фаховий кейс. Розгортання комплексної автономної системи управління кліматом і безпекою житла">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1. Комплексний фаховий кейс. Проектування та розгортання відмовостійкої локальної системи клімат-контролю та захисту від протікання води
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1. Комплексний фаховий кейс. Проектування та розгортання відмовостійкої локальної системи клімат-контролю та захисту від протікання води">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Постановка задачі / ситуації
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Покроковий аналіз та розв'язок
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Покроковий аналіз та розв&#39;язок">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 1. Розрахунок енергетичного балансу та автономності аварійного вузла
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 2. Синтез параметрів цифрового фільтра сенсора температури
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 3. Розрахунок граничного об'єму витоку води при аварії
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 4. Оцінка мережевого навантаження та пропускної здатності каналу
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Інтерпретація результатів та альтернативні сценарії
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2. Зведена довідкова система лекції
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3. Контрольні питання та завдання
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3. Контрольні питання та завдання">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Прикладні тестові завдання
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Завдання для самостійної роботи
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Завдання для самостійної роботи">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Постановка задачі
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Завдання для виконання
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 12. Промисловий ІоТ (IIoT)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 13. Big Data в ІоТ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 14. Machine Learning на межі мережі
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 15. Кібербезпека в системах ІоТ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Лабораторні роботи
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Лабораторні роботи
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 1. Моделювання топологій IoT-мереж
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 2. Симуляція підсистем Розумного будинку
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 3. Дослідження локального MQTT-брокера
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 4. Схемотехнічне моделювання вузла збору
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 5. Прошивка ESP32 для передавання телеметрії MQTT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 6. Декларативне програмування ESP32 (ESPHome)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 7. Серверне середовище Linux для IoT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 8. Контейнеризація в ІоТ (Docker Compose)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 9. Middleware ІоТ (Node-RED)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 10. Сервіс REST API для агрегації даних
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 11. Платформи розумного будинку (Home Assistant)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 12. Сценарії автоматизації Home Assistant
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 13. Обробка телеметрії мовою Python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 14. HMI Dashboard для диспетчеризації
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 15. Комплексне наскрізне тестування IoT-системи
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практичні заняття
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Практичні заняття
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 1. Розрахунок пропускної здатності та живлення
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 2. Проєктування ієрархії топіків MQTT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 3. Правила фільтрації на Edge-шлюзах
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 4. Моделювання АЦП для сенсорів
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 5. Оптимізація енергетичного профілю
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 6. Проєктування конфігурації Docker Compose
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 7. Логічні схеми в Node-RED
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 8. Сценарії Trigger-Condition-Action
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 9. Конвеєр обробки даних (ETL)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 10. Моделювання загроз безпеки (STRIDE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Курсовий проєкт
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Самостійна робота
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sr/quest/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Контрольні завдання (Іспит)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Зміст">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Зміст
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Мета лекції
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Очікувані результати навчання
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Детальний покроковий план лекції
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Детальний покроковий план лекції">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-home-assistant" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Теоретико-концептуальний базис. Архітектурні моделі систем автоматизації будівель та ядро Home Assistant
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Методологія та аналіз граничних умов. Проектування периферійних вузлів, мережева інтеграція та бар'єри відмовостійкості
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Практичний індустріальний / фаховий кейс. Розгортання комплексної автономної системи управління кліматом і безпекою житла
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-home-assistant_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Теоретико-концептуальний базис. Архітектурні моделі систем автоматизації будівель та ядро Home Assistant
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Теоретико-концептуальний базис. Архітектурні моделі систем автоматизації будівель та ядро Home Assistant">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-iot-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1. Еволюція концепції розумного будинку від локальних релейних автоматів і закритих промислових протоколів до відкритих конвергентних IoT-екосистем
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2. Порівняльний системний аналіз хмарно-залежних платформ і концепції локального контролю з розрахунком коефіцієнтів готовності та латентності
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-home-assistant-core" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3. Внутрішня організація ядра Home Assistant Core, взаємозв'язок шини подій, реєстру станів, сервісної підсистеми, планувальника таймерів та бази історії
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4. Об'єктна модель фізичного середовища, типологія доменів і сутностей, а також формалізація логіки автоматизації на основі кінцевих автоматів
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Вказівки для самостійного осмислення
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Методологія та аналіз граничних умов. Проектування периферійних вузлів, мережева інтеграція та бар'єри відмовостійкості
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Методологія та аналіз граничних умов. Проектування периферійних вузлів, мережева інтеграція та бар&#39;єри відмовостійкості">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1. Методи розгортання серверного вузла автоматизації в ізольованих контейнерах та оцінка апаратних ресурсів мікрокомп'ютерних платформ
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-mesh-tcpip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2. Мережева інтеграція польового рівня за допомогою бездротових mesh-мереж, промислових шин та протоколів транспортного рівня TCP/IP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-esp32-esphome-home-assistant-native-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3. Декларативне проектування прошивок мікроконтролерів ESP32 у фреймворку ESPHome та специфікація бінарного протоколу Home Assistant Native API
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4. Методи первинної обробки сигналів на периферійних вузлах, цифрова фільтрація шуму, усунення брязкоту контактів і локальні контури захисту
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5. Критичні бар'єри масштабування, колізії радіоканалів неліцензованого діапазону та ризики порушення доступності при відмові центрального координатора
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Практичний індустріальний / фаховий кейс. Розгортання комплексної автономної системи управління кліматом і безпекою житла
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Практичний індустріальний / фаховий кейс. Розгортання комплексної автономної системи управління кліматом і безпекою житла">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1. Комплексний фаховий кейс. Проектування та розгортання відмовостійкої локальної системи клімат-контролю та захисту від протікання води
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1. Комплексний фаховий кейс. Проектування та розгортання відмовостійкої локальної системи клімат-контролю та захисту від протікання води">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Постановка задачі / ситуації
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Покроковий аналіз та розв'язок
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Покроковий аналіз та розв&#39;язок">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 1. Розрахунок енергетичного балансу та автономності аварійного вузла
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 2. Синтез параметрів цифрового фільтра сенсора температури
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 3. Розрахунок граничного об'єму витоку води при аварії
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 4. Оцінка мережевого навантаження та пропускної здатності каналу
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Інтерпретація результатів та альтернативні сценарії
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2. Зведена довідкова система лекції
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3. Контрольні питання та завдання
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3. Контрольні питання та завдання">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Прикладні тестові завдання
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Завдання для самостійної роботи
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Завдання для самостійної роботи">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Постановка задачі
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Завдання для виконання
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="11">Тема 11. «Розумний будинок»: архітектура, платформи</h1>
+<h2 id="_1">Мета лекції</h2>
+<p>Метою лекції є формування у здобувачів вищої освіти комплексної системи теоретичних знань і прикладних інженерних компетентностей щодо архітектурної організації сучасних кіберфізичних просторів житлового та комерційного призначення, розгортання автономних відкритих платформ управління на прикладі екосистеми Home Assistant, а також проектування відмовостійких контурів збору сенсорних даних і силового регулювання з використанням мікроконтролерів сімейств ESP32 та ESP8266 під управлінням середовища ESPHome для побудови функціональних IoT-систем із високим рівнем конфіденційності та надійності без обов'язкової прив'язки до зовнішніх хмарних сервісів.</p>
+<h2 id="_2">Очікувані результати навчання</h2>
+<ol>
+<li>
+<p><strong>Знання та розуміння.</strong> Здобувачі засвоять фундаментальні відмінності між хмарно-залежними та локальними архітектурами розумного будинку, принципи роботи подієво-орієнтованого ядра Home Assistant Core, а також протокольні особливості взаємодії датчиків та виконавчих механізмів на канальному та прикладному рівнях моделі OSI.</p>
+</li>
+<li>
+<p><strong>Застосування.</strong> Здобувачі набудуть практичних навичок конфігурування локального вузла автоматизації, проектування пристроїв на базі мікроконтролерів засобами фреймворку ESPHome та реалізації прямих каналів обміну даними через бінарний протокол Home Assistant Native API.</p>
+</li>
+<li>
+<p><strong>Аналіз.</strong> Здобувачі зможуть здійснювати комплексний порівняльний аналіз пропускної здатності, латентності, показників енергоспоживання і векторів кіберзагроз для проводових і бездротових технологій інтерфейсного зв'язку в умовах інтенсивних електромагнітних завад.</p>
+</li>
+<li>
+<p><strong>Оцінювання та синтез.</strong> Здобувачі здобудуть здатність проектувати багаторівневі розподілені системи управління розумним будинком, формувати оптимізовані сценарії автоматизації за моделлю скінченних автоматів та створювати алгоритми автономного аварійного реагування безпосередньо на рівні периферійних контролерів.</p>
+</li>
+</ol>
+<hr />
+<h2 id="_3">Детальний покроковий план лекції</h2>
+<h3 id="1-home-assistant">1. Теоретико-концептуальний базис. Архітектурні моделі систем автоматизації будівель та ядро Home Assistant</h3>
+<ul>
+<li>
+<p>1.1. Еволюція концепції розумного будинку від локальних релейних автоматів і закритих промислових протоколів до відкритих конвергентних IoT-екосистем.</p>
+</li>
+<li>
+<p>1.2. Порівняльний системний аналіз хмарно-залежних платформ і концепції локального контролю з розрахунком коефіцієнтів готовності та латентності.</p>
+</li>
+<li>
+<p>1.3. Внутрішня організація ядра Home Assistant Core, взаємозв'язок шини подій, реєстру станів, сервісної підсистеми, планувальника таймерів та бази історії.</p>
+</li>
+<li>
+<p>1.4. Об'єктна модель фізичного середовища, типологія доменів і сутностей, а також формалізація логіки автоматизації на основі кінцевих автоматів.</p>
+</li>
+</ul>
+<h3 id="2">2. Методологія та аналіз граничних умов. Проектування периферійних вузлів, мережева інтеграція та бар'єри відмовостійкості</h3>
+<ul>
+<li>
+<p>2.1. Методи розгортання серверного вузла автоматизації в ізольованих контейнерах та оцінка апаратних ресурсів мікрокомп'ютерних платформ.</p>
+</li>
+<li>
+<p>2.2. Мережева інтеграція польового рівня за допомогою бездротових mesh-мереж, промислових шин та протоколів транспортного рівня TCP/IP.</p>
+</li>
+<li>
+<p>2.3. Декларативне проектування прошивок мікроконтролерів ESP32 у фреймворку ESPHome та специфікація бінарного протоколу Home Assistant Native API.</p>
+</li>
+<li>
+<p>2.4. Методи первинної обробки сигналів на периферійних вузлах, цифрова фільтрація шуму, усунення брязкоту контактів і локальні контури захисту.</p>
+</li>
+<li>
+<p>2.5. Критичні бар'єри масштабування, колізії радіоканалів неліцензованого діапазону та ризики порушення доступності при відмові центрального координатора.</p>
+</li>
+</ul>
+<h3 id="3">3. Практичний індустріальний / фаховий кейс. Розгортання комплексної автономної системи управління кліматом і безпекою житла</h3>
+<p><strong>Тема наскрізної задачі.</strong> «Проектування та розгортання відмовостійкої локальної системи клімат-контролю та захисту від протікання води на базі Home Assistant, шлюзу ESP32 з прошивкою ESPHome та автономного контуру аварійного реагування».</p>
+<h2 id="1-home-assistant_1">1. Теоретико-концептуальний базис. Архітектурні моделі систем автоматизації будівель та ядро Home Assistant</h2>
+<h3 id="11-iot-">1.1. Еволюція концепції розумного будинку від локальних релейних автоматів і закритих промислових протоколів до відкритих конвергентних IoT-екосистем</h3>
+<p>Розвиток систем автоматизації житлових і виробничих приміщень пройшов шлях від ізольованих електромеханічних вузлів до розподілених кіберфізичних систем. На початкових етапах автоматизація будівель базувалася на жорсткій логіці релейно-контакторних схем і дискретних регуляторів. У таких системах функції управління реалізовувалися безпосереднім комутуванням силових електричних кіл через біметалічні термостати, механічні реле часу, кінцеві вимикачі та пневматичні давачі тиску. Подібна архітектура володіла високою ремонтопридатністю та стійкістю до перешкод, однак будь-яка зміна алгоритму роботи вимагала повної фізичної перебудови кабельних трас і щитового обладнання, що унеможливлювало побудову гнучких сценаріїв адаптації середовища до потреб користувача.</p>
+<p>З появою мікропроцесорної техніки та інтегральних схем у другій половині двадцятого століття виникли перші спеціалізовані системи диспетчеризації будівель (Building Management Systems). Промисловість перейшла до використання виділених контролерів і спеціалізованих польових шин. Класичними представниками цього покоління стали технології стандарту KNX, що виріс із протоколу EIB, системи на основі відкритого протоколу BACnet, розробленого товариством ASHRAE для інженерних комунікацій, а також мережі LonWorks компанії Echelon. Паралельно в промисловій автоматизації закріпився протокол Modbus, що використовує передачу двійкових або шістнадцяткових пакетів по інтерфейсу RS-485 за клієнт-серверною топологією з одним провідним пристроєм. Попри високу експлуатаційну надійність, ці протоколи створювалися як закриті або вузькоспеціалізовані сегменти, що вимагали дорогого інсталяційного програмного забезпечення, спеціальних шлюзів для сполучення між різними вендорами та спеціалізованої кабельної інфраструктури з екранованою парою.</p>
+<p>Бурхливий розвиток споживчої мікроелектроніки та поширення радіоінтерфейсів зумовили перехід до бездротових сенсорних мереж децентралізованого типу. Виникли протоколи бездротового зв'язку малого радіуса дії з низьким енергоспоживанням, такі як ZigBee (специфікація над стеком IEEE 802.15.4) та Z-Wave (пропрієтарний протокол діапазону субгігагерцових частот), орієнтовані на створення комірчастих коміркових топологій із маршрутизацією повідомлень від джерела до адресата. Проте справжній якісний стрибок відбувся під час проникнення Інтернет-протоколів на фізичний рівень сенсорів. Завдяки появі енергоефективного стека 6LoWPAN, протоколів Thread, Matter, а також широкому розповсюдженню мікроконтролерів із вбудованими радіомодулями Wi-Fi та Bluetooth Low Energy, концепція розумного будинку трансформувалася в конвергентну IoT-екосистему. У таких середовищах кожен виконавчий пристрій чи вимірювальний зонд стає повноправним мережевим вузлом, здатним взаємодіяти з гетерогенними платформами верхнього рівня через єдиний інформаційно-комунікаційний простір.</p>
+<p>Еволюційні переходи парадигм автоматизації, зміни їхнього функціонального призначення та принципові технологічні трансформації відображені на поданій діаграмі станів.</p>
+<pre class="mermaid"><code>stateDiagram-v2
+    [*] --&gt; Електромеханічні_Схеми: До 1970-х років
+
+    state Електромеханічні_Схеми {
+        [*] --&gt; Жорстка_Релейна_Логіка
+        Жорстка_Релейна_Логіка --&gt; Механічні_Таймери
+        Механічні_Таймери --&gt; Біметалічні_Термореле
+    }
+
+    Електромеханічні_Схеми --&gt; Спеціалізовані_Промислові_Шини: Впровадження мікропроцесорів
+
+    state Спеціалізовані_Промислові_Шини {
+        [*] --&gt; Протоколи_KNX_та_BACnet
+        Протоколи_KNX_та_BACnet --&gt; LonWorks_та_Modbus_RS485
+        LonWorks_та_Modbus_RS485 --&gt; Ізольовані_Контури_BMS
+    }
+
+    Спеціалізовані_Промислові_Шини --&gt; Бездротові_Mesh_Мережі: Мініатюризація радіомодулів
+
+    state Бездротові_Mesh_Мережі {
+        [*] --&gt; Стандарт_IEEE_802_15_4
+        Стандарт_IEEE_802_15_4 --&gt; Протоколи_ZigBee_та_Z_Wave
+        Протоколи_ZigBee_та_Z_Wave --&gt; Пропрієтарні_Хмарні_Шлюзи
+    }
+
+    Бездротові_Mesh_Мережі --&gt; Конвергентні_Відкриті_IoT_Екосистеми: Стандартизація IP та Edge-обчислень
+
+    state Конвергентні_Відкриті_IoT_Екосистеми {
+        [*] --&gt; Локальні_Шлюзи_Home_Assistant
+        Локальні_Шлюзи_Home_Assistant --&gt; Стек_6LoWPAN_Thread_Matter
+        Стек_6LoWPAN_Thread_Matter --&gt; Відкриті_Бінарні_API_ESPHome
+    }</code></pre>
+<blockquote>
+<p><strong>ПРАКТИЧНИЙ ЯКІР:</strong> При модернізації інфраструктури автоматизації готельного комплексу класичну провідну підсистему клімат-контролю на базі ліній Modbus RTU (RS-485) інтегрують через шлюзи перетворення протоколів у платформу Home Assistant, що дозволяє поєднати тридцятирічні промислові фанкойли з сучасними бездротовими сенсорами присутності стандарту ZigBee без демонтажу капітальних кабельних трас.</p>
+</blockquote>
+<hr />
+<h3 id="12-">1.2. Порівняльний системний аналіз хмарно-залежних платформ і концепції локального контролю з розрахунком коефіцієнтів готовності та латентності</h3>
+<p>Архітектурний ландшафт сучасного ринку інтернету речей розділений між двома діаметрально протилежними підходами до обробки даних: хмарно-орієнтованим (Cloud-First) та локально-орієнтованим (Local-First). Хмарний підхід, активно просуваний корпоративними екосистемами, передбачає передачу всієї необробленої телеметрії з кінцевих пристроїв через маршрутизатор локальної мережі до глобальних центрів обробки даних. На віддалених серверах виконуються аналітичні обчислення, перевірка бізнес-правил та генерація зворотних команд, що надсилаються назад на виконавчі пристрої.</p>
+<p>Головним недоліком хмарної парадигми є суттєве зниження надійності системи за рахунок утворення критичного ланцюга залежностей. З точки зору теорії надійності складних систем, коефіцієнт готовності хмарної системи <span class="arithmatex">\(A_{\text{cloud}}\)</span> розраховується як добуток коефіцієнтів готовності всіх її послідовно включених складових ланок:</p>
+<div class="arithmatex">\[A_{\text{cloud}} = A_{\text{dev}} \cdot A_{\text{LAN}} \cdot A_{\text{ISP}} \cdot A_{\text{WAN}} \cdot A_{\text{srv}}\]</div>
+<p>де змінна <span class="arithmatex">\(A_{\text{dev}}\)</span> позначає коефіцієнт готовності апаратного забезпечення кінцевого пристрою або мікроконтролера; <span class="arithmatex">\(A_{\text{LAN}}\)</span> визначає надійність локального комутатора або точки доступу бездротової мережі; <span class="arithmatex">\(A_{\text{ISP}}\)</span> відповідає коефіцієнту доступності каналу локального постачальника послуг інтернету; <span class="arithmatex">\(A_{\text{WAN}}\)</span> характеризує готовність магістральних транзитних мереж глобального зв'язку; <span class="arithmatex">\(A_{\text{srv}}\)</span> описує доступність обчислювальних серверів і баз даних хмарного провайдера.</p>
+<p>Якщо підставити у наведене співвідношення типові емпіричні значення надійності корпоративних систем (<span class="arithmatex">\(A_{\text{dev}} = 0{,}999\)</span>, <span class="arithmatex">\(A_{\text{LAN}} = 0{,}998\)</span>, <span class="arithmatex">\(A_{\text{ISP}} = 0{,}985\)</span>, <span class="arithmatex">\(A_{\text{WAN}} = 0{,}995\)</span>, <span class="arithmatex">\(A_{\text{srv}} = 0{,}990\)</span>), сумарний коефіцієнт готовності хмарної системи набуває значення <span class="arithmatex">\(A_{\text{cloud}} \approx 0{,}967\)</span>. Це відповідає річному сумарному простою системи тривалістю приблизно 289 годин, протягом яких автоматизоване керування будівлею виявляється заблокованим.</p>
+<p>На противагу цьому, архітектура локального контролю (Local Control), представлена такими платформами, як Home Assistant, замикає всі контури передачі інформації, реєстрації подій та прийняття рішень всередині локальної обчислювальної мережі об'єкта. У цьому випадку коефіцієнт готовності локальної системи <span class="arithmatex">\(A_{\text{local}}\)</span> залежить виключно від надійності польових пристроїв та компонентів локальної мережі:</p>
+<div class="arithmatex">\[A_{\text{local}} = A_{\text{dev}} \cdot A_{\text{LAN}}\]</div>
+<p>При використанні аналогічних значень надійності апаратури сумарний показник готовності досягає величини <span class="arithmatex">\(A_{\text{local}} = 0{,}999 \cdot 0{,}998 \approx 0{,}997\)</span>, що скорочує річний час потенційної відмови системи до менш ніж 26 годин (підвищення надійності більш ніж на порядок).</p>
+<p>Другим вирішальним фактором виступає часова затримка передачі керуючих сигналів. Повна затримка доставки сигналу у хмарній екосистемі <span class="arithmatex">\(\tau_{\text{cloud}}\)</span> формується як сума часових компонентів фізичного поширення, черг маршрутизації та обробки на віддалених серверах:</p>
+<div class="arithmatex">\[\tau_{\text{cloud}} = \tau_{\text{sens}} + \tau_{\text{LAN}} + \tau_{\text{queue}} + \tau_{\text{WAN\_up}} + \tau_{\text{cloud\_proc}} + \tau_{\text{WAN\_down}} + \tau_{\text{act}}\]</div>
+<p>де <span class="arithmatex">\(\tau_{\text{sens}}\)</span> відповідає часу апаратного опитування сенсора мікроконтролером; <span class="arithmatex">\(\tau_{\text{LAN}}\)</span> позначає час транзиту пакетів через локальні комутатори або радіоефір Wi-Fi; <span class="arithmatex">\(\tau_{\text{queue}}\)</span> визначає час буферизації пакета у чергах шлюзу; <span class="arithmatex">\(\tau_{\text{WAN\_up}}\)</span> та <span class="arithmatex">\(\tau_{\text{WAN\_down}}\)</span> є затримками передачі сигналу лініями глобальної мережі інтернет у висхідному та низхідному напрямках відповідно; <span class="arithmatex">\(\tau_{\text{cloud\_proc}}\)</span> позначає час виконання бізнес-логіки серверним пулом провайдера; <span class="arithmatex">\(\tau_{\text{act}}\)</span> представляє час спрацювання виконавчого реле або приводу.</p>
+<p>Сумарна величина <span class="arithmatex">\(\tau_{\text{cloud}}\)</span> на практиці варіюється в діапазоні від <span class="arithmatex">\(250\text{ мс}\)</span> до <span class="arithmatex">\(3000\text{ мс}\)</span>, а в разі завантаженості каналів зв'язку перевищує зазначені межі. Натомість для локально-орієнтованої архітектури час затримки <span class="arithmatex">\(\tau_{\text{local}}\)</span> містить мінімальний набір доданків:</p>
+<div class="arithmatex">\[\tau_{\text{local}} = \tau_{\text{sens}} + \tau_{\text{LAN}} + \tau_{\text{local\_proc}} + \tau_{\text{act}}\]</div>
+<p>де <span class="arithmatex">\(\tau_{\text{local\_proc}}\)</span> є часом обробки події центральним процесором локального шлюзу всередині оперативної пам'яті. Сумарна затримка <span class="arithmatex">\(\tau_{\text{local}}\)</span> рідко перевищує <span class="arithmatex">\(5 \dots 20\text{ мс}\)</span>, що забезпечує миттєвий тактильний відгук інфраструктури будівлі на дії людини.</p>
+<p>Для детальної системної диференціації та всебічної оцінки існуючих технологічних підходів складено порівняльну характеристику сучасних моделей функціонування розумних просторів.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Архітектурний підхід</th>
+<th style="text-align: left;">Топологія обробки</th>
+<th style="text-align: left;">Залежність від зовнішнього каналу</th>
+<th style="text-align: left;">Показники латентності</th>
+<th style="text-align: left;">Стійкість до компрометації</th>
+<th style="text-align: left;">Приклад з реальної практики</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Централізований хмарний (Cloud-First)</strong></td>
+<td style="text-align: left;">Ієрархічна «зірка» через публічні дата-центри</td>
+<td style="text-align: left;">Повна непрацездатність алгоритмів у разі обриву зв'язку з провайдером</td>
+<td style="text-align: left;">Від <span class="arithmatex">\(200\text{ мс}\)</span> до <span class="arithmatex">\(3\dots 5\text{ с}\)</span>, наявність непередбачуваного джиттеру</td>
+<td style="text-align: left;">Низька, загроза масового витоку при зламі центральної хмари</td>
+<td style="text-align: left;">Екосистема Tuya Smart або Xiaomi Mi Home на штатних прошивках</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Локально-орієнтований (Local-First Edge)</strong></td>
+<td style="text-align: left;">Розподілена обчислювальна мережа на базі локального сервера</td>
+<td style="text-align: left;">Повна автономність, інтернет необхідний лише для зовнішнього моніторингу</td>
+<td style="text-align: left;">Детермінована, у межах <span class="arithmatex">\(2\dots 15\text{ мс}\)</span> для більшості взаємодій</td>
+<td style="text-align: left;">Висока, дані не виходять за фізичний периметр об'єкта</td>
+<td style="text-align: left;">Платформа Home Assistant на базі Home Assistant OS (HAOS)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Гібридний туманний (Fog Architecture)</strong></td>
+<td style="text-align: left;">Дворівнева обробка: локальні шлюзи плюс синхронізація з хмарою</td>
+<td style="text-align: left;">Збереження базових контурів безпеки при деградації аналітики</td>
+<td style="text-align: left;">Низька для локальних контурів (<span class="arithmatex">\(10\text{ мс}\)</span>), середня для звітів (<span class="arithmatex">\(200\text{ мс}\)</span>)</td>
+<td style="text-align: left;">Середня, вимагає суворого розмежування політик доступу</td>
+<td style="text-align: left;">Промислові рішення на базі AWS Greengrass або Azure IoT Edge</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Прямий міжмашинний (P2P Mesh)</strong></td>
+<td style="text-align: left;">Однорангова мережа без виділеного центрального сервера</td>
+<td style="text-align: left;">Абсолютно автономна робота у межах радіопокриття вузлів</td>
+<td style="text-align: left;">Ультранизька між сусідніми вузлами (від <span class="arithmatex">\(1\)</span> до <span class="arithmatex">\(8\text{ мс}\)</span>)</td>
+<td style="text-align: left;">Висока на рівні каналу, складна централізована криптографія</td>
+<td style="text-align: left;">Зв'язування вимикача і лампи напряму через ZigBee Touchlink або Matter</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>ТИПОВА ПОМИЛКА:</strong> Хибним є ототожнення наявності локального Wi-Fi-інтерфейсу в приладі з його реальною автономністю. Більшість комерційних смарт-розеток із модулями Wi-Fi функціонують виключно через встановлення зовнішнього TCP-з'єднання з хмарним брокером виробника; за відсутності доступу до глобальної мережі такий пристрій перестає виконувати навіть внутрішні сценарії за розкладом, перетворюючись на некерований приймач радіозавад.</p>
+</blockquote>
+<hr />
+<h3 id="13-home-assistant-core">1.3. Внутрішня організація ядра Home Assistant Core, взаємозв'язок шини подій, реєстру станів, сервісної підсистеми, планувальника таймерів та бази історії</h3>
+<p>Платформа Home Assistant розроблена на мові Python з інтенсивним використанням парадигми асинхронного неблокуючого введення-виведення на основі стандартної бібліотеки <code>asyncio</code>. Ядро системи Home Assistant Core спроектоване як повністю подієво-орієнтована модульна структура, що мінімізує використання обчислювальних ресурсів процесора і забезпечує одночасну підтримку тисяч підключених сутностей без виникнення черг затримки.</p>
+<p>Архітектурна композиція ядра Home Assistant Core та маршрутизація потоків даних між його внутрішніми підсистемами схематично представлена нижче.</p>
+<pre class="mermaid"><code>flowchart TD
+    subgraph CoreEngine["Асинхронне ядро Home&lt;br/&gt;Assistant Core (Event&lt;br/&gt;Loop)"]
+        EventBus["Шина подій (Event Bus)"]
+        StateMachine["Машина станів (State&lt;br/&gt;Machine)"]
+        ServiceRegistry["Реєстр сервісів (Service&lt;br/&gt;Registry)"]
+        TimerEngine["Планувальник таймерів&lt;br/&gt;(Timer)"]
+
+        subgraph InternalProcessors["Службові обчислювальні&lt;br/&gt;контури"]
+            Automation["Рушій автоматизації&lt;br/&gt;(Automation Engine)"]
+            Recorder["Підсистема Recorder (Пул&lt;br/&gt;потоків)"]
+        end
+    end
+
+    subgraph HardwareDrivers["Рівень адаптерів та&lt;br/&gt;інтеграцій"]
+        IntegrationESPHome["Інтеграція ESPHome&lt;br/&gt;(Native API)"]
+        IntegrationMQTT["Інтеграція MQTT&lt;br/&gt;(paho-mqtt)"]
+        IntegrationZigbee["Інтеграція ZigBee (ZHA /&lt;br/&gt;Zigpy)"]
+    end
+
+    subgraph StorageLayer["Рівень збереження даних"]
+        Database[("Реляційна БД&lt;br/&gt;(SQLite / PostgreSQL)")]
+    end
+
+    subgraph PresentationLayer["Рівень людино-машинного&lt;br/&gt;інтерфейсу"]
+        WebSocketAPI["WebSocket API (Серверний&lt;br/&gt;сокет)"]
+        UIPanel["Інтерфейс Lovelace (Web&lt;br/&gt;/ Мобільний додаток)"]
+    end
+
+    %% Зв'язки адаптерів з шиною подій
+    IntegrationESPHome &lt;--&gt;|"Асинхронні події та команди"| EventBus
+    IntegrationMQTT &lt;--&gt;|"Асинхронні події та команди"| EventBus
+    IntegrationZigbee &lt;--&gt;|"Асинхронні події та команди"| EventBus
+
+    EventBus &lt;--&gt;|"Реєстрація змін станів"| StateMachine
+    EventBus &lt;--&gt;|"Виклики зареєстрованих&lt;br/&gt;методів"| ServiceRegistry
+    TimerEngine --&gt;|"Події time_changed"| EventBus
+
+    EventBus --&gt;|"Фільтрація тригерів"| Automation
+    Automation --&gt;|"Виклик дій&lt;br/&gt;(call_service)"| ServiceRegistry
+
+    EventBus --&gt;|"Буферизований потік&lt;br/&gt;подій"| Recorder
+    Recorder --&gt;|"Блокуючий запис часових&lt;br/&gt;рядів"| Database
+
+    StateMachine --&gt;|"Розсилка нових станів"| WebSocketAPI
+    WebSocketAPI &lt;--&gt;|"Двосторонній обмін JSON"| UIPanel</code></pre>
+<p>У центрі архітектури знаходиться <strong>шина подій</strong> (Event Bus), через яку транслюються всі повідомлення в системі. Коли периферійний модуль передає новий вимір, інтеграція генерує спеціальний об'єкт події, який ставиться в чергу циклу подій (Event Loop). Будь-який внутрішній компонент платформи може підписатися на конкретний тип подій за допомогою функцій зворотного виклику (Callbacks) або асинхронних слухачів (Listeners).</p>
+<p>Безпосередньо з шиною подій інтегрована <strong>машина станів</strong> (State Machine), яка виконує функції центрального сховища актуальних параметрів об'єктів. Машина станів містить глобальну таблицю всіх зареєстрованих у системі сутностей. Щоразу, коли сенсор чи актуатор змінює значення, генерується спеціалізована подія <code>state_changed</code>, що містить унікальний ідентифікатор сутності, її попередній стан (Old State) та новий стан (New State) разом із метаданими. Завдяки цьому жоден компонент системи не опитує фізичний пристрій напряму; замість цього компоненти миттєво зчитують актуальні дані з машини станів в оперативній пам'яті.</p>
+<p>Виконання активних операцій здійснюється через <strong>реєстр сервісів</strong> (Service Registry). Якщо машина станів відображає пасивний зріз реальності, то сервіси уособлюють активні дії, які система може спрямувати до фізичного світу або внутрішніх підсистем. Сервіси реєструються інтеграціями при ініціалізації та групуються за доменами (наприклад, сервіс <code>light.turn_on</code> або <code>climate.set_temperature</code>). Коли надходить команда на виклик сервісу, реєстр перевіряє права доступу, валідує передані параметри згідно зі схемою Voluptuous і передає керування відповідному обробнику пристрою.</p>
+<p>Синхронізацію процесів у часі реалізує <strong>планувальник таймерів</strong> (Timer), інтегрований у головний цикл подій. Планувальник з фіксованою дискретністю генерує подію <code>time_changed</code>, що використовується для перевірки розкладів, відліку затримок та моніторингу працездатності периферійних вузлів.</p>
+<p>Довготривале зберігання інформації реалізується за допомогою <strong>підсистеми Recorder</strong>, виділеної в окремий системний потік для запобігання блокуванню основного асинхронного циклу вводу-виводу операціями запису на диск. Підсистема перехоплює всі події <code>state_changed</code> на шині подій, упаковує їх у структуровані транзакції реляційної моделі та записує до бази даних (за замовчуванням застосовується вбудована база SQLite, яку для високонавантажених інсталяцій замінюють сервером PostgreSQL або MariaDB). Завдяки цьому формуються часові ряди для подальшої статистичної обробки, побудови графіків та екстраполяції даних.</p>
+<blockquote>
+<p><strong>ПРАКТИЧНИЙ ЯКІР:</strong> При розгортанні сервера Home Assistant на базі мікрокомп'ютера Raspberry Pi з накопичувачем MicroSD висока інтенсивність циклів перезапису підсистеми Recorder здатна вивести картку пам'яті з ладу за кілька місяців; інженерним стандартом для промислової експлуатації є винесення бази даних на зовнішній твердотільний накопичувач SSD із шиною NVMe або перенесення журналу подій у зовнішню базу TimescaleDB.</p>
+<p><strong>КОНТРОЛЬНЕ ПИТАННЯ:</strong> Під час написання власної програмної інтеграції для нового датчика інженер викликав функцію <code>time.sleep(10)</code> всередині обробника повідомлень шини подій. До яких системних наслідків призведе це рішення всередині ядра Home Assistant?</p>
+<p><details markdown="1">
+<summary>Розгорнути аналіз / відповідь</summary></p>
+<p><strong>Правильний варіант: Повне блокування головного асинхронного циклу подій (Event Loop) платформи на 10 секунд.</strong></p>
+<ol>
+<li>
+<p>Архітектура Home Assistant Core функціонує в рамках єдиного головного потоку, що виконує цикл подій <code>asyncio.EventLoop</code>. Синхронний виклик функції <code>time.sleep()</code> є блокуючою операцією для потоку операційної системи. Це призводить до миттєвого зупинення диспетчеризації шини подій: протягом десяти секунд платформа не зможе обробляти повідомлення від інших сенсорів, запускати автоматизації, оновлювати веб-інтерфейс Lovelace та відповідати на мережеві запити.</p>
+</li>
+<li>
+<p>Аналіз некоректних припущень показує, що операційна система не перемикає контекст на інші задачі всередині одного потоку автоматично, якщо код не містить інструкції <code>await</code>. Правильним інженерним рішенням у середовищі Python <code>asyncio</code> є використання неблокуючого виклику <code>await asyncio.sleep(10)</code> або делегування блокуючої операції у спеціальний системний пул потоків ядра за допомогою методу <code>hass.async_add_executor_job()</code>.</p>
+</li>
+</ol>
+</details>
+</blockquote>
+<hr />
+<h3 id="14">1.4. Об'єктна модель фізичного середовища, типологія доменів і сутностей, а також формалізація логіки автоматизації на основі кінцевих автоматів</h3>
+<p>Для створення єдиного абстрактного представлення різнорідного фізичного обладнання в платформі Home Assistant використовується сувора об'єктна модель. Будь-який компонент фізичного світу проектується в інформаційний простір як <strong>сутність</strong> (Entity). Множина всіх сутностей розбивається на логічні категорії — <strong>домени</strong> (Domains), кожен з яких визначає набір доступних станів, підтримуваних сервісів та перелік базових атрибутів. Ідентифікатор кожної сутності має уніфікований формат <code>domain.object_id</code>, де ім'я домену відокремлене від унікального імені пристрою крапкою (наприклад, <code>sensor.hall_temperature</code> або <code>light.kitchen_ceiling</code>).</p>
+<p>Формально об'єктний стан системи автоматизації в довільний дискретний момент часу <span class="arithmatex">\(t\)</span> описується вектором глобального стану <span class="arithmatex">\(\mathbf{X}(t)\)</span>, що формується як об'єднання станів окремих сутностей:</p>
+<div class="arithmatex">\[\mathbf{X}(t) = \left[ e_1(t), e_2(t), \dots, e_N(t) \right]^T\]</div>
+<p>де кожна сутність <span class="arithmatex">\(e_i(t)\)</span> є кортежем структурованих даних вигляду:</p>
+<div class="arithmatex">\[e_i(t) = \langle s_i(t), \mathbf{A}_i(t), \tau_i(t) \rangle\]</div>
+<p>де <span class="arithmatex">\(s_i(t) \in \mathcal{S}_{\text{domain}}\)</span> позначає дискретне або неперервне значення стану сутності, визначене в просторі станів відповідного домену; <span class="arithmatex">\(\mathbf{A}_i(t) = \{k_1: v_1, k_2: v_2, \dots, k_m: v_m\}\)</span> представляє словник додаткових атрибутів (одиниці вимірювання, рівень заряду батареї, координати тощо); <span class="arithmatex">\(\tau_i(t)\)</span> фіксує мітку точного астрономічного часу останньої зміни стану або атрибута.</p>
+<p>Для опису функціональних взаємодій між сутностями підсистема автоматизацій формалізується як розширений недетермінований кінцевий автомат зі станом (Finite State Machine):</p>
+<div class="arithmatex">\[\mathcal{M} = \langle \mathcal{Q}, \Sigma, \Delta, \delta, \lambda, q_0 \rangle\]</div>
+<p>де <span class="arithmatex">\(\mathcal{Q} \subseteq \mathbf{X}\)</span> визначає множину допустимих внутрішніх конфігурацій простору станів об'єкта; <span class="arithmatex">\(\Sigma\)</span> позначає алфавіт вхідних символів, що формується подіями-тригерами (Triggers), такими як спрацювання таймерів, отримання сигналів від сенсорів або повідомлень від протокольних шин; <span class="arithmatex">\(\Delta\)</span> є алфавітом вихідних сигналів, що відповідає множині сервісних команд (Actions), які надсилаються виконавчим механізмам; <span class="arithmatex">\(\delta: \mathcal{Q} \times \Sigma \times \mathcal{C} \to \mathcal{Q}\)</span> визначає функцію переходів між станами за умови виконання логічного предиката умов <span class="arithmatex">\(\mathcal{C}\)</span> (Conditions); <span class="arithmatex">\(\lambda: \mathcal{Q} \times \Sigma \times \mathcal{C} \to \Delta\)</span> позначає функцію виходів, що транслює результати логічного висновку у виклики сервісів виконавчих контролерів; <span class="arithmatex">\(q_0 \in \mathcal{Q}\)</span> фіксує початковий стан системи під час ініціалізації середовища.</p>
+<p>Семантика функціонування логічного правила в Home Assistant спирається на жорстку послідовність оцінки тріади компонентів:</p>
+<ul>
+<li>
+<p><strong>Тригер</strong> генерує подію переходу, ініціюючи оцінку правила у момент виконання співвідношення <span class="arithmatex">\(e_i(t) \neq e_i(t - \Delta t)\)</span> або при збігу системного часу з цільовою міткою.</p>
+</li>
+<li>
+<p><strong>Умова</strong> обчислює булеву функцію валідації <span class="arithmatex">\(f_{\text{cond}}(\mathbf{X}(t)) \in \{0, 1\}\)</span>. Якщо функція набуває нульового значення, автомат скидає активний перехід без виконання керуючих команд.</p>
+</li>
+<li>
+<p><strong>Дія</strong> виконується тільки при <span class="arithmatex">\(f_{\text{cond}}(\mathbf{X}(t)) = 1\)</span> і формує вихідний керуючий вектор команд <span class="arithmatex">\(\mathbf{u}(t) \in \Delta\)</span>, який змінює стан актуаторів через відповідний доменний інтерфейс.</p>
+</li>
+</ul>
+<p>Поведінка системи під час обробки критичних подій, наприклад детектування витоку води, відображає циклічний перехід між дискретними операційними режимами.</p>
+<pre class="mermaid"><code>stateDiagram-v2
+    [*] --&gt; Моніторинг_Норма: Ініціалізація платформи
+
+    Моніторинг_Норма --&gt; Детектування_Аварії: Тригер (binary_sensor.leak == ON)
+
+    state Детектування_Аварії {
+        [*] --&gt; Перевірка_Умов
+        Перевірка_Умов --&gt; Блокування_Подачі: Умова (Предикат істинний)
+        Перевірка_Умов --&gt; Моніторинг_Норма: Умова (Хибний виклик / Ігнорування)
+    }
+
+    Блокування_Подачі --&gt; Аварійний_Режим: Дія (valve.close + notify.admin)
+
+    state Аварійний_Режим {
+        [*] --&gt; Фіксація_Аварії_в_БД
+        Фіксація_Аварії_в_БД --&gt; Очікування_Скидання
+    }
+
+    Аварійний_Режим --&gt; Моніторинг_Норма: Тригер (manual_reset_button == ON)</code></pre>
+<p>Завдяки такій об'єктній типізації складна гетерогенна інфраструктура з сотень фізичних контролерів різних виробників зводиться до єдиного нормалізованого набору даних, над яким виконуються детерміновані алгоритми цифрового керування.</p>
+<hr />
+<h3 id="_4">Вказівки для самостійного осмислення</h3>
+<ol>
+<li>
+<p>Складіть аналітичну записку з розрахунком надійності гіпотетичної системи захисту від затоплення, порівнявши варіант виконання логіки безпосередньо у хмарі виробника через зовнішній веб-сервіс із варіантом локальної обробки через контролер Home Assistant, урахувавши середньостатистичні показники відмови побутових інтернет-шлюзів та провайдерів зв'язку.</p>
+</li>
+<li>
+<p>Сформулюйте формальну математичну модель переходу станів для системи комбінованого управління мікрокліматом приміщення (опалення, зволоження, припливна вентиляція), визначивши вхідні вектори сенсорних даних, простір внутрішніх станів регулятора та умови блокування одночасної роботи конфліктуючих підсистем (наприклад, одночасного нагріву та кондиціонування).</p>
+</li>
+<li>
+<p>Дослідіть архітектурні відмінності між реляційними базами даних загального призначення та спеціалізованими сховищами часових рядів при збереженні телеметрії розумного будинку; обґрунтуйте, які саме технічні обмеження викликають деградацію продуктивності стандартної бази даних SQLite при безперервному надходженні понад ста вимірювань за секунду.</p>
+</li>
+</ol>
+<h2 id="2_1">2. Методологія та аналіз граничних умов. Проектування периферійних вузлів, мережева інтеграція та бар'єри відмовостійкості</h2>
+<h3 id="21">2.1. Методи розгортання серверного вузла автоматизації в ізольованих контейнерах та оцінка апаратних ресурсів мікрокомп'ютерних платформ</h3>
+<p>Проектування обчислювального вузла автоматизації вимагає збалансованого підходу до вибору апаратної платформи та програмної архітектури ізоляції процесів. Центральний шлюз розумного будинку бере на себе функції диспетчеризації подій, обчислення логіки реального часу, збереження часових рядів телеметрії та обслуговування інтерфейсів взаємодії. Основним середовищем для розгортання серверних платформ виступають одноплатні комп'ютери архітектури ARM64 або енергоефективні процесори архітектури x86-64.</p>
+<p>Для забезпечення безперервного функціонування системи у промисловому та побутовому секторах найбільш доцільним є використання технології контейнеризації на рівні операційної системи за стандартом OCI з використанням інструментарію Docker та декларативного опису багатоконтейнерних конфігурацій через Docker Compose. Контейнеризація дозволяє ізолювати ядро Home Assistant Core від супутніх служб, таких як брокер повідомлень Eclipse Mosquitto, сервіс координації мережі Zigbee2MQTT та продуктивна реляційна база даних PostgreSQL. Це запобігає виникненню конфліктів системних залежностей і спрощує процес резервного копіювання образів файлової системи.</p>
+<p>Інженерний розрахунок апаратних ресурсів мікрокомп'ютера зводиться до багатокрокового визначення мінімально необхідного обсягу оперативної пам'яті та оцінки експлуатаційного зносу накопичувача даних:</p>
+<div class="arithmatex">\[
+\begin{aligned}
+\text{Крок 1 (Розрахунок оперативної пам'яті):} &amp; \quad M_{\text{total}} = M_{\text{OS}} + M_{\text{HA}} + \sum_{i=1}^{k} M_{\text{cont}, i} + M_{\text{DB\_buf}} \\
+\text{Крок 2 (Оцінка деградації флеш-пам'яті):} &amp; \quad T_{\text{wear}} = \frac{C_{\text{drive}} \cdot \text{TBW}}{D_{\text{daily}} \cdot 365}
+\end{aligned}
+\]</div>
+<p>У наведеній математичній моделі параметр <span class="arithmatex">\(M_{\text{total}}\)</span> позначає сумарний необхідний обсяг системної оперативної пам'яті; величина <span class="arithmatex">\(M_{\text{OS}}\)</span> відображає накладні витрати ядра Linux і базових демонів; <span class="arithmatex">\(M_{\text{HA}}\)</span> є обсягом пам'яті, що споживається асинхронним процесом Home Assistant Core з урахуванням кешу сутностей; <span class="arithmatex">\(M_{\text{cont}, i}\)</span> представляє вимоги до оперативної пам'яті <span class="arithmatex">\(i\)</span>-го ізольованого контейнера з загальної кількості <span class="arithmatex">\(k\)</span> допоміжних служб; змінна <span class="arithmatex">\(M_{\text{DB\_buf}}\)</span> задає розмір буфера сторінок бази даних, що мінімізує кількість операцій скидання інформації на диск. У формулі оцінки довговічності накопичувача змінна <span class="arithmatex">\(T_{\text{wear}}\)</span> визначає прогнозований термін служби накопичувача в роках; <span class="arithmatex">\(C_{\text{drive}}\)</span> позначає фізичну ємність твердотільного диска в гігабайтах; параметр <span class="arithmatex">\(\text{TBW}\)</span> визначає ресурс витривалості флеш-пам'яті у повних циклах перезапису всього обсягу; <span class="arithmatex">\(D_{\text{daily}}\)</span> позначає щоденний обсяг транзакцій запису, генерованих підсистемою реєстрації подій.</p>
+<blockquote>
+<p><strong>ВАЖЛИВО:</strong> Застосування карт пам'яті стандарту MicroSD для розгортання центрального координатора Home Assistant із базою даних на базі SQLite є неприпустимим в експлуатаційних умовах з безперервною фіксацією сенсорних даних. Високий коефіцієнт підсилення запису (Write Amplification Factor) під час частих транзакцій призводить до деградації контролера пам'яті та руйнування файлової системи протягом 3–6 місяців активної роботи. Нормативною вимогою є встановлення промислових накопичувачів eMMC або твердотільних накопичувачів SSD із протоколом NVMe чи SATA.</p>
+</blockquote>
+<hr />
+<h3 id="22-mesh-tcpip">2.2. Мережева інтеграція польового рівня за допомогою бездротових mesh-мереж, промислових шин та протоколів транспортного рівня TCP/IP</h3>
+<p>Інтеграція польового рівня розумного будинку вимагає узгодження різнорідних фізичних середовищ передачі даних. Сенсори та виконавчі механізми суттєво різняться за вимогами до пропускної здатності, допустимої латентності та джерел електроживлення. Бездротові технології персональних мереж WPAN використовують самоорганізовані комірчасті структури, де кожен стаціонарний вузол із постійним живленням бере на себе роль ретранслятора пакетів, що розширює зону покриття радіомережі без збільшення вихідної потужності передавачів.</p>
+<p>Протокол ZigBee стандарту IEEE 802.15.4 функціонує в неліцензованому діапазоні 2,4 ГГц, використовуючи 16 частотних каналів шириною по 5 МГц кожен із модуляцією OQPSK. Проте висока щільність використання цього ж спектра побутовими мережами Wi-Fi (стандарти IEEE 802.11b/g/n) породжує інтерференційні завади. Для запобігання деградації пакетів необхідно застосовувати частотне планування: якщо базова мережа Wi-Fi займає канали 1, 6 або 11, координатор ZigBee налаштовується на роботу у каналах 15, 20 або 25, оскільки вони потрапляють у спектральні проміжки між широкими смугами випромінювання Wi-Fi.</p>
+<p>Протокол Z-Wave оминає проблему спектрального перевантаження завдяки використанню діапазону частот нижче 1 ГГц (зокрема 868,42 МГц для європейського регіону), що забезпечує значно кращу дифракцію радіохвиль навколо будівельних перешкод та виключає інтерференцію з комп'ютерними мережами. Промислові шини передачі даних, зокрема RS-485 із протоколом Modbus RTU, застосовуються для найбільш відповідальних вузлів автоматизації будівель (ввідно-розподільні щити, теплові насоси, вентиляційні установки), де неприпустимі втрати зв'язку через радіоелектронні завади.</p>
+<p>Для систематизації критеріїв вибору технологій побудови мережевої інфраструктури розроблено порівняльну матрицю, подану в наступній таблиці.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Технологія / Протокол</th>
+<th style="text-align: left;">Фізичний рівень та середовище</th>
+<th style="text-align: left;">Топологічна структура</th>
+<th style="text-align: left;">Складність впровадження</th>
+<th style="text-align: left;">Критичні ризики / Обмеження</th>
+<th style="text-align: left;">Енергоефективність вузлів</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>ZigBee 3.0</strong></td>
+<td style="text-align: left;">IEEE 802.15.4 (2,4 ГГц / 868 МГц)</td>
+<td style="text-align: left;">Повнозв'язна комірчаста (Mesh)</td>
+<td style="text-align: left;">Середня (вимагає частотного узгодження та виділеного координатора)</td>
+<td style="text-align: left;">Колізії в діапазоні 2,4 ГГц з Wi-Fi, обмеження пам'яті координатора на прямі дочірні вузли</td>
+<td style="text-align: left;">Висока (термін автономності кінцевих пристроїв становить 2–5 років)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Thread</strong></td>
+<td style="text-align: left;">IEEE 802.15.4 із підтримкою 6LoWPAN</td>
+<td style="text-align: left;">Самовідновлювана комірчаста на базі IPv6</td>
+<td style="text-align: left;">Висока (потребує граничного маршрутизатора OTBR)</td>
+<td style="text-align: left;">Складна діагностика маршрутизації дейтаграм, обмежена номенклатура сертифікованих датчиків</td>
+<td style="text-align: left;">Висока (енергозберігаючі режими сну для кінцевих точок)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Wi-Fi (IEEE 802.11n)</strong></td>
+<td style="text-align: left;">Радіоканал 2,4 ГГц / 5 ГГц із модуляцією OFDM</td>
+<td style="text-align: left;">Централізована «зірка» навколо точки доступу</td>
+<td style="text-align: left;">Низька (використовує існуючу побутову інфраструктуру)</td>
+<td style="text-align: left;">Високе енергоспоживання, обмеження на кількість одночасних асоціацій на точці доступу</td>
+<td style="text-align: left;">Вкрай низька (автономне батарейне живлення неефективне)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Z-Wave Plus</strong></td>
+<td style="text-align: left;">Субгігагерцовий радіоканал (868,42 МГц)</td>
+<td style="text-align: left;">Комірчаста з маршрутизацією від джерела</td>
+<td style="text-align: left;">Середня (жорстка сертифікація сумісності альянсу)</td>
+<td style="text-align: left;">Ліміт до 232 пристроїв у мережі, пропрієтарні ліцензійні обмеження чіпсетів</td>
+<td style="text-align: left;">Висока (подібна до показників стандарту ZigBee)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Modbus RTU</strong></td>
+<td style="text-align: left;">Екранована вита пара RS-485</td>
+<td style="text-align: left;">Послідовна лінійна шина (Daisy Chain)</td>
+<td style="text-align: left;">Висока (необхідність прокладання фізичного кабелю та термінаторів)</td>
+<td style="text-align: left;">Повна залежність від цілісності кабелю, відсутність вбудованих механізмів автентифікації</td>
+<td style="text-align: left;">Максимальна (пасивні приймачі з живленням від зовнішньої лінії)</td>
+</tr>
+</tbody>
+</table>
+<p>Аналіз даних таблиці показує, що найбільш збалансованим інженерним рішенням для масштабованого об'єкта є гібридна топологія, в якій критичні силові підсистеми з'єднані шиною Modbus RTU, масові батарейні сенсори об'єднані в мережу ZigBee або Thread, а швидкісні канали мультимедіа та відеоспостереження використовують дротову лінію Ethernet або локальний Wi-Fi.</p>
+<hr />
+<h3 id="23-esp32-esphome-home-assistant-native-api">2.3. Декларативне проектування прошивок мікроконтролерів ESP32 у фреймворку ESPHome та специфікація бінарного протоколу Home Assistant Native API</h3>
+<p>Фреймворк ESPHome кардинально змінює інженерний процес створення спеціалізованих вузлів інтернету речей. Замість традиційного ручного програмування логіки роботи апаратних переривань, таймерів, стеків зв'язку та парсерів текстових форматів розробник формує декларативний маніфест структури пристрою мовою YAML. Внутрішній компілятор фреймворку транслює зазначені декларації в оптимізований вихідний код мови C++, інтегруючи низькорівневі бібліотеки взаємодії з апаратною периферією мікроконтролера ESP32, після чого здійснюється збирання бінарного образу через платформу PlatformIO.</p>
+<p>Для передачі інформації між мікроконтролером та сервером автоматизації в ESPHome реалізовано протокол <strong>Home Assistant Native API</strong>, що функціонує поверх транспортного протоколу TCP через порт 6053. На відміну від текстових протоколів MQTT чи HTTP REST, Native API базується на компактній бінарній серіалізації <strong>Google Protocol Buffers</strong> (ProtoBuf). Це дозволяє передавати структуровані повідомлення про стан аналогових та дискретних каналів із мінімальними накладними витратами оперативної пам'яті (RAM) та обчислювальних циклів мікроконтролера. </p>
+<p>Безпека передачі даних у Native API гарантується криптографічним фреймворком <strong>Noise Protocol Framework</strong>, що використовує симетричний попередньо узгоджений ключ PSK та алгоритми шифрування ChaCha20-Poly1305. Це виключає ризик перехоплення телеметрії або ін'єкції неавторизованих команд керування у локальному сегменті мережі.</p>
+<p>Динаміка мережевої взаємодії, ініціалізація шифрованого сеансу зв'язку, передача потокових вимірювань і відпрацювання аварійного сценарію при втраті центрального сервера проілюстровані на наступній діаграмі послідовності.</p>
+<pre class="mermaid"><code>sequenceDiagram
+    autonumber
+    participant ESP as Мікроконтролер ESP32 (ESPHome)
+    participant Net as Локальна мережа (mDNS / Wi-Fi)
+    participant HA as Сервер Home Assistant Core
+    participant Relay as Силове реле захисту (GPIO)
+
+    ESP-&gt;&gt;Net: Мережевий анонс mDNS (_esphome._tcp.local)
+    Net-&gt;&gt;HA: Отримання широкомовного анонсу нового вузла
+    HA-&gt;&gt;ESP: Встановлення TCP-з'єднання на порт 6053
+    Note over ESP,HA: Криптографічне рукостискання Noise Protocol (PSK Auth)
+    ESP--&gt;&gt;HA: Специфікація сутностей пристрою (Entities Discovery ProtoBuf)
+
+    loop Потокова передача телеметрії (Streaming API)
+        ESP-&gt;&gt;HA: Бінарний пакет SensorStateResponse (Температура, Напруга)
+        Note over HA: Миттєве оновлення машини станів State Machine
+    end
+
+    Note over HA: Аварійне відключення або перезавантаження сервера
+    HA--xESP: Розрив сеансу TCP (Таймаут Keep-Alive 60 c)
+
+    Note over ESP: Фіксація статусу: Зв'язок із сервером втрачено
+    Note over ESP: Виконання внутрішньої перевірки аварійних порогів
+    ESP-&gt;&gt;Relay: Локальне перемикання GPIO у захисний стан
+    Note over Relay: Фізичний контур безпеки спрацював автономно</code></pre>
+<blockquote>
+<p><strong>ПРАКТИЧНИЙ ЯКІР:</strong> У сучасних комерційних пристроях автоматизації відкритого типу, таких як контролери електроживлення лінійки Shelly Plus або шлюзи Home Assistant Green, заводська прошивка підтримує пряме оновлення по повітрю бінарними збірками ESPHome, що дозволяє корпоративним замовникам виключати пропрієтарні хмарні прошивки виробника та інтегрувати обладнання безпосередньо у захищені закриті VLAN-сегменти з нульовою довірою до зовнішніх мереж.</p>
+</blockquote>
+<hr />
+<h3 id="24">2.4. Методи первинної обробки сигналів на периферійних вузлах, цифрова фільтрація шуму, усунення брязкоту контактів і локальні контури захисту</h3>
+<p>Перенесення частини обчислювального навантаження з центрального сервера на периферійні вузли є фундаментальним принципом концепції Edge Computing в інтернеті речей. Сирі аналогові вимірювання, зняті з давачів через вбудований аналого-цифровий перетворювач мікроконтролера, містять електромагнітний високочастотний шум, випадкові спотворення та нестабільність опорної напруги. Якщо транслювати кожне дискретне вимірювання в мережу безпосередньо, шина зв'язку та шина подій сервера автоматизації зазнають перевантаження потоком надлишкової інформації.</p>
+<p>Методологія первинної обробки сенсорних даних на рівні мікроконтролера складається з трьох послідовних математичних етапів: квантування аналогового сигналу, фільтрації випадкових шумів та застосування зони гістерезису для запобігання хибним спрацьовуванням:</p>
+<div class="arithmatex">\[
+\begin{aligned}
+\text{Крок 1 (Дискретизація сигналу):} &amp; \quad x[k] = \frac{V_{\text{ADC}}[k]}{V_{\text{ref}}} \cdot (2^N - 1) \\
+\text{Крок 2 (Експоненційне згладжування):} &amp; \quad y[k] = \alpha \cdot x[k] + (1 - \alpha) \cdot y[k-1] \\
+\text{Крок 3 (Гістерезисна квантизація):} &amp; \quad u[k] = \begin{cases} 1, &amp; \text{якщо } y[k] \ge T_{\text{high}} \\ 0, &amp; \text{якщо } y[k] \le T_{\text{low}} \\ u[k-1], &amp; \text{якщо } T_{\text{low}} \lt  y[k] \lt  T_{\text{high}} \end{cases}
+\end{aligned}
+\]</div>
+<p>У наведеній системі виразів змінна <span class="arithmatex">\(x[k]\)</span> є безрозмірним значенням цифрового коду на <span class="arithmatex">\(k\)</span>-му кроці дискретизації; <span class="arithmatex">\(V_{\text{ADC}}[k]\)</span> позначає миттєву аналогову напругу на вхідному піні мікроконтролера; <span class="arithmatex">\(V_{\text{ref}}\)</span> є опорною напругою вбудованого АЦП; величина <span class="arithmatex">\(N\)</span> задає розрядність аналого-цифрового перетворювача (наприклад, <span class="arithmatex">\(N=12\)</span> біт для мікроконтролера ESP32, що відповідає діапазону значень від 0 до 4095). На етапі експоненційної фільтрації змінна <span class="arithmatex">\(y[k]\)</span> представляє згладжене значення вимірюваної величини; <span class="arithmatex">\(\alpha\)</span> є ваговим коефіцієнтом фільтра, значення якого обирається в діапазоні <span class="arithmatex">\(0 &lt; \alpha \le 1\)</span>, визначаючи баланс між здатністю придушення високочастотного шуму та часовим запізненням відгуку системи. На етапі оцінки порогових станів змінна <span class="arithmatex">\(u[k]\)</span> визначає результуючий двійковий сигнал управління; <span class="arithmatex">\(T_{\text{high}}\)</span> позначає верхній поріг перемикання компаратора; <span class="arithmatex">\(T_{\text{low}}\)</span> відповідає нижньому порогу спрацьовування. Наявність несиметричних порогів формує зону нечутливості <span class="arithmatex">\(\Delta T = T_{\text{high}} - T_{\text{low}}\)</span>, що повністю усуває спонтанне високочастотне перемикання силових реле поблизу граничних значень температури чи тиску.</p>
+<p>Для дискретних сигналів, що надходять від механічних вимикачів, магнітокерованих контактів (герконів) та кнопок аварійної зупинки, обов'язковим є застосування алгоритмів придушення брязкоту контактів (Contact Bounce). Брязкіт є наслідком механічних коливань пружних пластин комутатора при замиканні, що призводить до генерації серії паразитних імпульсів тривалістю від <span class="arithmatex">\(5\)</span> до <span class="arithmatex">\(50\text{ мс}\)</span>. Програмна демпферна обробка в ESPHome реалізує часове стробування: стан вхідного піна фіксується як змінений лише у випадку, якщо новий логічний рівень безперервно утримується протягом інтервалу, тривалість якого перевищує максимальну тривалість механічних коливань:</p>
+<div class="arithmatex">\[t_{\text{stable}} \ge \Delta t_{\text{debounce}}\]</div>
+<p>де <span class="arithmatex">\(t_{\text{stable}}\)</span> позначає виміряний інтервал стабільності сигналу, а <span class="arithmatex">\(\Delta t_{\text{debounce}}\)</span> задає конфігураційний поріг фільтра затримки (типове значення становить <span class="arithmatex">\(30 \dots 50\text{ мс}\)</span>).</p>
+<p>Критично важливим аспектом проектування периферійного вузла є реалізація автономного контуру безпеки (Fallback Logic). Прошивка мікроконтролера повинна містити локальні правила переривання, які безпосередньо зв'язують вхідні апаратні переривання від захисних сенсорів (наприклад, датчика максимального тиску пари або сенсора затоплення) з вихідними реєстрами комутації силових актуаторів. Зазначена логіка виконується на рівні ядра мікроконтролера з детермінованою затримкою менше <span class="arithmatex">\(1\text{ мс}\)</span>, незалежно від наявності зв'язку з центральним сервером Home Assistant або стану локального Wi-Fi роутера.</p>
+<hr />
+<h3 id="25">2.5. Критичні бар'єри масштабування, колізії радіоканалів неліцензованого діапазону та ризики порушення доступності при відмові центрального координатора</h3>
+<p>Практичне розгортання розподілених систем інтернету речей у житлових та промислових будівлях супроводжується зіткненням із суворими технічними обмеженнями, за межами яких класичні архітектурні моделі зазнають функціонального колапсу. Аналіз граничних умов дозволяє виявити чотири фундаментальні бар'єри масштабування та стійкості систем автоматизації.</p>
+<p>Першим критичним бар'єром виступає явище радіочастотної колізійної інтерференції у неліцензованому промислово-науковому діапазоні ISM 2,4 ГГц. Стандарт IEEE 802.15.4 використовує механізм множинного доступу з контролем несучої та уникненням колізій (CSMA/CA). У разі розташування в одному просторі потужних точок доступу Wi-Fi передавачі останніх створюють високий рівень щільності випромінювання. Коли сенсор ZigBee намагається ініціювати передачу кадру, детектор енергії виявляє зайнятість каналу стороннім сигналом і відкладає передачу на випадковий експоненційний інтервал (Backoff Time). Якщо щільність трафіку Wi-Fi перевищує критичну межу, буфери передачі радіомодулів мікроконтролерів переповнюються, викликаючи втрату пакетів телеметрії та масове розсинхронізування часових слотів суперфреймів.</p>
+<p>Другим обмеженням є бар'єр обчислювальної ємності координатора бездротової мережі. Апаратні координатори на базі чіпів Texas Instruments CC2652 або Silicon Labs EFR32 володіють фіксованим обсягом статичної пам'яті SRAM, виділеної для таблиць маршрутизації та сусідніх вузлів. Координатор здатний підтримувати пряме з'єднання (Direct Child Associations) лише з обмеженою кількістю кінцевих пристроїв (зазвичай не більше 32–50 вузлів). Подальше нарощування мережі вимагає обов'язкового розгортання стаціонарних маршрутизаторів (Routers) для формування деревовидної чи комірчастої топології. Ігнорування цього ліміту призводить до відхилення нових запитів на асоціацію та втрати зв'язку з раніше зареєстрованими приладами.</p>
+<p>Третій бар'єр пов'язаний із внутрішньою архітектурою центрального сервера Home Assistant Core та обмеженнями диспетчеризації шини подій. За наявності великої кількості сенсорів, що передають телеметрію з високою частотою оновлення (наприклад, імпульсні вимірювачі активної та реактивної потужності з частотою опитування <span class="arithmatex">\(10\text{ Гц}\)</span>), виникає шторм подій (Event Storm). Оскільки головний цикл подій <code>asyncio.EventLoop</code> функціонує в єдиному системному потоці, час обробки черги повідомлень починає перевищувати тривалість надходження нових подій. Це зумовлює нелінійне зростання обчислювальної латентності, затримку виконання автоматизацій на десятки секунд і ризик аварійного перезавантаження процесу демоном контролю працездатності (Watchdog).</p>
+<p>Четвертим бар'єром є катастрофічна відмова внаслідок наявності єдиної точки відмови (Single Point of Failure, SPoF), якою виступає сам центральний сервер. У випадку апаратної відмови центрального процесора шлюзу, виходу з ладу накопичувача або збою живлення серверної кімнати, топологія розумного будинку розпадається на ізольовані фрагменти. За відсутності на периферійних мікроконтролерах реалізованих локальних правил автоматизації та контурів захисту, описаних у підрозділі 2.4, будівля повністю втрачає керованість: блокуються механізми перекриття водопостачання, системи захисту від задимлення та контури кліматичного регулювання.</p>
+<blockquote>
+<p><strong>КОНТРОЛЬНЕ ПИТАННЯ:</strong> Під час аудиту мережевої інфраструктури об'єкта автоматизації було зафіксовано, що бездротова сенсорна мережа ZigBee, що працює на каналі 11, зазнає втрати до 40% пакетів під час активної передачі даних користувачами через бездротову точку доступу стандарту Wi-Fi 802.11n, налаштовану на канал 1 із шириною смуги 40 МГц. Розрахуйте спектральне перекриття цих радіоканалів та сформулюйте інженерне рішення щодо реконфігурації радіочастотних параметрів без необхідності заміни апаратного забезпечення.</p>
+<p><details markdown="1">
+<summary>Розгорнути аналіз / відповідь</summary></p>
+<p><strong>Правильний варіант: Переведення мережі ZigBee на канал 25 або 26 та звуження смуги Wi-Fi на точці доступу до стандартних 20 МГц на каналі 1.</strong></p>
+<ol>
+<li>Математично-частотне обґрунтування:
+Центральна частота <span class="arithmatex">\(k\)</span>-го каналу Wi-Fi в діапазоні 2,4 ГГц розраховується за формулою:
+$<span class="arithmatex">\(f_{\text{Wi-Fi}} = 2412 + 5 \cdot (k - 1) \text{ МГц}\)</span>$
+Для каналу 1 центральна частота становить <span class="arithmatex">\(2412\text{ МГц}\)</span>. При використанні надлишкової смуги пропускання <span class="arithmatex">\(40\text{ МГц}\)</span> спектральний слід випромінювання Wi-Fi охоплює діапазон від <span class="arithmatex">\(2392\text{ МГц}\)</span> до <span class="arithmatex">\(2432\text{ МГц}\)</span>.</li>
+</ol>
+<p>Центральна частота <span class="arithmatex">\(m\)</span>-го каналу стандарту IEEE 802.15.4 (ZigBee) визначається формулою:
+$<span class="arithmatex">\(f_{\text{ZigBee}} = 2405 + 5 \cdot (m - 11) \text{ МГц}\)</span>$
+Для каналу 11 центральна частота дорівнює точно <span class="arithmatex">\(2405\text{ МГц}\)</span> із шириною смуги випромінювання <span class="arithmatex">\(2\text{ МГц}\)</span> (діапазон <span class="arithmatex">\(2404 \dots 2406\text{ МГц}\)</span>). Таким чином, канал 11 ZigBee знаходиться під прямим впливом потужного випромінювання передавача Wi-Fi каналу 1, що викликає постійну блокування середовища за алгоритмом CSMA/CA та спотворення пакетів.</p>
+<ol>
+<li>Аналіз інженерного рішення:
+Канал 25 ZigBee має центральну частоту <span class="arithmatex">\(2475\text{ МГц}\)</span> (діапазон <span class="arithmatex">\(2474 \dots 2476\text{ МГц}\)</span>), а канал 26 — <span class="arithmatex">\(2480\text{ МГц}\)</span>. Звуження ширини каналу Wi-Fi на точці доступу до нормативних <span class="arithmatex">\(20\text{ МГц}\)</span> обмежує смугу частот діапазоном <span class="arithmatex">\(2402 \dots 2422\text{ МГц}\)</span>. За такої конфігурації між верхньою межею спектра Wi-Fi (<span class="arithmatex">\(2422\text{ МГц}\)</span>) та каналом 25 ZigBee (<span class="arithmatex">\(2474\text{ МГц}\)</span>) утворюється захисний частотний інтервал величиною понад <span class="arithmatex">\(50\text{ МГц}\)</span>, що повністю ліквідує колізійне перекриття сигналів та знижує відсоток втрати пакетів до нуля.</li>
+</ol>
+</details>
+</blockquote>
+<h2 id="3_1">3. Практичний індустріальний / фаховий кейс. Розгортання комплексної автономної системи управління кліматом і безпекою житла</h2>
+<h3 id="31-">3.1. Комплексний фаховий кейс. Проектування та розгортання відмовостійкої локальної системи клімат-контролю та захисту від протікання води</h3>
+<h4 id="_5">Постановка задачі / ситуації</h4>
+<p>У сучасному двоповерховому житловому котеджі загальною площею <span class="arithmatex">\(180\text{ м}^2\)</span> виникла необхідність впровадження комплексної інфраструктури автоматизації, яка об'єднує підсистему прецизійного регулювання мікроклімату та підсистему захисту від аварійного затоплення. Простір містить котельню з газовим конденсаційним котлом, водяний контур теплої підлоги, вісім радіаторних батарей, дві магістральні гілки водопостачання (холодна та гаряча вода), а також серверне приміщення. Основними технічними вимогами замовника є повна незалежність працездатності обладнання від зовнішнього хмарного зв'язку, детермінований час спрацьовування аварійного перекриття води (менше <span class="arithmatex">\(5\text{ с}\)</span> від моменту детектування протікання) та гарантований захист від одночасного вмикання контурів нагріву та охолодження.</p>
+<p>Для реалізації проекту обрано локальну платформу Home Assistant, розгорнуту на базі виділеного промислового міні-комп'ютера, та мережу периферійних контролерів ESP32, які працюють під управлінням прошивки ESPHome і зв'язуються із сервером через захищений бінарний протокол Native API. Параметри фізичного середовища, граничні показники та характеристики апаратних компонентів зведені у наступну розрахункову таблицю.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Параметр системи</th>
+<th style="text-align: left;">Значення / Характеристика</th>
+<th style="text-align: left;">Примітка та інженерні обмеження</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Площа об'єкта та кількість зон</strong></td>
+<td style="text-align: left;"><span class="arithmatex">\(180\text{ м}^2\)</span>, 4 незалежні кліматичні зони</td>
+<td style="text-align: left;">2 поверхи, міжповерхове залізобетонне перекриття товщиною <span class="arithmatex">\(220\text{ мм}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Центральний обчислювальний шлюз</strong></td>
+<td style="text-align: left;">Тонкий клієнт x86-64 (Intel Celeron J4125, 8 ГБ RAM)</td>
+<td style="text-align: left;">Накопичувач 128 ГБ NVMe SSD, операційна система Home Assistant OS</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Периферійні мікроконтролери</strong></td>
+<td style="text-align: left;">ESP32-WROOM-32D (4 вузли зв'язку)</td>
+<td style="text-align: left;">Підключення через Wi-Fi 2,4 ГГц (WPA3-Personal, фіксований IP)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Сенсори температури та вологості</strong></td>
+<td style="text-align: left;">Bosch BME280 (інтерфейс I2C)</td>
+<td style="text-align: left;">Частота зняття показів <span class="arithmatex">\(0{,}1\text{ Гц}\)</span> (один раз на <span class="arithmatex">\(10\text{ с}\)</span>), похибка <span class="arithmatex">\(\pm 0{,}5^\circ\text{C}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Сенсори витоку води</strong></td>
+<td style="text-align: left;">Резистивні сенсори з транзисторним компаратором</td>
+<td style="text-align: left;">4 провідні датчики, підключені до дискретних входів GPIO мікроконтролера</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Виконавчі механізми захисту води</strong></td>
+<td style="text-align: left;">Кульові крани з електроприводом (12 В DC)</td>
+<td style="text-align: left;">Нормально відкриті, час повного закриття <span class="arithmatex">\(t_{\text{close}} \le 4\text{ с}\)</span>, струм <span class="arithmatex">\(1{,}5\text{ А}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Виконавчі кліматичні актуатори</strong></td>
+<td style="text-align: left;">Твердотільні реле SSR-40DA (GPIO)</td>
+<td style="text-align: left;">Керування сервоприводами колектора теплої підлоги та фанкойлами</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Бюджет резервного живлення вузлів</strong></td>
+<td style="text-align: left;">Акумулятор LiFePO4, ємність <span class="arithmatex">\(3000\text{ мА}\cdot\text{год}\)</span></td>
+<td style="text-align: left;">Резервування живлення контролера котельні та приводів кранів</td>
+</tr>
+</tbody>
+</table>
+<p>Взаємодію системних рівнів, структуру передачі інформації від первинних датчиків та організацію резервного контуру локальної безпеки представлено на наступній схемі.</p>
+<pre class="mermaid"><code>flowchart TD
+    subgraph SensingLevel["Польовий рівень вимірювань та захисту"]
+        LeakSensor["Датчик витоку води (GPIO19)"]
+        BME280["Сенсор клімату BME280 (I2C: 0x76)"]
+        WaterValve["Електропривод крана (12V Relay GPIO18)"]
+        FloorHeating["Сервоприводи опалення (SSR GPIO23)"]
+    end
+
+    subgraph EdgeLevel["Периферійний вузол (ESP32 / ESPHome)"]
+        DebounceUnit["Фільтр брязкоту контактів (50 мс)"]
+        EMAFilter["Цифровий фільтр EMA (alpha = 0.15)"]
+        FallbackEngine["Автономний контур захисту (on_value)"]
+        NativeAPIClient["Клієнт Home Assistant Native API"]
+    end
+
+    subgraph CoreLevel["Центральний координатор (Home Assistant OS)"]
+        EventBus["Шина подій (Event Bus)"]
+        ClimateLogic["Кліматичний інтелектуальний регулятор"]
+        StateReg["Реєстр сутностей (State Engine)"]
+    end
+
+    LeakSensor --&gt;|Апаратне переривання| DebounceUnit
+    DebounceUnit --&gt; FallbackEngine
+    FallbackEngine --&gt;|Пряма комутація менше 2 мс| WaterValve
+
+    BME280 --&gt;|Шина I2C| EMAFilter
+    EMAFilter --&gt; NativeAPIClient
+    DebounceUnit --&gt; NativeAPIClient
+
+    NativeAPIClient &lt;--&gt;|TCP Port 6053 / Noise Proto| EventBus
+    EventBus &lt;--&gt; StateReg
+    EventBus &lt;--&gt; ClimateLogic
+    ClimateLogic --&gt;|Команда switch.turn_on| NativeAPIClient
+    NativeAPIClient --&gt; FloorHeating</code></pre>
+<h4 id="_6">Покроковий аналіз та розв'язок</h4>
+<h5 id="1">Крок 1. Розрахунок енергетичного балансу та автономності аварійного вузла</h5>
+<p>Для забезпечення безперебійної роботи системи перекриття води за умов аварійного відключення електропостачання мережі 230 В розраховується баланс споживання вузла на базі контролера ESP32 та силових приводів кранів. Середня потужність, споживана мікроконтролером у режимі активного прийомопередавання по Wi-Fi, розраховується за формулою:</p>
+<div class="arithmatex">\[P_{\text{ctrl}} = V_{\text{in}} \cdot I_{\text{avg}} = 5{,}0\text{ В} \cdot 0{,}16\text{ А} = 0{,}8\text{ Вт}\]</div>
+<p>де <span class="arithmatex">\(V_{\text{in}}\)</span> позначає напругу живлення цифрової частини схеми, а <span class="arithmatex">\(I_{\text{avg}}\)</span> є середньозваженим струмом споживання мікроконтролера ESP32 з урахуванням періодичної роботи радіотрансивера.</p>
+<p>Максимальна пікова енергія, необхідна для гарантованого перекриття двох кульових кранів із електроприводами при детектуванні затоплення, визначається інтегралом потужності за час руху штока:</p>
+<div class="arithmatex">\[E_{\text{valves}} = 2 \cdot \left( V_{\text{motor}} \cdot I_{\text{motor}} \cdot t_{\text{close}} \right) = 2 \cdot (12\text{ В} \cdot 1{,}5\text{ А} \cdot 4\text{ с}) = 144\text{ Дж} = 0{,}04\text{ Вт}\cdot\text{год}\]</div>
+<p>де <span class="arithmatex">\(V_{\text{motor}}\)</span> представляє робочу напругу двигуна приводу; <span class="arithmatex">\(I_{\text{motor}}\)</span> позначає пусковий робочий струм двигуна; <span class="arithmatex">\(t_{\text{close}}\)</span> задає повний час перекриття кулі клапана.</p>
+<p>Загальний час автономного функціонування вузла <span class="arithmatex">\(T_{\text{backup}}\)</span> від акумуляторної батареї LiFePO4 з номінальною напругою <span class="arithmatex">\(V_{\text{bat}} = 12{,}8\text{ В}\)</span>, ємністю <span class="arithmatex">\(C_{\text{bat}} = 3{,}0\text{ А}\cdot\text{год}\)</span> та коефіцієнтом корисної дії імпульсного перетворювача <span class="arithmatex">\(\eta = 0{,}88\)</span> визначається виразом:</p>
+<div class="arithmatex">\[T_{\text{backup}} = \frac{(C_{\text{bat}} \cdot V_{\text{bat}} \cdot \eta) - E_{\text{valves}}}{P_{\text{ctrl}}} = \frac{(3{,}0 \cdot 12{,}8 \cdot 0{,}88) - 0{,}04}{0{,}8} = \frac{33{,}792 - 0{,}04}{0{,}8} \approx 42{,}19\text{ год}\]</div>
+<p>Таким чином, розрахована ємність джерела живлення гарантує понад 42 години безперервного моніторингу простору котельні та збереження здатності до аварійного закриття трубопроводів при повному знеструмленні будівлі.</p>
+<h5 id="2_2">Крок 2. Синтез параметрів цифрового фільтра сенсора температури</h5>
+<p>Зняття первинної інформації із сенсора Bosch BME280 супроводжується температурними флуктуаціями, спричиненими конвекційними потоками від радіаторів та внутрішнім самонагріванням кристала. Для запобігання надмірному навантаженню шини подій Home Assistant та виключення помилкових спрацьовувань термостата застосовується фільтр експоненційного ковзного середнього (EMA).</p>
+<p>Вихідне фільтроване значення температури <span class="arithmatex">\(T_f[k]\)</span> на поточному <span class="arithmatex">\(k\)</span>-му кроці обчислюється на базі дискретного співвідношення:</p>
+<div class="arithmatex">\[T_f[k] = \alpha \cdot T_{\text{raw}}[k] + (1 - \alpha) \cdot T_f[k-1]\]</div>
+<p>де <span class="arithmatex">\(T_{\text{raw}}[k]\)</span> позначає миттєве виміряне значення з регістра сенсора, а <span class="arithmatex">\(\alpha\)</span> є ваговим множником згладжування.</p>
+<p>Часова стала еквівалентного фільтра низьких частот першого порядку <span class="arithmatex">\(\tau_{\text{filter}}\)</span> пов'язана з періодом опитування <span class="arithmatex">\(\Delta t = 10\text{ с}\)</span> та коефіцієнтом <span class="arithmatex">\(\alpha\)</span> залежністю:</p>
+<div class="arithmatex">\[\tau_{\text{filter}} \approx \frac{\Delta t}{\alpha} \implies \alpha = \frac{\Delta t}{\tau_{\text{filter}}}\]</div>
+<p>Прийнявши бажану часову сталу згладжування <span class="arithmatex">\(\tau_{\text{filter}} = 66{,}7\text{ с}\)</span> для виключення впливу короткочасних протягів, отримуємо точне значення коефіцієнта фільтрації:</p>
+<div class="arithmatex">\[\alpha = \frac{10}{66{,}7} \approx 0{,}15\]</div>
+<p>Підстановка значення <span class="arithmatex">\(\alpha = 0{,}15\)</span> у конфігураційний блок сенсора в ESPHome забезпечує плавний тренд зміни температури зі збереженням високої чутливості до системних змін мікроклімату приміщення.</p>
+<h5 id="3_2">Крок 3. Розрахунок граничного об'єму витоку води при аварії</h5>
+<p>Критичним показником ефективності підсистеми захисту від протікань є сумарний об'єм води <span class="arithmatex">\(V_{\text{leak}}\)</span>, що встигає вилитися у приміщення до моменту повної герметизації магістралі кульовим краном. Розрахунок здійснюється для аварійного сценарію повного розриву гнучкого підведення діаметром <span class="arithmatex">\(D = 15\text{ мм}\)</span> при тиску в магістралі <span class="arithmatex">\(P = 0{,}4\text{ МПа}\)</span> (<span class="arithmatex">\(4\text{ бар}\)</span>).</p>
+<p>Швидкість витоку рідини з отвору <span class="arithmatex">\(v\)</span> визначається за формулою Торрічеллі з урахуванням коефіцієнта гідравлічного опору <span class="arithmatex">\(\varphi = 0{,}62\)</span>:</p>
+<div class="arithmatex">\[v = \varphi \cdot \sqrt{\frac{2 \cdot P}{\rho}} = 0{,}62 \cdot \sqrt{\frac{2 \cdot 400000\text{ Па}}{1000\text{ кг/м}^3}} = 0{,}62 \cdot \sqrt{800} \approx 17{,}54\text{ м/с}\]</div>
+<p>де <span class="arithmatex">\(\rho = 1000\text{ кг/м}^3\)</span> позначає густину води.</p>
+<p>Миттєва об'ємна витрата води <span class="arithmatex">\(Q\)</span> через площу перерізу <span class="arithmatex">\(S = \frac{\pi \cdot D^2}{4} = \frac{3{,}1416 \cdot (0{,}015)^2}{4} \approx 1{,}767 \cdot 10^{-4}\text{ м}^3\text{/с}\)</span> складає:</p>
+<div class="arithmatex">\[Q = S \cdot v = 1{,}767 \cdot 10^{-4} \cdot 17{,}54 \approx 3{,}10 \cdot 10^{-3}\text{ м}^3\text{/с} = 3{,}10\text{ л/с}\]</div>
+<p>Сумарний час аварійного циклу <span class="arithmatex">\(t_{\text{total}}\)</span> складається з апаратного часу фільтрації брязкоту контактів сенсора <span class="arithmatex">\(t_{\text{debounce}} = 0{,}05\text{ с}\)</span>, латентності спрацьовування внутрішнього контуру мікроконтролера <span class="arithmatex">\(t_{\text{edge}} = 0{,}002\text{ с}\)</span> та механічного часу перекриття крана <span class="arithmatex">\(t_{\text{close}} = 4{,}0\text{ с}\)</span>:</p>
+<div class="arithmatex">\[t_{\text{total}} = t_{\text{debounce}} + t_{\text{edge}} + t_{\text{close}} = 0{,}05 + 0{,}002 + 4{,}0 = 4{,}052\text{ с}\]</div>
+<p>За умови лінійного зменшення площі прохідного перерізу крана від початкового значення до нуля об'єм вилитої води визначається інтегруванням витрати в часі:</p>
+<div class="arithmatex">\[V_{\text{leak}} = Q \cdot \left( t_{\text{debounce}} + t_{\text{edge}} \right) + \int_{0}^{t_{\text{close}}} Q \cdot \left(1 - \frac{t}{t_{\text{close}}}\right) dt = Q \cdot (0{,}052) + Q \cdot \frac{t_{\text{close}}}{2}\]</div>
+<p>Підставляючи отримані числові значення, знаходимо сумарний об'єм аварійного витоку:</p>
+<div class="arithmatex">\[V_{\text{leak}} = 3{,}10 \cdot 0{,}052 + 3{,}10 \cdot \frac{4{,}0}{2} = 0{,}161 + 6{,}20 = 6{,}361\text{ л}\]</div>
+<p>Отриманий об'єм у <span class="arithmatex">\(6{,}36\text{ л}\)</span> повністю утримується плитковим приямком котельні глибиною <span class="arithmatex">\(20\text{ мм}\)</span>, що запобігає проникненню рідини в суміжні житлові кімнати та підтверджує коректність вибору швидкодіючого приводу.</p>
+<h5 id="4">Крок 4. Оцінка мережевого навантаження та пропускної здатності каналу</h5>
+<p>Для забезпечення стійкості бездротового сегмента розраховується сумарна пропускна здатність, необхідна для обслуговування протоколу Home Assistant Native API чотирма вузлами ESP32. Кожен бінарний пакет повідомлення стану <code>SensorStateResponse</code> на базі Protocol Buffers має довжину <span class="arithmatex">\(L_{\text{proto}} = 36\text{ байтів}\)</span>.</p>
+<p>При періоді передачі телеметрії <span class="arithmatex">\(\Delta t = 10\text{ с}\)</span> частота надсилання повідомлень кожним контролером складає <span class="arithmatex">\(f_{\text{msg}} = 0{,}1\text{ Гц}\)</span>. З урахуванням накладних витрат транспортного рівня TCP/IP (розмір заголовків складає <span class="arithmatex">\(40\text{ байтів}\)</span>) повний розмір кадру на канальному рівні дорівнює:</p>
+<div class="arithmatex">\[L_{\text{frame}} = L_{\text{proto}} + L_{\text{TCP/IP}} = 36 + 40 = 76\text{ байтів} = 608\text{ бітів}\]</div>
+<p>Сумарний мережевий потік даних від усіх чотирьох вузлів системи <span class="arithmatex">\(\Phi_{\text{net}}\)</span> становить:</p>
+<div class="arithmatex">\[\Phi_{\text{net}} = 4 \cdot f_{\text{msg}} \cdot L_{\text{frame}} = 4 \cdot 0{,}1 \cdot 608 = 243{,}2\text{ біт/с} \approx 0{,}243\text{ кбіт/с}\]</div>
+<p>Отримане значення навантаження показує, що протокол Native API споживає менше <span class="arithmatex">\(0{,}001\%\)</span> реальної пропускної здатності мережі Wi-Fi стандарту 802.11n, залишаючи весь радіочастотний ресурс вільним від колізій і запобігаючи затримкам передачі критичних сигналів безпеки.</p>
+<h4 id="_7">Інтерпретація результатів та альтернативні сценарії</h4>
+<ol>
+<li>
+<p>Розрахунки доводять, що локальна архітектура на базі ESP32 з автономним контуром Fallback усуває ризики затоплення навіть за умови повної відсутності зв'язку з центральним сервером, оскільки фізичний час закриття кранів лімітується виключно механічною швидкістю редуктора сервоприводу.</p>
+</li>
+<li>
+<p>Програмна реалізація експоненційного фільтра безпосередньо на мікроконтролері дозволила згладити апаратні шуми аналого-цифрового тракту та зменшити частоту оновлення станів сутностей у машині станів ядра системи без втрати контролю над температурними трендами.</p>
+</li>
+<li>
+<p>У разі зміни топології об'єкта та заміни локального каналу зв'язку Wi-Fi на промислову шину RS-485 із протоколом Modbus RTU, затримка передачі сигналу аварії зросла б лише на <span class="arithmatex">\(1{,}2\text{ мс}\)</span>, однак система отримала б повний імунітет до електромагнітних завад від комутації потужних електродвигунів системи вентиляції.</p>
+</li>
+<li>
+<p>Якщо як резервний канал передачі аварійних сповіщень застосувати технологію LPWAN стандарту LoRaWAN замість локальної мережі, передача сигналу на великі відстані (до <span class="arithmatex">\(10\text{ км}\)</span>) залишатиметься гарантованою, але обмеження робочого циклу передавача величиною <span class="arithmatex">\(1\%\)</span> вимагатиме суворого лімітування розміру пакетів телеметрії до одного разу на 10 хвилин у штатному режимі.</p>
+</li>
+</ol>
+<hr />
+<h3 id="32">3.2. Зведена довідкова система лекції</h3>
+<p>Нижче наведено підсумкову систему взаємопов'язаних понять і технологічних інваріантів, що формують архітектурний базис вивченого матеріалу.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Термін / Концепція</th>
+<th style="text-align: left;">Формалізація / Сутність</th>
+<th style="text-align: left;">Реальний кейс застосування</th>
+<th style="text-align: left;">Основне обмеження / Ризик</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Локальне управління (Local Control)</strong></td>
+<td style="text-align: left;">Архітектура, де <span class="arithmatex">\(A_{\text{system}} = A_{\text{dev}} \cdot A_{\text{LAN}}\)</span>, а контури обробки подій замкнені всередині периметра будівлі</td>
+<td style="text-align: left;">Локальний сервер автоматизації без виходу в зовнішній інтернет для режимного об'єкта</td>
+<td style="text-align: left;">Потребує наявності власного локального сервера та резервованого живлення шлюзу</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Шина подій (Event Bus)</strong></td>
+<td style="text-align: left;">Асинхронний диспетчер черги повідомлень, що реалізує шаблон проектування Publish-Subscribe у пам'яті</td>
+<td style="text-align: left;">Централізована передача телеметрії від інтеграції Zigbee2MQTT до підсистеми автоматизації</td>
+<td style="text-align: left;">Можливість виникнення шторму подій (Event Storm) при надмірній частоті опитування сенсорів</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Машина станів (State Machine)</strong></td>
+<td style="text-align: left;">Глобальний реєстр векторів станів сутностей <span class="arithmatex">\(\mathbf{X}(t) = [e_1(t), \dots, e_N(t)]^T\)</span> із мітками часу</td>
+<td style="text-align: left;">Відображення актуальних температур, положення клапанів та замків у веб-інтерфейсі Lovelace</td>
+<td style="text-align: left;">Зберігає лише поточний стан у RAM; історія змін вимагає окремої бази даних</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Реєстр сервісів (Service Registry)</strong></td>
+<td style="text-align: left;">Каталог методів зворотного виклику <span class="arithmatex">\(\lambda: \mathcal{Q} \times \Sigma \to \Delta\)</span>, згрупованих за функціональними доменами</td>
+<td style="text-align: left;">Виклик сервісу закриття крана води <code>switch.turn_off</code> під час спрацьовування сценарію</td>
+<td style="text-align: left;">Некоректні аргументи виклику можуть генерувати виняткові ситуації валідатора схем</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>ESPHome</strong></td>
+<td style="text-align: left;">Декларативне середовище генерації прошивок C++ для мікроконтролерів ESP32/ESP8266 на базі YAML</td>
+<td style="text-align: left;">Розробка уніфікованого модуля контролю мікроклімату з датчиками BME280 на шині I2C</td>
+<td style="text-align: left;">Вимагає повторної перекомпіляції бінарного образу при зміні конфігурації пінів</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Native API (Home Assistant)</strong></td>
+<td style="text-align: left;">Бінарний RPC-протокол поверх TCP (порт 6053) на базі Google Protocol Buffers та Noise PSK</td>
+<td style="text-align: left;">Потокова передача даних вимірювання напруги та струму з частотою <span class="arithmatex">\(1\text{ Гц}\)</span> без затримок</td>
+<td style="text-align: left;">Специфічний виключно для екосистеми Home Assistant (відсутня сумісність з іншими хабами)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Фільтр EMA</strong></td>
+<td style="text-align: left;">Алгоритм <span class="arithmatex">\(y[k] = \alpha x[k] + (1 - \alpha)y[k-1]\)</span> для цифрового згладжування завад датчиків на Edge</td>
+<td style="text-align: left;">Фільтрація шумів вимірювання ваги та тиску на аналогових тензометричних мостах</td>
+<td style="text-align: left;">Вносить фазове запізнення сигналу при занадто малих значеннях коефіцієнта <span class="arithmatex">\(\alpha\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Антибрязкіт (Debounce)</strong></td>
+<td style="text-align: left;">Часове стробування логічного рівня <span class="arithmatex">\(t_{\text{stable}} \ge \Delta t_{\text{debounce}}\)</span> для усунення перехідних процесів</td>
+<td style="text-align: left;">Обробка сигналів від дверних герконів, датчиків руху та механічних кнопок аварії</td>
+<td style="text-align: left;">Затримка фіксації натискання кнопки на величину часового порогу фільтрації</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Крайова автономність (Edge Fallback)</strong></td>
+<td style="text-align: left;">Незалежний контур релейного регулювання на базі мікроконтролера, ізольований від статусу мережі</td>
+<td style="text-align: left;">Аварійне вимкнення нагрівача бойлера при перевищенні температури <span class="arithmatex">\(85^\circ\text{C}\)</span> контролером</td>
+<td style="text-align: left;">Обмежені обчислювальні ресурси мікроконтролера не дозволяють будувати складні моделі</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Гарантовані часові слоти (GTS)</strong></td>
+<td style="text-align: left;">Механізм резервування інтервалів суперфрейму без колізій у стандарті IEEE 802.15.4</td>
+<td style="text-align: left;">Доставка критичних повідомлень від медичних датчиків пульсу або промислових реле зупинки</td>
+<td style="text-align: left;">Зменшує пропускну здатність для решти вузлів мережі у конкурентному періоді</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Топологія DODAG (RPL)</strong></td>
+<td style="text-align: left;">Спрямований ациклічний граф із кореневою адресацією для малопотужних мереж 6LoWPAN</td>
+<td style="text-align: left;">Маршрутизація трафіку у вуличних мережах міського освітлення та обліку енергії</td>
+<td style="text-align: left;">Високі накладні витрати на передачу маршрутної інформації у режимі зі збереженням стану</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="33">3.3. Контрольні питання та завдання</h3>
+<h4 id="_8">Прикладні тестові завдання</h4>
+<ol>
+<li>
+<p>Під час роботи системи клімат-контролю на базі Home Assistant виявлено, що температура в кімнаті періодично перевищує уставку на <span class="arithmatex">\(2^\circ\text{C}\)</span>, після чого кондиціонер та котел починають працювати одночасно. Яка архітектурна помилка в конфігурації автоматизації найбільш імовірно призвела до цього стану?</p>
+</li>
+<li>
+<p>A. Відсутність фільтрації брязкоту контактів на вихідних реле керування живленням котла.</p>
+</li>
+<li>
+<p>B. Використання двох незалежних автоматизацій без взаємного блокування через перевірку умов (Conditions) та відсутність гістерезису.</p>
+</li>
+<li>
+<p>C. Переповнення буфера підсистеми Recorder внаслідок частих записів у базу даних SQLite.</p>
+</li>
+<li>
+<p>D. Використання протоколу MQTT замість Home Assistant Native API на мікроконтролері.</p>
+</li>
+</ol>
+<details class="note">
+<summary>Розгорнути аналіз / відповідь</summary>
+<p><strong>Правильний варіант: B.</strong></p>
+<ol>
+<li>
+<p>Якщо системи нагріву та охолодження регулюються незалежними автоматами без перехресної перевірки станів суміжного обладнання, виникає стан гонки (Race Condition). Коли кімнатна температура коливається навколо заданої точки, за відсутності мертвої зони (гістерезису) котел продовжує прогрівати теплоносій через теплову інерцію системи, тоді як датчик фіксує перегрів і активує кондиціонер. Правильним інженерним рішенням є використання єдиного кліматичного об'єкта домену <code>climate</code> із заданням гістерезису та умов блокування.</p>
+</li>
+<li>
+<p>Аналіз дистракторів:</p>
+</li>
+<li>
+<p>Варіант A є помилковим, оскільки брязкіт контактів характерний лише для вхідних дискретних сенсорів (кнопок, герконів), а вихідні реле керуються детермінованим логічним рівнем без явища механічного брязкоту на керуючій котушці.</p>
+</li>
+<li>
+<p>Варіант C є помилковим, оскільки деградація бази даних уповільнює формування графіків історії, проте не впливає на негайну диспетчеризацію подій всередині шини Event Bus.</p>
+</li>
+<li>
+<p>Варіант D є помилковим, оскільки протокол передачі даних (MQTT або Native API) відповідає лише за доставку байтів між шиною та вузлом, але не бере участі в обчисленні логіки взаємовиключення процесів.</p>
+</li>
+</ol>
+</details>
+<ol>
+<li>
+<p>Інженер розгортає систему автоматизації на мікроконтролері ESP32 з підключеним датчиком струму, що вимірює навантаження насоса. Що відбудеться, якщо в конфігурації ESPHome задати відправку кожного вимірювання струму з частотою <span class="arithmatex">\(50\text{ Гц}\)</span> безпосередньо через Native API до Home Assistant Core, що працює на Raspberry Pi 4?</p>
+</li>
+<li>
+<p>A. Мікроконтролер автоматично перезавантажиться через спрацювання апаратного захисту від перевантаження за струмом шини живлення 3,3 В.</p>
+</li>
+<li>
+<p>B. Серверний процес Home Assistant почне накопичувати затримку в обробці шини подій через переповнення черги Event Loop, що призведе до затримки решти автоматизацій.</p>
+</li>
+<li>
+<p>C. Протокол Noise Protocol розірве TCP-з'єднання через порушення узгодженої симетричної довжини блоку шифрування ChaCha20.</p>
+</li>
+<li>
+<p>D. База даних SQLite автоматично перемкнеться в режим пам'яті In-Memory Database та заблокує дискові операції запису.</p>
+</li>
+</ol>
+<details class="note">
+<summary>Розгорнути аналіз / відповідь</summary>
+<p><strong>Правильний варіант: B.</strong></p>
+<ol>
+<li>
+<p>Головний потік ядра Home Assistant Core працює на базі єдиного циклу подій <code>asyncio.EventLoop</code>. Потік подій із частотою <span class="arithmatex">\(50\text{ Гц}\)</span> від одного датчика означає генерацію 50 об'єктів подій <code>state_changed</code> щосекунди. Це викличе перевантаження черги диспетчеризації, різке зростання навантаження на процесор і значне запізнення в обробці сигналів від інших датчиків (затримка може досягати десятків секунд).</p>
+</li>
+<li>
+<p>Аналіз дистракторів:</p>
+</li>
+<li>
+<p>Варіант A є помилковим, оскільки генерація мережевих пакетів збільшує енергоспоживання радіомодуля в межах штатного струму <span class="arithmatex">\(200\text{ мА}\)</span>, що не викликає апаратного перевантаження стабілізатора живлення за умови правильного проектування плати.</p>
+</li>
+<li>
+<p>Варіант C є помилковим, оскільки фреймворк Noise Protocol обробляє потокові дані як послідовність незалежних зашифрованих кадрів довільного розміру, якщо довжина кадру не перевищує ліміт протоколу.</p>
+</li>
+<li>
+<p>Варіант D є помилковим, оскільки реляційна СУБД не має вбудованої логіки динамічної зміни сховища на оперативну пам'ять при перевантаженні вхідного потоку транзакцій.</p>
+</li>
+</ol>
+</details>
+<ol>
+<li>
+<p>Який механізм канального рівня протоколу IEEE 802.15.4 забезпечує передачу критичного сигналу від датчика затоплення без конкуренції за радіоефір з іншими пристроями мережі?</p>
+</li>
+<li>
+<p>A. Алгоритм стрибкоподібної перебудови робочої частоти FHSS.</p>
+</li>
+<li>
+<p>B. Механізм виділення гарантованих часових слотів (GTS) у межах суперфрейму координатора.</p>
+</li>
+<li>
+<p>C. Використання протоколу стиснення заголовків 6LoWPAN RFC 6282.</p>
+</li>
+<li>
+<p>D. Застосування алгоритму псевдовипадкового вибору затримки Backoff у процедурі CSMA/CA.</p>
+</li>
+</ol>
+<details class="note">
+<summary>Розгорнути аналіз / відповідь</summary>
+<p><strong>Правильний варіант: B.</strong></p>
+<ol>
+<li>
+<p>У стандарті IEEE 802.15.4 структура суперфрейму може ділитися на період конкурентного доступу (CAP) та період без конкуренції (CFP). Координатор мережі має право призначити конкретному вузлу гарантовані часові слоти (Guaranteed Time Slots, GTS), під час яких передача дозволена виключно цьому вузлу, що виключає колізії та гарантує детерміновану доставку пакета.</p>
+</li>
+<li>
+<p>Аналіз дистракторів:</p>
+</li>
+<li>
+<p>Варіант A є помилковим, оскільки механізм FHSS застосовується в протоколі Bluetooth (IEEE 802.15.1), а базовий стандарт IEEE 802.15.4 використовує пряме розширення спектра DSSS.</p>
+</li>
+<li>
+<p>Варіант C є помилковим, оскільки специфікація 6LoWPAN належить до мережевого рівня адаптації дейтаграм IPv6 і не керує розподілом квантів часу в радіоефірі.</p>
+</li>
+<li>
+<p>Варіант D є помилковим, оскільки затримка Backoff у методі CSMA/CA є якраз механізмом вирішення колізій в умовах жорсткої конкуренції за спільний канал зв'язку.</p>
+</li>
+</ol>
+</details>
+<ol>
+<li>
+<p>Чому при реалізації контуру безпеки від протікання води логіку прямого закриття кульового крана обов'язково програмують безпосередньо у маніфесті ESPHome мікроконтролера, а не обмежуються створенням автоматизації в Home Assistant?</p>
+</li>
+<li>
+<p>A. Мікроконтролер ESP32 не підтримує прийом команд від Home Assistant через протокол Native API в разі аварійних ситуацій.</p>
+</li>
+<li>
+<p>B. Швидкість комутації контактів реле при керуванні від Home Assistant знижується внаслідок падіння напруги на лініях GPIO.</p>
+</li>
+<li>
+<p>C. Забезпечується збереження захисної функції при відмові роутера Wi-Fi, зависанні сервера або обриві локальної мережі зв'язку.</p>
+</li>
+<li>
+<p>D. Протокол Protocol Buffers вимагає обов'язкової наявності локальних сценаріїв для реєстрації сутності типу <code>switch</code>.</p>
+</li>
+</ol>
+<details class="note">
+<summary>Розгорнути аналіз / відповідь</summary>
+<p><strong>Правильний варіант: C.</strong></p>
+<ol>
+<li>
+<p>Принцип відмовостійкості розподілених кіберфізичних систем (Edge Autonomy) вимагає, щоб базові захисні інваріанти виконувалися навіть у разі деградації або повної відмови компонентів вищих рівнів ієрархії. Програмування правила перекриття крана в самій прошивці гарантує час спрацьовування до кількох мілісекунд незалежно від працездатності центрального хаба.</p>
+</li>
+<li>
+<p>Аналіз дистракторів:</p>
+</li>
+<li>
+<p>Варіант A є помилковим, оскільки Native API забезпечує повноцінне двостороннє керування всіма зареєстрованими актуаторами за наявності зв'язку.</p>
+</li>
+<li>
+<p>Варіант B є помилковим, оскільки фізичний рівень напруги логічного виходу GPIO залежить виключно від внутрішнього стабілізатора плати і ніяк не пов'язаний з джерелом ініціалізації команди.</p>
+</li>
+<li>
+<p>Варіант D є помилковим, оскільки бінарна схема серіалізації ProtoBuf не містить вимог щодо обов'язкового дублювання бізнес-логіки на боці клієнта.</p>
+</li>
+</ol>
+</details>
+<hr />
+<h4 id="_9">Завдання для самостійної роботи</h4>
+<h5 id="_10">Постановка задачі</h5>
+<p>Вам доручено розробити проект системи моніторингу та протипожежного захисту для архівного приміщення з рідкісними книгами. Об'єкт містить сервер зберігання цифрових копій, систему прецизійного кондиціонування та порошкову установку пожежогасіння. Спроектована система повинна контролювати температуру, вологість, концентрацію чадного газу CO та детектувати відкриття дверей. </p>
+<p>Система повинна забезпечувати надійне функціонування в умовах автономії при втраті живлення мережі 230 В, вести безперервний локальний аудит параметрів та блокувати припливну вентиляцію при підтвердженні задимлення без участі зовнішніх хмарних служб.</p>
+<h5 id="_11">Завдання для виконання</h5>
+<ol>
+<li>
+<p>Складіть структурну схему підключення цифрових сенсорів та виконавчих пристроїв до мікроконтролера ESP32, зазначивши конкретні апаратні інтерфейси та номери виводів GPIO з урахуванням обмежень на завантажувальні піни (Strapping Pins).</p>
+</li>
+<li>
+<p>Напишіть фрагмент конфігураційного файлу YAML для середовища ESPHome, який реалізує зчитування показників сенсора BME280 через шину I2C, налаштовує цифровий фільтр ковзного вікна для показників вологості та забезпечує локальну комутацію реле аварійної заслінки вентиляції при фіксації критичного сигналу від датчика газу.</p>
+</li>
+<li>
+<p>Розрахуйте мінімальну ємність свинцево-кислотної або літій-залізо-фосфатної акумуляторної батареї для безперебійного живлення центрального шлюзу автоматизації протягом 12 годин за умови, що споживана потужність сервера складає <span class="arithmatex">\(15\text{ Вт}\)</span>, а коефіцієнт корисної дії джерела безперебійного живлення становить <span class="arithmatex">\(85\%\)</span>.</p>
+</li>
+<li>
+<p>Опишіть матрицю можливих відмов системи (аварія бездротової точки доступу, вихід із ладу накопичувача сервера, фізичний обрив лінії сенсора) та вкажіть відповідні технічні заходи щодо забезпечення працездатності контуру безпеки при виникненні кожної з них.</p>
+</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Повернутись нагору
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Kyrylo Vadurin &bull; <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.top", "navigation.tracking", "header.autohide", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u0421\u043a\u043e\u043f\u0456\u0439\u043e\u0432\u0430\u043d\u043e \u0432 \u0431\u0443\u0444\u0435\u0440", "clipboard.copy": "\u0421\u043a\u043e\u043f\u0456\u044e\u0432\u0430\u0442\u0438 \u0432 \u0431\u0443\u0444\u0435\u0440", "search.result.more.one": "\u0429\u0435 1 \u0437\u0431\u0456\u0433 \u043d\u0430 \u0446\u0456\u0439 \u0441\u0442\u043e\u0440\u0456\u043d\u0446\u0456", "search.result.more.other": "\u0429\u0435 # \u0437\u0431\u0456\u0433\u0456\u0432 \u043d\u0430 \u0446\u0456\u0439 \u0441\u0442\u043e\u0440\u0456\u043d\u0446\u0456", "search.result.none": "\u0417\u0431\u0456\u0433\u0456\u0432 \u043d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u043e", "search.result.one": "\u0417\u043d\u0430\u0439\u0434\u0435\u043d\u043e 1 \u0437\u0431\u0456\u0433", "search.result.other": "\u0417\u043d\u0430\u0439\u0434\u0435\u043d\u043e # \u0437\u0431\u0456\u0433\u0456\u0432", "search.result.placeholder": "\u0420\u043e\u0437\u043f\u043e\u0447\u043d\u0456\u0442\u044c \u043f\u0438\u0441\u0430\u0442\u0438 \u0434\u043b\u044f \u043f\u043e\u0448\u0443\u043a\u0443", "search.result.term.missing": "\u041d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u043e \u0437\u0430\u043f\u0438\u0442\u0443", "select.version": "\u041e\u0431\u0440\u0430\u0442\u0438 \u0432\u0435\u0440\u0441\u0456\u044e"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

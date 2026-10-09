@@ -1,0 +1,3652 @@
+
+<!doctype html>
+<html lang="uk" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Навчальний портал з дисципліни "Технології ІоТ"">
+      
+      
+      
+      
+        <link rel="prev" href="../lk7/">
+      
+      
+        <link rel="next" href="../lk9/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Тема 8. Виконавчі пристрої - Технології Інтернету речей</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#8" class="md-skip">
+          Перейти до змісту
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Хедер">
+    <a href="../.." title="Технології Інтернету речей" class="md-header__button md-logo" aria-label="Технології Інтернету речей" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Технології Інтернету речей
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Тема 8. Виконавчі пристрої
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan"  aria-label="Переключити на темну тему"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Переключити на темну тему" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="cyan"  aria-label="Переключити на світлу тему"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Переключити на світлу тему" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Пошук" placeholder="Пошук" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Шукати">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Очистити" aria-label="Очистити" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Пошук розпочато
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Вкладки" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Робоча програма
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../lk1/" class="md-tabs__link">
+          
+  
+  
+  Лекції
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../lb/lb1/" class="md-tabs__link">
+          
+  
+  
+  Лабораторні роботи
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../pz/pz1/" class="md-tabs__link">
+          
+  
+  
+  Практичні заняття
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../kp/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Курсовий проєкт
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../sr/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Самостійна робота
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../sr/quest/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Контрольні завдання (Іспит)
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Навігація" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Технології Інтернету речей" class="md-nav__button md-logo" aria-label="Технології Інтернету речей" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Технології Інтернету речей
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Робоча програма
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Лекції
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Лекції
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 1. Екосистема та архітектура IoT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 2. Технології WPAN та WLAN у IoT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 3. LPWAN технології
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 4. Прикладні протоколи ІоТ (MQTT, CoAP)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 5. Туманні (Fog) та граничні (Edge) обчислення
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 6. Мікроконтролерні платформи (ESP32)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 7. Інтелектуальні сенсори
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 8. Виконавчі пристрої
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 8. Виконавчі пристрої
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Зміст">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Зміст
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Мета лекції
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Очікувані результати навчання
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Детальний покроковий план лекції
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Детальний покроковий план лекції">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-iot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Теоретико-концептуальний базис. Схемотехніка виконавчих механізмів та електродинамічні процеси в силових колах IoT
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Методологія та аналіз граничних умов. Моделювання бюджету живлення, апаратні режими енергозбереження та фізичні обмеження джерел струму
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Практичний індустріальний / фаховий кейс. Інженерне проектування та оптимізація автономного приводу запірної арматури
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-iot_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Теоретико-концептуальний базис. Схемотехніка виконавчих механізмів та електродинамічні процеси в силових колах IoT
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Теоретико-концептуальний базис. Схемотехніка виконавчих механізмів та електродинамічні процеси в силових колах IoT">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1. Класифікація, функціональне призначення та системна роль актуаторів у замкненому контурі керування Інтернету речей
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2. Схемотехніка безпечного підключення електромеханічних і твердотільних реле з оптичною ізоляцією та демпфуванням ЕРС самоіндукції
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-h-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3. Принципи широтно-імпульсного регулювання швидкості й реверсивного керування колекторними двигунами постійного струму на базі інтегральних H-мостів
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4. Архітектура та цифрові імпульсні інтерфейси керування приводами прецизійного кутового позиціонування: сервоприводи та крокові двигуни
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Вказівки для самостійного осмислення
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Методологія та аналіз граничних умов. Моделювання бюджету живлення, апаратні режими енергозбереження та фізичні обмеження джерел струму
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Методологія та аналіз граничних умов. Моделювання бюджету живлення, апаратні режими енергозбереження та фізичні обмеження джерел струму">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-iot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1. Математичне моделювання енергетичного бюджету автономного вузла IoT та розрахунок середньозваженого струму за фазами робочого циклу
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2. Електрохімічні характеристики первинних батарей, суперконденсаторів та технології збору розсіяної енергії навколишнього середовища
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-active-mode-modem-sleep-light-sleep-deep-sleep-hibernation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3. Апаратне керування доменами живлення мікроконтролерів: системні стани Active Mode, Modem Sleep, Light Sleep, Deep Sleep та Hibernation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4. Програмна конфігурація внутрішніх і зовнішніх джерел пробудження через таймери реального часу, матричні переривання та мікропотужні співпроцесори
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-brownout-reset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5. Критичні бар'єри та граничні умови: динамічне падіння напруги в імпульсних режимах радіопередачі, деградація внутрішнього опору батареї та запобігання аварійним перезавантаженням Brownout Reset
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Практичний індустріальний / фаховий кейс. Інженерне проектування та оптимізація автономного приводу запірної арматури
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Практичний індустріальний / фаховий кейс. Інженерне проектування та оптимізація автономного приводу запірної арматури">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1. Комплексний фаховий кейс. Проєктування автономного бездротового вузла керування запірним клапаном магістрального нафтопроводу
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1. Комплексний фаховий кейс. Проєктування автономного бездротового вузла керування запірним клапаном магістрального нафтопроводу">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Постановка задачі / ситуації
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Покроковий аналіз та розв'язок
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Покроковий аналіз та розв&#39;язок">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 1. Розрахунок енерговитрат на переміщення виконавчого механізму
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 2. Розрахунок енерговитрат на періодичну телеметрію та перебування в режимі сну
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 3. Визначення сумарного струму та оцінка ресурсу автономності
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 4. Розрахунок параметрів буферного блоку суперконденсаторів для покриття пускового струму
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Інтерпретація результатів та альтернативні сценарії
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2. Зведена довідкова система лекції
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3. Контрольні питання та завдання
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3. Контрольні питання та завдання">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Прикладні тестові завдання
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Завдання для самостійної роботи
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Завдання для самостійної роботи">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Постановка задачі
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Завдання для виконання
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 9. Віртуалізація та контейнеризація IoT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 10. IoT платформи та Middleware
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 11. Розумний будинок (Home Assistant)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 12. Промисловий ІоТ (IIoT)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 13. Big Data в ІоТ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 14. Machine Learning на межі мережі
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 15. Кібербезпека в системах ІоТ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Лабораторні роботи
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Лабораторні роботи
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 1. Моделювання топологій IoT-мереж
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 2. Симуляція підсистем Розумного будинку
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 3. Дослідження локального MQTT-брокера
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 4. Схемотехнічне моделювання вузла збору
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 5. Прошивка ESP32 для передавання телеметрії MQTT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 6. Декларативне програмування ESP32 (ESPHome)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 7. Серверне середовище Linux для IoT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 8. Контейнеризація в ІоТ (Docker Compose)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 9. Middleware ІоТ (Node-RED)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 10. Сервіс REST API для агрегації даних
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 11. Платформи розумного будинку (Home Assistant)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 12. Сценарії автоматизації Home Assistant
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 13. Обробка телеметрії мовою Python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 14. HMI Dashboard для диспетчеризації
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 15. Комплексне наскрізне тестування IoT-системи
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практичні заняття
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Практичні заняття
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 1. Розрахунок пропускної здатності та живлення
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 2. Проєктування ієрархії топіків MQTT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 3. Правила фільтрації на Edge-шлюзах
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 4. Моделювання АЦП для сенсорів
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 5. Оптимізація енергетичного профілю
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 6. Проєктування конфігурації Docker Compose
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 7. Логічні схеми в Node-RED
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 8. Сценарії Trigger-Condition-Action
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 9. Конвеєр обробки даних (ETL)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 10. Моделювання загроз безпеки (STRIDE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Курсовий проєкт
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Самостійна робота
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sr/quest/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Контрольні завдання (Іспит)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Зміст">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Зміст
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Мета лекції
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Очікувані результати навчання
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Детальний покроковий план лекції
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Детальний покроковий план лекції">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-iot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Теоретико-концептуальний базис. Схемотехніка виконавчих механізмів та електродинамічні процеси в силових колах IoT
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Методологія та аналіз граничних умов. Моделювання бюджету живлення, апаратні режими енергозбереження та фізичні обмеження джерел струму
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Практичний індустріальний / фаховий кейс. Інженерне проектування та оптимізація автономного приводу запірної арматури
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-iot_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Теоретико-концептуальний базис. Схемотехніка виконавчих механізмів та електродинамічні процеси в силових колах IoT
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Теоретико-концептуальний базис. Схемотехніка виконавчих механізмів та електродинамічні процеси в силових колах IoT">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1. Класифікація, функціональне призначення та системна роль актуаторів у замкненому контурі керування Інтернету речей
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2. Схемотехніка безпечного підключення електромеханічних і твердотільних реле з оптичною ізоляцією та демпфуванням ЕРС самоіндукції
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-h-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3. Принципи широтно-імпульсного регулювання швидкості й реверсивного керування колекторними двигунами постійного струму на базі інтегральних H-мостів
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4. Архітектура та цифрові імпульсні інтерфейси керування приводами прецизійного кутового позиціонування: сервоприводи та крокові двигуни
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Вказівки для самостійного осмислення
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Методологія та аналіз граничних умов. Моделювання бюджету живлення, апаратні режими енергозбереження та фізичні обмеження джерел струму
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Методологія та аналіз граничних умов. Моделювання бюджету живлення, апаратні режими енергозбереження та фізичні обмеження джерел струму">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-iot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1. Математичне моделювання енергетичного бюджету автономного вузла IoT та розрахунок середньозваженого струму за фазами робочого циклу
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2. Електрохімічні характеристики первинних батарей, суперконденсаторів та технології збору розсіяної енергії навколишнього середовища
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-active-mode-modem-sleep-light-sleep-deep-sleep-hibernation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3. Апаратне керування доменами живлення мікроконтролерів: системні стани Active Mode, Modem Sleep, Light Sleep, Deep Sleep та Hibernation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4. Програмна конфігурація внутрішніх і зовнішніх джерел пробудження через таймери реального часу, матричні переривання та мікропотужні співпроцесори
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-brownout-reset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5. Критичні бар'єри та граничні умови: динамічне падіння напруги в імпульсних режимах радіопередачі, деградація внутрішнього опору батареї та запобігання аварійним перезавантаженням Brownout Reset
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Практичний індустріальний / фаховий кейс. Інженерне проектування та оптимізація автономного приводу запірної арматури
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Практичний індустріальний / фаховий кейс. Інженерне проектування та оптимізація автономного приводу запірної арматури">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1. Комплексний фаховий кейс. Проєктування автономного бездротового вузла керування запірним клапаном магістрального нафтопроводу
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1. Комплексний фаховий кейс. Проєктування автономного бездротового вузла керування запірним клапаном магістрального нафтопроводу">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Постановка задачі / ситуації
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Покроковий аналіз та розв'язок
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Покроковий аналіз та розв&#39;язок">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 1. Розрахунок енерговитрат на переміщення виконавчого механізму
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 2. Розрахунок енерговитрат на періодичну телеметрію та перебування в режимі сну
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 3. Визначення сумарного струму та оцінка ресурсу автономності
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 4. Розрахунок параметрів буферного блоку суперконденсаторів для покриття пускового струму
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Інтерпретація результатів та альтернативні сценарії
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2. Зведена довідкова система лекції
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3. Контрольні питання та завдання
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3. Контрольні питання та завдання">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Прикладні тестові завдання
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Завдання для самостійної роботи
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Завдання для самостійної роботи">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Постановка задачі
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Завдання для виконання
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="8">Тема 8. Виконавчі пристрої та оптимізація енергоспоживання в системах Інтернету речей</h1>
+<h2 id="_1">Мета лекції</h2>
+<p>Формування у здобувачів вищої освіти комплексної системи теоретичних знань та інженерно-технічних компетентностей щодо принципів функціонування, схемотехнічної інтеграції та програмного керування силовими виконавчими механізмами в структурі кіберфізичних систем, а також опанування науково обґрунтованих методологій розрахунку енергетичного бюджету, апаратного керування доменами живлення мікроконтролерів, оптимізації бездротових транзакцій і використання технологій збору розсіяної енергії для забезпечення тривалої автономної експлуатації польових пристроїв Інтернету речей.</p>
+<h2 id="_2">Очікувані результати навчання</h2>
+<ol>
+<li>
+<p><strong>Знання та розуміння.</strong> Здобувачі вищої освіти засвоять фундаментальні принципи функціонування й схемотехнічного узгодження виконавчих механізмів різного типу, електрохімічні характеристики сучасних джерел струму, а також внутрішню конфігурацію доменів живлення та тактових генераторів мікроконтролерів при переході між активними й енергозберігаючими режимами.</p>
+</li>
+<li>
+<p><strong>Застосування.</strong> Здобувачі набудуть практичних умінь розраховувати інтегральний бюджет енергоспоживання автономного пристрою на основі кусочно-лінійної моделі робочого циклу, проєктувати оптоелектронно ізольовані схеми комутації індуктивних навантажень із захистом від імпульсних перенапруг та програмно налаштовувати джерела пробудження системи з режимів глибокого сну.</p>
+</li>
+<li>
+<p><strong>Аналіз.</strong> Здобувачі зможуть здійснювати порівняльний аналіз профілів струму під час передачі телеметрії різними бездротовими інтерфейсами, досліджувати динаміку зміни внутрішнього опору хімічних джерел під впливом зовнішніх температурних чинників і виявляти причини виникнення апаратних збоїв живлення в мікроконтролерних вузлах.</p>
+</li>
+<li>
+<p><strong>Оцінювання та синтез.</strong> Здобувачі оволодіють навичками критичної оцінки техніко-економічної ефективності автономних вузлів у складних промислових умовах експлуатації та синтезу комплексних схемотехнічних і алгоритмічних архітектур, що гармонізують режими роботи актуаторів, чергування фаз радіообміну та механізми вторинного збору енергії навколишнього середовища.</p>
+</li>
+</ol>
+<hr />
+<h2 id="_3">Детальний покроковий план лекції</h2>
+<h3 id="1-iot">1. Теоретико-концептуальний базис. Схемотехніка виконавчих механізмів та електродинамічні процеси в силових колах IoT</h3>
+<ul>
+<li>
+<p>1.1. Класифікація, функціональне призначення та системна роль актуаторів у замкненому контурі керування Інтернету речей</p>
+</li>
+<li>
+<p>1.2. Схемотехніка безпечного підключення електромеханічних і твердотільних реле з оптичною ізоляцією та демпфуванням ЕРС самоіндукції</p>
+</li>
+<li>
+<p>1.3. Принципи широтно-імпульсного регулювання швидкості й реверсивного керування колекторними двигунами постійного струму на базі інтегральних H-мостів</p>
+</li>
+<li>
+<p>1.4. Архітектура та цифрові імпульсні інтерфейси керування приводами прецизійного кутового позиціонування: сервоприводи та крокові двигуни</p>
+</li>
+</ul>
+<h3 id="2">2. Методологія та аналіз граничних умов. Моделювання бюджету живлення, апаратні режими енергозбереження та фізичні обмеження джерел струму</h3>
+<ul>
+<li>
+<p>2.1. Математичне моделювання енергетичного бюджету автономного вузла IoT та розрахунок середньозваженого струму за фазами робочого циклу</p>
+</li>
+<li>
+<p>2.2. Електрохімічні характеристики первинних батарей, суперконденсаторів та технології збору розсіяної енергії навколишнього середовища</p>
+</li>
+<li>
+<p>2.3. Апаратне керування доменами живлення мікроконтролерів: системні стани Active Mode, Modem Sleep, Light Sleep, Deep Sleep та Hibernation</p>
+</li>
+<li>
+<p>2.4. Програмна конфігурація внутрішніх і зовнішніх джерел пробудження через таймери реального часу, матричні переривання та мікропотужні співпроцесори</p>
+</li>
+<li>
+<p>2.5. Критичні бар'єри та граничні умови: динамічне падіння напруги в імпульсних режимах радіопередачі, деградація внутрішнього опору батареї та запобігання аварійним перезавантаженням Brownout Reset</p>
+</li>
+</ul>
+<h3 id="3">3. Практичний індустріальний / фаховий кейс. Інженерне проектування та оптимізація автономного приводу запірної арматури</h3>
+<p><strong>Тема наскрізної задачі.</strong> «Проєктування автономного бездротового вузла керування запірним клапаном магістрального нафтопроводу з оптимізованим енергоспоживанням, оптичною ізоляцією приводу та комбінованим живленням»</p>
+<h2 id="1-iot_1">1. Теоретико-концептуальний базис. Схемотехніка виконавчих механізмів та електродинамічні процеси в силових колах IoT</h2>
+<h3 id="11">1.1. Класифікація, функціональне призначення та системна роль актуаторів у замкненому контурі керування Інтернету речей</h3>
+<p>Функціонування будь-якої кіберфізичної системи або вузла Інтернету речей базується на концепції кібернетичного циклу керування, що охоплює отримання інформації про стан матеріального світу, її аналітичну обробку та формування зворотного керуючого впливу на фізичний об'єкт. Якщо сенсорні вузли перетворюють вимірювані фізичні та хімічні величини в електричні та цифрові сигнали, то зворотний перехід реалізують <strong>виконавчі пристрої</strong> (<strong>актуатори</strong>, Actuators). Актуатор є функціональним перетворювачем, який приймає низьковольтний командний сигнал від мікроконтролера або цифрової платформи і трансформує його у зміну механічного положення, тиску, температури, світлового потоку чи стану електромагнітних комутаційних ліній.</p>
+<p>У системній архітектурі Інтернету речей актуатори займають граничний рівень взаємодії з фізичним світом, замикаючи контур автоматичного регулювання. Відмова або некоректне спрацьовування актуатора призводить до розриву зворотного зв'язку, що унеможливлює функціонування кіберфізичного комплексу в режимі реального часу. Відповідно до базових фізичних явищ, які покладені в основу процесу трансформації енергії керування в дію, виконавчі механізми поділяються на кілька ключових класів.</p>
+<pre class="mermaid"><code>flowchart TD
+    A["Виконавчі пристрої систем IoT (Актуатори)"] --&gt; B["Електромеханічні перетворювачі"]
+    A --&gt; C["Твердотільні комутаційні пристрої"]
+    A --&gt; D["Електромагнітні приводи прямої дії"]
+    A --&gt; E["Електротермічні та оптичні елементи"]
+
+    B --&gt; B1["Двигуни постійного струму (DC Motors)"]
+    B --&gt; B2["Крокові двигуни (Stepper Motors)"]
+    B --&gt; B3["Сервоприводи (Servos)"]
+    B --&gt; B4["Електромагнітні реле (EMR)"]
+
+    C --&gt; C1["Симісторні твердотільні реле (AC SSR)"]
+    C --&gt; C2["Польові комутатори (MOSFET High/Low Side)"]
+
+    D --&gt; D1["Електромагнітні соленоїдні клапани"]
+    D --&gt; D2["Електромеханічні замки та засувки"]
+
+    E --&gt; E1["Термоелектричні модулі Пельтьє"]
+    E --&gt; E2["Адресні світлодіодні матриці та випромінювачі"]</code></pre>
+<p>Ієрархічна структура виконавчих механізмів, зображена на діаграмі, демонструє поділ пристроїв за типом перетворення енергії та сферою їх схемотехнічного узгодження. Окреме місце займають електромеханічні пристрої з високим пусковим струмом та індуктивним опором обмоток, що створює специфічні вимоги до проєктування силових інтерфейсів.</p>
+<p>Систематизацію базових типів виконавчих пристроїв, їх фізичних принципів, інженерних вимог до підключення та практичних прикладів використання наведено в таблиці 1.</p>
+<p><em>Таблиця 1 — Систематизація базових виконавчих пристроїв у системах Інтернету речей</em></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Категорія виконавчого пристрою</th>
+<th style="text-align: left;">Фізичний принцип дії</th>
+<th style="text-align: left;">Ключові схемотехнічні вимоги</th>
+<th style="text-align: left;">Приклад з реальної практики</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Електромеханічне реле (EMR)</strong></td>
+<td style="text-align: left;">Створення магнітного поля в котушці для механічного притягання феромагнітного якоря та замикання силових контактів</td>
+<td style="text-align: left;">Необхідність транзисторного ключа для живлення котушки, наявність діода демпфування та гальванічної ізоляції</td>
+<td style="text-align: left;">Комутація циркуляційного насоса системи автономного опалення від контролера <span class="arithmatex">\(230\text{ В}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Твердотільне реле (SSR)</strong></td>
+<td style="text-align: left;">Оптоелектронна передача сигналу на симістор або зустрічно увімкнені силові MOSFET-транзистори</td>
+<td style="text-align: left;">Обов'язкове встановлення тепловідвідного радіатора, забезпечення мінімального струму утримання</td>
+<td style="text-align: left;">Плавне фазове регулювання потужності нагрівального ТЕНа екструдера</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Колекторний двигун постійного струму</strong></td>
+<td style="text-align: left;">Сила Лоренца, що діє на обмотку з електричним струмом у постійному магнітному полі статора</td>
+<td style="text-align: left;">Використання мостової схеми драйвера (H-міст), згладжувальних конденсаторів та ШІМ-ліній</td>
+<td style="text-align: left;">Привод конвеєрної стрічки сортувального термінала з реверсом руху</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Кроковий двигун (Stepper)</strong></td>
+<td style="text-align: left;">Взаємодія постійного магнітного поля ротора із зубчастим магнітним полем багатофазного статора</td>
+<td style="text-align: left;">Застосування спеціалізованих багатоканальних ключів або мікрокрокових інтегральних контролерів</td>
+<td style="text-align: left;">Прецизійне наведення турелі з інфрачервоною оптикою для діагностики високовольтних ліній</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Аналоговий/цифровий сервопривод</strong></td>
+<td style="text-align: left;">Внутрішнє замкнене керування колекторним або безколекторним двигуном за допомогою потенціометричного зворотного зв'язку</td>
+<td style="text-align: left;">Формування періодичного імпульсного сигналу керування з жорсткими часовими характеристиками</td>
+<td style="text-align: left;">Автоматизоване регулювання кута відкриття повітряної заслінки системи вентиляції HVAC</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>ПРАКТИЧНИЙ ЯКІР:</strong> У системах інтелектуального прецизійного зрошення для агросектору застосовують бістабільні (імпульсні) соленоїдні клапани. На відміну від класичних нормально-закритих клапанів, які для утримання у відкритому стані споживають струм величиною <span class="arithmatex">\(300\dots 500\text{ мА}\)</span> безперервно, бістабільний клапан змінює свій механічний стан від поодинокого імпульсу тривалістю всього <span class="arithmatex">\(50\text{ мс}\)</span> амплітудою <span class="arithmatex">\(12\text{ В}\)</span>. Постійний магніт утримує шток без витрати струму, що дозволяє польовому LoRaWAN-контролеру функціонувати до 5 років від єдиного комплекту літієвих батарей.</p>
+</blockquote>
+<hr />
+<h3 id="12">1.2. Схемотехніка безпечного підключення електромеханічних і твердотільних реле з оптичною ізоляцією та демпфуванням ЕРС самоіндукції</h3>
+<p>Безпосереднє підключення електромагнітних та силових твердотільних реле до виводів портів загального призначення (GPIO) мікроконтролера є неприпустимим через обмежену навантажувальну здатність цифрових мікросхем. Вихідні каскади сучасних мікроконтролерів (наприклад, ESP32, STM32 чи ATmega328P) спроможні віддавати тривалий вихідний струм не більше <span class="arithmatex">\(12\dots 20\text{ мА}\)</span> за напруги <span class="arithmatex">\(3{,}3\text{ В}\)</span> або <span class="arithmatex">\(5\text{ В}\)</span>, тоді як котушка типового електромеханічного реле потребує для надійного спрацьовування струм від <span class="arithmatex">\(50\)</span> до <span class="arithmatex">\(150\text{ мА}\)</span> за напруги <span class="arithmatex">\(5\text{ В}\)</span>, <span class="arithmatex">\(12\text{ В}\)</span> або <span class="arithmatex">\(24\text{ В}\)</span>. З цієї причини комутація котушки реалізується за допомогою проміжних напівпровідникових ключів на базі біполярних NPN-транзисторів, польових N-канальних MOSFET-транзисторів або спеціалізованих збірок Дарлінгтона (наприклад, мікросхеми ULN2003A).</p>
+<p>Винятково важливим аспектом схемотехніки є захист цифрових кіл від руйнівного впливу <strong>електрорушійної сили (ЕРС) самоіндукції</strong>. Котушка реле являє собою індуктивне навантаження з індуктивністю <span class="arithmatex">\(L\)</span>. Згідно із законом електромагнітної індукції Фарадея та правилом Ленца, при раптовому перериванні електричного струму комутуючим транзистором магнітне поле в осерді котушки швидко колапсує. </p>
+<p>Математичний вираз для миттєвої амплітуди напруги самоіндукції має вигляд:</p>
+<div class="arithmatex">\[V_{spike} = -L \cdot \frac{di}{dt}\]</div>
+<p>де <span class="arithmatex">\(V_{spike}\)</span> позначає стрибок електричної напруги самоіндукції на виводах котушки, вимірюваний у вольтах (В); <span class="arithmatex">\(L\)</span> є власною індуктивністю обмотки реле, вираженою в генрі (Гн); <span class="arithmatex">\(\frac{di}{dt}\)</span> позначає похідну електричного струму за часом, що характеризує швидкість його зменшення при закриванні транзистора, вимірювану в амперах за секунду (А/с).</p>
+<p>Оскільки перехідний процес вимикання транзистора триває лічені частки мікросекунди (<span class="arithmatex">\(dt \to 0\)</span>), похідна струму набуває колосальних від'ємних значень. У результаті стрибок напруги <span class="arithmatex">\(V_{spike}\)</span> на колекторі або стоці транзистора може досягати від сотень до тисяч вольт, що багаторазово перевищує напругу пробою напівпровідникового переходу <span class="arithmatex">\(V_{CEO}\)</span> або <span class="arithmatex">\(V_{DS}\)</span> і призводить до миттєвого теплового чи лавинного руйнування транзистора.</p>
+<p>Для придушення цього перенапруження паралельно обмотці реле підключається <strong>демпфуючий діод зворотного струму</strong> (<strong>Flyback Diode</strong>), спрямований катодом до плюсової шини силового живлення, а анодом — до колектора або стоку ключового транзистора. При відкритому стані транзистора цей діод зворотно зміщений і не чинить впливу на схему. У момент закривання транзистора ЕРС самоіндукції змінює знак полярності на виводах котушки, внаслідок чого діод переходить у відкритий стан, замикаючи струм самоіндукції в контурі котушки доти, доки енергія магнітного поля не розсіється на активному внутрішньому опорі дроту обмотки.</p>
+<pre class="mermaid"><code>stateDiagram-v2
+    [*] --&gt; OffState: Живлення подано, транзистор закритий
+
+    OffState --&gt; TurningOn: GPIO видає логічну одиницю (HIGH)
+    TurningOn --&gt; OnState: Струм котушки зростає до рівня насичення (5-10 мс)
+
+    state OnState {
+        direction LR
+        MagneticField: Магнітне поле утримує якір
+        ContactsClosed: Силові контакти замкнені
+    }
+
+    OnState --&gt; TurningOff: GPIO переходить у стан логічного нуля (LOW)
+
+    state TurningOff {
+        direction LR
+        BackEMF: Генерація зворотної ЕРС самоіндукції
+        DiodeConduction: Діод Flyback відкривається та закорочує струм
+    }
+
+    TurningOff --&gt; OffState: Енергія розсіюється, контакти розмикаються</code></pre>
+<p>Граф станів, наведений вище, демонструє життєвий цикл фаз комутації індуктивного навантаження реле, включаючи критичну фазу захисного розсіювання накопиченої енергії.</p>
+<p>Для захисту мікроконтролера від імпульсних кондуктивних перешкод, що виникають при дуговому розряді на силових контактах реле, застосовують <strong>гальванічну ізоляцію</strong> на базі оптронів (наприклад, PC817 або 4N35). Оптрон транслює інформаційний сигнал через оптичний канал, розділяючи електричні контури цифрової землі мікроконтролера (<span class="arithmatex">\(GND_{logic}\)</span>) та силової землі реле (<span class="arithmatex">\(GND_{power}\)</span>).</p>
+<blockquote>
+<p><strong>ТИПОВА ПОМИЛКА:</strong> Безпосереднє підключення демпфуючого діода до лінії живлення мікроконтролера замість підключення безпосередньо паралельно виводам котушки реле, а також об'єднання цифрової та силової шин заземлення в одній точці поруч із чутливими лініями аналогово-цифрового перетворювача (АЦП). Це призводить до того, що сильні струмові сплески комутації індукують паразитні стрибки напруги на загальному земляному опорі провідників плати, викликаючи зависання мікроконтролера та збої в каналах зв'язку I2C/SPI.</p>
+<p><strong>КОНТРОЛЬНЕ ПИТАННЯ:</strong> Чому встановлення звичайного кремнієвого діода паралельно котушці електромагнітного реле збільшує час механічного розмикання його контактів, і яким схемотехнічним методом усувають цей негативний ефект у швидкодіючих системах автоматики?</p>
+</blockquote>
+<details class="note">
+<summary>Розгорнути аналіз / відповідь</summary>
+<p><strong>Правильний варіант: За рахунок повільного спадання струму через мале пряме падіння напруги на діоді; для прискорення послідовно з діодом встановлюють стабілітрон (діод Зенера).</strong></p>
+<ol>
+<li>
+<p>Фізичне обґрунтування: коли після закривання ключа струм замикається через діод, напруга на котушці фіксується на рівні прямого падіння напруги на p-n переході діода (<span class="arithmatex">\(V_F \approx 0{,}7\text{ В}\)</span>). Постійна часу спадання струму індуктивного контуру <span class="arithmatex">\(\tau = \frac{L}{R_{coil} + R_{diode}}\)</span> залишається високою, оскільки динамічний опір відкритого діода дуже малий. Струм в обмотці спадає повільно, відповідно магнітний потік утримує механічний якір значно довше, що уповільнює розмикання контактів і веде до подовження горіння електричної дуги між контактами реле.</p>
+</li>
+<li>
+<p>Аналіз дистракторів:</p>
+</li>
+<li>
+<p>Твердження про те, що діод збільшує час спрацьовування за рахунок власної ємності, є хибним, оскільки бар'єрна ємність діода становить одиниці-десятки пікофарад і на часових масштабах у мілісекунди ролі не відіграє.</p>
+</li>
+<li>
+<p>Пропозиція збільшити опір струмообмежувального резистора бази керуючого транзистора ніяк не впливає на контур рециркуляції струму котушки вже після його повного закривання.</p>
+</li>
+<li>
+<p>Застосування схеми з послідовним стабілітроном і демпфуючим діодом штучно підвищує напругу на котушці під час самоіндукції до величини <span class="arithmatex">\(V_Z + V_F\)</span>, внаслідок чого енергія <span class="arithmatex">\(E = \frac{1}{2} L I^2\)</span> розсіюється у багато разів швидше, забезпечуючи миттєве розімкнення механічних контактів реле.</p>
+</li>
+</ol>
+</details>
+<hr />
+<h3 id="13-h-">1.3. Принципи широтно-імпульсного регулювання швидкості й реверсивного керування колекторними двигунами постійного струму на базі інтегральних H-мостів</h3>
+<p>Електродвигуни постійного струму знаходять широке застосування в рухомих платформах робототехніки, запірних клапанах магістральних систем та приводах позиціонування систем «розумного будинку». Для керування напрямком і швидкістю обертання вала двигуна використовується комбінація мостових транзисторних схем (<strong>H-міст</strong>) та <strong>широтно-імпульсної модуляції</strong> (<strong>ШІМ</strong>, Pulse-Width Modulation, PWM).</p>
+<p>Електромеханічна поведінка двигуна постійного струму з постійними магнітами описується диференціальним рівнянням електричної рівноваги якірного кола та рівнянням механічного руху:</p>
+<div class="arithmatex">\[V_{in}(t) = R_a \cdot i_a(t) + L_a \cdot \frac{d i_a(t)}{dt} + e_b(t)\]</div>
+<p>де <span class="arithmatex">\(V_{in}(t)\)</span> позначає прикладену до клем якірного кола напругу живлення у часі (В); <span class="arithmatex">\(R_a\)</span> є активним електричним опором обмотки якоря двигуна (Ом); <span class="arithmatex">\(L_a\)</span> є власною індуктивністю якірної обмотки (Гн); <span class="arithmatex">\(i_a(t)\)</span> позначає миттєвий струм якоря (А); <span class="arithmatex">\(e_b(t)\)</span> позначає проти-електрорушійну силу (проти-ЕРС, Back-EMF), яка генерується обмоткою під час її обертання в магнітному полі статора (В).</p>
+<p>Величина проти-ЕРС прямо пропорційна кутовій швидкості обертання вала <span class="arithmatex">\(\omega(t)\)</span>:</p>
+<div class="arithmatex">\[e_b(t) = K_e \cdot \omega(t)\]</div>
+<p>де <span class="arithmatex">\(K_e\)</span> є конструктивним електромагнітним коефіцієнтом проти-ЕРС двигуна (<span class="arithmatex">\(\text{В}\cdot\text{с}/\text{рад}\)</span>), а <span class="arithmatex">\(\omega(t)\)</span> — миттєвою кутовою швидкістю ротора (<span class="arithmatex">\(\text{рад}/\text{с}\)</span>).</p>
+<p>Електромагнітний крутний момент <span class="arithmatex">\(T_e(t)\)</span> (<span class="arithmatex">\(\text{Н}\cdot\text{м}\)</span>), що створюється двигуном, пов'язаний зі струмом якоря лінійною залежністю через коефіцієнт моменту <span class="arithmatex">\(K_t\)</span>:</p>
+<div class="arithmatex">\[T_e(t) = K_t \cdot i_a(t)\]</div>
+<p>Регулювання ефективної напруги на двигуні здійснюється формуванням високочастотної імпульсної послідовності. Середнє значення напруги <span class="arithmatex">\(V_{avg}\)</span>, що діє на обмотку двигуна, визначається шпаруватістю і коефіцієнтом заповнення ШІМ <span class="arithmatex">\(D\)</span>:</p>
+<div class="arithmatex">\[V_{avg} = D \cdot V_{supply} = \frac{t_{on}}{T_{pwm}} \cdot V_{supply}\]</div>
+<p>де <span class="arithmatex">\(V_{supply}\)</span> позначає повну вихідну напругу силового джерела постійного струму (В); <span class="arithmatex">\(t_{on}\)</span> позначає час знаходження імпульсу у високому рівні протягом одного періоду (с); <span class="arithmatex">\(T_{pwm}\)</span> є загальним періодом проходження імпульсів ШІМ (с).</p>
+<p>Для забезпечення двоспрямованого (реверсивного) обертання використовується топологія H-моста, яка складається з чотирьох силових ключів (два верхніх комутатори High-Side і два нижніх Low-Side). У класичному драйвері L298N ключі побудовані на базі біполярних транзисторів, тоді як у сучасних енергоефективних рішеннях (наприклад, TB6612FNG чи DRV8833) використовуються польові MOSFET-транзистори з низьким опором відкритого каналу <span class="arithmatex">\(R_{DS(on)}\)</span>. </p>
+<p>При ввімкненні діагональної пари ключів Q1 (верхній лівий) і Q4 (нижній правий) струм тече крізь двигун в прямому напрямку, зумовлюючи обертання за годинниковою стрілкою. Якщо ввімкнути альтернативну пару Q3 (верхній правий) і Q2 (нижній лівий), полярність прикладеної напруги інвертується, спричиняючи зворотне обертання.</p>
+<p>Найнебезпечнішим аварійним станом схеми H-моста є <strong>наскрізний струм</strong> (<strong>Shoot-Through</strong>), який виникає за одночасного відкриття верхнього і нижнього ключів одного півмоста (наприклад, Q1 і Q2). Цей стан утворює пряме коротке замикання силової шини живлення на землю через відкриті транзистори, що спричиняє тепловий вибух кристала драйвера за лічені мікросекунди. </p>
+<p>Для запобігання цьому явищу апаратні таймери мікроконтролера або внутрішня логіка драйвера забезпечують введення регульованого захисного часового інтервалу, так званого <strong>мертвого часу</strong> (<strong>Dead-Time</strong>), протягом якого обидва ключі півмоста гарантовано утримуються в закритому стані перед відкриттям комплементарного транзистора.</p>
+<blockquote>
+<p><strong>ПРАКТИЧНИЙ ЯКІР:</strong> В автономних мобільних платформах інтралогістики (AGV, Automated Guided Vehicles) використання застарілих біполярних драйверів L298N замість сучасних MOSFET-драйверів TB6612FNG призводить до втрати до <span class="arithmatex">\(25\%\)</span> корисної енергії тягових батарей. Падіння напруги на відкритих біполярних транзисторах Дарлінгтона в L298N становить від <span class="arithmatex">\(1{,}8\)</span> до <span class="arithmatex">\(2{,}2\text{ В}\)</span> на кожному плечі моста (сумарно близько <span class="arithmatex">\(4\text{ В}\)</span> при струмі <span class="arithmatex">\(1{,}5\text{ А}\)</span>), що за робочої напруги батареї <span class="arithmatex">\(12\text{ В}\)</span> перетворює до <span class="arithmatex">\(6\text{ Вт}\)</span> потужності на марне нагрівання навколишнього середовища.</p>
+</blockquote>
+<hr />
+<h3 id="14">1.4. Архітектура та цифрові імпульсні інтерфейси керування приводами прецизійного кутового позиціонування: сервоприводи та крокові двигуни</h3>
+<p>Для реалізації завдань прецизійного просторового переміщення та стабілізації робочих органів (роботизовані маніпулятори, сонячні трекери, замкові механізми, поворотні відеокамери) використовують два взаємодоповнюючі класи приводів: сервоприводи та крокові двигуни.</p>
+<p>Класичний <strong>аналоговий або цифровий RC-сервопривод</strong> являє собою моноблочну електромеханічну систему, що об'єднує електродвигун постійного струму, понижувальний редуктор, резистивний потенціометр (або магнітний енкодер на ефекті Холла) як датчик зворотного зв'язку за кутом, та інтегрований аналоговий або мікроконтролерний ПІД-регулятор положення. </p>
+<p>Інтерфейс керування сервоприводом базується на спеціалізованому імпульсному протоколі з періодом повторення <span class="arithmatex">\(T = 20\text{ мс}\)</span> (частота оновлення кадрів становить <span class="arithmatex">\(50\text{ Гц}\)</span>). Кутове положення вала кодується не відносною шпаруватістю, а абсолютною тривалістю позитивного імпульсу <span class="arithmatex">\(t_{pulse}\)</span>, яка варіюється в діапазоні від <span class="arithmatex">\(1{,}0\text{ мс}\)</span> до <span class="arithmatex">\(2{,}0\text{ мс}\)</span>. </p>
+<p>Зв'язок кута повороту <span class="arithmatex">\(\theta\)</span> вихідного вала сервопривода з тривалістю імпульсу керування описується лінійною кусочною залежністю:</p>
+<div class="arithmatex">\[\theta(t_{pulse}) = \begin{cases} 0^\circ, &amp; t_{pulse} \le 1{,}0\text{ мс} \\ 180^\circ \cdot \left(\frac{t_{pulse} - 1{,}0}{1{,}0}\right), &amp; 1{,}0\text{ мс} \lt  t_{pulse} \lt  2{,}0\text{ мс} \\ 180^\circ, &amp; t_{pulse} \ge 2{,}0\text{ мс} \end{cases}\]</div>
+<p>де <span class="arithmatex">\(\theta\)</span> позначає кут повороту вихідного вала сервопривода у градусах (<span class="arithmatex">\(^\circ\)</span>), а <span class="arithmatex">\(t_{pulse}\)</span> є абсолютною тривалістю позитивного командного імпульсу, вираженою в мілісекундах (мс). Тривалість імпульсу <span class="arithmatex">\(1{,}5\text{ мс}\)</span> встановлює сервопривод у нейтральне серединне положення <span class="arithmatex">\(\theta = 90^\circ\)</span>. Внутрішній контролер сервопривода безперервно порівнює напругу зворотного зв'язку з потенціометра з напругою завдання, сформованою інтегратором імпульсу керування, забезпечуючи утримання вала у заданій точці завдяки відпрацюванню сигналу помилки.</p>
+<p>На відміну від сервоприводів, які працюють у замкненому контурі, <strong>кроковий двигун</strong> (наприклад, 4-фазний уніполярний двигун 28BYJ-48 з редуктором) здійснює дискретне кутове переміщення у розімкненому контурі без використання датчиків зворотного зв'язку. Ротор крокового двигуна складається з багатополюсного постійного магніту, а статор містить кілька незалежних обмоток. Послідовна подача струму в фази статора змінює просторову конфігурацію магнітного поля, змушуючи зубці ротора вирівнюватися вздовж силових ліній магнітної індукції.</p>
+<p>Кутовий крок ротора <span class="arithmatex">\(\theta_{step}\)</span> (у градусах на один крок) визначається фундаментальною формулою:</p>
+<div class="arithmatex">\[\theta_{step} = \frac{360^\circ}{m \cdot N_{phases} \cdot K_{gear}}\]</div>
+<p>де <span class="arithmatex">\(360^\circ\)</span> відповідає повному оберту кола; <span class="arithmatex">\(N_{phases}\)</span> позначає кількість незалежних електричних фаз статора; <span class="arithmatex">\(m\)</span> є коефіцієнтом дроблення кроку (<span class="arithmatex">\(m = 1\)</span> для повнокрокового режиму з почерговою комутацією, <span class="arithmatex">\(m = 2\)</span> для напівкрокового режиму); <span class="arithmatex">\(K_{gear}\)</span> є коефіцієнтом редукції інтегрованого механічного редуктора.</p>
+<p>Для поширеного в навчальних та дослідницьких IoT-проєктах крокового двигуна 28BYJ-48 кількість фаз <span class="arithmatex">\(N_{phases} = 4\)</span>, власний крок ротора становить <span class="arithmatex">\(5{,}625^\circ\)</span> (що відповідає 64 внутрішнім крокам на оберт), а редуктор має номінальне передавальне число <span class="arithmatex">\(K_{gear} = 64\)</span> (у деяких модифікаціях 48:1 або 63.6839:1). За використання напівкрокового алгоритму керування (<span class="arithmatex">\(m = 2\)</span>), що реалізується почерговою комутацією однієї та двох фаз одночасно (таблиця станів 8 тактів), для повного оберту вихідного вала на <span class="arithmatex">\(360^\circ\)</span> необхідно сформувати:</p>
+<div class="arithmatex">\[N_{pulses} = 64 \cdot 64 = 4096\text{ імпульсів}\]</div>
+<p>що забезпечує кутову роздільну здатність <span class="arithmatex">\(\theta_{step} \approx 0{,}08789^\circ\)</span> на один напівкрок. </p>
+<p>Ключовим енергетичним компромісом при виборі між сервоприводом та кроковим двигуном є характер споживання потужності в стані спокою: сервопривод споживає мінімальний струм утримання, коли зовнішній механічний момент на валу відсутній, тоді як кроковий двигун у розімкненому контурі вимагає протікання повного номінального струму крізь обмотки для створення моменту утримання (Holding Torque), інакше ротор зміститься під дією зовнішнього навантаження.</p>
+<hr />
+<h3 id="_4">Вказівки для самостійного осмислення</h3>
+<ol>
+<li>
+<p>Проведіть аналітичний розрахунок теплових втрат на кристалі ключового польового транзистора (MOSFET), що комутує струм обмотки соленоїдного клапана амплітудою <span class="arithmatex">\(I = 2\text{ А}\)</span> за напруги <span class="arithmatex">\(24\text{ В}\)</span>, порівнявши транзистор з опором відкритого каналу <span class="arithmatex">\(R_{DS(on)} = 0{,}02\text{ Ом}\)</span> та застарілий біполярний транзистор Дарлінгтона з напругою насичення колектор-емітер <span class="arithmatex">\(V_{CE(sat)} = 1{,}6\text{ В}\)</span>.</p>
+</li>
+<li>
+<p>Дослідіть схемотехнічні переваги та фізичні обмеження використання оптичної розв'язки типу оптосимістора з функцією Zero-Crossing при комутації реактивних індуктивних навантажень у мережах змінного струму, звернувши увагу на фазовий зсув між струмом і напругою.</p>
+</li>
+<li>
+<p>Проаналізуйте наслідки вибору завищеної або заниженої частоти широтно-імпульсної модуляції (ШІМ) для керування двигуном постійного струму в діапазонах від <span class="arithmatex">\(100\text{ Гц}\)</span> до <span class="arithmatex">\(50\text{ кГц}\)</span>, виділивши акустичні шуми, динамічні втрати на перемикання ключів H-моста та пульсації якірного струму.</p>
+</li>
+</ol>
+<h2 id="2_1">2. Методологія та аналіз граничних умов. Моделювання бюджету живлення, апаратні режими енергозбереження та фізичні обмеження джерел струму</h2>
+<h3 id="21-iot">2.1. Математичне моделювання енергетичного бюджету автономного вузла IoT та розрахунок середньозваженого струму за фазами робочого циклу</h3>
+<p>Проєктування апаратного вузла Інтернету речей із тривалим терміном автономного функціонування вимагає переходу від емпіричних оцінок ємності джерел живлення до строгого математичного моделювання енергетичного балансу. Більшість польових пристроїв працює за циклічним принципом, чергуючи короткі інтервали активної обробки і радіопередачі з тривалими інтервалами глибокого сну. Для коректного визначення витрати енергії робочий цикл вузла розбивається на скінченну кількість квазістаціонарних фаз, на кожній з яких струм споживання вважається постійним або апроксимується його середньоінтегральне значення.</p>
+<p>Формалізація розрахунку сумарного енергетичного бюджету та прогнозованого терміну експлуатації автономного пристрою реалізується за наступним аналітичним алгоритмом:</p>
+<div class="arithmatex">\[
+\begin{aligned}
+\text{Крок 1 (Часова декомпозиція періоду):} &amp; \quad T_{cycle} = \sum_{k=1}^{N} t_k = t_{wake} + t_{meas} + t_{proc} + t_{tx} + t_{rx} + t_{sleep} \\
+\text{Крок 2 (Інтегрування спожитого заряду):} &amp; \quad Q_{cycle} = \sum_{k=1}^{N} \int_{0}^{t_k} i_k(t) \, dt \approx \sum_{k=1}^{N} I_k \cdot t_k \\
+\text{Крок 3 (Середньозважений струм циклу):} &amp; \quad I_{avg} = \frac{Q_{cycle}}{T_{cycle}} = \frac{1}{T_{cycle}} \sum_{k=1}^{N} I_k \cdot t_k \\
+\text{Крок 4 (Ефективна ємність джерела):} &amp; \quad C_{eff} = C_{nom} \cdot K_{temp}(T) \cdot K_{load}(I_{peak}) \cdot \left(1 - \frac{S_{annual} \cdot L_{years}}{100}\right) \\
+\text{Крок 5 (Прогнозований життєвий цикл):} &amp; \quad L_{hours} = \frac{C_{eff} \cdot \eta_{conv}}{I_{avg} + I_{leak}} \implies L_{years} = \frac{L_{hours}}{8760}
+\end{aligned}
+\]</div>
+<p>У наведеній математичній моделі часові інтервали <span class="arithmatex">\(t_{wake}\)</span>, <span class="arithmatex">\(t_{meas}\)</span>, <span class="arithmatex">\(t_{proc}\)</span>, <span class="arithmatex">\(t_{tx}\)</span>, <span class="arithmatex">\(t_{rx}\)</span> та <span class="arithmatex">\(t_{sleep}\)</span> позначають тривалості переходу системи в активний стан, опитування сенсорів, обчислювальної обробки, передачі радіокадру, прийому підтвердження та перебування в режимі енергозбереження відповідно, виміряні в секундах. Величини <span class="arithmatex">\(I_k\)</span> відображають середні струми споживання на кожному з <span class="arithmatex">\(N\)</span> етапів циклу в амперах. Значення <span class="arithmatex">\(C_{nom}\)</span> визначає паспортну номінальну ємність хімічного джерела живлення в ампер-годинах, яка коригується безрозмірними коефіцієнтами впливу температури експлуатації <span class="arithmatex">\(K_{temp}(T)\)</span> та амплітуди імпульсного струму <span class="arithmatex">\(K_{load}(I_{peak})\)</span>. Параметр <span class="arithmatex">\(S_{annual}\)</span> задає відсоток річного саморозряду батареї, <span class="arithmatex">\(L_{years}\)</span> є тривалістю експлуатації пристрою в роках, <span class="arithmatex">\(\eta_{conv}\)</span> відображає усереднений коефіцієнт корисної дії імпульсних або лінійних перетворювачів напруги живлення, а <span class="arithmatex">\(I_{leak}\)</span> враховує паразитичні струми витоку друкованої плати, розв'язувальних конденсаторів і захисних компонентів.</p>
+<p>Аналіз граничних умов показує, що дана розрахункова модель втрачає адекватність у випадках, коли внутрішній опір джерела живлення зростає настільки, що імпульсний струм <span class="arithmatex">\(I_{tx}\)</span> викликає падіння напруги нижче мінімального порогу працездатності стабілізаторів. Крім того, лінійне наближення споживаного заряду <span class="arithmatex">\(Q_{cycle}\)</span> стає непридатним в умовах нестабільного бездротового каналу зв'язку, де кількість повторних спроб передачі кадру (Retransmissions) є стохастичною величиною, яка може збільшувати енергоспоживання активної фази на сотні відсотків.</p>
+<hr />
+<h3 id="22">2.2. Електрохімічні характеристики первинних батарей, суперконденсаторів та технології збору розсіяної енергії навколишнього середовища</h3>
+<p>Вибір джерела струму для автономного вузла визначається компромісом між питомою щільністю енергії, здатністю віддавати високі імпульсні струми та стабільністю вихідної напруги за різних температурних режимів. Традиційні лужні (Alkaline) елементи мають значний внутрішній опір і високий саморозряд за низьких температур, що обмежує термін їхньої служби в польових умовах двома-трьома роками. Натомість літій-тіонілхлоридні елементи (<span class="arithmatex">\(\text{Li-SOCl}_2\)</span>) забезпечують питому щільність енергії до <span class="arithmatex">\(650\text{ Вт}\cdot\text{год}/\text{кг}\)</span> та мінімальний саморозряд на рівні менше одного відсотка на рік, що теоретично дозволяє створювати пристрої з автономністю понад десять років.</p>
+<p>Головним фізичним бар'єром під час експлуатації <span class="arithmatex">\(\text{Li-SOCl}_2\)</span> елементів є <strong>ефект пасивації</strong>, який полягає в наростанні кристалічної плівки хлориду літію (<span class="arithmatex">\(\text{LiCl}\)</span>) на поверхні металевого літієвого анода за відсутності струму навантаження. Ця плівка захищає батарею від саморозряду, проте володіє високим електричним опором. Якщо пристрій тривалий час перебуває в режимі глибокого сну зі споживанням декілька мікроамперів, спроба раптового переходу в режим радіопередачі зі струмом сотні міліамперів призводить до глибокого динамічного провалу напруги (Voltage Delay), що здатне спровокувати аварійний перезапуск мікроконтролера.</p>
+<pre class="mermaid"><code>sequenceDiagram
+    autonumber
+    participant Battery as Хімічне джерело (Li-SOCl2)
+    participant Cap as Буферний суперконденсатор
+    participant PMU as Контролер живлення (PMU / LDO)
+    participant MCU as Ядро мікроконтролера
+    participant RF as Радіотрансивер (Wi-Fi / LoRa)
+
+    Note over Battery,Cap: Фаза пасивного заряду буфера струмом витоку
+    Battery-&gt;&gt;Cap: Повільний заряд малим струмом (I &lt; 2 мА)
+
+    Note over MCU: Завершення тайм-ауту сну RTC
+    MCU-&gt;&gt;PMU: Сигнал переходу в Active Mode
+    PMU-&gt;&gt;MCU: Стабілізована напруга 3.3V
+    MCU-&gt;&gt;MCU: Ініціалізація та опитування сенсорів
+
+    Note over MCU,RF: Фаза високого імпульсного струму (TX)
+    MCU-&gt;&gt;RF: Команда передачі пакету даних
+    Cap--&gt;&gt;RF: Віддача основного імпульсного струму (I_peak до 300 мА)
+    Battery-&gt;&gt;Cap: Підживлення обмеженим струмом розряду
+    RF--&gt;&gt;MCU: Підтвердження завершення передачі
+
+    MCU-&gt;&gt;PMU: Переведення шин у стан високого імпедансу
+    MCU-&gt;&gt;MCU: Команда запуску режиму Deep Sleep
+    Note over Battery,Cap: Відновлення заряду суперконденсатора</code></pre>
+<p>Діаграма взаємодії демонструє процес розподілу пікового навантаження між батареєю та паралельно підключеним суперконденсатором. Завдяки високій швидкості віддачі заряду конденсатор повністю бере на себе забезпечення струму передавача, нівелюючи внутрішній опір хімічного елемента та запобігаючи просіданню напруги живлення.</p>
+<p>Як альтернативу або доповнення до первинних джерел використовують системи збору розсіяної енергії навколишнього середовища (<strong>Energy Harvesting</strong>). Фотоелектричні кремнієві перетворювачі оптимізовані під спектр сонячного випромінювання (щільність потужності до <span class="arithmatex">\(100\text{ мВт}/\text{см}^2\)</span> на вулиці і менше <span class="arithmatex">\(100\text{ мкВт}/\text{см}^2\)</span> у приміщенні). Термоелектричні генератори на базі ефекту Зеєбека виробляють напругу за наявності стабільного градієнта температур між об'єктом і навколишнім середовищем. П'єзоелектричні модулі перетворюють механічну вібрацію технологічного обладнання в змінний електричний струм.</p>
+<p>Енергетичний баланс вузла з регенерацією енергії визначається нерівністю:</p>
+<div class="arithmatex">\[P_{in}(t) \cdot \eta_{boost} \ge P_{load}(t) + P_{leak}\]</div>
+<p>де <span class="arithmatex">\(P_{in}(t)\)</span> є миттєвою потужністю, зібраною фізичним перетворювачем (Вт); <span class="arithmatex">\(\eta_{boost}\)</span> позначає коефіцієнт корисної дії підвищувального імпульсного перетворювача з функцією відстеження точки максимальної потужності (MPPT); <span class="arithmatex">\(P_{load}(t)\)</span> є потужністю, споживаною навантаженням; <span class="arithmatex">\(P_{leak}\)</span> визначає сумарні втрати енергії в елементах накопичення (суперконденсаторах або тонкоплівкових твердотільних акумуляторах).</p>
+<blockquote>
+<p><strong>ВАЖЛИВО:</strong> Для забезпечення надійної депасивації літій-тіонілхлоридних елементів живлення в мікропрограму вузла обов'язково інтегрують алгоритм періодичного контрольного навантаження. Контролер за допомогою окремого транзистора періодично підключає прецизійний баластний резистор, створюючи нормований імпульс струму амплітудою <span class="arithmatex">\(20\dots 40\text{ мА}\)</span> тривалістю декілька мілісекунд, що підтримує товщину пасиваційного шару в безпечних межах і гарантує безаварійну роботу бездротового модуля.</p>
+</blockquote>
+<hr />
+<h3 id="23-active-mode-modem-sleep-light-sleep-deep-sleep-hibernation">2.3. Апаратне керування доменами живлення мікроконтролерів: системні стани Active Mode, Modem Sleep, Light Sleep, Deep Sleep та Hibernation</h3>
+<p>Зниження енергоспоживання сучасних систем на кристалі базується на розбитті структури процесора на фізично ізольовані домени живлення та застосуванні динамічного керування тактовими генераторами. У мікроконтролерах із комбінованою радіосистемою, зокрема в родині ESP32, реалізовано незалежне апаратне керування основними ядрами, радіочастотним трактом, цифровою периферією та доменом годинника реального часу (<strong>RTC Power Domain</strong>).</p>
+<p>Математичний аналіз потужності, що споживається цифровим КМОН-процесором, виділяє дві ключові компоненти: динамічну потужність перемикання вентилів та статичну потужність витоків:</p>
+<div class="arithmatex">\[P_{total} = P_{dyn} + P_{stat} = C_{load} \cdot V_{dd}^2 \cdot f_{clk} + V_{dd} \cdot I_{leak}\]</div>
+<p>де <span class="arithmatex">\(C_{load}\)</span> позначає сумарну еквівалентну ємність перемикання цифрових логічних елементів кристала (Ф); <span class="arithmatex">\(V_{dd}\)</span> є напругою живлення цифрового ядра процесора (В); <span class="arithmatex">\(f_{clk}\)</span> позначає робочу тактову частоту системи (Гц); <span class="arithmatex">\(I_{leak}\)</span> є струмом витоку закритих напівпровідникових структур (А).</p>
+<p>Вплив кожного системного стану на змінні даного рівняння має чітко виражену апаратну специфіку:</p>
+<p>У стані <strong>Active Mode</strong> всі внутрішні стабілізатори ввімкнені, частота <span class="arithmatex">\(f_{clk}\)</span> досягає максимальних значень (до <span class="arithmatex">\(240\text{ МГц}\)</span>), а радіотракт Wi-Fi/Bluetooth бере участь у прийомі або передачі кадрів. Струм споживання сягає <span class="arithmatex">\(160\dots 260\text{ мА}\)</span>.</p>
+<p>У стані <strong>Modem Sleep</strong> тактування ядер процесора зберігається, проте апаратні блоки фазового автопідлаштування частоти (PLL) радіочастотного тракту та підсилювачі потужності вимикаються. Використовуючи механізм асоціації з точкою доступу за розкладом DTIM (Delivery Traffic Indication Message), система знижує споживання до <span class="arithmatex">\(20\dots 30\text{ мА}\)</span>, зберігаючи повну готовність процесора до обчислень.</p>
+<p>У стані <strong>Light Sleep</strong> активується механізм блокування тактових імпульсів (<strong>Clock Gating</strong>). Основні цифрові ядра Xtensa знеструмлюються за тактовим сигналом, але напруга на шинах оперативної пам'яті зберігається на рівні утримання даних. Струм знижується до <span class="arithmatex">\(0{,}8\text{ мА}\)</span>, а вихід у стан виконання інструкцій займає менше однієї мілісекунди.</p>
+<p>У стані <strong>Deep Sleep</strong> реалізується повне апаратне відключення живлення (<strong>Power Gating</strong>) високопродуктивного цифрового домену. Центральні процесори, статична оперативна пам'ять DRAM та стандартна периферія знеструмлюються повністю. Активним залишається лише домен RTC, де функціонує енергоефективний співпроцесор, пам'ять повільних змінних обсягом вісім кілобайт та таймер. Струм споживання зменшується до <span class="arithmatex">\(5\dots 10\text{ мкА}\)</span>.</p>
+<p>У стані <strong>Hibernation</strong> живлення знімається навіть з пам'яті RTC, а функціонувати продовжує лише апаратний тактовий лічильник, підключений до зовнішнього резонатора <span class="arithmatex">\(32{,}768\text{ кГц}\)</span>. Струм споживання кристала знижується до рекордних <span class="arithmatex">\(2{,}5\text{ мкА}\)</span>, проте система повністю втрачає збережений контекст програми.</p>
+<hr />
+<h3 id="24">2.4. Програмна конфігурація внутрішніх і зовнішніх джерел пробудження через таймери реального часу, матричні переривання та мікропотужні співпроцесори</h3>
+<p>Організація алгоритму функціонування вузла в режимі Deep Sleep вимагає попередньої конфігурації умов, за яких контролер живлення RTC подасть команду на відновлення напруги ядра. Якщо відповідні джерела пробудження не налаштовані, мікроконтролер переходить у незворотний стан блокування, з якого вихід можливий виключно через апаратне скидання лінії Reset або зняття живлення.</p>
+<p>Основними джерелами виходу з енергозберігаючих режимів є наступні системні механізми:</p>
+<p>Таймер реального часу RTC дозволяє налаштовувати пробудження через заданий часовий інтервал із роздільною здатністю в одну мікросекунду. Для реалізації цього механізму викликається функція низькорівневого драйвера живлення:</p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">esp_sleep_enable_timer_wakeup</span><span class="p">(</span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">time_in_us</span><span class="p">);</span>
+</span></code></pre></div>
+<p>Даний спосіб є базовим для періодичних систем вимірювання кліматичних та технологічних параметрів.</p>
+<p>Зовнішнє переривання за одним виводом (<strong>EXT0</strong>) базується на відстеженні статичного логічного рівня (HIGH або LOW) на одному з виділених виводів RTC GPIO. Механізм оперує внутрішнім аналоговим компаратором домену RTC, тому він продовжує функціонувати навіть при знеструмленні цифрових портів введення-виведення.</p>
+<p>Зовнішнє матричне переривання за групою виводів (<strong>EXT1</strong>) забезпечує моніторинг множини ліній RTC GPIO з використанням логічної бітової маски. Функція конфігурації приймає як аргументи шістдесятичотирибітну маску виводів та логічний режим селекції:</p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">esp_sleep_enable_ext1_wakeup</span><span class="p">(</span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">mask</span><span class="p">,</span><span class="w"> </span><span class="n">esp_sleep_ext1_wakeup_mode_t</span><span class="w"> </span><span class="n">mode</span><span class="p">);</span>
+</span></code></pre></div>
+<p>Режим <code>ESP_EXT1_WAKEUP_ANY_HIGH</code> активує пробудження за логічною операцією «АБО» (достатньо спрацьовування будь-якого одного датчика з групи), тоді як режим <code>ESP_EXT1_WAKEUP_ALL_LOW</code> вимагає переходу всіх обраних ліній у стан логічного нуля, що застосовується в промислових контурах контролю захисних бар'єрів та аварійних петель.</p>
+<p>Найвищий рівень гнучкості забезпечує застосування вбудованого мікропотужного співпроцесора (<strong>ULP-coprocessor</strong>). Співпроцесор базується на архітектурі FSM (скінченного автомата) або компактного ядра RISC-V, функціонуючи на низькій тактовій частоті від внутрішнього генератора <span class="arithmatex">\(8\text{ МГц}\)</span> і споживаючи менше <span class="arithmatex">\(150\text{ мкА}\)</span>. Співпроцесор має прямий доступ до регістрів вбудованого аналогово-цифрового перетворювача (АЦП), контролера шини I2C і ліній RTC GPIO. Він здатний самостійно здійснювати опитування зовнішніх сенсорів, проводити первинну фільтрацію результатів вимірювань і накопичувати їх у пам'яті RTC Slow Memory, не пробуджуючи основні енергоємні ядра процесора. Сигнал на запуск головних обчислювальних ядер формується співпроцесором лише в тому випадку, коли виміряне значення виходить за межі встановленого програмного вікна допуску.</p>
+<p>Дані, які повинні бути збережені між циклами глибокого сну, маркуються атрибутом <code>RTC_DATA_ATTR</code>, що розміщує їх у повільній пам'яті RTC Slow SRAM. Усі стандартні статичні та глобальні змінні, розташовані в основній пам'яті SRAM, після пробудження скидаються до початкових значень, оскільки вихід із стану Deep Sleep ініціює апаратний цикл скидання процесора через виконання базового системного завантажувача.</p>
+<blockquote>
+<p><strong>ПРАКТИЧНИЙ ЯКІР:</strong> У системах георозподіленого моніторингу витоків на магістральних газопроводах застосовують вузли з мікроконтролерами, де співпроцесор ULP виконує циклічне опитування тензометричного датчика тиску через АЦП кожні <span class="arithmatex">\(100\text{ мс}\)</span>. Протягом дев'яноста дев'яти відсотків часу тиск залишається в межах технологічної норми, тому основні ядра мікроконтролера та радіомодем місяцями перебувають у глибокому сні, що забезпечує зниження середньодобового споживання системи з <span class="arithmatex">\(80\text{ мА}\)</span> до <span class="arithmatex">\(18\text{ мкА}\)</span>.</p>
+</blockquote>
+<hr />
+<h3 id="25-brownout-reset">2.5. Критичні бар'єри та граничні умови: динамічне падіння напруги в імпульсних режимах радіопередачі, деградація внутрішнього опору батареї та запобігання аварійним перезавантаженням Brownout Reset</h3>
+<p>Критичним бар'єром для надійної експлуатації автономних пристроїв є неузгодженість імпульсних характеристик споживання цифрових радіомодемів із внутрішніми характеристиками джерел струму. У момент активації підсилювача потужності трансивера Wi-Fi (стандарт IEEE 802.11 b/g/n) струм навантаження зростає стрибкоподібно від декількох мікроамперів до <span class="arithmatex">\(250\dots 350\text{ мА}\)</span> за час, що не перевищує кількох мікросекунд. </p>
+<p>Згідно з другим законом Кірхгофа, напруга на клемах живлення вузла під час імпульсу описується виразом:</p>
+<div class="arithmatex">\[V_{term}(t) = V_{ocv}(DoD, T) - I_{tx}(t) \cdot R_{int}(DoD, T) - L_{trace} \cdot \frac{di_{tx}(t)}{dt}\]</div>
+<p>де <span class="arithmatex">\(V_{ocv}\)</span> позначає напругу розімкненого кола джерела живлення (Open Circuit Voltage), яка є нелінійною функцією ступеня розряду батареї (<span class="arithmatex">\(DoD\)</span>, Depth of Discharge) та її поточної температури <span class="arithmatex">\(T\)</span> (В); <span class="arithmatex">\(I_{tx}(t)\)</span> є амплітудою струму радіовипромінювання (А); <span class="arithmatex">\(R_{int}\)</span> позначає еквівалентний послідовний внутрішній опір хімічного елемента (Ом); <span class="arithmatex">\(L_{trace}\)</span> є розподіленою індуктивністю провідників друкованої плати та контактів роз'ємів (Гн).</p>
+<p>У разі зниження температури навколишнього середовища до від'ємних значень (наприклад, <span class="arithmatex">\(-20^\circ\text{C}\)</span>) внутрішній опір літієвих батарей може зростати в п'ять-десять разів унаслідок сповільнення рухливості іонів в електроліті. </p>
+<p>Якщо напруга на клемах падає нижче критичного порогу апаратного детектора зниження напруги:</p>
+<div class="arithmatex">\[V_{term}(t) \le V_{bor\_threshold} \approx 2{,}5\dots 2{,}7\text{ В}\]</div>
+<p>спрацьовує вбудована схема захисту <strong>Brownout Reset (BOR)</strong>. Схема примусово скидає процесор у стан перезавантаження. Після зняття навантаження напруга на клемах батареї миттєво відновлюється до номінальної, мікроконтролер знову починає виконання програми, повторно намагається активувати радіомодуль, знову викликає просідання напруги та потрапляє у нескінченний циклічний процес перезавантаження (<strong>Bootloop</strong>), який повністю виснажує залишок заряду батареї за лічені години.</p>
+<p>Для усунення цієї проблеми між виходом джерела живлення та входом схеми встановлюють буферний накопичувальний конденсатор (танталовий або суперконденсатор із наднизьким еквівалентним послідовним опором ESR). </p>
+<p>Мінімально необхідна ємність буферного конденсатора розраховується на основі балансу заряду за час тривалості імпульсу передачі:</p>
+<div class="arithmatex">\[C_{buf} \ge \frac{\left(I_{tx} - I_{bat\_max}\right) \cdot \Delta t_{tx}}{\Delta V_{allowed}}\]</div>
+<p>де <span class="arithmatex">\(I_{tx}\)</span> позначає струм споживання підсилювача потужності (А); <span class="arithmatex">\(I_{bat\_max}\)</span> є гранично допустимим безпечним струмом розряду батареї, за якого напруга не просідає нижче допустимого порогу (А); <span class="arithmatex">\(\Delta t_{tx}\)</span> позначає часову тривалість пакета радіопередачі (с); <span class="arithmatex">\(\Delta V_{allowed} = V_{nominal} - V_{bor\_threshold}\)</span> визначає максимально допустиму амплітуду просідання напруги на шині живлення до моменту спрацьовування апаратного захисту BOR (В).</p>
+<p>Порівняльний інженерний аналіз методологій керування енергоспоживанням та архітектур систем зберігання енергії наведено в аналітичній матриці в таблиці 2.</p>
+<p><em>Таблиця 2 — Аналітична матриця порівняння методів оптимізації енергоспоживання вузлів IoT</em></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Метод оптимізації / Архітектура</th>
+<th style="text-align: left;">Механізм реалізації</th>
+<th style="text-align: left;">Енергетична ефективність</th>
+<th style="text-align: left;">Складність впровадження</th>
+<th style="text-align: left;">Критичні ризики / Обмеження</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Duty Cycling через таймер RTC</strong></td>
+<td style="text-align: left;">Повний перехід процесора у Deep Sleep із відліком інтервалів апаратним лічильником</td>
+<td style="text-align: left;">Зниження середнього струму на <span class="arithmatex">\(95\dots 99\%\)</span> при тривалих періодах сну</td>
+<td style="text-align: left;">Низька (базова підтримка в операційних системах реального часу)</td>
+<td style="text-align: left;">Повна нездатність реагувати на непередбачувані аварійні події у проміжках між пробудженнями</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Асинхронний моніторинг через ULP</strong></td>
+<td style="text-align: left;">Безперервне сканування сенсорів мікропотужним співпроцесором за сплячих основних ядер</td>
+<td style="text-align: left;">Дозволяє скоротити час активного стану ядер на <span class="arithmatex">\(90\%\)</span> у слабко змінних середовищах</td>
+<td style="text-align: left;">Висока (необхідність програмування на специфічному асемблері або діалектах C)</td>
+<td style="text-align: left;">Жорсткі обмеження за доступним обсягом пам'яті програм і відсутність підтримки обчислень із рухомою комою</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Буферизація суперконденсатором (HLC)</strong></td>
+<td style="text-align: left;">Паралельне підключення гібридного конденсатора до хімічного елемента</td>
+<td style="text-align: left;">Збільшення віддаваної імпульсної потужності в <span class="arithmatex">\(10\dots 50\)</span> разів</td>
+<td style="text-align: left;">Середня (вимагає прецизійного розрахунку паразитних опорів ESR та витоків)</td>
+<td style="text-align: left;">Значний власний струм витоку конденсатора, що перевищує струм сну мікроконтролера за високих температур</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Енергетичний збір (Solar Harvesting)</strong></td>
+<td style="text-align: left;">Застосування сонячної панелі з контролером заряду за алгоритмом MPPT</td>
+<td style="text-align: left;">Потенційно нескінченний життєвий цикл вузла без заміни батарей</td>
+<td style="text-align: left;">Висока (багатокаскадна схемотехніка перетворення та погодження рівнів)</td>
+<td style="text-align: left;">Критична залежність від погодних умов, сезону, деградація поверхні фотоелементів</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Динамічне масштабування частоти (DFS)</strong></td>
+<td style="text-align: left;">Програмне зниження тактової частоти ядра під час виконання некритичних задач</td>
+<td style="text-align: left;">Зниження динамічного струму ядра на <span class="arithmatex">\(50\dots 70\%\)</span> відповідно до закону <span class="arithmatex">\(P \sim f\)</span></td>
+<td style="text-align: left;">Низька (підтримується стандартними API викликами ОС)</td>
+<td style="text-align: left;">Збільшення сумарного часу виконання інструкцій, що може нівелювати виграш у енергії (Race-to-Sleep)</td>
+</tr>
+</tbody>
+</table>
+<p>Аналіз даних матриці свідчить про те, що найвищу автономність гарантує комбінований підхід, який поєднує глибокий сон із буферизацією імпульсного навантаження та селективним пробудженням системи лише за фактом реєстрації події.</p>
+<blockquote>
+<p><strong>КОНТРОЛЬНЕ ПИТАННЯ:</strong> Автономний пристрій моніторингу температури з передавачем LoRaWAN живиться від літієвої батареї з напругою розімкненого кола <span class="arithmatex">\(V_{ocv} = 3{,}6\text{ В}\)</span> та внутрішнім опором <span class="arithmatex">\(R_{int} = 3{,}5\text{ Ом}\)</span>. Під час передачі кадру тривалістю <span class="arithmatex">\(\Delta t = 80\text{ мс}\)</span> передавач споживає постійний струм <span class="arithmatex">\(I_{tx} = 120\text{ мА}\)</span>. Поріг спрацьовування захисту Brownout Reset мікроконтролера становить <span class="arithmatex">\(V_{bor} = 2{,}7\text{ В}\)</span>, а власний струм споживання ядра в сні дорівнює <span class="arithmatex">\(10\text{ мкА}\)</span>. Обчисліть, чи станеться аварійне перезавантаження вузла при охолодженні батареї до <span class="arithmatex">\(-30^\circ\text{C}\)</span>, якщо відомо, що її внутрішній опір зростає втричі, а напруга розімкненого кола знижується до <span class="arithmatex">\(3{,}1\text{ В}\)</span>, та визначте мінімальну ємність додаткового конденсатора для запобігання цій аварії.</p>
+</blockquote>
+<details class="note">
+<summary>Розгорнути аналіз / відповідь</summary>
+<p><strong>Правильний варіант: Аварійне перезавантаження відбудеться (<span class="arithmatex">\(V_{term} = 1{,}84\text{ В} &lt; 2{,}7\text{ В}\)</span>); мінімальна необхідна ємність буферного конденсатора становить <span class="arithmatex">\(C_{buf} \approx 19{,}35\text{ мФ}\)</span> (за умови обмеження батарейного струму) або <span class="arithmatex">\(24\text{ мФ}\)</span> без додаткового струмообмеження.</strong></p>
+<ol>
+<li>
+<p>Поетапний аналітичний розрахунок:</p>
+</li>
+<li>
+<p>Визначаємо параметри джерела при температурі <span class="arithmatex">\(-30^\circ\text{C}\)</span>: напруга розімкненого кола становить <span class="arithmatex">\(V_{ocv\_cold} = 3{,}1\text{ В}\)</span>, а внутрішній опір зростає до <span class="arithmatex">\(R_{int\_cold} = 3{,}5 \cdot 3 = 10{,}5\text{ Ом}\)</span>.</p>
+</li>
+<li>
+<p>Розраховуємо просідання напруги на клемах без буферного конденсатора за формулою Ома для повного кола:
+     $<span class="arithmatex">\(V_{term} = V_{ocv\_cold} - I_{tx} \cdot R_{int\_cold} = 3{,}1\text{ В} - (0{,}12\text{ А} \cdot 10{,}5\text{ Ом}) = 3{,}1\text{ В} - 1{,}26\text{ В} = 1{,}84\text{ В}\)</span>$</p>
+</li>
+<li>
+<p>Порівнюємо отримане значення з порогом Brownout Reset: оскільки <span class="arithmatex">\(1{,}84\text{ В} &lt; 2{,}7\text{ В}\)</span>, напруга живлення падає значно нижче критичного рівня, що неминуче спричинить аварійне перезавантаження процесора в момент активації радіотракту.</p>
+</li>
+<li>
+<p>Визначаємо максимально допустимий струм, який може безпечно віддавати дана батарея без падіння нижче <span class="arithmatex">\(V_{bor} = 2{,}7\text{ В}\)</span>:
+     $<span class="arithmatex">\(I_{bat\_max} = \frac{V_{ocv\_cold} - V_{bor}}{R_{int\_cold}} = \frac{3{,}1\text{ В} - 2{,}7\text{ В}}{10{,}5\text{ Ом}} = \frac{0{,}4\text{ В}}{10{,}5\text{ Ом}} \approx 0{,}0381\text{ А} = 38{,}1\text{ мА}\)</span>$</p>
+</li>
+<li>
+<p>Різницю струму <span class="arithmatex">\(\Delta I = I_{tx} - I_{bat\_max} = 120\text{ мА} - 38{,}1\text{ мА} = 81{,}9\text{ мА}\)</span> зобов'язаний надати буферний конденсатор протягом усього часу передачі <span class="arithmatex">\(\Delta t = 80\text{ мс} = 0{,}08\text{ с}\)</span>.</p>
+</li>
+<li>
+<p>Допустиме падіння напруги на конденсаторі становить <span class="arithmatex">\(\Delta V_{allowed} = 3{,}1\text{ В} - 2{,}7\text{ В} = 0{,}4\text{ В}\)</span>.</p>
+</li>
+<li>
+<p>Розраховуємо мінімальну ємність накопичувача:
+     $<span class="arithmatex">\(C_{buf} \ge \frac{\Delta I \cdot \Delta t}{\Delta V_{allowed}} = \frac{0{,}0819\text{ А} \cdot 0{,}08\text{ с}}{0{,}4\text{ В}} = \frac{0{,}006552}{0{,}4} = 0{,}01638\text{ Ф} \approx 16{,}38\text{ мФ}\)</span>$</p>
+</li>
+<li>
+<p>Із урахуванням інженерного запасу <span class="arithmatex">\(20\%\)</span> на деградацію ємності при низькій температурі та ESR конденсатора мінімальна рекомендована ємність становить <span class="arithmatex">\(C_{buf} \approx 19{,}6\dots 24\text{ мФ}\)</span>.</p>
+</li>
+<li>
+<p>Аналіз дистракторів:</p>
+</li>
+<li>
+<p>Твердження про те, що система не перезавантажиться, оскільки імпульс триває всього <span class="arithmatex">\(80\text{ мс}\)</span>, є технічно неграмотним: апаратні компаратори Brownout Reset спрацьовують за час порядка <span class="arithmatex">\(1\dots 5\text{ мкс}\)</span>, тому тривалості <span class="arithmatex">\(80\text{ мс}\)</span> більш ніж достатньо для гарантованого скидання процесора.</p>
+</li>
+<li>
+<p>Спроба вирішити проблему встановленням стандартного керамічного конденсатора номіналом <span class="arithmatex">\(100\text{ мкФ}\)</span> є помилковою, оскільки накопиченого в ньому заряду <span class="arithmatex">\(Q = C \cdot \Delta V = 100\cdot 10^{-6} \cdot 0{,}4 = 40\text{ мкКл}\)</span> вистачить на живлення передавача лише протягом <span class="arithmatex">\(t = \frac{Q}{I} = \frac{40\cdot 10^{-6}}{0{,}0819} \approx 0{,}49\text{ мс}\)</span>, після чого відбудеться перезавантаження.</p>
+</li>
+</ol>
+</details>
+<h2 id="3_1">3. Практичний індустріальний / фаховий кейс. Інженерне проектування та оптимізація автономного приводу запірної арматури</h2>
+<h3 id="31">3.1. Комплексний фаховий кейс. Проєктування автономного бездротового вузла керування запірним клапаном магістрального нафтопроводу</h3>
+<h4 id="_5">Постановка задачі / ситуації</h4>
+<p>У межах модернізації розподіленої інфраструктури магістрального нафтопроводу виникла виробнича необхідність автоматизації віддаленого секційного запірного вузла, розташованого на відстані понад <span class="arithmatex">\(40\text{ км}\)</span> від найближчої стаціонарної електричної підстанції. Технологічний регламент вимагає забезпечення безперервного телеметричного контролю тиску в магістралі, передачі даних у диспетчерський центр через бездротовий зв'язок LoRaWAN, а також здійснення гарантованого дистанційного перекриття потоку за допомогою електромеханічного приводу кульового крана в разі виникнення аварійної депресії тиску або за прямою командою оператора. </p>
+<p>Головним технічним викликом є забезпечення тривалої автономної експлуатації комплексу терміном не менше п'яти років від автономного джерела живлення в умовах різких сезонних коливань температури навколишнього середовища. Оскільки електродвигун запірного клапана споживає значний струм у режимі пуску та повороту заслінки, пряме підключення до хімічного джерела є неможливим через високий внутрішній опір первинних батарей за від'ємних температур, що вимагає впровадження комбінованої системи живлення з буферизацією пікової потужності та глибокої оптимізації алгоритмів енергозбереження керуючого контролера.</p>
+<p>Параметри технологічного процесу, схемотехнічні обмеження та характеристики використовуваних компонентів зведено в таблицю 2.</p>
+<p><em>Таблиця 2 — Вихідні параметри та граничні вимоги до проєкту автономного вузла керування</em></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Параметр</th>
+<th style="text-align: left;">Позначення</th>
+<th style="text-align: left;">Номінальне значення</th>
+<th style="text-align: left;">Одиниці вимірювання</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Напруга живлення цифрової частини</strong></td>
+<td style="text-align: left;"><span class="arithmatex">\(V_{mcu}\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(3{,}3\)</span></td>
+<td style="text-align: left;">В</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Робоча напруга приводу запірного клапана</strong></td>
+<td style="text-align: left;"><span class="arithmatex">\(V_{act}\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(24{,}0\)</span></td>
+<td style="text-align: left;">В</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Струм утримання / номінальний струм двигуна</strong></td>
+<td style="text-align: left;"><span class="arithmatex">\(I_{nom}\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(1{,}8\)</span></td>
+<td style="text-align: left;">А</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Пусковий (блокувальний) струм двигуна</strong></td>
+<td style="text-align: left;"><span class="arithmatex">\(I_{stall}\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(4{,}5\)</span></td>
+<td style="text-align: left;">А</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Час повного перекриття арматури (<span class="arithmatex">\(90^\circ\)</span>)</strong></td>
+<td style="text-align: left;"><span class="arithmatex">\(t_{stroke}\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(15{,}0\)</span></td>
+<td style="text-align: left;">с</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Нормативна частота спрацьовування клапана</strong></td>
+<td style="text-align: left;"><span class="arithmatex">\(N_{act}\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(2\)</span> (1 повний цикл)</td>
+<td style="text-align: left;">разів на добу</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Струм мікроконтролера в стані Deep Sleep</strong></td>
+<td style="text-align: left;"><span class="arithmatex">\(I_{sleep}\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(15{,}0\)</span></td>
+<td style="text-align: left;">мкА</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Струм та тривалість сеансу LoRaWAN (TX)</strong></td>
+<td style="text-align: left;"><span class="arithmatex">\(I_{tx} \,/\, t_{tx}\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(120{,}0\text{ мА} \,/\, 100{,}0\text{ мс}\)</span></td>
+<td style="text-align: left;">мА / мс</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Періодичність виходу на зв'язок для телеметрії</strong></td>
+<td style="text-align: left;"><span class="arithmatex">\(T_{telemetry}\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(1{,}0\)</span></td>
+<td style="text-align: left;">год</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Діапазон робочих температур середовища</strong></td>
+<td style="text-align: left;"><span class="arithmatex">\(T_{env}\)</span></td>
+<td style="text-align: left;">від <span class="arithmatex">\(-30\)</span> до <span class="arithmatex">\(+55\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(^\circ\text{C}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Номінальна ємність батареї <span class="arithmatex">\(\text{Li-SOCl}_2\)</span></strong></td>
+<td style="text-align: left;"><span class="arithmatex">\(C_{nom}\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(19{,}0\)</span></td>
+<td style="text-align: left;">А·год</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Максимальний постійний струм розряду батареї</strong></td>
+<td style="text-align: left;"><span class="arithmatex">\(I_{bat\_max}\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(200{,}0\)</span></td>
+<td style="text-align: left;">мА</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Цільовий термін автономної експлуатації</strong></td>
+<td style="text-align: left;"><span class="arithmatex">\(L_{target}\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(\ge 5\)</span></td>
+<td style="text-align: left;">років</td>
+</tr>
+</tbody>
+</table>
+<pre class="mermaid"><code>flowchart TD
+    subgraph PowerSystem["Гібридна підсистема живлення"]
+        Batt["Первинна батарея Li-SOCl2 (3.6V, 19 А·год)"]
+        HLC["Буферний модуль суперконденсаторів (HLC)"]
+        Boost["Імпульсний перетворювач Step-Up (3.6V -&gt; 24V)"]
+        Buck["Синхронний перетворювач Step-Down (3.6V -&gt; 3.3V)"]
+    end
+
+    subgraph ControlCore["Модуль контролера та зв'язку"]
+        MCU["Мікроконтролер (ESP32 / RTC-домен активний)"]
+        LoRa["Трансивер LoRaWAN (868 МГц)"]
+        Sensors["Тензометричні датчики тиску в трубі"]
+    end
+
+    subgraph IsolationDrive["Силовий драйвер та ізоляція"]
+        Opto["Оптична розв'язка (Оптрони PC817)"]
+        HBridge["MOSFET H-міст (керування реверсом 24V / 5A)"]
+        Flyback["Демпфуючі діоди Шотткі (придушення ЕРС)"]
+        Limits["Герконові кінцеві вимикачі положення"]
+    end
+
+    subgraph PhysicalValve["Виконавчий орган"]
+        Motor["Колекторний редукторний двигун 24V DC"]
+        Valve["Кульовий кран магістралі"]
+    end
+
+    Batt --&gt; HLC
+    HLC --&gt; Boost
+    HLC --&gt; Buck
+    Buck --&gt; MCU
+    Buck --&gt; LoRa
+    MCU &lt;--&gt; LoRa
+    Sensors --&gt; MCU
+    MCU --&gt; Opto
+    Opto --&gt; HBridge
+    Boost --&gt; HBridge
+    HBridge &lt;--&gt; Flyback
+    HBridge --&gt; Motor
+    Motor --&gt; Valve
+    Valve -.-&gt;|Механічний зворотний зв'язок| Limits
+    Limits --&gt;|Сигнал переривання EXT1| MCU</code></pre>
+<h4 id="_6">Покроковий аналіз та розв'язок</h4>
+<h5 id="1">Крок 1. Розрахунок енерговитрат на переміщення виконавчого механізму</h5>
+<p>Електричний заряд, необхідний для виконання одного повного циклу маневрування запірної арматури (відкриття та закриття), розраховується з урахуванням пускового струму та струму усталеного руху приводу за виразом:</p>
+<div class="arithmatex">\[Q_{valve} = 2 \cdot \left( I_{stall} \cdot t_{start} + I_{nom} \cdot (t_{stroke} - t_{start}) \right)\]</div>
+<p>де тривалість пускового екстремуму становить <span class="arithmatex">\(t_{start} = 0{,}2\text{ с}\)</span>, номінальний струм дорівнює <span class="arithmatex">\(I_{nom} = 1{,}8\text{ А}\)</span>, а блокувальний струм досягає <span class="arithmatex">\(I_{stall} = 4{,}5\text{ А}\)</span>. Підставивши значення для напруги <span class="arithmatex">\(24\text{ В}\)</span>, отримуємо витрату заряду силовим колом:</p>
+<div class="arithmatex">\[Q_{valve} = 2 \cdot \left( 4{,}5\text{ А} \cdot 0{,}2\text{ с} + 1{,}8\text{ А} \cdot (15{,}0\text{ с} - 0{,}2\text{ с}) \right) = 2 \cdot (0{,}9 + 26{,}64) = 55{,}08\text{ Кл}\]</div>
+<p>Оскільки силове живлення формується імпульсним перетворювачем Step-Up з напруги батареї <span class="arithmatex">\(V_{bat} = 3{,}6\text{ В}\)</span> до напруги <span class="arithmatex">\(V_{act} = 24\text{ В}\)</span> із середнім коефіцієнтом корисної дії <span class="arithmatex">\(\eta_{boost} = 0{,}88\)</span>, сумарна енергія, відібрана від батареї за добу для здійснення двох маневрів, дорівнює:</p>
+<div class="arithmatex">\[E_{valve\_day} = \frac{Q_{valve} \cdot V_{act}}{\eta_{boost}} = \frac{55{,}08\text{ Кл} \cdot 24{,}0\text{ В}}{0{,}88} \approx 1502{,}18\text{ Дж}\]</div>
+<p>Еквівалентний добовий заряд, що споживається від первинного джерела <span class="arithmatex">\(3{,}6\text{ В}\)</span> на роботу приводу, становить:</p>
+<div class="arithmatex">\[Q_{bat\_valve} = \frac{E_{valve\_day}}{V_{bat}} = \frac{1502{,}18\text{ Дж}}{3{,}6\text{ В}} \approx 417{,}27\text{ Кл} \approx 0{,}1159\text{ А}\cdot\text{год/добу}\]</div>
+<h5 id="2_2">Крок 2. Розрахунок енерговитрат на періодичну телеметрію та перебування в режимі сну</h5>
+<p>Протягом доби вузол здійснює двадцять чотири сеанси виходу на зв'язок за розкладом (один раз на годину). Кожен сеанс включає пробудження процесора, вимірювання тиску, криптографічну обробку та безпосереднє випромінювання LoRaWAN-кадру. Інтегральний заряд фази телеметрії за один сеанс обчислюється наступним чином:</p>
+<div class="arithmatex">\[Q_{tx\_single} = I_{proc} \cdot t_{proc} + I_{tx} \cdot t_{tx} = (0{,}04\text{ А} \cdot 0{,}05\text{ с}) + (0{,}12\text{ А} \cdot 0{,}1\text{ с}) = 0{,}002 + 0{,}012 = 0{,}014\text{ Кл}\]</div>
+<p>Добова витрата заряду на передачу інформації через синхронний понижувальний стабілізатор (<span class="arithmatex">\(\eta_{buck} = 0{,}92\)</span>) становить:</p>
+<div class="arithmatex">\[Q_{comm\_day} = 24 \cdot \frac{Q_{tx\_single} \cdot V_{mcu}}{V_{bat} \cdot \eta_{buck}} = 24 \cdot \frac{0{,}014\text{ Кл} \cdot 3{,}3\text{ В}}{3{,}6\text{ В} \cdot 0{,}92} \approx 0{,}00335\text{ Кл/добу} \approx 0{,}00093\text{ А}\cdot\text{год/добу}\]</div>
+<p>Враховуючи, що загальний час глибокого сну за добу становить практично <span class="arithmatex">\(24\text{ години}\)</span> (<span class="arithmatex">\(t_{sleep\_total} \approx 86396\text{ с}\)</span>), заряд, витрачений на підтримку струму сну <span class="arithmatex">\(I_{sleep} = 15\text{ мкА}\)</span>, дорівнює:</p>
+<div class="arithmatex">\[Q_{sleep\_day} = I_{sleep} \cdot t_{sleep\_total} = 15 \cdot 10^{-6}\text{ А} \cdot 86396\text{ с} \approx 1{,}296\text{ Кл/добу} \approx 0{,}00036\text{ А}\cdot\text{год/добу}\]</div>
+<h5 id="3_2">Крок 3. Визначення сумарного струму та оцінка ресурсу автономності</h5>
+<p>Сумарний добовий розхід заряду батарейного блоку з урахуванням усіх складових дорівнює:</p>
+<div class="arithmatex">\[Q_{total\_day} = Q_{bat\_valve} + Q_{comm\_day} + Q_{sleep\_day} = 0{,}1159 + 0{,}00093 + 0{,}00036 \approx 0{,}1172\text{ А}\cdot\text{год/добу}\]</div>
+<p>Середньозважений струм споживання пристрою від первинної батареї становить:</p>
+<div class="arithmatex">\[I_{avg} = \frac{Q_{total\_day}}{24\text{ год}} = \frac{0{,}1172\text{ А}\cdot\text{год}}{24\text{ год}} \approx 4{,}88\text{ мА}\]</div>
+<p>Ефективна доступна ємність батареї <span class="arithmatex">\(\text{Li-SOCl}_2\)</span> за умови найнесприятливішої зимової температури <span class="arithmatex">\(-30^\circ\text{C}\)</span> знижується на тридцять відсотків (<span class="arithmatex">\(K_{temp} = 0{,}70\)</span>), а коефіцієнт щорічного саморозряду становить <span class="arithmatex">\(S_{annual} = 1{,}0\%\)</span>. Розрахуємо реальну тривалість функціонування вузла:</p>
+<div class="arithmatex">\[L_{years} = \frac{C_{nom} \cdot K_{temp}}{Q_{total\_day} \cdot 365 + C_{nom} \cdot S_{annual}} = \frac{19{,}0 \cdot 0{,}70}{(0{,}1172 \cdot 365) + (19{,}0 \cdot 0{,}01)} = \frac{13{,}30}{42{,}778 + 0{,}19} \approx 0{,}309\text{ року} \approx 3{,}7\text{ місяця}\]</div>
+<p>Отриманий результат демонструє, що використання виключно первинної хімічної батареї не дозволяє досягти цільового показника у п'ять років через колосальні енергетичні витрати на механічний рух засувки (<span class="arithmatex">\(98{,}9\%\)</span> від загального балансу). Отже, проєкт вимагає впровадження комбінованого живлення: заміни первинного елемента на акумуляторну батарею <span class="arithmatex">\(\text{LiFePO}_4\)</span> (<span class="arithmatex">\(12{,}8\text{ В}\)</span>, <span class="arithmatex">\(20\text{ А}\cdot\text{год}\)</span>) у поєднанні з промисловою фотоелектричною панеллю потужністю <span class="arithmatex">\(30\text{ Вт}\)</span> та буферним блоком суперконденсаторів.</p>
+<h5 id="4">Крок 4. Розрахунок параметрів буферного блоку суперконденсаторів для покриття пускового струму</h5>
+<p>Первинне або акумуляторне джерело живлення за температури <span class="arithmatex">\(-30^\circ\text{C}\)</span> має внутрішній опір <span class="arithmatex">\(R_{int} \approx 2{,}5\text{ Ом}\)</span>. Максимальний безпечний струм джерела становить <span class="arithmatex">\(I_{bat\_max} = 0{,}2\text{ А}\)</span>. Пусковий струм електродвигуна з боку шини <span class="arithmatex">\(24\text{ В}\)</span> становить <span class="arithmatex">\(I_{stall} = 4{,}5\text{ А}\)</span>. Відповідно, з боку вхідного кола <span class="arithmatex">\(3{,}6\text{ В}\)</span> піковий струм перетворювача сягає:</p>
+<div class="arithmatex">\[I_{in\_peak} = \frac{V_{act} \cdot I_{stall}}{V_{bat} \cdot \eta_{boost}} = \frac{24{,}0 \cdot 4{,}5}{3{,}6 \cdot 0{,}88} \approx 34{,}09\text{ А}\]</div>
+<p>Дефіцит струму <span class="arithmatex">\(\Delta I = 34{,}09\text{ А} - 0{,}2\text{ А} = 33{,}89\text{ А}\)</span> протягом часу пуску <span class="arithmatex">\(\Delta t = 0{,}2\text{ с}\)</span> повинен повністю компенсуватися буферним накопичувачем. Допустиме просідання напруги на шині встановлюється на рівні <span class="arithmatex">\(\Delta V = 0{,}5\text{ В}\)</span>. Необхідна ємність суперконденсатора становить:</p>
+<div class="arithmatex">\[C_{buf} \ge \frac{\Delta I \cdot \Delta t}{\Delta V} = \frac{33{,}89\text{ А} \cdot 0{,}2\text{ с}}{0{,}5\text{ В}} \approx 13{,}56\text{ Ф}\]</div>
+<p>Для надійної експлуатації обирається гібридний модуль суперконденсаторів ємністю <span class="arithmatex">\(20\text{ Ф}\)</span> із робочою напругою <span class="arithmatex">\(5{,}0\text{ В}\)</span> та ультранизьким еквівалентним послідовним опором <span class="arithmatex">\(ESR \le 15\text{ мОм}\)</span>.</p>
+<h4 id="_7">Інтерпретація результатів та альтернативні сценарії</h4>
+<p>Математичний аналіз енергетичного бюджету виявив фундаментальну інженерну закономірність: у системах Інтернету речей, де застосовуються механічні силові актуатори, енерговитрати на цифрову обробку сигналів та бездротову передачу даних становлять мізерну частку (<span class="arithmatex">\(&lt; 1{,}5\%\)</span>) від загального балансу. Основна маса енергії безповоротно поглинається електромеханічним перетворенням.</p>
+<ol>
+<li>
+<p>Якщо режим роботи об'єкта змінюється з аварійного на прецизійно-регулюючий (наприклад, зміна положення запірної заслінки на кілька градусів кожні десять хвилин для підтримки стабільного гідравлічного тиску), застосування будь-яких типів первинних батарей стає технічно абсурдним. У такому сценарії єдиним життєздатним рішенням є встановлення автономного термогенератора на перепаді температур або сонячної панелі з надлишковою встановленою потужністю не менше <span class="arithmatex">\(50\text{ Вт}\)</span>.</p>
+</li>
+<li>
+<p>У разі переходу від магістральних запірних кранів високого тиску до малогабаритних мембранних клапанів скидання тиску, де використовуються бістабільні імпульсні соленоїди з часом спрацьовування <span class="arithmatex">\(50\text{ мс}\)</span> та струмом <span class="arithmatex">\(0{,}8\text{ А}\)</span>, добовий розхід заряду скорочується у двісті сорок разів. Це повертає систему в рамки повної п'ятирічної автономності від єдиного літій-тіонілхлоридного елемента формату D без використання сонячних панелей.</p>
+</li>
+</ol>
+<hr />
+<h3 id="32">3.2. Зведена довідкова система лекції</h3>
+<p>Підсумкова система інженерних концепцій, схемотехнічних рішень та методів оптимізації, розглянутих у межах лекції, систематизована в таблиці 3.</p>
+<p><em>Таблиця 3 — Комплексна довідкова система технологій та компонентів виконавчих підсистем IoT</em></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Термін / Концепція</th>
+<th style="text-align: left;">Формалізація / Сутність</th>
+<th style="text-align: left;">Реальний кейс застосування</th>
+<th style="text-align: left;">Основне обмеження / Ризик</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Електромеханічне реле (EMR)</strong></td>
+<td style="text-align: left;">Комутація силових кіл рухомими контактами під дією магнітного поля котушки: <span class="arithmatex">\(F_{mag} \sim I^2\)</span></td>
+<td style="text-align: left;">Увімкнення дренажного насоса <span class="arithmatex">\(230\text{ В}\)</span> за сигналом детектора затоплення</td>
+<td style="text-align: left;">Механічний знос контактів, обгорання внаслідок дугового розряду, акустичний шум</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Твердотільне реле (SSR)</strong></td>
+<td style="text-align: left;">Напівпровідниковий безконтактний перемикач на базі симістора або MOSFET з оптичною ізоляцією</td>
+<td style="text-align: left;">ШІМ-регулювання температури промислової печі полімеризації матеріалів</td>
+<td style="text-align: left;">Постійне падіння напруги на переході (<span class="arithmatex">\(1\dots 1{,}6\text{ В}\)</span>), що веде до високого тепловиділення</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Діод зворотного струму (Flyback Diode)</strong></td>
+<td style="text-align: left;">Демпфування ЕРС самоіндукції індуктивних котушок: <span class="arithmatex">\(V_{spike} = -L \frac{di}{dt}\)</span></td>
+<td style="text-align: left;">Захист комутуючого біполярного або польового транзистора в ланцюзі реле</td>
+<td style="text-align: left;">Затримка відпускання механічного якоря реле через тривале замикання струму котушки</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>H-міст (H-Bridge)</strong></td>
+<td style="text-align: left;">Чотириквадрантна схема з чотирьох ключів для реверсивного керування двигунами</td>
+<td style="text-align: left;">Привод сервомеханізму зміни положення сонячного трекера відносно азимута</td>
+<td style="text-align: left;">Ризик наскрізного струму (Shoot-Through) за відсутності апаратного мертвого часу (Dead-Time)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Детекція нуля (Zero-Crossing)</strong></td>
+<td style="text-align: left;">Комутація навантаження змінного струму строго в момент нульової фази синусоїди напруги</td>
+<td style="text-align: left;">Зниження імпульсних радіозавад під час комутації світлодіодних вуличних ліхтарів</td>
+<td style="text-align: left;">Неможливість застосування для фазового зрізу при плавному регулюванні яскравості або обертів</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Кроковий привід (Stepper Motor)</strong></td>
+<td style="text-align: left;">Дискретний поворот ротора за кроками: <span class="arithmatex">\(\theta_{step} = \frac{360^\circ}{m \cdot N_{ph} \cdot K_{gear}}\)</span></td>
+<td style="text-align: left;">Прецизійне калібрування дозатора реагентів на станції водоочищення</td>
+<td style="text-align: left;">Необхідність протікання повного номінального струму для створення моменту утримання у спокої</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>RC-сервопривод</strong></td>
+<td style="text-align: left;">Інтегрований привід із внутрішнім ПІД-контуром зворотного зв'язку за імпульсом <span class="arithmatex">\(1\dots 2\text{ мс}\)</span></td>
+<td style="text-align: left;">Дистанційне перемикання положення вентиляційної заслінки клімат-системи</td>
+<td style="text-align: left;">Знос контактної доріжки внутрішнього резистивного потенціометра зворотного зв'язку</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Режим глибокого сну (Deep Sleep)</strong></td>
+<td style="text-align: left;">Повне знеструмлення ядер процесора та оперативної пам'яті за збереження активності RTC</td>
+<td style="text-align: left;">Автономний моніторинг деформації мостових перехідних конструкцій</td>
+<td style="text-align: left;">Повна втрата оперативних даних та виконання тривалого холодного старту (Cold Boot) при виході</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Співпроцесор ULP</strong></td>
+<td style="text-align: left;">Енергоефективне мікроядро (<span class="arithmatex">\(I &lt; 150\text{ мкА}\)</span>), здатне опитувати периферію в сні основних ядер</td>
+<td style="text-align: left;">Періодичне вимірювання вібрації вентилятора градирні без пробудження основного процесора</td>
+<td style="text-align: left;">Обмежений набір команд, малий обсяг пам'яті програм (<span class="arithmatex">\(8\text{ Кбайт}\)</span>), відсутність блоку FPU</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Пасивація <span class="arithmatex">\(\text{Li-SOCl}_2\)</span></strong></td>
+<td style="text-align: left;">Утворення плівки <span class="arithmatex">\(\text{LiCl}\)</span> на літієвому аноді, що знижує саморозряд, але блокує струмовіддачу</td>
+<td style="text-align: left;">Багаторічне живлення розумних лічильників газу з опитуванням раз на добу</td>
+<td style="text-align: left;">Глибоке динамічне просідання напруги живлення під час перших секунд виходу на зв'язок</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Захист Brownout Reset (BOR)</strong></td>
+<td style="text-align: left;">Апаратний компаратор, що ініціює апаратне скидання процесора при падінні <span class="arithmatex">\(V_{dd} &lt; V_{threshold}\)</span></td>
+<td style="text-align: left;">Запобігання руйнуванню вмісту комірок флеш-пам'яті при некоректних рівнях живлення</td>
+<td style="text-align: left;">Виникнення нескінченного циклу перезавантажень (Bootloop) при розряді батареї під навантаженням</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Гібридний конденсатор (HLC)</strong></td>
+<td style="text-align: left;">Накопичувач енергії з ультранизьким ESR, оптимізований для паралельної роботи з батареями</td>
+<td style="text-align: left;">Компенсація імпульсів передачі LoRaWAN/NB-IoT у лічильниках тепла</td>
+<td style="text-align: left;">Деградація максимальної робочої напруги при тривалій експлуатації за високих температур</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="33">3.3. Контрольні питання та завдання</h3>
+<h4 id="_8">Прикладні тестові завдання</h4>
+<ol>
+<li>
+<p>Під час запуску двигуна запірної арматури напругою <span class="arithmatex">\(24\text{ В}\)</span> від автономного вузла керування мікроконтролер раптово перезавантажується у фазі початкового розгону ротора, хоча батарея повністю заряджена. Осцилографічний аналіз шини живлення мікроконтролера <span class="arithmatex">\(3{,}3\text{ В}\)</span> зафіксував короткочасний провал напруги до <span class="arithmatex">\(2{,}2\text{ В}\)</span> тривалістю <span class="arithmatex">\(15\text{ мкс}\)</span>. Яка схемотехнічна помилка є першопричиною цієї відмови?</p>
+</li>
+<li>
+<p>A. Відсутність резистора підтяжки на лінії скидання Reset мікроконтролера.</p>
+</li>
+<li>
+<p>B. Спільне використання шини заземлення силового H-моста та цифрового контролера без оптоелектронної ізоляції, що спричинило підйом потенціалу цифрової землі.</p>
+</li>
+<li>
+<p>C. Занадто висока частота ШІМ-сигналу, що подається на затвори транзисторів H-моста.</p>
+</li>
+<li>
+<p>D. Використання лінійного стабілізатора напруги замість імпульсного перетворювача Step-Down.</p>
+</li>
+</ol>
+<details class="note">
+<summary>Розгорнути аналіз / відповідь</summary>
+<p><strong>Правильний варіант: B.</strong></p>
+<ol>
+<li>
+<p>Логічне та аналітичне обґрунтування: Пусковий струм двигуна <span class="arithmatex">\(I_{stall}\)</span> сягає <span class="arithmatex">\(4{,}5\text{ А}\)</span>. Якщо силова земля двигуна та цифрова земля мікроконтролера об'єднані провідником із ненульовим паразитичним опором <span class="arithmatex">\(R_{trace} \approx 0{,}1\text{ Ом}\)</span> та паразитичною індуктивністю, струмовий сплеск з крутим фронтом <span class="arithmatex">\(\frac{di}{dt}\)</span> індукує падіння напруги <span class="arithmatex">\(\Delta V = I \cdot R + L \frac{di}{dt}\)</span>, яке миттєво зміщує потенціал цифрової землі вгору. Відносно цього зміщеного рівня стабілізатор <span class="arithmatex">\(3{,}3\text{ В}\)</span> не може забезпечити нормовану напругу, шина живлення просідає нижче порогу <span class="arithmatex">\(V_{BOR} \approx 2{,}7\text{ В}\)</span>, і апаратний супервізор ініціює скидання процесора. Оптоізоляція та фізичне розділення земель повністю ліквідують даний контур перешкоди.</p>
+</li>
+<li>
+<p>Аналіз дистракторів:</p>
+</li>
+<li>
+<p>Варіант A є хибним, оскільки сучасні мікроконтролери мають вбудовані внутрішні підтяжки лінії Reset, а провал зафіксовано на шині живлення <span class="arithmatex">\(3{,}3\text{ В}\)</span>, а не на виводі Reset.</p>
+</li>
+<li>
+<p>Варіант C є хибним, тому що висока частота ШІМ збільшує динамічні теплові втрати на перемикання ключів моста, проте не здатна сама по собі викликати просідання живлення за умови правильної фільтрації шини.</p>
+</li>
+<li>
+<p>Варіант D є хибним, оскільки лінійні стабілізатори (LDO) мають навіть вищу швидкість перехідної реакції на стрибки струму, ніж імпульсні перетворювачі, тому тип стабілізатора не є першопричиною кондуктивної земляної петлі.</p>
+</li>
+</ol>
+</details>
+<ol>
+<li>
+<p>Інженер налаштовує роботу мікроконтролера ESP32 у вузлі обліку газу з періодом передачі LoRaWAN один раз на 4 години. Пристрій використовує режим Deep Sleep. Проте польові випробування показали, що батарея ємністю <span class="arithmatex">\(8{,}5\text{ А}\cdot\text{год}\)</span> виснажилася за три місяці замість розрахункових восьми років. Аналіз коду виявив, що всі змінні сесії LoRaWAN (DevAddr, NwkSKey, AppSKey, FCntUp) були оголошені як стандартні глобальні змінні без модифікаторів. Чому це призвело до катастрофічного скорочення терміну служби?</p>
+</li>
+<li>
+<p>A. Компілятор розмістив змінні у флеш-пам'яті, що призвело до її апаратного зносу через обмежену кількість циклів запису.</p>
+</li>
+<li>
+<p>B. Через відсутність модифікатора <code>RTC_DATA_ATTR</code> змінні обнулялися при кожному пробудженні, змушуючи пристрій щоразу проходити повну процедуру приєднання OTAA з тривалим випромінюванням радіопакетів на максимальній потужності.</p>
+</li>
+<li>
+<p>C. Неініціалізовані змінні викликали спрацьовування сторожового таймера Watchdog, блокуючи перехід у режим Deep Sleep.</p>
+</li>
+<li>
+<p>D. Мікроконтролер не зміг перевести тактовий генератор на низьку частоту <span class="arithmatex">\(32{,}768\text{ кГц}\)</span>.</p>
+</li>
+</ol>
+<details class="note">
+<summary>Розгорнути аналіз / відповідь</summary>
+<p><strong>Правильний варіант: B.</strong></p>
+<ol>
+<li>
+<p>Логічне та аналітичне обґрунтування: При виході з Deep Sleep пам'ять SRAM повністю ініціалізується наново, втрачаючи збережений стан. Якщо криптографічні ключі та лічильник кадрів <span class="arithmatex">\(FCntUp\)</span> не збережені в енергонезалежній пам'яті RTC Slow Memory (за допомогою атрибута <code>RTC_DATA_ATTR</code>), стек LoRaWAN втрачає контекст сесії. Пристрій змушений замість короткої передачі одного кадру даних Uplink (<span class="arithmatex">\(t \approx 50\text{ мс}\)</span>) щоразу запускати енергоємну процедуру мережевого приєднання OTAA (Over-The-Air Activation), яка вимагає тривалого обміну пакетами Join Request та Join Accept на максимальній вихідній потужності (<span class="arithmatex">\(+20\text{ дБм}\)</span>, струм до <span class="arithmatex">\(130\text{ мА}\)</span>) із тривалим очікуванням вікон RX1/RX2. Це збільшило енергоспоживання кожного циклу в сотні разів.</p>
+</li>
+<li>
+<p>Аналіз дистракторів:</p>
+</li>
+<li>
+<p>Варіант A є хибним, оскільки стандартні глобальні змінні розміщуються в оперативній пам'яті DRAM/BSS, а не у флеш-пам'яті, тому зносу комірок пам'яті не відбувається.</p>
+</li>
+<li>
+<p>Варіант C є хибним, оскільки відсутність атрибута збереження даних у RTC не впливає на синтаксичну валідність виклику функції <code>esp_deep_sleep_start()</code>, контролер успішно засинав, але витрачав критично багато енергії під час нераціонально тривалого пробудження.</p>
+</li>
+<li>
+<p>Варіант D є хибним, оскільки вибір тактування домену RTC конфігурується апаратно на рівні бітів конфігурації завантажувача і не залежить від директив розміщення користувацьких змінних.</p>
+</li>
+</ol>
+</details>
+<ol>
+<li>
+<p>Для приводу автоматичного дозатора обрано чотирифазний кроковий двигун 28BYJ-48 із передавальним числом редуктора <span class="arithmatex">\(K_{gear} = 64\)</span> та кроком ротора <span class="arithmatex">\(5{,}625^\circ\)</span>. Яку послідовність сигналів та загальну кількість імпульсів необхідно згенерувати на входах мікросхеми ULN2003A для забезпечення прецизійного повороту вихідного вала дозатора рівно на <span class="arithmatex">\(135^\circ\)</span> у напівкроковому режимі?</p>
+</li>
+<li>
+<p>A. Чотиритактову однофазну послідовність, <span class="arithmatex">\(768\text{ імпульсів}\)</span>.</p>
+</li>
+<li>
+<p>B. Восьмитактову двозв'язну послідовність, <span class="arithmatex">\(1536\text{ імпульсів}\)</span>.</p>
+</li>
+<li>
+<p>C. Шістнадцятитактову мікрокрокову послідовність, <span class="arithmatex">\(2048\text{ імпульсів}\)</span>.</p>
+</li>
+<li>
+<p>D. Восьмитактову послідовність, <span class="arithmatex">\(1024\text{ імпульси}\)</span>.</p>
+</li>
+</ol>
+<details class="note">
+<summary>Розгорнути аналіз / відповідь</summary>
+<p><strong>Правильний варіант: B.</strong></p>
+<ol>
+<li>
+<p>Логічне та аналітичне обґрунтування: Повний оберт внутрішнього ротора двигуна становить <span class="arithmatex">\(\frac{360^\circ}{5{,}625^\circ} = 64\text{ кроки}\)</span> у повнокроковому режимі. У напівкроковому режимі (<span class="arithmatex">\(m = 2\)</span>) використовується восьмитактовий цикл комутації, тому роздільна здатність ротора подвоюється і становить <span class="arithmatex">\(64 \cdot 2 = 128\text{ напівкроків}\)</span> на один оберт ротора. З урахуванням коефіцієнта редукції <span class="arithmatex">\(K_{gear} = 64\)</span> повний оберт вихідного вала на <span class="arithmatex">\(360^\circ\)</span> вимагає <span class="arithmatex">\(N_{360} = 128 \cdot 64 = 8192\text{ напівкроки}\)</span>. Відповідно, для повороту вихідного вала на цільовий кут <span class="arithmatex">\(135^\circ\)</span> кількість імпульсів комутації складає:
+   $<span class="arithmatex">\(N_{135} = 8192 \cdot \frac{135^\circ}{360^\circ} = 8192 \cdot 0{,}375 = 3072\text{ стани фаз (напівкроки)}\)</span>$
+   Оскільки кожен такт напівкроку змінює стан однієї з обмоток, при керуванні через чотири напівмостові ключі драйвера ULN2003A цикл складається з 8 чергувань фаз, що відповідає <span class="arithmatex">\(1536\)</span> парним імпульсним перемиканням.</p>
+</li>
+<li>
+<p>Аналіз дистракторів:</p>
+</li>
+<li>
+<p>Варіант A описує повнокроковий режим з активацією однієї фази (хвильовий крок), що забезпечує значно менший крутний момент і грубішу роздільну здатність.</p>
+</li>
+<li>
+<p>Варіант C некоректний, оскільки мікросхема ULN2003A являє собою звичайну транзисторну матрицю Дарлінгтона, яка не має вбудованої логіки ШІМ-дроблення струму фаз для апаратної реалізації 16-тактового мікрокроку.</p>
+</li>
+<li>
+<p>Варіант D базується на помилковому припущенні про прямий привод без урахування реального коефіцієнта передавального числа механічного редуктора.</p>
+</li>
+</ol>
+</details>
+<ol>
+<li>
+<p>У проєкті автономного вузла керування соленоїдним клапаном польовий транзистор MOSFET комутує струм обмотки <span class="arithmatex">\(I = 2{,}5\text{ А}\)</span> за напруги живлення <span class="arithmatex">\(12\text{ В}\)</span>. Інженер підключив затвор транзистора безпосередньо до виводу GPIO мікроконтролера (<span class="arithmatex">\(V_{out} = 3{,}3\text{ В}\)</span>) без проміжного драйвера. Під час випробувань транзистор сильно нагрівається і виходить з ладу через тепловий пробій протягом кількох хвилин, хоча його максимальний паспортний струм становить <span class="arithmatex">\(30\text{ А}\)</span>. У чому полягає фізична причина перегріву?</p>
+</li>
+<li>
+<p>A. Відсутність оптичної ізоляції спричинила резонанс напруги на затворі транзистора.</p>
+</li>
+<li>
+<p>B. Напруги <span class="arithmatex">\(3{,}3\text{ В}\)</span> недостатньо для повного відкриття стандартного силового MOSFET-транзистора, внаслідок чого він працював у лінійному (активному) режимі з високим опором каналу <span class="arithmatex">\(R_{DS(on)}\)</span>.</p>
+</li>
+<li>
+<p>C. ЕРС самоіндукції обмотки соленоїда пробила оксидний діелектрик затвора через надмірний струм виводу GPIO.</p>
+</li>
+<li>
+<p>D. Індуктивність обмотки змістила робочу точку транзистора в область негативного динамічного опору.</p>
+</li>
+</ol>
+<details class="note">
+<summary>Розгорнути аналіз / відповідь</summary>
+<p><strong>Правильний варіант: B.</strong></p>
+<ol>
+<li>
+<p>Логічне та аналітичне обґрунтування: Стандартні потужні польові транзистори (наприклад, серії IRF) вимагають для повного насичення каналу та досягнення мінімального опору <span class="arithmatex">\(R_{DS(on)}\)</span> напруги на затворі <span class="arithmatex">\(V_{GS} = 10\text{ В}\)</span>. За напруги затвора <span class="arithmatex">\(3{,}3\text{ В}\)</span> транзистор знаходиться в напіввідкритому (сублінійному) стані, де опір відкритого каналу зростає з паспортних <span class="arithmatex">\(0{,}02\text{ Ом}\)</span> до кількох ом (наприклад, <span class="arithmatex">\(R_{DS} \approx 1{,}8\text{ Ом}\)</span>). Теплова потужність, що розсіюється на кристалі, становить:
+   $<span class="arithmatex">\(P_{loss} = I^2 \cdot R_{DS} = (2{,}5\text{ А})^2 \cdot 1{,}8\text{ Ом} = 6{,}25 \cdot 1{,}8 = 11{,}25\text{ Вт}\)</span>$
+   Без масивного тепловідвідного радіатора така потужність викликає миттєвий перегрів напівпровідникового кристала понад граничну температуру <span class="arithmatex">\(+150^\circ\text{C}\)</span> та незворотне теплове руйнування структури. Необхідно використовувати спеціалізовані транзистори з логічним рівнем керування (Logic-Level Gate, наприклад, серії IRL) або встановлювати дискретний драйвер затвора.</p>
+</li>
+<li>
+<p>Аналіз дистракторів:</p>
+</li>
+<li>
+<p>Варіант A є хибним, оскільки оптична ізоляція забезпечує гальванічний бар'єр, але сама по собі не змінює статичну амплітуду напруги зміщення затвора.</p>
+</li>
+<li>
+<p>Варіант C є хибним, оскільки ЕРС самоіндукції індукується між стоком і витоком транзистора, а не потрапляє безпосередньо в коло затвора (якщо немає ємнісного пробою Міллера, який тут є вторинним фактором).</p>
+</li>
+<li>
+<p>Варіант D є псевдонауковим твердженням, оскільки польові транзистори в таких схемах не демонструють ефектів негативного опору (на відміну від тунельних діодів чи тиристорних структур).</p>
+</li>
+</ol>
+</details>
+<hr />
+<h4 id="_9">Завдання для самостійної роботи</h4>
+<h5 id="_10">Постановка задачі</h5>
+<p>Для забезпечення безаварійної експлуатації теплорозподільного пункту мікрорайону необхідно розробити проект автономного контролера підживлення контуру опалення. Контролер повинен контролювати статичний гідравлічний тиск у зворотному трубопроводі за допомогою аналогового датчика з виходом <span class="arithmatex">\(4\dots 20\text{ мА}\)</span>, керувати нормально-закритим соленоїдним клапаном скидання надлишкового тиску (<span class="arithmatex">\(24\text{ В}\)</span>, струм <span class="arithmatex">\(1{,}2\text{ А}\)</span>) та передавати протокол аварійних подій у диспетчерську муніципальної тепломережі за протоколом NB-IoT. Живлення вузла здійснюється від комбінованого джерела: термоелектричного генератора (ТЕГ), встановленого на подавальному трубопроводі з гарячою водою, та буферного літій-залізо-фосфатного акумулятора (<span class="arithmatex">\(\text{LiFePO}_4\)</span>).</p>
+<h5 id="_11">Завдання для виконання</h5>
+<ol>
+<li>
+<p>Розрахуйте сумарний електричний баланс системи для зимового періоду експлуатації, прийнявши середній перепад температур на ТЕГ <span class="arithmatex">\(\Delta T = 40^\circ\text{C}\)</span>, що генерує постійну електричну потужність <span class="arithmatex">\(P_{teg} = 450\text{ мВт}\)</span>, за умови обов'язкового щогодинного сеансу радіозв'язку тривалістю <span class="arithmatex">\(5\text{ секунд}\)</span> зі струмом споживання <span class="arithmatex">\(180\text{ мА}\)</span> за напруги <span class="arithmatex">\(3{,}6\text{ В}\)</span>.</p>
+</li>
+<li>
+<p>Складіть принципову електричну схему силового каскаду керування котушкою соленоїдного клапана із застосуванням N-канального польового транзистора з логічним рівнем керування (Logic-Level MOSFET), оптопари гальванічної розв'язки та комбінованого захисного кола на базі діода Шотткі і стабілітрона для прискорення закривання клапана.</p>
+</li>
+<li>
+<p>Розробіть алгоритм керування енергоспоживанням у вигляді блок-схеми, передбачивши використання апаратного співпроцесора ULP для безперервного вимірювання тиску з інтервалом <span class="arithmatex">\(500\text{ мс}\)</span> без пробудження основних ядер мікроконтролера та негайну генерацію переривання при перевищенні тиском порогової позначки <span class="arithmatex">\(6{,}5\text{ бар}\)</span>.</p>
+</li>
+<li>
+<p>Визначте мінімальну ємність резервного акумулятора <span class="arithmatex">\(\text{LiFePO}_4\)</span>, яка гарантує безперебійне функціонування системи контролю та виконання як мінімум п'яти циклів екстреного спрацьовування клапана тривалістю по <span class="arithmatex">\(30\text{ секунд}\)</span> кожен у разі аварійного зупинення циркуляції теплоносія (коли потужність ТЕГ падає до нуля) протягом 72 годин автономного живлення.</p>
+</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Повернутись нагору
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Kyrylo Vadurin &bull; <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.top", "navigation.tracking", "header.autohide", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u0421\u043a\u043e\u043f\u0456\u0439\u043e\u0432\u0430\u043d\u043e \u0432 \u0431\u0443\u0444\u0435\u0440", "clipboard.copy": "\u0421\u043a\u043e\u043f\u0456\u044e\u0432\u0430\u0442\u0438 \u0432 \u0431\u0443\u0444\u0435\u0440", "search.result.more.one": "\u0429\u0435 1 \u0437\u0431\u0456\u0433 \u043d\u0430 \u0446\u0456\u0439 \u0441\u0442\u043e\u0440\u0456\u043d\u0446\u0456", "search.result.more.other": "\u0429\u0435 # \u0437\u0431\u0456\u0433\u0456\u0432 \u043d\u0430 \u0446\u0456\u0439 \u0441\u0442\u043e\u0440\u0456\u043d\u0446\u0456", "search.result.none": "\u0417\u0431\u0456\u0433\u0456\u0432 \u043d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u043e", "search.result.one": "\u0417\u043d\u0430\u0439\u0434\u0435\u043d\u043e 1 \u0437\u0431\u0456\u0433", "search.result.other": "\u0417\u043d\u0430\u0439\u0434\u0435\u043d\u043e # \u0437\u0431\u0456\u0433\u0456\u0432", "search.result.placeholder": "\u0420\u043e\u0437\u043f\u043e\u0447\u043d\u0456\u0442\u044c \u043f\u0438\u0441\u0430\u0442\u0438 \u0434\u043b\u044f \u043f\u043e\u0448\u0443\u043a\u0443", "search.result.term.missing": "\u041d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u043e \u0437\u0430\u043f\u0438\u0442\u0443", "select.version": "\u041e\u0431\u0440\u0430\u0442\u0438 \u0432\u0435\u0440\u0441\u0456\u044e"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

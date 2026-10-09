@@ -1,0 +1,3721 @@
+
+<!doctype html>
+<html lang="uk" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Навчальний портал з дисципліни "Технології ІоТ"">
+      
+      
+      
+      
+        <link rel="prev" href="../lk6/">
+      
+      
+        <link rel="next" href="../lk8/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Тема 7. Інтелектуальні сенсори - Технології Інтернету речей</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#7" class="md-skip">
+          Перейти до змісту
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Хедер">
+    <a href="../.." title="Технології Інтернету речей" class="md-header__button md-logo" aria-label="Технології Інтернету речей" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Технології Інтернету речей
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Тема 7. Інтелектуальні сенсори
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan"  aria-label="Переключити на темну тему"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Переключити на темну тему" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="cyan"  aria-label="Переключити на світлу тему"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Переключити на світлу тему" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Пошук" placeholder="Пошук" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Шукати">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Очистити" aria-label="Очистити" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Пошук розпочато
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Вкладки" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Робоча програма
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../lk1/" class="md-tabs__link">
+          
+  
+  
+  Лекції
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../lb/lb1/" class="md-tabs__link">
+          
+  
+  
+  Лабораторні роботи
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../pz/pz1/" class="md-tabs__link">
+          
+  
+  
+  Практичні заняття
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../kp/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Курсовий проєкт
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../sr/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Самостійна робота
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../sr/quest/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Контрольні завдання (Іспит)
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Навігація" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Технології Інтернету речей" class="md-nav__button md-logo" aria-label="Технології Інтернету речей" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Технології Інтернету речей
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Робоча програма
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Лекції
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Лекції
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 1. Екосистема та архітектура IoT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 2. Технології WPAN та WLAN у IoT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 3. LPWAN технології
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 4. Прикладні протоколи ІоТ (MQTT, CoAP)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 5. Туманні (Fog) та граничні (Edge) обчислення
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 6. Мікроконтролерні платформи (ESP32)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 7. Інтелектуальні сенсори
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 7. Інтелектуальні сенсори
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Зміст">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Зміст
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Мета лекції
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Очікувані результати навчання
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Детальний покроковий план лекції
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Детальний покроковий план лекції">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-mems-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Теоретико-концептуальний базис. Архітектура інтелектуальних сенсорів та фізичні принципи MEMS-технологій
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Методологія та аналіз граничних умов. Процеси квантування, лінеаризації та фільтрації сигналів у реальному часі
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Практичний індустріальний / фаховий кейс. Розробка граничного вузла збору даних та вібродіагностики
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-mems-_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Теоретико-концептуальний базис. Архітектура інтелектуальних сенсорів та фізичні принципи MEMS-технологій
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Теоретико-концептуальний базис. Архітектура інтелектуальних сенсорів та фізичні принципи MEMS-технологій">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-smart-sensor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1. Еволюція первинних перетворювачів: від пасивного аналогового давача до інтелектуального сенсора (Smart Sensor) із вбудованою цифровою обробкою сигналів
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2. Базова таксономія та класифікація сенсорів за фізичною природою вимірюваного параметра, енергетичним принципом функціонування та просторовою локалізацією
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-mems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3. Технологічні основи виробництва кремнієвих мікроелектромеханічних систем (MEMS) та їх інтеграція на рівні кристала
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-mems-imu-dmp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4. Принципи функціонування MEMS-акселерометрів, гіроскопів та інтегрованих інерціальних вимірювальних модулів (IMU) з апаратними процесорами руху (DMP)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Вказівки для самостійного осмислення
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Методологія та аналіз граничних умов. Процеси квантування, лінеаризації та фільтрації сигналів у реальному часі
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Методологія та аналіз граничних умов. Процеси квантування, лінеаризації та фільтрації сигналів у реальному часі">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-lsb-sqnr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1. Математичні основи аналого-цифрового перетворення: теорема Котельникова-Шеннона, вага молодшого значущого розряду (LSB) та теоретичний поріг SQNR
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-sar-sigmadelta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2. Порівняльний аналіз архітектур АЦП послідовного наближення (SAR) та дельта-сигма (\(\Sigma\Delta\)) у контексті швидкодії, розрядності й енергоефективності
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3. Алгоритми цифрової обробки сигналів на граничних пристроях: лінеаризація за рівнянням Стейнхарта-Харта, калібрування зміщення нуля та чутливості
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-ema-deadband" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4. Методи придушення шумів та компресії: медіанна фільтрація імпульсних викидів, експоненційне згладжування (EMA), фільтр Калмана та адаптивне стиснення за зоною нечутливості (Deadband)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5. Критичні апаратні обмеження вимірювальних трактів: явище аліасингу, шум квантування, температурний дрейф характеристик та детерміновані затримки реакції в контурах жорсткого реального часу
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Вказівки для самостійного осмислення
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Практичний індустріальний / фаховий кейс. Апаратна інтеграція та цифрова обробка даних сенсорного вузла вібромоніторингу
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Практичний індустріальний / фаховий кейс. Апаратна інтеграція та цифрова обробка даних сенсорного вузла вібромоніторингу">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1. Комплексний фаховий кейс. Проектування енергоефективного вузла предиктивної вібродіагностики промислового насосного агрегата
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1. Комплексний фаховий кейс. Проектування енергоефективного вузла предиктивної вібродіагностики промислового насосного агрегата">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Постановка задачі / ситуації
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Покроковий аналіз та розв'язок
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Покроковий аналіз та розв&#39;язок">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 1. Вибір смуги пропускання та розрахунок частоти дискретизації за Найквістом
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-lsb-mpu-6050" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 2. Конфігурація діапазону повної шкали АЦП, ваги LSB та апаратного фільтра MPU-6050
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-rms-iso-10816-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 3. Розрахунок середньоквадратичного значення віброшвидкості (RMS) за ISO 10816-3
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 4. Оптимізація енергоспоживання та обчислення автономності вузла
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Інтерпретація результатів та альтернативні сценарії
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2. Зведена довідкова система лекції
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3. Контрольні питання та завдання
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3. Контрольні питання та завдання">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Прикладні тестові завдання
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Завдання для самостійної роботи
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Завдання для самостійної роботи">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Постановка задачі
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Завдання для виконання
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 8. Виконавчі пристрої
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 9. Віртуалізація та контейнеризація IoT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 10. IoT платформи та Middleware
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 11. Розумний будинок (Home Assistant)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 12. Промисловий ІоТ (IIoT)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 13. Big Data в ІоТ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 14. Machine Learning на межі мережі
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 15. Кібербезпека в системах ІоТ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Лабораторні роботи
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Лабораторні роботи
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 1. Моделювання топологій IoT-мереж
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 2. Симуляція підсистем Розумного будинку
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 3. Дослідження локального MQTT-брокера
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 4. Схемотехнічне моделювання вузла збору
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 5. Прошивка ESP32 для передавання телеметрії MQTT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 6. Декларативне програмування ESP32 (ESPHome)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 7. Серверне середовище Linux для IoT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 8. Контейнеризація в ІоТ (Docker Compose)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 9. Middleware ІоТ (Node-RED)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 10. Сервіс REST API для агрегації даних
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 11. Платформи розумного будинку (Home Assistant)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 12. Сценарії автоматизації Home Assistant
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 13. Обробка телеметрії мовою Python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 14. HMI Dashboard для диспетчеризації
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 15. Комплексне наскрізне тестування IoT-системи
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практичні заняття
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Практичні заняття
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 1. Розрахунок пропускної здатності та живлення
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 2. Проєктування ієрархії топіків MQTT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 3. Правила фільтрації на Edge-шлюзах
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 4. Моделювання АЦП для сенсорів
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 5. Оптимізація енергетичного профілю
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 6. Проєктування конфігурації Docker Compose
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 7. Логічні схеми в Node-RED
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 8. Сценарії Trigger-Condition-Action
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 9. Конвеєр обробки даних (ETL)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 10. Моделювання загроз безпеки (STRIDE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Курсовий проєкт
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Самостійна робота
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sr/quest/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Контрольні завдання (Іспит)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Зміст">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Зміст
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Мета лекції
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Очікувані результати навчання
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Детальний покроковий план лекції
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Детальний покроковий план лекції">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-mems-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Теоретико-концептуальний базис. Архітектура інтелектуальних сенсорів та фізичні принципи MEMS-технологій
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Методологія та аналіз граничних умов. Процеси квантування, лінеаризації та фільтрації сигналів у реальному часі
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Практичний індустріальний / фаховий кейс. Розробка граничного вузла збору даних та вібродіагностики
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-mems-_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Теоретико-концептуальний базис. Архітектура інтелектуальних сенсорів та фізичні принципи MEMS-технологій
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Теоретико-концептуальний базис. Архітектура інтелектуальних сенсорів та фізичні принципи MEMS-технологій">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-smart-sensor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1. Еволюція первинних перетворювачів: від пасивного аналогового давача до інтелектуального сенсора (Smart Sensor) із вбудованою цифровою обробкою сигналів
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2. Базова таксономія та класифікація сенсорів за фізичною природою вимірюваного параметра, енергетичним принципом функціонування та просторовою локалізацією
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-mems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3. Технологічні основи виробництва кремнієвих мікроелектромеханічних систем (MEMS) та їх інтеграція на рівні кристала
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-mems-imu-dmp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4. Принципи функціонування MEMS-акселерометрів, гіроскопів та інтегрованих інерціальних вимірювальних модулів (IMU) з апаратними процесорами руху (DMP)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Вказівки для самостійного осмислення
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Методологія та аналіз граничних умов. Процеси квантування, лінеаризації та фільтрації сигналів у реальному часі
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Методологія та аналіз граничних умов. Процеси квантування, лінеаризації та фільтрації сигналів у реальному часі">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-lsb-sqnr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1. Математичні основи аналого-цифрового перетворення: теорема Котельникова-Шеннона, вага молодшого значущого розряду (LSB) та теоретичний поріг SQNR
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-sar-sigmadelta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2. Порівняльний аналіз архітектур АЦП послідовного наближення (SAR) та дельта-сигма (\(\Sigma\Delta\)) у контексті швидкодії, розрядності й енергоефективності
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3. Алгоритми цифрової обробки сигналів на граничних пристроях: лінеаризація за рівнянням Стейнхарта-Харта, калібрування зміщення нуля та чутливості
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-ema-deadband" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4. Методи придушення шумів та компресії: медіанна фільтрація імпульсних викидів, експоненційне згладжування (EMA), фільтр Калмана та адаптивне стиснення за зоною нечутливості (Deadband)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5. Критичні апаратні обмеження вимірювальних трактів: явище аліасингу, шум квантування, температурний дрейф характеристик та детерміновані затримки реакції в контурах жорсткого реального часу
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Вказівки для самостійного осмислення
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Практичний індустріальний / фаховий кейс. Апаратна інтеграція та цифрова обробка даних сенсорного вузла вібромоніторингу
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Практичний індустріальний / фаховий кейс. Апаратна інтеграція та цифрова обробка даних сенсорного вузла вібромоніторингу">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1. Комплексний фаховий кейс. Проектування енергоефективного вузла предиктивної вібродіагностики промислового насосного агрегата
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1. Комплексний фаховий кейс. Проектування енергоефективного вузла предиктивної вібродіагностики промислового насосного агрегата">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Постановка задачі / ситуації
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Покроковий аналіз та розв'язок
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Покроковий аналіз та розв&#39;язок">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 1. Вибір смуги пропускання та розрахунок частоти дискретизації за Найквістом
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-lsb-mpu-6050" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 2. Конфігурація діапазону повної шкали АЦП, ваги LSB та апаратного фільтра MPU-6050
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-rms-iso-10816-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 3. Розрахунок середньоквадратичного значення віброшвидкості (RMS) за ISO 10816-3
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 4. Оптимізація енергоспоживання та обчислення автономності вузла
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Інтерпретація результатів та альтернативні сценарії
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2. Зведена довідкова система лекції
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3. Контрольні питання та завдання
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3. Контрольні питання та завдання">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Прикладні тестові завдання
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Завдання для самостійної роботи
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Завдання для самостійної роботи">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Постановка задачі
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Завдання для виконання
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="7">Тема 7. Інтелектуальні сенсори та системи збору даних</h1>
+<h2 id="_1">Мета лекції</h2>
+<p>Формування у майбутніх фахівців комплексної системи фундаментальних теоретичних знань і практичних інженерних компетентностей щодо принципів функціонування, схемотехнічної побудови та програмування інтелектуальних сенсорів і мікроелектромеханічних систем (MEMS) в інфраструктурі Інтернету речей, а також опанування математичного апарату аналого-цифрового перетворення, методів лінеаризації характеристик і алгоритмів цифрової фільтрації телеметричних даних безпосередньо на рівні граничних обчислювачів (Edge Computing) для побудови високоточних та енергоефективних систем моніторингу й автоматизованого керування.</p>
+<h2 id="_2">Очікувані результати навчання</h2>
+<ol>
+<li>
+<p><strong>Знання та розуміння.</strong> Здобувачі вищої освіти засвоять базову таксономію первинних та інтелектуальних сенсорів, фізичні принципи роботи мікроелектромеханічних перетворювачів, структуру аналогових інтерфейсів нормування сигналів і теоретичні засади теореми Котельникова-Шеннона для дискретизації неперервних процесів.</p>
+</li>
+<li>
+<p><strong>Застосування.</strong> Здобувачі вищої освіти навчаться розраховувати квант дискретизації та відношення сигналу до шуму квантування АЦП, налаштовувати апаратні цифрові інтерфейси обміну даними I2C і SPI для опитування сенсорних блоків, а також програмно реалізовувати алгоритми калібрування, експоненційного згладжування та медіанної фільтрації на базі мікроконтролерів.</p>
+</li>
+<li>
+<p><strong>Аналіз.</strong> Здобувачі вищої освіти зможуть здійснювати порівняльний аналіз архітектур аналого-цифрових перетворювачів послідовного наближення та дельта-сигма структур, класифікувати джерела апаратних похибок і шумів вимірювальних трактів, а також визначати вплив явищ аліасингу і температурного дрейфу на достовірність первинної інформації.</p>
+</li>
+<li>
+<p><strong>Оцінювання та синтез.</strong> Здобувачі вищої освіти зможуть науково обґрунтовувати вибір компонентної бази інтелектуальних сенсорів під конкретні експлуатаційні вимоги енергоспоживання, динамічного діапазону та швидкодії, а також проектувати оптимальний алгоритмічний конвеєр первинної обробки сигналів на рівні периферійного вузла для надійного формування подій перед їх відправкою до хмарних сервісів.</p>
+</li>
+</ol>
+<hr />
+<h2 id="_3">Детальний покроковий план лекції</h2>
+<h3 id="1-mems-">1. Теоретико-концептуальний базис. Архітектура інтелектуальних сенсорів та фізичні принципи MEMS-технологій</h3>
+<ul>
+<li>
+<p>1.1. Еволюція первинних перетворювачів: від пасивного аналогового давача до інтелектуального сенсора (Smart Sensor) із вбудованою цифровою обробкою сигналів</p>
+</li>
+<li>
+<p>1.2. Базова таксономія та класифікація сенсорів за фізичною природою вимірюваного параметра, енергетичним принципом функціонування та просторовою локалізацією</p>
+</li>
+<li>
+<p>1.3. Технологічні основи виробництва кремнієвих мікроелектромеханічних систем (MEMS) та їх інтеграція на рівні кристала</p>
+</li>
+<li>
+<p>1.4. Принципи функціонування MEMS-акселерометрів, гіроскопів та інтегрованих інерціальних вимірювальних модулів (IMU) з апаратними процесорами руху (DMP)</p>
+</li>
+</ul>
+<h3 id="2">2. Методологія та аналіз граничних умов. Процеси квантування, лінеаризації та фільтрації сигналів у реальному часі</h3>
+<ul>
+<li>
+<p>2.1. Математичні основи аналого-цифрового перетворення: теорема Котельникова-Шеннона, вага молодшого значущого розряду (LSB) та теоретичний поріг SQNR</p>
+</li>
+<li>
+<p>2.2. Порівняльний аналіз архітектур АЦП послідовного наближення (SAR) та дельта-сигма (<span class="arithmatex">\(\Sigma\Delta\)</span>) у контексті швидкодії, розрядності й енергоефективності</p>
+</li>
+<li>
+<p>2.3. Алгоритми цифрової обробки сигналів на граничних пристроях: лінеаризація за рівнянням Стейнхарта-Харта, калібрування зміщення нуля та чутливості</p>
+</li>
+<li>
+<p>2.4. Методи придушення шумів та компресії: медіанна фільтрація імпульсних викидів, експоненційне згладжування (EMA), фільтр Калмана та адаптивне стиснення за зоною нечутливості (Deadband)</p>
+</li>
+<li>
+<p>2.5. Критичні апаратні обмеження вимірювальних трактів: явище аліасингу, шум квантування, температурний дрейф характеристик та детерміновані затримки реакції в контурах жорсткого реального часу</p>
+</li>
+</ul>
+<h3 id="3">3. Практичний індустріальний / фаховий кейс. Розробка граничного вузла збору даних та вібродіагностики</h3>
+<p><strong>Тема наскрізної задачі.</strong> «Проектування енергоефективного інтелектуального вузла предиктивної діагностики промислового насосного агрегата на основі MEMS-модуля MPU-6050, мікроконтролера ESP32 та алгоритмів локальної цифрової фільтрації»</p>
+<h2 id="1-mems-_1">1. Теоретико-концептуальний базис. Архітектура інтелектуальних сенсорів та фізичні принципи MEMS-технологій</h2>
+<h3 id="11-smart-sensor">1.1. Еволюція первинних перетворювачів: від пасивного аналогового давача до інтелектуального сенсора (Smart Sensor) із вбудованою цифровою обробкою сигналів</h3>
+<p>Історичний розвиток приладобудування та інформаційно-вимірювальної техніки пройшов шлях від механічних індикаторів прямої дії до розподілених кіберфізичних систем. На початкових етапах індустріалізації первинні перетворювачі функціонували виключно як пасивні аналогові пристрої, в яких вимірюваний неелектричний параметр безпосередньо трансформувався в переміщення покажчика (як у трубках Бурдона чи біметалічних пластинах) або в ненормовану зміну власного електричного параметра (опору, індуктивності, ємності). Такі прилади не мали власного інтелекту, характеризувалися високою чутливістю до електромагнітних завад, нелінійністю статичних характеристик, суттєвим температурним дрейфом і вимагали підключення довгих аналогових ліній зв'язку до вторинних вимірювальних приладів.</p>
+<p>З появою напівпровідникової електроніки виник концепт сенсорно-комп'ютерних комплексів та систем централізованого збору даних (Data Acquisition Systems, DAQ). У цій конфігурації первинний чутливий елемент об'єднувався з аналоговим нормуючим підсилювачем (Analog Front-End, AFE), який формував стандартний уніфікований сигнал (струмова петля <span class="arithmatex">\(4\dots20\text{ мА}\)</span> або напруга <span class="arithmatex">\(0\dots10\text{ В}\)</span>). Проте аналого-цифрове перетворення, лінеаризація та обчислення здійснювалися централізовано — у контролерах верхнього рівня або на серверних ЕОМ. Головними дефектами такої схеми залишалися спотворення сигналів під час транспортування аналоговими лініями значної довжини, складність індивідуального калібрування кожного окремого вимірювального каналу та значна обчислювальна завантаженість центрального процесора рутинними операціями попередньої фільтрації.</p>
+<p>Справжня парадигмальна трансформація відбулася завдяки мікроелектронній революції та появі дешевих високоінтегрованих мікроконтролерів і сигнальних процесорів. Це уможливило перехід до концепції <strong>інтелектуального сенсора</strong> (Smart Sensor), стандартизованої міжнародним комплексом стандартів IEEE 1451. Сучасний інтелектуальний сенсор — це функціонально замкнена система на кристалі або в єдиному модульному корпусі, яка об'єднує первинний чутливий елемент, прецизійний тракт нормування, вбудований аналого-цифровий перетворювач, локальне обчислювальне ядро (мікроконтролер або цифровий сигнальний процесор DSP), незалежну пам'ять калібрувальних коефіцієнтів та стандартний цифровий мережевий інтерфейс. </p>
+<p>Взаємозв'язок між вимірюваною фізичною величиною <span class="arithmatex">\(\lambda(t)\)</span> та вихідним інформаційним сигналом <span class="arithmatex">\(s(t)\)</span> у довільному сенсорному перетворювачі в динамічному режимі описується лінійним диференціальним рівнянням <span class="arithmatex">\(n\)</span>-го порядку із постійними або квазістаціонарними параметрами:</p>
+<div class="arithmatex">\[a_n \frac{d^n s(t)}{dt^n} + a_{n-1} \frac{d^{n-1} s(t)}{dt^{n-1}} + \dots + a_1 \frac{ds(t)}{dt} + a_0 s(t) = b_m \frac{d^m \lambda(t)}{dt^m} + \dots + b_1 \frac{d\lambda(t)}{dt} + b_0 \lambda(t)\]</div>
+<p>де <span class="arithmatex">\(\lambda(t)\)</span> позначає вхідний фізичний вплив середовища на чутливий елемент у момент часу <span class="arithmatex">\(t\)</span>; <span class="arithmatex">\(s(t)\)</span> є вихідним електричним сигналом первинного перетворювача; <span class="arithmatex">\(a_i\)</span> та <span class="arithmatex">\(b_j\)</span> є конструктивно-технологічними коефіцієнтами, що визначають інерційні, пружні, дисипативні та електромагнітні властивості датчика; <span class="arithmatex">\(n\)</span> та <span class="arithmatex">\(m\)</span> визначають порядок динамічної системи (<span class="arithmatex">\(n \ge m\)</span>).</p>
+<p>У стаціонарному (статичному) стані, коли всі похідні за часом прямують до нуля (<span class="arithmatex">\(\frac{d^k s}{dt^k} = 0\)</span>, <span class="arithmatex">\(\frac{d^k \lambda}{dt^k} = 0\)</span>), диференціальне рівняння редукується до алгебраїчної залежності <span class="arithmatex">\(s = f(\lambda)\)</span>, яка називається статичною або градуювальною характеристикою перетворювача. Якщо класичний аналоговий давач видає користувачеві саме нелінійну функцію <span class="arithmatex">\(s(t)\)</span>, то інтелектуальний сенсор вирішує обернену задачу відновлення вхідного параметра:</p>
+<div class="arithmatex">\[\lambda^*(t) = f^{-1}(s(t)) + \delta_{comp}(T, t)\]</div>
+<p>де <span class="arithmatex">\(\lambda^*(t)\)</span> позначає обчислене цифрове значення фізичної величини у стандартизованих інженерних одиницях; <span class="arithmatex">\(f^{-1}\)</span> є математичною моделлю оберненої функції перетворення, закладеною у прошивку мікроконтролера; <span class="arithmatex">\(\delta_{comp}(T, t)\)</span> позначає розраховану аналітичну поправку на вплив температури навколишнього середовища <span class="arithmatex">\(T\)</span> та часового старіння компонентів.</p>
+<p>Послідовність етапів розвитку та зміни технологічних поколінь вимірювальних перетворювачів наочно ілюструє наведена нижче діаграма станів.</p>
+<pre class="mermaid"><code>stateDiagram-v2
+    direction LR
+    [*] --&gt; ПасивнийАналоговийДавач: Етап 1 (XIX - перша пол. XX ст.)
+    ПасивнийАналоговийДавач --&gt; СенсорНормованогоТракту: Етап 2 (1960 - 1980 рр.)
+    СенсорНормованогоТракту --&gt; СенсорноКомпютернаСистема: Етап 3 (1980 - 1990 рр.)
+    СенсорноКомпютернаСистема --&gt; ІнтелектуальнийСенсор: Етап 4 (2000 - 2015 рр.)
+    ІнтелектуальнийСенсор --&gt; ГраничнийВузолEdgeIoT: Етап 5 (Сучасність)
+
+    ПасивнийАналоговийДавач: Пряме перетворення величини в деформацію або опір
+    СенсорНормованогоТракту: Вбудований AFE з уніфікованим струмовим виходом 4-20 мА
+    СенсорноКомпютернаСистема: Централізовані плати АЦП/ЦАП та магістральні шини
+    ІнтелектуальнийСенсор: On-chip АЦП, мікроконтролер, цифрові шини I2C/SPI
+    ГраничнийВузолEdgeIoT: Апаратний DSP, Edge AI, бездротовий стек BLE/LoRaWAN</code></pre>
+<p>Головною функціональною перевагою інтелектуального сенсора є локалізація обчислень: замість безперервної трансляції сирих шумних напруг чи струмів вузол самостійно проводить первинну обробку, порівнює значення із заданими аварійними межами, формує компактні повідомлення про події та взаємодіє із цифровою мережею за протоколами верхнього рівня.</p>
+<blockquote>
+<p><strong>ПРАКТИЧНИЙ ЯКІР:</strong> У сучасних системах моніторингу віброактивності промислових турбін перехід від аналогових п'єзоакселерометрів зі стандартом <span class="arithmatex">\(4\dots20\text{ мА}\)</span> до інтелектуальних цифрових сенсорів вібрації з інтерфейсом IO-Link дозволив скоротити обсяг екранованого мідного кабелю на <span class="arithmatex">\(70\%\)</span> та повністю усунути похибки вимірювання, спричинені падінням напруги на контактних колодках розподільчих шаф.</p>
+</blockquote>
+<hr />
+<h3 id="12">1.2. Базова таксономія та класифікація сенсорів за фізичною природою вимірюваного параметра, енергетичним принципом функціонування та просторовою локалізацією</h3>
+<p>Масштабне різноманіття фізичних величин, які підлягають контролю в екосистемах Інтернету речей, потребує чіткої інженерної класифікації сенсорних компонентів. Основними класифікаційними ознаками виступають фізична природа вимірюваного явища, спосіб енергетичної взаємодії чутливого елемента з вимірювальним ланцюгом, режим просторової дискретизації об'єкта та наявність безпосереднього контакту з досліджуваним середовищем.</p>
+<p>За фізичною природою інформаційного сигналу та вимірюваного процесу сенсори поділяються на кілька ключових класів. Механічні сенсори реєструють зміну форми, об'єму, лінійні та кутові координати, тиск, силу та прискорення. Термічні перетворювачі фіксують абсолютну температуру, градієнти теплових потоків і теплопровідність речовин. Оптичні прилади вимірюють інтенсивність світлового потоку, довжину хвилі, спектральний склад та поляризацію випромінювання. Акустичні сенсори сприймають амплітуду й частоту пружних коливань у газах, рідинах або твердих тілах. Хімічні та біохімічні давачі визначають молекулярний склад газових сумішей, концентрацію іонів у розчинах (pH), присутність специфічних біомаркерів або токсичних сполук. Електромагнітні сенсори аналізують напруженість магнітного поля, магнітну індукцію та параметри поверхневих зарядів.</p>
+<p>За енергетичним принципом перетворення сенсорні пристрої строго поділяються на генераторні (активні) та параметричні (пасивні). </p>
+<p>Генераторні перетворювачі функціонують на основі прямого перетворення енергії вимірюваного процесу в електричну енергію, не вимагаючи для формування первинного сигналу стороннього джерела живлення. Прикладом термогенераторного пристрою є термопара, дія якої базується на термоелектричному ефекті Зеєбека: виникнення термо-ЕРС <span class="arithmatex">\(E_{AB}\)</span> у замкненому колі з двох різнорідних провідників <span class="arithmatex">\(A\)</span> та <span class="arithmatex">\(B\)</span>, спаї яких підтримуються при різних температурах <span class="arithmatex">\(T_1\)</span> та <span class="arithmatex">\(T_0\)</span>:</p>
+<div class="arithmatex">\[E_{AB} = \int_{T_0}^{T_1} \left( S_A(T) - S_B(T) \right) dT \approx \alpha_{AB} \cdot (T_1 - T_0)\]</div>
+<p>де <span class="arithmatex">\(S_A(T)\)</span> та <span class="arithmatex">\(S_B(T)\)</span> позначають абсолютні коефіцієнти диференціальної термо-ЕРС відповідних металів; <span class="arithmatex">\(\alpha_{AB}\)</span> є сумарним коефіцієнтом термочутливості термопари, вираженим у <span class="arithmatex">\(\text{мкВ/}^\circ\text{C}\)</span>; <span class="arithmatex">\(T_1\)</span> позначає температуру робочого спаю; <span class="arithmatex">\(T_0\)</span> позначає стабільну температуру опорного (холодного) спаю.</p>
+<p>Параметричні сенсори діють як керовані імпеданси: під впливом вимірюваної величини змінюється внутрішній електричний параметр елемента — опір <span class="arithmatex">\(R\)</span>, ємність <span class="arithmatex">\(C\)</span> або індуктивність <span class="arithmatex">\(L\)</span>. Для вилучення вимірювальної інформації такий сенсор необхідно підключати до зовнішнього джерела живлення у складі мостових схем або дільників напруги. Наприклад, опір металевого тензорезистора під час деформації змінюється згідно з базовим законом тензорезистивного ефекту:</p>
+<div class="arithmatex">\[\frac{\Delta R}{R_0} = K_S \cdot \varepsilon = K_S \cdot \frac{\Delta l}{l_0}\]</div>
+<p>де <span class="arithmatex">\(R_0\)</span> позначає початковий електричний опір провідника без прикладеного механічного навантаження; <span class="arithmatex">\(\Delta R\)</span> є абсолютною зміною опору під дією деформації; <span class="arithmatex">\(K_S\)</span> позначає коефіцієнт тензочутливості матеріалу (для константану <span class="arithmatex">\(K_S \approx 2\)</span>, для легованого кремнію <span class="arithmatex">\(K_S \approx 100\dots150\)</span> завдяки п'єзоопору); <span class="arithmatex">\(\varepsilon = \frac{\Delta l}{l_0}\)</span> є відносною поздовжньою механічною деформацією.</p>
+<p>Ієрархічна структура таксономії сенсорних вузлів схематично систематизована на рисунку нижче.</p>
+<pre class="mermaid"><code>flowchart TD
+    Sensors["Сенсорні пристрої систем IoT"]
+
+    Sensors --&gt; EnergyType["За енергетичним принципом"]
+    EnergyType --&gt; Active["Генераторні (Активні)&lt;br/&gt;Термопари, П'єзоелементи, Фотодіоди"]
+    EnergyType --&gt; Passive["Параметричні (Пасивні)&lt;br/&gt;Тензорезистори, Термістори, Ємнісні комірки"]
+
+    Sensors --&gt; Nature["За фізичною природою сигналу"]
+    Nature --&gt; Mech["Механічні (Переміщення, Сила, Тиск)"]
+    Nature --&gt; Therm["Теплові (Температура, Тепловий потік)"]
+    Nature --&gt; Opt["Оптичні (Освітленість, Спектрометрія)"]
+    Nature --&gt; Chem["Електрохімічні (Газоаналізатори, pH)"]
+
+    Sensors --&gt; Spatial["За просторовою дискретизацією"]
+    Spatial --&gt; D0["Точкові (Скалярні вимірювання)"]
+    Spatial --&gt; D1["Одновимірні 1D-лінійки (CCD-лінійки)"]
+    Spatial --&gt; D2["Двовимірні 2D-матриці (CMOS-матриці, ПАХ-масиви)"]</code></pre>
+<p>За способом просторової дискретизації об'єкта вимірювання сенсори поділяються на точкові (фіксують локальне значення в одній географічній або геометричній точці), лінійні (формують одновимірний масив даних уздовж координати, наприклад, розподілений волоконно-оптичний сенсор температури вздовж трубопроводу) та матричні (збирають інформацію у вигляді просторової двовимірної картини, як-от інфрачервоні матриці тепловізорів або 2D-матриці тиску в системах розумного взуття).</p>
+<p>За типом фізичної локалізації виділяють контактні вимірювачі, які потребують прямого теплового, механічного або електричного зв'язку з об'єктом, та безконтактні (дистанційні) сенсори, які здійснюють вимірювання на відстані шляхом вловлювання відбитого або власного випромінювання (пірометри, пасивні інфрачервоні давачі руху PIR, ультразвукові далекоміри, лідари).</p>
+<p>Порівняльний інженерний аналіз базових концепцій побудови та схем підключення ключових класів сенсорів наведено в наступній систематизованій таблиці.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Клас перетворювача</th>
+<th style="text-align: left;">Фізичний принцип дії</th>
+<th style="text-align: left;">Тип вихідного сигналу</th>
+<th style="text-align: left;">Рівень енергоспоживання</th>
+<th style="text-align: left;">Приклад з реальної практики</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Термоелектричний (Термопара)</strong></td>
+<td style="text-align: left;">Прямий ефект Зеєбека на контакті металів</td>
+<td style="text-align: left;">Генераторний аналоговий сигнал (<span class="arithmatex">\(\text{мкВ}\)</span>)</td>
+<td style="text-align: left;">Нульове (пасивна генерація ЕРС)</td>
+<td style="text-align: left;">Моніторинг температурних режимів камер згоряння промислових котлів (<span class="arithmatex">\(+1200^\circ\text{C}\)</span>)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Терморезистивний (RTD Pt100)</strong></td>
+<td style="text-align: left;">Зміна питомого опору платини від температури</td>
+<td style="text-align: left;">Параметричний аналоговий опір (<span class="arithmatex">\(R(T)\)</span>)</td>
+<td style="text-align: left;">Низьке (потрібен струм вимірювання <span class="arithmatex">\(\le 1\text{ мА}\)</span>)</td>
+<td style="text-align: left;">Прецизійний контроль температури в резервуарах для зберігання вакцин у фарміндустрії</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Ємнісний диференціальний</strong></td>
+<td style="text-align: left;">Зміна зазору або площі пластин мікроконденсатора</td>
+<td style="text-align: left;">Параметричний сигнал високої частоти або напруга</td>
+<td style="text-align: left;">Наднизьке (<span class="arithmatex">\(10\dots100\text{ мкА}\)</span>)</td>
+<td style="text-align: left;">Акселерометри систем безпеки автомобілів для детектування зіткнень і розкриття подушок</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>П'єзоелектричний</strong></td>
+<td style="text-align: left;">Поляризація діелектрика під дією механічної сили</td>
+<td style="text-align: left;">Генераторний імпульсний заряд (<span class="arithmatex">\(Q \sim F\)</span>)</td>
+<td style="text-align: left;">Нульове під час дії динамічної сили</td>
+<td style="text-align: left;">Акустичні датчики контролю зносу та дефектоскопії залізничних рейок</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Магніторезистивний (AMR/GMR)</strong></td>
+<td style="text-align: left;">Зміна орієнтації магнітних доменів у тонких плівках</td>
+<td style="text-align: left;">Параметрична зміна опору мостової схеми</td>
+<td style="text-align: left;">Середнє (<span class="arithmatex">\(1\dots5\text{ мА}\)</span>)</td>
+<td style="text-align: left;">Безконтактне безступеневе визначення кута положення дросельної заслінки двигуна</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Оптичний фотоелектричний</strong></td>
+<td style="text-align: left;">Внутрішній фотоефект у <span class="arithmatex">\(p\text{-}n\)</span>-переході кремнію</td>
+<td style="text-align: left;">Генераторний фотострум або фото-ЕРС</td>
+<td style="text-align: left;">Мікропотужне (<span class="arithmatex">\(&lt; 0{,}5\text{ мА}\)</span>)</td>
+<td style="text-align: left;">Оптопари на конвеєрних лініях сортування для підрахунку та визначення габаритів тари</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Хеморезистивний (MOX)</strong></td>
+<td style="text-align: left;">Каталітична адсорбція газу на плівці <span class="arithmatex">\(SnO_2\)</span></td>
+<td style="text-align: left;">Параметрична зміна поверхневої провідності</td>
+<td style="text-align: left;">Високе (<span class="arithmatex">\(30\dots150\text{ мА}\)</span> на підігрів)</td>
+<td style="text-align: left;">Детектори витоку побутового природного газу (метану) та чадного газу (<span class="arithmatex">\(CO\)</span>) у ЖКГ</td>
+</tr>
+</tbody>
+</table>
+<p>Аналіз характеристик демонструє, що в сучасних автономних системах IoT перевага надається компонентам із низьким та наднизьким енергоспоживанням, що забезпечує багаторічне функціонування вузла від локального хімічного джерела живлення.</p>
+<hr />
+<h3 id="13-mems">1.3. Технологічні основи виробництва кремнієвих мікроелектромеханічних систем (MEMS) та їх інтеграція на рівні кристала</h3>
+<p>Кремнієві мікроелектромеханічні системи стали апаратним фундаментом Інтернету речей завдяки поєднанню унікальних електричних та механічних властивостей монокристалічного кремнію. Кремній характеризується модулем Юнга, порівнянним зі сталлю (<span class="arithmatex">\(E_{Si} \approx 130\dots190\text{ ГПа}\)</span> залежно від кристалографічної орієнтації), але володіє майже втричі меншою густиною (<span class="arithmatex">\(\rho \approx 2330\text{ кг/м}^3\)</span>) та високою межею пружності. Критичною перевагою кремнію над металами є абсолютна відсутність механічного гістерезису та явищ втоми матеріалу в межах робочих навантажень: кремнієва мікроскопічна пружина здатна витримувати трильйони циклів деформації без накопичення дефектів і зміни коефіцієнта жорсткості.</p>
+<p>Технологічний цикл виробництва MEMS базується на модифікованих групових процесах планарної мікроелектроніки, які доповнюються операціями селективного об'ємного та поверхневого мікромеханічного формування. Базовий процес складається з наступної суворої технологічної послідовності операцій. </p>
+<p>Спершу на монокристалічну кремнієву пластину методом термічного окиснення або плазмохімічного осадження (PECVD) наносяться шари діелектрика (<span class="arithmatex">\(\text{SiO}_2\)</span>, <span class="arithmatex">\(\text{Si}_3\text{N}_4\)</span>) та структурні шари полікристалічного кремнію. </p>
+<p>Далі за допомогою фотолітографії крізь прецизійний фотошаблон формується просторовий рельєф майбутнього пристрою. Ключовою технологією створення вертикальних мікроструктур із високим аспектним співвідношенням (співвідношення глибини до ширини до <span class="arithmatex">\(50:1\)</span>) є глибоке реактивне іонне травлення (Deep Reactive Ion Etching, DRIE), реалізоване через так званий процес Боша (Bosch process). Цей процес полягає в циклічному чергуванні двох фаз: фази швидкого плазмового травлення кремнію іонами газу гексафториду сірки (<span class="arithmatex">\(SF_6\)</span>) та фази осадження полімерної захисної пасивуючої плівки з октафторциклобутану (<span class="arithmatex">\(C_4F_8\)</span>) на вертикальні бічні стінки формуваного заглиблення.</p>
+<p>Завершальною критичною стадією є видалення так званого «жертовного» шару (Sacrificial Layer, найчастіше діоксиду кремнію <span class="arithmatex">\(\text{SiO}_2\)</span>), на якому формувалася рухома конструкція. Травлення жертовного шару здійснюється парами безводної фтористоводневої кислоти (<span class="arithmatex">\(HF\)</span>). Після його видалення мікроскопічна інерційна маса, балка або мембрана повисає у відкритому зазорі над підкладкою, набуваючи ступенів вільної механічної рухливості.</p>
+<p>Електростатична взаємодія між паралельними пластинами мікроконденсатора у структурі MEMS визначається рівнянням накопиченої енергії електричного поля <span class="arithmatex">\(E_e\)</span> та величиною сили електростатичного притягання <span class="arithmatex">\(F_e\)</span>:</p>
+<div class="arithmatex">\[E_e(x) = \frac{1}{2} C(x) V^2 = \frac{\varepsilon_0 \varepsilon_r A}{2 (d_0 - x)} V^2\]</div>
+<div class="arithmatex">\[F_e = \frac{\partial E_e(x)}{\partial x} = \frac{\varepsilon_0 \varepsilon_r A V^2}{2 (d_0 - x)^2}\]</div>
+<p>де <span class="arithmatex">\(\varepsilon_0\)</span> позначає електричну сталу вакууму (<span class="arithmatex">\(\text{Ф/м}\)</span>); <span class="arithmatex">\(\varepsilon_r\)</span> є діелектричною проникністю газу в камері; <span class="arithmatex">\(A\)</span> позначає ефективну площу взаємного перекриття електродів (<span class="arithmatex">\({\text{м}}^2\)</span>); <span class="arithmatex">\(V\)</span> є різницею потенціалів між рухомим та нерухомим електродом (В); <span class="arithmatex">\(d_0\)</span> позначає початковий зазор між обкладками за відсутності керуючої напруги (м); <span class="arithmatex">\(x\)</span> є просторовим переміщенням рухомого електрода (м).</p>
+<p>У конструктивному плані інтеграція MEMS-структур з обчислювальною електронікою здійснюється за двома напрямами: монолітна система на кристалі (System-on-Chip, SoC) та багаточипова система в корпусі (System-in-Package, SiP). </p>
+<p>При монолітній інтеграції механічні вузли та CMOS-транзистори логіки виготовляються на одній пластині в єдиному технологічному маршруті. Це забезпечує мінімальні паразитні ємності сигнальних ліній, однак стикається з конфліктом високих температур осадження кремнію та обмежень CMOS-металізації. </p>
+<p>Тому понад <span class="arithmatex">\(80\%\)</span> сучасних промислових MEMS-компонентів проектуються за технологією SiP: механічний сенсорний кристал та кремнієвий кристал спеціалізованої схеми обробки сигналу (Application-Specific Integrated Circuit, ASIC) виготовляються на окремих пластинах за оптимальними технологічними нормами, монтуються в один герметичний корпус і з'єднуються між собою дротовим ультразвуковим мікрозварюванням або матрицею наскрізних кремнієвих переходів (Through-Silicon Vias, TSV).</p>
+<blockquote>
+<p><strong>ТИПОВА ПОМИЛКА:</strong> Поширена помилкова інженерна думка полягає в тому, що механічні структури MEMS за законами підпорядковуються виключно класичній макроскопічній механіці без урахування атомних сил. На мікрорівні зі зменшенням розмірів співвідношення площі поверхні до об'єму різко зростає, внаслідок чого гравітаційні сили стають мізерними, а домінуючу роль починають відігравати поверхневі сили адгезії, капілярні сили Ван-дер-Ваальса та електростатичні заряди. Якщо в процесі рідинного травлення жертовного шару не застосувати надкритичну сушку вуглекислим газом або парове травлення, поверхневий натяг рідини притисне кремнієві балки до підкладки, викликаючи їх незворотне злипання (явище <strong>стикції</strong>, Stiction), що призводить до повного апаратного браку компонента.</p>
+</blockquote>
+<hr />
+<h3 id="14-mems-imu-dmp">1.4. Принципи функціонування MEMS-акселерометрів, гіроскопів та інтегрованих інерціальних вимірювальних модулів (IMU) з апаратними процесорами руху (DMP)</h3>
+<p>Основними компонентами систем навігації, просторової орієнтації та вібродіагностики в Інтернеті речей є ємнісні акселерометри та вібраційні гіроскопи, що об'єднуються в інтегровані інерціальні вимірювальні модулі (IMU).</p>
+<p>Ємнісний триосьовий <strong>MEMS-акселерометр</strong> вимірює вектор суми кінематичного прискорення корпусу та гравітаційного прискорення вільного падіння. Чутливий елемент кожної осі містить кремнієву інерційну сейсмічну масу <span class="arithmatex">\(m\)</span>, яка підвішена на гнучких балках із жорсткістю <span class="arithmatex">\(k\)</span>. Маса забезпечена десятками кремнієвих мікропальців, розташованих між нерухомими пластинами підкладки, утворюючи диференціальний конденсатор. </p>
+<p>Динаміка зміщення маси <span class="arithmatex">\(x(t)\)</span> відносно основи описується класичним диференціальним рівнянням вимушених коливань у в'язкому середовищі:</p>
+<div class="arithmatex">\[m \frac{d^2 x(t)}{dt^2} + c \frac{dx(t)}{dt} + k x(t) = -m \cdot a_{in}(t)\]</div>
+<p>де <span class="arithmatex">\(m\)</span> позначає масу кремнієвого тіла (<span class="arithmatex">\(\text{кг}\)</span>); <span class="arithmatex">\(c\)</span> є коефіцієнтом механічного демпфування газом всередині порожнини (<span class="arithmatex">\(\text{Н}\cdot\text{с/м}\)</span>); <span class="arithmatex">\(k\)</span> позначає жорсткість пружного підвісу (<span class="arithmatex">\(\text{Н/м}\)</span>); <span class="arithmatex">\(x(t)\)</span> є лінійним зміщенням маси (м); <span class="arithmatex">\(a_{\text{in}}(t)\)</span> позначає проекцію вхідного лінійного прискорення на відповідну вісь вимірювання (<span class="arithmatex">\(\text{м/с}^2\)</span>).</p>
+<p>При статичному або низькочастотному прискоренні зміщення маси становить <span class="arithmatex">\(x = -\frac{m}{k} a_{in}\)</span>. Зміна вихідної диференціальної ємності <span class="arithmatex">\(\Delta C = C_1 - C_2\)</span> лінійно відображає це переміщення:</p>
+<div class="arithmatex">\[\Delta C = \varepsilon_0 \varepsilon_r A \left( \frac{1}{d_0 - x} - \frac{1}{d_0 + x} \right) \approx \frac{2 \varepsilon_0 \varepsilon_r A}{d_0^2} \cdot x = \left( \frac{2 C_0 m}{d_0 k} \right) \cdot a_{in}\]</div>
+<p>де <span class="arithmatex">\(C_0\)</span> позначає початкову спокійну ємність одиничної секції конденсатора; <span class="arithmatex">\(d_0\)</span> є базовою відстанню між пальцями у стані спокою. Спеціалізована мікросхема ASIC вимірює струми перезаряду ємностей на високій несучій частоті (від <span class="arithmatex">\(100\text{ кГц}\)</span> до <span class="arithmatex">\(1\text{ МГц}\)</span>) і формує напругу, пропорційну значенню <span class="arithmatex">\(a_{in}\)</span>.</p>
+<p>Робота <strong>вібраційного MEMS-гіроскопа</strong> ґрунтується на вимірюванні сили Коріоліса, яка виникає під час обертання рухомого тіла, що коливається. Механічна структура гіроскопа має щонайменше два ступені вільності. Електростатичний гребінчастий привід (Drive Comb) збуджує неперервні коливання первинної маси вздовж осі <span class="arithmatex">\(X\)</span> із резонансною швидкістю <span class="arithmatex">\(v_x(t) = V_0 \sin(\omega_r t)\)</span>. </p>
+<p>Якщо корпус датчика починає обертатися навколо перпендикулярної осі <span class="arithmatex">\(Z\)</span> з кутовою швидкістю <span class="arithmatex">\(\Omega_z\)</span>, виникає коріолісова сила <span class="arithmatex">\(\vec{F}_C\)</span>, вектор якої спрямований уздовж ортогональної осі <span class="arithmatex">\(Y\)</span>:</p>
+<div class="arithmatex">\[\vec{F}_C = 2 m \left( \vec{v} \times \vec{\Omega} \right) = 2 m \cdot v_x(t) \cdot \Omega_z\]</div>
+<p>де <span class="arithmatex">\(m\)</span> позначає величину вібруючої маси; <span class="arithmatex">\(\vec{v}\)</span> є вектором лінійної швидкості внутрішніх коливань підвісу; <span class="arithmatex">\(\vec{\Omega}\)</span> позначає вимірювану зовнішню кутову швидкість. Під дією цієї сили вторинна рамка починає коливатися вздовж осі <span class="arithmatex">\(Y\)</span>, а амплітуда виниклих коливань, детектується вторинними конденсаторами чутливості (Sense Comb), виявляється строго пропорційною миттєвій кутовій швидкості <span class="arithmatex">\(\Omega_z\)</span>.</p>
+<p>Об'єднання 3-осьового акселерометра та 3-осьового гіроскопа формує модуль із 6 ступенями вільності (6-DOF IMU), прикладом якого є мікросхема MPU-6050. Однак пряме використання окремих сигналів має фізичні фундаментальні дефекти: інтегрування даних гіроскопа <span class="arithmatex">\(\int \Omega dt\)</span> дозволяє відстежувати кути крену, тангажу та рискання з високою частотою оновлення, але накопичує монотонний низькочастотний дрейф нуля (Drift/Random Walk), який за кілька хвилин спотворює оцінку кута на десятки градусів. Акселерометр, навпаки, забезпечує абсолютну довготривалу стабільність за вектором сили тяжіння Землі <span class="arithmatex">\(g\)</span>, але піддається впливу високочастотних вібрацій та паразитних лінійних прискорень об'єкта.</p>
+<p>Для розв'язання цієї проблеми в архітектуру MPU-6050 вбудовано апаратний сигнальний співпроцесор <strong>DMP</strong> (Digital Motion Processor). Він автоматично зчитує сирі дані від 16-бітних АЦП акселерометра та гіроскопа з внутрішньою частотою <span class="arithmatex">\(200\text{ Гц}\)</span>, здійснює обчислення фільтрів злиття даних (Sensor Fusion) і записує у внутрішній апаратний буфер FIFO об'ємом 1024 байти орієнтаційні <strong>кватерніони</strong> просторового положення <span class="arithmatex">\(q = [w, x, y, z]^T\)</span>. Це повністю розвантажує основний мікроконтролер IoT-вузла (наприклад, ESP32) від складних матричних тригонометричних обчислень у контурі реального часу.</p>
+<p>Якщо застосування вбудованого апаратного DMP неможливе, на мікроконтролері реалізується алгоритм цифрового <strong>комплементарного фільтра</strong>, що об'єднує властивості фільтра високих частот для гіроскопа та фільтра низьких частот для акселерометра:</p>
+<div class="arithmatex">\[\theta[k] = \alpha \cdot \left( \theta[k-1] + \omega_{gyro}[k] \cdot \Delta t \right) + (1 - \alpha) \cdot \theta_{acc}[k]\]</div>
+<p>де <span class="arithmatex">\(\theta[k]\)</span> позначає результуючу кутову оцінку на поточному <span class="arithmatex">\(k\)</span>-му кроці розрахунку; <span class="arithmatex">\(\alpha\)</span> є безрозмірним коефіцієнтом зважування фільтра (<span class="arithmatex">\(0{,}95 \le \alpha \le 0{,}98\)</span>); <span class="arithmatex">\(\omega_{gyro}[k]\)</span> позначає миттєву кутову швидкість від гіроскопа; <span class="arithmatex">\(\Delta t\)</span> є періодом циклу опитування сенсора в секундах; <span class="arithmatex">\(\theta_{acc}[k] = \text{atan2}(a_y, a_z) \cdot \frac{180^\circ}{\pi}\)</span> позначає кут, відновлений через проекції гравітаційного прискорення акселерометра.</p>
+<blockquote>
+<p><strong>ПРАКТИЧНИЙ ЯКІР:</strong> У комерційних безпілотних літальних апаратах (квадрокоптерах) польотний контролер опитує MEMS IMU-модулі на частоті не менше <span class="arithmatex">\(800\text{ Гц}\)</span> через апаратне переривання, використовуючи комплементарне комплексування даних для відпрацювання алгоритмів стабілізації обертів безколекторних двигунів за час, що не перевищує <span class="arithmatex">\(1{,}25\text{ мс}\)</span>.</p>
+<p><strong>КОНТРОЛЬНЕ ПИТАННЯ:</strong> Чому для визначення кута рискання (Yaw, поворот у горизонтальній площині навколо осі, паралельної вектору гравітації) неможливо використати показання трьохосьового акселерометра навіть за повної відсутності руху, і які додаткові компоненти необхідні для повної 9-DOF орієнтації системи?</p>
+</blockquote>
+<details class="note">
+<summary>Розгорнути аналіз / відповідь</summary>
+<p><strong>Правильний варіант: Неможливість базується на колінеарності осі обертання вектору сили тяжіння, що потребує магнітометра.</strong></p>
+<ol>
+<li>
+<p>Акселерометр здатний визначати просторові кути нахилу (крен Roll та тангаж Pitch) виключно завдяки вимірюванню статичних проекцій вектора гравітаційного прискорення вільного падіння <span class="arithmatex">\(g\)</span> на відповідні ортогональні осі <span class="arithmatex">\(X, Y, Z\)</span>. При обертанні об'єкта в горизонтальній площині (навколо вертикальної осі <span class="arithmatex">\(Z\)</span>, спрямованої строго паралельно вектору <span class="arithmatex">\(\vec{g}\)</span>) проекція вектора гравітації на вісь <span class="arithmatex">\(Z\)</span> залишається абсолютно незмінною (<span class="arithmatex">\(a_z = 1g\)</span>), а проекції на осі <span class="arithmatex">\(X\)</span> та <span class="arithmatex">\(Y\)</span> залишаються рівними нулю (<span class="arithmatex">\(a_x = 0, a_y = 0\)</span>). Оскільки вектор прискорення вільного падіння не має складової у площині обертання, математична система рівнянь стає невизначеною, і акселерометр принципово не здатний зафіксувати поворот по азимуту. Для компенсації цього обмеження та реалізації повноцінної просторової орієнтації 9-DOF до системи додають трьохосьовий магнітометр (електронний компас), який реєструє проекції вектора напруженості геомагнітного поля Землі у горизонтальній площині, надаючи стабільну опорну базу для осі рискання.</p>
+</li>
+<li>
+<p>Аналіз дистракторів:</p>
+</li>
+<li>
+<p>Гіроскоп за віссю <span class="arithmatex">\(Z\)</span> здатен детектувати зміну кутової швидкості обертання, але внаслідок неминучого інтегрування шуму та постійного зсуву нуля (Zero-rate Bias) оцінка кута рискання неперервно дрейфує, тому гіроскоп сам по собі не є абсолютним вимірювачем азимута у тривалому часі.</p>
+</li>
+<li>
+<p>Збільшення розрядності АЦП чи калібрування акселерометра не вирішують проблему, оскільки обмеження зумовлене фундаментальною векторною геометрією, а не апаратними похибками вимірювального тракту.</p>
+</li>
+</ol>
+</details>
+<hr />
+<h3 id="_4">Вказівки для самостійного осмислення</h3>
+<ol>
+<li>
+<p>Проаналізуйте технічну документацію на інерціальний вимірювальний сенсор MPU-6050, зосередивши увагу на призначеннях регістрів конфігурації фільтра низьких частот <code>CONFIG (0x1A)</code> та діапазонів чутливості <code>GYRO_CONFIG (0x1B)</code> і <code>ACCEL_CONFIG (0x1C)</code>.</p>
+</li>
+<li>
+<p>Розрахуйте аналітично зміщення маси та зміну ємності диференціального акселерометра, прийнявши масу сейсмічного тіла рівною <span class="arithmatex">\(0{,}25\text{ мкг}\)</span>, коефіцієнт пружності кремнієвого підвісу <span class="arithmatex">\(k = 15\text{ Н/м}\)</span>, міжелектродний зазор <span class="arithmatex">\(d_0 = 1{,}5\text{ мкм}\)</span> при прикладанні статичного лінійного прискорення величиною <span class="arithmatex">\(5g\)</span>.</p>
+</li>
+<li>
+<p>Порівняйте монолітні технології інтеграції мікроелектромеханічних структур SoC із модульними рішеннями SiP за показниками паразитних параметрів ліній зв'язку, площі кристала, технологічної собівартості та відсотка виходу придатних інтегральних схем.</p>
+</li>
+</ol>
+<h2 id="2_1">2. Методологія та аналіз граничних умов. Процеси квантування, лінеаризації та фільтрації сигналів у реальному часі</h2>
+<h3 id="21-lsb-sqnr">2.1. Математичні основи аналого-цифрового перетворення: теорема Котельникова-Шеннона, вага молодшого значущого розряду (LSB) та теоретичний поріг SQNR</h3>
+<p>Процес первинного збору інформації у вузлах Інтернету речей базується на перетворенні неперервних фізичних величин у дискретну цифрову послідовність. Математична формалізація цієї процедури охоплює два нерозривні процеси: дискретизацію за часом та квантування за амплітудою. Дискретизація перетворює неперервний аналоговий сигнал <span class="arithmatex">\(x(t)\)</span> у часову послідовність миттєвих значень <span class="arithmatex">\(x[n] = x(n T_s)\)</span>, де <span class="arithmatex">\(T_s = 1/f_s\)</span> позначає період дискретизації, а <span class="arithmatex">\(f_s\)</span> є частотою вибірки вимірювального тракту.</p>
+<p>Фундаментальною межею безпомилкового відновлення спектра досліджуваного процесу виступає теорема Котельникова-Шеннона. Відповідно до цієї теореми, неперервний сигнал із обмеженим енергетичним спектром, максимальна частота якого становить <span class="arithmatex">\(f_{max}\)</span>, може бути повністю та однозначно відновлений за своїми дискретними відліками за умови, що частота дискретизації строго задовольняє критерій Найквіста:</p>
+<div class="arithmatex">\[f_s \ge 2 \cdot f_{max}\]</div>
+<p>У разі порушення цієї фундаментальної нерівності (<span class="arithmatex">\(f_s &lt; 2 f_{max}\)</span>) спектральні компоненти сигналу, розташовані вище частоти Найквіста <span class="arithmatex">\(f_N = f_s / 2\)</span>, дзеркально накладаються на основний діапазон частот. Це явище має назву <strong>аліасинг</strong> (маскування або накладання частот), а результуюча паразитна частота хибного сигналу <span class="arithmatex">\(f_{alias}\)</span> визначається модулем різниці між вхідною гармонікою <span class="arithmatex">\(f_{in}\)</span> та найближчою гармонікою частоти квантування:</p>
+<div class="arithmatex">\[f_{alias} = |f_{in} - k \cdot f_s|\]</div>
+<p>де <span class="arithmatex">\(k \in \mathbb{N}\)</span> обирається таким чином, щоб значення <span class="arithmatex">\(f_{alias}\)</span> опинилося в межах смуги пропускання <span class="arithmatex">\([0; f_s / 2]\)</span>. Оскільки цифровими алгоритмами неможливо відрізнити справжній низькочастотний сигнал від дзеркально накладеної псевдочастоти, перед кожним аналого-цифровим перетворювачем є обов'язковим увімкнення апаратного аналогового фільтра захисту від накладання спектрів (Anti-Aliasing Filter, AAF).</p>
+<p>Квантування за амплітудою відображає нескінченну множину значень напруги <span class="arithmatex">\(V_{in}\)</span> у скінченну множину цілочисельних кодів <span class="arithmatex">\(D\)</span>. Для лінійного перетворювача з розрядністю <span class="arithmatex">\(N\)</span> бітів та діапазоном повної шкали від нуля до опорної напруги <span class="arithmatex">\(V_{ref}\)</span> вага молодшого значущого розряду (Least Significant Bit, LSB), що визначає крок квантування <span class="arithmatex">\(q\)</span>, розраховується аналітично:</p>
+<div class="arithmatex">\[q = \text{LSB} = \frac{V_{ref}}{2^N - 1} \approx \frac{V_{ref}}{2^N}\]</div>
+<p>де <span class="arithmatex">\(q\)</span> позначає мінімальну дискрету зміни аналогового потенціалу, яку здатна зафіксувати мікросхема АЦП, вимірювану у вольтах; <span class="arithmatex">\(V_{ref}\)</span> є високостабільною опорною напругою перетворення; <span class="arithmatex">\(N\)</span> визначає число вихідних двійкових розрядів.</p>
+<p>Невідповідність між реальним рівнем напруги <span class="arithmatex">\(V_{in}\)</span> та його найближчим квантованим еквівалентом формує похибку квантування <span class="arithmatex">\(e_q(t) = V_{in}(t) - V_{quant}(t)\)</span>, миттєве значення якої за ідеального перетворення лежить у симетричних межах <span class="arithmatex">\([-q/2; +q/2]\)</span>. Якщо вхідний сигнал є динамічним, складним за спектром і перетинає велику кількість квантів перетворення, похибку <span class="arithmatex">\(e_q(t)\)</span> розглядають як адитивний білий шум із рівномірною функцією густини ймовірності <span class="arithmatex">\(p(e) = 1/q\)</span>. Потужність такого шуму квантування <span class="arithmatex">\(P_e\)</span> обчислюється шляхом інтегрування квадрата похибки:</p>
+<div class="arithmatex">\[P_e = \sigma_e^2 = \int_{-q/2}^{+q/2} e^2 \cdot p(e) \, de = \frac{1}{q} \left[ \frac{e^3}{3} \right]_{-q/2}^{+q/2} = \frac{q^2}{12}\]</div>
+<p>Для гармонічного вхідного сигналу з максимально можливою амплітудою повної шкали <span class="arithmatex">\(V(t) = \frac{V_{ref}}{2} \sin(\omega t)\)</span> потужність корисного сигналу становить:</p>
+<div class="arithmatex">\[P_s = \frac{1}{T} \int_0^T V^2(t) \, dt = \frac{V_{ref}^2}{8} = \frac{(2^N \cdot q)^2}{8} = \frac{2^{2N} \cdot q^2}{8}\]</div>
+<p>Формалізація теоретичного відношення потужності сигналу до потужності шуму квантування (Signal-to-Quantization-Noise Ratio, SQNR) у децибелах здійснюється за наступним математичним ланцюжком:</p>
+<div class="arithmatex">\[
+\begin{aligned}
+\text{Крок 1 (Визначення співвідношення потужностей):} &amp; \quad \text{SQNR} = 10 \lg \left( \frac{P_s}{P_e} \right) = 10 \lg \left( \frac{\frac{2^{2N} q^2}{8}}{\frac{q^2}{12}} \right) \\
+\text{Крок 2 (Алгебраїчне спрощення аргументу):} &amp; \quad \text{SQNR} = 10 \lg \left( \frac{12}{8} \cdot 2^{2N} \right) = 10 \lg (1{,}5) + 10 \lg (2^{2N}) \\
+\text{Крок 3 (Логарифмічне виведення формули Найквіста):} &amp; \quad \text{SQNR} = 1{,}761 + 20 N \lg(2) \approx 6{,}02 \cdot N + 1{,}76 \text{ дБ}
+\end{aligned}
+\]</div>
+<p>де <span class="arithmatex">\(N\)</span> позначає ефективну кількість розрядів перетворювача. Отриманий вираз установлює фундаментальну інженерну залежність: додавання кожного одного біта розрядності розширює динамічний діапазон вимірювального тракту на <span class="arithmatex">\(6{,}02\text{ дБ}\)</span>. </p>
+<p>Аналіз граничних умов виявляє, що наведена модель SQNR різко деградує у випадках, коли вхідний сигнал є статичним або змінюється повільно. За таких умов похибка квантування втрачає властивості білого шуму і стає корельованою із вхідним сигналом, що породжує лінійчасті паразитні гармоніки у вихідному спектрі та зумовлює появу феномену граничних циклів. </p>
+<p>Крім того, модель стає нерелевантною для імпульсних та несинусоїдних сигналів із високим крест-фактором (відношенням пікового значення до середньоквадратичного), для яких амплітуда вимушено обмежується для уникнення апаратного насичення шкали АЦП, що автоматично знижує реальне співвідношення сигнал/шум на десятки децибелів від теоретичного розрахункового оптимуму.</p>
+<hr />
+<h3 id="22-sar-sigmadelta">2.2. Порівняльний аналіз архітектур АЦП послідовного наближення (SAR) та дельта-сигма (<span class="arithmatex">\(\Sigma\Delta\)</span>) у контексті швидкодії, розрядності й енергоефективності</h3>
+<p>Вибір структурної організації АЦП безпосередньо зумовлює пропускну здатність та енергетичний бюджет граничного вузла Інтернету речей. В індустріальних застосуваннях та вбудованих мікроконтролерних системах конкурують дві фундаментальні парадигми: архітектура послідовного наближення (Successive Approximation Register, SAR) та дельта-сигма архітектура (<span class="arithmatex">\(\Sigma\Delta\)</span>).</p>
+<p>АЦП послідовного наближення функціонує за принципом двійкового пошуку аналогового еквівалента напруги. На початку кожного перетворення пристрій вибірки-зберігання (Sample-and-Hold, S&amp;H) фіксує миттєву напругу на зарядному конденсаторі <span class="arithmatex">\(C_{sample}\)</span>. Потім внутрішній регістр послідовного наближення встановлює старший значущий біт (MSB) внутрішнього прецизійного ЦАП в одиницю. Компаратор порівнює тестову напругу ЦАП із зафіксованою напругою сигналу. Якщо вхідна напруга вища, тестовий біт залишається в одиниці, в іншому випадку — скидається в нуль. </p>
+<p>Цей процес повторюється для всіх <span class="arithmatex">\(N\)</span> розрядів, вимагаючи строго <span class="arithmatex">\(N\)</span> тактів опорного тактового генератора на одне повне перетворення. Динамічним бар'єром швидкодії SAR виступає часова стала заряджання ємності дискретизатора через внутрішній вихідний опір джерела сигналу <span class="arithmatex">\(R_{source}\)</span> та опір аналогового ключа <span class="arithmatex">\(R_{switch}\)</span>:</p>
+<div class="arithmatex">\[t_{acq} \ge - \ln \left( \frac{1}{2^{N+1}} \right) \cdot (R_{source} + R_{switch}) \cdot C_{sample}\]</div>
+<p>де <span class="arithmatex">\(t_{acq}\)</span> позначає мінімально необхідний час вибірки для встановлення заряду з точністю краще <span class="arithmatex">\(0{,}5\text{ LSB}\)</span>; <span class="arithmatex">\(N\)</span> є проектною розрядністю АЦП.</p>
+<p>Принципово іншу методологію використовують дельта-сигма перетворювачі, які базуються на концепціях передискретизації (Oversampling) та формування спектра шуму (Noise Shaping). Дельта-сигма модулятор дискретизує вхідний сигнал на тактовій частоті <span class="arithmatex">\(f_{oversample}\)</span>, яка у сотні або тисячі разів перевищує граничну частоту Найквіста, виражаючись через коефіцієнт передискретизації <span class="arithmatex">\(\text{OSR} = f_{oversample} / (2 f_B)\)</span>, де <span class="arithmatex">\(f_B\)</span> позначає смугу пропускання корисного сигналу. </p>
+<p>Завдяки інтегратору та негативному зворотному зв'язку в модуляторі спектральна густина шуму квантування витискається з низькочастотної області у високочастотну зону спектра. Подальший цифровий децимаційний фільтр (переважно sinc-конфігурації) зрізає високочастотну складову разом із шумом квантування та знижує частоту відліків до цільової, забезпечуючи екстремально високу роздільну здатність аж до 24 чи 32 бітів без застосування надточних лазерно-підігнаних резистивних матриць.</p>
+<p>Взаємодію мікроконтролерного вузла з інтегрованим модулем АЦП під час апаратного опитування первинного сенсора представлено на наступній часовій діаграмі.</p>
+<pre class="mermaid"><code>sequenceDiagram
+    autonumber
+    participant Sensor as Первинний Сенсор (Analog)
+    participant AFE_ADC as Вбудований SAR АЦП
+    participant DMA as Контролер прямого доступу (DMA)
+    participant MCU as Ядро мікроконтролера (ESP32)
+
+    MCU-&gt;&gt;AFE_ADC: Ініціалізація та старт перетворення (Trigger Event)
+    activate AFE_ADC
+    AFE_ADC-&gt;&gt;Sensor: Замикання ключа S&amp;H, заряд вибіркового конденсатора (t_acq)
+    Sensor--&gt;&gt;AFE_ADC: Зарядний струм заряду C_sample
+    Note over AFE_ADC: Розмикання ключа, двійковий пошук по N бітах (N тактів тактування)
+    AFE_ADC-&gt;&gt;DMA: Генерація стробу готовності даних (Conversion Complete)
+    deactivate AFE_ADC
+    activate DMA
+    DMA-&gt;&gt;AFE_ADC: Зчитування двійкового слова по внутрішній шині
+    DMA-&gt;&gt;MCU: Запис у кільцевий буфер пам'яті SRAM
+    DMA--&gt;&gt;MCU: Апаратне переривання буфера (Buffer Full IRQ)
+    deactivate DMA
+    activate MCU
+    Note over MCU: Запуск задач цифрової фільтрації у фоновому потоці FreeRTOS
+    deactivate MCU</code></pre>
+<p>Аналіз критичних умов застосування свідчить, що архітектура SAR стає нерелевантною у прецизійних тензометричних трактах, де корисний сигнал становить частки мікровольта: теплові шуми вхідного тракту перекривають молодші розряди перетворювача, роблячи останні <span class="arithmatex">\(3\dots4\)</span> біти абсолютно недостовірними. </p>
+<p>Натомість дельта-сигма перетворювачі принципово непридатні для мультиплексованого опитування високошвидкісних каналів: внутрішній цифровий децимаційний фільтр володіє значною груповою затримкою, і за кожного циклу перемикання вхідного аналогового комутатора конвеєр фільтра повинен повністю перезавантажуватися, що обвалює ефективну пропускну здатність вузла у десятки разів.</p>
+<blockquote>
+<p><strong>ПРАКТИЧНИЙ ЯКІР:</strong> У промислових модулях вібродіагностики стандарту ISO 10816 для аналізу швидких перехідних процесів ударних навантажень підшипників застосовують виключно SAR АЦП із паралельним одночасним опитуванням каналів на частотах до <span class="arithmatex">\(100\text{ кГц}\)</span>, тоді як у стаціонарних промислових вагових терміналах бункерів дозування домінують винятково <span class="arithmatex">\(\Sigma\Delta\)</span> АЦП (наприклад, Analog Devices AD7799), які забезпечують придушення синфазної завади промислової мережі частотою <span class="arithmatex">\(50\text{ Гц}\)</span> на рівні понад <span class="arithmatex">\(100\text{ дБ}\)</span> завдяки формуванню глибокого нуля передавальної характеристики на цій частоті цифровим фільтром дециматора.</p>
+</blockquote>
+<hr />
+<h3 id="23-">2.3. Алгоритми цифрової обробки сигналів на граничних пристроях: лінеаризація за рівнянням Стейнхарта-Харта, калібрування зміщення нуля та чутливості</h3>
+<p>Сирі відліки, отримані на виході АЦП, потребують математичної нормалізації для усунення схемотехнічних похибок зміщення та переведення в реальні інженерні одиниці. Базовою процедурою лінійного калібрування вимірювального тракту є двоточкова корекція. Вона компенсує адитивну похибку зсуву нуля (Offset Error) та мультиплікативну похибку коефіцієнта передачі (Gain Error), спричинені розкидом опорів резисторів дільника напруги та внутрішніх опорних джерел АЦП. </p>
+<p>Математична формалізація процесу двоточкового калібрування лінійного каналу реалізується у три послідовні розрахункові етапи:</p>
+<div class="arithmatex">\[
+\begin{aligned}
+\text{Крок 1 (Отримання калібрувальних пар):} &amp; \quad (\lambda_1, D_1) \text{ та } (\lambda_2, D_2) \\
+\text{Крок 2 (Розрахунок масштабу та зміщення):} &amp; \quad K_{gain} = \frac{\lambda_2 - \lambda_1}{D_2 - D_1}, \quad X_{offset} = \lambda_1 - K_{gain} \cdot D_1 \\
+\text{Крок 3 (Оперативне відновлення сигналу):} &amp; \quad \lambda_{real}[n] = K_{gain} \cdot D[n] + X_{offset}
+\end{aligned}
+\]</div>
+<p>де <span class="arithmatex">\(\lambda_1, \lambda_2\)</span> позначають еталонні значення фізичної величини, виражені в інженерних одиницях вимірювання (наприклад, градусах або кілопаскалях); <span class="arithmatex">\(D_1, D_2\)</span> є числовими еквівалентами на виході АЦП під час дії еталонних впливів; <span class="arithmatex">\(D[n]\)</span> є поточним виміряним кодом АЦП; <span class="arithmatex">\(\lambda_{real}[n]\)</span> позначає відкаліброване вихідне значення параметра.</p>
+<p>У випадках вираженої фізичної нелінійності чутливого елемента застосування простої лінійної моделі призводить до неприпустимих методичних похибок. Класичним прикладом є напівпровідникові термістори з негативним температурним коефіцієнтом (Negative Temperature Coefficient, NTC), питомий опір яких експоненційно зменшується зі зростанням абсолютної температури. Для відновлення температурного поля за виміряним опором терморезистора <span class="arithmatex">\(R_t\)</span> застосовується емпірична модель високого порядку — поліноміальне рівняння Стейнхарта-Харта. </p>
+<p>Математична послідовність отримання температури в інженерних одиницях шкали Цельсія здійснюється за наступними алгоритмічними фазами:</p>
+<div class="arithmatex">\[
+\begin{aligned}
+\text{Крок 1 (Розрахунок опору сенсора з виходу АЦП):} &amp; \quad R_t = R_{ref} \cdot \frac{D[n]}{2^N - D[n]} \\
+\text{Крок 2 (Обчислення натурального логарифма опору):} &amp; \quad L_R = \ln(R_t) \\
+\text{Крок 3 (Розрахунок температури в Кельвінах):} &amp; \quad \frac{1}{T_K} = A + B \cdot L_R + C \cdot (L_R)^3 \implies T_K = \frac{1}{A + B \cdot L_R + C \cdot L_R^3} \\
+\text{Крок 4 (Трансляція у шкалу Цельсія):} &amp; \quad T_C = T_K - 273{,}15
+\end{aligned}
+\]</div>
+<p>де <span class="arithmatex">\(R_{ref}\)</span> позначає опір високоточного реперного резистора верхнього плеча дільника напруги (Ом); <span class="arithmatex">\(D[n]\)</span> є значенням оцифрованої напруги; <span class="arithmatex">\(N\)</span> є розрядністю АЦП; <span class="arithmatex">\(A, B, C\)</span> є унікальними експериментальними коефіцієнтами Стейнхарта-Харта конкретного екземпляра напівпровідникової структури термістора, визначеними за трьома реперними температурними точками.</p>
+<p>Аналіз граничних умов виявляє критичні ситуації, у яких математична модель Стейнхарта-Харта втрачає стійкість. При температурних режимах, що перевищують робочий діапазон сенсора (<span class="arithmatex">\(T_C &gt; 150^\circ\text{C}\)</span> або <span class="arithmatex">\(T_C &lt; -50^\circ\text{C}\)</span>), модель демонструє різке зростання похибки екстраполяції через зміну механізму провідності напівпровідника (перехід від домішкової провідності до власної). </p>
+<p>Другим граничним фактором є ефект власного саморозігріву термістора вимірювальним струмом: потужність розсіювання <span class="arithmatex">\(P = I^2 R_t\)</span> створює паразитний тепловий градієнт між тілом датчика та вимірюваним середовищем. Якщо струм вимірювального ланцюга перевищує порогове значення <span class="arithmatex">\(100\text{ мкА}\)</span> у нерухомих газових середовищах із низьким коефіцієнтом тепловіддачі <span class="arithmatex">\(\delta_{diss}\)</span>, виникає внутрішній перегрів чутливого шару на кілька градусів, що повністю спотворює достовірність телеметричного тракту незалежно від розрядності АЦП.</p>
+<hr />
+<h3 id="24-ema-deadband">2.4. Методи придушення шумів та компресії: медіанна фільтрація імпульсних викидів, експоненційне згладжування (EMA), фільтр Калмана та адаптивне стиснення за зоною нечутливості (Deadband)</h3>
+<p>Первинні дані після масштабування містять комбінацію завад: поодинокі аномальні стрибки напруги великої амплітуди (імпульсні викиди) та високочастотний тепловий фліккер-шум. Для їх нейтралізації на мікроконтролері реалізується дворівневий цифровий фільтраційний тракт.</p>
+<p>Перший рівень захисту від аномальних імпульсних сплесків реалізує <strong>медіанний фільтр</strong> непарного порядку <span class="arithmatex">\(W = 2m + 1\)</span>. Алгоритм формує часове ковзне вікно з останніх <span class="arithmatex">\(W\)</span> відліків вимірювання <span class="arithmatex">\(X_w = [x[n-m], \dots, x[n], \dots, x[n+m]]\)</span>, виконує їх сортування за зростанням амплітуди та обирає строго центральний елемент впорядкованого масиву:</p>
+<div class="arithmatex">\[y_{med}[n] = \text{med}(X_w) = X_{(m+1)}^{sorted}\]</div>
+<p>Головною перевагою медіанної фільтрації перед лінійними фільтрами є здатність повністю видаляти імпульсні шуми тривалістю менше <span class="arithmatex">\(m\)</span> відліків без згладжування крутих фізичних фронтів перехідного процесу.</p>
+<p>Другий рівень забезпечує придушення залишкового гаусового шуму за допомогою <strong>експоненційного згладжування</strong> (Exponential Moving Average, EMA), що є рекурсивним цифровим фільтром нескінченної імпульсної характеристики (IIR) першого порядку:</p>
+<div class="arithmatex">\[y_{ema}[n] = \alpha \cdot x[n] + (1 - \alpha) \cdot y_{ema}[n-1]\]</div>
+<p>де <span class="arithmatex">\(x[n]\)</span> позначає вихідне значення медіанного фільтра на поточному кроці; <span class="arithmatex">\(y_{ema}[n-1]\)</span> є результатом фільтрації на попередньому такті; <span class="arithmatex">\(\alpha\)</span> є безрозмірним коефіцієнтом фільтрації у межах <span class="arithmatex">\(0 &lt; \alpha \le 1\)</span>. </p>
+<p>Зв'язок параметра <span class="arithmatex">\(\alpha\)</span> із частотою зрізу фільтра <span class="arithmatex">\(f_c\)</span> при періоді дискретизації <span class="arithmatex">\(T_s\)</span> виводиться з аналогії передавальної функції аналогового RC-кола у просторі <span class="arithmatex">\(Z\)</span>-перетворення та записується співвідношенням:</p>
+<div class="arithmatex">\[\alpha = \frac{2\pi f_c T_s}{1 + 2\pi f_c T_s} = \frac{2\pi f_c}{f_s + 2\pi f_c}\]</div>
+<p>Для прецизійної динамічної оцінки стану сенсора в умовах високих зовнішніх збурень застосовується одновимірний <strong>дискретний фільтр Калмана</strong>. Алгоритм функціонує за двоетапною рекурсивною схемою «прогноз-корекція». </p>
+<p>Математичний апарат обчислення на кроці <span class="arithmatex">\(k\)</span> формалізується наступними системними кроками:</p>
+<div class="arithmatex">\[
+\begin{aligned}
+\text{Крок 1 (Прогноз стану на такт вперед):} &amp; \quad \hat{x}_k^- = \hat{x}_{k-1} \\
+\text{Крок 2 (Прогноз коваріації похибки оцінки):} &amp; \quad P_k^- = P_{k-1} + Q \\
+\text{Крок 3 (Розрахунок коефіцієнта підсилення Калмана):} &amp; \quad K_k = \frac{P_k^-}{P_k^- + R} \\
+\text{Крок 4 (Корекція оцінки за новим вимірюванням $z_k$):} &amp; \quad \hat{x}_k = \hat{x}_k^- + K_k \cdot (z_k - \hat{x}_k^-) \\
+\text{Крок 5 (Оновлення дисперсії похибки):} &amp; \quad P_k = (1 - K_k) \cdot P_k^-
+\end{aligned}
+\]</div>
+<p>де <span class="arithmatex">\(\hat{x}_k\)</span> позначає оптимальну оцінку вимірюваної величини; <span class="arithmatex">\(z_k\)</span> є сирим поточним вимірюванням датчика; <span class="arithmatex">\(P_k\)</span> позначає оцінку коваріації похибки; <span class="arithmatex">\(Q\)</span> позначає дисперсію внутрішнього шуму динамічного процесу; <span class="arithmatex">\(R\)</span> є дисперсією шуму вимірювального каналу сенсора; <span class="arithmatex">\(K_k\)</span> позначає динамічний ваговий коефіцієнт Калмана (<span class="arithmatex">\(0 \le K_k \le 1\)</span>).</p>
+<p>Для радикального розвантаження каналів зв'язку та економії енергії бездротових передавачів відфільтровані дані проходять алгоритм <strong>адаптивного проріджування за зоною нечутливості</strong> (Deadband Compression). Черговий відлік <span class="arithmatex">\(y_{ema}[n]\)</span> транслюється в стек мережевого протоколу лише тоді, коли його відхилення від попереднього надісланого значення <span class="arithmatex">\(y_{sent}\)</span> перевищує граничний абсолютний або відносний поріг <span class="arithmatex">\(\Delta_{th}\)</span>:</p>
+<div class="arithmatex">\[|y_{ema}[n] - y_{sent}| \ge \Delta_{th}\]</div>
+<blockquote>
+<p><strong>ВАЖЛИВО:</strong> Застосування алгоритму Deadband Compression у контурах управління з високою швидкістю зміни координат вимагає обов'язкового введення захисного тайм-ауту максимального періоду передачі (Heartbeat Timeout). Якщо параметр залишається всередині зони нечутливості довше критичного часу <span class="arithmatex">\(T_{heartbeat}\)</span>, сенсорний вузол зобов'язаний примусово надіслати актуальне значення для запобігання хибному діагностуванню втрати зв'язку (Watchdog Timeout) центральним шлюзом або хмарною платформою.</p>
+</blockquote>
+<hr />
+<h3 id="25">2.5. Критичні апаратні обмеження вимірювальних трактів: явище аліасингу, шум квантування, температурний дрейф характеристик та детерміновані затримки реакції в контурах жорсткого реального часу</h3>
+<p>Розгортання вимірювальних систем у виробничих середовищах стикається з низкою критичних бар'єрів, обумовлених реальною неідеальністю аналогових і цифрових компонентів. Головними дестабілізуючими факторами виступають температурний дрейф, джиттер тактового генератора, аліасинг та фазові затримки в контурах цифрової фільтрації.</p>
+<p>Температурний дрейф проявляється у зміні напруги зміщення нуля (<span class="arithmatex">\(TCV_{os}\)</span>, вираженому в <span class="arithmatex">\(\text{мкВ/}^\circ\text{C}\)</span>) та температурному дрейфі коефіцієнта підсилення тракту (<span class="arithmatex">\(TC_{Gain}\)</span>, вираженому в <span class="arithmatex">\(\text{ppm/}^\circ\text{C}\)</span>). </p>
+<p>В умовах промислового цеху з сезонним або технологічним коливанням температури на <span class="arithmatex">\(\Delta T = 60^\circ\text{C}\)</span> сумарне зміщення передавальної характеристики може повністю нівелювати точність високорозрядного АЦП. Сумарна апаратна похибка вимірювального тракту <span class="arithmatex">\(\Delta V_{total}\)</span> декомпонується на наступні складові:</p>
+<div class="arithmatex">\[\Delta V_{total}(T) = \Delta V_{offset}(T_0) + TCV_{os} \cdot \Delta T + \left( \delta_{gain}(T_0) + TC_{Gain} \cdot \Delta T \right) \cdot V_{in} + \frac{q}{\sqrt{12}} + V_{noise}^{p-p}\]</div>
+<p>де <span class="arithmatex">\(\Delta V_{offset}(T_0)\)</span> позначає початкове зміщення нуля при температурі калібрування <span class="arithmatex">\(T_0\)</span>; <span class="arithmatex">\(\delta_{gain}\)</span> є відносною похибкою підсилення; <span class="arithmatex">\(q/\sqrt{12}\)</span> позначає середньоквадратичну похибку квантування; <span class="arithmatex">\(V_{noise}^{p-p}\)</span> є власним піковим шумом вхідного каскаду.</p>
+<p>Критичним вузьким місцем контурів жорсткого реального часу є затримка обробки (Latency) та фазовий зсув, що вносяться цифровими фільтрами. Будь-яке статистичне згладжування за своєю фізичною природою опирається на історію сигналу. Зокрема, лінійний фільтр ковзного середнього порядку <span class="arithmatex">\(W\)</span> вносить детерміновану затримку на половину ширини вікна:</p>
+<div class="arithmatex">\[\tau_{delay} = \frac{W - 1}{2} \cdot T_s\]</div>
+<p>У системах активного захисту роторного обладнання від аварійного дисбалансу затримка виявлення аварійного стану на величину <span class="arithmatex">\(\tau_{delay} &gt; 5\text{ мс}\)</span> може призвести до руйнування опорних підшипників турбіни. </p>
+<p>У наведеній нижче порівняльній матриці систематизовано основні методи лінеаризації, нормалізації та цифрової фільтрації сигналів, які застосовуються у вузлах Інтернету речей.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Метод / Алгоритм</th>
+<th style="text-align: left;">Обчислювальна складність</th>
+<th style="text-align: left;">Витрати пам'яті (RAM/ROM)</th>
+<th style="text-align: left;">Складність впровадження</th>
+<th style="text-align: left;">Енергетична ціна</th>
+<th style="text-align: left;">Критичні ризики / Обмеження</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Двоточкове лінійне калібрування</strong></td>
+<td style="text-align: left;"><span class="arithmatex">\(O(1)\)</span>, 1 множення, 1 додавання</td>
+<td style="text-align: left;">Мінімальні (2 константи у Flash/EEPROM)</td>
+<td style="text-align: left;">Низька</td>
+<td style="text-align: left;">Наднизька (<span class="arithmatex">\(&lt; 1\text{ мкДж}\)</span>)</td>
+<td style="text-align: left;">Непридатне для сенсорів із нелінійністю статичної характеристики <span class="arithmatex">\(&gt; 1\%\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Рівняння Стейнхарта-Харта</strong></td>
+<td style="text-align: left;"><span class="arithmatex">\(O(1)\)</span>, високі витрати (логарифми, ділення FPU)</td>
+<td style="text-align: left;">Середні (3 константи типу <code>double</code>)</td>
+<td style="text-align: left;">Середня</td>
+<td style="text-align: left;">Помірна (потрібен апаратний блок FPU)</td>
+<td style="text-align: left;">Розбіжність за межами робочого діапазону температур; ризик теплового саморозігріву</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Медіанний фільтр (<span class="arithmatex">\(W = 2m+1\)</span>)</strong></td>
+<td style="text-align: left;"><span class="arithmatex">\(O(W \log W)\)</span> або <span class="arithmatex">\(O(W^2)\)</span> сортування</td>
+<td style="text-align: left;"><span class="arithmatex">\(W\)</span> комірок для ковзного буфера вибірок</td>
+<td style="text-align: left;">Середня</td>
+<td style="text-align: left;">Низька при малих <span class="arithmatex">\(W \le 5\)</span></td>
+<td style="text-align: left;">Спотворює високочастотну гармонічну форму сигналу; неефективний проти гаусового шуму</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Експоненційне згладжування (EMA)</strong></td>
+<td style="text-align: left;"><span class="arithmatex">\(O(1)\)</span>, 2 множення, 1 віднімання</td>
+<td style="text-align: left;">1 комірка зберігання стану попереднього кроку</td>
+<td style="text-align: left;">Низька</td>
+<td style="text-align: left;">Наднизька (<span class="arithmatex">\(&lt; 0{,}5\text{ мкДж}\)</span>)</td>
+<td style="text-align: left;">Вносить експоненційну фазову затримку; погіршує швидкодію в контурах аварійного реагування</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Фільтр Калмана (1D)</strong></td>
+<td style="text-align: left;"><span class="arithmatex">\(O(1)\)</span>, 5 операцій із числами рухомої коми</td>
+<td style="text-align: left;">4 змінні стану та параметрів матриць</td>
+<td style="text-align: left;">Висока</td>
+<td style="text-align: left;">Середня (вимогливий до частоти процесора)</td>
+<td style="text-align: left;">Вимагає точного апріорного знання матриць шумів <span class="arithmatex">\(Q\)</span> та <span class="arithmatex">\(R\)</span>; при хибній оцінці втрачає стійкість</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Компресія Deadband</strong></td>
+<td style="text-align: left;"><span class="arithmatex">\(O(1)\)</span>, 1 операція порівняння різниці</td>
+<td style="text-align: left;">1 змінна для збереження останнього переданого значення</td>
+<td style="text-align: left;">Низька</td>
+<td style="text-align: left;">Знижує сумарне енергоспоживання на <span class="arithmatex">\(90\%\)</span></td>
+<td style="text-align: left;">Може замаскувати повільний плавний аварійний дрейф; потребує захисного механізму Heartbeat</td>
+</tr>
+</tbody>
+</table>
+<p>Підсумковий аналіз матриці демонструє, що вибір методу обробки є багатокритеріальною задачею оптимізації, в якій інженер балансує між метрологічною точністю вимірювання, доступними обчислювальними ресурсами мікроконтролера та жорсткими лімітами енергетичного бюджету автономного сенсорного вузла.</p>
+<blockquote>
+<p><strong>КОНТРОЛЬНЕ ПИТАННЯ:</strong> Проектується сенсорний вузол контролю тиску на базі 10-бітного SAR АЦП мікроконтролера з опорною напругою <span class="arithmatex">\(V_{ref} = 3{,}3\text{ В}\)</span>. Вимірювальний тракт піддається дії високочастотної завади напруги з частотою <span class="arithmatex">\(f_{noise} = 45\text{ кГц}\)</span>. Інженер налаштував частоту дискретизації АЦП на рівні <span class="arithmatex">\(f_s = 50\text{ кГц}\)</span>, відмовившись від вхідного аналогового фільтра низьких частот для спрощення друкованої плати, розраховуючи придушити заваду програмним цифровим фільтром низьких частот із частотою зрізу <span class="arithmatex">\(f_c = 1\text{ кГц}\)</span>. Оцініть наслідки цього інженерного рішення та визначте, чи вдасться усунути шум за допомогою цифрового фільтра.</p>
+</blockquote>
+<details class="note">
+<summary>Розгорнути аналітичний розв'язок</summary>
+<p><strong>Правильний висновок: Програмний цифровий фільтр принципово не зможе усунути заваду, оскільки внаслідок аліасингу вона трансформується у хибний сигнал частотою 5 кГц, а при спробі зрізати її фільтром з <span class="arithmatex">\(f_c = 1\text{ кГц}\)</span> виникне фазове запізнення корисного процесу, якщо спектр корисного сигналу перекривається з цією зоною.</strong></p>
+<ol>
+<li>
+<p>Поетапне аналітичне обґрунтування:</p>
+</li>
+<li>
+<p>Обчислюємо частоту Найквіста для заданої частоти дискретизації <span class="arithmatex">\(f_s = 50\text{ кГц}\)</span>:
+     $<span class="arithmatex">\(f_N = \frac{f_s}{2} = \frac{50}{2} = 25\text{ кГц}\)</span>$</p>
+</li>
+<li>
+<p>Оскільки частота високочастотної завади <span class="arithmatex">\(f_{noise} = 45\text{ кГц}\)</span> строго перевищує частоту Найквіста (<span class="arithmatex">\(45\text{ кГц} &gt; 25\text{ кГц}\)</span>), виникає явище аліасингу.</p>
+</li>
+<li>
+<p>Розраховуємо дзеркальну псевдочастоту <span class="arithmatex">\(f_{alias}\)</span>, на якій завада відобразиться всередину смуги пропускання АЦП (<span class="arithmatex">\(k=1\)</span>):
+     $<span class="arithmatex">\(f_{alias} = |f_{noise} - f_s| = |45\text{ кГц} - 50\text{ кГц}| = 5\text{ кГц}\)</span>$</p>
+</li>
+<li>
+<p>Оцифрований масив відліків на виході АЦП міститиме паразитне гармонійне коливання амплітудою в кілька LSB на частоті <span class="arithmatex">\(5\text{ кГц}\)</span>, яке нічим математично не відрізняється від справжніх фізичних пульсацій тиску в гідросистемі.</p>
+</li>
+<li>
+<p>Якщо корисний динамічний процес тиску містить робочі частоти понад <span class="arithmatex">\(1\text{ кГц}\)</span>, цифровий фільтр із частотою зрізу <span class="arithmatex">\(f_c = 1\text{ кГц}\)</span> зріже разом із завадою і корисну інформацію динаміки процесу, спричинивши критичну затримку детектування аварійного гідроудару. </p>
+</li>
+<li>
+<p>Якщо ж корисний процес лежить нижче <span class="arithmatex">\(1\text{ кГц}\)</span>, цифровий фільтр першого порядку забезпечить придушення на частоті <span class="arithmatex">\(5\text{ кГц}\)</span> лише близько <span class="arithmatex">\(14\text{ дБ}\)</span> (<span class="arithmatex">\(20 \lg(5/1)\)</span>), чого недостатньо для ліквідації впливу завади на молодші розряди 10-бітного перетворювача.</p>
+</li>
+<li>
+<p>Системний висновок:
+   Відмова від аналогового Anti-Aliasing фільтра перед входом АЦП є грубою методологічною помилкою проектувальника, оскільки алгоритми цифрової фільтрації неспроможні відновити інформацію, втрачену або спотворену на етапі дискретизації внаслідок накладання спектрів.</p>
+</li>
+</ol>
+</details>
+<hr />
+<h3 id="_5">Вказівки для самостійного осмислення</h3>
+<ol>
+<li>
+<p>Складіть аналітичну блок-схему алгоритму автономного перекалібрування нульового рівня MEMS-акселерометра у стані спокою на основі контролю модуля результуючого вектора прискорення за умовою <span class="arithmatex">\(|\sqrt{a_x^2 + a_y^2 + a_z^2} - 1g| \le \varepsilon\)</span>.</p>
+</li>
+<li>
+<p>Розрахуйте мінімально необхідний коефіцієнт приглушення аналогового фільтра низьких частот Баттерворта другого порядку на частоті Найквіста для забезпечення повної відповідності динамічному діапазону 12-розрядного SAR АЦП мікроконтролера ESP32.</p>
+</li>
+<li>
+<p>Дослідіть вплив збільшення параметра зони нечутливості <span class="arithmatex">\(\Delta_{th}\)</span> в алгоритмі Deadband Compression на відносну похибку відновлення інтегральних технологічних показників витрати енергоресурсів при потоковому моніторингу рідинних середовищ.</p>
+</li>
+</ol>
+<h2 id="3_1">3. Практичний індустріальний / фаховий кейс. Апаратна інтеграція та цифрова обробка даних сенсорного вузла вібромоніторингу</h2>
+<h3 id="31">3.1. Комплексний фаховий кейс. Проектування енергоефективного вузла предиктивної вібродіагностики промислового насосного агрегата</h3>
+<h4 id="_6">Постановка задачі / ситуації</h4>
+<p>На комунальному підприємстві водопостачання експлуатується магістральний відцентровий насосний агрегат потужністю <span class="arithmatex">\(250\text{ кВт}\)</span>. Вихід із ладу опорних підшипникових вузлів насоса призводить до каскадної аварії та зупинки водопостачання промислового району міста. Необхідно спроектувати автономний граничний сенсорний вузол (Edge IoT Node), що встановлюється безпосередньо на корпус підшипникового щита електродвигуна, здійснює безперервний моніторинг вібрації відповідно до міжнародного стандарту ISO 10816-3 (вібрація промислових машин потужністю понад <span class="arithmatex">\(15\text{ кВт}\)</span>), виконує первинну цифрову фільтрацію вхідного сигналу та передає агреговані діагностичні параметри в локальну SCADA-систему за протоколом MQTT через мережу Wi-Fi.</p>
+<p>У наведеній нижче таблиці деталізовано технічні характеристики технологічного об'єкта, апаратної бази сенсорного вузла та параметри експлуатаційного середовища.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Категорія параметра</th>
+<th style="text-align: left;">Фізична величина / Параметр</th>
+<th style="text-align: left;">Числове значення та розмірність</th>
+<th style="text-align: left;">Інженерне обґрунтування / Обмеження</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Параметри агрегата</strong></td>
+<td style="text-align: left;">Частота обертання ротора (<span class="arithmatex">\(n\)</span>)</td>
+<td style="text-align: left;"><span class="arithmatex">\(2950\text{ об/хв}\)</span> (<span class="arithmatex">\(f_0 \approx 49{,}17\text{ Гц}\)</span>)</td>
+<td style="text-align: left;">Базова кінематична частота агрегата</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Спектральний діапазон діагностики</td>
+<td style="text-align: left;"><span class="arithmatex">\(10\dots1000\text{ Гц}\)</span></td>
+<td style="text-align: left;">Вимога стандарту ISO 10816-3</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Поріг віброшвидкості: Норма (Зона A/B)</td>
+<td style="text-align: left;"><span class="arithmatex">\(V_{RMS} &lt; 2{,}8\text{ мм/с}\)</span></td>
+<td style="text-align: left;">Безперервна довготривала експлуатація</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Поріг віброшвидкості: Тривога (Зона C)</td>
+<td style="text-align: left;"><span class="arithmatex">\(V_{RMS} \ge 2{,}8\text{ мм/с}\)</span></td>
+<td style="text-align: left;">Потребує технічного обслуговування</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Поріг віброшвидкості: Аварія (Зона D)</td>
+<td style="text-align: left;"><span class="arithmatex">\(V_{RMS} \ge 4{,}5\text{ мм/с}\)</span></td>
+<td style="text-align: left;">Негайне аварійне відключення агрегата</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Апаратна платформа</strong></td>
+<td style="text-align: left;">Сенсорний модуль</td>
+<td style="text-align: left;">InvenSense MPU-6050 (MEMS)</td>
+<td style="text-align: left;">3-осьовий акселерометр, 16-бітний АЦП</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Обчислювальне ядро (MCU)</td>
+<td style="text-align: left;">Espressif ESP32 (<span class="arithmatex">\(240\text{ МГц}\)</span>)</td>
+<td style="text-align: left;">Вбудовані інтерфейси I2C та Wi-Fi 802.11b/g/n</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Джерело живлення</td>
+<td style="text-align: left;">Батарея <span class="arithmatex">\(\text{Li-SOCl}_2\)</span> (тип ER14505)</td>
+<td style="text-align: left;">Номінальна напруга <span class="arithmatex">\(3{,}6\text{ В}\)</span>, ємність <span class="arithmatex">\(2400\text{ мА}\cdot\text{год}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Енергетичний профіль</strong></td>
+<td style="text-align: left;">Струм активного режиму (<span class="arithmatex">\(I_{active}\)</span>)</td>
+<td style="text-align: left;"><span class="arithmatex">\(120\text{ мА}\)</span></td>
+<td style="text-align: left;">Збір відліків, розрахунок FFT/RMS, Wi-Fi</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Струм глибокого сну (<span class="arithmatex">\(I_{sleep}\)</span>)</td>
+<td style="text-align: left;"><span class="arithmatex">\(15\text{ мкА}\)</span> (<span class="arithmatex">\(0{,}015\text{ мА}\)</span>)</td>
+<td style="text-align: left;">Режим Deep Sleep із живленням таймера RTC</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Тривалість активного сеансу (<span class="arithmatex">\(t_{active}\)</span>)</td>
+<td style="text-align: left;"><span class="arithmatex">\(1{,}5\text{ с}\)</span></td>
+<td style="text-align: left;">Час на замір, фільтрацію та передачу</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Базовий період передачі (<span class="arithmatex">\(T_{period}\)</span>)</td>
+<td style="text-align: left;"><span class="arithmatex">\(600\text{ с}\)</span> (<span class="arithmatex">\(10\text{ хвилин}\)</span>)</td>
+<td style="text-align: left;">За відсутності перевищення зони тривоги</td>
+</tr>
+</tbody>
+</table>
+<p>Архітектуру взаємодії компонентів та алгоритмічний потік прийняття рішень на рівні мікроконтролера представлено на схемі нижче.</p>
+<pre class="mermaid"><code>flowchart TD
+    subgraph EdgeDevice["Автономний вузол вібродіагностики (ESP32 + MPU-6050)"]
+        WakeUp["Пробудження за таймером RTC (Deep Sleep Wakeup)"]
+        InitSens["Ініціалізація шини I2C та конфігурація MPU-6050 (DLPF = 260 Гц, FS = ±2g)"]
+        AcqData["Вибірка масиву відліків акселерометра (1024 точки, fs = 1000 Гц)"]
+        OffsetCal["Усунення статичного зміщення нуля та гравітаційної складової"]
+        NumInteg["Числове інтегрування методом трапецій: a(t) -&gt; v(t)"]
+        RMSCalc["Розрахунок діючого значення віброшвидкості V_RMS"]
+        ThresholdCheck{"Перевірка: V_RMS &gt;= 2.8 мм/с?"}
+
+        WiFi_Normal["Увімкнення Wi-Fi: передача стандартного телеметричного звіту"]
+        WiFi_Alarm["Екстрена передача аварійного статусу (QoS = 2, Retain)"]
+        SleepCalc["Розрахунок інтервалу сну (10 хв або скорочений до 30 с при аварії)"]
+        DeepSleep["Перехід у режим глибокого сну (Deep Sleep, 15 мкА)"]
+    end
+
+    subgraph CyberNetwork["SCADA / Хмарна платформа"]
+        Broker["MQTT-брокер: топік factory/pump1/vibration"]
+        SCADA["SCADA-система диспетчера: ISO 10816 Dashboard"]
+    end
+
+    WakeUp --&gt; InitSens
+    InitSens --&gt; AcqData
+    AcqData --&gt; OffsetCal
+    OffsetCal --&gt; NumInteg
+    NumInteg --&gt; RMSCalc
+    RMSCalc --&gt; ThresholdCheck
+    ThresholdCheck --&gt;|"Ні (Норма)"| WiFi_Normal
+    ThresholdCheck --&gt;|"Так (Тривога / Аварія)"| WiFi_Alarm
+    WiFi_Normal --&gt; Broker
+    WiFi_Alarm --&gt; Broker
+    Broker --&gt; SCADA
+    WiFi_Normal --&gt; SleepCalc
+    WiFi_Alarm --&gt; SleepCalc
+    SleepCalc --&gt; DeepSleep</code></pre>
+<h4 id="_7">Покроковий аналіз та розв'язок</h4>
+<h5 id="1">Крок 1. Вибір смуги пропускання та розрахунок частоти дискретизації за Найквістом</h5>
+<p>Для гарантованого виявлення кінематичних аномалій механізму (зокрема, дефектів підшипників кочення на частотах <span class="arithmatex">\(f_{BPFO}\)</span>, <span class="arithmatex">\(f_{BPFI}\)</span>, які для заданого типу насоса сягають <span class="arithmatex">\(400\dots600\text{ Гц}\)</span>) максимальна гранична частота аналізу повинна становити <span class="arithmatex">\(f_{max} = 1000\text{ Гц}\)</span>. </p>
+<p>Розрахунок мінімально допустимої частоти дискретизації за теоремою Котельникова-Шеннона та вибір робочої частоти здійснюється наступним чином:</p>
+<div class="arithmatex">\[f_{s\_min} = 2 \cdot f_{max} = 2 \cdot 1000\text{ Гц} = 2000\text{ Гц}\]</div>
+<p>З огляду на апаратні обмеження вбудованого в MPU-6050 цифрового фільтра низьких частот (DLPF), що працює на внутрішніх частотах <span class="arithmatex">\(1\text{ кГц}\)</span> або <span class="arithmatex">\(8\text{ кГц}\)</span>, обираємо режим із частотою дискретизації <span class="arithmatex">\(f_s = 1000\text{ Гц}\)</span> із конфігурацією апаратного фільтра низьких частот з частотою зрізу <span class="arithmatex">\(f_c = 260\text{ Гц}\)</span>. Для базового стандарту ISO 10816-3 (діапазон нормування <span class="arithmatex">\(10\dots1000\text{ Гц}\)</span>) вибірка на частоті <span class="arithmatex">\(1000\text{ Гц}\)</span> забезпечує достовірний аналіз перших п'яти гармонік обертової частоти ротора (<span class="arithmatex">\(f_0 \approx 49{,}17\text{ Гц}\)</span>, <span class="arithmatex">\(2f_0 \approx 98{,}3\text{ Гц}\)</span>, <span class="arithmatex">\(3f_0 \approx 147{,}5\text{ Гц}\)</span>), що є діагностично достатнім для детектування дисбалансу та розцентровки валів. Період дискретизації становить:</p>
+<div class="arithmatex">\[T_s = \frac{1}{f_s} = \frac{1}{1000\text{ Гц}} = 0{,}001\text{ с} = 1\text{ мс}\]</div>
+<h5 id="2-lsb-mpu-6050">Крок 2. Конфігурація діапазону повної шкали АЦП, ваги LSB та апаратного фільтра MPU-6050</h5>
+<p>Оскільки амплітуда віброприскорення справного насосного обладнання рідко перевищує <span class="arithmatex">\(1{,}5g\)</span>, конфігуруємо акселерометр на мінімальний діапазон повної шкали <span class="arithmatex">\(\pm 2g\)</span> через запис значення <code>0x00</code> у регістр <code>ACCEL_CONFIG (0x1C)</code>. Це забезпечує максимальну роздільну здатність 16-бітного двополярного АЦП. </p>
+<p>Вага молодшого значущого розряду (<span class="arithmatex">\(q\)</span>) в одиницях прискорення вільного падіння та в одиницях системи SI обчислюється наступним чином:</p>
+<div class="arithmatex">\[q = \text{LSB} = \frac{2 \cdot FS}{2^{16}} = \frac{4g}{65536} \approx 6{,}1035 \cdot 10^{-5} g/\text{LSB}\]</div>
+<div class="arithmatex">\[q_{SI} = q \cdot 9{,}80665\text{ м/с}^2 = 6{,}1035 \cdot 10^{-5} \cdot 9{,}80665 \approx 5{,}985 \cdot 10^{-4}\text{ м/с}^2/\text{LSB} \approx 0{,}5985\text{ мм/с}^2/\text{LSB}\]</div>
+<h5 id="3-rms-iso-10816-3">Крок 3. Розрахунок середньоквадратичного значення віброшвидкості (RMS) за ISO 10816-3</h5>
+<p>Стандарт ISO 10816-3 оцінює вібраційний стан машин за середньоквадратичним значенням віброшвидкості <span class="arithmatex">\(V_{RMS}\)</span> у діапазоні від <span class="arithmatex">\(10\text{ Гц}\)</span> до <span class="arithmatex">\(1000\text{ Гц}\)</span>. Мікроконтролер зчитує з FIFO буфера масив із <span class="arithmatex">\(M = 1024\)</span> послідовних відліків прискорення по осі <span class="arithmatex">\(Z\)</span> (<span class="arithmatex">\(a_z[k]\)</span>), що відповідає тривалості вибірки <span class="arithmatex">\(t_{sample} = 1024 \cdot 1\text{ мс} = 1{,}024\text{ с}\)</span>.</p>
+<p>Математичний конвеєр перетворення реалізується у чотири послідовні кроки:</p>
+<div class="arithmatex">\[
+\begin{aligned}
+\text{Крок 1 (Компенсація постійної складової):} &amp; \quad \bar{a} = \frac{1}{M} \sum_{k=0}^{M-1} a_z[k], \quad \tilde{a}[k] = (a_z[k] - \bar{a}) \cdot q_{SI} \quad [\text{м/с}^2] \\
+\text{Крок 2 (Числове інтегрування методом трапецій):} &amp; \quad v[k] = v[k-1] + \frac{\tilde{a}[k-1] + \tilde{a}[k]}{2} \cdot T_s \quad [\text{м/с}] \\
+\text{Крок 3 (Видалення інтегрального низькочастотного дрейфу):} &amp; \quad \bar{v} = \frac{1}{M} \sum_{k=0}^{M-1} v[k], \quad \tilde{v}[k] = v[k] - \bar{v} \\
+\text{Крок 4 (Розрахунок середньоквадратичної віброшвидкості):} &amp; \quad V_{RMS} = \sqrt{\frac{1}{M} \sum_{k=0}^{M-1} (\tilde{v}[k])^2} \cdot 1000 \quad [\text{мм/с}]
+\end{aligned}
+\]</div>
+<p>Під час тестового вимірювання на насосі отримано масив інтегрованих швидкостей, для якого сума квадратів центрованих відліків склала <span class="arithmatex">\(\sum_{k=0}^{1023} (\tilde{v}[k])^2 = 0{,}01016\text{ м}^2/\text{с}^2\)</span>. </p>
+<p>Підставляючи дані значення у формулу кроку 4, отримуємо:</p>
+<div class="arithmatex">\[V_{RMS} = \sqrt{\frac{0{,}01016}{1024}} \cdot 1000 = \sqrt{9{,}9218 \cdot 10^{-6}} \cdot 1000 = 0{,}00315\text{ м/с} \cdot 1000 = 3{,}15\text{ мм/с}\]</div>
+<p>Отримане значення <span class="arithmatex">\(V_{RMS} = 3{,}15\text{ мм/с}\)</span> перевищує поріг Зони B (<span class="arithmatex">\(2{,}8\text{ мм/с}\)</span>), що свідчить про перехід агрегата в Зону C («Тривога» — розвиток дефекту розцентровки або кавітації), вимагаючи термінового інформування диспетчера.</p>
+<h5 id="4">Крок 4. Оптимізація енергоспоживання та обчислення автономності вузла</h5>
+<p>Середній струм споживання вузла <span class="arithmatex">\(I_{avg}\)</span> за період циклу <span class="arithmatex">\(T_{period} = 600\text{ с}\)</span> при тривалості активного стану <span class="arithmatex">\(t_{active} = 1{,}5\text{ с}\)</span>, струмі активної фази <span class="arithmatex">\(I_{active} = 120\text{ мА}\)</span> та струмі режиму Deep Sleep <span class="arithmatex">\(I_{sleep} = 0{,}015\text{ мА}\)</span> розраховується як:</p>
+<div class="arithmatex">\[I_{avg} = \frac{I_{active} \cdot t_{active} + I_{sleep} \cdot (T_{period} - t_{active})}{T_{period}} = \frac{120 \cdot 1{,}5 + 0{,}015 \cdot (600 - 1{,}5)}{600}\]</div>
+<div class="arithmatex">\[I_{avg} = \frac{180 + 8{,}9775}{600} = \frac{188{,}9775}{600} \approx 0{,}315\text{ мА}\]</div>
+<p>Термін автономної експлуатації вузла <span class="arithmatex">\(T_{\text{life}}\)</span> від батареї <span class="arithmatex">\(\text{Li-SOCl}_2\)</span> ємністю <span class="arithmatex">\(C_{\text{bat}} = 2400\text{ мА}\cdot\text{год}\)</span> з урахуванням коефіцієнта деградації та саморозряду <span class="arithmatex">\(\eta = 0{,}85\)</span> становить:</p>
+<div class="arithmatex">\[T_{life} = \frac{C_{bat} \cdot \eta}{I_{avg} \cdot 24 \cdot 365} = \frac{2400 \cdot 0{,}85}{0{,}315 \cdot 8760} = \frac{2040}{2759{,}4} \approx 0{,}739\text{ року} \approx 8{,}9\text{ місяців}\]</div>
+<p>Якщо застосувати адаптивне стиснення за зоною нечутливості (Deadband) і збільшити період сеансів передачі у штатному стані (Зона А) до однієї години (<span class="arithmatex">\(T_{period} = 3600\text{ с}\)</span>), середній струм впаде до:</p>
+<div class="arithmatex">\[I_{avg\_opt} = \frac{120 \cdot 1{,}5 + 0{,}015 \cdot 3598{,}5}{3600} = \frac{180 + 53{,}98}{3600} \approx 0{,}065\text{ мА}\]</div>
+<div class="arithmatex">\[T_{life\_opt} = \frac{2040}{0{,}065 \cdot 8760} \approx 3{,}58\text{ роки}\]</div>
+<h4 id="_8">Інтерпретація результатів та альтернативні сценарії</h4>
+<ol>
+<li>
+<p>Проведені розрахунки доводять, що локальна цифрова фільтрація та агрегація даних безпосередньо на мікроконтролері ESP32 перетворює <span class="arithmatex">\(1024\)</span> сирих 16-бітних вимірювань (<span class="arithmatex">\(2048\)</span> байтів) в одне інформативне скалярне значення <span class="arithmatex">\(V_{RMS}\)</span> (4 байти), скорочуючи необхідний радіотрафік на <span class="arithmatex">\(99{,}8\%\)</span>.</p>
+</li>
+<li>
+<p>Впровадження динамічного керування періодом опитування забезпечує збільшення терміну автономної роботи батареї з <span class="arithmatex">\(8{,}9\)</span> місяців до більш ніж <span class="arithmatex">\(3{,}5\)</span> років, що переводить систему в категорію промислово придатних рішень.</p>
+</li>
+<li>
+<p>У разі, якщо частота обертання агрегата зросте до <span class="arithmatex">\(15000\text{ об/хв}\)</span> (високошвидкісні компресори з частотою <span class="arithmatex">\(f_0 = 250\text{ Гц}\)</span>), смуги пропускання MPU-6050 (<span class="arithmatex">\(1000\text{ Гц}\)</span>) стане недостатньо для виявлення високочастотних складових кавітації. У такому сценарії розробник зобов'язаний відмовитися від дешевого модуля MPU-6050 на користь спеціалізованого промислового п'єзоелектричного або високочастотного ємнісного MEMS-акселерометра (наприклад, Analog Devices ADXL1002 із смугою пропускання до <span class="arithmatex">\(11\text{ кГц}\)</span>), що потребуватиме переходу на зовнішній прецизійний SAR АЦП із частотою дискретизації не менше <span class="arithmatex">\(50\text{ кГц}\)</span> та перегляду всього енергетичного бюджету з відмовою від автономного живлення на користь технології Power over Ethernet (PoE).</p>
+</li>
+</ol>
+<hr />
+<h3 id="32">3.2. Зведена довідкова система лекції</h3>
+<p>Нижче наведено підсумкову систему фундаментальних понять, математичних моделей та інженерних рішень, розглянутих у лекційному матеріалі.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Термін / Концепція</th>
+<th style="text-align: left;">Формалізація / Сутність</th>
+<th style="text-align: left;">Реальний кейс застосування</th>
+<th style="text-align: left;">Основне обмеження / Ризик</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Інтелектуальний сенсор (Smart Sensor)</strong></td>
+<td style="text-align: left;">Концепція об'єднання первинного чутливого елемента, AFE, АЦП, DSP-ядра та інтерфейсу зв'язку в єдиному модулі</td>
+<td style="text-align: left;">Промислові давачі тиску й температури стандарту IO-Link на автоматизованих виробничих лініях</td>
+<td style="text-align: left;">Вища вартість компонентів та обмежена стійкість вбудованої мікроелектроніки до температур понад <span class="arithmatex">\(+125^\circ\text{C}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Кремнієві MEMS (Micro-Electro-Mechanical Systems)</strong></td>
+<td style="text-align: left;">Мікросистеми, в яких механічні рухомі елементи та електроніка сформовані на кремнієвій підкладці за планарною технологією</td>
+<td style="text-align: left;">Триосьові акселерометри подушок безпеки автомобілів, мікрофони у смартфонах</td>
+<td style="text-align: left;">Ризик апаратного злипання мікробалок (стикція) під час ударних перевантажень або конденсації вологи</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Сила Коріоліса у вібраційних гіроскопах</strong></td>
+<td style="text-align: left;"><span class="arithmatex">\(\vec{F}_C = 2m(\vec{v} \times \vec{\Omega})\)</span>, виникнення ортогональної сили на вібруючій масі при обертанні корпуса</td>
+<td style="text-align: left;">Контури кутової автостабілізації комерційних безпілотних літальних апаратів (квадрокоптерів)</td>
+<td style="text-align: left;">Неминуче накопичення низькочастотного інтегрального дрейфу кута (Random Walk) при тривалій роботі</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Квант перетворення (LSB)</strong></td>
+<td style="text-align: left;"><span class="arithmatex">\(q = \frac{V_{ref}}{2^N}\)</span>, мінімальна дискрета квантування аналогової напруги <span class="arithmatex">\(N\)</span>-розрядним перетворювачем</td>
+<td style="text-align: left;">Визначення роздільної здатності електронних ваг та прецизійних медичних вимірювачів</td>
+<td style="text-align: left;">Обмежує абсолютну чутливість вимірювального тракту; вимагає стабілізації джерела опорної напруги <span class="arithmatex">\(V_{ref}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Теоретичне відношення SQNR</strong></td>
+<td style="text-align: left;"><span class="arithmatex">\(\text{SQNR} \approx 6{,}02 N + 1{,}76\text{ дБ}\)</span>, поріг шуму ідеального квантування синусоїдного сигналу</td>
+<td style="text-align: left;">Розрахунок необхідної розрядності АЦП для аудіотрактів та систем вібродіагностики</td>
+<td style="text-align: left;">Модель справедлива лише для динамічних сигналів з амплітудою повної шкали; не враховує апаратні шуми</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Експоненційне згладжування (EMA)</strong></td>
+<td style="text-align: left;"><span class="arithmatex">\(y[n] = \alpha x[n] + (1-\alpha)y[n-1]\)</span>, рекурсивний цифровий фільтр низьких частот першого порядку</td>
+<td style="text-align: left;">Програмне згладжування пульсацій вимірюваного тиску та температури в контролерах клімат-контролю</td>
+<td style="text-align: left;">Вносить апертурну фазову затримку <span class="arithmatex">\(\tau \approx T_s / \alpha\)</span>, що уповільнює реакцію на аварійні перепади</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Дискретний фільтр Калмана (1D)</strong></td>
+<td style="text-align: left;">Рекурсивний байєсівський алгоритм оптимального оцінювання стану системи за рівняннями «прогноз-корекція»</td>
+<td style="text-align: left;">Фільтрація шумів висотомірів (барометрів) та орієнтації IMU в навігаційних модулях</td>
+<td style="text-align: left;">Вимагає точного апріорного завдання дисперсій шуму процесу <span class="arithmatex">\(Q\)</span> та вимірювання <span class="arithmatex">\(R\)</span>; при невідповідності втрачає стійкість</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Стиснення Deadband</strong></td>
+<td style="text-align: left;">Передача даних у мережу виключно за виконання критерію $</td>
+<td style="text-align: left;">y[n] - y_{sent}</td>
+<td style="text-align: left;">\ge \Delta_{th}$</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Процесор руху DMP (Digital Motion Processor)</strong></td>
+<td style="text-align: left;">Апаратний сигнальний співпроцесор всередині MEMS IMU для розрахунку орієнтації у кватерніонах</td>
+<td style="text-align: left;">Зняття обчислювального навантаження комплексування даних з основного мікроконтролера в робототехніці</td>
+<td style="text-align: left;">Закрита заводська прошивка мікрокоду, фіксований набір алгоритмів, обмежена можливість кастомізації</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>DRIE (Deep Reactive Ion Etching)</strong></td>
+<td style="text-align: left;">Технологія глибокого плазмового травлення кремнію з циклічним чергуванням фаз травлення <span class="arithmatex">\(SF_6\)</span> та пасивації <span class="arithmatex">\(C_4F_8\)</span></td>
+<td style="text-align: left;">Формування мікрогребінчастих конденсаторів та сейсмічних мас акселерометрів на кремнієвій пластині</td>
+<td style="text-align: left;">Висока собівартість обладнання, виникнення хвилястості (scalloping) на бічних стінках глибоких канавок</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="33">3.3. Контрольні питання та завдання</h3>
+<h4 id="_9">Прикладні тестові завдання</h4>
+<ol>
+<li>
+<p>Під час моніторингу вібрації турбіни з робочою частотою обертання <span class="arithmatex">\(f_0 = 50\text{ Гц}\)</span> інженер зафіксував у спектрі дискретизованого сигналу паразитну амплітудну складову на частоті <span class="arithmatex">\(f = 120\text{ Гц}\)</span>. Частота вибірки АЦП становила <span class="arithmatex">\(f_s = 1000\text{ Гц}\)</span>. На турбіні був відсутній аналоговий Anti-Aliasing фільтр, проте було виявлено джерело завади на частоті <span class="arithmatex">\(880\text{ Гц}\)</span>. Яке явище відбулося в тракті перетворення?</p>
+</li>
+<li>
+<p>A. Амплітудна модуляція сигналу обертової частоти частотою завади.</p>
+</li>
+<li>
+<p>B. Дзеркальний аліасинг завади <span class="arithmatex">\(880\text{ Гц}\)</span> в основну смугу дискретизатора через недотримання критерію Найквіста.</p>
+</li>
+<li>
+<p>C. Нелінійне спотворення вихідного каскаду вбудованого підсилювача AFE.</p>
+</li>
+<li>
+<p>D. Помилка квантування внаслідок недостатньої ваги молодшого розряду LSB.</p>
+</li>
+</ol>
+<details class="note">
+<summary>Розгорнути аналіз / відповідь</summary>
+<p><strong>Правильний варіант: B.</strong></p>
+<ol>
+<li>
+<p>За теоремою Котельникова-Шеннона частота Найквіста для даного тракту становить <span class="arithmatex">\(f_N = f_s / 2 = 1000 / 2 = 500\text{ Гц}\)</span>. Вхідний сигнал завади з частотою <span class="arithmatex">\(f_{in} = 880\text{ Гц}\)</span> значно перевищує межу Найквіста (<span class="arithmatex">\(880\text{ Гц} &gt; 500\text{ Гц}\)</span>). Оскільки на вході був відсутній аналоговий фільтр захисту від аліасингу, дана завада дзеркально відобразилася в робочу смугу навколо першої гармоніки частоти дискретизації (<span class="arithmatex">\(k=1\)</span>): <span class="arithmatex">\(f_{alias} = |f_{in} - f_s| = |880 - 1000| = 120\text{ Гц}\)</span>. Оцифрований масив містить псевдогармоніку на частоті <span class="arithmatex">\(120\text{ Гц}\)</span>, яка є математичним наслідком накладання спектрів.</p>
+</li>
+<li>
+<p>Аналіз дистракторів:</p>
+</li>
+<li>
+<p>Варіант A хибний, оскільки амплітудна модуляція породжує бічні смуги навколо несучої (<span class="arithmatex">\(50 \pm 880\text{ Гц}\)</span>), що не дає частоту <span class="arithmatex">\(120\text{ Гц}\)</span>.</p>
+</li>
+<li>
+<p>Варіант C хибний, оскільки нелінійні спотворення підсилювача генерують вищі гармоніки основного сигналу (<span class="arithmatex">\(100\text{ Гц}, 150\text{ Гц}, 200\text{ Гц}\)</span>), а не складову <span class="arithmatex">\(120\text{ Гц}\)</span>.</p>
+</li>
+<li>
+<p>Варіант D хибний, тому що похибка квантування проявляється у вигляді широкосмугового білого шуму, а не ізольованого вузькосмугового гармонійного піка.</p>
+</li>
+</ol>
+</details>
+<ol>
+<li>
+<p>Проектується вимірювальний канал з 12-розрядним SAR АЦП та опорною напругою <span class="arithmatex">\(V_{ref} = 3{,}3\text{ В}\)</span>. Чутливість первинного п'єзорезистивного датчика тиску становить <span class="arithmatex">\(S = 10\text{ мВ/кПа}\)</span>. Який мінімальний приріст тиску <span class="arithmatex">\(\Delta P_{min}\)</span> здатна зареєструвати ця система без урахування шумів?</p>
+</li>
+<li>
+<p>A. <span class="arithmatex">\(0{,}0806\text{ кПа}\)</span></p>
+</li>
+<li>
+<p>B. <span class="arithmatex">\(0{,}8057\text{ кПа}\)</span></p>
+</li>
+<li>
+<p>C. <span class="arithmatex">\(8{,}0566\text{ кПа}\)</span></p>
+</li>
+<li>
+<p>D. <span class="arithmatex">\(0{,}0008\text{ кПа}\)</span></p>
+</li>
+</ol>
+<details class="note">
+<summary>Розгорнути аналіз / відповідь</summary>
+<p><strong>Правильний варіант: A.</strong></p>
+<ol>
+<li>
+<p>Вага молодшого значущого розряду (крок квантування) 12-розрядного АЦП (<span class="arithmatex">\(N = 12\)</span>) становить:
+   $<span class="arithmatex">\(q = \text{LSB} = \frac{V_{ref}}{2^{12}} = \frac{3{,}3\text{ В}}{4096} \approx 0{,}00080566\text{ В} = 0{,}80566\text{ мВ}\)</span>$
+   Мінімальний приріст тиску, що викличе зміну цифрового коду на 1 LSB при чутливості <span class="arithmatex">\(S = 10\text{ мВ/кПа}\)</span>, дорівнює:
+   $<span class="arithmatex">\(\Delta P_{min} = \frac{q}{S} = \frac{0{,}80566\text{ мВ}}{10\text{ мВ/кПа}} \approx 0{,}08057\text{ кПа}\)</span>$</p>
+</li>
+<li>
+<p>Аналіз дистракторів:</p>
+</li>
+<li>
+<p>Варіант B відповідає помилці в розрахунках на один десятковий порядок (втрата множника чутливості <span class="arithmatex">\(S\)</span>).</p>
+</li>
+<li>
+<p>Варіант C відповідає хибному припущенню про використання 8-бітного перетворювача (<span class="arithmatex">\(2^8 = 256\)</span>).</p>
+</li>
+<li>
+<p>Варіант D відповідає вазі LSB у вольтах, а не перерахованій фізичній величині тиску в кілопаскалях.</p>
+</li>
+</ol>
+</details>
+<ol>
+<li>
+<p>Для придушення високочастотних шумів у каналі вимірювання температури з періодом вибірки <span class="arithmatex">\(T_s = 0{,}1\text{ с}\)</span> застосовано цифровий фільтр експоненційного згладжування (EMA). Інженер прагне встановити еквівалентну частоту зрізу фільтра низьких частот на рівні <span class="arithmatex">\(f_c \approx 0{,}5\text{ Гц}\)</span>. Яке значення коефіцієнта фільтрації <span class="arithmatex">\(\alpha\)</span> необхідно запрограмувати?</p>
+</li>
+<li>
+<p>A. <span class="arithmatex">\(\alpha \approx 0{,}95\)</span></p>
+</li>
+<li>
+<p>B. <span class="arithmatex">\(\alpha \approx 0{,}76\)</span></p>
+</li>
+<li>
+<p>C. <span class="arithmatex">\(\alpha \approx 0{,}24\)</span></p>
+</li>
+<li>
+<p>D. <span class="arithmatex">\(\alpha \approx 0{,}05\)</span></p>
+</li>
+</ol>
+<details class="note">
+<summary>Розгорнути аналіз / відповідь</summary>
+<p><strong>Правильний варіант: C.</strong></p>
+<ol>
+<li>
+<p>Зв'язок між коефіцієнтом згладжування <span class="arithmatex">\(\alpha\)</span>, періодом дискретизації <span class="arithmatex">\(T_s\)</span> та частотою зрізу <span class="arithmatex">\(f_c\)</span> визначається аналітичним виразом:
+   $<span class="arithmatex">\(\alpha = \frac{2\pi f_c T_s}{1 + 2\pi f_c T_s}\)</span>$
+   Підставляємо вихідні дані:
+   $<span class="arithmatex">\(2\pi f_c T_s = 2 \cdot 3{,}14159 \cdot 0{,}5\text{ Гц} \cdot 0{,}1\text{ с} \approx 0{,}31416\)</span>$
+   $<span class="arithmatex">\(\alpha = \frac{0{,}31416}{1 + 0{,}31416} = \frac{0{,}31416}{1{,}31416} \approx 0{,}239 \approx 0{,}24\)</span>$</p>
+</li>
+<li>
+<p>Аналіз дистракторів:</p>
+</li>
+<li>
+<p>Варіант A (<span class="arithmatex">\(\alpha = 0{,}95\)</span>) практично вимикає фільтрацію, залишаючи смугу пропускання близькою до частоти Найквіста (<span class="arithmatex">\(f_c \approx 3\text{ Гц}\)</span>).</p>
+</li>
+<li>
+<p>Варіант B (<span class="arithmatex">\(\alpha = 0{,}76\)</span>) відповідає формулі <span class="arithmatex">\(1 - \alpha\)</span>, що є поширеною плутаниною комплементарних вагових коефіцієнтів у рекурсивних виразах.</p>
+</li>
+<li>
+<p>Варіант D (<span class="arithmatex">\(\alpha = 0{,}05\)</span>) формує занадто вузьку смугу зрізу (<span class="arithmatex">\(f_c \approx 0{,}08\text{ Гц}\)</span>), що викличе критичну фазову затримку каналу вимірювання тривалістю понад 3 секунди.</p>
+</li>
+</ol>
+</details>
+<ol>
+<li>
+<p>Автономний сенсорний вузол контролю температури працює від хімічного джерела струму, використовуючи алгоритм стиснення за зоною нечутливості Deadband (<span class="arithmatex">\(\Delta_{th} = 0{,}5^\circ\text{C}\)</span>). Під час технологічного збою на лінії вентиляції температура плавно зростала зі швидкістю <span class="arithmatex">\(0{,}05^\circ\text{C}\)</span> за хвилину. Проте диспетчерська SCADA-система зафіксувала аварійне перевищення лише через 10 хвилин після початку інциденту, хоча вимірювання здійснювалися щосекунди. Що стало причиною затримки виявлення аварії?</p>
+</li>
+<li>
+<p>A. Апаратний збій тактового генератора таймера RTC у мікроконтролері.</p>
+</li>
+<li>
+<p>B. Принцип роботи зони нечутливості, за якого сигнал не транслюється в радіоканал, доки абсолютний приріст не досягне величини <span class="arithmatex">\(\Delta_{th} = 0{,}5^\circ\text{C}\)</span>.</p>
+</li>
+<li>
+<p>C. Нелінійне насичення розрядів вхідного дельта-сигма АЦП.</p>
+</li>
+<li>
+<p>D. Блокування черги повідомлень протоколу MQTT на рівні брокера.</p>
+</li>
+</ol>
+<details class="note">
+<summary>Розгорнути аналіз / відповідь</summary>
+<p><strong>Правильний варіант: B.</strong></p>
+<ol>
+<li>
+<p>Алгоритм Deadband блокує відправку даних, якщо різниця між поточним значенням та останнім надісланим менша за поріг: <span class="arithmatex">\(|T[n] - T_{sent}| &lt; \Delta_{th}\)</span>. При швидкості зростання температури <span class="arithmatex">\(v = 0{,}05^\circ\text{C/хв}\)</span> час, необхідний для досягнення порогу <span class="arithmatex">\(\Delta_{th} = 0{,}5^\circ\text{C}\)</span>, становить строго:
+   $<span class="arithmatex">\(\Delta t = \frac{\Delta_{th}}{v} = \frac{0{,}5^\circ\text{C}}{0{,}05^\circ\text{C/хв}} = 10\text{ хвилин}\)</span>$
+   Протягом усіх 10 хвилин вузол виконував вимірювання, але коректно відсікав пакети для економії енергії відповідно до закладеного алгоритму, що стало причиною пізньої доставки події за відсутності контролю похідної швидкості наростання.</p>
+</li>
+<li>
+<p>Аналіз дистракторів:</p>
+</li>
+<li>
+<p>Варіант A хибний, оскільки таймер RTC відраховує інтервали сну, а за умовою мікроконтролер вимірював дані щосекунди.</p>
+</li>
+<li>
+<p>Варіант C хибний, оскільки плавній зміні на <span class="arithmatex">\(0{,}5^\circ\text{C}\)</span> відповідає мізерна зміна вхідної напруги, яка не здатна викликати апаратне насичення шкали.</p>
+</li>
+<li>
+<p>Варіант D хибний, оскільки мережеві пакети фізично не формувалися та не відправлялися сенсорним вузлом, тому брокер MQTT не брав участі у формуванні затримки.</p>
+</li>
+</ol>
+</details>
+<hr />
+<h4 id="_10">Завдання для самостійної роботи</h4>
+<h5 id="_11">Постановка задачі</h5>
+<p>На високовольтному силовому автотрансформаторі підстанції <span class="arithmatex">\(110/10\text{ кВ}\)</span> необхідно встановити автономну інтелектуальну систему моніторингу температури та акустичного шуму перемикача відгалужень під навантаженням (РПН). Система використовує платиновий термоперетворювач опору Pt1000 та цифровий MEMS-мікрофон із виходом I2S. Збір даних координується контролером із живленням від акумулятора та сонячної панелі з передачею даних по протоколу LoRaWAN.</p>
+<h5 id="_12">Завдання для виконання</h5>
+<ol>
+<li>
+<p>Розрахуйте параметри триточкового вимірювального моста Уітстона для термоперетворювача Pt1000 у температурному діапазоні від <span class="arithmatex">\(-40^\circ\text{C}\)</span> до <span class="arithmatex">\(+100^\circ\text{C}\)</span> та визначте максимальний струм збудження для запобігання похибці саморозігріву понад <span class="arithmatex">\(0{,}05^\circ\text{C}\)</span>.</p>
+</li>
+<li>
+<p>Обґрунтуйте вибір типу вхідного аналогового фільтра низьких частот для захисту від електромагнітних завад коронного розряду підстанції в діапазоні частот <span class="arithmatex">\(10\dots150\text{ кГц}\)</span>.</p>
+</li>
+<li>
+<p>Розробіть дискретний алгоритм оцінювання рівня акустичного шуму на базі розрахунку середньоквадратичного значення (RMS) у ковзному часовому вікні розміром 256 відліків.</p>
+</li>
+<li>
+<p>Складіть формальну блок-схему кінцевого автомата управління режимами енергоспоживання вузла для забезпечення безперебійної роботи системи протягом 14 діб повної відсутності сонячної генерації.</p>
+</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Повернутись нагору
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Kyrylo Vadurin &bull; <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.top", "navigation.tracking", "header.autohide", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u0421\u043a\u043e\u043f\u0456\u0439\u043e\u0432\u0430\u043d\u043e \u0432 \u0431\u0443\u0444\u0435\u0440", "clipboard.copy": "\u0421\u043a\u043e\u043f\u0456\u044e\u0432\u0430\u0442\u0438 \u0432 \u0431\u0443\u0444\u0435\u0440", "search.result.more.one": "\u0429\u0435 1 \u0437\u0431\u0456\u0433 \u043d\u0430 \u0446\u0456\u0439 \u0441\u0442\u043e\u0440\u0456\u043d\u0446\u0456", "search.result.more.other": "\u0429\u0435 # \u0437\u0431\u0456\u0433\u0456\u0432 \u043d\u0430 \u0446\u0456\u0439 \u0441\u0442\u043e\u0440\u0456\u043d\u0446\u0456", "search.result.none": "\u0417\u0431\u0456\u0433\u0456\u0432 \u043d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u043e", "search.result.one": "\u0417\u043d\u0430\u0439\u0434\u0435\u043d\u043e 1 \u0437\u0431\u0456\u0433", "search.result.other": "\u0417\u043d\u0430\u0439\u0434\u0435\u043d\u043e # \u0437\u0431\u0456\u0433\u0456\u0432", "search.result.placeholder": "\u0420\u043e\u0437\u043f\u043e\u0447\u043d\u0456\u0442\u044c \u043f\u0438\u0441\u0430\u0442\u0438 \u0434\u043b\u044f \u043f\u043e\u0448\u0443\u043a\u0443", "search.result.term.missing": "\u041d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u043e \u0437\u0430\u043f\u0438\u0442\u0443", "select.version": "\u041e\u0431\u0440\u0430\u0442\u0438 \u0432\u0435\u0440\u0441\u0456\u044e"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

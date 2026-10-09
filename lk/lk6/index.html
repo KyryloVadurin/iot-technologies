@@ -1,0 +1,3643 @@
+
+<!doctype html>
+<html lang="uk" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Навчальний портал з дисципліни "Технології ІоТ"">
+      
+      
+      
+      
+        <link rel="prev" href="../lk5/">
+      
+      
+        <link rel="next" href="../lk7/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Тема 6. Мікроконтролерні платформи (ESP32) - Технології Інтернету речей</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#6-esp32" class="md-skip">
+          Перейти до змісту
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Хедер">
+    <a href="../.." title="Технології Інтернету речей" class="md-header__button md-logo" aria-label="Технології Інтернету речей" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Технології Інтернету речей
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Тема 6. Мікроконтролерні платформи (ESP32)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan"  aria-label="Переключити на темну тему"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Переключити на темну тему" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="cyan"  aria-label="Переключити на світлу тему"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Переключити на світлу тему" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Пошук" placeholder="Пошук" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Шукати">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Очистити" aria-label="Очистити" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Пошук розпочато
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Вкладки" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Робоча програма
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../lk1/" class="md-tabs__link">
+          
+  
+  
+  Лекції
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../lb/lb1/" class="md-tabs__link">
+          
+  
+  
+  Лабораторні роботи
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../pz/pz1/" class="md-tabs__link">
+          
+  
+  
+  Практичні заняття
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../kp/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Курсовий проєкт
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../sr/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Самостійна робота
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../sr/quest/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Контрольні завдання (Іспит)
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Навігація" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Технології Інтернету речей" class="md-nav__button md-logo" aria-label="Технології Інтернету речей" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Технології Інтернету речей
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Робоча програма
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Лекції
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Лекції
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 1. Екосистема та архітектура IoT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 2. Технології WPAN та WLAN у IoT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 3. LPWAN технології
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 4. Прикладні протоколи ІоТ (MQTT, CoAP)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 5. Туманні (Fog) та граничні (Edge) обчислення
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 6. Мікроконтролерні платформи (ESP32)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 6. Мікроконтролерні платформи (ESP32)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Зміст">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Зміст
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Мета лекції
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Очікувані результати навчання
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Детальний покроковий план лекції
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Детальний покроковий план лекції">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-soc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Теоретико-концептуальний базис. Архітектура та обчислювальні ресурси бездротових SoC
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Методологія та аналіз граничних умов. Апаратні інтерфейси взаємодії, багатозадачність та системні обмеження
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Практичний індустріальний / фаховий кейс. Проектування апаратно-програмного комплексу збору телеметрії
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-soc_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Теоретико-концептуальний базис. Архітектура та обчислювальні ресурси бездротових SoC
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Теоретико-концептуальний базис. Архітектура та обчислювальні ресурси бездротових SoC">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-system-on-chip-soc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1. Еволюція апаратної бази Інтернету речей: концепція System-on-Chip (SoC) та порівняльний аналіз платформ
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-tensilica-xtensa-dual-core-32-bit-lx6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2. Мікроархітектура симетричного багатопроцесорного комплексу Tensilica Xtensa Dual-Core 32-bit LX6
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-esp32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3. Організація фізичного та віртуального адресного простору ESP32: внутрішня та зовнішня пам'ять
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-rtc-ulp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4. Енергоефективна підсистема реального часу: домен RTC та співпроцесор ULP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Вказівки для самостійного осмислення
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Методологія та аналіз граничних умов. Апаратні інтерфейси взаємодії, багатозадачність та системні обмеження
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Методологія та аналіз граничних умов. Апаратні інтерфейси взаємодії, багатозадачність та системні обмеження">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-i2c-clock-stretching" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1. Методологія проектування шини I2C: схемотехніка відкритого стоку, аналітичний розрахунок діапазону номіналів підтягувальних резисторів, вплив паразитної ємності ліній та механізм Clock Stretching
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-spi-cpolcpha-chip-select-dma" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2. Організація високошвидкісного обміну по шині SPI: аналіз часових діаграм чотирьох режимів тактування (CPOL/CPHA), логіка апаратної вибірки Chip Select та каналізація даних через контролер DMA
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-uart-hardware-flow-control-rtscts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3. Асинхронний інтерфейс UART: математичний розрахунок дробових дільників частоти бод-генератора, часові допуски синхронізації та захист від переповнення буферів засобами Hardware Flow Control (RTS/CTS)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-freertos-smp-api-esp-idf-spinlocks-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4. Архітектура багатозадачного середовища FreeRTOS SMP: розподіл потоків за ядрами через API ESP-IDF, міжпроцесорна синхронізація через Spinlocks та оцінка детермінізму реакції за теоремою Лю-Лейланда
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-flash-33-wi-fibluetooth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5. Критичні апаратні обмеження та вузькі місця платформи: латентність кеш-промахів при виконанні коду із зовнішньої Flash-пам'яті, завадостійкість інтерфейсів з відкритим колектором у промислових умовах та нестабільність шини живлення 3.3 В під час імпульсної активності калібрування радіотракту Wi-Fi/Bluetooth
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Практичний індустріальний / фаховий кейс. Проектування апаратно-програмного комплексу збору телеметрії
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Практичний індустріальний / фаховий кейс. Проектування апаратно-програмного комплексу збору телеметрії">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-soc-esp32-dma-spi-freertos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1. Комплексний фаховий кейс. Розробка відмовостійкого вузла моніторингу вібрації та температури промислового компресора на базі SoC ESP32 з використанням DMA-буферизації по SPI та асинхронного стека FreeRTOS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1. Комплексний фаховий кейс. Розробка відмовостійкого вузла моніторингу вібрації та температури промислового компресора на базі SoC ESP32 з використанням DMA-буферизації по SPI та асинхронного стека FreeRTOS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Постановка задачі / ситуації
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Покроковий аналіз та розв'язок
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Покроковий аналіз та розв&#39;язок">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-dma" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 1. Розрахунок розміру буферної пам'яті DMA та організація подвійної буферизації
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-spi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 2. Розрахунок частоти тактування та пропускної здатності шини SPI
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-app_cpu-core-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 3. Перевірка обчислювального завантаження ядра APP_CPU (Core 1)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 4. Розрахунок ємності буферного фільтра вторинного джерела живлення 3.3 В
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Інтерпретація результатів та альтернативні сценарії
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2. Зведена довідкова система лекції
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3. Контрольні питання та завдання
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3. Контрольні питання та завдання">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Прикладні тестові завдання
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Завдання для самостійної роботи
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Завдання для самостійної роботи">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Постановка задачі
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Завдання для виконання
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 7. Інтелектуальні сенсори
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 8. Виконавчі пристрої
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 9. Віртуалізація та контейнеризація IoT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 10. IoT платформи та Middleware
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 11. Розумний будинок (Home Assistant)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 12. Промисловий ІоТ (IIoT)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 13. Big Data в ІоТ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 14. Machine Learning на межі мережі
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lk15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 15. Кібербезпека в системах ІоТ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Лабораторні роботи
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Лабораторні роботи
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 1. Моделювання топологій IoT-мереж
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 2. Симуляція підсистем Розумного будинку
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 3. Дослідження локального MQTT-брокера
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 4. Схемотехнічне моделювання вузла збору
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 5. Прошивка ESP32 для передавання телеметрії MQTT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 6. Декларативне програмування ESP32 (ESPHome)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 7. Серверне середовище Linux для IoT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 8. Контейнеризація в ІоТ (Docker Compose)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 9. Middleware ІоТ (Node-RED)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 10. Сервіс REST API для агрегації даних
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 11. Платформи розумного будинку (Home Assistant)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 12. Сценарії автоматизації Home Assistant
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 13. Обробка телеметрії мовою Python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 14. HMI Dashboard для диспетчеризації
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lb/lb15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 15. Комплексне наскрізне тестування IoT-системи
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практичні заняття
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Практичні заняття
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 1. Розрахунок пропускної здатності та живлення
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 2. Проєктування ієрархії топіків MQTT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 3. Правила фільтрації на Edge-шлюзах
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 4. Моделювання АЦП для сенсорів
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 5. Оптимізація енергетичного профілю
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 6. Проєктування конфігурації Docker Compose
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 7. Логічні схеми в Node-RED
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 8. Сценарії Trigger-Condition-Action
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 9. Конвеєр обробки даних (ETL)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pz/pz10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 10. Моделювання загроз безпеки (STRIDE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Курсовий проєкт
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Самостійна робота
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sr/quest/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Контрольні завдання (Іспит)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Зміст">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Зміст
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Мета лекції
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Очікувані результати навчання
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Детальний покроковий план лекції
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Детальний покроковий план лекції">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-soc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Теоретико-концептуальний базис. Архітектура та обчислювальні ресурси бездротових SoC
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Методологія та аналіз граничних умов. Апаратні інтерфейси взаємодії, багатозадачність та системні обмеження
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Практичний індустріальний / фаховий кейс. Проектування апаратно-програмного комплексу збору телеметрії
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-soc_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Теоретико-концептуальний базис. Архітектура та обчислювальні ресурси бездротових SoC
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Теоретико-концептуальний базис. Архітектура та обчислювальні ресурси бездротових SoC">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-system-on-chip-soc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1. Еволюція апаратної бази Інтернету речей: концепція System-on-Chip (SoC) та порівняльний аналіз платформ
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-tensilica-xtensa-dual-core-32-bit-lx6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2. Мікроархітектура симетричного багатопроцесорного комплексу Tensilica Xtensa Dual-Core 32-bit LX6
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-esp32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3. Організація фізичного та віртуального адресного простору ESP32: внутрішня та зовнішня пам'ять
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-rtc-ulp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4. Енергоефективна підсистема реального часу: домен RTC та співпроцесор ULP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Вказівки для самостійного осмислення
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Методологія та аналіз граничних умов. Апаратні інтерфейси взаємодії, багатозадачність та системні обмеження
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Методологія та аналіз граничних умов. Апаратні інтерфейси взаємодії, багатозадачність та системні обмеження">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-i2c-clock-stretching" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1. Методологія проектування шини I2C: схемотехніка відкритого стоку, аналітичний розрахунок діапазону номіналів підтягувальних резисторів, вплив паразитної ємності ліній та механізм Clock Stretching
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-spi-cpolcpha-chip-select-dma" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2. Організація високошвидкісного обміну по шині SPI: аналіз часових діаграм чотирьох режимів тактування (CPOL/CPHA), логіка апаратної вибірки Chip Select та каналізація даних через контролер DMA
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-uart-hardware-flow-control-rtscts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3. Асинхронний інтерфейс UART: математичний розрахунок дробових дільників частоти бод-генератора, часові допуски синхронізації та захист від переповнення буферів засобами Hardware Flow Control (RTS/CTS)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-freertos-smp-api-esp-idf-spinlocks-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4. Архітектура багатозадачного середовища FreeRTOS SMP: розподіл потоків за ядрами через API ESP-IDF, міжпроцесорна синхронізація через Spinlocks та оцінка детермінізму реакції за теоремою Лю-Лейланда
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-flash-33-wi-fibluetooth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5. Критичні апаратні обмеження та вузькі місця платформи: латентність кеш-промахів при виконанні коду із зовнішньої Flash-пам'яті, завадостійкість інтерфейсів з відкритим колектором у промислових умовах та нестабільність шини живлення 3.3 В під час імпульсної активності калібрування радіотракту Wi-Fi/Bluetooth
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Практичний індустріальний / фаховий кейс. Проектування апаратно-програмного комплексу збору телеметрії
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Практичний індустріальний / фаховий кейс. Проектування апаратно-програмного комплексу збору телеметрії">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-soc-esp32-dma-spi-freertos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1. Комплексний фаховий кейс. Розробка відмовостійкого вузла моніторингу вібрації та температури промислового компресора на базі SoC ESP32 з використанням DMA-буферизації по SPI та асинхронного стека FreeRTOS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1. Комплексний фаховий кейс. Розробка відмовостійкого вузла моніторингу вібрації та температури промислового компресора на базі SoC ESP32 з використанням DMA-буферизації по SPI та асинхронного стека FreeRTOS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Постановка задачі / ситуації
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Покроковий аналіз та розв'язок
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Покроковий аналіз та розв&#39;язок">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-dma" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 1. Розрахунок розміру буферної пам'яті DMA та організація подвійної буферизації
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-spi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 2. Розрахунок частоти тактування та пропускної здатності шини SPI
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-app_cpu-core-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 3. Перевірка обчислювального завантаження ядра APP_CPU (Core 1)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 4. Розрахунок ємності буферного фільтра вторинного джерела живлення 3.3 В
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Інтерпретація результатів та альтернативні сценарії
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2. Зведена довідкова система лекції
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3. Контрольні питання та завдання
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3. Контрольні питання та завдання">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Прикладні тестові завдання
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Завдання для самостійної роботи
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Завдання для самостійної роботи">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Постановка задачі
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Завдання для виконання
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="6-esp32">Тема 6. Мікроконтролерні платформи в Інтернеті речей: архітектура та апаратно-програмна організація ESP32</h1>
+<h2 id="_1">Мета лекції</h2>
+<p>Формування у здобувачів вищої освіти цілісної системи поглиблених теоретичних знань та прикладних інженерних компетентностей щодо архітектурної організації сучасних бездротових однокристальних систем (SoC), детального апаратного устрою обчислювального комплексу ESP32 на базі ядер Tensilica Xtensa LX6, механізмів сегментації пам'яті, багатопотокового планування завдань під управлінням FreeRTOS SMP, а також аналізу схемотехнічних і протокольних обмежень послідовних інтерфейсів збору телеметричних даних для проектування високонадійних вузлів Інтернету речей.</p>
+<h2 id="_2">Очікувані результати навчання</h2>
+<ol>
+<li>
+<p><strong>Знання та розуміння.</strong> Здобувачі опанують внутрішню топологію двоядерного процесорного комплексу Xtensa LX6, організацію домену низького енергоспоживання на базі співпроцесора ULP, принципи віртуалізації адресного простору блоком MMU та фізико-протокольні основи функціонування інтерфейсів I2C, SPI та UART.</p>
+</li>
+<li>
+<p><strong>Застосування.</strong> Здобувачі зможуть коректно розраховувати параметри аналогового узгодження ліній зв'язку, детерміновано розподіляти обчислювальні процеси між фізичними ядрами контролера за допомогою функцій FreeRTOS SMP та налаштовувати апаратні механізми прямого доступу до пам'яті для обслуговування високошвидкісних сенсорів.</p>
+</li>
+<li>
+<p><strong>Аналіз.</strong> Здобувачі навчаться здійснювати порівняльний аналіз пропускної здатності та енергетичних витрат бездротових SoC, виявляти джерела недетермінованих часових затримок у контурах реального часу та діагностувати апаратні збої, зумовлені паразитними параметрами комунікаційних шин або стрибками споживання струму радіотрактом.</p>
+</li>
+<li>
+<p><strong>Оцінювання та синтез.</strong> Здобувачі набудуть здатності оцінювати стійкість сенсорної підсистеми до системних колізій та синтезувати апаратно-програмні комплекси граничної обробки даних з оптимальним балансом між обчислювальною потужністю, надійністю каналів передачі та часом автономної роботи від хімічних джерел струму.</p>
+</li>
+</ol>
+<hr />
+<h2 id="_3">Детальний покроковий план лекції</h2>
+<h3 id="1-soc">1. Теоретико-концептуальний базис. Архітектура та обчислювальні ресурси бездротових SoC</h3>
+<ul>
+<li>
+<p>1.1. Еволюція мікропроцесорної техніки в IoT: концепція System-on-Chip (SoC), порівняльний аналіз апаратних платформ Espressif ESP32, Nordic nRF52, STMicroelectronics STM32WB та Texas Instruments CC13xx.</p>
+</li>
+<li>
+<p>1.2. Мікроархітектура симетричного багатопроцесорного комплексу Tensilica Xtensa Dual-Core 32-bit LX6, векторні розширення DSP, конвеєризація та функціональний поділ обов'язків ядер PRO_CPU і APP_CPU.</p>
+</li>
+<li>
+<p>1.3. Організація фізичного та віртуального адресного простору ESP32: внутрішні пули SRAM (IRAM/DRAM), робота блоку MMU з кешованою зовнішньою Flash-пам'яттю та пам'яттю PSRAM.</p>
+</li>
+<li>
+<p>1.4. Енергоефективна підсистема реального часу: схемотехніка домену RTC, програмування незалежного співпроцесора наднизького споживання ULP та робота периферії у режимі Deep Sleep.</p>
+</li>
+</ul>
+<h3 id="2">2. Методологія та аналіз граничних умов. Апаратні інтерфейси взаємодії, багатозадачність та системні обмеження</h3>
+<ul>
+<li>
+<p>2.1. Методологія проектування шини I2C: схемотехніка відкритого стоку, аналітичний розрахунок діапазону номіналів підтягувальних резисторів, вплив паразитної ємності ліній та механізм Clock Stretching.</p>
+</li>
+<li>
+<p>2.2. Організація високошвидкісного обміну по шині SPI: аналіз часових діаграм чотирьох режимів тактування (CPOL/CPHA), логіка апаратної вибірки Chip Select та каналізація даних через контролер DMA.</p>
+</li>
+<li>
+<p>2.3. Асинхронний інтерфейс UART: математичний розрахунок дробових дільників частоти бод-генератора, часові допуски синхронізації та захист від переповнення буферів засобами Hardware Flow Control (RTS/CTS).</p>
+</li>
+<li>
+<p>2.4. Архітектура багатозадачного середовища FreeRTOS SMP: розподіл потоків за ядрами через API ESP-IDF, міжпроцесорна синхронізація через Spinlocks та оцінка детермінізму реакції за теоремою Лю-Лейланда.</p>
+</li>
+<li>
+<p>2.5. Критичні апаратні обмеження та вузькі місця платформи: латентність кеш-промахів при виконанні коду із зовнішньої Flash-пам'яті, завадостійкість інтерфейсів з відкритим колектором у промислових умовах та нестабільність шини живлення 3.3 В під час імпульсної активності калібрування радіотракту Wi-Fi/Bluetooth.</p>
+</li>
+</ul>
+<h3 id="3-">3. Практичний індустріальний / фаховий кейс. Проектування апаратно-програмного комплексу збору телеметрії</h3>
+<p><strong>Тема наскрізної задачі.</strong> «Розробка відмовостійкого вузла моніторингу вібрації та температури промислового компресора на базі SoC ESP32 з використанням DMA-буферизації по SPI та асинхронного стека FreeRTOS»</p>
+<h2 id="1-soc_1">1. Теоретико-концептуальний базис. Архітектура та обчислювальні ресурси бездротових SoC</h2>
+<h3 id="11-system-on-chip-soc">1.1. Еволюція апаратної бази Інтернету речей: концепція System-on-Chip (SoC) та порівняльний аналіз платформ</h3>
+<p>Розвиток апаратної інфраструктури розподілених сенсорних мереж та систем промислової автоматизації пройшов шлях від гетерогенних багатокомпонентних вузлів до монолітних напівпровідникових структур. На ранніх етапах розвитку концепції Інтернету речей типовий кінцевий пристрій компонувався з дискретного мікроконтролера загального призначення, зовнішнього радіочастотного трансивера, окремих мікросхем енергонезалежної пам’яті та дискретних стабілізаторів напруги. Така компоновка створювала значні паразитні ємності та індуктивності друкованих провідників, вимагала складної трасування високочастотних трактів і суттєво підвищувала енергоспоживання вузла через необхідність безперервної підтримки струмів спокою множини окремих кристалів.</p>
+<p>Відповіддю мікроелектронної галузі на виклики мініатюризації та енергоефективності стала концепція однокристальної системи (<strong>System-on-Chip</strong>, <strong>SoC</strong>). У межах єдиної кремнієвої підкладки архітектура SoC об'єднує процесорні ядра, багаторівневу підсистему пам’яті, блоки апаратного криптографічного прискорення, аналогові інтерфейси перетворення сигналів, цифровий процесор базової смуги та безпосередньо приймально-передавальний радіочастотний тракт. Завдяки усуненню міжкристальних з'єднань вдалося зменшити фізичні габарити модулів до одиниць міліметрів, скоротити втрати сигналу в антенних лініях та реалізувати централізоване керування живленням окремих внутрішніх доменів.</p>
+<p>На наступній схемі показано еволюційний перехід топології побудови апаратних вузлів Інтернету речей від дискретної архітектури до інтегрованих однокристальних систем.</p>
+<pre class="mermaid"><code>flowchart TD
+    subgraph Discrete["1-е покоління: Дискретна топологія"]
+        MCU_D["Мікроконтролер (MCU)"]
+        RF_D["Зовнішній RF-модем"]
+        MEM_D["Мікросхема Flash-пам'яті"]
+        PMIC_D["Дискретний LDO / DC-DC"]
+        MCU_D &lt;--&gt;|Шина SPI / UART| RF_D
+        MCU_D &lt;--&gt;|Паралельна шина / I2C| MEM_D
+        PMIC_D --&gt; MCU_D
+        PMIC_D --&gt; RF_D
+    end
+
+    subgraph SiP["2-е покоління: System-in-Package (SiP)"]
+        Substrate["Спільна підкладка модуля"]
+        Die_MCU["Кристал процесора"]
+        Die_RF["Кристал трансивера"]
+        WireBonds["Дротяні мікророзварки"]
+        Substrate --- Die_MCU
+        Substrate --- Die_RF
+        Die_MCU &lt;--&gt;|Внутрішній інтерфейс| Die_RF
+    end
+
+    subgraph SoC["3-є покоління: Монолітна однокристальна система (SoC)"]
+        MonolithicSilicon["Єдиний кремнієвий кристал"]
+        CoreDomain["Обчислювальні ядра + DSP"]
+        MemoryPool["Вбудована SRAM + ROM"]
+        RF_Transceiver["RF Front-end 2.4 GHz / Sub-GHz"]
+        PowerMgt["Інтегрований контролер живлення"]
+        MonolithicSilicon --- CoreDomain
+        MonolithicSilicon --- MemoryPool
+        MonolithicSilicon --- RF_Transceiver
+        MonolithicSilicon --- PowerMgt
+    end
+
+    Discrete --&gt;|Мініатюризація зв'язків| SiP
+    SiP --&gt;|Монолітна інтеграція| SoC</code></pre>
+<p>Енергетичний баланс функціонування вузла Інтернету речей в умовах циклічного опитування датчиків та передачі даних описується рівнянням повного споживання енергії за робочий цикл. Інтегральне значення витраченої енергії <span class="arithmatex">\(E_{cycle}\)</span> визначається як сума витрат у фазах активної обробки, передачі по радіоканалу та перебування в енергозберігаючому стані:</p>
+<div class="arithmatex">\[E_{cycle} = V_{dd} \left( \int_{0}^{t_{act}} I_{act}(t) \, dt + \int_{0}^{t_{tx}} I_{tx}(t) \, dt + \int_{0}^{t_{rx}} I_{rx}(t) \, dt + I_{sleep} \cdot t_{sleep} \right) + Q_{trans} \cdot V_{dd}\]</div>
+<p>У цьому виразі <span class="arithmatex">\(V_{dd}\)</span> позначає напругу живлення вузла у вольтах. Змінні <span class="arithmatex">\(I_{act}(t)\)</span>, <span class="arithmatex">\(I_{tx}(t)\)</span> та <span class="arithmatex">\(I_{rx}(t)\)</span> представляють миттєві значення струму споживання у фазах обчислень, радіопередачі та радіоприйому відповідно, виміряні в амперах. Значення <span class="arithmatex">\(t_{act}\)</span>, <span class="arithmatex">\(t_{tx}\)</span> та <span class="arithmatex">\(t_{rx}\)</span> відповідають тривалості цих фаз у секундах. Величина <span class="arithmatex">\(I_{sleep}\)</span> визначає струм статичного витоку в режимі глибокого сну при тривалості пасивного стану <span class="arithmatex">\(t_{sleep}\)</span>. Доданок <span class="arithmatex">\(Q_{trans}\)</span> характеризує електричний заряд у кулонах, який безповоротно втрачається на перезаряджання паразитних ємностей шин під час переходу між низькоспоживаючим та активним режимами роботи мікросхеми.</p>
+<p>Для обґрунтованого вибору апаратної платформи при проектуванні кінцевих пристроїв різного функціонального призначення наведена порівняльна характеристика провідних мікроконтролерних систем.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Апаратна платформа</th>
+<th style="text-align: left;">Обчислювальне ядро та тактова частота</th>
+<th style="text-align: left;">Інтегровані бездротові інтерфейси</th>
+<th style="text-align: left;">Енергоспоживання в активному / пасивному режимах</th>
+<th style="text-align: left;">Приклад з реальної практики</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Espressif ESP32</strong></td>
+<td style="text-align: left;">Двоядерний 32-бітний Tensilica Xtensa LX6 (до <span class="arithmatex">\(240\text{ МГц}\)</span>)</td>
+<td style="text-align: left;">Wi-Fi 4 (<span class="arithmatex">\(802.11\text{ b/g/n}\)</span>), Bluetooth v4.2 BR/EDR та BLE</td>
+<td style="text-align: left;"><span class="arithmatex">\(80\dots 240\text{ мА}\)</span> (з увімкненим радіотрактом) / <span class="arithmatex">\(5\text{ мкА}\)</span> (Deep Sleep RTC)</td>
+<td style="text-align: left;">Шлюзи збору даних з промислових вібромоніторів з передачею по Wi-Fi</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Nordic nRF52840</strong></td>
+<td style="text-align: left;">Одноядерний 32-бітний ARM Cortex-M4F (<span class="arithmatex">\(64\text{ МГц}\)</span>)</td>
+<td style="text-align: left;">Bluetooth 5.3 LE, IEEE 802.15.4 (Thread, Zigbee), ANT, 2.4 GHz власні</td>
+<td style="text-align: left;"><span class="arithmatex">\(5{,}4\text{ мА}\)</span> (Rx/Tx при <span class="arithmatex">\(0\text{ дБм}\)</span>) / <span class="arithmatex">\(0{,}4\text{ мкА}\)</span> (System OFF без збереження ОЗП)</td>
+<td style="text-align: left;">Автономні медичні трекери серцевого ритму з трирічним терміном роботи від батареї</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>STM32WB55</strong></td>
+<td style="text-align: left;">Двоядерний ARM Cortex-M4 (<span class="arithmatex">\(64\text{ МГц}\)</span>) + Cortex-M0+ (<span class="arithmatex">\(32\text{ МГц}\)</span>)</td>
+<td style="text-align: left;">Bluetooth 5.2 LE, IEEE 802.15.4 (Zigbee PRO, Thread)</td>
+<td style="text-align: left;"><span class="arithmatex">\(5{,}5\text{ мА}\)</span> (Tx при <span class="arithmatex">\(0\text{ дБм}\)</span>) / <span class="arithmatex">\(1{,}8\text{ мкА}\)</span> (режим Stop 2 зі збереженням SRAM)</td>
+<td style="text-align: left;">Системи розумного обліку споживання природного газу з криптозахистом</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>TI CC1352P</strong></td>
+<td style="text-align: left;">ARM Cortex-M4F (<span class="arithmatex">\(48\text{ МГц}\)</span>) + власний Sensor Controller</td>
+<td style="text-align: left;">Дводіапазонний: Sub-1 GHz (<span class="arithmatex">\(868/915\text{ МГц}\)</span>) та <span class="arithmatex">\(2{,}4\text{ ГГц}\)</span> BLE/802.15.4</td>
+<td style="text-align: left;"><span class="arithmatex">\(9{,}6\text{ мА}\)</span> (Tx Sub-1 GHz при <span class="arithmatex">\(+14\text{ дБм}\)</span>) / <span class="arithmatex">\(0{,}85\text{ мкА}\)</span> (Standby)</td>
+<td style="text-align: left;">Далекосяжні сенсори вологості ґрунту в агросекторі з покриттям до 15 км</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>ПРАКТИЧНИЙ ЯКІР:</strong> У розподілених системах моніторингу нафтопроводів використання платформ на базі Texas Instruments CC1352P забезпечує передачу телеметрії в діапазоні <span class="arithmatex">\(868\text{ МГц}\)</span> на відстань до <span class="arithmatex">\(10\text{ км}\)</span> без проміжних ретрансляторів. Це дозволяє проектувати необслуговувані сенсорні вузли з десятирічним терміном експлуатації від одного елемента живлення типу <span class="arithmatex">\(\text{Li-SOCl}_2\)</span>.</p>
+</blockquote>
+<hr />
+<h3 id="12-tensilica-xtensa-dual-core-32-bit-lx6">1.2. Мікроархітектура симетричного багатопроцесорного комплексу Tensilica Xtensa Dual-Core 32-bit LX6</h3>
+<p>Архітектурною основою однокристальної системи ESP32 є обчислювальний комплекс <strong>Tensilica Xtensa Dual-Core 32-bit LX6</strong>, розроблений для застосувань, які вимагають комбінації високої продуктивності при роботі з мережевими протоколами та низького тепловиділення. Обидва ядра кристала є ідентичними за своєю структурою, працюють на синхронізованій змінній тактовій частоті від <span class="arithmatex">\(80\text{ МГц}\)</span> до <span class="arithmatex">\(240\text{ МГц}\)</span> і забезпечують сукупну обчислювальну потужність на рівні до <span class="arithmatex">\(600\text{ DMIPS}\)</span>.</p>
+<p>Конвеєр команд кожного процесорного ядра має 7-стадійну глибину виконання цілочисельних операцій. Структура конвеєра мінімізує час простою обчислювальних трактів при умові правильного передбачення переходів і підтримує паралельне виконання інструкцій за рахунок технології конфігурованого набору команд Xtensa Instruction Extension (<strong>TIE</strong>). До складу ядра інтегровано апаратний блок обчислень із плаваючою комою (<strong>FPU</strong>), що підтримує стандарт IEEE 754 для операцій одинарної точності. Це дає змогу виконувати складні алгоритми фільтрації, матричних перетворень та первинної обробки сигналів без переходу до програмної емуляції операцій із плаваючою комою.</p>
+<p>Особливістю архітектури Xtensa є механізм віконних регістрів (<strong>Windowed Register Architecture</strong>). Замість традиційного фіксованого набору регістрів загального призначення процесор містить фізичний масив із 64 регістрів, з яких у кожен момент часу програмі доступне логічне вікно розміром 16 регістрів (від <span class="arithmatex">\(a_0\)</span> до <span class="arithmatex">\(a_{15}\)</span>). Під час виклику підпрограми вікно зміщується на 4, 8 або 12 позицій, що виключає необхідність збереження вмісту регістрів у зовнішній пам'яті (стеку) та забезпечує практично миттєвий вхід у процедури обробки переривань.</p>
+<p>В операційній системі реального часу <strong>FreeRTOS SMP</strong>, адаптованій для мікроконтролерів ESP32, реалізовано чітке функціональне розмежування ядер:</p>
+<p>Перше ядро позначається як <strong>PRO_CPU</strong> (Protocol CPU, Core 0) і бере на себе первинне завантаження системи, ініціалізацію апаратних компонентів, а також безперервне обслуговування високопріоритетних стеків бездротового зв'язку Wi-Fi 4 та Bluetooth Low Energy.</p>
+<p>Друге ядро позначається як <strong>APP_CPU</strong> (Application CPU, Core 1) і призначається для виконання прикладного коду користувача, розрахунку математичних моделей, обслуговування графічних дисплеїв або опитування локальних сенсорів.</p>
+<p>Прискорення паралельних обчислень у багатоядерній конфігурації підпорядковується закону Амдала, який математично формулює обмеження теоретичного коефіцієнта прискорення <span class="arithmatex">\(S(p)\)</span> для багатопроцесорних систем:</p>
+<div class="arithmatex">\[S(p) = \frac{1}{(1 - f) + \frac{f}{p}}\]</div>
+<p>де <span class="arithmatex">\(f\)</span> є часткою програмного коду, яка може бути строго розпаралелена між процесорними вузлами (<span class="arithmatex">\(0 \le f \le 1\)</span>); <span class="arithmatex">\(p\)</span> позначає кількість паралельних фізичних ядер (для мікроконтролера ESP32 <span class="arithmatex">\(p = 2\)</span>). Якщо частка послідовних системних операцій (таких як доступ до критичних секцій шини Flash-пам'яті або синхронізація через блокування) становить <span class="arithmatex">\(1 - f = 0{,}3\)</span>, то навіть за наявності двох обчислювальних ядер максимальний приріст продуктивності обмежений величиною <span class="arithmatex">\(S(2) = 1 / (0{,}3 + 0{,}7 / 2) \approx 1{,}54\)</span> раза.</p>
+<blockquote>
+<p><strong>ТИПОВА ПОМИЛКА:</strong> Спроба організації прямого обміну даними між завданнями на ядрах PRO_CPU та APP_CPU через загальнодоступні глобальні змінні без застосування атомарних інструкцій або м'ютексів. Оскільки кожне ядро має власні регістрові вікна і внутрішній конвеєр, такий доступ спричиняє стан перегонів (Race Condition) та пошкодження пам'яті. Синхронізація між ядрами має здійснюватися виключно через системні черги FreeRTOS (<code>QueueHandle_t</code>), семафори або критичні секції на основі спінлоків (<code>taskENTER_CRITICAL()</code>).</p>
+</blockquote>
+<hr />
+<h3 id="13-esp32">1.3. Організація фізичного та віртуального адресного простору ESP32: внутрішня та зовнішня пам'ять</h3>
+<p>Адресний простір мікроконтролера ESP32 побудований за принципами гарвардської гармонізованої архітектури і має суцільний 32-розрядний діапазон адресації обсягом <span class="arithmatex">\(4\text{ Гбайт}\)</span> (<span class="arithmatex">\(0\text{x0000\_0000} \dots 0\text{xFFFF\_FFFF}\)</span>). Фізично внутрішня оперативна пам'ять кристала має ємність <span class="arithmatex">\(520\text{ Кбайт}\)</span> і конструктивно розділена на три незалежні кремнієві блоки, доступ до яких організовано через матрицю внутрішніх шин (<strong>Internal Bus Matrix</strong>). Ця матриця дозволяє обом ядрам одночасно здійснювати звернення до різних банків пам'яті без затримок на арбітраж.</p>
+<p>Розподіл внутрішніх пулів пам'яті мікроконтролера структуровано за спеціалізованими сегментами:</p>
+<p>Блок <strong>SRAM0</strong> розміром <span class="arithmatex">\(64\text{ Кбайт}\)</span> підключений безпосередньо до внутрішньої шини інструкцій (IBus) і використовується ядрами для розміщення статичного коду, критичних підпрограм та кешування транзакцій зовнішньої пам'яті.</p>
+<p>Блок <strong>SRAM1</strong> розміром <span class="arithmatex">\(128\text{ Кбайт}\)</span> має подвійне відображення: він підключений як до шини інструкцій (діапазон адрес від <span class="arithmatex">\(0\text{x400A\_0000}\)</span> до <span class="arithmatex">\(0\text{x400B\_FFFF}\)</span>), так і до шини даних DBus (діапазон адрес від <span class="arithmatex">\(0\text{x3FFE\_0000}\)</span> до <span class="arithmatex">\(0\text{x3FFF\_FFFF}\)</span>). Це дозволяє системному компонувальнику динамічно балансувати простір між виконанням коду та розміщенням змінних.</p>
+<p>Блок <strong>SRAM2</strong> розміром <span class="arithmatex">\(200\text{ Кбайт}\)</span> з'єднаний виключно з шиною даних (DBus, адреси від <span class="arithmatex">\(0\text{x3FFA\_E000}\)</span> до <span class="arithmatex">\(0\text{x3FFD\_FFFF}\)</span>) і призначений для розміщення системної купи (Heap), глобальних змінних та стеків завдань FreeRTOS.</p>
+<p>Мікроконтролер не містить вбудованого масиву постійної Flash-пам'яті програм. Для збереження коду прошивки кристал використовує зовнішні мікросхеми NOR Flash ємністю від <span class="arithmatex">\(4\text{ Мбайт}\)</span> до <span class="arithmatex">\(16\text{ Мбайт}\)</span>, що підключаються за чотирипровідним інтерфейсом Quad SPI (<strong>QSPI</strong>). Відображення зовнішнього фізичного носія у віртуальний адресний простір процесора реалізується за допомогою апаратного блоку управління пам'яттю (<strong>MMU</strong>, Memory Management Unit).</p>
+<p>Апаратний блок MMU оперує пулом сторінок розміром по <span class="arithmatex">\(64\text{ Кбайт}\)</span>. Віртуальний адресний простір інструкцій містить 50 таких сторінок, що забезпечує пряме кешоване відображення до <span class="arithmatex">\(3{,}2\text{ Мбайт}\)</span> зовнішньої Flash-пам'яті (діапазон <span class="arithmatex">\(0\text{x400D\_0000} \dots 0\text{x403F\_FFFF}\)</span>). Аналогічно організовано доступ до зовнішньої псевдостатичної оперативної пам'яті (<strong>PSRAM</strong>) обсягом до <span class="arithmatex">\(8\text{ Мбайт}\)</span>, яка відображається у простір шини даних через відповідні сторінкові таблиці MMU. Обмін між зовнішньою пам'яттю та процесором обслуговується спільним двоканальним апаратним кешем обсягом <span class="arithmatex">\(32\text{ Кбайт}\)</span>.</p>
+<pre class="mermaid"><code>flowchart LR
+    subgraph CPU_Cores["Процесорний комплекс"]
+        Core0["PRO_CPU (Core 0)"]
+        Core1["APP_CPU (Core 1)"]
+    end
+
+    subgraph Internal_Bus["Матриця шин (Bus Matrix)"]
+        IBus["Шина інструкцій (IBus)"]
+        DBus["Шина даних (DBus)"]
+    end
+
+    subgraph Internal_RAM["Внутрішня пам'ять SRAM (520 Кбайт)"]
+        SRAM0["SRAM0: 64 Кбайт (Тільки код IRAM)"]
+        SRAM1["SRAM1: 128 Кбайт (Гібридна: IRAM / DRAM)"]
+        SRAM2["SRAM2: 200 Кбайт (Тільки дані DRAM)"]
+        RTC_RAM["RTC SRAM: 16 Кбайт (Fast / Slow)"]
+    end
+
+    subgraph External_Storage["Зовнішні мікросхеми (Шина QSPI)"]
+        CacheMMU["Блок MMU + 32 Кбайт Кеш"]
+        ExtFlash["Зовнішня Flash (до 16 Мбайт)"]
+        ExtPSRAM["Зовнішня PSRAM (до 8 Мбайт)"]
+    end
+
+    Core0 &lt;--&gt; IBus
+    Core0 &lt;--&gt; DBus
+    Core1 &lt;--&gt; IBus
+    Core1 &lt;--&gt; DBus
+
+    IBus &lt;--&gt; SRAM0
+    IBus &lt;--&gt; SRAM1
+    DBus &lt;--&gt; SRAM1
+    DBus &lt;--&gt; SRAM2
+    DBus &lt;--&gt; RTC_RAM
+
+    IBus &lt;--&gt; CacheMMU
+    DBus &lt;--&gt; CacheMMU
+    CacheMMU &lt;--&gt; ExtFlash
+    CacheMMU &lt;--&gt; ExtPSRAM</code></pre>
+<p>Критичним експлуатаційним аспектом роботи з пам'яттю є блокування кешу під час виконання операцій стирання або посторінкового запису у зовнішню Flash-пам'ять. У момент запису сектору Flash апаратний кеш автоматично вимикається, і будь-яка спроба процесора звернутися до коду, розташованого у Flash, призводить до фатальної помилки ядра (<code>IllegalInstructionException</code>). </p>
+<p>Щоб запобігти збоям системи, усі обробники критичних переривань (ISR), математичні підпрограми керування та змінні, до яких звертаються під час запису пам'яті, повинні примусово розміщуватися у внутрішній оперативній пам'яті за допомогою атрибута лінкера <code>IRAM_ATTR</code> для функцій та <code>DRAM_ATTR</code> для констант.</p>
+<p>Математична залежність середнього часу доступу до пам'яті <span class="arithmatex">\(T_{access}\)</span> в архітектурі з MMU та кеш-буферизацією виражається через коефіцієнт влучання в кеш <span class="arithmatex">\(H\)</span> (Cache Hit Rate):</p>
+<div class="arithmatex">\[T_{access} = H \cdot T_{cache} + (1 - H) \cdot (T_{cache} + T_{mmu} + T_{qspi})\]</div>
+<p>де <span class="arithmatex">\(T_{cache}\)</span> позначає час звернення до вбудованого кешу в тактах CPU (для ESP32 <span class="arithmatex">\(T_{cache} = 1\text{ такт}\)</span>); <span class="arithmatex">\(H\)</span> позначає ймовірність знаходження запитуваної інструкції в кеші (<span class="arithmatex">\(0 \le H \le 1\)</span>); <span class="arithmatex">\(T_{mmu}\)</span> є апаратною затримкою перетворення адреси в блоці MMU (2–4 такти); <span class="arithmatex">\(T_{qspi}\)</span> відповідає тривалості послідовного вичитування 32-байтної лінії кешу через шину QSPI з урахуванням затримок сигналу вибірки CS (досягає <span class="arithmatex">\(20\dots 40\text{ тактів}\)</span>). </p>
+<p>При зниженні показника <span class="arithmatex">\(H\)</span> нижче <span class="arithmatex">\(0{,}85\)</span> спостерігається лавиноподібна деградація швидкодії контурів регулювання реального часу через постійні очікування ядра на завершення транзакцій QSPI.</p>
+<blockquote>
+<p><strong>ПРАКТИЧНИЙ ЯКІР:</strong> При бездротовому оновленні прошивки через інтернет (Over-The-Air, OTA) у пристроях автоматизації відключення живлення або спрацьовування таймера Watchdog під час стирання сектора Flash-пам'яті відбувається саме через відсутність директиви <code>IRAM_ATTR</code> у функціях керування сторожовим таймером. Це робить вузол повністю непрацездатним через виникнення виключення при вимкненому кеші.</p>
+</blockquote>
+<hr />
+<h3 id="14-rtc-ulp">1.4. Енергоефективна підсистема реального часу: домен RTC та співпроцесор ULP</h3>
+<p>Для забезпечення тривалої автономної роботи від хімічних джерел струму кристал ESP32 оснащений розвиненою підсистемою енергозбереження, архітектурним центром якої є незалежний домен <strong>RTC</strong> (Real-Time Clock). Цей блок має власне фізичне відокремлення живлення, що дозволяє вимикати напругу на процесорних ядрах Xtensa, блоці MMU, радіотракті Wi-Fi/Bluetooth та внутрішніх шинах пам'яті SRAM.</p>
+<p>До складу підсистеми RTC входять такі модулі:</p>
+<p>Енергонезалежний контролер керування живленням (<strong>PMU</strong>), що забезпечує ступінчасте регулювання напруги на внутрішніх LDO-стабілізаторах та формує сигнали перезапуску за подіями переривань.</p>
+<p>Пам'ять <strong>RTC Fast Memory</strong> обсягом <span class="arithmatex">\(8\text{ Кбайт}\)</span>, призначена для збереження функцій та даних, які потрібні процесору відразу після пробудження до моменту ініціалізації зовнішньої Flash-пам'яті.</p>
+<p>Пам'ять <strong>RTC Slow Memory</strong> обсягом <span class="arithmatex">\(8\text{ Кбайт}\)</span>, яка використовується автономним співпроцесором для розміщення мікрокоду програм і буферизації знятих телеметричних даних.</p>
+<p>Апаратні таймери реального часу, сторожовий таймер RTC Watchdog, внутрішній RC-генератор <span class="arithmatex">\(150\text{ кГц}\)</span>, генератор <span class="arithmatex">\(8\text{ МГц}\)</span> та контур збудження зовнішнього високоточного кварцового резонатора <span class="arithmatex">\(32{,}768\text{ кГц}\)</span>.</p>
+<p>Апаратний контролер сенсорних площадок (Touch Sensor) та компаратори низької напруги (Brownout Detector).</p>
+<p>Ключовим компонентом домену RTC є інтегрований співпроцесор <strong>ULP</strong> (Ultra-Low-Power Co-processor). У класичній версії кристала ESP32 співпроцесор побудований на базі кінцевого автомата з оригінальним спрощеним набором інструкцій, що включає базові арифметичні та логічні операції, переходи за умовами, а також прямі інструкції опитування апаратного АЦП і керування регістрами вводу-виводу RTC GPIO. Співпроцесор тактується від внутрішнього стабілізованого джерела <span class="arithmatex">\(8\text{ МГц}\)</span> і споживає під час виконання програми струм не більше <span class="arithmatex">\(100\dots 150\text{ мкА}\)</span>, тоді як у паузах між циклами споживання спадає до <span class="arithmatex">\(2\dots 5\text{ мкА}\)</span>.</p>
+<p>Співпроцесор ULP має власну систему адресації та структуру інструкцій фіксованого розміру (32 біти), які формуються асемблером <code>esp32ulp-elf-as</code>. Завдяки прямому зв'язку з периферією RTC співпроцесор може функціонувати в автономному контурі: періодично запускатися внутрішнім таймером, активувати вбудований аналого-цифровий перетворювач (SAR ADC), виконувати багатократне вимірювання напруги з аналогового датчика, записувати масив точок у RTC Slow Memory та за допомогою апаратної інструкції <code>WAKE</code> формувати сигнал переривання, який переводить основні процесорні ядра зі стану Deep Sleep в активний режим.</p>
+<p>На наступній діаграмі станів відображено життєвий цикл роботи вузла на базі ESP32 при переході між режимами енергозбереження та обробці переривання від співпроцесора ULP.</p>
+<pre class="mermaid"><code>stateDiagram-v2
+    [*] --&gt; Active_Init: Подача живлення (Power ON)
+
+    state Active_Mode {
+        Active_Init --&gt; DualCore_Exec: Ініціалізація FreeRTOS та радіомодема
+        DualCore_Exec --&gt; Processing: Обробка завдань користувача (ядро 1)
+        DualCore_Exec --&gt; Network_TxRx: Обслуговування Wi-Fi / BLE (ядро 0)
+    }
+
+    Active_Mode --&gt; DeepSleep_Transition: Системний виклик esp_deep_sleep_start()
+
+    state DeepSleep_State {
+        state "Ядра Xtensa знеструмлені, кеш скинуто" as CoresOff
+        state "RTC Slow Memory та ULP активні" as RTCActive
+        CoresOff --&gt; RTCActive
+
+        state "Співпроцесор ULP у стані сну (Timer Wait)" as ULP_Sleep
+        state "Виконання підпрограми ULP (Опитування ADC)" as ULP_Exec
+
+        ULP_Sleep --&gt; ULP_Exec: Спрацьовування RTC таймера
+        ULP_Exec --&gt; ULP_Sleep: Показники в межах норми
+    }
+
+    DeepSleep_Transition --&gt; DeepSleep_State
+
+    DeepSleep_State --&gt; Active_Init: Показники датчика вище норми (Сигнал WAKE)
+    DeepSleep_State --&gt; Active_Init: Спрацьовування системного таймера сну</code></pre>
+<blockquote>
+<p><strong>КОНТРОЛЬНЕ ПИТАННЯ:</strong> Який системний фактор унеможливлює використання стандартних функцій бібліотеки C/C++ (<code>malloc</code>, <code>printf</code>, <code>sin</code>) всередині програмного коду, скомпільованого для виконання на співпроцесорі ULP у режимі Deep Sleep мікроконтролера ESP32?</p>
+</blockquote>
+<details class="note">
+<summary>Розгорнути аналіз / відповідь</summary>
+<p><strong>Правильний варіант: Апаратна ізоляція домену RTC та відсутність доступу до системних ресурсів.</strong></p>
+<ol>
+<li>
+<p>Співпроцесор ULP та процесорні ядра Tensilica Xtensa мають кардинально відмінні набори інструкцій (ISA). У стані Deep Sleep живлення обчислювального комплексу Xtensa повністю вимкнено, блок MMU знеструмлений, а зовнішня Flash-пам'ять, де зберігаються стандартні бібліотеки C/C++, фізично недоступна. Крім того, співпроцесор ULP має прямий доступ лише до простору пам'яті RTC Slow Memory (<span class="arithmatex">\(8\text{ Кбайт}\)</span>), не має доступу до системної купи FreeRTOS (<code>malloc</code>) та апаратних інтерфейсів UART/USB для виводу символів (<code>printf</code>).</p>
+</li>
+<li>
+<p>Аналіз дистракторів: Припущення про те, що ULP обмежений лише за тактовою частотою і міг би повільно виконати стандартні функції, є хибним, оскільки відсутня сумісність за двійковим кодом інструкцій. Припущення про заборону викликів через нестачу часу також є невірним: обмеження має фундаментальний апаратно-архітектурний характер, зумовлений повною відсутністю ліній зв'язку між ULP та основною пам'яттю DRAM у фазі сну.</p>
+</li>
+</ol>
+</details>
+<hr />
+<h3 id="_4">Вказівки для самостійного осмислення</h3>
+<ol>
+<li>
+<p>Проведіть аналітичний розрахунок часу автономного функціонування вузла моніторингу температури на базі ESP32 від літієвого елемента живлення типорозміру CR2032 (номінальна ємність <span class="arithmatex">\(220\text{ мА}\cdot\text{год}\)</span> при напрузі <span class="arithmatex">\(3{,}0\text{ В}\)</span>) за умови, що вузол опитує аналоговий сенсор за допомогою ULP один раз на <span class="arithmatex">\(10\text{ секунд}\)</span> (тривалість активності ULP <span class="arithmatex">\(5\text{ мс}\)</span> при струмі <span class="arithmatex">\(150\text{ мкА}\)</span>), а пробудження основних ядер та вихід у радіоефір Wi-Fi тривалістю <span class="arithmatex">\(2\text{ секунди}\)</span> зі середнім струмом <span class="arithmatex">\(120\text{ мА}\)</span> відбувається один раз на добу.</p>
+</li>
+<li>
+<p>Дослідіть карту розподілу пам'яті ESP32 у документації виробника (Technical Reference Manual) та визначте межі фізичних адрес, які відповідають блоку пам'яті RTC Fast Memory під час її використання як пам'яті інструкцій після виходу зі стану Deep Sleep.</p>
+</li>
+<li>
+<p>Побудуйте порівняльну модель ефективності обробки дискретних сигналів тривоги двома способами: за допомогою періодичного опитування ліній порту вводу-виводу співпроцесором ULP проти використання апаратного переривання від контролера зовнішніх ліній RTC IO, оцінивши різницю у затримці реакції вузла на вхідний вплив.</p>
+</li>
+</ol>
+<h2 id="2_1">2. Методологія та аналіз граничних умов. Апаратні інтерфейси взаємодії, багатозадачність та системні обмеження</h2>
+<h3 id="21-i2c-clock-stretching">2.1. Методологія проектування шини I2C: схемотехніка відкритого стоку, аналітичний розрахунок діапазону номіналів підтягувальних резисторів, вплив паразитної ємності ліній та механізм Clock Stretching</h3>
+<p>Проектування фізичного рівня послідовної шини <strong>I2C</strong> базується на схемотехніці з відкритим стоком (<strong>Open-Drain</strong>), яка забезпечує двонаправлену передачу даних по двох сигнальних лініях із можливістю безконфліктного підключення багатьох ведучих та ведених пристроїв. У вимкненому стані транзистори вихідних каскадів закриті, тому логічний рівень на лініях послідовних даних <strong>SDA</strong> та тактування <strong>SCL</strong> формується виключно за рахунок підтягувальних резисторів, підключених до шини живлення <span class="arithmatex">\(V_{dd}\)</span>. Активний низький рівень генерується відкриттям вихідного n-канального польового транзистора, який замикає сигнальну лінію на нульовий потенціал. Така конфігурація утворює логіку «монтажного І», що виключає виникнення наскрізних струмів короткого замикання при одночасній передачі сигналів кількома передавачами та забезпечує апаратний арбітраж шини.</p>
+<p>Розрахунок номіналу підтягувальних резисторів шини вимагає аналітичного визначення строгого інтервалу <span class="arithmatex">\([R_{p(min)}; R_{p(max)}]\)</span>, межі якого диктуються фізичними процесами перезаряджання сумарної паразитної ємності та обмеженнями максимального вихідного струму напівпровідникових структур.</p>
+<p>Поетапний аналіз та математичне виведення граничних параметрів підтягувальних елементів шини I2C формалізується наступним чином:</p>
+<div class="arithmatex">\[
+\begin{aligned}
+\text{Крок 1 (Струмове обмеження знизу):} &amp; \quad R_{p(min)} = \frac{V_{dd} - V_{OL(max)}}{I_{OL}} \\
+\text{Крок 2 (Динамічне рівняння наростання):} &amp; \quad V(t) = V_{dd} \cdot \left(1 - e^{-\frac{t}{R_p C_b}}\right) \\
+\text{Крок 3 (Інтегрування часових порогів):} &amp; \quad t_r = t(0{,}7 V_{dd}) - t(0{,}3 V_{dd}) = R_p C_b \left( \ln\frac{1}{1-0{,}7} - \ln\frac{1}{1-0{,}3} \right) = R_p C_b \ln\left(\frac{0{,}7}{0{,}3}\right) \approx 0{,}8473 R_p C_b \\
+\text{Крок 4 (Фінальний розрахунок стелі):} &amp; \quad R_{p(max)} = \frac{t_{r(max)}}{0{,}8473 \cdot C_b}
+\end{aligned}
+\]</div>
+<p>У наведених аналітичних співвідношеннях параметр <span class="arithmatex">\(V_{dd}\)</span> визначає напругу живлення інтерфейсної шини у вольтах, яка для платформи ESP32 зазвичай становить <span class="arithmatex">\(3{,}3\text{ В}\)</span>. Змінна <span class="arithmatex">\(V_{OL(max)}\)</span> задає максимально допустиму залишковою напругу виходу відкритого стоку, що ще розпізнається приймачем як рівень логічного нуля (згідно зі специфікацією I2C вона дорівнює <span class="arithmatex">\(0{,}4\text{ В}\)</span> при струмі <span class="arithmatex">\(I_{OL} = 3\text{ мА}\)</span>). Величина <span class="arithmatex">\(C_b\)</span> позначає сумарну паразитну ємність шини у фарадах, яка формується з суми вхідних ємностей усіх підключених мікросхем, ємності монтажних площадок та погонної ємності провідників друкованої плати. Параметр <span class="arithmatex">\(t_{r(max)}\)</span> відповідає нормативній верхній межі тривалості фронту наростання сигналу (для режиму Standard Mode зі швидкістю <span class="arithmatex">\(100\text{ кбіт/с}\)</span> норматив становить <span class="arithmatex">\(1000\text{ нс}\)</span>, а для режиму Fast Mode зі швидкістю <span class="arithmatex">\(400\text{ кбіт/с}\)</span> поріг зменшується до <span class="arithmatex">\(300\text{ нс}\)</span>).</p>
+<p>Аналіз граничних умов показує, що при значній протяжності друкованих провідників або винесенні сенсорів на гнучких шлейфах за межі плати сумарна ємність <span class="arithmatex">\(C_b\)</span> швидко перевищує допустимий стандартом поріг <span class="arithmatex">\(400\text{ пФ}\)</span>. За таких умов верхня межа <span class="arithmatex">\(R_{p(max)}\)</span> стає меншою за нижню допустиму межу <span class="arithmatex">\(R_{p(min)}\)</span>. Вибір резистора з опором, нижчим за <span class="arithmatex">\(R_{p(min)}\)</span>, спричиняє нездатність вихідного транзистора сенсора притиснути лінію до потенціалу, нижчого за <span class="arithmatex">\(V_{OL(max)}\)</span>, через що ведучий контролер ESP32 фіксує постійний високий рівень на шині та генерує помилку шини. Якщо ж розробник встановлює завищений номінал резистора, експоненційне наростання напруги стає занадто пологим, тривалість фронту <span class="arithmatex">\(t_r\)</span> перевищує норматив, що веде до зсуву фази стробування даних, виникнення помилок контрольної суми та спотворення адресних пакетів.</p>
+<p>Для узгодження швидкостей повільних сенсорів і швидкого контролера ESP32 стандарт передбачає механізм розтягування тактового сигналу (<strong>Clock Stretching</strong>). Якщо ведений сенсор потребує додаткового часу на виконання внутрішнього аналого-цифрового перетворення або очищення вхідного буфера, він апаратно утримує лінію SCL на низькому рівні після прийому дев'ятого тактового імпульсу. Провідний контролер ESP32 повинен перевести свій вивід SCL у режим високого імпедансу, відстежувати реальний стан лінії та призупинити генерацію наступних тактів доти, доки лінія SCL самостійно не відновиться до високого рівня під дією підтягувального резистора.</p>
+<blockquote>
+<p><strong>ВАЖЛИВО:</strong> Реалізація апаратного контролера I2C у багатьох ревізіях кремнію ESP32 має відому системну вразливість обробки Clock Stretching. Якщо ведений сенсор утримує лінію SCL довше внутрішнього часового порогу контролера, апаратний автомат скінченних станів ESP32 некоректно інтерпретує це як тайм-аут шини та генерує повторну умову СТАРТ замість очікування, що призводить до повного блокування апаратного модуля. Для промислових систем із повільними датчиками необхідно програмно обмежувати інтервал тайм-ауту або застосовувати програмну реалізацію протоколу (Bit-Banging).</p>
+</blockquote>
+<hr />
+<h3 id="22-spi-cpolcpha-chip-select-dma">2.2. Організація високошвидкісного обміну по шині SPI: аналіз часових діаграм чотирьох режимів тактування (CPOL/CPHA), логіка апаратної вибірки Chip Select та каналізація даних через контролер DMA</h3>
+<p>Інтерфейс <strong>SPI</strong> є високошвидкісним повнодуплексним синхронним протоколом передачі даних за топологією прямого фізичного з'єднання «ведучий-ведений». Використання двотактних комплементарних вихідних каскадів (<strong>Push-Pull</strong>) усуває необхідність очікування заряду паразитних ємностей через резистори, що дозволяє тактувати шину ESP32 на частотах аж до <span class="arithmatex">\(40\dots 80\text{ МГц}\)</span>.</p>
+<p>Синхронізація потоків даних спирається на часову взаємодію між перепадами тактового сигналу <strong>SCLK</strong> та моментами встановлення даних на лініях <strong>MOSI</strong> і <strong>MISO</strong>. Конфігурація протоколу задається комбінацією двох параметрів: полярності тактового сигналу <strong>CPOL</strong> (визначає рівень напруги на лінії SCLK за відсутності передачі) та фази стробування <strong>CPHA</strong> (визначає, за яким фронтом здійснюється фіксація біта).</p>
+<p>Формальне визначення чотирьох робочих режимів SPI описується логічною структурою:</p>
+<div class="arithmatex">\[
+\text{Mode}(\text{CPOL}, \text{CPHA}) = 
+\begin{cases}
+\text{Mode 0:} \quad \text{SCLK}_{idle} = 0, \quad \text{Стробування} = \text{Front}_{\uparrow}, \quad \text{Зсув даних} = \text{Front}_{\downarrow} \\
+\text{Mode 1:} \quad \text{SCLK}_{idle} = 0, \quad \text{Стробування} = \text{Front}_{\downarrow}, \quad \text{Зсув даних} = \text{Front}_{\uparrow} \\
+\text{Mode 2:} \quad \text{SCLK}_{idle} = 1, \quad \text{Стробування} = \text{Front}_{\downarrow}, \quad \text{Зсув даних} = \text{Front}_{\uparrow} \\
+\text{Mode 3:} \quad \text{SCLK}_{idle} = 1, \quad \text{Стробування} = \text{Front}_{\uparrow}, \quad \text{Зсув даних} = \text{Front}_{\downarrow}
+\end{cases}
+\]</div>
+<p>Для забезпечення безпомилкового читання даних повинні строго виконуватися часові критерії динамічної пам'яті: час випередження даних <span class="arithmatex">\(t_{su}\)</span> (час, протягом якого рівень на лінії даних повинен стабілізуватися до приходу активного фронту стробування) та час утримання даних <span class="arithmatex">\(t_h\)</span> (час стабільності сигналу після проходження фронту).</p>
+<p>Вибірка цільового сенсора здійснюється переведенням індивідуальної лінії вибору мікросхеми <strong>CS</strong> у рівень логічного нуля. На високих частотах критичним є параметр затримки від моменту падіння сигналу CS до появи першого тактового імпульсу <span class="arithmatex">\(t_{css}\)</span>, а також час пост-утримання <span class="arithmatex">\(t_{csh}\)</span>. Якщо процесор почне генерацію SCLK раніше завершення внутрішнього перехідного процесу дешифратора адреси в сенсорі, перший біт переданого пакета буде безповоротно втрачений.</p>
+<p>При потоковому зчитуванні телеметрії з високочастотних сенсорів (наприклад, триосьових акселерометрів чи вимірювачів вібрації) обслуговування переривань байтового рівня перевантажує процесорні ядра. Для усунення цього вузького місця контролери SPI мікроконтролера ESP32 інтегровані з контролером прямого доступу до пам'яті (<strong>DMA</strong>). Контролер DMA бере на себе повне керування передачею масивів байтів між FIFO-буфером SPI та внутрішньою пам'яттю SRAM без участі центрального процесора.</p>
+<p>На наступній часовій діаграмі показано взаємодію центрального процесора, контролера DMA, апаратного периферійного модуля SPI мікроконтролера ESP32 та зовнішнього високошвидкісного сенсора під час блокової вибірки даних.</p>
+<pre class="mermaid"><code>sequenceDiagram
+    autonumber
+    box rgb(245, 245, 255) Внутрішня структура ESP32
+    participant CPU as Ядро APP_CPU (Core 1)
+    participant DMA as Контролер SPI DMA
+    participant SPI as Апаратний блок SPI2
+    end
+    box rgb(255, 250, 240) Зовнішня периферія
+    participant Sensor as Зовнішній сенсор (SPI Slave)
+    end
+
+    CPU-&gt;&gt;DMA: Ініціалізація ланцюжка дескрипторів lldesc_t у DRAM
+    CPU-&gt;&gt;SPI: Конфігурація тактової частоти (20 МГц) та Mode 0
+    CPU-&gt;&gt;SPI: Активація транзакції з DMA (Trigger Transfer)
+    Note over CPU: Ядро звільняється для обчислень FreeRTOS
+    SPI-&gt;&gt;Sensor: Падіння сигналу Chip Select (CS = LOW)
+    loop Передача пакетів телеметрії
+        DMA-&gt;&gt;SPI: Пряма перекачка байтів запиту з SRAM до FIFO
+        SPI-&gt;&gt;Sensor: Генерація SCLK та передача адреси регістра по MOSI
+        Sensor-&gt;&gt;SPI: Потоковий вивід даних вимірювань по лінії MISO
+        SPI-&gt;&gt;DMA: Запис прийнятих даних з вхідного FIFO у буфер SRAM
+    end
+    SPI-&gt;&gt;Sensor: Відновлення сигналу Chip Select (CS = HIGH)
+    DMA-&gt;&gt;CPU: Генерація апаратного переривання (DMA Transfer Complete)
+    Note over CPU: Обробка повного масиву телеметрії в IRAM</code></pre>
+<p>Граничні умови застосування шини SPI з DMA визначаються швидкістю поширення електромагнітної хвилі у діелектрику друкованої плати та внутрішніми апаратними затримками трансивера веденого пристрою. Час затримки вихідних даних веденого вузла <span class="arithmatex">\(t_{v(SDO)}\)</span> при частотах понад <span class="arithmatex">\(20\text{ МГц}\)</span> стає співмірним із тривалістю половини періоду тактового сигналу <span class="arithmatex">\(T_{sclk} / 2\)</span>. Якщо сумарний фазовий набіг затримки перевищує допустимий поріг:</p>
+<div class="arithmatex">\[t_{prop(PCB\_SCLK)} + t_{v(SDO)} + t_{prop(PCB\_MISO)} &gt; \frac{T_{sclk}}{2} - t_{su(ESP32)}\]</div>
+<p>то контролер ESP32 здійснюватиме стробування лінії MISO в момент, коли рівень напруги ще знаходиться у фазі невизначеного перехідного стану, що викликає катастрофічну появу помилок у кожному прийнятому слові. За таких умов робоча частота тактування шини повинна примусово знижуватися, або має застосовуватися режим фазової компенсації затримок (<strong>Dummy Clock Cycles</strong>).</p>
+<hr />
+<h3 id="23-uart-hardware-flow-control-rtscts">2.3. Асинхронний інтерфейс UART: математичний розрахунок дробових дільників частоти бод-генератора, часові допуски синхронізації та захист від переповнення буферів засобами Hardware Flow Control (RTS/CTS)</h3>
+<p>Інтерфейс <strong>UART</strong> виконує перетворення паралельних байтів даних процесорного ядра у послідовний потік бітів для зв'язку з автономними модулями зв'язку або супутниковими приймачами. Відсутність окремої лінії тактування робить UART чутливим до розбіжностей частот внутрішніх генераторів приймача та передавача.</p>
+<p>Швидкість передачі даних задається інтегрованим бод-генератором, який здійснює понижувальне ділення опорної системної тактової частоти шини <span class="arithmatex">\(f_{source}\)</span> (для ESP32 це зазвичай тактова частота шини периферії APB, рівна <span class="arithmatex">\(80\text{ МГц}\)</span>). Оскільки відношення базової частоти до стандартних швидкостей передачі рідко є цілим числом, апаратний дільник складається з цілочисельної частини <strong>DIV_INT</strong> та дробової частини <strong>DIV_FRAG</strong> з дискретністю у три біти (<span class="arithmatex">\(1/8\)</span> кроку).</p>
+<p>Математичний алгоритм покрокового налаштування дільника бод-генератора та оцінки виникаючої похибки виражається наступною формалізованою послідовністю дій:</p>
+<div class="arithmatex">\[
+\begin{aligned}
+\text{Крок 1 (Розрахунок дійсного дільника):} &amp; \quad D_{real} = \frac{f_{source}}{16 \cdot \text{Baud}_{target}} \\
+\text{Крок 2 (Виділення цілочисельної бази):} &amp; \quad \text{DIV\_INT} = \lfloor D_{real} \rfloor \\
+\text{Крок 3 (Апроксимація дробової частки):} &amp; \quad \text{DIV\_FRAG} = \text{round}\left( 8 \cdot (D_{real} - \text{DIV\_INT}) \right) \\
+\text{Крок 4 (Розрахунок фактичної швидкості):} &amp; \quad \text{Baud}_{actual} = \frac{f_{source}}{16 \cdot \left( \text{DIV\_INT} + \frac{\text{DIV\_FRAG}}{8} \right)} \\
+\text{Крок 5 (Оцінка частотної похибки):} &amp; \quad \delta_{baud} = \left| \frac{\text{Baud}_{actual} - \text{Baud}_{target}}{\text{Baud}_{target}} \right| \cdot 100\%
+\end{aligned}
+\]</div>
+<p>У наведених формулах величина <span class="arithmatex">\(f_{source}\)</span> відповідає тактовій частоті шини у герцах (<span class="arithmatex">\(80 \cdot 10^6\text{ Гц}\)</span>), множник 16 позначає апаратний коефіцієнт передискретизації (<strong>Oversampling</strong>), що використовується приймачем для виділення центру бітового інтервалу, а <span class="arithmatex">\(\text{Baud}_{target}\)</span> задає цільову швидкість передачі у бодах.</p>
+<p>Синхронізація приймача виконується одноразово за спадним фронтом стартового біта, після чого внутрішній лічильник відраховує фіксовані інтервали часу. Накопичення часової похибки <span class="arithmatex">\(\delta_{accum}\)</span> до кінця стандартного 10-бітного кадру (1 стартовий біт, 8 бітів даних, 1 стоповий біт) описується рівнянням накопиченого фазового зсуву:</p>
+<div class="arithmatex">\[\Delta t_{accum} = 10 \cdot T_{bit} \cdot \left( \frac{\delta_{baud}}{100} \right)\]</div>
+<p>Якщо накопичений зсув перевищує захисний інтервал стробування центру біта, який при 16-кратному оверсемплінгу становить <span class="arithmatex">\(\pm 3\dots 4\)</span> такти базового дільника від номінального центру, приймач здійснить вибірку на фронті сигналу або захопить сусідній біт. Практичним граничним обмеженням для стабільного прийому є умова, за якої відносна похибка <span class="arithmatex">\(\delta_{baud}\)</span> не повинна перевищувати <span class="arithmatex">\(2{,}5\%\)</span>, інакше стоповий біт фіксується як рівень нуля, спричиняючи апаратну помилку обрамлення кадру (<strong>Framing Error</strong>).</p>
+<p>Для уникнення втрати пакетів при нерівномірному навантаженні процесорного ядра застосовується апаратне керування потоком (<strong>Hardware Flow Control</strong>). Передавач контролює лінію <strong>CTS</strong> (Clear to Send), здійснюючи вивід чергового байта тільки за наявності активного низького рівня. Приймач керує лінією <strong>RTS</strong> (Request to Send): як тільки глибина заповнення апаратного буфера FIFO приймача перевищує запрограмований поріг (наприклад, 120 зі 128 доступних байтів), лінія RTS автоматично переводиться у високий рівень, блокуючи подальшу передачу з боку зовнішнього пристрою до моменту вичитування даних ядром процесора.</p>
+<blockquote>
+<p><strong>ВАЖЛИВО:</strong> Пряме електричне підключення ліній UART мікроконтролера ESP32 до зовнішніх пристроїв стандарту RS-232 або промислових ліній без спеціалізованих мікросхем гальванічної розв'язки та узгодження рівнів призводить до негайного руйнування кристала. Порти вводу-виводу ESP32 розраховані виключно на логічні рівні LVCMOS <span class="arithmatex">\(3{,}3\text{ В}\)</span>, тоді як стандарт RS-232 оперує двополярними сигналами з амплітудою від <span class="arithmatex">\(-12\text{ В}\)</span> до <span class="arithmatex">\(+12\text{ В}\)</span>. При роботі в промисловому середовищі обов'язковим є використання ізольованих трансиверів RS-485 із диференціальною передачею сигналу.</p>
+</blockquote>
+<hr />
+<h3 id="24-freertos-smp-api-esp-idf-spinlocks-">2.4. Архітектура багатозадачного середовища FreeRTOS SMP: розподіл потоків за ядрами через API ESP-IDF, міжпроцесорна синхронізація через Spinlocks та оцінка детермінізму реакції за теоремою Лю-Лейланда</h3>
+<p>Управління обчислювальними ресурсами мікроконтролера ESP32 реалізовано на основі модифікованої версії операційної системи реального часу <strong>FreeRTOS SMP</strong>, яка забезпечує симетричний розподіл завдань між ядрами PRO_CPU (Core 0) та APP_CPU (Core 1). Планувальник підтримує витісняючу багатозадачність на основі пріоритетів.</p>
+<p>Для детермінованого виконання критичних алгоритмів розробник може явно зафіксувати завдання за конкретним фізичним ядром за допомогою системного виклику <code>xTaskCreatePinnedToCore()</code>. </p>
+<p>Розподіл обов'язків реалізується відповідно до наступних системних правил:</p>
+<ol>
+<li>
+<p>Системні завдання, пов'язані з підтримкою радіочастотних стеків Wi-Fi, Bluetooth та системних таймерів нижнього рівня, призначаються планувальником виключно на ядро PRO_CPU.</p>
+</li>
+<li>
+<p>Обчислювальні алгоритми цифрової обробки сигналів, керування виконавчими механізмами та періодичне опитування датчиків прив'язуються до ядра APP_CPU для ізоляції їхньої поведінки від недетермінованих мережевих навантажень.</p>
+</li>
+<li>
+<p>Доступ до спільних ресурсів, пам'яті та апаратних периферійних блоків з боку завдань, що виконуються одночасно на різних ядрах, захищається за допомогою спінлоків (<code>portMUX_TYPE</code>).</p>
+</li>
+<li>
+<p>Вхід у критичну секцію ядра супроводжується локальним відключенням апаратних переривань на поточному ядрі та безперервним циклічним опитуванням атомарного прапорця в спільній пам'яті до моменту його звільнення іншим ядром.</p>
+</li>
+</ol>
+<p>Для оцінки стійкості системи реального часу та гарантування відсутності пропусків часових дедлайнів використовується класична аналітична модель теореми монотонії частоти (<strong>Rate-Monotonic Scheduling</strong>, <strong>RMS</strong>), сформульована Лю та Лейландом.</p>
+<p>Сумарне завантаження процесорного ядра <span class="arithmatex">\(U\)</span> набором із <span class="arithmatex">\(n\)</span> періодичних незалежних завдань зі статичними пріоритетами оцінюється співвідношенням:</p>
+<div class="arithmatex">\[U = \sum_{i=1}^{n} \frac{C_i}{T_i} \le n \left( 2^{1/n} - 1 \right)\]</div>
+<p>У наведеній моделі <span class="arithmatex">\(C_i\)</span> позначає тривалість виконання <span class="arithmatex">\(i\)</span>-го завдання у найгіршому випадку (<strong>Worst-Case Execution Time</strong>, <strong>WCET</strong>), виміряну в мілісекундах. Параметр <span class="arithmatex">\(T_i\)</span> позначає період регулярного виклику <span class="arithmatex">\(i\)</span>-го завдання, виміряний в аналогічних одиницях часу. Значення <span class="arithmatex">\(n\)</span> відповідає загальній кількості періодичних потоків, закріплених за процесорним ядром.</p>
+<p>Граничні умови цієї моделі полягають у тому, що при прямуванні кількості завдань до нескінченності (<span class="arithmatex">\(n \to \infty\)</span>) граничний коефіцієнт стійкого завантаження прямує до асимптотичної межі:</p>
+<div class="arithmatex">\[\lim_{n \to \infty} n \left( 2^{1/n} - 1 \right) = \ln(2) \approx 0{,}6931 \quad (69{,}31\%)\]</div>
+<p>Якщо сумарне обчислювальне завантаження перевищує даний поріг, система переходить у зону ризику виникнення інверсії пріоритетів та випадкових пропусків дедлайнів через взаємне блокування завдань. Крім того, модель Лю-Лейланда стає абсолютно нерелевантною у випадках, коли завдання містять взаємні блокування через м'ютекси, очікують на завершення асинхронних операцій вводу-виводу (блокування на шинах I2C або SPI) або якщо пріоритети завдань змінюються динамічно під час роботи системи.</p>
+<hr />
+<h3 id="25-flash-33-wi-fibluetooth">2.5. Критичні апаратні обмеження та вузькі місця платформи: латентність кеш-промахів при виконанні коду із зовнішньої Flash-пам'яті, завадостійкість інтерфейсів з відкритим колектором у промислових умовах та нестабільність шини живлення 3.3 В під час імпульсної активності калібрування радіотракту Wi-Fi/Bluetooth</h3>
+<p>Практична експлуатація мікроконтролерів ESP32 у складних промислових умовах та відповідальних контурах керування виявляє низку специфічних апаратних бар'єрів, ігнорування яких призводить до випадкових збоїв або повного зависання системи.</p>
+<p>Першим критичним бар'єром є недетермінована затримка виконання програмного коду, зумовлена функціонуванням зовнішньої Flash-пам'яті через апаратний кеш. Якщо виконувана ділянка коду відсутня у внутрішньому кеші обсягом <span class="arithmatex">\(32\text{ Кбайт}\)</span>, процесор зупиняє свій конвеєр команд на час вивантаження чергової лінії кешу через послідовну шину QSPI. Ця затримка (<strong>Cache Miss Latency</strong>) коливається від кількох десятків до сотень тактів процесора і має стохастичний характер, що робить неможливим побудову жорстких контурів керування реального часу (із допуском затримки реакції менше <span class="arithmatex">\(1\text{ мкс}\)</span>) при виконанні коду безпосередньо з Flash. Крім того, операції запису або стирання Flash-пам'яті взагалі апаратно вимикають кеш на час до сотень мілісекунд.</p>
+<p>Другим критичним обмеженням є низька завадостійкість інтерфейсів з відкритим колектором у промисловому середовищі. Оскільки шина I2C використовує пасивне підтягування лінії до рівня <span class="arithmatex">\(V_{dd}\)</span> через резистор, вхідний опір лінії у стані високого рівня залишається порівняно високим. Будь-які індуковані електромагнітні завади від комутації силових пускачів, реле або електродвигунів здатні створити ємнісну наводку на провідниках друкованої плати, амплітуда якої перевищує поріг спрацьовування тригера Шмітта. Це спричиняє появу хибних імпульсів на лінії SCL, які призводять до збою лічильника бітів у веденому сенсорі та повного блокування подальшого обміну.</p>
+<p>Третім вузьким місцем платформи є екстремальна імпульсна динаміка струму споживання по шині живлення <span class="arithmatex">\(3{,}3\text{ В}\)</span>. У моменти ініціалізації радіотракту, процедури радіочастотного калібрування та переходу вихідного каскаду підсилювача потужності у режим передачі пакетів Wi-Fi споживання струму мікроконтролером стрибкоподібно зростає від кількох міліампер до пікових значень порядку <span class="arithmatex">\(450\dots 500\text{ мА}\)</span> за час, менший за <span class="arithmatex">\(1\text{ мкс}\)</span>.</p>
+<p>Якщо імпеданс джерела живлення є недостатньо низьким, а на платі відсутні локальні блокувальні конденсатори з низьким еквівалентним послідовним опором (<strong>ESR</strong>), напруга живлення зазнає різкого короткочасного спаду (<strong>Voltage Sag</strong>). Падіння напруги нижче апаратного порогу <span class="arithmatex">\(2{,}7\text{ В}\)</span> викликає негайне спрацьовування вбудованого детектора зниження напруги (<strong>Brownout Detector</strong>) та апаратне перезавантаження мікроконтролера.</p>
+<p>Для комплексного зіставлення розглянутих апаратних протоколів та інструментів міжпроцесорної взаємодії складено узагальнену матрицю параметрів.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Механізм / Інтерфейс</th>
+<th style="text-align: left;">Фізичний / Логічний рівень</th>
+<th style="text-align: left;">Максимальна пропускна здатність</th>
+<th style="text-align: left;">Складність впровадження</th>
+<th style="text-align: left;">Критичні ризики / Обмеження</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>I2C (Inter-Integrated Circuit)</strong></td>
+<td style="text-align: left;">Фізичний: відкритий стік, 2 дроти; Логічний: кадрова адресна структура</td>
+<td style="text-align: left;">До <span class="arithmatex">\(400\text{ кбіт/с}\)</span> (Fast Mode); До <span class="arithmatex">\(1\text{ Мбіт/с}\)</span> (Fast Plus)</td>
+<td style="text-align: left;">Низька: мінімальна кількість сигнальних ліній</td>
+<td style="text-align: left;">Обмеження паразитної ємності шини (<span class="arithmatex">\(400\text{ пФ}\)</span>); блокування шини при Clock Stretching; чутливість до електромагнітних завад</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>SPI з контролером DMA</strong></td>
+<td style="text-align: left;">Фізичний: Push-Pull, 4 дроти + <span class="arithmatex">\(N\)</span> ліній CS; Логічний: потоковий синхронний обмін</td>
+<td style="text-align: left;">До <span class="arithmatex">\(40\dots 80\text{ Мбіт/с}\)</span> за умови узгодження ліній</td>
+<td style="text-align: left;">Висока: налаштування дескрипторів пам'яті, контроль цілісності кешу</td>
+<td style="text-align: left;">Фазовий зсув сигналів на довгих трасах; розширення площі плати через необхідність виділених ліній CS</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>UART з Hardware Flow Control</strong></td>
+<td style="text-align: left;">Фізичний: Push-Pull, 2 дроти + 2 лінії RTS/CTS; Логічний: байтовий асинхронний</td>
+<td style="text-align: left;">До <span class="arithmatex">\(5\text{ Мбод}\)</span> (типово <span class="arithmatex">\(115{,}2\text{ кбод} \dots 921{,}6\text{ кбод}\)</span>)</td>
+<td style="text-align: left;">Середня: конфігурація черг переривань та порогів буферів</td>
+<td style="text-align: left;">Накопичення часового дрейфу частот генераторів; необхідність строгого дотримання похибки бод-рейту (<span class="arithmatex">\(&lt; 2{,}5\%\)</span>)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Черги FreeRTOS (Queue Management)</strong></td>
+<td style="text-align: left;">Системний рівень ОС: потокобезпечний буфер повідомлень у DRAM</td>
+<td style="text-align: left;">Обмежується швидкістю копіювання даних у пам'яті SRAM</td>
+<td style="text-align: left;">Середня: керування пам'яттю та пріоритетами потоків</td>
+<td style="text-align: left;">Накладні витрати на перемикання контексту; затримки копіювання масивів даних при відсутності покажчиків</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Апаратні блокування Spinlocks</strong></td>
+<td style="text-align: left;">Апаратний рівень: атомарні прапорці матриці шин кристала</td>
+<td style="text-align: left;">Миттєва атомарна операція (одиниці тактів ядра CPU)</td>
+<td style="text-align: left;">Висока: вимагає аналізу взаємних блокувань (Deadlock)</td>
+<td style="text-align: left;">Блокування виконання другого процесорного ядра у марному циклі; ризик повного зависання системи</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>ПРАКТИЧНИЙ ЯКІР:</strong> Під час сертифікаційних випробувань промислових електролічильників за стандартом IEC 61000-4-4 (стійкість до електричних швидких перехідних процесів/пачок імпульсів) незахищені сигнальні лінії інтерфейсу I2C між мікроконтролером та мікросхемою вимірювання енергії фіксують індуковані сплески напруги амплітудою до <span class="arithmatex">\(2\text{ кВ}\)</span>. За відсутності на платі TVS-діодних збірок та феритових фільтрів це спричиняє постійне звалювання апаратного автомата I2C у стан помилки передачі.</p>
+</blockquote>
+<hr />
+<blockquote>
+<p><strong>КОНТРОЛЬНЕ ПИТАННЯ:</strong> Інженер розробляє систему телеметрії на базі мікроконтролера ESP32, до якого підключено групу цифрових сенсорів по шині I2C у режимі Fast Mode (<span class="arithmatex">\(400\text{ кбіт/с}\)</span>, <span class="arithmatex">\(t_{r(max)} = 300\text{ нс}\)</span>). Довжина сполучного кабелю становить <span class="arithmatex">\(1{,}5\text{ м}\)</span>, а сумарна погонна ємність кабелю та вхідних каскадів сенсорів сягає <span class="arithmatex">\(C_b = 350\text{ пФ}\)</span>. Вихідний каскад сенсора має параметри <span class="arithmatex">\(V_{OL(max)} = 0{,}4\text{ В}\)</span> при <span class="arithmatex">\(I_{OL} = 3\text{ мА}\)</span>. Напруга живлення становить <span class="arithmatex">\(V_{dd} = 3{,}3\text{ В}\)</span>. Інженер встановив резистори підтяжки номіналом <span class="arithmatex">\(R_p = 1{,}5\text{ кОм}\)</span>. Чи забезпечить дана система стабільний обмін даними, і до яких негативних наслідків призведе заміна підтягувальних резисторів на номінал <span class="arithmatex">\(4{,}7\text{ кОм}\)</span> або <span class="arithmatex">\(820\text{ Ом}\)</span>?</p>
+</blockquote>
+<details class="note">
+<summary>Розгорнути аналіз / відповідь</summary>
+<p><strong>Правильний варіант: Номінал 1,5 кОм забезпечує стабільну роботу; заміна на 4,7 кОм викликає збій через затягнутий фронт наростання, а заміна на 820 Ом — збій через неможливість формування рівня логічного нуля.</strong></p>
+<ol>
+<li>Аналітичний розрахунок допустимого діапазону номіналів підтягувального резистора:</li>
+</ol>
+<p>Нижня межа опору обмежується струмом відкритого стоку:
+   $<span class="arithmatex">\(R_{p(min)} = \frac{V_{dd} - V_{OL(max)}}{I_{OL}} = \frac{3{,}3\text{ В} - 0{,}4\text{ В}}{0{,}003\text{ А}} = \frac{2{,}9}{0{,}003} \approx 966{,}7\text{ Ом}\)</span>$</p>
+<p>Верхня межа опору визначається максимальною тривалістю фронту наростання для Fast Mode:
+   $<span class="arithmatex">\(R_{p(max)} = \frac{t_{r(max)}}{0{,}8473 \cdot C_b} = \frac{300 \cdot 10^{-9}\text{ с}}{0{,}8473 \cdot 350 \cdot 10^{-12}\text{ Ф}} = \frac{300 \cdot 10^{-9}}{296{,}55 \cdot 10^{-12}} \approx 1011{,}6\text{ Ом}\)</span>$</p>
+<p><em>Примітка щодо вибору номіналу інженером:</em> Діапазон за суворим стандартом становить <span class="arithmatex">\([967\text{ Ом} \dots 1012\text{ Ом}]\)</span>. Встановлений номінал <span class="arithmatex">\(1{,}5\text{ кОм}\)</span> насправді перевищує теоретичний розрахунковий поріг <span class="arithmatex">\(R_{p(max)}\)</span>, через що час наростання становитиме:
+   $<span class="arithmatex">\(t_r = 0{,}8473 \cdot 1500 \cdot 350 \cdot 10^{-12} \approx 444{,}8\text{ нс} &gt; 300\text{ нс}\)</span>$
+   Це призведе до спотворення форми імпульсів та випадкових помилок синхронізації на частоті <span class="arithmatex">\(400\text{ кбіт/с}\)</span>.</p>
+<ol>
+<li>Аналіз альтернативних варіантів (дистракторів):</li>
+</ol>
+<p>При заміні резисторів на <span class="arithmatex">\(R_p = 4{,}7\text{ кОм}\)</span> час наростання фронту сигналу збільшиться до величини <span class="arithmatex">\(t_r \approx 0{,}8473 \cdot 4700 \cdot 350 \cdot 10^{-12} \approx 1393\text{ нс}\)</span>. Це майже в п'ять разів перевищує допустимий ліміт <span class="arithmatex">\(300\text{ нс}\)</span>, внаслідок чого імпульси тактування SCL взагалі не встигатимуть досягти порогу логічної одиниці (<span class="arithmatex">\(0{,}7 V_{dd} = 2{,}31\text{ В}\)</span>), що призведе до повної зупинки передачі даних.</p>
+<p>При заміні резисторів на <span class="arithmatex">\(R_p = 820\text{ Ом}\)</span> номінал виявиться меншим за критичну межу <span class="arithmatex">\(R_{p(min)} = 967\text{ Ом}\)</span>. У цьому випадку при відкритті вихідного транзистора струм через стік перевищить граничні <span class="arithmatex">\(3\text{ мА}\)</span> (<span class="arithmatex">\(I = (3{,}3 - 0{,}4)/820 \approx 3{,}54\text{ мА}\)</span>), внаслідок чого залишкове падіння напруги на виводі <span class="arithmatex">\(V_{OL}\)</span> перевищить рівень <span class="arithmatex">\(0{,}4\text{ В}\)</span>. Контролер ESP32 не зможе детектувати стан логічного нуля на шині, зв'язок буде заблоковано, а тривалий перегрів вихідного каскаду сенсора може спричинити його деградацію.</p>
+</details>
+<h2 id="3-_1">3. Практичний індустріальний / фаховий кейс. Проектування апаратно-програмного комплексу збору телеметрії</h2>
+<h3 id="31-soc-esp32-dma-spi-freertos">3.1. Комплексний фаховий кейс. Розробка відмовостійкого вузла моніторингу вібрації та температури промислового компресора на базі SoC ESP32 з використанням DMA-буферизації по SPI та асинхронного стека FreeRTOS</h3>
+<h4 id="_5">Постановка задачі / ситуації</h4>
+<p>На нафтохімічному підприємстві виникла критична необхідність безперервного моніторингу технічного стану відцентрового компресора вторинного стиснення газу. Основними діагностичними маркерами можливої деградації підшипникових вузлів та дисбалансу ротора є спектральні характеристики вібраційного прискорення в трьох осьових площинах, а також температура опорних втулок. Традиційні періодичні інспекції за допомогою ручних вимірювальних приладів не здатні виявити динамічний розвиток втомних тріщин між інтервалами регламентних робіт.</p>
+<p>Інженерна група отримала завдання спроектувати автономний цифровий модуль предиктивної аналітики на базі однокристальної системи ESP32, інтегрований безпосередньо в корпус обладнання. Модуль повинен виконувати локальний спектральний аналіз методом швидкого перетворення Фур'є (<strong>FFT</strong>), фіксувати температуру, контролювати перевищення порогових значень віброшвидкості в реальному часі та передавати узагальнені показники по бездротовому каналу Wi-Fi за протоколом MQTT до центральної заводської SCADA-системи.</p>
+<p>Вхідні проектні параметри, апаратні обмеження та кліматичні умови експлуатації представлені у наведеній нижче таблиці.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Категорія параметрів</th>
+<th style="text-align: left;">Конкретна інженерна вимога</th>
+<th style="text-align: left;">Числове значення або характеристика</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Параметри віброметрії</strong></td>
+<td style="text-align: left;">Сенсор вібрації: цифровий 3-осьовий акселерометр</td>
+<td style="text-align: left;">Шина SPI, розрядність <span class="arithmatex">\(16\text{ біт}\)</span>, діапазон <span class="arithmatex">\(\pm 16g\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Частота дискретизації</strong></td>
+<td style="text-align: left;">Частота зняття відліків вібрації (<span class="arithmatex">\(f_s\)</span>)</td>
+<td style="text-align: left;"><span class="arithmatex">\(4000\text{ Гц}\)</span> на кожну вісь (<span class="arithmatex">\(12\ 000\text{ вимірювань/с}\)</span>)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Розмір вікна аналізу</strong></td>
+<td style="text-align: left;">Довжина вибірки для швидкого перетворення Фур'є</td>
+<td style="text-align: left;"><span class="arithmatex">\(N = 1024\)</span> точки на кожну координатну вісь</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Параметри термометрії</strong></td>
+<td style="text-align: left;">Сенсор температури підшипника: платиновий RTD Pt100</td>
+<td style="text-align: left;">Інтерфейс SPI, розрядність АЦП <span class="arithmatex">\(15\text{ біт}\)</span>, період <span class="arithmatex">\(1\text{ с}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Мережевий протокол</strong></td>
+<td style="text-align: left;">Трансляція телеметрії у локальну мережу цеху</td>
+<td style="text-align: left;">Wi-Fi 4 (<span class="arithmatex">\(802.11\text{n}\)</span>), MQTT по порту 8883 (з TLS 1.2)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Апаратне живлення</strong></td>
+<td style="text-align: left;">Цехова мережа постійного струму</td>
+<td style="text-align: left;">Вхідна напруга <span class="arithmatex">\(24\text{ В DC}\)</span> зі зниженням до <span class="arithmatex">\(3{,}3\text{ В}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Умови середовища</strong></td>
+<td style="text-align: left;">Робоча температура та електромагнітна обстановка</td>
+<td style="text-align: left;"><span class="arithmatex">\(-20^\circ\text{C} \dots +70^\circ\text{C}\)</span>, індустріальні завади електродвигунів</td>
+</tr>
+</tbody>
+</table>
+<p>Наступна блок-схема демонструє внутрішній розподіл потоків даних та завдань операційної системи між фізичними процесорними ядрами мікроконтролера ESP32.</p>
+<pre class="mermaid"><code>flowchart TD
+    subgraph Core1_Domain["Обчислювальний домен реального часу: Ядро APP_CPU (Core 1)"]
+        Sensor_Acc["Триосьовий акселерометр (SPI Slave)"]
+        SPI_DMA["Апаратний SPI2 + Контролер DMA"]
+        Buf_Ping["Буфер Ping (1024 зразки)"]
+        Buf_Pong["Буфер Pong (1024 зразки)"]
+        FFT_Task["Завдання цифрової фільтрації та FFT (Пріоритет 5)"]
+        Temp_Task["Завдання опитування Pt100 (Пріоритет 2)"]
+        Data_Queue["Потокобезпечна черга FreeRTOS (QueueHandle)"]
+
+        Sensor_Acc --&gt;|Потік вибірок SPI| SPI_DMA
+        SPI_DMA --&gt;|Заповнення парного банку| Buf_Ping
+        SPI_DMA --&gt;|Заповнення непарного банку| Buf_Pong
+        Buf_Ping --&gt; FFT_Task
+        Buf_Pong --&gt; FFT_Task
+        Temp_Task --&gt; Data_Queue
+        FFT_Task --&gt;|Спектральні амплітуди + RMS| Data_Queue
+    end
+
+    subgraph Core0_Domain["Мережевий та комунікаційний домен: Ядро PRO_CPU (Core 0)"]
+        Queue_Receive["Завдання агрогації телеметрії (Пріоритет 3)"]
+        LWIP_Stack["Системний мережевий стек TCP/IP (LwIP)"]
+        WiFi_Driver["Апаратний драйвер Wi-Fi Baseband"]
+        MQTT_Task["Клієнт MQTT (TLS-шифрування)"]
+        Cloud_Broker["Заводський брокер MQTT (SCADA / Cloud)"]
+
+        Data_Queue --&gt; Queue_Receive
+        Queue_Receive --&gt; MQTT_Task
+        MQTT_Task --&gt; LWIP_Stack
+        LWIP_Stack --&gt; WiFi_Driver
+        WiFi_Driver --&gt;|Радіоефір 2.4 ГГц| Cloud_Broker
+    end</code></pre>
+<h4 id="_6">Покроковий аналіз та розв'язок</h4>
+<h5 id="1-dma">Крок 1. Розрахунок розміру буферної пам'яті DMA та організація подвійної буферизації</h5>
+<p>Для безперервної реєстрації сигналів вібрації без втрати відліків під час роботи алгоритмів цифрової фільтрації необхідно організувати подвійну буферизацію типу «Ping-Pong». Кожен окремий блок повинен містити вибірку розміром <span class="arithmatex">\(N = 1024\)</span> вимірювань для трьох координатних осей.</p>
+<p>Розрахунок ємності одиничного буферного масиву <span class="arithmatex">\(S_{single}\)</span> здійснюється на основі розрядності зразків:</p>
+<div class="arithmatex">\[S_{single} = N \cdot N_{axis} \cdot S_{word} = 1024 \cdot 3 \cdot 2\text{ байти} = 6144\text{ байти}\]</div>
+<p>Сумарний обсяг внутрішньої пам'яті DRAM, необхідний для виділення двох зв'язаних буферів контролера DMA, становить:</p>
+<div class="arithmatex">\[S_{total\_DMA} = 2 \cdot S_{single} = 2 \cdot 6144\text{ байти} = 12\ 288\text{ байтів} \approx 12\text{ Кбайт}\]</div>
+<p>Отримане значення становить лише <span class="arithmatex">\(3{,}7\%\)</span> від загального пулу внутрішнього ОЗП SRAM2 (<span class="arithmatex">\(328\text{ Кбайт}\)</span> DRAM), що забезпечує достатній запас для розміщення системної купи та контекстів завдань FreeRTOS.</p>
+<h5 id="2-spi">Крок 2. Розрахунок частоти тактування та пропускної здатності шини SPI</h5>
+<p>Кожна транзакція зчитування даних акселерометра передбачає передачу 1 байта адреси початкового регістра та послідовне вичитування 6 байтів виміряних даних (по 2 байти на осі X, Y, Z).</p>
+<p>Загальна кількість бітів, що передаються за одну вибірку, складає <span class="arithmatex">\(B_{sample} = (1 + 6) \cdot 8 = 56\text{ бітів}\)</span>. Сумарний необхідний безперервний потік даних через інтерфейс SPI визначається співвідношенням:</p>
+<div class="arithmatex">\[\text{DataRate}_{SPI} = B_{sample} \cdot f_s = 56\text{ бітів} \cdot 4000\text{ с}^{-1} = 224\ 000\text{ біт/с} = 224\text{ кбіт/с}\]</div>
+<p>Якщо тактова частота шини SPI2 вибрана рівною <span class="arithmatex">\(f_{sclk} = 10\text{ МГц}\)</span> (<span class="arithmatex">\(10\cdot 10^6\text{ біт/с}\)</span>), то чистий час передачі одного блоку з 1024 точок за допомогою механізму прямого доступу до пам'яті розраховується за формулою:</p>
+<div class="arithmatex">\[t_{xfer} = \frac{1024 \cdot 56\text{ бітів}}{10 \cdot 10^6\text{ біт/с}} = \frac{57\ 344}{10 \cdot 10^6} \approx 5{,}734\text{ мс}\]</div>
+<p>Оскільки тривалість накопичення 1024 вибірок при частоті дискретизації <span class="arithmatex">\(4000\text{ Гц}\)</span> становить:</p>
+<div class="arithmatex">\[T_{frame} = \frac{N}{f_s} = \frac{1024}{4000\text{ Гц}} = 0{,}256\text{ с} = 256\text{ мс}\]</div>
+<p>коефіцієнт утилізації шини SPI контролером DMA не перевищує значення:</p>
+<div class="arithmatex">\[K_{SPI\_util} = \frac{t_{xfer}}{T_{frame}} \cdot 100\% = \frac{5{,}734\text{ мс}}{256\text{ мс}} \cdot 100\% \approx 2{,}24\%\]</div>
+<p>Це залишає понад <span class="arithmatex">\(97\%\)</span> пропускної здатності інтерфейсу доступними для зняття температурних показників із мікросхеми перетворювача Pt100.</p>
+<h5 id="3-app_cpu-core-1">Крок 3. Перевірка обчислювального завантаження ядра APP_CPU (Core 1)</h5>
+<p>На ядрі Core 1 одночасно функціонують три періодичні завдання: обробник завершення передачі DMA <span class="arithmatex">\(T_1\)</span>, алгоритм розрахунку 1024-точкового комплексного FFT з обчисленням дійсного середньоквадратичного значення віброшвидкості (RMS) <span class="arithmatex">\(T_2\)</span> та опитування сенсора температури <span class="arithmatex">\(T_3\)</span>.</p>
+<p>За результатами попереднього профілювання коду отримано значення найгіршого часу виконання: для завдання <span class="arithmatex">\(T_1\)</span> величина становить <span class="arithmatex">\(C_1 = 0{,}4\text{ мс}\)</span> при періоді <span class="arithmatex">\(T_1 = 256\text{ мс}\)</span>; для завдання <span class="arithmatex">\(T_2\)</span> векторний розрахунок FFT забирає <span class="arithmatex">\(C_2 = 14{,}5\text{ мс}\)</span> при періоді <span class="arithmatex">\(T_2 = 256\text{ мс}\)</span>; для завдання <span class="arithmatex">\(T_3\)</span> час конверсії становить <span class="arithmatex">\(C_3 = 1{,}8\text{ мс}\)</span> при періоді <span class="arithmatex">\(T_3 = 1000\text{ мс}\)</span>.</p>
+<p>Сумарне завантаження процесорного ядра <span class="arithmatex">\(U_{Core1}\)</span> обчислюється підстановкою параметрів:</p>
+<div class="arithmatex">\[U_{Core1} = \frac{C_1}{T_1} + \frac{C_2}{T_2} + \frac{C_3}{T_3} = \frac{0{,}4}{256} + \frac{14{,}5}{256} + \frac{1{,}8}{1000} \approx 0{,}00156 + 0{,}05664 + 0{,}00180 = 0{,}060 \quad (6{,}0\%)\]</div>
+<p>Граничний поріг детермінізму за теоремою Лю-Лейланда для <span class="arithmatex">\(n = 3\)</span> завдань дорівнює:</p>
+<div class="arithmatex">\[U_{max} = 3 \cdot \left( 2^{1/3} - 1 \right) \approx 3 \cdot 0{,}2599 = 0{,}7797 \quad (77{,}97\%)\]</div>
+<p>Оскільки <span class="arithmatex">\(U_{Core1} = 6{,}0\% \ll 77{,}97\%\)</span>, розроблена система гарантує абсолютний детермінізм часових рамок без ризику пропуску дедлайнів обробки вібраційних сигналів.</p>
+<h5 id="4-33">Крок 4. Розрахунок ємності буферного фільтра вторинного джерела живлення 3.3 В</h5>
+<p>Під час активації радіомодуля Wi-Fi для надсилання накопиченого MQTT-пакета виникає сплеск струму амплітудою <span class="arithmatex">\(\Delta I = 380\text{ мА}\)</span> тривалістю <span class="arithmatex">\(\Delta t = 80\text{ мкс}\)</span>. Внутрішній захисний поріг відключення детектора зниження напруги ESP32 налаштований на рівень <span class="arithmatex">\(2{,}8\text{ В}\)</span>, що обмежує максимальний допустимий спад вихідної напруги величиною <span class="arithmatex">\(\Delta V = 3{,}3\text{ В} - 2{,}8\text{ В} = 0{,}5\text{ В}\)</span>.</p>
+<p>Мінімальна ємність вихідного фільтра стабілізатора, необхідна для утримання потенціалу за відсутності підкачки від первинного джерела, розраховується з балансу електричного заряду:</p>
+<div class="arithmatex">\[C_{filter\_min} = \frac{\Delta I \cdot \Delta t}{\Delta V} = \frac{0{,}380\text{ А} \cdot 80 \cdot 10^{-6}\text{ с}}{0{,}5\text{ В}} = 60{,}8\text{ мкФ}\]</div>
+<p>З урахуванням деградації ємності електролітичних конденсаторів за низьких температур (до <span class="arithmatex">\(-20^\circ\text{C}\)</span>) та напівпровідникового коефіцієнта запасу <span class="arithmatex">\(k = 2{,}5\)</span>, підсумкова встановлена ємність локального розв'язувального вузла вибирається як паралельне з'єднання танталового конденсатора ємністю <span class="arithmatex">\(150\text{ мкФ}\)</span> з низьким ESR та керамічного багатошарового конденсатора MLCC ємністю <span class="arithmatex">\(10\text{ мкФ}\)</span>.</p>
+<h4 id="_7">Інтерпретація результатів та альтернативні сценарії</h4>
+<p>Проведені інженерні розрахунки довели, що комбінація апаратного контролера DMA на шині SPI та симетричного багатозадачного ядра FreeRTOS дозволяє вирішувати задачі цифрової обробки сигналів вібрації з мінімальним навантаженням на центральний процесор (завантаження ядра Core 1 складає лише <span class="arithmatex">\(6\%\)</span>). Використання виділеного ядра PRO_CPU для підтримки мережевого стека гарантує, що жодні криптографічні затримки узгодження ключів TLS під час сеансів MQTT не спричинять спотворення часової сітки дискретизації акселерометра.</p>
+<p>У разі зміни вихідних вимог проекту схемотехнічне рішення вимагатиме наступної адаптації:</p>
+<ol>
+<li>
+<p>Якщо об'єкт моніторингу позбавлений доступу до промислової електромережі <span class="arithmatex">\(24\text{ В}\)</span>, архітектура безперервного моніторингу на базі Wi-Fi стає непридатною через високе середнє споживання струму (понад <span class="arithmatex">\(80\text{ мА}\)</span>). У такому разі систему необхідно перевести на архітектуру чергування станів Deep Sleep із переносом функцій попереднього контролю амплітуди на співпроцесор ULP, замінити Wi-Fi на протокол LoRaWAN, а тактову частоту основного ядра зменшити до <span class="arithmatex">\(80\text{ МГц}\)</span>.</p>
+</li>
+<li>
+<p>Якщо частота дискретизації вібраційного прискорення зросте до значень високочастотної акустичної емісії (<span class="arithmatex">\(f_s = 50\text{ кГц}\)</span>), пропускна здатність SPI з DMA впорається з потоком, однак час розрахунку FFT перевищить період вибірки. У цій ситуації ядро APP_CPU зазнає перевантаження, тому розробнику доведеться відмовитися від суцільного обчислення спектра на користь розрахунку виключно інтегральних енергетичних параметрів або використати зовнішній спеціалізований DSP-співпроцесор.</p>
+</li>
+</ol>
+<hr />
+<h3 id="32">3.2. Зведена довідкова система лекції</h3>
+<p>Нижче наведено комплексну систематизацію ключових понять, апаратних блоків та протоколів, що складають концептуальну основу проектування мікроконтролерних систем Інтернету речей на базі архітектури ESP32.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Термін / Концепція</th>
+<th style="text-align: left;">Формалізація / Сутність</th>
+<th style="text-align: left;">Реальний кейс застосування</th>
+<th style="text-align: left;">Основне обмеження / Ризик</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>System-on-Chip (SoC)</strong></td>
+<td style="text-align: left;">Монолітна напівпровідникова інтеграція ядер, пам'яті, периферії та RF-тракту на єдиному кристалі</td>
+<td style="text-align: left;">Бездротові датчики витоку газу, портативні медичні монітори</td>
+<td style="text-align: left;">Неможливість гнучкої модифікації внутрішньої апаратної конфігурації</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Tensilica Xtensa LX6</strong></td>
+<td style="text-align: left;">Двоядерний 32-бітний RISC-процесор із конвеєром 7 стадій та архітектурою віконних регістрів</td>
+<td style="text-align: left;">Граничні контролери верстатів з ЧПК, розумні електролічильники</td>
+<td style="text-align: left;">Недетермінізм виконання інструкцій при кеш-промахах із зовнішньої пам'яті</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Співпроцесор ULP</strong></td>
+<td style="text-align: left;">Незалежний апаратний блок (FSM/RISC-V) у домені RTC, активний у режимі Deep Sleep</td>
+<td style="text-align: left;">Моніторинг пожежних датчиків у приміщеннях з автономним живленням</td>
+<td style="text-align: left;">Обмежений набір інструкцій та малий обсяг пам'яті коду (<span class="arithmatex">\(8\text{ Кбайт}\)</span> Slow SRAM)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Блок керування пам'яттю (MMU)</strong></td>
+<td style="text-align: left;">Апаратний перетворювач віртуальних адрес, що забезпечує сторінкове кешування зовнішньої Flash</td>
+<td style="text-align: left;">Виконання коду великих прикладних програм розміром до кількох мегабайтів</td>
+<td style="text-align: left;">Заборона доступу до кешованого коду під час операцій стирання сектора Flash</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Директива IRAM_ATTR</strong></td>
+<td style="text-align: left;">Макрокоманда лінкера для примусового розміщення функцій у внутрішній пам'яті SRAM0/1</td>
+<td style="text-align: left;">Обробники апаратних переривань від аварійних датчиків та захисні таймери</td>
+<td style="text-align: left;">Дефіцит внутрішнього ОЗП IRAM при надмірному перенесенні підпрограм</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Шина I2C (Open-Drain)</strong></td>
+<td style="text-align: left;">Синхронна напівдуплексна шина з відкритим стоком та арбітражем через логіку «монтажного І»</td>
+<td style="text-align: left;">Зняття показників із повільних датчиків вологості, тиску та мікросхем RTC</td>
+<td style="text-align: left;">Деградація форми імпульсів при паразитній ємності шини понад <span class="arithmatex">\(400\text{ пФ}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Clock Stretching</strong></td>
+<td style="text-align: left;">Тимчасове примусове втримання лінії SCL у низькому стані веденим пристроєм для затримки ведучого</td>
+<td style="text-align: left;">Синхронізація роботи складних газоаналізаторів під час калібрування АЦП</td>
+<td style="text-align: left;">Зависання апаратного контролера I2C в ранніх ревізіях кремнію ESP32</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Шина SPI з DMA</strong></td>
+<td style="text-align: left;">Повнодуплексний синхронний інтерфейс з Push-Pull виходами та прямим доступом до ОЗП</td>
+<td style="text-align: left;">Високошвидкісні акселерометри, передача кадрів на TFT-дисплеї</td>
+<td style="text-align: left;">Фазовий зсув сигналів на високих тактових частотах через затримку виходу веденого</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Hardware Flow Control</strong></td>
+<td style="text-align: left;">Апаратне керування лініями RTS/CTS для запобігання переповненню вхідних FIFO-буферів UART</td>
+<td style="text-align: left;">Обмін масивами телеметрії з високошвидкісними 4G/LTE модемами</td>
+<td style="text-align: left;">Необхідність використання двох додаткових ліній зв'язку на друкованій платі</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>FreeRTOS SMP Core Pinning</strong></td>
+<td style="text-align: left;">Жорстке закріплення завдань за фізичними ядрами через функцію <code>xTaskCreatePinnedToCore</code></td>
+<td style="text-align: left;">Ізоляція контурів автоматичного регулювання від мережевих завдань Wi-Fi</td>
+<td style="text-align: left;">Ризик виникнення дедлоків між ядрами через несинхронізовані спінлоки</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="33">3.3. Контрольні питання та завдання</h3>
+<h4 id="_8">Прикладні тестові завдання</h4>
+<ol>
+<li>
+<p>Під час проведення польових випробувань мікроконтролерного вузла на базі ESP32 було помічено, що прилад спонтанно перезавантажується у процесі збереження налаштувань користувача в енергонезалежну пам'ять NVS (Non-Volatile Storage), що викликає аварійне спрацьовування сторожового таймера. Лог налагодження зафіксував помилку <code>Guru Meditation Error: Core 1 panic'ed (Cache disabled but cached memory region accessed)</code>. Яка схемотехнічна або програмна помилка є першопричиною цієї системної аварії?</p>
+</li>
+<li>
+<p>A. Відсутність конденсатора належної ємності на шині живлення <span class="arithmatex">\(3{,}3\text{ В}\)</span>, що призвело до спрацьовування Brownout детектора в момент зростання струму запису Flash.</p>
+</li>
+<li>
+<p>B. Виклик обробника апаратного переривання від сенсора, який не має атрибута <code>IRAM_ATTR</code>, під час виконання операції стирання сектору зовнішньої Flash-пам'яті.</p>
+</li>
+<li>
+<p>C. Виникнення стану взаємного блокування (Deadlock) між ядрами PRO_CPU та APP_CPU при доступі до системного SPI-контролера.</p>
+</li>
+<li>
+<p>D. Переповнення стека завдання FreeRTOS, призначеного для запису параметрів у файлову систему SPIFFS.</p>
+</li>
+</ol>
+<details class="note">
+<summary>Розгорнути аналіз / відповідь</summary>
+<p><strong>Правильний варіант: B.</strong></p>
+<ol>
+<li>
+<p>Під час виконання операцій посторінкового запису або стирання сектору у зовнішній Flash-пам'яті апаратний контролер кешу автоматично вимикається для уникнення зчитування спотворених даних. Якщо в цей момент генерується апаратне переривання, вектор якого або виконуваний код обробника розташовані у віртуальному адресному просторі Flash, ядро Xtensa стикається з неможливістю вибірки інструкції і генерує фатальне виключення ядра. Обов'язковою вимогою є розміщення таких функцій у внутрішній пам'яті за допомогою макроса <code>IRAM_ATTR</code>.</p>
+</li>
+<li>
+<p>Аналіз дистракторів:</p>
+</li>
+<li>
+<p>Варіант A є хибним, оскільки при спрацьовуванні схеми захисту від просідання напруги лог зафіксував би повідомлення <code>Brownout detector was triggered</code>, а не помилку доступу до вимкненого кешу.</p>
+</li>
+<li>
+<p>Варіант C є невірним, оскільки дедлок призводить до зависання виконання із подальшим скиданням від сторожового таймера Task Watchdog, але не викликає миттєвої паніки ядра щодо інвалідації кешу.</p>
+</li>
+<li>
+<p>Варіант D є помилковим, оскільки переповнення стека завдання виявляється засобами перевірки цілісності канарок стека FreeRTOS із виводом повідомлення <code>Stack canary watchpoint got triggered</code>.</p>
+</li>
+</ol>
+</details>
+<ol>
+<li>
+<p>Інженер проектує систему сполучення ESP32 з цифровим датчиком барометричного тиску по шині I2C у режимі Fast Mode (<span class="arithmatex">\(400\text{ кбіт/с}\)</span>). Паразитна ємність лінії становить <span class="arithmatex">\(250\text{ пФ}\)</span>, напруга живлення <span class="arithmatex">\(V_{dd} = 3{,}3\text{ В}\)</span>, а струм відкритого стоку сенсора <span class="arithmatex">\(I_{OL} = 3\text{ мА}\)</span> при <span class="arithmatex">\(V_{OL(max)} = 0{,}4\text{ В}\)</span>. Інженер встановив резистори підтяжки номіналом <span class="arithmatex">\(R_p = 560\text{ Ом}\)</span>. До яких фізичних наслідків призведе таке рішення під час спроби ініціалізації шини?</p>
+</li>
+<li>
+<p>A. Фронт наростання сигналу стане надмірно затягнутим, через що тривалість <span class="arithmatex">\(t_r\)</span> перевищить ліміт <span class="arithmatex">\(300\text{ нс}\)</span>.</p>
+</li>
+<li>
+<p>B. Вихідний каскад датчика не зможе забезпечити стікання необхідного струму, потенціал лінії логічного нуля не опуститься нижче <span class="arithmatex">\(0{,}4\text{ В}\)</span>, і ведучий зафіксує відсутність підтвердження ACK.</p>
+</li>
+<li>
+<p>C. Виникне апаратний резонанс у контурі зв'язку, що призведе до високочастотного самозбудження вхідних буферів мікроконтролера.</p>
+</li>
+<li>
+<p>D. Автоматично активується внутрішній механізм Clock Stretching веденого пристрою, сповільнюючи швидкість передачі до <span class="arithmatex">\(10\text{ кбіт/с}\)</span>.</p>
+</li>
+</ol>
+<details class="note">
+<summary>Розгорнути аналіз / відповідь</summary>
+<p><strong>Правильний варіант: B.</strong></p>
+<ol>
+<li>
+<p>Мінімальний допустимий опір підтягувального резистора для шини становить <span class="arithmatex">\(R_{p(min)} = (3{,}3\text{ В} - 0{,}4\text{ В}) / 0{,}003\text{ А} \approx 967\text{ Ом}\)</span>. Номінал <span class="arithmatex">\(560\text{ Ом}\)</span> є значно нижчим за критичну межу. При спробі веденого сенсора відкрити свій вихідний n-МОП транзистор для формування біта підтвердження ACK струм через резистор перевищить граничний поріг насичення транзистора (<span class="arithmatex">\(I \approx 5{,}18\text{ мА}\)</span>), через що напруга на лінії залишиться вищою за <span class="arithmatex">\(V_{OL(max)} = 0{,}4\text{ В}\)</span>. Вхідний компаратор ESP32 інтерпретує це як логічну одиницю (NACK) і транзакція буде зірвана.</p>
+</li>
+<li>
+<p>Аналіз дистракторів:</p>
+</li>
+<li>
+<p>Варіант A є протилежним за фізичним змістом: малий опір навпаки прискорює перезаряджання ємності і робить фронт крутішим, ніж вимагається.</p>
+</li>
+<li>
+<p>Варіант C є безпідставним, оскільки резистивно-ємнісна лінія I2C є аперіодичною ланкою першого порядку і не утворює коливального контуру за відсутності високої еквівалентної індуктивності.</p>
+</li>
+<li>
+<p>Варіант D є хибним, оскільки Clock Stretching є функцією веденого вузла, яка активується програмно при внутрішній затримці обробки, а не апаратною реакцією на струмове перевантаження.</p>
+</li>
+</ol>
+</details>
+<ol>
+<li>
+<p>Для вимірювання динамічного профілю струму сонячної панелі використовується високошвидкісний SPI АЦП, опитування якого здійснюється на тактовій частоті <span class="arithmatex">\(32\text{ МГц}\)</span>. З'єднувальний шлейф між ESP32 та платою АЦП має довжину <span class="arithmatex">\(40\text{ см}\)</span>. Під час роботи зафіксовано, що зчитані байти даних містять випадкові бітові зсуви, хоча форма тактового сигналу на осцилографі є ідеальною. Який фізичний фактор спричинив виникнення цієї проблеми?</p>
+</li>
+<li>
+<p>A. Інверсія полярності тактового сигналу через невідповідність між режимами Mode 0 та Mode 3.</p>
+</li>
+<li>
+<p>B. Перевищення сумарного часу затримки сигналу на паразитній ємності та кабелі відносно тривалості напівперіоду тактової частоти.</p>
+</li>
+<li>
+<p>C. Спрацьовування апаратного захисту DMA від переповнення внутрішнього буфера SRAM.</p>
+</li>
+<li>
+<p>D. Недостатній струм підтягувальних резисторів на лініях MOSI та MISO.</p>
+</li>
+</ol>
+<details class="note">
+<summary>Розгорнути аналіз / відповідь</summary>
+<p><strong>Правильний варіант: B.</strong></p>
+<ol>
+<li>
+<p>Період тактового сигналу при частоті <span class="arithmatex">\(32\text{ МГц}\)</span> становить <span class="arithmatex">\(T_{sclk} = 31{,}25\text{ нс}\)</span>, а тривалість напівперіоду дорівнює всього <span class="arithmatex">\(15{,}62\text{ нс}\)</span>. Поширення сигналу по кабелю довжиною <span class="arithmatex">\(40\text{ см}\)</span> туди й назад створює затримку близько <span class="arithmatex">\(4\dots 5\text{ нс}\)</span>, а час перемикання вихідного каскаду веденого АЦП становить зазвичай <span class="arithmatex">\(10\dots 12\text{ нс}\)</span>. Сумарна затримка перевищує напівперіод тактового сигналу, внаслідок чого ведучий контролер ESP32 стробує вхідний біт у момент, коли на лінії MISO ще присутній попередній стан сигналу.</p>
+</li>
+<li>
+<p>Аналіз дистракторів:</p>
+</li>
+<li>
+<p>Варіант A є невірним, оскільки несумісність режимів призводить до постійного систематичного фазового зсуву кожного байта на 1 біт, а не до стохастичних помилок, залежних від довжини шлейфа.</p>
+</li>
+<li>
+<p>Варіант C є помилковим, оскільки контролер DMA передає дані на системну шину порціями та сигналізує про переповнення через системні переривання, а не шляхом побітового спотворення слів.</p>
+</li>
+<li>
+<p>Варіант D є безглуздим, оскільки шина SPI має двотактні вихідні каскади Push-Pull і взагалі не потребує встановлення підтягувальних резисторів.</p>
+</li>
+</ol>
+</details>
+<ol>
+<li>
+<p>Необхідно спроектувати систему збору телеметрії, що виконує асинхронний обмін даними між ESP32 та стільниковим модемом по інтерфейсу UART на швидкості <span class="arithmatex">\(921\ 600\text{ бод}\)</span>. Тактова частота джерела бод-генератора становить <span class="arithmatex">\(80\text{ МГц}\)</span>. Яка відносна похибка генерації бітової швидкості буде закладена в апаратний дільник, і чи відповідає вона вимогам стабільного прийому 10-бітних пакетів?</p>
+</li>
+<li>
+<p>A. Похибка становить близько <span class="arithmatex">\(0{,}16\%\)</span>, що повністю вкладається в допустимий поріг <span class="arithmatex">\(2{,}5\%\)</span>.</p>
+</li>
+<li>
+<p>B. Похибка становить <span class="arithmatex">\(3{,}85\%\)</span>, що призведе до систематичних помилок обрамлення кадру (Framing Error).</p>
+</li>
+<li>
+<p>C. Похибка дорівнює нулю завдяки використанню дробового дільника з нескінченною дискретністю.</p>
+</li>
+<li>
+<p>D. Похибка перевищує <span class="arithmatex">\(5{,}0\%\)</span>, зв'язок можливий лише за умови обов'язкового використання біта парності.</p>
+</li>
+</ol>
+<details class="note">
+<summary>Розгорнути аналіз / відповідь</summary>
+<p><strong>Правильний варіант: A.</strong></p>
+<ol>
+<li>
+<p>Виконуємо розрахунок згідно з математичною моделлю дільника UART ESP32:
+   Ідеальний коефіцієнт ділення:
+   $<span class="arithmatex">\(D_{real} = \frac{80 \cdot 10^6}{16 \cdot 921\ 600} = \frac{80\ 000\ 000}{14\ 745\ 600} \approx 5{,}425347\)</span>$
+   Цілочисельна частина: <span class="arithmatex">\(\text{DIV\_INT} = 5\)</span>.
+   Дробова частина:
+   $<span class="arithmatex">\(\text{DIV\_FRAG} = \text{round}(8 \cdot 0{,}425347) = \text{round}(3{,}4027) = 3\)</span>$
+   Фактична швидкість з урахуванням дільника <span class="arithmatex">\(5 + 3/8 = 5{,}375\)</span>:
+   $<span class="arithmatex">\(\text{Baud}_{actual} = \frac{80\ 000\ 000}{16 \cdot 5{,}375} = \frac{80\ 000\ 000}{86} \approx 930\ 232{,}5\text{ бод}\)</span>$
+   Розрахунок похибки:
+   $<span class="arithmatex">\(\delta_{baud} = \left| \frac{930\ 232{,}5 - 921\ 600}{921\ 600} \right| \cdot 100\% = \frac{8632{,}5}{921\ 600} \cdot 100\% \approx 0{,}937\%\)</span>$
+   Отримана похибка менша за <span class="arithmatex">\(2{,}5\%\)</span>, що гарантує надійний прийом інформаційних пакетів.</p>
+</li>
+<li>
+<p>Аналіз дистракторів:</p>
+</li>
+<li>
+<p>Варіант B є помилковим, оскільки завищує похибку, яка була б актуальною лише за відсутності дробового дільника (при цілому дільнику 5 швидкість була б <span class="arithmatex">\(1\text{ Мбод}\)</span>, а похибка сягала б <span class="arithmatex">\(8{,}5\%\)</span>).</p>
+</li>
+<li>
+<p>Варіант C є технічно некоректним, оскільки розрядність дробового регістра апаратно обмежена 3 бітами (дискретність <span class="arithmatex">\(0{,}125\)</span>).</p>
+</li>
+<li>
+<p>Варіант D є хибним, оскільки за похибки понад <span class="arithmatex">\(5\%\)</span> використання біта парності не вирішує проблему стробування стопового біта і не рятує кадр від відкидання.</p>
+</li>
+</ol>
+</details>
+<hr />
+<h4 id="_9">Завдання для самостійної роботи</h4>
+<h5 id="_10">Постановка задачі</h5>
+<p>Для забезпечення моніторингу кліматичних параметрів та концентрації горючих газів у віддаленому резервуарному парку розробляється автономний вимірювальний зонд на базі мікроконтролера ESP32. Зонд живиться від літій-залізо-фосфатного акумулятора (<span class="arithmatex">\(\text{LiFePO}_4\)</span>) ємністю <span class="arithmatex">\(1500\text{ мА}\cdot\text{год}\)</span> (робочий діапазон напруг <span class="arithmatex">\(3{,}2\dots 2{,}8\text{ В}\)</span>). Прилад містить сенсор вуглеводневих газів з інтерфейсом I2C, інтегрований модуль енергонезалежної пам'яті FRAM на шині SPI для накопичення аварійних трендів та модуль стільникового зв'язку NB-IoT, що керується через UART. Пристрій повинен працювати в режимі глибокого сну з періодичним моніторингом порогових рівнів за допомогою співпроцесора ULP та виходити в ефір лише у разі аварії або один раз на добу для надсилання планового звіту.</p>
+<h5 id="_11">Завдання для виконання</h5>
+<ol>
+<li>
+<p>Складіть математичну модель добового енергетичного балансу пристрою, розрахувавши середній струм споживання на основі часових параметрів активності співпроцесора ULP у фазі сну та тривалості роботи модема NB-IoT у фазі передачі даних.</p>
+</li>
+<li>
+<p>Розрахуйте параметри шини I2C для підключення газового сенсора при сумарній ємності лінії <span class="arithmatex">\(180\text{ пФ}\)</span>, визначивши допустимі межі підтягувальних резисторів для забезпечення швидкості <span class="arithmatex">\(100\text{ кбіт/с}\)</span>.</p>
+</li>
+<li>
+<p>Розробіть структурну схему розподілу адресного простору пам'яті мікроконтролера із зазначенням сегментів для розміщення коду підпрограми ULP, кільцевого буфера аварійних подій у RTC Slow Memory та критичних обробників переривань у внутрішній пам'яті IRAM.</p>
+</li>
+<li>
+<p>Сформулюйте перелік вимог до апаратної частини системи живлення, включаючи розрахунок блокувальних конденсаторів для компенсації імпульсних навантажень під час передачі радіосигналу стільниковим трансивером.</p>
+</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Повернутись нагору
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Kyrylo Vadurin &bull; <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.top", "navigation.tracking", "header.autohide", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u0421\u043a\u043e\u043f\u0456\u0439\u043e\u0432\u0430\u043d\u043e \u0432 \u0431\u0443\u0444\u0435\u0440", "clipboard.copy": "\u0421\u043a\u043e\u043f\u0456\u044e\u0432\u0430\u0442\u0438 \u0432 \u0431\u0443\u0444\u0435\u0440", "search.result.more.one": "\u0429\u0435 1 \u0437\u0431\u0456\u0433 \u043d\u0430 \u0446\u0456\u0439 \u0441\u0442\u043e\u0440\u0456\u043d\u0446\u0456", "search.result.more.other": "\u0429\u0435 # \u0437\u0431\u0456\u0433\u0456\u0432 \u043d\u0430 \u0446\u0456\u0439 \u0441\u0442\u043e\u0440\u0456\u043d\u0446\u0456", "search.result.none": "\u0417\u0431\u0456\u0433\u0456\u0432 \u043d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u043e", "search.result.one": "\u0417\u043d\u0430\u0439\u0434\u0435\u043d\u043e 1 \u0437\u0431\u0456\u0433", "search.result.other": "\u0417\u043d\u0430\u0439\u0434\u0435\u043d\u043e # \u0437\u0431\u0456\u0433\u0456\u0432", "search.result.placeholder": "\u0420\u043e\u0437\u043f\u043e\u0447\u043d\u0456\u0442\u044c \u043f\u0438\u0441\u0430\u0442\u0438 \u0434\u043b\u044f \u043f\u043e\u0448\u0443\u043a\u0443", "search.result.term.missing": "\u041d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u043e \u0437\u0430\u043f\u0438\u0442\u0443", "select.version": "\u041e\u0431\u0440\u0430\u0442\u0438 \u0432\u0435\u0440\u0441\u0456\u044e"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
