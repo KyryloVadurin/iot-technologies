@@ -1,9 +1,6 @@
-# Тут будуть site_name та site_description (див. нижче для кожної дисципліни)
-
 theme:
   name: material
   language: uk
-
   palette:
     - scheme: default
       primary: indigo
@@ -42,6 +39,11 @@ markdown_extensions:
         - name: mermaid
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
+        - name: math
+          class: arithmatex
+          format: !!python/object/apply:pymdownx.arithmatex.arithmatex_fenced_format
+            kwds:
+              mode: generic
   - pymdownx.highlight:
       anchor_linenums: true
       line_spans: __span
